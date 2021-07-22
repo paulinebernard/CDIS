@@ -10,7 +10,7 @@ Mines ParisTech, cycle ingénieur civil, unité d'enseignement Mathématiques (U
 
 
 | Chapitre      | # | E-book | Notebook | Quizz | 
-| ------------- | ------: | -----------: | --------------------: |  :----:  | :-----: |
+| ------------- | ------: | -----------:  |  :----:  | :-----: |
 | Topologie | 1 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Topologie.pdf) |   | [:grey_question: PDF](https://boisgera.github.io/CDIS/quizz/Topologie/output/Topologie.pdf) |
 | Calcul Différentiel | 1 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Calcul%20Différentiel%20I.pdf) |  | [:grey_question: PDF](https://boisgera.github.io/CDIS/quizz/Calcul%20Différentiel%20I/output/Calcul%20Différentiel%20I.pdf) |
 |   | 2 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Calcul%20Différentiel%20II.pdf)   | [:grey_question: PDF](https://boisgera.github.io/CDIS/quizz/Calcul%20Différentiel%20II/output/Calcul%20Différentiel%20II.pdf) |
