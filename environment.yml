@@ -1,0 +1,23 @@
+name: CDIS
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8
+  - pandoc=2.9.2
+  - numpy
+  - scipy
+  - pandas
+  - scikit-learn
+  - mpmath
+  - autograd
+  - matplotlib
+  - seaborn
+  - jupyterlab
+  - jupytext
+  - pip
+  - setuptools
+  - black
+  - twine
+  - pip:
+    - ics==0.4
+    - pandoc==2.0a4

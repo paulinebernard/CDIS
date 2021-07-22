@@ -1,0 +1,33 @@
+\documentclass[tikz]{standalone}
+\begin{document}
+\begin{tikzpicture}[scale=3]
+\draw [thin, gray] (-1.0, 0) -- (-0.5, 0); \draw [thin, ->, gray] (1.5, 0) -- (2.0, 0);
+\draw [thin, ->, gray] (0, -0.5) -- (0, 1.5);
+\node [above left] at (2.0, 0) {$x$};
+\node [below right] at (0, 1.5) {$y$};
+
+\node [below] at (-0.5, -0.05) {$-0.5$};
+\node [below] at (0.0, -0.05) {$0.0$};
+%\node [below] at (0.5, -0.05) {$0.5$};
+\node [below] at (1.0,-0.05) {$1.0$};
+\node [below] at (1.5, -0.05) {$1.5$};
+
+\node [above right] at (0.5, 0.6065306597126334) {$y=e^{-x}$};
+
+\draw [] (0.025, -0.05) -- (0,-.05) -- (0,0.05) -- (0.025, 0.05);
+\draw []  (0.975, -0.05) -- (1,-.05) -- (1,0.05) -- (0.975, 0.05);
+\draw []  (0, 0) -- (1, 0);
+
+\draw (-0.525, -0.05) -- (-0.5,-.05) -- (-0.5,0.05) -- (-0.525, 0.05);
+\draw (-0.5, 0) -- (1.5, 0);
+\draw (1.525, -0.05) -- (1.5,-.05) -- (1.5,0.05) -- (1.525, 0.05);
+
+\draw [thick, domain=-0.5:0, dashed] plot (\x, {1 - \x});
+\draw [thick, domain=0:1] plot (\x, {exp(-\x)});
+%\draw[fill] (0,1) circle [radius=0.025];
+%\draw[fill] (1,0.36787944117144233) circle [radius=0.025];
+\draw [thick, domain=1:1.5, dashed] plot (\x, {exp(-1) - exp(-1)*(\x -1)});
+
+
+\end{tikzpicture}
+\end{document}

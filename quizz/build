@@ -1,0 +1,12 @@
+#!/bin/bash
+cd Topologie && ./build && cd ..
+cd "Calcul Différentiel I" &&  ./build && cd ..
+cd "Calcul Différentiel II" &&  ./build && cd ..
+cd "Calcul Différentiel III" &&  ./build && cd ..
+cd "Calcul Intégral I" &&  ./build && cd ..
+cd "Calcul Intégral II" &&  ./build && cd ..
+cd "Calcul Intégral III" &&  ./build && cd ..
+cd "Calcul Intégral IV" &&  ./build && cd ..
+cd "Probabilités I" &&  ./build && cd ..
+cd "Probabilités II" &&  ./build && cd ..
+cd "Equations Différentielles I" && ./build && cd ..

@@ -1,0 +1,192 @@
+[
+  {
+    "URL": "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.22.6768",
+    "author": [
+      {
+        "family": "Goldberg",
+        "given": "David"
+      }
+    ],
+    "container-title": "ACM Computing Surveys",
+    "id": "Gol91",
+    "issue": "1",
+    "issued": {
+      "date-parts": [
+        [
+          1991.0
+        ]
+      ]
+    },
+    "page": "5-48",
+    "title": "What every computer scientist should know about floating-point arithmetic",
+    "type": "article-journal",
+    "volume": "23"
+  },
+  {
+    "ISBN": "1-55937-653-8",
+    "author": [
+      {
+        "literal": "IEEE Task P754"
+      }
+    ],
+    "id": "ANS85",
+    "issued": {
+      "date-parts": [
+        [
+          1985.0,
+          8.0,
+          12.0
+        ]
+      ]
+    },
+    "page": "20",
+    "publisher": "IEEE",
+    "publisher-place": "New York, NY, USA",
+    "title": "ANSI/IEEE 754-1985, standard for binary floating-point arithmetic",
+    "type": "book"
+  },
+  {
+    "URL": "http://dblp.uni-trier.de/db/journals/toms/toms7.html#Fornberg81",
+    "author": [
+      {
+        "family": "Fornberg",
+        "given": "Bengt"
+      }
+    ],
+    "container-title": "ACM Trans. Math. Softw.",
+    "id": "For81",
+    "issue": "4",
+    "issued": {
+      "date-parts": [
+        [
+          2006.0,
+          4.0,
+          3.0
+        ]
+      ]
+    },
+    "keyword": "dblp",
+    "page": "512-526",
+    "title": "Numerical differentiation of analytic functions.",
+    "type": "article-journal",
+    "volume": "7"
+  },
+  {
+    "URL": "http://www.mathworks.ir/downloads/english/Spectral%20Methods%20in%20MATLAB.pdf",
+    "author": [
+      {
+        "family": "Trefethen",
+        "given": "Lloyd N."
+      }
+    ],
+    "id": "Tre00",
+    "issued": {
+      "date-parts": [
+        [
+          2000.0
+        ]
+      ]
+    },
+    "publisher": "Siam",
+    "title": "Spectral methods in matlab",
+    "type": "book",
+    "volume": "10"
+  },
+
+	{
+		"id": "FHL07",
+		"type": "article-journal",
+		"title": "MPFR: A Multiple-precision Binary Floating-point Library with Correct Rounding",
+		"container-title": "ACM Trans. Math. Softw.",
+		"volume": "33",
+		"issue": "2",
+		"URL": "http://doi.acm.org/10.1145/1236463.1236468",
+		"DOI": "10.1145/1236463.1236468",
+		"ISSN": "0098-3500",
+		"author": [
+			{
+				"family": "Fousse",
+				"given": "Laurent"
+			},
+			{
+				"family": "Hanrot",
+				"given": "Guillaume"
+			},
+			{
+				"family": "Lefèvre",
+				"given": "Vincent"
+			},
+			{
+				"family": "Pélissier",
+				"given": "Patrick"
+			},
+			{
+				"family": "Zimmermann",
+				"given": "Paul"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2007",
+					6
+				]
+			]
+		}
+  },
+  {
+    "id": "BPRS15",
+    "type": "article-journal",
+    "title": "Automatic differentiation in machine learning: a survey",
+    "note": "Published: Atilim Gunes Baydin, Barak A. Pearlmutter, Alexey Andreyevich Radul, Jeffrey Mark Siskind. Automatic differentiation in machine learning: a survey. The Journal of Machine Learning Research, 18(153):1–43, 2018",
+    "author": [
+            {
+                    "family": "Baydin",
+                    "given": "Atilim Gunes"
+            },
+            {
+                    "family": "Pearlmutter",
+                    "given": "Barak A."
+            },
+            {
+                    "family": "Radul",
+                    "given": "Alexey Andreyevich"
+            },
+            {
+                    "family": "Siskind",
+                    "given": "Jeffrey Mark"
+            }
+    ],
+    "issued": {
+            "date-parts": [
+                    [
+                            "2015"
+                    ]
+            ]
+    }
+},
+{
+  "id": "Joh13",
+  "type": "book",
+  "title": "mpmath: a Python library for arbitrary-precision floating-point arithmetic (version 0.18)",
+  "author": [
+          {
+                  "family": "Johansson",
+                  "given": "Fredrik"
+          },
+          {
+                  "literal": "others"
+          }
+  ],
+  "issued": {
+          "date-parts": [
+                  [
+                          "2013",
+                          12
+                  ]
+          ]
+  }
+}
+
+
+]

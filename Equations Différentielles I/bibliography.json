@@ -1,0 +1,179 @@
+[
+	{
+		"id": "lyap",
+		"type": "thesis",
+		"title": "The general problem of the stability of motion",
+		"publisher": "Kharkov Mathematical Society",
+		"number-of-pages": "251",
+		"language": "Russe",
+		"author": [
+			{
+				"family": "Lyapunov",
+				"given": "A."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"1892"
+				]
+			]
+		}
+	},
+	{
+		"id": "poincare",
+		"type": "book",
+		"title": "Les méthodes nouvelles de la mécanique céleste",
+		"edition": "Gauthier-Villars, Imprimeur-Libraire de l’Ecole Polytechnique",
+		"URL": "https://iris.univ-lille.fr/handle/1908/3851",
+		"author": [
+			{
+				"family": "Poincaré",
+				"given": "H."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"1892"
+				]
+			],
+			"season": "1893, 1899"
+		}
+	},
+	{
+		"id": "SussWis",
+		"type": "article-newspaper",
+		"title": "Chaotic evolution of the solar system",
+		"container-title": "Science",
+		"page": "pages 56-62",
+		"author": [
+			{
+				"family": "Sussman",
+				"given": "G. J."
+			},
+			{
+				"family": "Wisdom",
+				"given": "J."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"1992"
+				]
+			]
+		}
+	},
+	{
+		"id": "BacRos",
+		"type": "book",
+		"title": "Lyapunov functions and stability in control theory",
+		"collection-title": "Communications and Control Engineering Series",
+		"publisher": "Springer-Verlag, Berlin",
+		"edition": "2nd",
+		"author": [
+			{
+				"family": "Bacciotti",
+				"given": "A."
+			},
+			{
+				"family": "Rosier",
+				"given": "L."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2005"
+				]
+			]
+		}
+	},
+	{
+		"id": "cauchy",
+		"type": "chapter",
+		"title": "26ème leçon",
+		"container-title": "Leçons de calcul différentiel et intégral, rédigées principalement d'après les méthodes de M. A.-L. Cauchy, et étendues aux travaux les plus récents des géomètres",
+		"publisher": "Bachelier, Imprimeur-Libraire de l’Ecole Polytechnique",
+		"page": "pages 385-396",
+		"URL": "https://books.google.fr/books?id=booAAAAAMAAJ&pg=PA385#v=onepage&q&f=false",
+		"author": [
+			{
+				"family": "Moigno",
+				"given": ""
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"1844"
+				]
+			]
+		}
+	},
+	{
+		"id": "HolRand",
+		"type": "article-journal",
+		"title": "Bifurcations of the forced van der Pol Oscillator",
+		"container-title": "Quarterly of Applied Mathematics",
+		"page": "495–509",
+		"volume": "35",
+		"author": [
+			{
+				"family": "Holmes",
+				"given": "P."
+			},
+			{
+				"family": "Rand",
+				"given": "D."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"1978"
+				]
+			]
+		}
+	},
+	{
+		"id": "Hale",
+		"type": "book",
+		"title": "Ordinary Differential Equations",
+		"publisher": "Dover Publication Inc.",
+		"author": [
+			{
+				"family": "Hale",
+				"given": "J. K."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2009"
+				]
+			]
+		}
+	},
+	{
+		"id": "Fil",
+		"type": "book",
+		"title": "Differential equations with discontinuous right-hand sides ",
+		"publisher": "Mathematics and its Applications Kluwer Academic Publishers Group",
+		"author": [
+			{
+				"family": "Filippov",
+				"given": "A. F."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"1988"
+				]
+			]
+		}
+	}
+	
+]

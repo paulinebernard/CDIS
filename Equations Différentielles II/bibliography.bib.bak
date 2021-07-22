@@ -1,0 +1,29 @@
+% Encoding: UTF-8
+
+@Book{Hai06,
+  title     = {Geometric Numerical Integration : Structure-Preserving Algorithms for Ordinary Differential Equations},
+  publisher = {Springer-Verlag, Berlin},
+  year      = {2006},
+  author    = {E. Hairer and C. Lubich and G. Wanner},
+  editor    = {Springer Series in Computational Mathematics},
+  number    = {31},
+  edition   = {2nd},
+}
+
+@Book{But08,
+  title     = {Numerical Methods for Ordinary Differential Equations},
+  publisher = {John Wiley \& Sons, Ltd},
+  year      = {2008},
+  author    = {J. C. Butcher},
+}
+
+@Book{,
+  title     = {Solving Ordinary Differential Equations II. Stiff and Differential-Algebraic Problems},
+  publisher = {Springer-Verlag, Berlin},
+  author    = {E. Hairer and G. Wanner},
+  editor    = {Springer Series in Computational Mathematics},
+  number    = {14},
+  edition   = {2nd},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}

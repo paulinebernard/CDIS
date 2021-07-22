@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+set -o pipefail
+
+# Build subdirs
+for dir in */; do
+    cd "${dir}"
+    if [ -f build ]; then
+        echo "build ${dir}"
+        rm -rf output && ./build
+    fi
+    cd ..
+done
+
+# Gather outputs
+rm -rf output && mkdir output
+cp */output/* output

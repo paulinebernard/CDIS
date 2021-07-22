@@ -1,0 +1,105 @@
+[
+	{
+		"id": "Hairer10",
+		"type": "book",
+		"title": "Geometric Numerical Integration : Structure-Preserving Algorithms for Ordinary Differential Equations",
+		"publisher": "Springer-Verlag, Berlin",
+		"edition": "2nd",
+		"author": [
+			{
+				"family": "Hairer",
+				"given": "E."
+			},
+			{
+				"family": "Lubich",
+				"given": "C."
+			},
+			{
+				"family": "Wanner",
+				"given": "G."
+			}
+		],
+		"editor": [
+			{
+				"family": "Springer Series in Computational Mathematics",
+				"given": ""
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2010"
+				]
+			]
+		}
+	},
+	{
+		"id": "Butcher",
+		"type": "book",
+		"title": "Numerical Methods for Ordinary Differential Equations",
+		"publisher": "John Wiley & Sons, Ltd",
+		"author": [
+			{
+				"family": "Butcher",
+				"given": "J. C."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2008"
+				]
+			]
+		}
+	},
+	{
+		"id": "Hairer96",
+		"type": "book",
+		"title": "Solving Ordinary Differential Equations II. Stiff and Differential-Algebraic Problems",
+		"publisher": "Springer-Verlag, Berlin",
+		"edition": "2nd",
+		"author": [
+			{
+				"family": "Hairer",
+				"given": "E."
+			},
+			{
+				"family": "Wanner",
+				"given": "G."
+			}
+		],
+		"editor": [
+			{
+				"family": "",
+				"given": "Springer Series in Computational Mathematics"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"1996"
+				]
+			]
+		}
+	},
+	{
+		"id": "Dem06",
+		"type": "book",
+		"title": "Analyse numérique et équations différentielles",
+		"collection-title": "Grenoble Sciences",
+		"edition": "EDP Sciences",
+		"author": [
+			{
+				"family": "Demailly",
+				"given": "J.-P."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2006"
+				]
+			]
+		}
+	}
+] 

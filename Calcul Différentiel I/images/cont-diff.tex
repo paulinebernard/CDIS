@@ -1,0 +1,26 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{hobby} 
+\begin{document}
+\begin{tikzpicture}
+  \begin{scope}
+    \clip (-5,-1) rectangle (5,2.05);
+    \draw[thin, gray] (0,0) circle [radius=2];
+    \draw[dashed] (0,0) -> (-2, 0);
+    \node[above] at (-1,0) {$r$};
+
+    \node[above left] at (-2,1) {$U$};
+
+    \draw[fill] (0,0) circle [radius=0.05];
+    \node[below] at (0,0) {$\phantom{(}x\phantom{(}$};
+    \draw [thin] (0,0) -> (0.5,0);
+    \draw[fill] (0.5,0) circle [radius=0.05];
+    \node[below right] at (0.5,0) {$x+(h_1,0)$};
+    \draw [thin] (0.5,0) -> (0.5,1);
+    \draw[fill] (0.5,1) circle [radius=0.05];
+    \node[above right] at (0.5,1) {$x+(h_1,h_2)$};
+
+  \end{scope}
+
+
+\end{tikzpicture}
+\end{document}

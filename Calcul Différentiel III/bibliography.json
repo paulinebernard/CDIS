@@ -1,0 +1,76 @@
+[
+	{
+		"id": "Sha90",
+		"type": "article-journal",
+		"title": "On concepts of directional differentiability.",
+		"container-title": "Journal of Optimization Theory and Applications",
+		"page": "477–487",
+		"volume": "66",
+		"issue": "3",
+		"ISSN": "0022-3239; 1573-2878/e",
+		"journalAbbreviation": "J. Optim. Theory Appl.",
+		"language": "English",
+		"author": [
+			{
+				"family": "Shapiro",
+				"given": "A."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"1990"
+				]
+			]
+		}
+	},
+	{
+		"id": "Tao13",
+		"type": "article",
+		"title": "Matrix identities as derivatives of determinant identities",
+		"URL": "https://terrytao.wordpress.com/2013/01/13/matrix-identities-as-derivatives-of-determinant-identities/",
+		"author": [
+						{
+										"family": "Tao",
+										"given": "Terence"
+						}
+		],
+		"issued": {
+						"date-parts": [
+										[
+														"2013",
+														1,
+														13
+										]
+						]
+		}
+},
+{
+	"id": "DS97",
+	"type": "article-journal",
+	"title": "The Development of the Oloid",
+	"collection-title": "Journal for Geometry and Graphics",
+	"page": "105-118",
+	"volume": "1",
+	"issue": "2",
+	"URL": "http://www.heldermann-verlag.de/jgg/jgg01_05/jgg0113.pdf",
+	"author": [
+					{
+									"family": "Dirnböck",
+									"given": "Hans"
+					},
+					{
+									"family": "Stachel",
+									"given": "Hellmuth"
+					}
+	],
+	"issued": {
+					"date-parts": [
+									[
+													"1997"
+									]
+					]
+	}
+}
+
+]

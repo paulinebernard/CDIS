@@ -1,0 +1,15 @@
+\documentclass[tikz]{standalone}
+\begin{document}
+\begin{tikzpicture}
+  \draw [->] (-3,0) -- (3,0);
+  \draw [->] (0,-2) -- (0,2);
+  \draw [-, thick] (-4,0) -- (0,0);
+  \draw [fill] (-1, -1) circle [radius=0.05];
+  \draw [fill] (-1, 1) circle [radius=0.05];
+  \draw [->, -latex] (-1, -1) arc [radius=1.4142135623730951, start angle=-135, end angle= 135];
+  \node at (-2.5, 1) {$U$};
+  \node [below] at (-1, 1) {$(x,-y)$};
+  \node [above] at (-1, -1) {$(x, y)$};
+  \node [above right] at (1, 1) {$\phi$};
+\end{tikzpicture}
+\end{document}
