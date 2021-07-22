@@ -1,0 +1,22 @@
+# Visual Studio Code
+settings.json
+
+# Conda Environment
+env
+src/pip-delete-this-directory.txt
+src/pandoc
+
+# Python
+*.pyc
+
+# Generated Documents
+*.*.*
+output
+*/output
+
+# Generated Images
+*/images/*.pdf
+*/images/*.svg
+
+# Other
+tmp
