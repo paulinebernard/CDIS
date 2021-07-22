@@ -11,16 +11,16 @@ Mines ParisTech, cycle ingénieur civil, unité d'enseignement Mathématiques (U
 
 | Chapitre      | # | E-book | Notebook | Quizz | 
 | ------------- | ------: | -----------:  |  :----:  | :-----: |
-| Topologie | 1 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Topologie.pdf) |   | [:grey_question: PDF](https://boisgera.github.io/CDIS/quizz/Topologie/output/Topologie.pdf) |
+| Topologie | 1 |  |   | [:grey_question: PDF](https://boisgera.github.io/CDIS/quizz/Topologie/output/Topologie.pdf) |
 | Calcul Différentiel | 1 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Calcul%20Différentiel%20I.pdf) |  | [:grey_question: PDF](https://boisgera.github.io/CDIS/quizz/Calcul%20Différentiel%20I/output/Calcul%20Différentiel%20I.pdf) |
-|   | 2 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Calcul%20Différentiel%20II.pdf)   | [:grey_question: PDF](https://boisgera.github.io/CDIS/quizz/Calcul%20Différentiel%20II/output/Calcul%20Différentiel%20II.pdf) |
+|   | 2 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Calcul%20Différentiel%20II.pdf)  | | [:grey_question: PDF](https://boisgera.github.io/CDIS/quizz/Calcul%20Différentiel%20II/output/Calcul%20Différentiel%20II.pdf) |
 | |   3 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Calcul%20Différentiel%20III.pdf) |  | [:grey_question: PDF](https://boisgera.github.io/CDIS/quizz/Calcul%20Différentiel%20III/output/Calcul%20Différentiel%20III.pdf) |
 | Equations Différentielles | 1 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Equations%20Différentielles%20I.pdf)  |  [:notebook: IPYNB](https://boisgera.github.io/CDIS/Equations%20Différentielles%20I/Equations%20Différentielles%20I.ipynb) | [:grey_question: PDF](https://boisgera.github.io/CDIS/quizz/Equations%20Différentielles%20I/output/Equations%20Différentielles%20I.pdf)
 |  | 2 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Equations%20Différentielles%20II.pdf)|  [:notebook: IPYNB](https://boisgera.github.io/CDIS/Equations%20Différentielles%20II/Equations%20Differentielles%20II.ipynb) |  |
-| Calcul Intégral | 1 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Calcul%20Intégral%20I.pdf)  |  | [:grey_question: PDF](https://boisgera.github.io/CDIS/quizz/Calcul%20Intégral%20I/output/Calcul%20Intégral%20I.pdf)  |
-|  | 2 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Calcul%20Intégral%20II.pdf) |   | [:grey_question: PDF](https://boisgera.github.io/CDIS/quizz/Calcul%20Intégral%20II/output/Calcul%20Intégral%20II.pdf)   |
-| | 3 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Calcul%20Intégral%20III.pdf)  |  | [:grey_question: PDF](https://boisgera.github.io/CDIS/quizz/Calcul%20Intégral%20III/output/Calcul%20Intégral%20III.pdf) |
-| |  4  | [:computer: PDF](https://boisgera.github.io/CDIS/output/Calcul%20Intégral%20IV.pdf)|  | [:grey_question: PDF](https://boisgera.github.io/CDIS/quizz/Calcul%20Intégral%20IV/output/Calcul%20Intégral%20IV.pdf) |
+| Calcul Intégral | 1 |  |  |   |
+|  | 2 |  |   |    |
+| | 3 |   |  |  |
+| |  4  | |  |  |
 | Probabilités | 1 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Probabilité%20I.pdf)  |   | [:grey_question: PDF](https://boisgera.github.io/CDIS/quizz/Probabilités%20I/output/Probabilités%20I.pdf) |
 |  | 2 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Probabilité%20II.pdf)  |   | [:grey_question: PDF](https://boisgera.github.io/CDIS/quizz/Probabilités%20II/output/Probabilités%20II.pdf) |
 |  | 3 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Probabilité%20III.pdf)  |   |  |
