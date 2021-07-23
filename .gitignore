@@ -12,8 +12,6 @@ src/pandoc
 # Generated Documents
 *.*.*
 output
-*/output/*
-!*/output/*.pdf
 
 # Generated Images
 */images/*.pdf
