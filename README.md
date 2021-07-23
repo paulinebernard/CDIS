@@ -13,19 +13,19 @@ Mines ParisTech, cycle ingénieur civil, unité d'enseignement Mathématiques (U
 | ------------- | ------: | -----------:  |  :----:  | :-----: |
 | Topologie | 1 |  |   | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Topologie/output/Topologie.pdf) |
 | Calcul Différentiel | 1 | [:computer: PDF](https://github.com/paulinebernard/CDIS/raw/main/Calcul%20Diff%C3%A9rentiel%20I/output/Calcul%20Diff%C3%A9rentiel%20I.pdf) |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Calcul%20Diff%C3%A9rentiel%20I/output/Calcul%20Diff%C3%A9rentiel%20I.pdf) |
-|   | 2 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Calcul%20Différentiel%20II.pdf)  | | [:grey_question: PDF](https://boisgera.github.io/CDIS/quizz/Calcul%20Différentiel%20II/output/Calcul%20Différentiel%20II.pdf) |
-| |   3 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Calcul%20Différentiel%20III.pdf) |  | [:grey_question: PDF](https://boisgera.github.io/CDIS/quizz/Calcul%20Différentiel%20III/output/Calcul%20Différentiel%20III.pdf) |
-| Equations Différentielles | 1 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Equations%20Différentielles%20I.pdf)  |  [:notebook: IPYNB](https://boisgera.github.io/CDIS/Equations%20Différentielles%20I/Equations%20Différentielles%20I.ipynb) | [:grey_question: PDF](https://boisgera.github.io/CDIS/quizz/Equations%20Différentielles%20I/output/Equations%20Différentielles%20I.pdf)
-|  | 2 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Equations%20Différentielles%20II.pdf)|  [:notebook: IPYNB](https://boisgera.github.io/CDIS/Equations%20Différentielles%20II/Equations%20Differentielles%20II.ipynb) |  |
+|   | 2 | [:computer: PDF](https://github.com/paulinebernard/CDIS/raw/main/Calcul%20Diff%C3%A9rentiel%20II/output/Calcul%20Diff%C3%A9rentiel%20II.pdf)  | | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Calcul%20Diff%C3%A9rentiel%20II/output/Calcul%20Diff%C3%A9rentiel%20II.pdf) |
+| |   3 | [:computer: PDF](https://github.com/paulinebernard/CDIS/raw/main/Calcul%20Diff%C3%A9rentiel%20III/output/Calcul%20Diff%C3%A9rentiel%20III.pdf) |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Calcul%20Diff%C3%A9rentiel%20III/output/Calcul%20Diff%C3%A9rentiel%20III.pdf) |
+| Equations Différentielles | 1 | [:computer: PDF](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Différentielles%20I/output/Equations%20Différentielles%20I.pdf)  |  [:notebook: IPYNB](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Diff%C3%A9rentielles%20I/Equations%20Diff%C3%A9rentielles%20I.ipynb) | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Equations%20Diff%C3%A9rentielles%20I/output/Equations%20Diff%C3%A9rentielles%20I.pdf)
+|  | 2 | [:computer: PDF](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Diff%C3%A9rentielles%20II/output/Equations%20Diff%C3%A9rentielles%20II.pdf)|  [:notebook: IPYNB](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Diff%C3%A9rentielles%20II/Equations%20Differentielles%20II.ipynb) |  |
 | Calcul Intégral | 1 |  |  |   |
 |  | 2 |  |   |    |
 | | 3 |   |  |  |
 | |  4  | |  |  |
-| Probabilités | 1 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Probabilité%20I.pdf)  |   | [:grey_question: PDF](https://boisgera.github.io/CDIS/quizz/Probabilités%20I/output/Probabilités%20I.pdf) |
-|  | 2 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Probabilité%20II.pdf)  |   | [:grey_question: PDF](https://boisgera.github.io/CDIS/quizz/Probabilités%20II/output/Probabilités%20II.pdf) |
-|  | 3 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Probabilité%20III.pdf)  |   |  |
-|  | 4 | [:computer: PDF](https://boisgera.github.io/CDIS/output/Probabilité%20IV.pdf)  |   | [:grey_question: PDF](https://cloud.mines-paristech.fr/index.php/s/xBpxCjhLblwLTDR/download) |
-|  | 5 | [:computer: PDF](https://cloud.mines-paristech.fr/index.php/s/GLDwtTAMOJCYk3i/download)  |  [:notebook: IPYNB](https://boisgera.github.io/CDIS/Probabilités%20V/Probabilité%20V.ipynb)  |  |
+| Probabilités | 1 | [:computer: PDF](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20I/output/Probabilit%C3%A9%20I.pdf)  |   | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Probabilit%C3%A9s%20I/output/Probabilit%C3%A9s%20I.pdf) |
+|  | 2 | [:computer: PDF](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20II/output/Probabilit%C3%A9%20II.pdf)  |   | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Probabilit%C3%A9s%20II/output/Probabilit%C3%A9s%20II.pdf) |
+|  | 3 | [:computer: PDF](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20III/output/Probabilit%C3%A9%20III.pdf)  |   |  |
+|  | 4 | [:computer: PDF](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20IV/output/Probabilit%C3%A9%20IV.pdf)  |   | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Probabilit%C3%A9s%20IV/output/Probabilit%C3%A9s%20IV.pdf) |
+|  | 5 | [:computer: PDF](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20V/output/Probabilit%C3%A9%20V.pdf)  |  [:notebook: IPYNB](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20V/Probabilit%C3%A9%20V.ipynb)  |  |
 <!--| ... | ... | ... |-->
   
 
