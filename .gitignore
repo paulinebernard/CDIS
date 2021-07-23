@@ -17,7 +17,6 @@ output
 
 # Generated Images
 */images/*.pdf
-*/images/*.*.pdf
 */images/*.svg
 
 # Other
