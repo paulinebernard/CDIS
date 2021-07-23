@@ -13,6 +13,7 @@ src/pandoc
 *.*.*
 output
 */output
+!output/*.pdf
 
 # Generated Images
 */images/*.pdf
