@@ -12,11 +12,12 @@ src/pandoc
 # Generated Documents
 *.*.*
 output
-*/output
+*/output/*
 !*/output/*.pdf
 
 # Generated Images
 */images/*.pdf
+*/images/*.*.pdf
 */images/*.svg
 
 # Other
