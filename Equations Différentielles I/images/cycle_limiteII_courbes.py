@@ -5,11 +5,9 @@ import pathlib
 import sys
 
 # Third-Party Packages
-from mpl_toolkits.mplot3d import Axes3D
 from numpy import *; seterr(all="ignore")
-import matplotlib as mpl; mpl.use("Agg") 
+import matplotlib as mpl; mpl.use("Agg")
 from matplotlib.pyplot import *
-from scipy.integrate import solve_ivp
 
 # Matplotlib Configuration
 # ------------------------------------------------------------------------------
@@ -38,37 +36,46 @@ def save():
 # ------------------------------------------------------------------------------
 def set_ratio(ratio, bottom=0.1, top=0.1, left=0.1, right=0.1):
     # The width of the standard LaTeX document is 345.0 pt.
-    width_in = 345.0 / 72.0
+    width_in = 345.0 / 100.0
     height_in = (1.0 - left - right)/(1.0 - bottom - top) * width_in / ratio
     gcf().set_size_inches((width_in, height_in))
     gcf().subplots_adjust(bottom=bottom, top=1.0-top, left=left, right=1.0-right)
 
 # Function
 # ------------------------------------------------------------------------------
-def fun(t, y):
-    sigma = 10; rho = 28; beta = 8/3
-    x1, x2, x3 = y
-    return array([sigma*(x2-x1), rho*x1-x2-x1*x3, x1*x2-beta*x3])
+
+alpha = 2/3; beta = 4/3; gamma = 1; delta = 1
+
+def f(x):
+    x1, x2 = x
+    dx1  = x1*(alpha -beta*x2)
+    dx2  = -x2*(gamma-delta*x1)
+    return array([dx1, dx2])
+
+def Q(f, xs, ys):
+    X, Y = meshgrid(xs, ys)
+    fx = vectorize(lambda x, y: f([x, y])[0])
+    fy = vectorize(lambda x, y: f([x, y])[1])
+    return X, Y, fx(X, Y), fy(X, Y)
 
 # Value Graph
 # ------------------------------------------------------------------------------
-def attracteur_lorenz():
-    options = {"max_step": 0.01, "atol"    : 1e-6, "rtol"    : 1e9, "dense_output" : True}
-    t_span = [0.0, 50.0]
-    y0 = [1.0, 0.0 ,0.0]
-    result = solve_ivp(fun=fun, t_span=t_span, y0=y0,**options)
-    r_t = result["t"]
-    x_1 = result["y"][0]
-    x_2 = result["y"][1]
-    x_3 = result["y"][2] 
+def cycle_limiteII_courbes():
     fig = figure()
-    ax = axes(projection='3d')
-    ax.plot(x_1,x_2,x_3)
-    ax.set_xlabel('$x_1$')
-    ax.set_ylabel('$x_2$')
-    ax.set_zlabel('$x_3$')
+    x1 = linspace(0.1, 2, 1000)
+    x2 = linspace(0.1, 1.5, 1000)
+    X1, X2 = np.meshgrid(x1, x2)
+    Z = delta*X1-gamma*np.log(X1)+beta*X2-alpha*np.log(X2)
+    contour(X1,X2,Z,levels=10)
+    grid(True)
+    #axis('equal')
+    xbar = np.array([gamma/delta,alpha/beta])
+    scatter(xbar[0],xbar[1]) 
+    xlabel('$x_1$')
+    ylabel('$x_2$')
+    #set_ratio(4/3, bottom=0.2, top=0.1, left=0.2)
     save()
 
 
 if __name__ == "__main__":
-  attracteur_lorenz()
+  cycle_limiteII_courbes()

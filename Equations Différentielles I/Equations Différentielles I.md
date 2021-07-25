@@ -6,6 +6,7 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Rgeq}{\R_{\geq 0}}
+\newcommand{\Rg}{\R_{> 0}}
 \renewcommand{\C}{\mathbb{C}}
 
 \newcommand{\cS}{\mathcal{S}}
@@ -1016,7 +1017,7 @@ $$
 *Indice : Essayer de trouver une fonction de Lyapunov... $x_2^2$ donne de la négativité en $x_2$, $(x_1+x_2)^2$ de la négativité en $x_1$... voir comment compléter...*.
 -->
 
-## Cycle limite ($+$)  {.exercice #exo_cycle-lim}
+## Cycle limite I ($+$)  {.exercice #exo_cycle-lim}
 Considérons le système
 $$
 \begin{array}{rcl}
@@ -1037,6 +1038,37 @@ Montrer que si $\|x(t_0)\|\neq 1$ alors $\|x(t)\|\neq 1$ pour tout $t\in  I$.
 
 ### Question 4 {.question #cycle-lim-4}
 En déduire le comportement des solutions en fonction de la condition initiale.
+
+
+
+## Cycle limite II ($+$)  {.exercice #exo_cycle-lim-volterra}
+
+Les équations de Lotka-Volterra, ou "modèle proie-prédateur", sont couramment utilisées pour décrire la dynamique de systèmes biologiques dans lesquels un prédateur et sa proie interagissent dans un milieu commun.  Elles ont été proposées indépendamment par A. J. Lotka en 1925 et V. Volterra en 1926 et s'écrivent de la manière suivante :
+\begin{align*}
+\dot{x}_1 &= x_1(\alpha -\beta x_2) \\
+\dot{x}_2 &= -x_2(\gamma - \delta x_1)
+\end{align*}
+où $x_1$ et $x_2$ désignent le nombre (positif) de proies et de prédateurs respectivement et $\alpha$, $\beta$, $\gamma$, $\delta$ sont des paramètres strictement positifs.
+
+### Question 1 {.question #cycle-lim-volterra-1}
+Donner une interprétation physique à chaque terme de la dynamique. 
+Montrer qu'il existe deux points d'équilibre $(0,0)$ et $\bar{x}\in \Rg\times\Rg$. Que peut-on dire de leur stabilité à ce stade ?
+
+### Question 2 {.question #cycle-lim-volterra-2}
+Démontrer que toute solution initialisée dans $\Rg\times\Rg$ reste dans $\Rg\times\Rg$ sur son ensemble de définition.
+
+### Question 3 {.question #cycle-lim-volterra-3}
+On considère la fonction
+$$
+H(x_1,x_2) = \delta x_1 - \gamma \ln x_1 + \beta x_2 - \alpha \ln x_2  
+$$
+définie sur $\Rg\times \Rg$.
+Calculer la dérivée de $H$ le long des solutions initialisées dans $\Rg\times \Rg$. En déduire que toute solution maximale initialisée dans $\Rg\times \Rg$ est définie sur $\R$.
+
+### Question 4  {.question #cycle-lim-volterra-4}
+La figure ci-dessous représente les courbes de niveau de $H$. Où se trouve $\bar{x}$ ? Qu'en conclut-on sur le comportement des solutions ? En déduire  que $\bar{x}$ est stable, au sens de la définition de stabilité.
+
+![Courbes de niveau de $H$ dans l'exercice Cycle Limite II](images/cycle_limiteII_courbes.py){#fig_cycle_limiteII_courbes}  
 
 
 ## Attractivité locale implique stabilité asymptotique globale pour un système linéaire {.question #attrac_stab}
@@ -1401,7 +1433,7 @@ Pour $\delta$ suffisamment petit, $|\delta|e^{M(t-t_0)}\leq \varepsilon$ sur $[ 
 
 
 
-## Cycle limite {.correction #correc_cycle_lim}
+## Cycle limite I {.correction #correc_cycle_lim}
 On étudie le comportement des solutions de $\dot{x}=f(x)$ pour
 $$
 f(x) = 
@@ -1484,7 +1516,111 @@ Enfin, la trajectoire initialisée à zéro reste à zéro.
 
 Le portrait de phase est donné [ci-dessous](#fig_cycle_limite).
 
-![Portrait de phase de l'exercice Cycle Limite](images/cycle_limite.py){#fig_cycle_limite}
+![Portrait de phase de l'exercice Cycle Limite I](images/cycle_limite.py){#fig_cycle_limite}
+
+
+## Cycle limite II {.correction #correc_cycle_lim_volterra}
+On étudie le comportement des solutions de $\dot{x}=f(x)$ pour
+$$
+f(x) = 
+\left(
+\begin{matrix}
+x_1(\alpha -\beta x_2)  \\
+-x_2(\gamma-\delta x_1)
+\end{matrix}
+\right)
+$$
+
+### Question 1 {.answer #answer-cycle-lim-volterra-1}
+
+On résout $f(x) = 0$, ce qui donne les points d'équilibre $(0,0)$ et $\bar{x}=\left(\frac{\gamma}{\delta},\frac{\alpha}{\beta} \right)$.
+
+La jacobienne de la dynamique est donnée par
+$$
+J_f(x) = 
+\left(
+\begin{matrix}
+\alpha -\beta x_2 & -\beta x_1 \\
+\delta x_2 & -(\gamma-\delta x_1)
+\end{matrix}
+\right)
+$$
+En $(0,0)$,
+$$
+J_f(0,0) = 
+\left(
+\begin{matrix}
+\alpha & 0 \\
+0 & -\gamma
+\end{matrix}
+\right)
+$$
+a pour valeurs propres $\alpha>0$, donc $(0,0)$ est instable. Par contre, en $\bar{x}$,
+$$
+J_f(\bar{x}) = 
+\left(
+\begin{matrix}
+0 & -\beta\frac{\gamma}{\delta} \\
+\delta\frac{\alpha}{\beta} & 0
+\end{matrix}
+\right)
+$$
+a des valeurs propres imaginaires pures $\pm i\sqrt{\alpha\gamma}$, donc a priori on ne peut rien dire sur la stabilité du système nonlinéaire.
+
+### Question 2 {.answer #answer-cycle-lim-volterra-2} 
+Soit $x_0=(0,x_{2,0})\in \{0\}\times \mathbb{R}_{\geq 0}$ sur l'axe des ordonnées. Puisque $f$ est $C^1$ sur $\mathbb{R}^2$, par le théorème de Cauchy-Lipschitz, le problème de Cauchy associé à la condition initiale $(t_0,x_0)$ pour un $t_0$ quelconque, admet une unique solution 
+$$
+x(t) = (0, x_2(t))
+$$
+définie sur $\mathbb{R}$ avec $x_2$ solution de 
+$$
+\dot{x}_2 = -\gamma x_2 \ .
+$$
+
+De même, pour $x_0=(x_{1,0},0)\in \mathbb{R}_{\geq 0}\times \{0\}$, le problème de Cauchy associé pour un $t_0$ quelconque, admet une unique solution du type
+$$
+x(t) = (x_1(t), 0)
+$$
+définie sur $\mathbb{R}$ avec $x_1$ solution de 
+$$
+\dot{x}_1 = \alpha x_1 \ .
+$$
+
+Si une solution initialisée dans $\mathbb{R}_{>0}\times\mathbb{R}_{>0}$ croisait l'axe des abscisses ou des ordonnées, il existerait une autre solution au problème de Cauchy associé à $x_0=(0,x_{2,0})$ ou $x_0=(x_{1,0},0)$ qui ne resterait pas sur l'axe en temps négatif, ce qui est impossible. Elle reste donc dans $\mathbb{R}_{>0}\times\mathbb{R}_{>0}$.
+
+### Question 3 {.answer #answer-cycle-lim-volterra-3}
+
+$f$ est continue sur $\mathbb{R} \times \mathbb{R}$ donc d'après le théorème du domaine maximal d'existence, si une solution maximale initialisée dans $\mathbb{R} \times \mathbb{R}$ n'est pas définie sur $\mathbb{R}$, c'est que nécessairement $\|x\|$ diverge en temps fini (car la frontière de $\mathbb{R} \times \mathbb{R}$ est vide)
+
+Maintenant considérons une solution maximale $x:I\subset \mathbb{R} \to \mathbb{R}^2$ initialisée dans $\mathbb{R}_{>0}\times\mathbb{R}_{>0}$. Par la question précédente, elle reste dans $\mathbb{R}_{>0}\times\mathbb{R}_{>0}$  donc $H(x(t))$ est bien définie pour tout $t\in I$, et on a
+$$
+\frac{d}{dt}H(x(t)) = \langle \nabla H(x(t)) , \dot{x}(t) \rangle =  \langle \nabla H(x(t)) , f(x(t)) \rangle =0
+$$
+Donc $H$ est constante et il est impossible que $\|x\|$ diverge en temps fini car on aurait $\lim H(x(t)) = +\infty$. Donc $I=\mathbb{R}$.
+
+*Remarque* : On aurait pu aussi directement se placer sur $\mathbb{R}_{>0}\times\mathbb{R}_{>0}$ et considérer les solutions maximales $x:I\subset \mathbb{R} \to \mathbb{R}_{>0}\times\mathbb{R}_{>0}$ de $\dot{x}=f(x)$ dans cet ensemble (où $f$ est bien sûr continue). Si $x$ n'était pas définie sur $\mathbb{R}$, alors nécessairement d'après le théorème du domaine maximal d'existence, $x$ tendrait vers la frontière de $\mathbb{R}_{>0}\times\mathbb{R}_{>0}$ ou divergerait, c'est-à-dire
+    - soit $x$ exploserait 
+    - soit $x_1$ tendrait vers 0 
+    - soit $x_2$ tendrait vers 0.
+(en temps fini) Mais ceci est impossible car alors on aurait dans chacun des cas
+$$
+\lim H(x(t)) = +\infty
+$$
+On prouve alors en même temps que les solutions initialisées dans $\mathbb{R}_{>0}\times\mathbb{R}_{>0}$ sont définies sur $\mathbb{R}$ dans $\mathbb{R}_{>0}\times\mathbb{R}_{>0}$ (et donc restent dans cet ensemble)
+
+*Bonus* : Ici, en calculant le gradient et la hessienne de $H$ (voir Calcul Différentiel III), on voit que $H$ atteint un minimum local (et en fait global) en $\bar{x}$ (gradient nul et matrice hessienne définie positive, mais on peut aussi le montrer en étudiant la fonction réelle $u(z)=z-c\ln z$ pour une constante $c>0$). Donc  
+$$
+V(x) = H(x)-H(\bar{x})
+$$
+est une fonction $C^1$ sur $\mathbb{R}_{>0}\times\mathbb{R}_{>0}$, positive, qui ne s'annule localement qu'en $\bar{x}$. Vu que $H$ est conservée le long des trajectoires, on peut déduire du théorème de Lyapunov que $\bar{x}$ est stable. 
+
+### Question 4 {.answer #answer-cycle-lim-volterra-4}
+
+L'équilibre $\bar{x}$ se trouve au milieu des courbes de niveau (car c'est en fait le minimum de $H$). Donc si on se donne $\varepsilon >0$, on peut trouver $\eta_H>0$ tel que $H(x)<\eta_H$ implique $|x-\bar{x}|<\varepsilon$. On en déduit que pour toute condition initiale telle que $H(x_0)<\eta_H$, la trajectoire reste à une distance inférieure à $\varepsilon$ de $\bar{x}$. Par ailleurs, l'ensemble des courbes des niveaux de $H$ inférieures à $\eta_H$ constituent bien un voisinage de $\bar{x}$ donc $\bar{x}$ est stable par définition.
+
+Le portrait de phase est donné [ci-dessous](#fig_cycle_limiteII).
+
+![Portrait de phase de l'exercice Cycle Limite II](images/cycle_limiteII.py){#fig_cycle_limiteII}
 
 ## Attractivité locale implique stabilité asymptotique globale pour un système linéaire {.answer #answer-attrac_stab}
 
