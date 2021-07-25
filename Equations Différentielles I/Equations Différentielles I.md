@@ -1070,6 +1070,25 @@ La figure ci-dessous représente les courbes de niveau de $H$. Où se trouve $\b
 
 ![Courbes de niveau de $H$ dans l'exercice Cycle Limite II](images/cycle_limiteII_courbes.py){#fig_cycle_limiteII_courbes}  
 
+###
+
+Imaginons maintenant que l'on ait moyen de jouer sur la vitesse de reproduction des prédateurs, i.e., le système évolue selon 
+\begin{align*}
+\dot{x}_1 &= x_1(\alpha -\beta x_2) \\
+\dot{x}_2 &= -x_2(\gamma - \delta x_1) + u(t)
+\end{align*}
+où l'on peut choisir $t\mapsto u(t)$ librement. On souhaite stabiliser la population de proie $x_1$ à une valeur $x_1^*>0$.
+
+### Question 5  {.question #cycle-lim-volterra-5}
+Quelles doivent être les valeurs de $x_2$ et $u$ à l'équilibre ?
+
+### Question 6  {.question #cycle-lim-volterra-5}
+Justifier que l'on veuille faire suivre à $x_2$ la référence $v_r(x_1) = \frac{\alpha}{\beta} + \lambda_1 (x_1-x_1^*)$ avec $\lambda_1>0$. En utilisant la fonction de Lyapunov
+$$
+V(x_1,x_2) = (x_1-x_1^*)^2 + (x_2-v_r(x_1))^2
+$$
+et en supposant que $x$ est mesuré en temps réel, proposer une loi de contrôle $t\mapsto u(t)$ qui stabilise asymptotiquement $(x_1^*,x_2^*)$, au moins localement.
+
 
 ## Attractivité locale implique stabilité asymptotique globale pour un système linéaire {.question #attrac_stab}
 Soit $A\in \R^{n\times n}$. Montrer que si 0 est localement attractif pour 
@@ -1621,6 +1640,27 @@ L'équilibre $\bar{x}$ se trouve au milieu des courbes de niveau (car c'est en f
 Le portrait de phase est donné [ci-dessous](#fig_cycle_limiteII).
 
 ![Portrait de phase de l'exercice Cycle Limite II](images/cycle_limiteII.py){#fig_cycle_limiteII}
+
+### Question 5 {.answer #answer-cycle-lim-volterra-5}
+Pour que $x_1$ vale $x_1^*$ à l'équilibre, il faut que $x_2$ vale $x_2^* = \frac{\alpha}{\beta}$ et $u^* = x_2^*(\gamma-\delta x_1^*)$.
+
+### Question 6 {.answer #answer-cycle-lim-volterra-6}
+La fonction $V$ est $C^1$, à valeurs positives et s'annule si et seulement si $x_1=x_1^*$ et $x_2 = v(x_1^*)=x_2^*$. C'est donc une fonction de Lyapunov associée à $(x_1^*,x_2^*)$. Calculons sa dérivée le long des trajectoires.
+\begin{multline*}
+\langle \nabla V(x) , f(x) \rangle = -x_1\lambda_1(x_1-x_1^*)^2 -x_1\beta(x_1-x_1^*)(x_2-v_r(x_1)) \\
++ (x_2-v_r(x_1))(-x_2(\gamma-\delta x_1)+u + v_r'(x_1) f_1(x) ) 
+\end{multline*}
+L'idée est alors de choisir $u$ afin d'assurer que $\langle \nabla V(x) , f(x) \rangle< 0$ au moins dans un voisinage de l'équilibre. On prend donc par exemple
+$$
+u =  -\lambda_2(x_2-v_r(x_1)) + x_2(\gamma-\delta x_1) - \lambda_1f_1(x) + x_1\beta(x_1-x_1^*) 
+$$
+avec $\lambda_2>0$. Ceci donne 
+$$
+\langle \nabla V(x) , f(x) \rangle = -x_1\lambda_1(x_1-x_1^*)^2 -\lambda_2(x_2-v_r(x_1))^2
+$$
+qui est bien strictement négatif pour $x\neq (x_1^*,x_2^*)$ dans un voisinage où $x_1>0$. On en déduit que $(x_1^*,x_2^*)$ est localement asymptotiquement stable. Il ne l'est pas globalement car $(0,x_2^*)$ est aussi point d'équilibre. Mais ce dernier est instable et une étude plus fine pourrait montrer que le bassien d'attraction inclut $\Rg\times\Rg$.
+
+![Portrait de phase de l'exercice Cycle Limite II avec l'entrée $u$ choisie pour $x_1^*=2$ avec $\lambda_1=\lambda_2=1$.](images/cycle_limiteII_control.py){#fig_cycle_limiteII_control}
 
 ## Attractivité locale implique stabilité asymptotique globale pour un système linéaire {.answer #answer-attrac_stab}
 
