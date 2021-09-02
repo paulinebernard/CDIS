@@ -622,6 +622,7 @@ est fournie dans le notebook Equations Differentielles II.ipynb.
 
 <!--**Consigne** Expliquer et illustrer le fonctionnement de ce solveur.-->
 
+<!--
 Projet numérique
 ===========================================================================
 
@@ -689,7 +690,7 @@ On propose maintenant de modifier ces schémas de façon à stabiliser $H$ et as
  En déduire qu'alors $H(x(t))$ converge exponentiellement vers $H_0$ lorsque $t$ tend vers l'infini si $x$ reste à une distance strictement positive de $\bar{x}$.
 
  11. En déduire comment modifier l'implémentation du schéma d'Euler pour assurer la stabilité de $H$. Quel est le rôle de $k$ ? Peut-il être choisi arbitrairement grand ? Pourquoi ? On pourra exprimer $H(x^{j+1})-H(x_0)$ en fonction de $H(x^{j})-H(x_0)$ au premier ordre en $dt$.
-
+-->
 
 Exercices
 ================================================================================
