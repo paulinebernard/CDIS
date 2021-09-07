@@ -11,6 +11,7 @@ Mines ParisTech, cycle ingénieur civil, unité d'enseignement Mathématiques (U
 
 | Chapitre      | # | E-book | Papier | Notebook | Quizz | 
 | ------------- | ------: | -----------:  |  :----: |  :----:  | :-----: |
+| Fondamentaux |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Fonda.pdf) |  |  |
 | Topologie | 1 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Topo.pdf) |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Topologie/output/Topologie.pdf) |
 | Calcul Différentiel | 1 |  |  |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Calcul%20Diff%C3%A9rentiel%20I/output/Calcul%20Diff%C3%A9rentiel%20I.pdf) |
 |   | 2 |  |  | | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Calcul%20Diff%C3%A9rentiel%20II/output/Calcul%20Diff%C3%A9rentiel%20II.pdf) |
