@@ -26,7 +26,7 @@ Objectifs d'apprentissage
 ================================================================================
 
 
-#### Moments d'une variable aléatoire à densité
+#### Moments d'une variable aléatoire 
 
 - \one connaître la définition de l'espérance d'une variable aléatoire à densité
 - \one connaître l'interprétation de l'espérance
@@ -68,7 +68,7 @@ Objectifs d'apprentissage
 
 # Moments d'une variable aléatoire à densité
  
-La densité de probabilité d'une variable aléatoire va nous permettre de calculer aisément des grandeurs caractéristiques telles que sa valeur moyenne et sa variance (lorsqu'elles existent). Elles sont définies ci-dessous.
+La loi de probabilité d'une variable aléatoire va nous permettre de calculer aisément des grandeurs caractéristiques telles que sa valeur moyenne et sa variance (lorsqu'elles existent). Elles sont définies ci-dessous.
 
 ### Espérance d'une variable aléatoire à densité {.definition #defesp}
 La variable aléatoire $X : \Omega \to \R$ de densité $f$ est dite  *intégrable* si l'intégrale $\int_\R |x|f(x) dx$ est définie, autrement dit si le produit $x f(x)$ est intégrable. On définit alors son *espérance* par 

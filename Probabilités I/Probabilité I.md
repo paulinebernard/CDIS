@@ -104,7 +104,7 @@ Objectifs d'apprentissage
 
       - \two connaître la définition d'une densité de probabilité
       - \two connaître la définition d'une variable aléatoire réelle à densité 
-      - \three savoir identifier si une variable aléatoire admet une densité
+      - \two savoir identifier si une variable aléatoire admet une densité
 
 
 # Probabilités des événements 
@@ -182,7 +182,7 @@ Une *tribu* (ou *$\sigma$-algèbre*) $\A$ est une collection de sous-ensembles d
  2. $A \in \A \Rightarrow A^c \in \A$,
  3. $\forall\, n \in \N, A_n \in \A \Rightarrow \bigcup_n A_n \in \A$.
 
-Le couple $(\Omega, \A)$ est appelé *espace probabilisable*.
+Le couple $(\Omega, \A)$ est appelé *espace probabilisable*. On notera qu'il s'agit d'un espace mesurable dans la terminologie du cours d'intégration;
 
 ### Exemples {.example}
  1. $\A = \{\varnothing,\Omega\}$ est la tribu *grossière* ou *triviale* : c'est la plus petite tribu de $\Omega$.
@@ -190,7 +190,7 @@ Le couple $(\Omega, \A)$ est appelé *espace probabilisable*.
  3. Si $\Omega = \R$, on peut le munir de la tribu formée des ensembles mesurables de $\R$, dite *tribu de Lebesgue*.
  4. On verra plus loin qu'il est aisé de définir une tribu sur tout espace topologique.
 
-## Notion de densité de probabilité
+<!-- ## Notion de densité de probabilité
 
 Une des nouveautés majeures de ce cours par rapport au programme de CPGE est le cas où l'espace fondamental n'est plus fini ni dénombrable. On va voir ici que les outils développés dans le cours de calcul intégral vont nous permettre de définir une probabilité sur $\R$ muni de la tribu des ensembles mesurables.
 
@@ -227,7 +227,7 @@ On pourra faire l'analogie entre la densité de probabilité et la loi de probab
 
  * $f(x)$ n'est pas nécessairement inférieure à 1,
 
- * $\P(\{x\}) = \int_{\{x\}} f(x)\, dx = 0$ et plus généralement, $\P(A) = 0$ si $A$ est négligeable.
+ * $\P(\{x\}) = \int_{\{x\}} f(x)\, dx = 0$ et plus généralement, $\P(A) = 0$ si $A$ est négligeable. -->
 
 ## Probabilité
 
@@ -242,6 +242,8 @@ Une *probabilité* sur l'espace $(\Omega, \A)$ est une application $\P : \A \rig
 
 Le triplet $(\Omega, \A, \P)$ est appelé *espace probabilisé*. La modélisation probabiliste consiste ainsi à décrire une expérience
 aléatoire par la donnée d’un espace probabilisé.
+
+On notera que dans la terminologie du cours d'intégration, $(\Omega, \A, \P)$ est un espace mesuré. On vérifie aisément que $\P$ est une mesure qui a la particularité d'être finie, c'est-à-dire telle que $\P(\Omega) =1$. On parle aussi de *mesure de probabilité*.
 
 La définition suivante est fondamentale en théorie des probabilités. Elle introduit une
 notion de “vrai ou faux” qui dépend de la probabilité choisie sur l’espace fondamental.
@@ -348,7 +350,6 @@ La formule de Bayes, simple conséquence des axiomes et de la définition de la 
 Un individu est tiré au hasard dans une population où l’on trouve une proportion $10^{-4}$ de séropositifs. On lui fait passer un test de détection de la
 séropositivité. Par ailleurs, des expérimentations antérieures ont permis de savoir que les probabilités d’avoir un résultat positif lors de l’application du test si l’individu est séropositif, ou s’il ne l’est pas, sont respectivement égales à 0,99 (c’est la sensibilité du test) et à 0,001 (0,999 = 1 - 0,001 est la spécificité du test). Sachant que le test donne un résultat positif, quelle est la probabilité pour que l’individu soit effectivement séropositif ?
 
-
 ## Indépendance des événements 
 La notion d’indépendance est absolument fondamentale en probabilités et nous verrons
 par la suite toutes ses implications dans la modélisation de l’aléatoire.
@@ -398,7 +399,7 @@ Si les événements $A$ et $B$ sont indépendants, alors il en est de même des 
  Les événements $A$ et $B$ ne sont pas indépendants sous la probabilité $\widetilde{\P}$.
  
 ### Indépendance de $n$ événements {.definition}
-$n$ événements $A_1, \dots, A_n$ sont *indépendants* si et seulement si pour toute partie $I \subset \lbrace 1,\dots, n\rbrace$
+$n$ événements $A_1, \dots, A_n$ sont *mutuellement indépendants* ou simplement *indépendants* si et seulement si pour toute partie $I \subset \lbrace 1,\dots, n\rbrace$
 \begin{equation*}
 \P(\cap_{i\in I} A_i) = \prod_{i\in I} \P(A_i).
 \end{equation*}
@@ -427,27 +428,31 @@ En théorie moderne des probabilités, on préfère prendre un point de vue fonc
  
 sont des variables aléatoires.
 
-La définition formelle d'une variable aléatoire fait intervenir des éléments de la théorie de la mesure qui nous font pour l'instant défaut. On s'intéressera dans un premier temps au cas d'une variable réelle dont on donne une définition partielle : 
+### Variable aléatoire {.definition}
 
-Soit $\Omega$ l'espace fondamental muni de sa tribu $\A$. Une *variable aléatoire* $X$ est une application de $(\Omega,\A)$ dans un ensemble $E$,
-\begin{equation*}
-\omega \in \Omega \mapsto X(\omega) \in E
-\end{equation*}
+Soient $(\Omega,\A)$ et $(E,\mathcal{E})$ deux espaces probabilisables (mesurables). Une *variable aléatoire* $X$ à valeurs dans $E$ est une application mesurable de $(\Omega,\A)$ dans $(E,\mathcal{E})$, c'est-à-dire telle que $\forall B \in \mathcal{E}$, $X^{-1}(B) \in \A$.
 
 En pratique, l’ensemble $E$ pourra être un ensemble fini ou dénombrable ou $\R$ ou $\R^d$ ou encore un espace plus sophistiqué tel que l’ensemble $C(\R_+ , \R^d)$ des fonctions continues de $\R_+$ dans $\R^d$.
 
 ### Vocabulaire {.remark}
 La terminologie, consacrée par l'usage, peut être trompeuse. Une variable aléatoire n'est pas une variable (au sens de l'analyse) mais une fonction. Cette terminologie est apparentée à la notion de variable en physique ou en sciences humaines où on désigne volontiers par "variable" la valeur prise par une fonction de l'état du système étudié.
 
-L'intérêt principal de travailler avec des variables aléatoires est de pouvoir substituer à l'espace abstrait $\Omega$ des résultats de l'expérience l'espace $E$, mieux connu dans la pratique. Ainsi, grâce à une variable aléatoire $X$, nous pouvons transporter la structure abstraite du modèle probabiliste $(\Omega, \A, \P)$ sur l'espace d'arrivée $E$, en posant pour $B \subset E$
+L'intérêt principal de travailler avec des variables aléatoires est de pouvoir substituer à l'espace abstrait $\Omega$ des résultats de l'expérience l'espace $E$, mieux connu dans la pratique. Ainsi, grâce à une variable aléatoire $X$, nous pouvons transporter la structure abstraite du modèle probabiliste $(\Omega, \A, \P)$ sur l'espace d'arrivée $E$, en posant pour $B \in \mathcal{E}$
 $$\P_X (B) = \P(X^{-1}(B)) = \P(\{\omega, X(\omega)\in B\})$$
 
-Cette formule définit une nouvelle probabilité, notée $\P_X$ et définie sur $E$, qui s'appelle la *loi de la variable* $X$.
+Cette formule définit une nouvelle probabilité, notée $\P_X$ et définie sur $(E,\mathcal{E})$, qui s'appelle la *loi de la variable* $X$. On dit aussi que $\P_X$ est la *mesure (de probabilité) image* de $\P$ par $X$.
+
+Pour se convaincre que $\P_X$ définit bien une probabilité sur $(E,\mathcal{E})$, il suffit de remarquer que 
+\begin{align*}
+& X^{-1}(\varnothing) = \varnothing, X^{-1}(E) = \Omega, X^{-1}(B^c) = X^{-1}(B)^c \\
+& X^{-1}(\cap_i A_i) = \cap_i X^{-1}(A_i), X^{-1}(\cup_i A_i) = \cup_i X^{-1}(A_i)
+\end{align*}
+
 
 ### Notation {.remark}
 Il est usuel de noter l'ensemble $X^{-1}(B) = \{\omega \in \Omega, X(\omega) \in B\}$ par $\{X \in B\}$, ce qui allège les écritures. On se rappelera néanmoins que cette notation désigne un sous-ensemble de $\Omega$.
 
-Comme $\P(A)$ n'est définie que pour les $A$ de la tribu $\A$, la formule ci-dessus ne permet de définir $\P_X(B)$ que pour les ensembles $B$ tels que $X^{-1}(B) \in \A$, d’où l’importance de la proposition suivante :
+<!-- Comme $\P(A)$ n'est définie que pour les $A$ de la tribu $\A$, la formule ci-dessus ne permet de définir $\P_X(B)$ que pour les ensembles $B$ tels que $X^{-1}(B) \in \A$, d’où l’importance de la proposition suivante :
 
 ### Loi d'une variable aléatoire {.proposition #propva.tribu}
 
@@ -457,11 +462,7 @@ Comme $\P(A)$ n'est définie que pour les $A$ de la tribu $\A$, la formule ci-de
  définit une probabilité sur le couple $(E,\E)$.
 
 ### Démonstration {.proof}
-Les 3 propriétés de la [définition d'une tribu](#deftribu) pour $\E$ ainsi que les deux propriétés de la [définition de la probabilité](#defproba) pour $\P_X$ découlent immédiatement des mêmes propriétés pour $\A$ et $\P$, une fois remarquées les propriétés élémentaires suivantes :
-\begin{align*}
-& X^{-1}(\varnothing) = \varnothing, X^{-1}(E) = \Omega, X^{-1}(B^c) = X^{-1}(B)^c \\
-& X^{-1}(\cap_i A_i) = \cap_i X^{-1}(A_i), X^{-1}(\cup_i A_i) = \cup_i X^{-1}(A_i)
-\end{align*}
+Les 3 propriétés de la [définition d'une tribu](#deftribu) pour $\E$ ainsi que les deux propriétés de la [définition de la probabilité](#defproba) pour $\P_X$ découlent immédiatement des mêmes propriétés pour $\A$ et $\P$, une fois remarquées les propriétés élémentaires suivantes : -->
 
 ### {.anonymous}
 
@@ -469,7 +470,7 @@ $\P_X$ sera plus facile à caractériser que $\P$ puisque $E$ est un ensemble co
 
 ## Variables aléatoires réelles
 
-La [proposition ci-dessus](#propva.tribu) implique que l'ensemble $X^{-1}(B)$ soit un évènement, pour tout $B$ dans $\E$. Dans le cas où $E = \R$, on  a déjà vu que la collection des ensembles mesurables forment une tribu. Cependant, en probabilité, on travaille généralement avec la *tribu des boréliens*, que l'on notera $\B(\R)$, qui est très utile comme on le verra pour identifier les lois de probabilité. Avant de l'introduire, on a toutefois besoin de la notion de tribu engendrée.
+Dans le cas où $E = \R$,  on travaille généralement avec la *tribu des boréliens*, que l'on notera $\B(\R)$, qui est très utile comme on le verra pour identifier les lois de probabilité. On rappelle ici quelques propriétés sur les tribus, déjà vues dans le cours d'intégration.
 
 ### Tribu engendrée {.definition #tribu-engendrée}
 Si $C \subset \mathcal{P}(\Omega)$, on appelle tribu engendrée par $C$ la plus petite tribu contenant $C$. Elle existe toujours, car d’une part $\mathcal{P}(\Omega)$ est une tribu contenant $C$, et d’autre part l’intersection d’une famille quelconque de tribus est une tribu. Ainsi, la tribu
@@ -506,7 +507,7 @@ Donc $C_1$ et par conséquent $\B(\R)$ sont inclus dans la tribu engendrée par 
 On peut maintenant définir une variable aléatoire réelle :
 
 ### Variable aléatoire réelle {.definition #defvar}
-Soit l'espace d'état $\Omega$ muni de la tribu $\A$ des évènements. Une application $X$ de $\Omega$ dans $\R$ est une *variable aléatoire réelle* si $X^{-1}(B) \in \A$ pour tout $B \in \B(\R)$.
+Soit l'espace d'état $\Omega$ muni de la tribu $\A$ des évènements. Une application $X$ de $\Omega$ dans $\R$ est une *variable aléatoire réelle* si $X^{-1}(B) \in \A$ pour tout $B \in \B(\R)$, autrement dit si $X$ est une application mesurable de $(\Omega, \A)$ dans $(\R ,\B(\R))$.
 
 ### Loi d'une variable aléatoire réelle {.definition #defloivar}
 La probabilité $\P_X$, définie sur $(\R,\B(\R))$ par $\P_X (B) = \P(X^{-1}(B))$ pour $B \in \B(\R)$ est appelée *loi de la variable $X$*, ou *distribution* de $X$.
@@ -514,21 +515,10 @@ La probabilité $\P_X$, définie sur $(\R,\B(\R))$ par $\P_X (B) = \P(X^{-1}(B))
 On peut voir $\P_X$ comme une transposition de $\P$ sur $\R$. On a alors le résultat très utile suivant :
 
 ### Composition {.proposition #composition}
-Si $X_1, \ldots, X_n$ sont des variables aléatoires réelles et si $g$ est une fonction continue de $\R^n$ dans $\R$, alors $Y = g(X_1,\ldots,X_n)$ est une variable aléatoire réelle.
+Si $X_1, \ldots, X_n$ sont des variables aléatoires réelles et si $g$ est une fonction mesurable de $\R^n$ dans $\R$ (munis de leur tribu borélienne), alors $Y = g(X_1,\ldots,X_n)$ est une variable aléatoire réelle.
 
 ### Démonstration {#proof}
-
-1. On montre d'abord que si $X : \Omega \to \R$ est une application telle que $\forall a \in \R$, $\{\omega ; X(\omega) \leq a \} = X^{-1}(]-\infty,a]) \in \mathcal{A}$, alors $X$ est une variable aléatoire réelle. Soit $\mathcal{R}$, l'ensemble des $B \in \B(\R)$ tels que $X^{-1}(B) \in \mathcal{A}$. $\mathcal{R}$ est une tribu, comme vu plus haut, et $\mathcal{R}$ contient tous les ensembles de la forme $]-\infty,a]$ par [la proposition](#altbor), on a $\mathcal{R} = \B(\R)$.
-
-2. Soit $a \in \R$, on va montrer que $\{Y \leq a\} \in \mathcal{A}$ ou plutôt, de manière équivalente $\{Y >a\} \in \mathcal{A}$.
-$g$ étant continue, l'ensemble $A = \{x\in R^n ; g(x)>a\}$ est un ouvert. On peut donc l'écrire comme l'union dénombrable $A = \cup_{i \in \N^\star} A_i$, où les $A_i$ sont des pavés ouverts de la forme $A_i = \prod_{j=1}^n ]x_{ij},y_{ij}[$ et on a :
-\begin{align*}
-\{Y>a\} &= \{(X_1,\ldots,X_n) \in A\} \\
-&= \bigcup_{i \in \N^\star}\{(X_1,\ldots,X_n) \in A_i\} \\
-&= \bigcup_{i \in \N^\star}\bigcap_{j=1}^n \{x_{ij} < X_i < y_{ij}\}
-\end{align*}
-Puisque les $X_i$ sont des variables aléatoires réelles, $\{x_{ij} < X_i < y_{ij}\} \in \mathcal{A}$ et donc $\{Y>a\} \in \mathcal{A}$.
-
+On note $X = (X_1, \ldots, X_n)$. $X$ est mesurable de $(\Omega,\A)$ dans $(\R^n,\B(\R^n))$ puisque ce vecteur est constitué de composantes mesurables de $(\Omega,\A)$ dans $(\R,\B(\R))$ et que $\B(\R^n) = \B(\R)\otimes \ldots \otimes \B(\R)$. Soit $B \in \B(\R)$, alors $Y^{-1}(B) = (g \circ X)^{-1}(B) = X^{-1}(g^{-1}(B))$. Puisque $g$ et $X$ sont mesurables, $g^{-1}(B) \in \B(\R^n)$ et $X^{-1}(g^{-1}(B))\in \A)$. 
 
 ### {.post}
 Comme application de ce résultat, on a les propriétés suivantes :
@@ -551,8 +541,6 @@ Soient $X$, $Y$ et $(X_n)_{n \in \N^\star}$ des variables aléatoires réelles. 
 ## Loi des variables aléatoires réelles
 
 Nous avons vu précédemment la définition générale d'une probabilité $\P$ sur un espace quelconque $\Omega$ muni d'une tribu $\A$. Un problème fondamental est de construire et de caractériser ces probabilités. La résolution de ce problème lorsque $\Omega$ est fini ou dénombrable est connu.
-Le cas général est décrit dans le cadre de la théorie de la mesure et sera évoqué ultérieurement.
-
 Puisque les variables aléatoires réelles sont définies sur $\R$, nous allons étudier leur loi de probabilité $\P_X$ définie sur $\R$ muni de la tribu $\B(\R)$.
 
 ###  Fonction de répartition {.definition #deffdr}
@@ -643,7 +631,9 @@ Il existe bien d’autres probabilités, non discrètes, sur $\R$. Le paragraphe
 
 ### Densité de probabilité {.definition #defdens}
 Une fonction réelle $f$ sur $\R$ est une *densité de probabilité* (ou plus simplement une *densité*) si elle est positive, intégrable et vérifie 
-$$\int_\R f(x)\, dx = 1.$$ 
+$$\int_\R f(x)\, dx = 1,$$ 
+
+où $dx$ désigne la mesure de Lebesgue sur $\R$.
 
 Si $f$ est une densité, la fonction 
    $$F(x) =\int_{-\infty}^x f(y)\, dy$$ 
@@ -669,7 +659,10 @@ Il existe bien sûr des variables aléatoires qui n'ont pas de densité : c'est 
     $$ \int_\R f(x)\, dx + \sum_{i\in E} p_i = 1.$$
 Alors la fonction 
     $$ F(x) = \int_{-\infty}^x f(x)\, dx + \sum_{\substack{i\in E \\ i \leq x}} p_i$$
-est une fonction de répartition, et la probabilité associée $\P_X$ n'admet pas de densité et n'est pas non plus discrète.
+est une fonction de répartition, et la probabilité associée $\P_X$ n'admet pas de densité et n'est pas non plus discrète. 
+
+La mesure de probabilité associée $\P_X$ s'écrit $\forall B \in \B(\R))$ : 
+$$\P_X(B) = \int_B \P_X(dx) = \int_B f(x) dx + \int_B \sum_{i\in E} p_i \delta_i(dx) = \int_B f(x) dx + \sum_{i\in E} p_i \delta_i(B)$$
 
 ### Remarques {.remark}
 
