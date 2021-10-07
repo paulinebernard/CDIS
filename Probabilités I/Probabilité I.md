@@ -518,7 +518,7 @@ On peut voir $\P_X$ comme une transposition de $\P$ sur $\R$. On a alors le rés
 Si $X_1, \ldots, X_n$ sont des variables aléatoires réelles et si $g$ est une fonction mesurable de $\R^n$ dans $\R$ (munis de leur tribu borélienne), alors $Y = g(X_1,\ldots,X_n)$ est une variable aléatoire réelle.
 
 ### Démonstration {#proof}
-On note $X = (X_1, \ldots, X_n)$. $X$ est mesurable de $(\Omega,\A)$ dans $(\R^n,\B(\R^n))$ puisque ce vecteur est constitué de composantes mesurables de $(\Omega,\A)$ dans $(\R,\B(\R))$ et que $\B(\R^n) = \B(\R)\otimes \ldots \otimes \B(\R)$. Soit $B \in \B(\R)$, alors $Y^{-1}(B) = (g \circ X)^{-1}(B) = X^{-1}(g^{-1}(B))$. Puisque $g$ et $X$ sont mesurables, $g^{-1}(B) \in \B(\R^n)$ et $X^{-1}(g^{-1}(B))\in \A)$. 
+On note $X = (X_1, \ldots, X_n)$. $X$ est mesurable de $(\Omega,\A)$ dans $(\R^n,\B(\R^n))$ puisque ce vecteur est constitué de composantes mesurables de $(\Omega,\A)$ dans $(\R,\B(\R))$ et que $\B(\R^n) = \B(\R)\otimes \ldots \otimes \B(\R)$. Soit $B \in \B(\R)$, alors $Y^{-1}(B) = (g \circ X)^{-1}(B) = X^{-1}(g^{-1}(B))$. Puisque $g$ et $X$ sont mesurables, $g^{-1}(B) \in \B(\R^n)$ et $X^{-1}(g^{-1}(B))\in \A$. 
 
 ### {.post}
 Comme application de ce résultat, on a les propriétés suivantes :
@@ -540,7 +540,7 @@ Soient $X$, $Y$ et $(X_n)_{n \in \N^\star}$ des variables aléatoires réelles. 
 
 ## Loi des variables aléatoires réelles
 
-Nous avons vu précédemment la définition générale d'une probabilité $\P$ sur un espace quelconque $\Omega$ muni d'une tribu $\A$. Un problème fondamental est de construire et de caractériser ces probabilités. La résolution de ce problème lorsque $\Omega$ est fini ou dénombrable est connu.
+Nous avons vu précédemment la définition générale d'une probabilité $\P$ sur un espace quelconque $\Omega$ muni d'une tribu $\A$. Un problème fondamental est de construire et de caractériser ces probabilités. La résolution de ce problème lorsque $\Omega$ est fini ou dénombrable est supposée connue.
 Puisque les variables aléatoires réelles sont définies sur $\R$, nous allons étudier leur loi de probabilité $\P_X$ définie sur $\R$ muni de la tribu $\B(\R)$.
 
 ###  Fonction de répartition {.definition #deffdr}
@@ -661,8 +661,7 @@ Alors la fonction
     $$ F(x) = \int_{-\infty}^x f(x)\, dx + \sum_{\substack{i\in E \\ i \leq x}} p_i$$
 est une fonction de répartition, et la probabilité associée $\P_X$ n'admet pas de densité et n'est pas non plus discrète. 
 
-La mesure de probabilité associée $\P_X$ s'écrit $\forall B \in \B(\R))$ : 
-$$\P_X(B) = \int_B \P_X(dx) = \int_B f(x) dx + \int_B \sum_{i\in E} p_i \delta_i(dx) = \int_B f(x) dx + \sum_{i\in E} p_i \delta_i(B)$$
+La mesure de probabilité associée s'écrit $\P_X = f\lambda + \sum_{i\in E} p_i \delta_i$
 
 ### Remarques {.remark}
 
@@ -671,7 +670,7 @@ $$\P_X(B) = \int_B \P_X(dx) = \int_B f(x) dx + \int_B \sum_{i\in E} p_i \delta_i
      "red herring" ? j'ai ajouté un "par exemple" et j'y ferai gaffe en amphi !
   -->
 
- 1. La fonction de répartition est entièrement déterminée par la probabilité $\P$. Il n'en est pas de même de la densité lorsqu'elle existe : si en effet on a $F(x) =\int_{-\infty}^x f(y)\, dy$ et si on pose $g(x) = f(x)$ si $x \notin E$ et $g(x) =f(x)+1$ (par exemple) si $x\in E$, où $E$ est un ensemble négligeable, alors $g$ est encore une densité de $\P$.
+ 1. La fonction de répartition est entièrement déterminée par la probabilité $\P$. Il n'en est pas de même de la densité lorsqu'elle existe : si en effet on a $F(x) =\int_{-\infty}^x f(y)\, dy$ et si on pose $g(x) = f(x)$ si $x \notin E$ et $g(x) =f(x)+1$ (par exemple) si $x\in E$, où $E$ est un ensemble négligeable, alors $g$ est encore une densité de $\P$. Autrement dit, la densité 
 
  2. Une interprétation intuitive de la densité $f$ de $\P$ : si $dx$ est un petit accroissement de la variable $x$, on a (si du moins $f$ est continue en $x$) :
  $$ f(x) \sim \frac{\P([x,x+dx])}{dx}.$$   

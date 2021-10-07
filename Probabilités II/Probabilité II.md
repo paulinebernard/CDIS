@@ -28,10 +28,10 @@ Objectifs d'apprentissage
 
 #### Moments d'une variable aléatoire 
 
-- \one connaître la définition de l'espérance d'une variable aléatoire à densité
+- \one connaître la définition de l'espérance d'une variable aléatoire 
 - \one connaître l'interprétation de l'espérance
 - \one connaître les propriétés de base de l'espérance
-- \one connaître la définition de la variance d'une variable aléatoire à densité
+- \one connaître la définition de la variance d'une variable aléatoire 
 - \one savoir que la variance est toujours positive
 - \one savoir ce que signifie variable centrée-réduite
 - \one connaître la définition de la covariance
@@ -66,44 +66,50 @@ Objectifs d'apprentissage
 - \two savoir identifier la densité d'une fonction d'une variable aléatoire par la méthode de la fonction muette 
 - \two savoir identifier la densité d'une fonction d'un vecteur aléatoire par la méthode de la fonction muette 
 
-# Moments d'une variable aléatoire à densité
+# Moments d'une variable aléatoire
  
-La loi de probabilité d'une variable aléatoire va nous permettre de calculer aisément des grandeurs caractéristiques telles que sa valeur moyenne et sa variance (lorsqu'elles existent). Elles sont définies ci-dessous.
+La loi de probabilité d'une variable aléatoire définie sur l'espace probabilisé $(\Omega,\A,\P)$ va nous permettre de calculer aisément des grandeurs caractéristiques telles que sa valeur moyenne et sa variance (lorsqu'elles existent). Elles sont définies ci-dessous.
 
-### Espérance d'une variable aléatoire à densité {.definition #defesp}
-La variable aléatoire $X : \Omega \to \R$ de densité $f$ est dite  *intégrable* si l'intégrale $\int_\R |x|f(x) dx$ est définie, autrement dit si le produit $x f(x)$ est intégrable. On définit alors son *espérance* par 
+### Espérance d'une variable aléatoire réelle {.definition #defesp}
+La variable aléatoire $X : \Omega \to \R$ de loi $\P_X$ est dite  *intégrable* si l'intégrale $\int_\R |x| d\P_X(x)$ est définie, autrement dit si  $x$ est $\P_X$-intégrable. On définit alors son *espérance* par 
+        $$\Esp(X) = \int_\R x d\P_X(x) = \int_\Omega X(\omega) d\P(\omega)$$
+
+Si la variable aléatoire $X$ admet une densité $f$ par rapport à la mesure de Lebesgue, elle sera  *intégrable* si l'intégrale $\int_\R |x|f(x) dx$ est définie, autrement dit si le produit $x f(x)$ est intégrable par rapport à la mesure de Lebesgue. Son *espérance* vaut alors
         $$\Esp(X) = \int_\R x f(x)dx$$
 
-
-<!-- **note : pour introduire proprement l'espérance d'une variable aléatoire réelle, on a besoin de l'intégrale de Lebesgue -> CI 5** -->
 
 ### Interprétation {.remark} 
 $\Esp(X)$ est un nombre réel qui donne une valeur moyenne résumant la variable aléatoire $X$.
 
 L’espérance mathématique d’une variable aléatoire est un concept fondamental de la théorie des probabilités. La dénomination d’espérance pour cette quantité fait référence aux problèmes de jeux et d’espérance de gain. Cette terminologie imagée a été introduite par Pascal.
 
-On note $\L^1$ l'ensemble de toutes les variables réelles $X$ à densité intégrables. Les propriétés suivantes découlent directement des propriétés de l'intégrale.
+On note $\L^1$ l'ensemble de toutes les variables réelles $X$ intégrables. Les propriétés suivantes découlent directement des propriétés de l'intégrale.
 
 ### Propriétés de base {.proposition #propl1}
  * $\L^1$ est un espace vectoriel et $\forall X,Y \in \L^1$, $\forall a,b \in \R$ 
         $$\Esp(aX + bY) = a\Esp(X) + b\Esp(Y).$$
  * $X \in \L^1 \Leftrightarrow |X| \in \L^1$, et dans ce cas $$|\Esp(X)| \leq \Esp(|X|).$$
  * Si $X \geq 0$ et $X \in \L^1$, alors $\Esp(X) \geq 0.$
- <!-- * Si $X,Y \in \L^1$ sont telles que $X \leq Y$, alors
+ * Si $X,Y \in \L^1$ sont telles que $X \leq Y$, alors
         $$ \Esp(X) \leq \Esp(Y).$$
  * L'espérance d'une variable presque-sûrement constante est égale à cette constante :
- $$ \text{Si } \P(X(\omega) = a ) = 1, \text{ alors } \Esp(X) = a.$$ -->
+ $$ \text{Si } \P(X(\omega) = a ) = 1, \text{ alors } \Esp(X) = a.$$
  * Si $\exists b \in \R_+$ tel que $|X| \leq b$, alors $X \in \L^1$ et $\Esp(X) \leq b$.
 
-### Rappel : cas discret {.remark}
-Dans le cas d'une variable aléatoire discrète $Y$ à valeurs dans $\N^\ast$, son espérance est définie par la quantité $\Esp(Y) = \sum_{i\in\N^\ast} i\P(Y=i)$, pourvu que celle-ci soit finie. On voit immédiatement que les propriétés ci-dessus sont également vérifiées.
+### Démontrer ces propriétés {.exercise .one #basics}
+
+<!-- ### Rappel : cas discret {.remark}
+Dans le cas d'une variable aléatoire discrète $Y$ à valeurs dans $\N^\ast$, son espérance est définie par la quantité $\Esp(Y) = \sum_{i\in\N^\ast} i\P(Y=i)$, pourvu que celle-ci soit finie. On voit immédiatement que les propriétés ci-dessus sont également vérifiées. -->
+
+### {.anonymous}
 
 Outre l'espace $\L^1$, nous pouvons définir l'espace $\L^2$ des variables aléatoires réelles dont le carré $X^2$ est dans $\L^1$.
 
 ### Variance {.definition #defvar}
-La variable aléatoire $X : \Omega \to \R$ de densité $f$ est dite *de carré intégrable* si $\Esp(X^2) = \int_\R x^2 f(x)dx$ est définie, autrement dit si le produit $x^2 f(x)$ est intégrable. Sa *variance* est définie par
+La variable aléatoire $X : \Omega \to \R$ de densité loi $\P_X$ est dite *de carré intégrable*  si $\Esp(X^2) = \int_{\R} x^2 \P_X(dx) = \int_{\Omega} X^2(\omega)\P(d\omega) < +\infty$. Sa *variance* est définie par
         $$\V(X) = \Esp((X-\Esp(X))^2)$$
 
+Si la variable aléatoire $X$ admet une densité $f$ par rapport à la mesure de Lebesgue, elle sera *de carré intégrable* si $\Esp(X^2) = \int_\R x^2 f(x)dx$ est définie, autrement dit si le produit $x^2 f(x)$ est intégrable par rapport à la mesure de Lebesgue.
 
 ### Propriétés {.proposition #propl2}
 $\L^2$ est un sous-espace vectoriel de $\L^1$, et si $X \in \L^2$,
@@ -180,28 +186,40 @@ Le discriminant est nul si et seulement si le trinôme admet une racine double $
 Montrer que le coefficient de corrélation de $X$ et $Y$ vérifie
 $$-1\leq \rho(X,Y) \leq 1.$$
 
-Enfin, il peut être intéressant de pouvoir calculer l'espérance d'une fonction mesurable d'une variable aléatoire réelle à densité qui est une variable aléatoire en vertu de la [proposition vue de composition](Probabilité I.pdf #composition).
+### {.anonymous}
+Enfin, il peut être intéressant de pouvoir calculer l'espérance d'une fonction mesurable d'une variable aléatoire réelle qui est une variable aléatoire en vertu de la [proposition de composition](Probabilité I.pdf #composition).
 
 ### Espérance de $g(X)$ {.proposition #esperanceg}
-Soit $X$ une variable aléatoire réelle admettant la densité $f$, et $g$ une fonction mesurable de $\R$ dans $\R$. Alors $g(X)$ est intégrable si et seulement si l'intégrale
-$$\int_\R |g(x)|f(x) dx,$$
+Soit $X$ une variable aléatoire réelle de loi $\P_X$, et $g$ une fonction mesurable de $(\R,\B(\R))$ dans $(\R,\B(\R))$. Alors $g(X)$ est $\P_X$ - intégrable si et seulement si l'intégrale
+$$\int_\R |g(x)| d\P_X(x),$$
 est définie et dans ce cas
-$$\Esp(g(X)) = \int_\R g(x)f(x) dx.$$
+$$\Esp(g(X)) = \int_\R g(x)d\P_X(x) = \int_\Omega g(X(\omega)) d\P(\omega)$$
 
-Nous n'avons pas tous les éléments permettant de démontrer ce résultat, mais l'argument heuristique suivant permet de comprendre pourquoi il est vrai : supposons $g$ continue telle que $|g|f$ soit intégrable. Alors il existe une jauge $\gamma(t)$, sur $[-\infty, +\infty]$ telle que, si la subdivision pointée (totale ou partielle) $\mathcal{D} =\{(t_i, I_i)\}_i$ est subordonnée à $\gamma$, on a
-$$
-S(gf, \mathcal{D}) = \left|S(gf, \mathcal{D}) - \int _\R g(x)f(x) dx \right| 
-\leq 
-\varepsilon.
-$$ 
-Posons $X_n = t_i$ si $X \in I_i$, pour $i \in \{0,\ldots,n-1\}$. Ainsi, pour tout $\omega$, $X_n(\omega) \xrightarrow[n \to \infty]{} X(\omega)$ et par continuité de $g$, on a $g(X_n) \xrightarrow[n \to \infty]{} g(X)$. Comme $X_n$ est une variable aléatoire discrète, on a
-$$\Esp(g(X_n)) = \sum_{i=0}^{n-1}g(t_i)\P(X\in I_i)l(I_i) \approx \sum_{i=0}^{n-1}g(t_i)f(t_i).$$
+Si $\P_X$ admet une densité $f$ par rapport à la mesure de Lebesgue, alors $g(X)$ est $\P_X$ - intégrable si et seulement si le produit $fg$ est intégrable par rapport à la mesure de Lebesgue. On a alors :
+$$\Esp(g(X)) =  \int_\R g(x)d\P_X(x) = \int_\R g(x)f(x)dx = \int_\Omega g(X(\omega)) d\P(\omega)$$
+
+
+### Démonstration {.proof}
+On rappelle que la loi de probabilité $\P_X$ est définie pour $B\in \B(\R)$ par $\P_X(B)= \P(X^{-1}(B))$. Par conséquent
+$$\Esp (1_{B(X)}) = \P(X^{-1}(B)) = \P_X(B) = \int_\R 1_{B(X)} d\P(x).$$
+Ainsi, si $g$ est une fonction étagée positive ($g \in \E^+$), on obtient le résultat voulu par linéarité.
+
+Si $g$ est positive, soit $(g_n)_{n \in \N^\star}$ une suite croissante de fonctions étagées positives convergeant simplement vers $g$. On a alors
+\begin{align*}
+\Esp(g(x)) & = \Esp(\lim_{n\to \infty}g_n(X))\\
+           & = \lim_{n\to \infty} \Esp(g_n(X)) ~\text{ par le théorème de convergence monotone}\\
+           & = \lim_{n\to \infty} \int_\R g_n(x) d\P_X(x)\\
+           & = \int_\R \lim_{n\to \infty} g_n(x) d\P_X(x) ~\text{ par le théorème de convergence monotone}\\
+           & = \int_\R g(x) d\P_X(x).
+\end{align*}
+
+Enfin, si $g$ n'est pas positive, on utilise la décomposition $g = g^+ - g^-$ et on déduit le résultat par soustraction.
+
 
 ### Cas particulier {.remark}
-L'espérance et la variance sont des cas particulier de ce résultat. On a de plus pour $A \in \B(\R)$ :
-$$\Esp(1_A(X)) = \int_A f(x)dx = \P(X\in A)$$
+L'espérance et la variance sont des cas particulier de ce résultat. 
 
-## Exemples
+## Exemples de loi à densité
 
 Nous donnons ici quelques exemples de densités de probabilité. Nous reprenons en particulier les [trois exemples de densités donnés au premier cours](Probabilité I.pdf #exampledens) :
 
@@ -276,7 +294,7 @@ Une variable aléatoire $X$ à valeurs dans $\R^n$ (ou vecteur aléatoire) est s
 
 De même qu'en dimension 1, la loi de $X$ est caractérisée par la fonction de répartition multi-dimensionnelle $F : \R^n \to \R$ définie par 
 $$F(x_1,\ldots,x_n) = \P_X(X_1\leq x_1,\ldots,X_n\leq x_n)$$
-Mais caractériser les fonctions de répartition sur $\R^n$ est délicat, de sorte que cette notion est rarement utilisée. Nous allons plus particulièrement nous intéresser aux vecteurs aléatoires à densité.
+Mais caractériser les fonctions de répartition sur $\R^n$ est délicat, de sorte que cette notion est rarement utilisée. Nous allons plus particulièrement nous intéresser aux vecteurs aléatoires à densité. On gardera tout de même à l'esprit que les lois de probabilités définies sur $(\R^n,\B(\R^n))$ n'admettent pas toutes une densité !
 
 ### Vecteur aléatoire à densité {.definition #defvect}
 On dit que $X$ admet la densité $f$ si la fonction réelle $f$ sur $\R^n$ est positive, intégrable et vérifie 
@@ -351,9 +369,15 @@ On peut se ramener aux évènements pour caractériser l'indépendance de deux v
 Les vecteurs aléatoires $X$ et $Y$ sont *indépendants* si pour tous ensembles $A$ et $B$ des tribus correspondantes, 
 $$\P(X \in A, Y \in B) = \P(X \in A)\P(Y \in B)$$
 
-Cette définition se traduit en termes de densités dans la proposition suivante que l'on énonce sans perte de généralité pour un couple de variables aléatoires.
+### {.anonymous}
+En terme de mesure de probabilité, cette égalité s'écrit
+$$\P_{(X,Y)}(A \times B) = \P_X(A)\P_Y(B) = (\P_X \otimes \P_Y) (A \times B).$$
+Autrement dit, $X$ et $Y$ sont indépendantes ssi la mesure de probabilité du couple $(X,Y)$ est la mesure produit de $P_X$ et $P_Y$ dont l'existence et l'unicité est garantie par le théorème III.6.9 du cours de calcul intégral.
 
-### Caractérisation de l'indépendance {.proposition}
+
+Cette définition se traduit dans le cas à densité dans la proposition suivante que l'on énonce sans perte de généralité pour un couple de variables aléatoires.
+
+### Caractérisation de l'indépendance -- cas à densité {.proposition}
 Soient $X$ et $Y$ deux variables aléatoires réelles de densités $f_X$ et $f_Y$. $X$ et $Y$ sont indépendantes si et seulement si 
 le couple $Z = (X,Y)$ a pour densité (sur $\R^2$) :
 $$f_Z(x,y) = f_X(x)f_Y(y).$$
@@ -365,7 +389,7 @@ ce qui montre que $\P_Z$ vérifie la [définition d'un vecteur aléatoire à den
 
 Inversement, si $f_Z=f_X f_Y$, on a pour tous $A$, $B$ de $\B({\R})$
 $$\P(X\in A, Y\in B) = \int_A \int_B f_X(x) f_Y(y) dxdy = \P(X \in A)\P(Y \in B)$$ 
-où on a utilisé le [théorème de Fubini](Calcul Intégral III.pdf #Fubini).
+où on a utilisé le théorème de Fubini-Tonnelli.
 
 
 ### Lancer de fléchette (suite) {.exercise .question .one #exo-flechettebis}
@@ -374,14 +398,14 @@ Les coordonnées cartésiennes $(X,Y)$ de $M$ sont elles indépendantes ?
 
 ### {.anonymous}
 
-Considérons maintenant deux fonctions $g$ et $h$ définies sur $\R^m$ et $\R^n$ telles que $g(X)$ et $h(Y)$ soient aussi des variables aléatoires. 
+Considérons maintenant deux fonctions mesurables $g$ et $h$ définies sur $\R^m$ et $\R^n$. 
 
 ### Fonctions de vecteurs aléatoires indépendants {.proposition #indep_fct}
 Avec les notations précédentes, si $X$ et $Y$ sont indépendantes de densités respectives $f_X$ et $f_Y$, les variables aléatoires $g(X)$ et $h(Y)$ sont aussi indépendantes. Si de plus $g(X)$ et $h(Y)$ sont intégrables, alors le produit $g(X)h(Y)$ est aussi intégrable, et on a 
 $$ \Esp(g(X)h(Y)) = \Esp(g(X))\Esp(h(Y))$$ 
 
 ### Démonstration {.proof}
-La première assertion est évidente par définition de l'indépendance. Par ailleurs, si $g(X)$ et $h(Y)$ sont intégrables, en notant $f_{(X,Y)}$ la densité du couple $(X,Y)$, et en utilisant le [théorème de Fubini](Calcul Intégral III.pdf #Fubini), on a
+La première assertion est évidente par définition de l'indépendance. Par ailleurs, si $g(X)$ et $h(Y)$ sont intégrables, en notant $f_{(X,Y)}$ la densité du couple $(X,Y)$, et en utilisant le théorème de Fubini, on a
 \begin{align*}
 \Esp(g(X)h(Y))  & = \int_{\R^{m+n}} g(x)h(y) f_{(X,Y)}(x,y) dx dy \\
                 & = \int_{\R^m} \int_{\R^n} g(x)h(y)f_X(x) f_Y(y) dx dy \\
@@ -390,7 +414,8 @@ La première assertion est évidente par définition de l'indépendance. Par ail
 \end{align*}
 
 ### Cas général {.remark}
-Ce résultat est encore valable $X$ et $Y$ dans le cas général (sans densité), voir @Jacod pour une démonstration.
+Ce résultat est encore valable dans le cas général (sans densité).
+
 
 On déduit de ce résultat et de la [définition de la covariance](#defcov) que :
 
@@ -410,7 +435,7 @@ $$\cov(X,Y) = \cov(X,X^2) = \Esp(X^3) - \Esp(X)\Esp(X^2) = 0$$
 
 Un problème important est le suivant. Soit $X$ une variable aléatoire réelle, admettant la densité $f_X$. Soit $g$ une fonction mesurable, de sorte que $Y = g(X)$ soit aussi une variable aléatoire. Est-ce que $Y$ admet une densité, et si oui, comment la calculer ?
 
-On peut déjà remarquer que cette densité n’existe pas toujours. Si par exemple $g(x) = a$ pour tout $x$, la loi de $Y$ est la masse de Dirac en $a$, qui n’a pas de densité.
+On peut déjà remarquer que cette densité n’existe pas toujours. Si par exemple $g(x) = a$ pour tout $x$, la loi de $Y$ est la mesure de Dirac en $a$, qui n’a pas de densité par rapport à la mesure de Lebesgue.
 
 Pour résoudre ce problème, l’idée consiste à essayer de mettre $E(h(Y )) = E(h \circ g(X))$ sous la forme $\int h(y)f_Y (y)dy$ pour une fonction convenable 
 $f_Y$, et une classe de fonctions $h$ suffisamment grande. La fonction $f_Y$ sera alors la densité cherchée.
@@ -418,16 +443,20 @@ $f_Y$, et une classe de fonctions $h$ suffisamment grande. La fonction $f_Y$ ser
 La [proposition qui assure que $g(X)$ est intégrable pour une variable aléatoire réelle $X$](#esperanceg) implique
 $$ \Esp(h(Y)) = \Esp(h \circ g (X)) = \int_{\R} h \circ g(x) f_X(x) dx$$
 
-et on fait le changement de variable $y = g(x)$ dans cette intégrale. Cela nécessite que $g$ soit dérivable et bijective “par morceaux”, et il faut faire très attention aux domaines où $g$ est croissante ou décroissante. Puisque la fonction $h$ est arbitraire, on appelle couramment cette technique la *méthode de la fonction muette*. Cette approche résulte en fait de la proposition suivante que nous ne démontrerons pas :
+et on fait le changement de variable $y = g(x)$ dans cette intégrale. Cela nécessite que $g$ soit dérivable et bijective “par morceaux”, et il faut faire très attention aux domaines où $g$ est croissante ou décroissante. Puisque la fonction $h$ est arbitraire, on appelle couramment cette technique la *méthode de la fonction muette*. Cette approche résulte en fait de la proposition suivante :
 
 ### Méthode de la fonction muette {.proposition}
-Si il existe une fonction $f$ telle que pour toute fonction mesurable $h$ telle que $h(x) f(x)$ soit  intégrable, 
+Si il existe une fonction $f$ positive telle que pour toute fonction mesurable $h$ telle que $h(x) f(x)$ soit  intégrable, 
 $$\Esp(h(X)) = \int_\R h(x) f(x) dx$$
-alors la loi de $X$ admet la densité $f$.
+alors la loi de $X$ admet la densité $f$ par rapport à la mesure de Lebesgue.
 
 ### Démonstration {.proof}
-L’idée de la preuve repose sur le fait que parmi ces fonctions se trouvent les $h = 1_{]-\infty,y]}$, pour laquelle la formule précédente donne la fonction de répartition de $f$.
-Pour une démonstration complète, voir @Jacod.
+Supposons qu'un tel $f$ existe. 
+Soit $B \in \B(\R)$, alors $1_B$ est mesurable. En particulier, si $B = ]-\infty,x], ~x\in\R$, on a 
+$$\P(X\leq x) = \P(X \in B) = \P_X(B) = \Esp(1_B(X)) = \int_{- \infty}^x f(y)dy$$
+Par ailleurs, prenant $B = \R$, on a $1 = \P(X\in \R) = \int_\R f(y) dy$.
+Par conséquent, $\P_X$ admet la densité $f$.
+
 
 ### {.post}
 
@@ -834,11 +863,11 @@ On en déduit que la loi de N est la loi binomiale de paramètre $(10, 1 - e^{- 
 ### Question 4 {.answer #answer-dureevie4} 
 
 La probabilité que l’équipement en série soit défaillant avant 1 an vaut :
-$$ P(N \geq 1) = 1 - \P(N = 0) = 1 - e^{-1/2} \approx 9.9 10 -1 = 99%$$
+$$ P(N \geq 1) = 1 - \P(N = 0) = 1 - e^{-1/2} \approx 9.9 ~10^{-1} = 99\%$$
 
 ### Question 5 {.answer #answer-dureevie5} 
 La probabilité que l’équipement en parallèle soit défaillant avant 1 an vaut :
-$$ \P(N = 10) = (1 - e^{-1/2})^10 \approx 8.9 10 -5 $$
+$$ \P(N = 10) = (1 - e^{-1/2})^10 \approx 8.9 ~10 ^{-5} $$
 
 ## Crues centennales de la Seine
 
