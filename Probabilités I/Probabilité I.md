@@ -9,6 +9,7 @@
 \newcommand{\A}{\mathcal{A}}
 \newcommand{\E}{\mathcal{E}}
 \newcommand{\B}{\mathcal{B}}
+\newcommand{\Esp}{\mathbb{E}}
 
 \newcommand{\zero}{$\mathord{\boldsymbol{\circ}}$}
 \newcommand{\one}{$\mathord{\bullet}$}
@@ -89,9 +90,9 @@ Objectifs d'apprentissage
 
    - variables aléatoires réelles
 
-      - \four connaître la définition de la tribu borélienne
-      - \four savoir manipuler la notion de tribu engendrée
-      - \four savoir que la tribu borélienne est engendrée par les intervalles de la forme $]-\infty, x],~ x\in \R$
+      - \two connaître la définition de la tribu borélienne
+      - \two savoir manipuler la notion de tribu engendrée
+      - \two savoir que la tribu borélienne est engendrée par les intervalles de la forme $]-\infty, x],~ x\in \R$
       - \one connaître la définition d'une variable aléatoire réelle et de sa loi de probabilité
    
    - loi des variables aléatoires réelles
@@ -554,10 +555,15 @@ F_X(x) = \P_X(\left]-\infty, x\right]) = \P(X \leq x),\ x \in \R.
 La fonction de répartition $F$ caractérise la probabilité $\P_X$ sur ($\R,\B(\R)$).
 
 ### Démonstration {.proof}
+On veut montrer que la connaissance de $F$ telle que définie [ci-dessus](#deffdr) détermine $\P_X$ de manière unique, c'est-à-dire que si il existe une autre probabilité $\P_Y$ telle que $G(x) = \P_Y(]-\infty,x])$ pour $x \in \R$ et si $F = G$, alors $\P_X = \P_Y$.
+
+Soit $\B_0$ l'ensemble de toutes les réunions finies d'intervalles disjoints de la forme $]x,y]$ ou $-\infty \leq x < y \leq +\infty$. Cet ensemble contient $\R$, $\varnothing$ et est stable par passage au complémentaire et par réunion finie, c'est donc une algèbre. De manière évidente, il est aussi stable par intersection finie et est ainsi un $\pi$-système. Par ailleurs, on a déjà vu que $\sigma(\B_0)$ (la tribu engendrée par $\B_0$) est la tribu borélienne $\B(\R)$.
 
 D'après [la définition de la fonction de répartition](#deffdr), on a $\P_X(]x,y]) = F(y)-F(x)$ pour tous $x< y$. Par conséquent, si $B = \cup_{i=1}^n ]x_i,y_i]$, avec $x_i < y_i < x_{i+1}$, on a 
 $$\P_X(B) = \sum_{i=1}^n \P_X(]x_i,y_i]) = \sum_{i=1}^n F(y_i)-F(x_i),$$
-car les intervalles sont disjoints. Puisque $\P_X(]x,+ \infty[) = 1-F(x)$, nous en déduisons finalement que $F$ caractérise la restriction de $\P_X$ à l'ensemble de toutes les réunions finies d'intervalles disjoints de la forme $]x,y]$ ou $]x,+ \infty[$. Cet ensemble contient $\R$, $\varnothing$ et est stable par passage au complémentaire et par réunion finie (on dit que c'est une algèbre). Un résultat difficile de théorie de la mesure (voir @Jacod pour une preuve) montre que la connaissance de $\P_X$ sur cette algèbre suffit à déterminer entièrement $\P_X$ sur la tribu engendrée par cette algèbre. Mais [la proposition vu précédemment](#altbor) nous indique que cette tribu est la tribu borélienne.
+car les intervalles sont disjoints. 
+
+Si $\P_Y$ est une autre probabilité telle que $F(x) = \P_Y(]-\infty,x])$, alors ce qui précède montre que $\P_X = \P_Y$ sur $\B_0$ qui engendre $\B(\R)$. $\P_X$ et $\P_Y$ étant des mesures finies, la proposition III.3.10 du cours de calcul intégral nous permet d'assurer que $\P_X = \P_Y$ pour tous les éléments de $\B(\R)$, autrement dit que ces deux mesures de probabilités sont identiques sur $(\R,\B(\R))$.
 
 ### Caractérisation de la fonction de répartition {.theorem #theofdr}
 Une fonction $F$ est la fonction de répartition d'une unique probabilité $\P_X$ sur $(\R,\B(\R))$ si et seulement si elle vérifie les trois conditions suivantes :
@@ -570,7 +576,7 @@ Une fonction $F$ est la fonction de répartition d'une unique probabilité $\P_X
 
 La première assertion est immédiate d'après la [définition](#deffdr). Pour la seconde, on remarque que si $x_n$ décroît vers $x$, alors $]-\infty,x_n]$ décroît vers $]-\infty,x]$ et donc $F(x_n)$ décroît vers $F(x)$ par le [théorème de la continuité monotone](#continuitemonotone). La troisième assertion se montre de manière analogue  en remarquant que $]-\infty,x]$ décroît vers $\varnothing$ (resp. croît vers $\R$) lorsque $x$ décroît vers $-\infty$ (resp. croît vers $+\infty$).
 
-Pour la réciproque, on se reportera à @Jacod.
+Pour la réciproque, on se reportera au chapitre 7 de @Jacod.
 
 ### Quelques propriétés {.remark}
  Comme $F$ est croissante, elle admet une limite à gauche en chaque point notée $F(x^-)$. En remarquant que $]-\infty,y[\, = \lim\limits_{n \to +\infty}]-\infty,y_n[$ si $y_n$ tend vers $y$ par valeurs décroissantes, on obtient pour $x < y$ : 
@@ -661,7 +667,7 @@ Alors la fonction
     $$ F(x) = \int_{-\infty}^x f(x)\, dx + \sum_{\substack{i\in E \\ i \leq x}} p_i$$
 est une fonction de répartition, et la probabilité associée $\P_X$ n'admet pas de densité et n'est pas non plus discrète. 
 
-La mesure de probabilité associée s'écrit $\P_X = f\lambda + \sum_{i\in E} p_i \delta_i$
+La mesure de probabilité associée s'écrit $\P_X = f\lambda + \sum_{i\in E} p_i \delta_i$ où $\lambda$ est la mesure de Lebesgue
 
 ### Remarques {.remark}
 
@@ -674,6 +680,7 @@ La mesure de probabilité associée s'écrit $\P_X = f\lambda + \sum_{i\in E} p_
 
  2. Une interprétation intuitive de la densité $f$ de $\P$ : si $dx$ est un petit accroissement de la variable $x$, on a (si du moins $f$ est continue en $x$) :
  $$ f(x) \sim \frac{\P([x,x+dx])}{dx}.$$   
+
 
 
 ### Durée de fonctionnement {.exercise .one #ex.expo}
@@ -762,6 +769,31 @@ $$ \P(A\cap B)\P(A^c \cap B^c) = \P(A \cap B^c)\P(A^c\cap B)$$
 Dans un jeu télévisé, vous êtes confrontés au problème suivant : devant vous se trouvent 3 portes fermées. Derrière l'une d'entre elle se trouve une voiture, derrière chacune des deux autres, une chèvre. Vous désignez au hasard l'une d'entre elle. Le présentateur, qui sait où se trouve la voiture, ouvre alors une porte, qui n'est ni celle que vous avez choisie, ni celle qui cache la voiture. Il vous offre alors la possibilité de réviser votre choix. Que choisissez-vous ?
 
 Calculer la probabilité de remporter la voiture selon les deux stratégies (changer ou non son choix de porte).
+
+## Mesure de Probabilité 
+
+Soit $(\Omega,\A,\P)$ un espace probabilisé et $X$ une variable aléatoire réelle définie sur $(\Omega,\A,\P)$ telle que $X \geq 0$ p.s. et $\Esp(X) = \int_\Omega X(\omega) d\P(\omega) = 1$. (on reviendra sur cette définition dans le chapitre suivant).
+
+On définit $Q : \A \to \R$ par $Q(A) = \Esp(X\,1_A) = \int_{\Omega} X(\omega) 1_A(\omega)d\P(\omega)$ pour $A\in \A$.
+
+### Question 1 {.question #mes-proba1}
+Montrer que $Q$ est une mesure de probabilité sur $(\Omega,\A)$.
+
+### Question 2 {.question #mes-proba2}
+Montrer que si $\P(A) = 0$, alors $Q(A) = 0$. Donner un exemple montrant que $Q(A) = 0$ n'implique pas en général que $\P(A) = 0$.
+
+### Question 3 {.question #mes-proba3}
+En notant $\Esp_Q$, l'espérance par rapport à $Q$, montrer que $\Esp_Q(Y) = \int_{\Omega} Y(\omega) Q(d\omega) = \Esp_\P(XY)$ pour toute variable aléatoire réelle $Y$ définie sur $(\Omega,\A,\P)$ positive ou bornée.
+
+### Question 4 {.question #mes-proba4}
+Supposons que $\P(X > 0) = 1$.
+
+   i) Montrer que $\frac{1}{X}$ est intégrable pour $Q$.
+
+   ii) Soit $R : \A \to \R$ telle que $\forall A \in \A\,\, R(A) = \Esp_Q(\frac{1}{X}1_A)$. Montrer que $R$ est exactement la probabilité $\P$.
+
+   iii) Montrer que $Q(A) = 0$ implique $\P(A) = 0$.
+
 
 ## Queues de distributions
 
@@ -963,6 +995,42 @@ En effet $\P(B|A^c) = 1$ car si la porte choisie initialement n'est pas la bonne
 
 Il convient donc de changer son choix compte tenu de la nouvelle information. 
 Pour se convaincre du résultat, on peut refaire le calcul avec disons 100 portes et le présentateur qui ouvre 98 autres portes après le choix du candidat.
+
+## Mesure de Probabilité 
+
+### Question 1 {.answer #answer-mes-proba1}
+On vérifie facilement les axiomes :
+
+   - dans $[0,1]$
+   - $Q(\Omega)= 1$
+   - la $\sigma$-additivité s'obtient en décomposant l'intégrale sur des $A_n$ disjoints
+
+### Question 2 {.answer #answer-mes-proba2}
+
+Si $\P(A)=0$, alors $Q(A) = \int_{\Omega} X(\omega) 1_A(\omega)\P(d\omega) = \int_{A} X(\omega)\P(d\omega) = 0$ car on intègre $X$ sur $A$ $\P$-négligeable.
+
+contre-exemple : $(\Omega,\A,\P) = (\R,\B(\R),\P)$ avec $\P$ symétrique et qui charge tout $\R$ (la loi normale centrée réduite par exemple) et $X \sim \mathcal{B}_{1/2}$ (loi de Bernoulli), définie telle que $X(\omega) = 0$ si $\omega \in ]-\infty,0] = A$. On a alors $\P(A) = 1/2$, $Q(A) = 0$ et on vérifie bien les hypothèses.
+
+### Question 3 {.answer #answer-mes-proba3}
+
+$Y$ positive ou bornée donc $\Esp_Q(Y)$ est bien définie.
+
+$\Esp_Q(Y) = \int_{\Omega} Y(\omega) Q(d\omega) = \int_{\Omega} Y(\omega) X(\omega) \P(d\omega) = \Esp_\P(XY)$
+
+### Question 4 {.answer #answer-mes-proba4}
+
+i) $\P(X > 0) = 1$, donc $\exists N \in \A$ tq $\P(N) = 0$ et $\forall \, \omega \in N^c,~ X(\omega) > 0$ 
+
+    Par conséquent, d'après la q.3
+
+    $$\Esp_Q\left(\frac{1}{X}\right) = \int_{N^c} \frac{1}{X(\omega)}X(\omega) \P(d\omega) = 1$$
+
+ii) Soit $A \in \A$, on a $R(A) = \Esp_Q(\frac{1}{X}1_A) = \int_{A \cap N^c} \frac{1}{X(\omega)}X(\omega) \P(d\omega) = \P(A)$
+
+
+iii) On a $\forall \omega \in N^c, ~ X(\omega) > 0$ et donc $1_{A \cap N^c}(\omega)\,X(\omega) \geq 0$. Par conséquent, si $Q(A\cap N^c) = 0$, alors $\Esp_Q(A\cap N^c) = \int_{A \cap N^c} X(\omega) \P(d\omega) = 0$ ce qui n'a lieu que si $\P(A\cap N^c) = 0$.
+
+Enfin $A \cap N \subset N$ et $\P(N) = 0$ d'où $\P(A \cap N) = 0$
 
 
 ## Queues de distributions

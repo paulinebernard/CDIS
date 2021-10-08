@@ -372,8 +372,7 @@ $$\P(X \in A, Y \in B) = \P(X \in A)\P(Y \in B)$$
 ### {.anonymous}
 En terme de mesure de probabilité, cette égalité s'écrit
 $$\P_{(X,Y)}(A \times B) = \P_X(A)\P_Y(B) = (\P_X \otimes \P_Y) (A \times B).$$
-Autrement dit, $X$ et $Y$ sont indépendantes ssi la mesure de probabilité du couple $(X,Y)$ est la mesure produit de $P_X$ et $P_Y$ dont l'existence et l'unicité est garantie par le théorème III.6.9 du cours de calcul intégral.
-
+Autrement dit, $X$ et $Y$ sont indépendantes si et seulement si la mesure de probabilité du couple $(X,Y)$ est la mesure produit $P_X \otimes P_Y$ dont l'existence et l'unicité sont garanties par le théorème III.6.9 du cours de calcul intégral.
 
 Cette définition se traduit dans le cas à densité dans la proposition suivante que l'on énonce sans perte de généralité pour un couple de variables aléatoires.
 
