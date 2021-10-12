@@ -101,12 +101,12 @@ On note $\L^1$ l'ensemble de toutes les variables réelles $X$ intégrables. Les
 <!-- ### Rappel : cas discret {.remark}
 Dans le cas d'une variable aléatoire discrète $Y$ à valeurs dans $\N^\ast$, son espérance est définie par la quantité $\Esp(Y) = \sum_{i\in\N^\ast} i\P(Y=i)$, pourvu que celle-ci soit finie. On voit immédiatement que les propriétés ci-dessus sont également vérifiées. -->
 
-### {.anonymous}
+### {.post}
 
 Outre l'espace $\L^1$, nous pouvons définir l'espace $\L^2$ des variables aléatoires réelles dont le carré $X^2$ est dans $\L^1$.
 
 ### Variance {.definition #defvar}
-La variable aléatoire $X : \Omega \to \R$ de densité loi $\P_X$ est dite *de carré intégrable*  si $\Esp(X^2) = \int_{\R} x^2 \P_X(dx) = \int_{\Omega} X^2(\omega)\P(d\omega) < +\infty$. Sa *variance* est définie par
+La variable aléatoire $X : \Omega \to \R$ de loi $\P_X$ est dite *de carré intégrable*  si $\Esp(X^2) = \int_{\R} x^2 \P_X(dx) = \int_{\Omega} X^2(\omega)\P(d\omega) < +\infty$. Sa *variance* est définie par
         $$\V(X) = \Esp((X-\Esp(X))^2)$$
 
 Si la variable aléatoire $X$ admet une densité $f$ par rapport à la mesure de Lebesgue, elle sera *de carré intégrable* si $\Esp(X^2) = \int_\R x^2 f(x)dx$ est définie, autrement dit si le produit $x^2 f(x)$ est intégrable par rapport à la mesure de Lebesgue.
@@ -285,7 +285,109 @@ Il existe des variables aléatoires qui n’ont pas d’espérance, comme le mon
 
 Un gyrophare envoie un flash lumineux dans une direction aléatoire uniforme d’angle $\theta$. On cherche la distribution de l'abscisse $X$ du point d'impact du rayon lumineux sur un écran plan infini situé à distance 1 du gyrophare. Donner la densité de $X$. Calculer son espérance.
 
-# Vecteurs aléatoires à densité
+# Compléments sur les intégrales multiples
+
+Dans la suite, nous aurons besoin de quelques résultats supplémentaires à propos des intégrales multiples que nous donnons ici sans démonstration.
+
+### Théorème de Fubini (pour les probabilités) {.theorem #fubiniproba} 
+Soient $\P_X$ et $\P_Y$ deux probabilités définies respectivement sur $(\R^n, \B(\R^n))$ et $(\R^m, \B(\R^m))$.
+
+1. Soient $A \in \B(\R^n)$ et $B \in \B(\R^m)$, alors
+   $$\P(A \times B) = \P_X(A)\P_Y(B)$$
+   définit de manière unique une probabilité sur $(\R^{n+m}, \B(\R^{n+m}))$ (que l'on note  aussi $\P_X \otimes \P_Y$).
+2. Soit $f$ une fonction $\B(\R^{n+m})$-mesurable positive ou $\P_X \otimes \P_Y$-intégrable, alors la fonction $x \mapsto \int f(x, y)\P_Y(dy)$ est $\B(\R^{n})$-mesurable, la fonction $y \mapsto \int f (x, y) \P_X(dx)$ est $\B(\R^m)$-mesurable et
+$$\int f d\P_X\otimes\P_Y = \int \left(\int f(x,y) \P_Y(dy) \right) \P_X(dx) = \int \left(\int f(x,y) \P_X(dx) \right) \P_Y(dy)$$
+
+### Calcul de l'aire d'un triangle {.exercise .question .one #triangle}
+Considérons le triangle 
+$$
+T = \{(x, y) \in \R^2 \; | \; x \geq 0, \, y \geq 0 \mbox{ et } x + y \leq  1\}.
+$$
+En supposant  l'intégrale ci-dessous bien définie, calculer :
+$$
+a(T) = \int_{\R^2} 1_T(x, y) \, dxdy.
+$$
+
+### Contre-exemple {.exercise .question .two #fubini-counter-example}
+Comparer les valeurs des intégrales multiples
+$$
+\int_0^1 \left[\int_0^1 \frac{x^2 - y^2}{(x^2+y^2)^2} \, dx \right] \, dy
+\; \mbox{ et } \;
+\int_0^1 \left[\int_0^1 \frac{x^2 - y^2}{(x^2+y^2)^2} \, dy \right] \, dx,
+$$
+puis expliquer le résultat.
+Indication : on remarquera que
+$$
+\frac{x^2 - y^2}{(x^2+y^2)^2} = \frac{\partial}{\partial x} \left(-\frac{x}{x^2+y^2}\right) 
+$$
+<!--
+ =
+-\frac{\partial}{\partial x} \left(\frac{\partial}{\partial y} \arctan \frac{y}{x} \right).
+$$
+-->
+
+### {.ante .post .remark}
+Pour pouvoir appliquer le théorème de Fubini, il faut savoir 
+a priori que la fonction est intégrable et pas seulement que ses intégrales
+multiples sont bien définies (cf. ["Contre-exemple" ci-dessus](#fubini-counter-example)). 
+Si la fonction est à valeurs positives toutefois, l'examen de ses intégrales multiples permet de s'assurer de l'intégrabilité ;
+c'est le théorème de Fubini-Tonelli vu dans le cours de calcul intégral.
+
+Autrement dit, en pratique, on appliquera Fubini-Tonelli à la valeur absolue de la fonction pour vérifier que celle-ci est intégrable, puis Fubini, s'il est applicable, pour effectuer le calcul de l'intégrale.
+
+### Changement de variables {.theorem #theorem-changement-de-variables}
+Soient $D_1$ et $D_2$ des ouverts de $\mathbb{R}^n$ et 
+$h: D_1 \to D_2$ un $C^1$-difféomorphisme de $D_1$ sur $D_2$ :
+une fonction continûment différentiable et bijective
+dont l'inverse $h^{-1}: D_2 \to D_1$ est également continûment différentiable. 
+La matrice jacobienne associée à la différentielle de $h$ étant notée $J_h$,
+la fonction $f: D_2 \to \mathbb{R}$ est intégrable
+si et seulement si la fonction $(f \circ h) |\det J_h| : D_1 \to \mathbb{R}$ 
+est intégrable et dans ce cas,
+$$
+\int_{D_2} f(y) \, dy = \int_{D_1} f(h(x)) |\det J_h(x)| \, dx.
+$$
+
+![Changement de variables](images/changement-de-variables.svg)
+
+### Homothétie {.exercise .question .one #h}
+Soit $f:\R^n \to \R$ une fonction intégrable. Montrer que pour tout
+coefficient $\alpha > 0$, l'intégrale
+$$
+\int_{\R^n} f(\alpha x) dx
+$$
+est bien définie et la calculer en fonction de l'intégrale de $f$ sur $\R^n$.
+
+### Volume et translation {.exercise .question .one #vr}
+Montrer que si $A$ est mesurable et de volume fini dans $\R^3$
+l'image de $A$ par une translation est également mesurable et de même volume.
+
+### Coordonnées polaires {.exercise .question .two #cp}
+Soit 
+$$
+C = \{(x, y) \in \R^2 \; | \; y \neq 0 \mbox{ ou } x > 0\}
+\; \mbox{ et } \;
+P = \{(r,\theta) \in \R^2 \; | \; r>0 \mbox{ et } -\pi < \theta < \pi\}.$$ 
+On note $h$ la fonction de $P$ dans $C$ définie par
+$h(r, \theta) = (r \cos \theta, r \sin \theta)$.
+Montrer que pour toute fonction $f: C \to \R$ intégrable, si l'on pose
+$g(r,\theta) = f(x, y)$ où $(x, y) = h(r,\theta)$, alors
+$$
+\int_{C} f(x, y) \, d(x,y) = \int_{P} g(r,\theta)  r \, d(r, \theta).
+$$
+
+
+### Absence du déterminant jacobien {.exercise .question .two #adj}
+Supposons $D_1$, $D_2$, $h$ et $f$ conformes aux hypothèses [du théorème de 
+changement de variables](#theorem-changement-de-variables). On suppose 
+de plus que $f \circ h$ est intégrable sur $D_1$. Exprimer l'intégrale
+$$
+\int_{D_1} f (h(x)) \, dx
+$$
+comme une intégrale sur $D_2$.
+
+
+# Vecteurs aléatoires
 Nous allons généraliser ici la notion de variable aléatoire en considérant qu'elle peut prendre ses valeurs dans $\R^n$. Les vecteurs aléatoires se rencontrent naturellement lorsqu'on s'intéresse à plusieurs quantités conjointement, par exemple dans le cas de la météo, la température, la pluviométrie et la vitesse et la direction du vent.
 
 ## Définitions
@@ -321,7 +423,7 @@ Les fonctions $f_X$ et $f_Y$ s'appellent les *densités marginales* de $f$.
 ### Démonstration {.prooof}
 Pour tout $x \in \R$, on a par définition
 $$ \P(X \leq x) = \P(Z \in ]-\infty,x] \times \R) = \Esp(1_{]-\infty,x] \times \R}(Z)) = \int_{-\infty}^x du \left(\int_\R f(u,v) dv\right),$$
-où l'on a utilisé le [théorème de Fubini](Calcul Intégral III.pdf #Fubini) pour $1_{]-\infty,x] \times \R}(u,v)f(u,v)$ intégrable.
+où l'on a utilisé le théorème de Fubini-Tonelli pour $1_{]-\infty,x] \times \R}(u,v)f(u,v)$ qui est bien positive.
 Donc si $f_X$ est définie par $f_X(x) = \int_\R f(x,y) dy$, on obtient que $\P(X \leq x) = \int_{-\infty}^x f_X(u) du$, ce qui montre que $f_X$ est la densité de $X$. Le raisonnement est analogue pour $Y$.
 
 ### Réciproque ? {.remark}
@@ -370,9 +472,9 @@ Les vecteurs aléatoires $X$ et $Y$ sont *indépendants* si pour tous ensembles 
 $$\P(X \in A, Y \in B) = \P(X \in A)\P(Y \in B)$$
 
 ### {.anonymous}
-En terme de mesure de probabilité, cette égalité s'écrit
+En termes de mesures de probabilité, cette égalité s'écrit
 $$\P_{(X,Y)}(A \times B) = \P_X(A)\P_Y(B) = (\P_X \otimes \P_Y) (A \times B).$$
-Autrement dit, $X$ et $Y$ sont indépendantes si et seulement si la mesure de probabilité du couple $(X,Y)$ est la mesure produit $P_X \otimes P_Y$ dont l'existence et l'unicité sont garanties par le théorème III.6.9 du cours de calcul intégral.
+Autrement dit, $X$ et $Y$ sont indépendantes si et seulement si la mesure de probabilité du couple $(X,Y)$ est la mesure produit $P_X \otimes P_Y$ dont l'existence et l'unicité sont garanties par le théorème de [Fubini](#fubiniproba).
 
 Cette définition se traduit dans le cas à densité dans la proposition suivante que l'on énonce sans perte de généralité pour un couple de variables aléatoires.
 
@@ -388,7 +490,7 @@ ce qui montre que $\P_Z$ vérifie la [définition d'un vecteur aléatoire à den
 
 Inversement, si $f_Z=f_X f_Y$, on a pour tous $A$, $B$ de $\B({\R})$
 $$\P(X\in A, Y\in B) = \int_A \int_B f_X(x) f_Y(y) dxdy = \P(X \in A)\P(Y \in B)$$ 
-où on a utilisé le théorème de Fubini-Tonnelli.
+où on a utilisé le théorème de Fubini-Tonelli.
 
 
 ### Lancer de fléchette (suite) {.exercise .question .one #exo-flechettebis}
@@ -413,7 +515,7 @@ La première assertion est évidente par définition de l'indépendance. Par ail
 \end{align*}
 
 ### Cas général {.remark}
-Ce résultat est encore valable dans le cas général (sans densité).
+Ce résultat est encore valable dans le cas général (sans densité). Il suffit de remplacer $f_{(X,Y)}(x,y) dx dy$ par $d\P_{X,Y}(x,y) = d\P_X(x)d\P_Y(y)$ dans la démonstration précédente.
 
 
 On déduit de ce résultat et de la [définition de la covariance](#defcov) que :
@@ -484,7 +586,7 @@ Dans le cas des vecteurs aléatoires, l'idée est la même. Soit $X = (X_1,\ldot
         $$ \int_A h\circ g (x) f_X(x) dx = \int_B h(y) f_X \circ g^{-1}(y) \frac{1}{|\det J_g (g^{-1}(y))|} dy,$$ 
     où $J_g$ désigne la matrice de Jacobi associée à la différentielle de $g$. Dans le cas où $f_X(x) = 0$ en dehors de $A$, on obtient que $Y$ admet la densité
         $$ f_Y(y) = 1_B(y)f_X \circ g^{-1}(y)\frac{1}{|\det J_g (g^{-1}(y))|}.$$
-    Lorsque $g$ est simplement continûment différentiable, il existe souvent une partition finie $(A_i)_{1\leq i \leq n}$ de l'ensemble $\{x ; f(x) >0\}$, telle que $g$ soit injective sur chaque $A_i$. On note alors $B_i = g(A_i)$ l'image de $A_i$ par $g$. On découpe alors l'intégrale selon les $A_i$, on applique la formule précédente à chaque morceau et on somme pour obtenir :
+    Lorsque $g$ est simplement continûment différentiable, il existe souvent une partition finie $(A_i)_{1\leq i \leq n}$ de l'ensemble $\{x ; f(x) >0\}$, telle que $g$ soit bijective sur chaque $A_i$. On note alors $B_i = g(A_i)$ l'image de $A_i$ par $g$. On découpe alors l'intégrale selon les $A_i$, on applique la formule précédente à chaque morceau et on somme pour obtenir :
         $$ f_Y(y) = \sum_{i=1}^n 1_{B_i}(y)f_X \circ g^{-1}(y) \frac{1}{|\det J_g (g^{-1}(y))|},$$
     où $g^{-1}$ est bien définie sur chaque $B_i$ comme image réciproque de la restriction de g à $A_i$.
  3. $m < n$, on commence par "compléter" $Y$, en essayant de construire une application $g'$ de $\R^n$ dans $\R^n$ dont les $m$ premières composantes coïncident avec les composantes de $g$ et pour laquelle on peut appliquer l'une des deux formules précédentes. On obtient ainsi la densité $f_Y'$ de $Y' = g'(X)$ puis     on obtient la densité de $Y$ en calculant sa loi marginale :
@@ -766,6 +868,158 @@ $F$ est de classe $C^1$ de dérivée
         $$f(x) = \frac{1}{\pi(1+x^2)}, x \in \R$$
 
 C'est la densité de la loi de Cauchy. Une variable aléatoire $X$ de loi de Cauchy n'admet pas d'espérance. En effet, $\frac{x}{\pi(1+x^2)} \sim_{x\to \infty} \frac{1}{x}$ n'est pas intégrable.
+
+### Calcul de l'aire d'un triangle {.answer #answer-triangle}
+Si la fonction $1_D$ est intégrable, alors 
+[le théorème de Fubini est applicable](#Fubini).
+On a donc
+$$
+a(T) = \int_{\R}\left[ \int_{\R} 1_T(x, y) \, dx \right] \, dy.
+$$
+Or, si $0 \leq y \leq 1$, 
+$$
+1_T(x, y) = \left| 
+\begin{array}{rl}
+1 & \mbox{si $0 \leq x \leq 1-y$,} \\
+0 & \mbox{sinon.}
+\end{array}
+\right.
+$$
+et dans le cas contraire, $1_T(x, y) = 0$. On a donc
+$$
+a(T) = \int_0^1\left[ \int_0^{1-y} dx \right] \, dy
+=\int_0^1 (1 - y) \, dy= \left[y - \frac{y^2}{2} \right]_0^1 = \frac{1}{2}.
+$$
+
+### Contre-exemple {.answer .two #answer-fubini-counter-example}
+Pour tout $y \in \left]0,1\right]$ (et donc presque tout $y \in [0, 1]$), on a 
+$$
+\int_0^1 \frac{x^2 - y^2}{(x^2+y^2)^2} \, dx 
+= 
+\left[x \mapsto - \frac{x}{x^2+y^2} \right]_0^1
+= 
+- \frac{1}{1+y^2},
+$$
+par conséquent
+$$
+\int_0^1 \left[ \int_0^1 \frac{x^2 - y^2}{(x^2+y^2)^2} \, dx \right] \, dy
+= - \int_0^1 \frac{dy}{1+y^2} \\
+= - [y \mapsto \arctan y]_0^1
+= - \frac{\pi}{4}.
+$$
+En exploitant la relation
+$$
+\frac{x^2 - y^2}{(x^2+y^2)^2} = \frac{\partial}{\partial y} \left(\frac{y}{x^2+y^2}\right) 
+$$
+on établit de façon similaire que
+$$
+\int_0^1 \left[ \int_0^1 \frac{x^2 - y^2}{(x^2+y^2)^2} \, dy \right] \, dx
+= \frac{\pi}{4}.
+$$
+
+Or, si [le théorème de Fubini](#fubiniproba) était applicable, on pourrait
+intervertir l'ordre d'intégration des variables sans changer le résultat.
+Comme cela n'est pas le cas, on en déduit que l'hypothèse exigée par le théorème
+de Fubini ne tient pas : la fonction
+$$
+(x, y) \in [0,1] \times [0,1] \mapsto \frac{x^2 - y^2}{(x^2+y^2)^2}
+$$
+n'est pas intégrable.
+
+### Homothétie {.answer #answer-h}
+Si l'on pose $D_1 = \R^n$, $D_2 = \R^n$, l'application $h:D_1 \to D_2$ 
+définie par $h(x) = \alpha x$ est un $C^1$-difféomorphisme.
+De plus, on a 
+$$
+|\det J_{h}(x)| = \left|\det \left[
+  \begin{array}{cccc}
+  \alpha & 0  & \cdots & 0 \\
+  0 & \alpha & \dots & 0 \\
+  \vdots & \vdots & \vdots & \vdots \\
+  0 & 0 & \dots & \alpha
+  \end{array} \right] \right|  = |\alpha^n| = \alpha^n.
+$$
+Par conséquent, le [théorème de 
+changement de variables](#theorem-changement-de-variables) fournit
+$$
+\int_{\R^n} f(y) \, dy = \int_{\R^n} f(\alpha x) \alpha^n \, dx,
+$$
+soit 
+$$
+\int_{\R^n} f(\alpha x) \, dx = \frac{1}{\alpha^n} \int_{\R^n} f(y) \, dy.
+$$
+
+### Volume et translation {.answer #answer-vr}
+L'ensemble $A$ mesurable et de volume fini a une fonction caractéristique
+$1_A$ intégrable et
+$$
+\lambda(A) = \int 1_A(x) \, dx.
+$$
+Soit $h(x) = x - u$ ou $u \in \R^3$. La fonction $h$ est une bijection de 
+$\R^3$ sur lui-même, continûment différentiable ainsi que son inverse,
+$h^{-1}(x) =  x + u$ et $J_h(x) = I$, donc $\det J_h(x) = 1$.
+Par [le théorème de changement de variables](#theorem-changement-de-variables),
+la fonction $1_{h^{-1}(A)} = 1_{A} \circ h$ est donc intégrable sur $\R^3$ et
+$$
+\int 1_{h^{-1}(A)}\, dx = \int_{\R^3} (1_A \circ h) |\det J_h(x)| \, dx = \int_{\R^3} 1_A(x) \, dx = \lambda(A).
+$$
+L'ensemble translaté $A + u = h^{-1}(A)$ est donc mesurable, de volume fini égal
+au volume de $A$.
+<!--
+Le cas des rotations est traité de façon similaire. Le point clé est de constater
+que comme une rotation $R \in \R^{3 \times 3}$ est orthogonale et directe, on a 
+$\det R = 1$, ce qui permet de calculer le changement de variables comme précédemment.
+-->
+
+
+### Coordonnées polaires {.answer #answer-cp}
+Les ensembles $P$ et $C$ sont ouverts et la fonction $h$ -- qui permet de
+passer des coordonnées polaires aux coordonnées cartésiennes -- est une bijection
+de $P$ dans $C$. Elle est continûment différentiable ;
+sa matrice jacobienne en $(r, \theta)$ vaut
+$$
+J_{h}(r, \theta) = 
+\left[ 
+\begin{array}{cr}
+\cos \theta & -r \sin \theta \\
+\sin \theta & r \cos \theta
+\end{array}
+\right],
+$$
+et son déterminant satisfait
+$$
+\det J_{h}(r, \theta) = (\cos \theta)(r \cos \theta) - (\sin \theta)(-r\sin \theta)
+= r > 0.
+$$
+Le jacobien est donc inversible et $h^{-1}$ est continûment différentiable par
+le théorème d'inversion locale. On peut donc appliquer [le théorème de 
+changement de variables](#theorem-changement-de-variables) à la fonction
+$f$, ce qui fournit
+\begin{align*}
+\int_C f(x, y) \, d(x, y) &= \int_P f(h(r, \theta)) |\det J_h(r,\theta)| d(r,\theta) \\
+&= \int_P g(r, \theta)  r \, d(r,\theta).
+\end{align*}
+
+### Absence du déterminant jacobien {.answer #answer-adj}
+La façon la plus rapide de procéder consiste à considérer que $f \circ h$
+joue le rôle de $f$ dans [le théorème de changement de variables](#theorem-changement-de-variables),
+que $h$ dans notre énoncé désigne $h^{-1}$ dans ce théorème et que les rôles
+de $D_1$ et $D_2$ sont intervertis. Une fois que l'on a permuté ces notations,
+on réalise que l'intégrale que l'on souhaite calculer est le membre de 
+gauche de l'équation du théorème de changement de variables, dont toutes
+les hypothèses sont par ailleurs satisfaites. Par conséquent on a 
+$$
+\int_{D_1} f (h(x)) \, dx = \int_{D_2} (f \circ h)(h^{-1}(y)) |\det J_{h^{-1}}(y)| \, dy.
+$$
+On peut simplifier $(f \circ h)(h^{-1}(y))$ en $f(y)$ et éventuellement exprimer le
+jacobien de $h^{-1}$ en fonction du jacobien de $h$ : $J_{h^{-1}}(y) = [J_{h}(h^{-1}(y))]^{-1}$ ;
+on obtient donc
+$$
+\int_{D_1} f (h(x)) \, dx = 
+\int_{D_2} f(y) |\det J_{h^{-1}}(y)| \, dy = 
+\int_{D_2} f(y) \frac{1}{|\det J_{h}(h^{-1}(y))|} \, dy.
+$$
+
 
 ### Lancer de fléchette {.answer #answer-exo-flechette}
 
