@@ -1099,22 +1099,9 @@ alors il l'est globalement et 0 est stable.
 
 
 
-## Contrôle d'un système {.exercice #exo_cont_lin}
-Soit le système décrit par
-$$
-\dot{x} = x + u(t)
-$$
-où $t\mapsto u(t)$ est une entrée à choisir.
+## Stabilisation d'un système dynamique {.exercice #exo_cont_lin}
 
-### Question 1 {.question #cont-lin-1}
-Comment se comporte le système si $u\equiv 0$ ?
-
-### Question 2 {.question #cont-lin-2}
-Si on mesure $t\mapsto x(t)$, comment choisir $u$ pour rendre 0 globalement asymptotiquement stable ?
-
-### 
-
-Plus généralement, considérons un système du type
+Considérons un système du type
 $$
 \begin{array}{rcl}
 \dot{x}_1 &=& x_2 \\
@@ -1124,11 +1111,19 @@ $$
 \dot{x}_n &=& \phi(x) + u(t)
 \end{array}
 $$
-avec $\phi:\R^n \to \R$ continue et $u:\R \to \R$ à choisir. 
+avec $\phi:\R^n \to \R$ continue et $u:\R \to \R$ une entrée. On aimerait choisir $u$ pour rendre un point $x^*\in \R^n$ globalement asymptotiquement stable.
 
-### Question 3 {.question #cont-lin-3}
+### Question 1 {.question #cont-lin-1} 
 
-Si on mesure $t\mapsto x(t)$, montrer que l'on peut toujours choisir $t\mapsto u(t)$ pour rendre 0 globalement asymptotiquement stable.
+Que doit vérifier $x^*$ pour qu'il puisse être un point d'équilibre ? Quelle est la commande $u^*$ associée ?
+
+### Question 2 {.question #cont-lin-2} 
+
+Si on mesure $t\mapsto x(t)$, montrer que l'on peut alors toujours choisir $t\mapsto u(t)$ pour rendre $x^*$ globalement asymptotiquement stable.
+
+### Question 3 {.question #cont-lin-3} 
+
+Comment faire si l'on veut maintenant faire suivre au système une trajectoire de référence $t\mapsto x_r(t)$ ?
 
 
 Solutions
@@ -1687,20 +1682,29 @@ On conclut que pour des conditions initiales suffisamment petites ($\eta <\frac{
 
 ## Contrôle d'un système {.correction #correc_cont_lin}
 
+La dynamique du système est de la forme $\dot{x} = f(x,u)$.
+
 ### Question 1 {.answer #answer-cont-lin-1}
-Si $u\equiv 0$, les solutions sont $x(t) = e^t x_0$ donc le point d'équilibre 0 est instable et les solutions divergent. 
+Pour que $x^*$ soit point d'équilibre avec la  commande $u^*$, il faut $f(x^*,u^*)=0$, soit $x_2^*=x_3^*=\ldots=x_n^*=0$ et $u^* = -\phi(x_1^*,0,\ldots,0)$.
 
 ### Question 2 {.answer #answer-cont-lin-2}
-Si l'on mesure $x(t)$, on peut prendre $u(t) = - kx(t)$, ce qui donne
+L'idée est de se placer autour de $x^*$ et donc considérer l'erreur $e = x-x^*$ que l'on souhaite stabiliser à 0. On constate alors que 
 $$
-\dot{x} = -(k-1) x
+\begin{array}{rcl}
+\dot{e}_1 &=& e_2 \\
+\dot{e}_2 &=& e_3 \\
+&\vdots&\\
+\dot{e}_{n-1} &=& e_n \\
+\dot{e}_n &=& \phi(x) + u(t)
+\end{array}
 $$
-pour lequel 0 est globalement asymptotiquement stable si $k>1$.
-
-### Question 3 {.answer #answer-cont-lin-3}
-Prenons $u(t) = -k_1 x_1(t) - k_2 x_2(t) - \ldots - k_n x_n(t)$. Alors le système devient 
+Si l'on mesure $x(t)$, on peut prendre 
 $$
-\dot{x} = A x
+u(t) = -\phi(x(t)) -k_1 e_1(t) - k_2 e_2(t) - \ldots - k_n e_n(t)
+$$
+ce qui donne
+$$
+\dot{e} = A e
 $$
 avec $A$ de la forme
 $$
@@ -1718,7 +1722,31 @@ qui admet pour polynôme caractéristique
 $$
 s^n + k_1 s^{n-1} + \ldots + k_2 s + k_1\ .
 $$
-Il suffit donc de choisir les coefficients $k_i$ tels que ce polynôme ait ses racines à partie réelle strictement négative. Ces dernières peuvent d'ailleurs être choisies à souhait.
+Il suffit donc de choisir les coefficients $k_i$ tels que ce polynôme ait ses racines à partie réelle strictement négative pour que $e=0$ soit globalement asymptotiquement stable. En d'autres termes, on prend 
+$$
+u(t) = -\phi(x(t)) -k_1 (x_1(t)-x_1^*) - k_2 x_2(t) - \ldots - k_n x_n(t)
+$$
+c'est-à-dire on corrige le système en fonction de la distance à $x^*$. Il s'agit d'un feedback, ou retour d'état en français.
+
+
+### Question 3 {.answer #answer-cont-lin-3}
+
+Si l'on voulait stabiliser une trajectoire $t\mapsto x_r(t)$, il faudrait d'abord que cette trajectoire soit admissible, c'est-à-dire, qu'elle soit solution de $\dot{x}_r=f(x_r,u_r)$ pour une certaine commande de référence $u_r$. Dans ce cas, on remarque que  $e = x-x_r$ vérifie 
+$$
+\begin{array}{rcl}
+\dot{e}_1 &=& e_2 \\
+\dot{e}_2 &=& e_3 \\
+&\vdots&\\
+\dot{e}_{n-1} &=& e_n \\
+\dot{e}_n &=& \phi(x) + u(t) - \dot x_{r,n}
+\end{array}
+$$
+et donc similairement, on prendrait
+$$
+u(t) = \dot x_{r,n}-\phi(x(t)) -k_1 (x_1(t)-x_{r,1}(t)) - k_2 (x_2(t) -x_{r,2}(t)) - \ldots - k_n (x_n(t)-x_{r,n}(t)) \ .
+$$
+
+
 
 Annexes 
 =========================================================================
