@@ -36,7 +36,7 @@ Ce cours est une introduction à l'étude non linéaire des équations différen
 
 - savoir réduire une équation différentielle à l'ordre 1.
 
-- savoir justifier l'existence de solutions par le théorème de Peano lorsque "$f$ est continue"
+- savoir justifier l'existence de solutions par le théorème de Peano lorsque "$f$ est continue".
 
 - comprendre la notion de solution maximale et savoir qu'elles sont définies tant qu'elles "n'explosent" pas et tant qu'elles n'atteignent pas la frontière du domaine où l'équation différentielle est définie. Savoir justifier qu'une solution est globale si ces éventualités ne peuvent se réaliser en temps fini et/ou en faisant appel au critère "linéairement borné".
 
@@ -234,7 +234,7 @@ Soient $n\in \N^*$, $J$ ouvert de $\R$, $X$ ouvert de $\R^{n}$ et $f:J\times X \
 $$
 \dot{x} = f(t,x)
 $$
-si $x$ est continue sur $I$ avec $x(t)\in X$ pour tout $t\in I$, et de classe $C^1$ sur $\mathring{\overline{I}}$ avec $\dot{x}(t) = f(t,x(t))$ pour tout $t\in \mathring{\overline{I}}$.
+si $x$ est continue sur $I$ avec $x(t)\in X$ pour tout $t\in I$, et de classe $C^1$ sur $\mathring{I}$ avec $\dot{x}(t) = f(t,x(t))$ pour tout $t\in \mathring{I}$.
 
 L'équation différentielle est dite *autonome* si l'application $f$ ne dépend pas de $t$. Dans ce cas, on peut aussi définir directement $f: X \to \R^n$. 
 
@@ -274,15 +274,15 @@ $$
 Notons que cette caractérisation n'aurait pas été possible si l'on avait gardé une équation différentielle d'ordre $p>1$.
 
 ### Démonstration {.proof} 
-Supposons $x\in S_f(t_0,x_0)$. Alors $x: I\to \R^n$ est de classe $C^1$ sur $\mathring{\overline{I}}$, et pour tout $t\in I$,
+Supposons $x\in S_f(t_0,x_0)$. Alors $x: I\to \R^n$ est de classe $C^1$ sur $\mathring{I}$, et pour tout $t\in I$,
 $$
 x_0 + \int_{t_0}^t f(s,x(s))ds = x(t_0)  + \int_{t_0}^t \dot{x}(s) ds = x(t) \ .
 $$
-Réciproquement, si $x$ vérifie l'équation intégrale sur $I\subset J$, $x(t_0)=x_0$, et puisque $f$ est continue sur $I\times X$, $x$ est de classe $C^1$ sur $I$ et par dérivation, $\dot{x}(t)=f(t,x(t))$ pour tout $t\in I$.
+Réciproquement, si $x$ vérifie l'équation intégrale sur $I\subset J$, $x(t_0)=x_0$, et puisque $f$ est continue sur $I\times X$ et $x$ continue sur $I$, $x$ est de classe $C^1$ sur $I$ et par dérivation, $\dot{x}(t)=f(t,x(t))$ pour tout $t\in I$.
 
 ### Classe plus générale de solutions {.remark}
 
-La définition sous forme intégrale des solutions montre que la recherche de solutions $C^1$ et l'hypothèse de continuité de $f$ pourraient être relachées : il suffirait de pouvoir définir l'objet $\int_{t_0}^t f(s,x(s))ds$. Mais il est tout de même souhaitable d'assurer un minimum de propriétés telles que l'existence de solutions, comme nous allons le voir dans la section suivante.
+La définition sous forme intégrale des solutions montre que la recherche de solutions $C^1$ et l'hypothèse de continuité de $f$ pourraient être relachées : il suffirait de chercher $x$ absolument continue et pouvoir définir l'objet $\int_{t_0}^t f(s,x(s))ds$. Mais il est tout de même souhaitable d'assurer un minimum de propriétés telles que l'existence de solutions, comme nous allons le voir dans la section suivante.
 
 
 ### Portrait de phase   
@@ -322,14 +322,14 @@ L'existence de solutions $C^1$ est garantie lorsque $f$ est continue. Il s'avèr
 Domaine d'existence des solutions
 --------------------------------
 
-Nous venons de voir que des solutions locales au problème de Cauchy existent si $f$ est continue. Nous savons qu'elles sont définies *au moins un certain temps*, mais il est intéressant de se demander quel est l'intervalle de temps *maximal* sur lequel elles peuvent être définies. En d'autre terme, on s'intéresse aux *solutions maximales*.
+Nous venons de voir que des solutions locales au problème de Cauchy existent si $f$ est continue. Nous savons qu'elles sont définies *au moins un certain temps*, mais il est intéressant de se demander quel est l'intervalle de temps *maximal* sur lequel elles peuvent être définies. En d'autres termes, on s'intéresse aux *solutions maximales*.
 
 ### Solution maximale {.definition #def_sol_max}
 Soient $J$ ouvert de $\R$, $X$ ouvert de $\R^{n}$, $f: J\times X \to \R^n$ continue. On dit que $x : I \to\R^n$ est une solution *maximale* de l'équation différentielle 
 $$
 \dot{x}=f(t,x)
 $$
-si elle n'est pas *prolongeable* en une solution définie plus longtemps dans $J\times X$. En d'autres termes, il n'existe pas de solution $x' : I'\to\R^n$ avec $I'\supsetneq I$ et $x=x'$ sur $I$.
+si elle n'est pas *prolongeable* en une solution définie plus longtemps dans $J\times X$. En d'autres termes, il n'existe pas de solution $x' : I'\to\R^n$ avec $I$ strictement inclus dans $I'$ et telle que $x=x'$ sur $I$.
 
 <!--
 Dans la section précédente, nous avons vu que lorsque $f$ est $C^1$ par rapport à $x$, la solution maximale au problème de Cauchy (qui est alors unique) est définie sur un intervalle ouvert. 
@@ -368,19 +368,19 @@ Voir en [annexe](#pr_theo_bouts).
 -->
 
 ### Domaine maximal d'existence {.theorem #theo_bouts}
-Soient $J$ ouvert de $\R$, $X$ ouvert de $\R^{n}$, $f: J\times X \to \R^n$ continue et $(t_0,x_0)\in J\times X$. Toute solution maximale $x:I\to \R^n$ dans $S_f(t_0,x_0)$ est définie sur un intervalle ouvert $\left]\tmin,\tmax\right[$ avec $\tmin,\tmax\in \R\cup\{+\infty,-\infty\}$. De plus, si $\tmin$ est fini alors
+Soient $J$ ouvert de $\R$, $X$ ouvert de $\R^{n}$, $f: J\times X \to \R^n$ continue et $(t_0,x_0)\in J\times X$. Toute solution maximale $x:I\to \R^n$ dans $S_f(t_0,x_0)$ est définie sur un intervalle ouvert $\left]\tmin,\tmax\right[$ avec $\tmin,\tmax\in \R\cup\{+\infty,-\infty\}$. De plus, si $\tmin$ est fini alors $(t,x(t))$ tend vers la frontière de $J\times X$ ou diverge lorsque $t$ tend vers $\tmin$, i.e.,
 $$
 \lim_{t\to \tmin} d\Big((t,x(t)),\partial (J\times X) \Big) = 0  \quad  \text{ou} \quad 
 \lim_{t\to \tmin} \|x(t)\| = +\infty 
 $$
-et si $\tmax$ est fini alors
+et de la même manière, si $\tmax$ est fini alors
 $$
 \lim_{t\to \tmax} d\Big((t,x(t)),\partial (J\times X) \Big) = 0  \quad  \text{ou} \quad 
 \lim_{t\to \tmax} \|x(t)\| = +\infty  \ .
 $$
 
 ### Démonstration {.proof} 
-La preuve complète est donnée en [annexe](#pr_theo_bouts). On commence par observer que si l'intervalle d'existence n'était pas ouvert, la solution pourrait être prolongée au bord grâce au théorème de Peano, ce qui contredirait sa maximalité. Ensuite, la preuve consiste à montrer que si $\tmax$ (resp. $\tmin$) est fini, alors $(t,x(t))$ finit forcément par sortir définitivement de tout sous-ensemble fermé et borné de $J\times X$ lorsque $t$ tend vers $\tmax$ (resp. $\tmin$), et donc soit diverger soit tendre vers la frontière de l'ouvert $J\times X$. 
+La preuve complète est donnée en [annexe](#pr_theo_bouts). On commence par observer que si l'intervalle d'existence n'était pas ouvert, la solution pourrait être prolongée au bord grâce au théorème de Peano, ce qui contredirait sa maximalité. Ensuite, la preuve consiste à montrer que si $\tmax$ (resp. $\tmin$) est fini, alors $(t,x(t))$ finit forcément par sortir définitivement de tout compact de $J\times X$ lorsque $t$ tend vers $\tmax$ (resp. $\tmin$), et donc soit diverger soit tendre vers la frontière de l'ouvert $J\times X$. 
 
 
 
@@ -401,7 +401,7 @@ Prouvé dans l'exercice [*Autour du Lemme de Grönwall*](#exo_gronwall).
 $$
 f(t,x) = A(t) x + b(t) \ .
 $$
-D'après le théorème précédent, quelle que soit sa condition initiale $(t_0,x_0)\in I\times\R^n$, sa solution maximale est définie sur $I$ entier. Dans le cas où $A$ est constant, on en a même une formule explicite (obtenue par la méthode de *variation de la constante*)
+D'après le théorème précédent, quelle que soit la condition initiale $(t_0,x_0)\in I\times\R^n$, ses solutions maximales sont définies sur $I$ entier (on verra dans la suite qu'il en existe une unique pour chaque condition initiale). Dans le cas où $A$ est constant, on en a même une formule explicite (obtenue par la méthode de *variation de la constante*)
 $$
 x(t) = e^{A(t-t_0)}x_0 + \int_{t_0}^t e^{A(t-s)} b(s)ds \ ,
 $$
@@ -489,7 +489,7 @@ il existe une unique fonction $x\in S_f(t_0,x_0)$ définie sur $[t_0-\tau_m,t_0+
 
 La preuve consiste à voir les solutions comme des points fixes d'un certain opérateur intégral, obtenu par la représentation intégrale des solutions. Le théorème du point fixe de Banach permet ensuite de montrer l'existence et l'unicité de ce point fixe.
 
-Tout d'abord, $\cC$ étant fermé et borné en dimension finie, par continuité de $f$, $\max_\cC \|f\|$ existe bien.  Rappelons nous du cours de Topologie que $E:=C([t_0-\tau_m,t_0+\tau_m],\R^n)$, l'ensemble des fonctions continues de $[t_0-\tau_m,t_0+\tau_m]$ dans $\R^n$  est un espace de Banach pour la norme uniforme $\|\cdot\|_\infty$, et définissons  
+Tout d'abord, $\cC$ étant compact, par continuité de $f$, $\max_\cC \|f\|$ existe bien.  Rappelons nous du cours de Topologie que $E:=C([t_0-\tau_m,t_0+\tau_m],\R^n)$, l'ensemble des fonctions continues de $[t_0-\tau_m,t_0+\tau_m]$ dans $\R^n$  est un espace de Banach pour la norme uniforme $\|\cdot\|_\infty$, et définissons  
 $$
 F = \{x\in E \: : \: x(\left[t_0-\tau_m,t_0+\tau_m \right])\subset \overline{B}(x_0,r) \} \ .
 $$
@@ -512,7 +512,7 @@ de sorte que $\Gamma(x)\in F$, i.e. $\Gamma:F\to F$. Ensuite, pour tout $(x_a,x_
 $$
 \|\Gamma(x_a)(t)-\Gamma(x_b)(t)\|\leq \left|\int_{t_0}^t \|f(s,x_a(s))-f(s,x_b(s))\| ds \right| \ .
 $$
-Soit $k=\max_\cC \left\|\partial_x f \right\|$ (bien défini car $\cC$ est fermé et borné dans $\R^n$ et $\partial_x f$ est continue par hypothèse). Alors l'application du théorème des accroissement finis nous donne
+Soit $k=\max_\cC \left\|\partial_x f \right\|$ (bien défini car $\cC$ est compact et $\partial_x f$ est continue par hypothèse). Alors l'application du théorème des accroissement finis nous donne
 $$
 \|\Gamma(x_a)(t)-\Gamma(x_b)(t)\|\leq  \left|\int_{t_0}^t k\|x_a(s)-x_b(s)\| ds \right| \leq |t-t_0| k \|x_a-x_b\|_{\infty} 
 $$
@@ -890,7 +890,7 @@ Supposons d'abord que $\langle\nabla V (x), f(x)\rangle \leq 0$ pour tout $x\in 
 $$
 \forall x\in \overline{B}(a,2\varepsilon) \ : \ V(x)\leq \varepsilon_V \ \Longrightarrow x\in B(a,\varepsilon) \ .
 $$
-En effet, sinon, il existerait une suite $(x_k)_{k\in \N}$ d'éléments de $\overline{B}(a,2\varepsilon)$ telle que pour tout $k>0$, $V(x_k)\leq \frac{1}{k}$ et $\|x_k-a\|\geq \varepsilon$. L'ensemble $\overline{B}(a,2\varepsilon)$ étant fermé et borné donc compact, on peut en extraire une sous-suite convergeant vers $x^\star$ qui vérifie nécessairement $V(x^\star)=0$  par continuité de $V$ et $\|x^\star-a\|\geq \varepsilon$, i.e. $x^\star \neq a$. Ceci est impossible par hypothèse. On a donc l'existence de $\varepsilon_V$. Maintenant, par continuité de $V$ en $a$ et puisque $V(a)=0$, il existe aussi $\eta>0$ tel que 
+En effet, sinon, il existerait une suite $(x_k)_{k\in \N}$ d'éléments de $\overline{B}(a,2\varepsilon)$ telle que pour tout $k>0$, $V(x_k)\leq \frac{1}{k}$ et $\|x_k-a\|\geq \varepsilon$. L'ensemble $\overline{B}(a,2\varepsilon)$ étant compact, on peut en extraire une sous-suite convergeant vers $x^\star$ qui vérifie nécessairement $V(x^\star)=0$  par continuité de $V$ et $\|x^\star-a\|\geq \varepsilon$, i.e. $x^\star \neq a$. Ceci est impossible par hypothèse. On a donc l'existence de $\varepsilon_V$. Maintenant, par continuité de $V$ en $a$ et puisque $V(a)=0$, il existe aussi $\eta>0$ tel que 
 $$
 x\in B(a,\eta)  \ \Longrightarrow V(x)\leq \varepsilon_V \ .
 $$
@@ -1099,7 +1099,7 @@ alors il l'est globalement et 0 est stable.
 
 
 
-## Stabilisation d'un système dynamique {.exercice #exo_cont_lin}
+## Stabilisation d'une chaîne d'intégrateurs {.exercice #exo_cont_lin}
 
 Considérons un système du type
 $$
@@ -1137,7 +1137,7 @@ Fixons une condition initiale dans $\R \times \R^2$. La fonction $f:(t,x_1,x_2)\
 
 Par ailleurs, on peut vérifier que pour tout $y\in \R$, $\sqrt{1+y^2}\leq 1+|y|$, donc 
 $$
-|f_1(x)| \leq 1 + \sqrt(|t|) |x_2| \quad , \quad |f_2(x)|\leq 1 + |x_1|
+|f_1(x)| \leq 1 + \sqrt{|t|} |x_2| \quad , \quad |f_2(x)|\leq 1 + |x_1|
 $$
 et $f$ est bornée par une fonction affine en $\|x\|$. Toutes les solutions maximales sont donc globales, i.e. $I=\R$.
 
@@ -1426,7 +1426,7 @@ $$
 |x(t)-x_\delta(t)|\leq |\delta| + \int_{t_0}^t |f(s,x(s))-f(s,x_\delta(s))|ds \qquad \forall t\in I\cap I' \ .
 $$
 <!-- Si $[t_0,\overline{t}]\subset I\cap I_\delta$, -->
-Puisque $x$ est continue, l'ensemble $x([ \underline{t},\overline{t}])$ est un sous-ensemble fermé et borné de l'ouvert $X$. Donc il existe $\varepsilon>0$ tel que le "tube" 
+Puisque $x$ est continue, l'ensemble $x([ \underline{t},\overline{t}])$ est un sous-ensemble compact de l'ouvert $X$. Donc il existe $\varepsilon>0$ tel que le "tube" 
 $$
 \cC = \{ (t,x_\delta) \in [ \underline{t},\overline{t}]\times \R^n \: | \: \|x_\delta-x(t) \| \leq \varepsilon \} 
 $$ 
@@ -1434,7 +1434,7 @@ est inclus dans $J\times X$. On va montrer que $(t,x_\delta(t))$ est définie et
 $$
 (t,x_\delta(t)) \in \cC \qquad \forall t\in [ \underline{t}',\overline{t}']
 $$ 
-Puisque $\cC$ est fermé et borné, et $\partial_x f$ est continue sur $\cC$, $M= \max_\cC \|\partial_x f\|$ est bien défini. Donc d'après le théorème des accroissements finis appliqué sur le segment $[ (s,x(s)),(s,x_\delta(s))]$ inclus dans $\cC$,
+Puisque $\cC$ est compact, et $\partial_x f$ est continue sur $\cC$, $M= \max_\cC \|\partial_x f\|$ est bien défini. Donc d'après le théorème des accroissements finis appliqué sur le segment $[ (s,x(s)),(s,x_\delta(s))]$ inclus dans $\cC$,
 $$
 |x(t)-x_\delta(t)|\leq |\delta| + \int_{t_0}^t M |x(s)-x_\delta(s)|ds \qquad \forall t\in [ \underline{t}',\overline{t}'] \ .
 $$
@@ -1442,7 +1442,7 @@ Donc par le Lemme de Grönwall,
 $$
 |x(t)-x_\delta(t)|\leq |\delta|e^{M(t-t_0)} \qquad \forall t\in [ \underline{t}',\overline{t}'] \ .
 $$
-Pour $\delta$ suffisamment petit, $|\delta|e^{M(t-t_0)}\leq \varepsilon$ sur $[ t_0,\overline{t}]$. On a alors nécessairement $\underline{t}'=\underline{t}$ et $\overline{t}'=\overline{t}$ et le résultat est montré. Notons que la preuve est bien toujours valable pour $f$ localement Lipschitzienne par rapport à $x$ sur $J\times X$, puisqu'il suffit alors de prendre pour $M$ la constante de Lipschitz de $f$ par rapport à $x$ sur $\cC$ qui est fermé et borné (compact).
+Pour $\delta$ suffisamment petit, $|\delta|e^{M(t-t_0)}\leq \varepsilon$ sur $[ t_0,\overline{t}]$. On a alors nécessairement $\underline{t}'=\underline{t}$ et $\overline{t}'=\overline{t}$ et le résultat est montré. Notons que la preuve est bien toujours valable pour $f$ localement Lipschitzienne par rapport à $x$ sur $J\times X$, puisqu'il suffit alors de prendre pour $M$ la constante de Lipschitz de $f$ par rapport à $x$ sur $\cC$ qui est compact.
 <!--Il suffit donc de montrer que $[t_0,\overline{t}]\subset I\cap I_\delta$.-->
 
 
@@ -1680,7 +1680,7 @@ $$
 $$
 On conclut que pour des conditions initiales suffisamment petites ($\eta <\frac{\varepsilon}{nM}$), les solutions restent inférieures à $\varepsilon$ en norme. Donc le système est stable.
 
-## Contrôle d'un système {.correction #correc_cont_lin}
+## Stabilisation d'une chaîne d'intégrateurs {.correction #correc_cont_lin}
 
 La dynamique du système est de la forme $\dot{x} = f(x,u)$.
 
@@ -1782,7 +1782,7 @@ L'idée est d'approximer de plus en plus finement la forme intégrale et montrer
 x_\epsilon(t) &= x_0 & \forall t\in [t_0-1,t_0] \\
 &= x_0 + \int_{t_0}^t f(s,x_\epsilon(s-\epsilon)) ds & \forall t\in [t_0,t_0+\tau_m]
 \end{align*}
-Ces fonctions sont définies et continues sur $[t_0-1,t_0]$. Puis sur $[t_0,t_0+\epsilon]\cap[t_0,t_0+\tau_m]$, on voit que l'intégrale ne dépend que de $x_\epsilon$ sur $[t_0-1,t_0]$, donc elle est toujours bien définie et continue. De proche en proche, $x_\epsilon$ est donc bien définie et continue sur $[t_0-1,t_0+\tau_m]$. En fait, $\epsilon$ représente un petit retard introduit dans l'intégrale pour la rendre explicite. Si l'on arrive à montrer que ces fonctions converge vers une fonction continues lorsque $\epsilon$ tend vers 0, cette limite sera solution de l'équation intégrale sur $[t_0,t_0+\tau_m]$ et sera donc solution. 
+Ces fonctions sont définies et continues sur $[t_0-1,t_0]$. Puis sur $[t_0,t_0+\epsilon]\cap[t_0,t_0+\tau_m]$, on voit que l'intégrale ne dépend que de $x_\epsilon$ sur $[t_0-1,t_0]$, donc elle est toujours bien définie et continue. De proche en proche, $x_\epsilon$ est donc bien définie et continue sur $[t_0-1,t_0+\tau_m]$. En fait, $\epsilon$ représente un petit retard introduit dans l'intégrale pour la rendre explicite. Si l'on arrive à montrer que ces fonctions converge vers une fonction continue lorsque $\epsilon$ tend vers 0, cette limite sera solution de l'équation intégrale sur $[t_0,t_0+\tau_m]$ et sera donc solution. 
 
 La première étape est de montrer de proche en proche, grâce au retard, que $x_\epsilon(t)\in \overline{B}(x_0,r)$ pour tout $t\in [t_0-1,t_0+\tau_m]$ puisque $\tau_m\max_\cC \|f\|\leq r$. Donc
 $$
@@ -1826,7 +1826,7 @@ x'(t) & \text{si } t>\tmax
 $$
 $\tilde{x}$ est bien continue et à valeurs dans $J\times X$ sur  $\tilde{I}$. De plus, elle est de classe $C^1$ sur $\mathring{\tilde{I}}\setminus \{ \tmax\}$ telle que $\dot{\tilde{x}}(t) = f(t,\tilde{x}(t))$ pour tout $t\in \mathring{\tilde{I}}\setminus \{ \tmax\}$. Par continuité de $\tilde{x}$ en $\tmax$ et de $f$ en $(t_1,x_1)$, on en déduit que $\tilde{x}$ est bien $C^1$ sur $\mathring{\tilde{I}}$. Donc $\tilde{x}\in S_f(t_0,x_0)$, ce qui contredit la maximalité de $x$ car $I \subsetneq \tilde{I}$. On conclut donc que $\tmax\notin I$ et de même $\tmin\notin I$. Donc $I$ est ouvert.
 
-Supposons $\tmax$ fini. Montrons qu'alors lorsque $t$ tend vers $\tmax$, soit $x(t)$ diverge, soit $(t,x(t))$ tend vers la frontière de $J\times X$. La propriété se montre de manière similaire en $\tmin$. Pour cela, nous allons montrer que lorsque $t$ se rapproche de $\tmax$, $(t,x(t))$ finit par sortir définitivement de tout sous-ensemble $K$ fermé et borné de $J\times X$. Soit donc $K$ fermé et borné de $J\times X$. 
+Supposons $\tmax$ fini. Montrons qu'alors lorsque $t$ tend vers $\tmax$, soit $x(t)$ diverge, soit $(t,x(t))$ tend vers la frontière de $J\times X$. La propriété se montre de manière similaire en $\tmin$. Pour cela, nous allons montrer que lorsque $t$ se rapproche de $\tmax$, $(t,x(t))$ finit par sortir définitivement de tout sous-ensemble $K$ compact de $J\times X$. Soit donc $K$ compact (donc fermé et borné) de $J\times X$. 
 
 Supposons d'abord qu'il existe $\tau$ tel que $(t,x(t))\in K$ pour tout $t\in [\tau,\tmax[$. Puisque $f$ est continue, $\|f(t,x)\|$ est borné disons par $M$ sur $K$. Donc pour toute suite $(t_k)$ d'éléments de $[\tau,\tmax[$ tendant vers $\tmax$, par la représentation intégrale des solutions,
 $$
@@ -1844,7 +1844,7 @@ $$
 $$
 On a donc $\lim_{p\to+\infty} t_p = \tmax$, et par compacité de $K$, on peut extraire de $(t_p,x(t_p))_{p\in \N}$ une sous-suite qui converge vers $(\tmax,\overline{x})\in K$. Pour simplifier les notations, on suppose donc directement $\lim_{p\to+\infty} x(t_p) =\overline{x}$.
 
-Notons $\xi =(\tmax,\overline{x})$. Soit $\varepsilon >0$ tel que $\overline{B}(\xi,2\varepsilon)\subset J\times X$. Il existe $p^*$ tel que pour tout $p\geq p^*$, $(t_{p},x(t_{p}))\in \overline{B}(\xi,\varepsilon)$.  Mais puisque $\overline{B}(\xi,2\varepsilon)$ est un sous-ensemble fermé et borné de $J\times X$, on sait que $(t,x(t))$ en sort de manière persistente. Donc sans perte de généralité, on peut supposer que pour tout $p$, il existe $t_p < t_p' < t_{p+1}$ tel que 
+Notons $\xi =(\tmax,\overline{x})$. Soit $\varepsilon >0$ tel que $\overline{B}(\xi,2\varepsilon)\subset J\times X$. Il existe $p^*$ tel que pour tout $p\geq p^*$, $(t_{p},x(t_{p}))\in \overline{B}(\xi,\varepsilon)$.  Mais puisque $\overline{B}(\xi,2\varepsilon)$ est un sous-ensemble compact de $J\times X$, on sait que $(t,x(t))$ en sort de manière persistente. Donc sans perte de généralité, on peut supposer que pour tout $p$, il existe $t_p < t_p' < t_{p+1}$ tel que 
 $$
 \| (t_p',x(t_p')) - \xi \| = 2\varepsilon  \qquad , \qquad (t,x(t))\in \overline{B}(\xi,2\varepsilon) \quad \forall t\in [ t_p,t_p' ] \ .
 $$
