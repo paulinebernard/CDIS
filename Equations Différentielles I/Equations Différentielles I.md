@@ -483,13 +483,13 @@ Pour tout $\tau_m\in \left[0,\tau \right]$ tel que $\tau_m  \max_{\cC} \|f\| \le
 <!--- $$
 f_m := \max_{\cC} f \quad , \quad \tau_m := \min\left\{\tau,\frac{r}{f_m} \right\}
 $$--->
-il existe une unique fonction $x\in S_f(t_0,x_0)$ définie sur $[t_0-\tau_m,t_0+\tau_m]$. 
+toute solution $x\in S_f(t_0,x_0)$ est définie de manière unique sur $[t_0-\tau_m,t_0+\tau_m]$. 
 
 **Démonstration**
 
 La preuve consiste à voir les solutions comme des points fixes d'un certain opérateur intégral, obtenu par la représentation intégrale des solutions. Le théorème du point fixe de Banach permet ensuite de montrer l'existence et l'unicité de ce point fixe.
 
-Tout d'abord, $\cC$ étant compact, par continuité de $f$, $\max_\cC \|f\|$ existe bien.  Rappelons nous du cours de Topologie que $E:=C([t_0-\tau_m,t_0+\tau_m],\R^n)$, l'ensemble des fonctions continues de $[t_0-\tau_m,t_0+\tau_m]$ dans $\R^n$  est un espace de Banach pour la norme uniforme $\|\cdot\|_\infty$, et définissons  
+Tout d'abord, $\cC$ étant compact, par continuité de $f$, $\max_\cC \|f\|$ existe bien.  Rappelons nous du cours de Topologie que l'ensemble des fonctions continues de $[t_0-\tau_m,t_0+\tau_m]$ dans $\R^n$, que nous notons $E$, est complet pour la norme uniforme $\|\cdot\|_\infty$, et définissons  
 $$
 F = \{x\in E \: : \: x(\left[t_0-\tau_m,t_0+\tau_m \right])\subset \overline{B}(x_0,r) \} \ .
 $$
@@ -502,7 +502,7 @@ Or d'après la [représentation intégrale des solutions](#theo_eq_integrale), o
 $$
 \Gamma(x)=x
 $$
-c'est-à-dire $x$ est un point fixe de $\Gamma$. Par ailleurs, on peut prouver[^solutionF]  que pour tout $x\in S_f(t_0,x_0)$ définie sur $\left[t_0-\tau_m,t_0+\tau_m \right]$, $x$ est dans $F$ : c'est donc un point fixe $x^*$ de $\Gamma$ sur $F$. L'idée de la preuve est donc de montrer que $\Gamma$ (ou une de ses itérées) est contractante pour utiliser le théorème de point fixe sur un espace de Banach et en déduire l'existence et l'unicité de ce point fixe.
+c'est-à-dire $x$ est un point fixe de $\Gamma$. Par ailleurs, on peut prouver[^solutionF]  que pour tout $x\in S_f(t_0,x_0)$ définie sur $\left[t_0-\tau_m,t_0+\tau_m \right]$, $x$ est dans $F$ : c'est donc un point fixe $x^*$ de $\Gamma$ sur $F$. L'idée de la preuve est donc de montrer que $\Gamma$ (ou une de ses itérées) est contractante pour utiliser le théorème de point fixe de Banach et en déduire l'existence et l'unicité de ce point fixe.
 
 D'abord, pour tout $x\in F$, pour tout $t\in \left[t_0-\tau_m,t_0+\tau_m \right]$,
 $$
@@ -550,7 +550,7 @@ Cette méthode de recherche de point fixe porte le nom d'*approximations success
 $$
 f(t,x) = A(t) x + b(t) \ ,
 $$
-admet une unique solution maximale quelque-soit sa condition initiale $(t_0,x_0)\in \R\times \R^n$, car $J_f(t,x) = A(t)$ est continue.
+admet une unique solution maximale quelque-soit sa condition initiale $(t_0,x_0)\in \R\times \R^n$, car $\partial_x f(t,x) = A(t)$ est continue.
 
 - Les équations décrivant l'évolution de la tension dans un circuit RLC ou la cinétique chimique données au début de ce cours admettent une unique solution maximale au voisinage de toute condition initiale $(t_0,x_0)$. C'est aussi le cas des équations de la mécanique Newtonnienne ou Lagrangienne si les forces/couples $F_k(t,q,\dot{q})$ sont continûment différentiable par rapport à la position et la vitesse $(q,\dot{q})$.
 
@@ -652,7 +652,7 @@ $$
 $$
 Dans ce cas, $\frac{1}{\lambda}$ représente l'ordre de grandeur du temps maximal jusqu'auquel l'erreur sur les solutions reste du même ordre de grandeur que l'erreur initiale : on parle d'*horizon de Lyapunov*. Toute prédiction au delà de cet horizon est illusoire et le système est alors dit *chaotique*.
 
-Il est important d'insister sur le caractère *déterministe* de ce chaos : chaque cause entraîne un effet bien déterminé mais deux causes très proches peuvent avoir des effets très différents. 
+Il est important d'insister sur le caractère *déterministe* de ce chaos : chaque cause entraîne un effet bien déterminé mais deux causes "très proches" peuvent avoir des effets très différents. 
 
 ### Systèmes chaotiques {.example #ex_chaos} 
 
@@ -802,7 +802,7 @@ où $\lambda$ est un coefficient de frottement.
 
 1. Réduire l'équation différentielle à l'ordre $1$ et déterminer les points d'équilibre.
 
-2. Justifier que les solutions maximales sont uniques et globales quelque soit la condition initiale $(y(0),\dot{y}(0))$.
+2. Justifier que les solutions maximales sont uniques et définies sur $\R$ quelque soit la condition initiale $(y(0),\dot{y}(0))$.
 
 3. Etudier la stabilité des points d'équilibre pour $\lambda>0$ et $\lambda = 0$. 
 
@@ -953,7 +953,7 @@ $$
 où $g$ est la pesanteur.
 
 ### Question 1 {.question #tor-1}
-Etant donné un temps initial $t_0$ et une hauteur initiale $x_0\geq 0$, justifier sans calcul que le problème de Cauchy associé admet des solutions et que les solutions maximales sont globales. Pour quelles valeurs de $x_0$ pouvons-nous dire qu'elles sont uniques ?
+Etant donné un temps initial $t_0$ et une hauteur initiale $x_0\geq 0$, justifier sans calcul que le problème de Cauchy associé admet des solutions et que les solutions maximales sont définies sur $\R$. Pour quelles valeurs de $x_0$ pouvons-nous dire qu'elles sont uniques ?
 
 ### Question 2 {.question #tor-2}
 Pour $(t_0,x_0)\in \R\times \R_{\geq0}$, résoudre le problème de Cauchy associé en se restreignant aux solutions $x(t)\geq 0$.
