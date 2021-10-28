@@ -489,7 +489,7 @@ toute solution $x\in S_f(t_0,x_0)$ est définie de manière unique sur $[t_0-\ta
 
 La preuve consiste à voir les solutions comme des points fixes d'un certain opérateur intégral, obtenu par la représentation intégrale des solutions. Le théorème du point fixe de Banach permet ensuite de montrer l'existence et l'unicité de ce point fixe.
 
-Tout d'abord, $\cC$ étant compact, par continuité de $f$, $\max_\cC \|f\|$ existe bien.  Rappelons nous du cours de Topologie que l'ensemble des fonctions continues de $[t_0-\tau_m,t_0+\tau_m]$ dans $\R^n$, que nous notons $E$, est complet pour la norme uniforme $\|\cdot\|_\infty$, et définissons  
+Tout d'abord, $\cC$ étant compact, par continuité de $f$, $\max_\cC \|f\|$ existe bien.  Par ailleurs, l'ensemble des fonctions continues de $[t_0-\tau_m,t_0+\tau_m]$ dans $\R^n$, que nous notons $E$, est complet[^Ecomplet] pour la norme uniforme $\|\cdot\|_\infty$, et définissons  
 $$
 F = \{x\in E \: : \: x(\left[t_0-\tau_m,t_0+\tau_m \right])\subset \overline{B}(x_0,r) \} \ .
 $$
@@ -1909,6 +1909,9 @@ Certaines références autorisent les  solutions définies sur un intervalle d'i
 
 [^solsurI]:
 On omet de préciser l'intervalle $I$ sur lequel $x$ est solution lorsque $I$ est l'ensemble de définition naturel (ou clairement défini) de $x$. Lorsque celui-ci est ambigu ou bien lorsque l'on veut insister sur l'intervalle de définition, on dira *solution sur $I$*.
+
+[^Ecomplet]:
+E est un sous-ensemble fermé de l'ensemble des fonctions $f:I\to \R^n$ bornées muni de la norme uniforme car toute fonction continue sur un compact est bornée et toute limite uniforme de fonctions continues est continue. Or l'ensemble des fonctions $f:I\to \R^n$ bornées est complet pour la norme uniforme. En effet, soit $(f_p)$ une suite de Cauchy. Alors par définition de la norme uniforme, pour tout $t\in I$, la suite $(f_p(t))$ est de Cauchy dans $\R^n$ qui est complet donc converge. Notons $f_\infty(t)$ sa limite. On montre alors aisément que $f_\infty$ est bornée sur $I$ en la comparant à un $f_n$ fixé et en passant à la limite dans la propriété des suites de Cauchy pour un $\varepsilon$ fixé.
 
 [^Fferme]: 
 Pour toute suite $(x_n)$ d'éléments de $F$ convergeant vers $x^*$, pour tout $t\in [t_0-\tau_m,t_0+\tau_m]$,
