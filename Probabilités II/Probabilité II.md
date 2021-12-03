@@ -201,7 +201,7 @@ $$\Esp(g(X)) =  \int_\R g(x)d\P_X(x) = \int_\R g(x)f(x)dx = \int_\Omega g(X(\ome
 
 ### Démonstration {.proof}
 On rappelle que la loi de probabilité $\P_X$ est définie pour $B\in \B(\R)$ par $\P_X(B)= \P(X^{-1}(B))$. Par conséquent
-$$\Esp (1_{B(X)}) = \P(X^{-1}(B)) = \P_X(B) = \int_\R 1_{B(X)} d\P(x).$$
+$$\Esp (1_B(X)) = \P(X^{-1}(B)) = \P_X(B) = \int_\R 1_B (X) d\P(x).$$
 Ainsi, si $g$ est une fonction étagée positive ($g \in \E^+$), on obtient le résultat voulu par linéarité.
 
 Si $g$ est positive, soit $(g_n)_{n \in \N^\star}$ une suite croissante de fonctions étagées positives convergeant simplement vers $g$. On a alors

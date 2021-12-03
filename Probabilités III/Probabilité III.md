@@ -37,17 +37,6 @@ n'est pas exigible[^hp]
 contribuer à votre apprentissage, au même titre que la résolution 
 d'exercices.
 
-#### Cadre général des probabilités
-
-- \one savoir qu'une probabilité $\P$ définie sur $(\Omega, \A)$ est une mesure finie, c'est-à-dire telle que $\P(\Omega)=1$
-- \one savoir qu'une variable aléatoire réelle est une application mesurable de $(\Omega, \A)$ dans $(\R,\B(\R))$
-- \one savoir que la loi de probabilité $\P_X$ d'une variable aléatoire $X$ définie sur $(\Omega,\A,\P)$ est la mesure image de $\P$ par $X$ 
-- \one connaître la contrepartie des deux point précédents dans le cas des vecteurs aléatoires
-- \four connaître la définition d'une tribu produit
-- \four savoir que $\mathcal{B}(\R^{m+n}) = \mathcal{B}(\R^{m}) \otimes \mathcal{B}(\R^{n})$ 
-- \two savoir utiliser le théorème de Fubini pour les probas
-- \two connaître la caractérisation de l'indépendance dans le cas général
-
 #### Lois conditionnelles
 
 - \two connaître le théorème de Fubini conditionnel 
@@ -61,112 +50,15 @@ d'exercices.
 - \one connaître les deux points de la définition de l'espérance conditionnelle d'une fonction de variables aléatoires
 - \one connaître et savoir utiliser la formule de l'espérance totale
 - \two savoir calculer la densité conditionnelle d'un certain nombre de composantes sachant les autres dans un vecteur gaussien à densité
+
+#### Cas $\mathcal{L}^2$
+
 - \two savoir que la régression linéaire est la meilleure approximation linéaire (au sens des moindres carrés) d'une variable aléatoire par une autre
 - \three savoir retrouver ce résultat
 - \four connaître l'interprétation géométrique de l'espérance conditionnelle dans le cas $\L^2$
 - \one connaître et savoir utiliser la formule de la variance totale
 
-Probabilités --- cadre général
-================================================================================
 
-Les éléments de théorie de la mesure donnés en calcul intégral permettent une relecture des premiers chapitres de probabilités. Le principal avantage est que les différents cas de figures déjà évoqués : lois de probabilités discrètes, à densité, mixtes vont pouvoir être traités dans un cadre unifié. L'intégrale que nous considérons est l'intégrale de Lebesgue. On peut déjà s'apercevoir qu'une [probabilité](Probabilité I.pdf #defproba) $\P$ définie sur un espace probabilisable (mesurable) $(\Omega, \A)$ est une mesure positive *finie* au sens où $\P(\Omega) = 1$ et hérite ainsi de ses propriétés, on parle aussi de *mesure de probabilité*. 
-
-### Cas particuliers {.remark}
-
-* Dans le cas discret ($\Omega$ au plus dénombrable, muni de $\mathcal{P}(\Omega)$), la mesure de probabilité est une somme pondérée de mesures de Dirac :
-  $$\P = \sum_{\omega \in \Omega} p_{\omega} \delta_{\omega},$$
-  où $\sum_{\omega \in \Omega} p_{\omega} =1$ et $\forall \omega \in \Omega, p_{\omega} \geq 0$
-* Dans le cas à densité ($\Omega = \R$, muni par exemple de la tribu de Borel), la mesure de probabilité s'écrit :
-  $$\P = f\ell,$$
-  où $f$ est une densité et $\ell$ la mesure de (Borel-)Lebesgue sur $\R$[^footmes]. On dit que $\P$ admet une densité par rapport à la mesure de (Borel-)Lebesgue.
-
-[^footmes]: Comme on a vu au chapitre 1, quand on considère des variables aléaoires, on considère la tribu des boréliens $\B(\R)$. On appelle mesure de Borel-Lebesgue ou de Borel la mesure de Lebesgue restreinte à cette tribu.
-
-
-Une [variable aléatoire réelle](Probabilité II.pdf #defvar) (v.a.r), respectivement un vecteur aléatoire, $X$ est une application mesurable de $(\Omega, \A)$ dans $(\R,\B(\R))$, respectivement dans $(\R^n,\B(\R^n))$, et [sa loi](Probabilité II.pdf #defloivar) $\P_X$ est la mesure image de $\P$ par $X$. 
-
-Le fait que la composition d'un vecteur aléatoire réel par une application $\B(\R^n)/\B(\R)$ mesurable (borélienne) est une variable aléatoire s'obtient immédiatement par le résultat du chapitre IV de calcul intégral relatif à la [composition de fonctions mesurables](Calcul Intégral IV.pdf #compfoncmes). 
-
-On peut généraliser la définition de l'espérance d'une variable aléatoire et des espaces vectoriels $\L^1$ et $\L^2$ de la manière suivante :
-
-### Espace $\L^1$ {.definition}
-Soit $X$ une variable aléatoire réelle. $X$ est intégrable et on note $X \in \L^1$, ou $\L^1(\Omega,\A,\P)$, si et seulement si $\Esp(|X|) = \int_{\R} |x| \P_X(dx) = \int_{\Omega} |X|(\omega)\P(d\omega) < +\infty$.
-
-### Espace $\L^2$ {.definition}
-Soit $X$ une variable aléatoire réelle. $X$ est de carré intégrable et on note $X \in \L^2$, ou $\L^2(\Omega,\A,\P)$, si et seulement si $\Esp(X^2) = \int_{\R} x^2 \P_X(dx) = \int_{\Omega} X^2(\omega)\P(d\omega) < +\infty$.
-
-Les propriétés des espaces $\L^1$ et $\L^2$ données au chapitre 2 du cours de probabilités sont vraies en toute généralité.
-
-On peut également réécrire [la proposition portant sur l'espérance de la composée d'une variable aléatoire et d'une fonction mesurable](Probabilité II.pdf #esperanceg) avec l'intégrale de Lebesgue.
-
-### Espérance de $g(X)$ (cas général) {.proposition #esperanceg2}
-Soit $X$ une variable aléatoire réelle de loi $\P_X$ et $g$ une fonction $\B(\R)/\B(\R)$-mesurable (borélienne). Alors $g(X)$ est intégrable si et seulement si l'intégrale
-$$\int_\R |g(x)| \P_X(dx) = \int_\Omega |g(X(\omega))|\P(d\omega)$$
-est finie et dans ce cas
-$$\Esp(g(X)) = \int_\R g(x) \P_X(dx) = \int_\Omega g(X(\omega))\P(d\omega).$$
-
-### {.anonymous}
-Ce résultat fait l'objet d'un exercice du chapitre IV de calcul intégral (mesure image).
-
-Enfin, pour généraliser la caractérisation de l'indépendance de deux variables aléatoires (ou de $n$ variables aléatoires, en itérant), on a besoin de définir un espace probabilisé (ou mesuré) sur $\R^n$. Pour ce faire, on introduit (sans preuve) quelques résultats fondamentaux associés aux produits de mesures de probabilités et aux intégrales associées. On pourra se reporter à @Jacod pour les démonstrations, ou bien à @Hun11 ou @Tao11 pour un exposé dans le cadre plus général de la théorie de la mesure.
-
-### Tribu produit
-Soit $(X ,\mathcal{A})$ et $(Y, \mathcal{B})$ deux espaces mesurables. On appelle *tribu produit* de $\mathcal{A}$ et $\mathcal{B}$ 
-et l'on note $\mathcal{A} \otimes \mathcal{B}$ la tribu sur le produit cartésien $X \times Y$ engendrée par les
-ensembles de la forme $A \times B$ où $A \in \mathcal{A}$ et $B \in \mathcal{B}$.
-$$
-\mathcal{A} \otimes \mathcal{B} := 
-\sigma_{X \times Y}
-\left( 
-\left\{ A \times B \; | \; A \in \mathcal{A}, \; B \in \mathcal{B} \right\}
-\right).
-$$
-L'espace mesurable $(X \times Y, \mathcal{A} \otimes \mathcal{B})$ est appelé 
-*espace produit* des espaces mesurables $(X, \mathcal{A})$ et 
-$(Y, \mathcal{B})$.
-
-### Produit des tribus de Borel
-La tribu de Borel sur $\R^{m+n}$ est le produit des tribus de Borel sur 
-$\R^m$ et $\R^n$ :
-$$
-\mathcal{B}(\R^{m+n}) = \mathcal{B}(\R^{m}) \otimes \mathcal{B}(\R^{n}).
-$$
-
-### Produit et tribu de Lebesgue {.remark}
-Notons que le résultat similaire est faux pour la mesure de Lebesgue : 
-  $$
-  \mathcal{L}(\R^{m+n}) \neq \mathcal{L}(\R^{m}) \otimes \mathcal{L}(\R^{n}).
-  $$
-Pour obtenir $\mathcal{L}(\R^{m+n})$, il est nécessaire de compléter la tribu produit $\mathcal{L}(\R^m) \otimes \mathcal{L}(\R^n)$
-par rapport à la mesure de Lebesgue sur $\R^{m+n}$, c'est-à-dire de rajouter les ensembles négligeables pour la tribu de Lebesgue à la collection, 
-puis de construire la tribu engendrée (cf. [exercice "Complétion d'une mesure" du chapitre IV](Calcul Intégral IV.pdf#complétion)).
-
-### Théorème de Fubini (pour les probabilités) {.theorem #fubiniproba} 
-Soient $\P_1$ et $\P_2$ deux probabilités définies respectivement sur $(\R^n, \B(\R^n))$ et $(\R^m, \B(\R^m))$.
-
-1. Soient $A \in \B(\R^n)$ et $B \in \B(\R^m)$, alors
-   $$\P(A \times B) = \P_1(A)\P_2(B)$$
-   définit de manière unique une probabilité sur $(\R^{n+m}, \B(\R^{n+m}))$ (que l'on note  aussi $\P_1 \otimes \P_2$).
-2. Soit $f$ une fonction $\B(\R^{n+m})$-mesurable positive ou $\P_1 \otimes \P_2$-intégrable, alors la fonction $x \mapsto \int f(x, y)\P_2(dy)$ est $\B(\R^{n})$-mesurable, la fonction $y \mapsto \int f (x, y) \P_1(dx)$ est $\B(\R^m)$-mesurable et
-$$\int f d\P_1\otimes\P_2 = \int \left(\int f(x,y) \P_2(dy) \right) \P_1(dx) = \int \left(\int f(x,y) \P_1(dx) \right) \P_2(dy)$$
-
-### {.anonymous}
-Le théorème de Fubini permet de caractériser l'indépendance de deux variables aléatoires dans le cas général.
-
-### Indépendance d'un couple de variables aléatoires {.proposition}
-
-Soient $X$ et $Y$ deux variables aléatoires réelles définies toutes deux sur $(\Omega,\A,\P)$. Le couple $Z = (X,Y)$ peut-être considéré comme un vecteur aléatoire à valeurs dans $(\R^2, \B(\R)\otimes \B(\R))$, et les deux variables aléatoires $X$ et $Y$ sont indépendantes si et seulement si la loi $\P_{X,Y}$ du couple est égale au produit $\P_X \otimes \P_Y$ des lois de $X$ et $Y$.
-
-### Démonstration {.proof}
-
-Soit $A$ et $B$ deux boréliens de $\R$. On a évidemment $Z^{-1}(A \times B) = X^{-1}(A) \cap Y^{-1}(B) \in \A$ et donc la mesurabilité ($\A/ \left(\B(\R)\otimes \B(\R)\right)$)de $Z$ découle de la définition de la tribu produit de Borel.
-
-L'indépendance de $X$ et $Y$ revient au fait que pour tous boréliens $A$ et $B$ de $\R$, on ait
-    $$\P((X,Y) \in A\times B) = \P(X\in A)\P(Y \in B),$$
-ce qui équivaut à 
-    $$\P_{X,Y}(A \times B) = \P_X(A)\P_Y(B),$$
-qui est assuré par l'unicité de la mesure (de probabilité) produit d'après le [théorème de Fubini](#fubiniproba).
- 
 
 # Lois conditionnelles 
 
@@ -176,9 +68,9 @@ On s'est consacré jusqu'à présent à l'étude de variables aléatoires indép
 
 ## Lois conditionnelles dans un couple
 
-Soient deux variables aléatoire $X$ et $Y$ définies sur le même espace probabilisé $(\Omega, \A, \P)$. Dans le cas où $X$ et $Y$ sont indépendantes, on a vu que pour tous boréliens $B_1$ et $B_2$ de $\R$, on a 
+Soient deux variables aléatoire $X$ et $Y$ définies sur le même espace probabilisé $(\Omega, \A, \P)$. Dans le cas où $X$ et $Y$ sont indépendantes, on a vu que pour tous boréliens $B_1$ et $B_2$ de $\B(\R)$, on a 
 $$\P(X\in B_1, Y\in B_2)= \P(X\in B_1)\P(Y\in B_2) = \P_X(B_1)\P_Y(B_2) = \int_{B_1}\P_Y(B_2)\P_X(dx),$$
-où on a utilisé le [théorème de Fubini](#fubiniproba).
+où on a utilisé le [théorème de Fubini](Probabilité II.pdf #fubiniproba).
 
 Du fait de l'indépendance, on a aussi $\P_Y(B_2) = \P(Y\in B_2) = \P(Y \in B_2 | X \in B_1) = \P_Y(B_2|X \in B_1)$ ce qui exprime que pour tout borélien $B_1$, la loi conditionnelle de $Y$ sachant $X\in B_1$ est identique à la loi de $Y$.
 
@@ -186,7 +78,7 @@ Lorsque $X$ et $Y$ en sont pas indépendantes, on va chercher à établir une é
 $$\P(X\in B_1, Y\in B_2) = \P_X(B_1)\P_Y(B_2 |X\in B_1) = \int_{B_1}\P_{Y|X=x}(B_2)\P_X(dx)$$
 et s'intéresser à caractériser la *loi conditionnelle de $Y$ sachant $X=x$*, que l'on notera donc $\P_{Y|X=x}$.
 
-De même, pour toute application $g : \R^2 \to \R$ borélienne telle que $g(X,Y)$ admette une espérance (relativement à la loi du couple $\P_{X,Y}$), on voudrait écrire :
+De même, pour toute application $g : \R^2 \to \R$ mesurable telle que $g(X,Y)$ admette une espérance (relativement à la loi du couple $\P_{X,Y}$), on voudrait écrire :
 $$\Esp(g(X,Y)) = \int_{\R} \left( \int_{\R} g(x,y) \P_{Y|X=x}(dy)\right) \P_X(dx)$$
 
 Pour bien fixer les idées, on va décrire spécifiquement les cas où $X$ est discrète puis où le couple $(X,Y)$ admet une densité avant d'aborder le cas général.
@@ -218,7 +110,7 @@ où $B_x = \{y\in \R, (x,y) \in B\}$. Ainsi, pour tout $B$ borélien de $\R^2$,
 
 $$\Esp(1_B(X,Y)) = \int_{\R^2} 1_B(x,y)\P_{X,Y}(dx dy) = \int_\R \left(\int_\R 1_B(x,y) \P_{Y|X=x}(dy)\right)  \P_X(dx)$$
 
-Par linéarité de l'espérance, on peut ainsi exprimer l'espérance d'une fonction étagée. Pour avoir le résultat pour une fonction borélienne positive, on exprime celle-ci comme limite simple d'une suite croissante de fonctions étagées, et on applique le théorème de convergence monotone. Enfin, on applique cette construction à $g_+$ et $g_-$ pour une fonction $g$ de signe quelconque $\P_{X,Y}$-intégrable. En d'autres termes, on reprend le procédé de construction de l'intégrale de Lebesgue. On obtient ainsi la formule souhaitée :
+Par linéarité de l'espérance, on peut ainsi exprimer l'espérance d'une fonction étagée. Pour avoir le résultat pour une fonction mesurable positive, on exprime celle-ci comme limite simple d'une suite croissante de fonctions étagées, et on applique le théorème de convergence monotone. Enfin, on applique cette construction à $g_+$ et $g_-$ pour une fonction $g$ de signe quelconque $\P_{X,Y}$-intégrable. En d'autres termes, on reprend le procédé de construction de l'intégrale de Lebesgue. On obtient ainsi la formule souhaitée :
 $$\Esp(g(X,Y)) = \int_{\R} \left( \int_{\R} g(x,y) \P_{Y|X=x}(dy)\right) \P_X(dx).$$
 
 ### Pour fixer les idées (1) {.example #ex1}
@@ -245,13 +137,13 @@ et $\P_{Y|X=n}$ est la donc la loi gamma de paramètre $(n+1,1)$.
 
 ## Densités conditionnelles
 
-On suppose maintenant que le couple $(X,Y)$ admet une densité $f_{X,Y}$ (par rapport à la mesure de Borel-Lebesgue). On note $f_X(x) = \int_\R f_{X,Y}(x,y)dy$ (respectivement $f_Y(y) = \int_\R f_{X,Y}(x,y)dx$) la loi marginale de $X$ (resp. de $Y$). On s'intéresse à caractériser la densité de la variable $Y$ connaissant la valeur prise par la variable $X$, c'est la *densité conditionnelle* de $Y$ sachant $\{X = x\}$ :
+On suppose maintenant que le couple $(X,Y)$ admet une densité $f_{X,Y}$ (par rapport à la mesure de Lebesgue). On note $f_X(x) = \int_\R f_{X,Y}(x,y)dy$ (respectivement $f_Y(y) = \int_\R f_{X,Y}(x,y)dx$) la loi marginale de $X$ (resp. de $Y$). On s'intéresse à caractériser la densité de la variable $Y$ connaissant la valeur prise par la variable $X$, c'est la *densité conditionnelle* de $Y$ sachant $\{X = x\}$ :
 
 ### Densité conditionnelle {.proposition #defdenscond}
 La formule suivante définit une densité sur $\R$, pour tout $x \in \R$ tel que $f_X(x) > 0$.
 $$ f_{Y|X=x}(y) = \frac{f_{X,Y}(x,y)}{f_X(x)}.$$
 Cette fonction s'appelle la *densité conditionnelle de $Y$ sachant $\{X = x\}$*.
-La probabilité conditionnelle de $Y$ sachant $\{X = x\}$ s'écrit ainsi $\P_{Y|X=x} = f_{Y|X=x}\ell$, où $\ell$ représente la mesure de Borel-Lebesgue.
+La probabilité conditionnelle de $Y$ sachant $\{X = x\}$ s'écrit ainsi $\P_{Y|X=x} = f_{Y|X=x}\lambda$, où $\lambda$ représente la mesure de Lebesgue.
 
 ### Démonstration {.proof}
 La preuve est immédiate puisque $f_{Y|X=x}$ est une fonction positive d'intégrale 1.
@@ -292,10 +184,10 @@ On a
              &= \int_{\R^2} g(x,y) f_{Y|X=x}(y)f_X(x) dy dx \\
              &= \int_\R \left( \int_\R g(x,y)f_{Y|X=x}(y) dy \right) f_X(x)dx,
 \end{align*}
-les calculs étant licites par application du [théorème de Fubini](#fubiniproba) et du fait que l'application $x \mapsto \int_\R g(x,y)f_{Y|X=x}(y) dy$ est définie pour $f_X(x) >0$, soit presque partout relativement à la mesure $\P_X = f_X l$.
+les calculs étant licites par application du [théorème de Fubini](Probabilité II.pdf #fubiniproba) et du fait que l'application $x \mapsto \int_\R g(x,y)f_{Y|X=x}(y) dy$ est définie pour $f_X(x) >0$, soit presque partout relativement à la mesure $\P_X = f_X l$.
 
 ## Cas général
-On peut établir le résultat suivant, qui complète le [théorème de Fubini](#fubiniproba) et le résultat d'existence et d'unicité des mesures produits, et que l'on admettra.
+On peut établir le résultat suivant, qui complète le [théorème de Fubini](Probabilité II.pdf #fubiniproba) et le résultat d'existence et d'unicité des mesures produits, et que l'on admettra.
 
 ### Fubini conditionnel {.theorem #fubinicond}
 Soit un couple $(X,Y)$ de variables aléatoires réelles de loi jointe $\P_{X,Y}$, il existe une famille $\left(\P_{Y|X=x}\right)_{x\in\R}$ de probabilités sur $(\R,\B(\R))$, unique à une égalité $\P_X$-presque partout près[^footequi], qui vérifie pour tous $B_1, B_2$ boréliens de $\R$ :
@@ -396,7 +288,7 @@ Montrer que $\Esp(Y|Y) = Y$.
 On peut étendre cette définition aux variables de la forme $g(X,Y)$.
 
 ### Espérance conditionelle d'une fonction de variables aléatoires  {.definition #defespcondg}
-Soit $(X,Y)$ un couple de variables aléatoires réelles et $g$ une fonction borélienne positive ou $\P_{X,Y}$-intégrable sur $\R^2$.
+Soit $(X,Y)$ un couple de variables aléatoires réelles et $g$ une fonction mesurable positive ou $\P_{X,Y}$-intégrable sur $\R^2$.
 
  1. L'*espérance conditionnelle de $g(X,Y)$ sachant $\{X=x\}$* est définie par 
     $$\Esp(g(X,Y)|X=x) = \int_\R g(x,y) \P_{Y|X=x} (dy).$$
@@ -426,12 +318,12 @@ elle hérite des propriétés usuelles de l’espérance :
  2. $\Esp (Y | X) \geq 0$ si $Y \geq 0$,
  3. $\Esp (1 | X) = 1$.
 
-De plus, si $g$ est borélienne positive ou $\P_X$-intégrable,
+De plus, si $g$ est mesurable positive ou $\P_X$-intégrable,
 $$ \Esp (Y g(X) | X) = g(X) \Esp (Y | X) $$
 est une généralisation de l’égalité 1. ci-dessus, au cas où $a = g(X)$, qui doit être considéré “comme une constante” dans le calcul de l’espérance conditionnelle sachant $X$ ($X$ est fixée comme une donnée connue a priori). En effet, on a alors $\Esp(g(x)Y|X=x) = g(x)\psi(x)$. Enfin, on déduit directement du [théorème de Fubini conditionnel](#fubinicond) la proposition suivante.
 
 ### Transfert conditionnel {.proposition #transfcond}
-Soient un couple $(X,Y)$ de variables aléatoires réelles de loi jointe $\P_{X,Y}$ et $g$ une fonction borélienne positive ou $\P_{X,Y}$-intégrable sur $\R^2$. On a pour $\P_X$-presque tout $x$ dans $\R$
+Soient un couple $(X,Y)$ de variables aléatoires réelles de loi jointe $\P_{X,Y}$ et $g$ une fonction mesurable positive ou $\P_{X,Y}$-intégrable sur $\R^2$. On a pour $\P_X$-presque tout $x$ dans $\R$
 $$\Esp(g(X,Y)|X=x) = \Esp(g(x,Y)|X=x) = \int_{\R}g(x,y) \P_{Y|X=x} (dy)$$
 Si de plus $X$ et $Y$ sont indépendantes, on a :
 $$\Esp(g(X,Y)|X=x) = \Esp(g(x,Y)|X=x) = \int_{\R}g(x,y) \P_Y(dy).$$
