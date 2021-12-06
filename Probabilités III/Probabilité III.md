@@ -184,7 +184,7 @@ On a
              &= \int_{\R^2} g(x,y) f_{Y|X=x}(y)f_X(x) dy dx \\
              &= \int_\R \left( \int_\R g(x,y)f_{Y|X=x}(y) dy \right) f_X(x)dx,
 \end{align*}
-les calculs étant licites par application du [théorème de Fubini](Probabilité II.pdf #fubiniproba) et du fait que l'application $x \mapsto \int_\R g(x,y)f_{Y|X=x}(y) dy$ est définie pour $f_X(x) >0$, soit presque partout relativement à la mesure $\P_X = f_X l$.
+les calculs étant licites par application du [théorème de Fubini](Probabilité II.pdf #fubiniproba) et du fait que l'application $x \mapsto \int_\R g(x,y)f_{Y|X=x}(y) dy$ est définie pour $f_X(x) >0$, soit presque partout relativement à la mesure $\P_X = f_X \lambda$.
 
 ## Cas général
 On peut établir le résultat suivant, qui complète le [théorème de Fubini](Probabilité II.pdf #fubiniproba) et le résultat d'existence et d'unicité des mesures produits, et que l'on admettra.
