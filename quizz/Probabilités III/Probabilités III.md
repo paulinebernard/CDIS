@@ -21,9 +21,9 @@
 #### Question 1
 Soient $X \sim \E(\lambda)$, $\lambda >0$, et $Y \sim \mathcal{B}(1/2)$ deux variables aléatoires réelles indépendantes, et $Z = X Y + (1-Y)\lambda$. La densité $f_{Z | Y =1}$ est égale à 
 
-  - [ ] A : $\frac{\lambda}{2} \exp(-\lambda z)1_{\R^\ast_+}$
+  - [ ] A : $\frac{\lambda}{2} \exp(-\lambda z)1_{\R^\ast_+}(z)$
 
-  - [ ] B : $\lambda \exp(-\lambda z)1_{\R^\ast_+}$
+  - [ ] B : $\lambda \exp(-\lambda z)1_{\R^\ast_+}(z)$
 
   - [ ] C : $Z$ n'admet pas de densité
 
