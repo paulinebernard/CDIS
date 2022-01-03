@@ -71,7 +71,7 @@ d'exercices.
 # Préambule 
 
 Dans ce chapitre, on va s'intéresser à l'étude des suites de variables aléatoires. On introduira notamment différents modes de convergence. En particulier, on établira la *loi des grands nombres* qui montre rigoureusement que, quand le nombre de répétitions de l’expérience tend vers l’infini, la fréquence de réalisation
-d’un événement converge vers la probabilité de réalisation de cet événement. Ce résultat justife également la démarche employée en statistique où l'on cherche par exemple à estimer une espérance par une moyenne empirique : cette moyenne empirique va ainsi converger vers la quantité cible. Enfin, on présentera le théorème central limite qui nous indiquera la vitesse à laquelle cette convergence a lieu ainsi qu'un moyen de contrôler l'erreur commise en remplaçant une espérance par sa contrepartie empirique.
+d’un événement converge vers la probabilité de réalisation de cet événement. Ce résultat justife également la démarche employée en statistique où l'on cherche par exemple à estimer une espérance par une moyenne empirique : cette moyenne empirique va ainsi converger vers la quantité ciblée. Enfin, on présentera le théorème central limite qui nous indiquera la vitesse à laquelle cette convergence a lieu ainsi qu'un moyen de contrôler l'erreur commise en remplaçant une espérance par sa contrepartie empirique.
 
 Notons d'abord qu'on peut étendre les définitions des espaces $\L^1$ et $\L^2$ pour un $p \in \N^\ast$ quelconque.
 
@@ -113,13 +113,13 @@ $$\P(|X-\Esp(X)| > a) \leq \frac{\V(X)}{a^2}$$
 
 ### Interprétation {.remark}
 
-L'inégalité de Bienaymé-Chebyshev est très utile en pratique. Elle permet de mesurer la probabilité des grands écarts entre $X$ et sa moyenne. Par exemple, avec $a = 10 \sigma X$, il en résulte qu’il est improbable qu’une variable aléatoire $X$ dévie de son espérance $\Esp(X)$ de plus de 10 fois son écart-type
-(probabilité inférieure à 0.01). Cette inégalité, tout à fait générale, n’est cependant pas très précise, et surestime très souvent en pratique le membre de gauche. On préférera, quand c'est possible, calculer directement ces probabilités à partir de la loi de $X$.
+L'inégalité de Bienaymé-Chebyshev est très utile en pratique. Elle permet de mesurer la probabilité des grands écarts entre $X$ et sa moyenne. Par exemple, avec $a = 10 \sigma$, il en résulte qu’il est improbable qu’une variable aléatoire $X$ dévie de son espérance $\Esp(X)$ de plus de 10 fois son écart-type
+(la probabilité est inférieure à 0.01). Cette inégalité, tout à fait générale, n’est cependant pas très précise, et surestime très souvent en pratique le membre de gauche. On préférera, quand c'est possible, calculer directement ces probabilités à partir de la loi de $X$.
 
 
 # Suites de variables indépendantes
 
-Au début du chapitre III, nous avons vu comment construire des couples (et même des $n$-uplets en itérant) de variables aléatoires réelles indépendantes en considérant l'espace produit, munis des tribus produit et des (mesures de) probabilités produit. Il est malheureusement beaucoup plus délicat, mais indispensable pour les applications (en particulier la loi des grands nombres), de construire une **suite infinie de variables indépendantes** de lois données.
+Au début du chapitre II, nous avons vu comment construire des couples (et même des $n$-uplets en itérant) de variables aléatoires réelles indépendantes en considérant l'espace produit, munis des tribus produit et des (mesures de) probabilités produit. Il est malheureusement beaucoup plus délicat, mais indispensable pour les applications (en particulier la loi des grands nombres), de construire une **suite infinie de variables indépendantes** de lois données.
 
 Plus précisément, pour chaque entier $n$ on se donne une v.a.r. $X_n$ définie sur un espace de probabilité $(\Omega_n,\A_n,\P_n)$, à valeurs dans $(\R,\B(\R))$ et de loi $\P_{X_n}$ (pour construire chaque $X_n$, on peut procéder comme ci-dessus). Ensuite, on pose
 \begin{align*}
@@ -148,7 +148,7 @@ L'indépendance de la suite $(X_n)_{n\in \N^\ast}$ entraîne celle de
 
  1. toute sous-suite $(X_{i_k})_{k\in \N^\ast}$,
  2. toute suite de vecteurs issus de $X_n$,
- 3. toute suite de la forme $(f_n(X_n))_{n\in \N^\ast}$, où les fonctions $f_n$ sont des fonctions boréliennes.
+ 3. toute suite de la forme $(f_n(X_n))_{n\in \N^\ast}$, où les fonctions $f_n$ sont des fonctions mesurables.
 
 ### Développement dyadique {.example}
 Nous considérons l’ensemble $\Omega = [0, 1[$ muni de la tribu borélienne restreinte à cet ensemble, et de la mesure de Lebesgue. A chaque réel $\omega$, nous associons son développement dyadique (unique si l’on impose que les $\omega_i$ ne soient pas tous égaux à 1 à partir d’un certain rang) :
@@ -187,9 +187,9 @@ On considère un jeu de pile ou face infini où on a une probabilité $p, 0< p <
 ## Convergences des variables aléatoires
 Dans ce paragraphe, on va décrire les notions de convergence de variables (on y inclut les vecteurs) aléatoires. On verra que plusieurs notions sont possibles, non équivalentes, ce qui enrichit mais complique aussi la description des comportements asymptotiques.
 
-En calcul intégral, on a beaucoup étudié le cas de suites de fonctions convergeant simplement. Une variable aléatoire étant une fonction, on a donc la même notion qui revient à écrire qu'une suite $(X_n)_{n\in \N^\ast}$ de variables aléatoires converge simplement vers $X$ si $\lim_{n \to \infty} X_n(\omega) = X(\omega)$ pour tout $\omega \in \Omega$. Cette définition naturelle est malheureusement à peu près inutile en probabilité, comme l'illustre l'exemple suivant.
+En calcul intégral, on a beaucoup étudié le cas de suites de fonctions convergeant simplement. Une variable aléatoire étant une fonction, on a donc la même notion qui revient à écrire qu'une suite $(X_n)_{n\in \N^\ast}$ de variables aléatoires converge simplement vers $X$ si $\lim_{n \to \infty} X_n(\omega) = X(\omega)$ pour tout $\omega \in \Omega$. Cette définition naturelle est malheureusement à peu près inutile en probabilités, comme l'illustre l'exemple suivant.
 
-### Pile ou face infini again {.example #pfinf}
+### Pile ou face infini (bis) {.example #pfinf}
 
 Soit $(X_n)_{n\in \N^\ast}$ une suite de v.a. réelles qui sont indépendantes et de même loi (on notera *i.i.d* pour *indépendantes et identiquement distribuées*), avec $\P(X_n = 1) = p$ et $\P(X_n=0) = 1-p$. Ce sont donc des v.a. de loi de Bernoulli de paramètre $p$ qui modélisent par exemple les résultats d'un jeu de pile ou face. Lorsque $n$ est grand, on s'attend à ce que la proportion de faces ($X_n=1$) soit à peu près égale à $p$ (c'est l'essence de la conception objectiviste des probabilités). Mathématiquement, on voudrait que
 $$\lim_{n \to \infty} \frac{X_1(\omega) + \ldots +X_n(\omega)}{n} = p \text{   pour tout }\omega\in\Omega.$$
@@ -868,9 +868,9 @@ Dans cet exercice, nous allons voir une démonstration constructive de ce théor
 
 Nous allons avoir besoin de deux résultats intermédiaires pour établir la preuve du théorème de Weierstrass sur $[0,1]$. 
 
-* **Théorème de convergence dominée.** Soient $(X,\mathcal{A},\mu)$ un espace mesuré, $(f_n)_{n\in\N^\ast}$ une suite de fonctions boréliennes $X \to [-\infty,+\infty]$ et $g : X \to [-\infty,+\infty]$ une fonction intégrable, telles que pour tout $n\in\N^\ast$ on a $|f_n| \leq g$ $\mu$-**presque partout**. Supposons qu'il existe $f : X \to [-\infty,+\infty]$ telle que $f_n$ converge simplement vers $f$ $\mu$-**presque partout** quand $n\to+\infty$. Alors $f$ est intégrable et $$\int_X f_n\mu \xrightarrow[n\to+\infty]{} \int_X f\mu.$$
+* **Théorème de convergence dominée.** Soient $(X,\mathcal{A},\mu)$ un espace mesuré, $(f_n)_{n\in\N^\ast}$ une suite de fonctions mesurables $X \to [-\infty,+\infty]$ et $g : X \to [-\infty,+\infty]$ une fonction intégrable, telles que pour tout $n\in\N^\ast$ on a $|f_n| \leq g$ $\mu$-**presque partout**. Supposons qu'il existe $f : X \to [-\infty,+\infty]$ telle que $f_n$ converge simplement vers $f$ $\mu$-**presque partout** quand $n\to+\infty$. Alors $f$ est intégrable et $$\int_X f_n\mu \xrightarrow[n\to+\infty]{} \int_X f\mu.$$
     
-* **Inégalité de Jensen.** Soient $(\Omega,\mathcal{A},\P)$ un espace probabilisé, $X : \Omega \to \R$ une variable aléatoire  intégrable et $f : \R \to \R$ une fonction borélienne convexe, telle que $f(X) \in \mathcal{L}^1$. Alors $$f\left(\Esp(X)\right) \leq \Esp\left(f(X)\right).$$
+* **Inégalité de Jensen.** Soient $(\Omega,\mathcal{A},\P)$ un espace probabilisé, $X : \Omega \to \R$ une variable aléatoire  intégrable et $f : \R \to \R$ une fonction mesurable convexe, telle que $f(X) \in \mathcal{L}^1$. Alors $$f\left(\Esp(X)\right) \leq \Esp\left(f(X)\right).$$
 Démontrer ce résultat.
     
 ### Preuve du théorème. {.question #weier-thm}

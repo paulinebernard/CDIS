@@ -182,7 +182,7 @@ $$F^{-} : u \in\, ]0,1[\, \mapsto \inf\left\{ x \in \R : F(x) \geq u \right\} \i
 ### Conséquences {.remark} 
 
 * Cette fonction est bien définie sur tout $]0,1[$, car quel que soit $u$ dans cet intervalle, l'ensemble $\left\{ x \in \R : F(x) \geq u \right\}$ est non vide et minoré. S'il était vide ou non minoré pour un certain $u_0\in\,]0,1[$, pour tout $x \in \R$ on aurait dans le premier cas $F(x) < u_0 < 0$ et dans le second $F(x) \geq u_0 > 1$. L'une comme l'autre de ces inégalités est impossible pour une fonction de répartition.
-* La réciproque généralisée de la f.d.r. $F_X$ d'une v.a.r. $X$ est aussi appelée *fonction quantile*. On pourra notamment remarquer que $F_X^{-}\left(\frac{1}{2}\right)$ n'est autre que la médiane de $X$.
+* La réciproque généralisée de la f.d.r. $F_X$ d'une v.a.r. $X$ est aussi appelée *fonction quantile*. On pourra notamment remarquer que $F_X^{-}\left(\frac{1}{2}\right)$ est la médiane de $X$.
 * Lorsque $F$ réalise une bijection d'un intervalle non vide $I\subset \R$ sur $]0,1[$, sa réciproque généralisée coïncide avec sa bijection réciproque.
 
 On a alors le résultat suivant, qui stipule que $\psi = F_X^-$ est une solution universelle à notre problème. La preuve détaillée est donnée en Annexe.
@@ -198,14 +198,14 @@ Donner un algorithme de simulation d'une v.a.r. $X$ suivant une loi
 * Uniforme sur l'union de deux segments non vides et disjoints $[a,b], [c,d]\subset\R$, de densité $x\in\R \mapsto (b-a + d-c)^{-1}\,1_{[a,b]\cup[c,d]}(x)$ ?
 
 ### Limitations 
-La méthode d'inversion peut sembler universelle pour simuler une v.a.r. $X$ à partir de $U \sim \mathcal{U}_{]0,1[}$. Cependant, elle nécessite en pratique de disposer d'une expression analytique de $F_X$ pour en déduire sa réciproque généralisée. Or ce n'est typiquement pas le cas de nombreuses lois usuelles comme la loi Normale ! On va donc déterminer d'autres procédures pour simuler des variables suivant de telles lois.
+La méthode d'inversion peut sembler universelle pour simuler une v.a.r. $X$ à partir de $U \sim \mathcal{U}_{]0,1[}$. Cependant, elle nécessite en pratique de disposer d'une expression analytique de $F_X$ pour en déduire sa réciproque généralisée. Or ce n'est typiquement pas le cas de nombreuses lois usuelles comme la loi Normale. On va donc déterminer d'autres procédures pour simuler des variables suivant de telles lois.
 
 ## Méthode de rejet
 
-La méthode de rejet est une alternative populaire à la méthode d'inversion, lorsque cette dernière ne peut être utilisée directement et que **la loi cible possède une densité**. On la doit à @vonNeumann. Pour en comprendre le fondement, il nous faut d'abord introduire une généralisation naturelle de la loi Uniforme dans $\R$ à tout $\R^d$ ($d\in\N^\ast$). On notera $\ell$ la mesure de Borel-Lebesgue sur $\R^d$.
+La méthode de rejet est une alternative populaire à la méthode d'inversion, lorsque cette dernière ne peut être utilisée directement et que **la loi cible possède une densité**. On la doit à @vonNeumann. Pour en comprendre le fondement, il nous faut d'abord introduire une généralisation naturelle de la loi Uniforme dans $\R$ à tout $\R^d$ ($d\in\N^\ast$). On notera $\lambda$ la mesure de Lebesgue sur $\R^d$.
 
 ### Loi uniforme sur un borélien {.definition}
-La loi Uniforme sur un borélien $A\subset\R^d$ de volume $\ell(A) > 0$ est une loi de probabilité admettant pour densité $$f : x\in\R^d \mapsto \dfrac{1_A(x)}{\ell(A)}.$$
+La loi Uniforme sur un borélien $A\subset\R^d$ de volume $\lambda(A) > 0$ est une loi de probabilité admettant pour densité $$f : x\in\R^d \mapsto \dfrac{1_A(x)}{\lambda(A)}.$$
 
 ### Loi Uniforme sur un pavé {.exercise .question .one #unipave}
 Comment simuler un vecteur aléatoire $(U_1,\dots,U_d)$ de loi Uniforme sur un pavé non vide $[a_1,b_1]\times\dots\times[a_d,b_d] \subset \R^d$ ?
@@ -215,12 +215,12 @@ Comment simuler un vecteur aléatoire $(U_1,\dots,U_d)$ de loi Uniforme sur un p
 Une propriété fondamentale de cette loi est qu'elle reste stable par conditionnement, dans le sens suivant.
 
 ### Stabilité par conditionnement {.proposition #stabunif}
-Soit $U$ un vecteur aléatoire de loi Uniforme sur un borélien $A\subset\R^d$ de volume $\ell(A) > 0$. Alors pour tout borélien $B \subset A$ de volume $\ell(B) > 0$, la loi conditionnelle $\P_{U\mid U\in B}$ de $U$ sachant que $U \in B$ est Uniforme sur $B$.
+Soit $U$ un vecteur aléatoire de loi Uniforme sur un borélien $A\subset\R^d$ de volume $\lambda(A) > 0$. Alors pour tout borélien $B \subset A$ de volume $\lambda(B) > 0$, la loi conditionnelle $\P_{U\mid U\in B}$ de $U$ sachant que $U \in B$ est Uniforme sur $B$.
 
 ### Démonstration {.exercise .question .one #unicond}
 
 ### Simulation {.exercise .question .one #simunibor}
-Déduire de la [proposition précédente](#stabunif) une méthode pour simuler un vecteur aléatoire de loi Uniforme sur un borélien $B \subset \R^d$ **borné** et de volume $\ell(B) > 0$.
+Déduire de la [proposition précédente](#stabunif) une méthode pour simuler un vecteur aléatoire de loi Uniforme sur un borélien $B \subset \R^d$ **borné** et de volume $\lambda(B) > 0$.
 
 ### {.anonymous}
 
@@ -230,7 +230,7 @@ Il est aussi possible de simuler un vecteur aléatoire de loi Uniforme sur certa
 Soient une densité $f : \R \to \R$, une v.a.r. $X$ et une variable $U$ uniforme sur $]0,1[$, indépendante de $X$. On note $A_f := \left\{ (x,y) \in \R \times \R_+ : f(x) \geq y \right\}$ le domaine limité par le graphe de $f$ et l'axe des abscisses (souvent appelé sous-graphe de $f$). Si $X$ est de densité $f$, alors le couple $(X,Uf(X))$ suit une loi Uniforme sur $A_f$. 
 
 ### Démonstration {.proof}
-Commençons par remarquer que $\ell(A_f) = 1$. Quel que soit $(z,v)\in\R^2$, par indépendance de $X$ et $U$ et par Fubini on a 
+Commençons par remarquer que $\lambda(A_f) = 1$. Quel que soit $(z,v)\in\R^2$, par indépendance de $X$ et $U$ et par Fubini on a 
 \begin{align*}
 \P\left( X \leq z, Uf(X) \leq v \right) &= \int_\R \int_\R 1_{]-\infty,z]}(x)\,1_{]-\infty,v]}(uf(x))\,1_{]0,1[}(u)\,f(x)\,du\,dx\\
 &= \int_{-\infty}^z \left(\int_\R 1_{]-\infty,v]\cap ]0,f(x)[}(uf(x))\,f(x)\,du\right)\,dx\\
@@ -258,6 +258,7 @@ On souhaite simuler une variable aléatoire réelle $X$ de densité $f_X$. Suppo
 
 ### Limitations 
 La méthode de rejet a l'avantage de permettre de simuler des variables aléatoires à densité dont la fonction de répartition n'a pas de forme analytique, rendant la méthode d'inversion inapplicable. Néanmoins, pour pouvoir l'appliquer il faut connaître une densité auxiliaire qui, multipliée par un réel positif, majore la densité cible, et que l'on sait simuler. Le taux de rejet, c'est-à-dire la probabilité de l'événement $\{aUf_Y(Y) > f_X(Y)\}$, peut parfois être élevé, notamment lorsque la dimension de $X$ est grande, ce qui limite l'efficacité de la méthode.
+
 ### Taux de rejet {.exercise .two .question #tauxrej}
 Calculer le taux de rejet de la méthode proposée ci-dessus.
 
@@ -303,7 +304,7 @@ avec $L$ une matrice triangulaire inférieure [^chol].
 
 [^chol]: Cette décomposition est très utile dans la résolution de systèmes linéaires de la forme $A\,x = b$, où $b$ est connu, $x$ inconnu et $A$ est définie positive. Cela revient à résoudre $L\,L^t\,x = b$. On pose alors $y = L^t\,x$ et on résout d'abord $Ly=b$, ce qui est très rapide puisque $L$ est triangulaire inférieure (on commence par $y_1 = b_1/L_{11}$, puis $y_2 = (b_2 - L_{21}y_1)/L_{22}$, etc. en descendant). On résout ensuite $L^t\,x = y$, ce qui est aussi très rapide pour la même raison (on commence par $x_n = y_n/L_{nn}$ puis on remonte).
 
-Soit maintenant un autre vecteur gaussien $Y = (Y_1,\ldots,Y_d)$ à valeurs dans $\R^d$ et de matrice de covariance l'identité, notée $I_d$. Autrement dit, les $Y_i$ sont des variables aléatoires gaussiennes centrées, réduites et indépendantes.
+Soit maintenant un autre vecteur gaussien $Y = (Y_1,\ldots,Y_d)$ à valeurs dans $\R^d$ et de matrice de covariance identité, notée $I_d$. Autrement dit, les $Y_i$ sont des variables aléatoires gaussiennes centrées, réduites et indépendantes.
 
 Alors, le vecteur $Z = m + L\,Y$ est gaussien, d'espérance $m$ et de matrice de covariance $C$. En effet, $Z$ est gaussien comme combinaison linéaire de variables aléatoires gaussiennes, $\Esp(Z) = \Esp(m + L\,Y) = m$ et $\V(Z) = \Esp((L\,Y)^2) = L I_d L^t = C$.
 
@@ -563,8 +564,8 @@ On peut voir que la densité d'une v.a. uniforme sur un tel pavé s'écrit $f(x)
 Soit $C \in \B(B)$ (considérer les boréliens de $B$ suffit à caractériser la loi conditionnelle à l'événement $U \in B$ puisque si $C \cap B = \varnothing$, alors nécessairement, $\P(U \in C |U \in B) = 0$). On a 
 \begin{align*}
 \P(U \in C |U \in B) & = \frac{\P(U\in C, U \in B)}{\P(U \in B)} = \frac{\P(U\in C)}{\P(U \in B)} \\
-& = \frac{\int_C \frac{dx}{\ell(A)}}{\int_B \frac{dx}{\ell(A)}} \text{ puisque } U \sim \mathcal{U}_A \\
-& = \frac{\ell(C)}{\ell(B)} = \int_C \frac{1}{\ell(B)} dx
+& = \frac{\int_C \frac{dx}{\lambda(A)}}{\int_B \frac{dx}{\lambda(A)}} \text{ puisque } U \sim \mathcal{U}_A \\
+& = \frac{\lambda(C)}{\lambda(B)} = \int_C \frac{1}{\lambda(B)} dx
 \end{align*}
 on reconnaît bien la loi uniforme sur $B$.
 
@@ -720,159 +721,6 @@ cf. notebook
 
 ### Question 3 {.answer #answer-echimp3}
 cf. notebook
-
-# Projet numérique : câble sous-marin (énoncé 2020)
-
-## Enoncé du problème
-
-L'objectif de ce projet est d'estimer la longueur de câble sous-marin nécessaire pour relier deux côtes $A$ et $B$  en utilisant des simulations conditionnelles.
-
-
-Le câble reposera sur le fond marin dont la profondeur est inconnue.
-Le segment $[AB]$ est discrétisé par une séquence de (N+1) points. On pose $x_0=A$ et pour $i=1,\dots,N$, $$x_i=x_0+i\Delta$$ où $$\Delta = \frac{AB}{N}$$ de telle sorte que $x_N=B$.
-On note $z(x)$ la profondeur du fond marin au point $x$ de telle sorte 
-qu'on pourra estimer la longueur totale de câble nécessaire par la somme 
-des longueurs sur les segments de la discrétisation :
-
-$$l=\sum_{i=1}^N\sqrt{\Delta^2+(z(x_i)-z(x_{i-1}))^2}.$$
-
-Enfin, notons que l'on dispose d'un ensemble de $n$ observations de la 
-profondeur que l'on supposera situées sur des points de discrétisation $z(x_{j_1}),\dots,z(x_{j_n})$.
-
-
-On adopte un modèle probabiliste pour la profondeur. On suppose que le vecteur des 
-profondeurs sur les points de discrétisation 
-$\mathbf{z}=(z(x_0),\dots,z(x_N))$ est la réalisation
-d'un vecteur aléatoire gaussien $\mathbf{Z}=(Z(x_0),\dots,Z(x_N))$ 
-dont le vecteur d'espérance ne contient qu'une seule valeur $\mu$ 
-répétée $N+1$ fois et dont la matrice de covariance $\Sigma$ a pour termes $\sigma_{ij}$
-définis par $\sigma_{ij}=C(|x_i-x_j|)$ où $C$ est une
-fonction décroissante, traduisant le fait que deux points 
-géographiquement proches ont tendance à avoir des profondeurs plus similaires que deux points éloignés.
-
-On supposera que la matrice de covariance ainsi 
-générée est définie-positive (en fait, $C$ sera choisie parmi les fonctions qui, 
-appliquées aux termes d'une matrice de distance, produisent des matrices définie-positives). 
-
-Si on note $L$ la variable aléatoire donnant la longueur de câble nécessaire : 
-$$L=\sum_{i=1}^N\sqrt{\Delta^2+(Z(x_i)-Z(x_{i-1}))^2},$$
-un bon estimateur de $L$ est fourni par l'espérance conditionnelle 
-
-$$L^\star=E[L|Z(x_{j_1})=z(x_{j_1}),\dots,Z(x_{j_n})=z(x_{j_n})].$$
-                                                                              
-Cependant, cette quantité est difficilement accessible par le calcul. 
-On va donc avoir recours à des
-simulations conditionnelles. C'est-à-dire que l'on va simuler 
-un nombre $K$ de réalités (disons des réalisations du modèle 
-probabiliste choisi), et sur chacune d'entre elle, 
-la quantité de câble nécessaire sera évaluée. 
-On disposera ainsi d'un échantillon $l_{(1)},\dots,l_{(K)}$ de 
-longueurs simulées. Puis on approchera l'espérance conditionnelle  par 
-$$L^\star=\sum_{k=1}^K l_{(k)}.$$
-
-L'objectif de ce projet est donc d'écrire un code permettant 
-d'effectuer cette simulation conditionnelle, puis de l'appliquer 
-au jeu de données fourni et d'en déduire une estimation de la longueur de câble nécessaire.
-
-## Questions théoriques
-
-1. Quel théorème du cours nous autorise-t-il à estimer l'espérance conditionnelle par la moyenne empirique de simulations conditionnelles ?
-
-2. Rappeler la loi conditionnelle du vecteur des composantes de $\mathbf{Z}$ correspondant aux points de discrétisation
-sans observation, connaissant les valeurs prises par les composantes aux sites d'observation.
-
-3. Si $\mathbf{Y}=(Y_1,\dots,Y_p)$ est un vecteur de composantes gaussiennes indépendantes, toutes d'espérance nulle et de variance 1, 
-quelle est la loi du vecteur $\mathbf{Z}=m+R\mathbf{Y}$ où $R$ est une matrice $p\times p$ et $m$ est un vecteur de taille $p$ ?
-
-4. En déduire un algorithme de simulation conditionnelle.
-
-## Données du problème
-Conventionnellement, $A$ est l'origine, $B=500$, $N=100$.
-
-Les données $$\begin{array}{c|r}i & z(x_i)\\
-\hline
-0 & 0\\
-20 & -4\\
-40 & -12.8\\
-60 & -1\\
-80 & -6.5\\
-100 & 0\end{array}$$
-
-L'espérance de chaque composante du vecteur aléatoire $\mathbf{Z}$ est donnée par $\mu=-5.$
-
-La fonction $C$ est définie par $$C(h)=\sigma^2 e^{-|h|/a},$$
-
-où $|h|$ correspond à la distance entre deux points, $a=50$ et $\sigma^2=12$.
-
-## Implémentation
-
-### Préambule
-
-```
-#Chargement de dépendances
-
-import numpy as np
-import matplotlib.pyplot as plt
-
-#Discrétisation
-A=0
-B=500
-N=101 #Nombre de points de discrétisation
-Delta = (B-A)/(N-1)
-discretization_indexes = np.arange(N)
-discretization = discretization_indexes*Delta
-#Paramètres du modèle
-
-mu=-5
-a = 50
-sigma2 = 12
-
-#Données
-
-observation_indexes = [0,20,40,60,80,100]
-depth = np.array([0,-4,-12.8,-1,-6.5,0])
-
-#Indices des composantes correspondant aux observations et aux componsantes non observées
-
-unknown_indexes=list(set(discretization_indexes)-set(observation_indexes))
-```
-
-### Questions
-
-1. Ecrire une fonction qui prend en argument la distance entre les points, le paramètre $a$, et le paramètre $\sigma^2$, et qui retourne la covariance entre deux points.
-On pourra fournir une matrice de distance à cette fonction. Dans ce cas, la fonction renverra la matrice de covariance.
-
-2. Calculer la matrice de distance.
-
-3. Calculer la matrice de covariance du vecteur $\mathbf{Z}=(Z(x_0),\dots,Z(x_N))$.
-
-4. Extraire les 3 matrices de covariance suivantes :
-
- * entre les observations
-
- * entre les observations et les inconnues
-
- * entre les inconnues
-
-5. Calculer l'espérance conditionnelle des composantes non observées connaissant les observations et la représenter avec les données.
-
-6. Calculer la matrice de variance conditionnelle et tracer sa diagonale (variance conditionnelle) en fonction de la position. Commenter.
-
-7. Effectuer une simulation conditionnelle. Sur un même graphique, tracer la simulation ainsi que les données et l'espérance conditionnelle. Commenter.
-
-8. Ecrire une fonction qui calcule la longueur du câble en fonction du vecteur des profondeurs et du pas de discrétisation.
-
-9. Utiliser cette fonction pour calculer la longueur du câble à partir de 100 simulations. Comparer l'espérance conditionnelle (estimée) de la longueur avec la longueur de l'espérance conditionnelle.
-
-10. Représenter la suite $M_n$ des moyennes des longueurs de câbles en fonction du nombre de simulations. Commenter.
-
-11. Représenter l'histogramme des longueurs de câbles générées.
-
-12. Donner un intervalle de confiance à 95% de la longueur du câble par 2 méthodes différentes. Commenter.
-
-13. Donner une estimation de la probabilité que la longueur du câble dépasse 525 m.
-
-14. Reprendre les questions précédentes avec 1000, 10000 puis 100000 simulations. Commenter.
 
 # Annexe
 

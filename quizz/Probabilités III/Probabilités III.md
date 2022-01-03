@@ -35,7 +35,7 @@ Avec les hypothèses précédentes, on a
 
   - [ ]  A : $\Esp (Z | Y = 1) = \frac{1}{\lambda}$
 
-  - [ ]  B : $\Esp (Z | Y = O) = \lambda$
+  - [ ]  B : $\Esp (Z | Y = 0) = \lambda$
 
   - [ ]  C : $\Esp (Z | Y ) = \frac{Y}{2\lambda} + \frac{1}{2}(1-Y)\lambda$
 
