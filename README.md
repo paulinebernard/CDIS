@@ -12,18 +12,19 @@ Mines ParisTech, cycle ingénieur civil, unité d'enseignement Mathématiques (U
 | Chapitre      | # | E-book | Papier | Notebook | Quizz | 
 | ------------- | ------: | -----------:  |  :----: |  :----:  | :-----: |
 | Fondamentaux |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/Fonda.pdf) |  |  |
-| Topologie | 1 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/Topo.pdf) |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Topologie/output/Topologie.pdf) |
-| Calcul Différentiel | 1 |  | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/CalDiff1.pdf)  |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Calcul%20Diff%C3%A9rentiel%20I/output/Calcul%20Diff%C3%A9rentiel%20I.pdf) |
-|   | 2 |  | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/CalDiff2.pdf) | | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Calcul%20Diff%C3%A9rentiel%20II/output/Calcul%20Diff%C3%A9rentiel%20II.pdf) |
-| |   3 |   |  [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TopoCD4.pdf)  |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TopoCD4quizz.pdf) |
-| Tutorat avancé (Z2) |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/Z2.pdf) |  |  |
-| Corr exos Topo / CD |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/CorrExosTopoCD.pdf) |  |  |
+| Topologie | 1 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/Topo.pdf) |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TopoCD1quizz.pdf) |
+| Calcul Différentiel | 1 |  | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/CalDiff.pdf)  |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TopoCD2quizz.pdf) |
+|   | 2 |  | --  | | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TopoCD3quizz.pdf) |
+| |   3 |   |  --  |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TopoCD4quizz.pdf) |
+| Corr. exos Topo CD CalInt |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/ExoCorrTopoCDMesInt.pdf) |  |  |
+|  |  |   |  |  |  |
 | Equations Différentielles | 1 | [:computer: PDF](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Différentielles%20I/output/Equations%20Différentielles%20I.pdf) | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Différentielles%20I/output/Equations%20Différentielles%20I%20(a4%2C%20recto-verso).pdf)  |  [:notebook: IPYNB](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Diff%C3%A9rentielles%20I/Equations%20Diff%C3%A9rentielles%20I.ipynb) | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Equations%20Diff%C3%A9rentielles%20I/output/Equations%20Diff%C3%A9rentielles%20I.pdf)
 |  | 2 | [:computer: PDF](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Diff%C3%A9rentielles%20II/output/Equations%20Diff%C3%A9rentielles%20II.pdf)  | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Diff%C3%A9rentielles%20II/output/Equations%20Diff%C3%A9rentielles%20II%20(a4%2C%20recto-verso).pdf)|  [:notebook: IPYNB](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Diff%C3%A9rentielles%20II/Equations%20Differentielles%20II.ipynb) |  |
-| Calcul Intégral | 1 |  | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/MesInt1.pdf) |  |  [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/MesIntQuizz1.pdf) |
-|  | 2 & 3 |  | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/MesInt2_3.pdf) |  |  [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/MesIntQuizz2.pdf)  |
-|  | 4 |  | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/MesInt4.pdf) |  |  [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/MesIntQuizz4.pdf)  |
-|Corr Exos  Cal Int |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/CorrExosMesInt.pdf) |  |   |
+| Calcul Intégral | 1 |  | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/MesInt12.pdf) |  |  [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/MesIntQuizz1.pdf) |
+|  | 2  |  | |  |  [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/MesIntQuizz2.pdf)  |
+|  | 3  |  | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/MesInt34.pdf) |  |  [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/MesIntQuizz3.pdf)  |
+|  | 4 |  |  |  |  [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/MesIntQuizz4.pdf)  |
+||  |   |  |  |   |
 | |  4  | |  |  |  |
 | Probabilités | 1 | [:computer: PDF](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20I/output/Probabilit%C3%A9%20I.pdf) | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20I/output/Probabilit%C3%A9%20I%20(a4%2C%20recto-verso).pdf)  |   | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Probabilit%C3%A9s%20I/output/Probabilit%C3%A9s%20I.pdf) |
 |  | 2 | [:computer: PDF](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20II/output/Probabilit%C3%A9%20II.pdf)  | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20II/output/Probabilit%C3%A9%20II%20(a4%2C%20recto-verso).pdf)  |   | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Probabilit%C3%A9s%20II/output/Probabilit%C3%A9s%20II.pdf) |
