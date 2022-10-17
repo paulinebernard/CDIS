@@ -96,7 +96,7 @@ donc $|X|^p$ est intégrable.
 On donne ici dans le cas général les inégalités de Markov et de Bienaymé-Chebyshev, déjà vues en CPGE.
 
 ### Inégalité de Markov {.theorem #inegmarkov}
-Soient $p \in \N^\ast$ et $a \in \R^\ast$. Soit $X \in \L^p(\Omega,\A,\P)$, on a
+Soient $p \in \N^\ast$ et $a \in \R_+^\ast$. Soit $X \in \L^p(\Omega,\A,\P)$, on a
 $$\P(|X|\geq a) \leq \frac{\Esp(|X|^p)}{a^p}$$
 
 ### Démonstration {.proof}
@@ -107,7 +107,7 @@ $$\Esp(|X|^p) \geq a^p \Esp(1_{[a, +\infty[}(|X|)) = a^p \P(|X|\geq a).$$
 
 ### Inégalité de Bienaymé-Chebyshev {.corollary #inegbc}
 Soit $X \in \L^2$, on a
-$$\P(|X-\Esp(X)| > a) \leq \frac{\V(X)}{a^2}$$
+$$\P(|X-\Esp(X)| \geq a) \leq \frac{\V(X)}{a^2}$$
 
 ### Démonstration {.exercise .question .one #bienaymécheby}
 
