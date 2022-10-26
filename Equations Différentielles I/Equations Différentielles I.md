@@ -240,7 +240,7 @@ L'équation différentielle est dite *autonome* si l'application $f$ ne dépend 
 
 Lorsque l'intervalle de temps $I$ de définition de la solution est $J$ entier, on dira que la solution est *globale*. Mais on verra qu'il peut parfois arriver qu'une solution ne puisse être définie sur $J$ entier, par exemple si elle explose avant, ou si elle s'apprête à quitter $X$.
 
-Notons que $f$ sera souvent définie sur $J=\R$ et $X = \R^{n}$. Cependant, il peut arriver que cela ne soit pas le cas, comme par exemple pour deux corps de position $y_a,y_b$ dont la force d'interaction gravitationnelle $\frac{Gm_a m_b}{\|y_a-y_b\|^2}$ n'est définie que pour $y_a\neq y_b$.
+Notons que $f$ sera souvent définie sur $J\times X=\R\times \R^{n}$. Cependant, il peut arriver que cela ne soit pas le cas, comme par exemple pour deux corps de position $y_a,y_b$ dont la force d'interaction gravitationnelle $\frac{Gm_a m_b}{\|y_a-y_b\|^2}$ n'est définie que pour $y_a\neq y_b$, où lorsque l'on veut restreindre l'étude des solutions à un domaine particulier.
 
 ### 
 
