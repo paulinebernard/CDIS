@@ -34,7 +34,7 @@ Mines ParisTech, cycle ingénieur civil, unité d'enseignement Mathématiques (U
   
 
 
-:calendar: Calendrier 2021-2022
+:calendar: Calendrier 2022-2023
 --------------------------------------------------------------------------------
 
   - :calendar: [interface graphique](https://calendar.google.com/calendar/embed?src=coobt3rgshmvkjsfgpeehgucoc%40group.calendar.google.com&ctz=Europe%2FParis)
