@@ -4,7 +4,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Q}{\mathbb{Q}}
 \renewcommand{\P}{\mathbb{P}}
-\renewcommand{\C}{\mathbb{C}}
+\newcommand{\C}{\mathbb{C}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\A}{\mathcal{A}}
 \newcommand{\E}{\mathcal{E}}
@@ -70,7 +70,7 @@ Objectifs d'apprentissage
 
       - \zero  espace fondamental $\Omega$
       - \zero  événement $A \subset \Omega$
-      - \one  tribu (de parties) 
+      - \zero  tribu (de parties) 
       - \one  probabilité
       - \one  propriété presque sûre
 
@@ -797,7 +797,7 @@ Supposons que $\P(X > 0) = 1$.
 
 ## Queues de distributions
 
-Soit une densité $f$ sur $\R$ telle que la fonction $h: x \in \R \mapsto x\,f(x)$ est intégrable. Cette hypothèse sera appelée $(\mathcal{H})$. On note $F$ la fonction de répartition correspondante sur la droite réelle achevée. Nous allons montrer que[^o]
+Soit une densité $f$ sur $\R$ telle que la fonction $h: x \in \R \mapsto x\,f(x)$ est intégrable. Cette hypothèse sera appelée $(\mathcal{H})$. On note $F$ la fonction de répartition correspondante. Nous allons montrer que[^o]
 $$\left|\begin{array}{rl} 1-F(x) \underset{x\to+\infty}{=} o\left(\dfrac{1}{x}\right), & (1)\\[1em] F(x) \underset{x\to-\infty}{=} o\left(\dfrac{1}{x}\right).& (2) \end{array} \right. $$ 
 
 ### Etude en $+\infty$ {.question #dlfdr-pi}
@@ -820,7 +820,6 @@ $$\left|\begin{array}{rl} 1-F(x) \underset{x\to+\infty}{=} o\left(\dfrac{1}{x}\r
 
 Considérons maintenant la fonction de répartition 
 $$ F: x \in \R \mapsto \left|\begin{array}{ll} 1 - \dfrac{e}{x\,\ln(x)} & \text{si } x \geq e,\\ 0 & \text{si } x <e, \end{array}\right. $$
-que l'on étend à la droite réelle achevée en posant $F(-\infty) = 0$ et $F(+\infty) = 1$.
 
 5. Vérifier que cette fonction possède bien une densité $f$ et l'expliciter.
 
@@ -832,7 +831,7 @@ que l'on étend à la droite réelle achevée en posant $F(-\infty) = 0$ et $F(+
 
 ### Liens entre les développements asymptotiques {.question #dlfdr-liensdl}
 
-Soient les fonctions de répartition $$F: x\in\R \mapsto \left|\begin{array}{ll} 1 - \dfrac{1}{\ln(x)} & \text{si } x \geq e,\\ 0 & \text{sinon,}\end{array}\right.$$ et $G : x\in\R \mapsto 1 - F(-x)$, toutes deux étendues à la droite réelle achevée en posant $\lim\limits_{x\to-\infty} F(x) = \lim\limits_{x\to-\infty} G(x) = 0$ et $\lim\limits_{x\to+\infty} F(x) = \lim\limits_{x\to+\infty} G(x) = 1$.
+Soient les fonctions de répartition $$F: x\in\R \mapsto \left|\begin{array}{ll} 1 - \dfrac{1}{\ln(x)} & \text{si } x \geq e,\\ 0 & \text{sinon,}\end{array}\right.$$ et $G : x\in\R \mapsto 1 - F(-x)$.
 
 9. Que peut-on dire sur les éventuels liens entre $(1)$ et $(2)$ à l'aide de ces deux fonctions ?
 
@@ -871,6 +870,35 @@ Considérons maintenant la densité plus générale $$g(x) = \dfrac{1}{\sqrt{2\,
 où $\mu \in \R$ et $\sigma^2 > 0$. On note $G$ sa fonction de répartition associée.
 
 7. En réécrivant $g$ en fonction de $f$, déduire des questions précédentes un équivalent de $1-G(x)$ lorsque $x\to+\infty$.
+
+
+## Loi de vie et de mort 
+
+La durée de vie d'un être vivant ou d'un matériel peut-être assimilée à une variable aléatoire strictement positive $T$.
+Dans ce cadre, on peut définir les notions suivantes :
+
+* Loi de vie a priori : il s'agit de la loi du temps $T$ caractérisée par fonction de répartition complémentaire
+        $$G(t) = \P(T>t)$$
+* Loi de survie après $t_0 \geq 0$ : il s'agit de la loi du temps $T-t_0$ qu'il lui reste à vivre, sachant qu'il était encore en vie à $t_0$, de fonction de répartition complémentaire
+        $$G_{t_0}(t) =\P(T>t+t_0|T>t_0)$$
+
+On dira que la loi de vie satisfait la propriété de non vieillissement (ou d'absence de mémoire) si la loi de survie et la loi de vie sont égales :
+        $$\forall t \geq 0 \text{ et } \forall t_0 \geq 0, G_{t_0}(t) = G(t)$$
+
+### Question 1 {.question #viemort1}
+
+Exprimer la loi de survie à partir de la loi de vie a priori.
+
+### Question 2 {.question #viemort2}
+
+Montrer qu'une variable aléatoire $T$ satisfait la propriété de non-vieillissement si et seulement si elle est de loi exponentielle.
+
+### Question 3 {.question #viemort3}
+On suppose que $T$ admet une densité continue sur $\R_+^\ast$. Montrer que l'on peut définir le taux de mort à l'instant $t$ par 
+        $$D(t) = \lim_{\Delta t \to 0} \frac{1}{\Delta t}\P(t < T \leq t + \Delta t | T >t)$$
+et exprimer $G$ en fonction de $D$.
+
+Quelles lois correspondent-elles à $D$ constant ?
 
 
 ---
@@ -1088,14 +1116,11 @@ Pour mieux comprendre l'impact de ce résultat, prenons un exemple pratique. Con
 
 5. La fonction $F$ considérée est continue et dérivable par morceaux sur $\R$ ; le seul point où $F$ n'est pas dérivable est $e$ (le taux d'accroissement n'a pas les mêmes limites à gauche et à droite). Elle possède donc [une densité](#fdr-va-dens) qui s'obtient en dérivant chaque morceau : pour tout $x\in\R$, $$f(x) = \left|\begin{array}{ll} e\,\dfrac{\ln(x) + 1}{x^2\,\ln(x)^2} & \text{si } x \geq e,\\ 0 & \text{sinon.}\end{array}\right.$$
 <!-- Ici on peut leur montrer qu'on aurait pu prendre n'importe quelle valeur pour f en e, et ça marcherait quand même (idée qu'on n'a pas forcément une unique densité, mais qu'elles sont toutes égales p.p.) -->
-On peut l'étendre à la droite réelle achevée en posant $f(\pm\infty) = \lim\limits_{x\to\pm\infty}f(x) = 0$.
 
 6. On remarque que pour tout $x\geq e$, $x\,\left(1-F(x)\right) = \dfrac{e}{\ln(x)} \xrightarrow[x\to+\infty]{} 0$, donc le développement asymptotique $(1)$ est bien vérifié. En outre, comme $x\,F(x) = 0$ pour tout $x < e$, le développement asymptotique $(2)$ est aussi bien respecté.
 
 7. Pour tout $x\in\R$, $$ h(x) = \left|h(x)\right| = \left|\begin{array}{ll} e\,\dfrac{\ln(x) + 1}{x\,\ln(x)^2} & \text{si } x \geq e,\\ 0 & \text{sinon,} \end{array}\right.$$ et on pose $h(\pm\infty) = \lim\limits_{x\to\pm\infty}h(x) = 0$.
-Par conséquent, $h$ est clairement  intégrable sur $[-\infty,e]$, où elle est égale presque partout (partout sauf en $e$) à la fonction nulle. Pour savoir si $h$ est  intégrable sur toute la droite réelle achevée, il nous faut donc regarder si elle l'est sur $[e,+\infty]$. Pour cela, nous allons utiliser le [théorème de Hake](Calcul Intégral I.pdf #hake), qui nous dit de vérifier que $h$ est intégrable sur tout segment $[a,b] \subsetneq [e,+\infty]$, puis que $\lim\limits_{t\to+\infty} \int_e^t h(x)\,dx$ existe et est finie. Remarquons d'abord que $h$ est continue, donc elle est intégrable sur tout segment strictement inclus dans $[e,+\infty]$; le premier point est vérifié. On remarque en outre que pour tout $x\geq e$, $$h(x) \geq \dfrac{1}{x\,\ln(x)}. $$ Par conséquent, pour tout $t > e$ on a:
-$$\int_{e}^t h(x)\,dx \geq \int_e^t \dfrac{1}{x\,\ln(x)}\,dx = \left[\ln(\ln(x))\right]_e^t = \ln(\ln(t)).$$
-Or cette dernière quantité tend vers $+\infty$ quand $t\to+\infty$. Donc $\int_{e}^t h(x)\,dx$ n'a pas de limite finie quand $t\to+\infty$. On en conclut que $h$ n'est pas  intégrable.
+Par conséquent, $h$ est clairement  intégrable sur $[-\infty,e]$, où elle est égale presque partout (partout sauf en $e$) à la fonction nulle. Pour savoir si $h$ est  intégrable sur toute la droite réelle il nous faut donc regarder si elle l'est sur $[e,+\infty]$. On remarque en outre que pour tout $x\geq e$, $$h(x) \geq \dfrac{1}{x\,\ln(x)}, $$ et le terme de droite n'est pas intégrable (en effet, une primitive de $\frac1{x \ln(x)}$ est $\ln(ln(x))$ qui tend vers $+\infty$ en $+\infty$). Par conséquent, $h$ n'est pas  intégrable.
 
 8. La fonction de répartition $F$ considérée respecte bien les développements asymptotiques $(1)$ et $(2)$, mais la fonction $h$ associée n'est pas  intégrable. Nous avons donc montré que la réciproque de la propriété est fausse.
 
@@ -1113,7 +1138,7 @@ Or cette dernière quantité tend vers $+\infty$ quand $t\to+\infty$. Donc $\int
 * **Domaine.** $f : \R \to \R^+$.
 * **Parité.** On remarque que $f$ est paire : $\forall\,x\in\R$, $f(x) = f(-x)$.
 * **Limites aux bornes.** $\lim\limits_{x\to-\infty} f(x) = \lim\limits_{x\to+\infty} f(x) = 0$. Ainsi, la parité est aussi vraie aux bornes.
-* **Dérivabilité.** $f$ est continue sur $\R$ et infiniment dérivable sur $\R$ en tant que composée de fonctions infiniment dérivables. Pour tout $x\in\R$ sa dérivée première s'écrit $f^\prime(x) = -x\,f(x)$ et a dérivée seconde $f^{\prime\prime}(x) =(x^2 - 1)\,f(x)$. Ces deux dernières fonctions peuvent être étendues à la droite réelle achevée en posant $f^\prime(\pm\infty) := \lim\limits_{x\to\pm\infty} f^\prime(x) = 0$ et $f^{\prime\prime}(\pm\infty) := \lim\limits_{x\to\pm\infty} f^{\prime\prime}(x) = 0$.
+* **Dérivabilité.** $f$ est continue sur $\R$ et infiniment dérivable sur $\R$ en tant que composée de fonctions infiniment dérivables. Pour tout $x\in\R$ sa dérivée première s'écrit $f^\prime(x) = -x\,f(x)$ et a dérivée seconde $f^{\prime\prime}(x) =(x^2 - 1)\,f(x)$.
 * **Variations.**  $f^\prime$ est strictement positive (resp. négative) ssi $-\infty < x < 0$ (resp. $+\infty > x > 0$). Elle est nulle en $0$, $+\infty$ et $-\infty$. Ainsi, $f$ est strictement croissante sur $]-\infty,0[$, vaut $\left(2\,\pi\right)^{-1/2}$ en $0$, puis est strictement décroissante sur $]0,+\infty[$. 
 * **Convexité/Concavité.** $f^{\prime\prime}$ est strictement positive (resp. négative) sur $\R\backslash\,]-1,1[$ (resp. $]-1,1[$). $f$ est donc convexe sur $\R\backslash\,]-1,1[$ et concave sur $]-1,1[$.
 
@@ -1127,14 +1152,14 @@ Lorsque $x<0$, on peut procéder de la même manière avec $1 - F(x)$ et obtenir
 $$1 - F(x) = \int_{-\infty}^{+\infty} f(u)\,du - \int_{-\infty}^x f(u)\,du = \int_{x}^{+\infty} \dfrac{1}{\sqrt{2\,\pi}}\,\exp\left\{-\dfrac{u^2}{2}\right\}\,du. $$
 Or pour tout $u\geq x$ on a $u/x \geq 1$, donc 
 $$1 - F(x) \leq \dfrac{1}{\sqrt{2\,\pi}}\,\int_{x}^{+\infty} \dfrac{u}{x}\, \exp\left\{-\dfrac{u^2}{2}\right\}\,du = \dfrac{-1}{x}\,\int_{x}^{+\infty} f^\prime(u)\,du. $$
-Or $f^\prime$ a pour primitive $f$ donc d'après [le théorème fondamental du calcul (extension)](Calcul Intégral I.pdf #TFC) on a 
+Or $f^\prime$ a pour primitive $f$ donc on a 
 $$1-F(x) \leq -\dfrac{f(+\infty) - f(x)}{x} = \dfrac{f(x)}{x}. $$
 
 
 4. Soit $x>0$. Par définition, $$\left(1 + \dfrac{1}{x^2}\right)\,\left(1-F(x)\right) = \int_x^{+\infty} \left(1 + \dfrac{1}{x^2} \right)\,f(u)\,du.$$
 Or pout tout $u \geq x$ on a $\dfrac{1}{u^2} \leq \dfrac{1}{x^2}$, d'où
 $$\left(1 + \dfrac{1}{x^2}\right)\,\left(1-F(x)\right) \geq \int_{x}^{+\infty} \left( 1 + \dfrac{1}{u^2} \right)\,f(u)\,du.$$
-Remarquons maintenant que d'après la question 1, $\left(\dfrac{f(x)}{x} \right)^\prime = \dfrac{-x^2\,f(x) - f(x)}{x^2} = -\left(1+\dfrac{1}{x^2}\right)\,f(x)$. En d'autres termes, $A : x\in\R \mapsto -\dfrac{f(x)}{x}$ est une primitive de $x\in\R \mapsto \left(1+\dfrac{1}{x^2}\right)\,f(x)$. On peut étendre ses valeurs à la droite réelle achevée en posant $A(\pm\infty) = \lim\limits_{x\to\pm\infty} A(x) = 0$. On obtient alors par [le théorème fondamental du calcul (extension)](Calcul Intégral I.pdf #TFC)
+Remarquons maintenant que d'après la question 1, $\left(\dfrac{f(x)}{x} \right)^\prime = \dfrac{-x^2\,f(x) - f(x)}{x^2} = -\left(1+\dfrac{1}{x^2}\right)\,f(x)$. En d'autres termes, $A : x\in\R \mapsto -\dfrac{f(x)}{x}$ est une primitive de $x\in\R \mapsto \left(1+\dfrac{1}{x^2}\right)\,f(x)$. On obtient alors par 
 $$\left(1 + \dfrac{1}{x^2}\right)\,\left(1-F(x)\right) \geq - \left(A(+\infty) - A(x)\right) = A(x) = \dfrac{f(x)}{x}.$$
 On en déduit directement l'inégalité de gauche :
 $$ 1-F(x) \geq f(x)\,\dfrac{x^2}{(x^2+1)\,x} = f(x)\,\dfrac{x}{x^2+1}. $$
@@ -1156,6 +1181,28 @@ On obtient alors l'encadrement suivant, pour tout $x>\mu$ :
 $$ \dfrac{x-\mu}{1 + \dfrac{(x-\mu)^2}{\sigma^2}}\,g(x) \leq 1 - G(x) \leq \dfrac{\sigma^2\,g(x)}{x-\mu}.  $$
 
 On en déduit que $1-G(x) \sim \dfrac{\sigma^2\,g(x)}{x-\mu} \sim \sigma^2\,\dfrac{g(x)}{x}$ lorsque $x\to+\infty$.
+
+## Loi de vie et de mort 
+
+### Question 1 {.answer #answer-viemort1}
+
+Par définition, on a 
+$$ G_{t_0}(t) = \P(T>t+t_0|T>t_0) = \frac{\P(T>t+t_0,T>t)}{\P(T>t)} = \frac{G(t+t_0)}{G(t)}$$
+
+### Question 2 {.answer #answer-viemort2}
+
+D'après la question précédente, $G$ vérifie alors $G(t_0+t) = G(t)G(t_0)$ pour tous $t, t_0 > 0$. Comme $G$ est décroissante, continue à droite et tend vers 0 à l'infini, on en déduit que $G(t) = e ^{-\theta t}$, pour un $\theta > 0$. On reconnaît la fonction de répartition complémentaire d'une loi exponentielle de paramètre $\theta$.
+
+### Question 3 {.answer #answer-viemort3}
+\begin{align*}
+D(t) &= \lim_{\Delta t \to 0} \frac{1}{\Delta t}\P(t < T \leq t + \Delta t | T >t)\\
+     &= \lim_{\Delta t \to 0} \frac{1}{\Delta t}\frac{\P(t < T \leq t + \Delta t)}{\P(T >t)}\\
+     &= \frac{1}{G(t)} \lim_{\Delta t \to 0} \frac{G(t) - G(t + \Delta t)}{\Delta t}\\
+     &= -\frac{g(t)}{G(t)}
+\end{align*}
+Ainsi, $D(t) = \frac{d}{dt}(-\ln G(t))$ et comme $G(0) = 1$, alors on a pour $t >0$
+        $$G(t) = \exp\left(-\int_0^tD(s) ds\right)$$
+Si $D$ est constant, on retrouve une loi exponentielle.
 
 
 Références

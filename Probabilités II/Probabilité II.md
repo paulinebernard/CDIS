@@ -4,7 +4,7 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbb{Z}}
 \renewcommand{\P}{\mathbb{P}}
-\renewcommand{\C}{\mathbb{C}}
+\newcommand{\C}{\mathbb{C}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\A}{\mathcal{A}}
 \newcommand{\E}{\mathcal{E}}
@@ -285,9 +285,9 @@ Il existe des variables aléatoires qui n’ont pas d’espérance, comme le mon
 
 Un gyrophare envoie un flash lumineux dans une direction aléatoire uniforme d’angle $\theta$. On cherche la distribution de l'abscisse $X$ du point d'impact du rayon lumineux sur un écran plan infini situé à distance 1 du gyrophare. Donner la densité de $X$. Calculer son espérance.
 
-# Compléments sur les intégrales multiples
+# Rappels sur les intégrales multiples
 
-Dans la suite, nous aurons besoin de quelques résultats supplémentaires à propos des intégrales multiples que nous donnons ici sans démonstration.
+Dans la suite, nous aurons besoin de quelques résultats à propos des intégrales multiples que nous reformulons ici dans le contexte des probabilités. 
 
 ### Théorème de Fubini (pour les probabilités) {.theorem #fubiniproba} 
 Soient $\P_X$ et $\P_Y$ deux probabilités définies respectivement sur $(\R^n, \B(\R^n))$ et $(\R^m, \B(\R^m))$.
@@ -618,34 +618,6 @@ Soit $X = (U,V)$ un vecteur aléatoire de $\R^2$, avec $U$ et $V$ indépendantes
 Exercices complémentaires
 ================================================================================
 
-## Loi de vie et de mort 
-
-La durée de vie d'un être vivant ou d'un matériel peut-être assimilée à une variable aléatoire strictement positive $T$.
-Dans ce cadre, on peut définir les notions suivantes :
-
-* Loi de vie a priori : il s'agit de la loi du temps $T$ caractérisée par fonction de répartition complémentaire
-        $$G(t) = \P(T>t)$$
-* Loi de survie après $t_0 \geq 0$ : il s'agit de la loi du temps $T-t_0$ qu'il lui reste à vivre, sachant qu'il était encore en vie à $t_0$, de fonction de répartition complémentaire
-        $$G_{t_0}(t) =\P(T>t+t_0|T>t_0)$$
-
-On dira que la loi de vie satisfait la propriété de non vieillissement (ou d'absence de mémoire) si la loi de survie et la loi de vie sont égales :
-        $$\forall t \geq 0 \text{ et } \forall t_0 \geq 0, G_{t_0}(t) = G(t)$$
-
-### Question 1 {.question #viemort1}
-
-Exprimer la loi de survie à partir de la loi de vie a priori.
-
-### Question 2 {.question #viemort2}
-
-Montrer qu'une variable aléatoire $T$ satisfait la propriété de non-vieillissement si et seulement si elle est de loi exponentielle.
-
-### Question 3 {.question #viemort3}
-On suppose que $T$ admet une densité continue sur $\R_+^\ast$. Montrer que l'on peut définir le taux de mort à l'instant $t$ par 
-        $$D(t) = \lim_{\Delta t \to 0} \frac{1}{\Delta t}\P(t < T \leq t + \Delta t | T >t)$$
-et exprimer $G$ en fonction de $D$.
-
-Quelles lois correspondent-elles à $D$ constant ?
-
 ## Durée de vie
 
 La durée de vie, exprimée en années, d’un circuit électronique est une variable aléatoire $T$ dont la fonction de répartition $F$ est définie par : 
@@ -773,6 +745,76 @@ Soient maintenant $n\in\mathbb{N}^\ast$ variables aléatoires $X_1,\dots,X_n$ in
 3. Soient $a,b\in(\R^{*})^n$. Sous quelle condition a-t-on $\text{Cov}\left(S_n^a, S_n^b\right) = 0$ ?
 
 
+## Loi de Maxwell 
+
+On désire déterminer la distribution des vitesses des molécules d’un gaz monoatomique parfait à l’équilibre (loi de Maxwell (1859)).
+
+On représente la vitesse d’une molécule d’un gaz monoatomique parfait à l’équilibre dans un repère orthonormal par un vecteur aléatoire $V = (V_1 , V_2 , V_3 )$. Le choix du repère étant arbitraire, il est naturel de supposer que la loi de $V$ est invariante par rotation (autour de l'origine) et que les composantes de $V$ sont indépendantes.
+
+### Partie 1 
+
+Soit $(X, Y, Z)$ un vecteur aléatoire  à valeurs dans $\R^3$ de densité $f_{(X, Y, Z)}$.
+Ce vecteur aléatoire est supposé invariant par rotation : il existe une fonction $\phi: \left[0, +\infty\right[ \to \left]0, +\infty\right[$ (strictement positive) telle que
+$$
+f_{(X, Y, Z)}(x,y,z) = \phi(x^2+y^2+z^2) \;  \mbox{ pour tout $(x, y, z) \in \R^3$.}
+$$ 
+
+<!--
+#### Question 0
+Soit $(X, Y, Z)$ un vecteur aléatoire  à valeurs dans $\R^3$ de densité $f_{(X, Y, Z)}$.
+Montrer que l'ensemble 
+$$
+P = \{ (x,y,z) \in \R^3 \; | \; f_{(X, Y, Z)}(x,y,z) \neq 0 \}
+$$ 
+n'est pas négligeable (c'est-à-dire que son volume est strictement positif).
+-->
+
+#### Question 1 {.question #Maxwell-1}
+On suppose de plus les variables aléatoires
+$X$, $Y$ et $Z$ indépendantes. Montrer qu'il existe une fonction
+$f: \R \to \left[0, +\infty\right[$ qui soit une densité telle que 
+$$
+f_{(X, Y, Z)}(x, y, z) = f(x) f(y) f(z) \; \mbox{ pour tout $(x, y, z) \in \R^3$.} 
+$$
+Montrer finalement que $f(x) > 0$ pour tout $x \in \R$.
+
+#### Question 2 {.question #Maxwell-2}
+
+On suppose de plus que les densités marginales de $X, Y$ et $Z$ ainsi que la fonction $\phi$ sont continûment différentiables (c'est-à-dire de classe $C^1$). Montrer que la densité de chacune des composantes s'écrit sous la forme $f (x) = a e^{cx^2/2}$, avec $a$ et $c$ deux constantes réelles.
+
+#### Question 3 {.question #Maxwell-3}
+
+En déduire que le vecteur $(X, Y, Z)$ suit une loi gaussienne d'espérance l'origine dont on précisera la matrice de covariance en fonction de la constante $\sigma = 1/\sqrt{|c|}$.
+
+### Partie 2
+
+On suppose que le vecteur aléatoire $(X, Y, Z) = V$ vérifie les hypothèses des
+questions précédentes. 
+
+#### Question 4 {.question #Maxwell-4}
+
+Calculer l'énergie cinétique moyenne d'un atome du gaz, c'est-à-dire l'espérance 
+$$
+E_c := \mathbb{E}\left(\frac{1}{2}m\|V\|^2\right)
+$$ 
+où $m$ est la masse d'un atome du gaz.
+L’énergie cinétique moyenne d’un atome du gaz de masse $m$ étant égale à $\frac{3}{2} kT$ où $k$ est la constante de Boltzmann et $T$ la température du gaz, en déduire la valeur de
+$\sigma^2$ en fonction de $k$, $T$ et $m$.
+
+#### Question 5 {.question #Maxwell-5}
+
+On rappelle que si $X$ et $Y$ sont deux variables aléatoires indépendantes de loi respective $\Gamma (a,\lambda)$ et $\Gamma (b,\lambda)$, alors la loi de $X + Y$ est la loi $\Gamma (a+b,\lambda)$. On rappelle également que la densité $g$ de la loi $\Gamma (a,\lambda)$ vérifie
+$$
+g(x) = \frac{1}{\Gamma(a)}\lambda^a x^{a -1} e^{-\lambda x} 1_{]0,+\infty[}(x)
+\; \mbox{ pour tout $x\in\R$},
+$$
+où $\Gamma$ est la fonction définie par
+$$\Gamma(a) = \int_0^{+\infty} x^{a-1}e^{-x} dx \text{ pour } a \in \left] 0, + \infty \right[.$$
+On remarquera que $\Gamma(1/2) = \sqrt{\pi}$ et que $\Gamma(x+1) = x \Gamma(x).$ 
+
+Calculer la loi de $V_1^2$. 
+En déduire la loi de $\|V \|^2$ puis la densité de $\|V \| = \sqrt{V_1^2 + V_2^2 + V_3^2}$.
+La probabilité associée est appelée loi de Maxwell.
 
 
 ---
@@ -1060,30 +1102,6 @@ La loi bêta apparaît naturellement dans une expérience d'urnes, donnée par G
 Nous obtenons aussi facilement la densité de $Z$. En effet, on a $f_{Y'}(y,z) = f_Y(y)f_Z(z)$ ($Y$ et $Z$ sont donc indépendantes), où
 $$f_Z(z) = \frac{\theta^{\alpha+\beta}}{\Gamma(\alpha+\beta)}z^{\alpha+\beta -1}e^{-\theta z}1_{\left]0,+\infty\right[}$$
 On a ainsi démontré que si $U$ et $V$ sont deux variables aléatoires indépendantes de lois respectives $\Gamma(\alpha,\theta)$ et $\Gamma(\beta,\theta)$, alors $U+V$ suit la loi $\Gamma(\alpha+\beta,\theta)$ et est indépendante de $\frac{U}{U+V}$ qui suit une loi bêta de paramètres $(\alpha,\beta)$.
-
-
-
-## Loi de vie et de mort 
-
-### Question 1 {.answer #answer-viemort1}
-
-Par définition, on a 
-$$ G_{t_0}(t) = \P(T>t+t_0|T>t_0) = \frac{\P(T>t+t_0,T>t)}{\P(T>t)} = \frac{G(t+t_0)}{G(t)}$$
-
-### Question 2 {.answer #answer-viemort2}
-
-D'après la question précédente, $G$ vérifie alors $G(t_0+t) = G(t)G(t_0)$ pour tous $t, t_0 > 0$. Comme $G$ est décroissante, continue à droite et tend vers 0 à l'infini, on en déduit que $G(t) = e ^{-\theta t}$, pour un $\theta > 0$. On reconnaît la fonction de répartition complémentaire d'une loi exponentielle de paramètre $\theta$.
-
-### Question 3 {.answer #answer-viemort3}
-\begin{align*}
-D(t) &= \lim_{\Delta t \to 0} \frac{1}{\Delta t}\P(t < T \leq t + \Delta t | T >t)\\
-     &= \lim_{\Delta t \to 0} \frac{1}{\Delta t}\frac{\P(t < T \leq t + \Delta t)}{\P(T >t)}\\
-     &= \frac{1}{G(t)} \lim_{\Delta t \to 0} \frac{G(t) - G(t + \Delta t)}{\Delta t}\\
-     &= -\frac{g(t)}{G(t)}
-\end{align*}
-Ainsi, $D(t) = \frac{d}{dt}(-\ln G(t))$ et comme $G(0) = 1$, alors on a pour $t >0$
-        $$G(t) = \exp\left(-\int_0^tD(s) ds\right)$$
-Si $D$ est constant, on retrouve une loi exponentielle.
 
 
 ## Durée de vie
@@ -1389,3 +1407,97 @@ $$ \text{Cov}\left(S_n^a, S_n^b\right) = \sum_{i = 1}^n a_i\,b_i $$
 qui est nulle ssi $a$ et $b$ sont orthogonaux.
 
 
+## Loi de Maxwell
+
+#### Question 1 {.answer #answer-Maxwell-1}
+
+La densité du triplet $(X, Y, Z)$ étant invariante par rotation,
+elle est de la forme $f_{(X,Y,Z)} (x, y, z) = \phi(x^2 + y^2 + z^2)$. 
+De plus, les variables $X, Y$ et $Z$ étant indépendantes, on a
+$$f_{(X,Y,Z)} (x, y, z) = f_X (x)f_Y (y)f_Z (z) \; \mbox{ pour tout $(x, y, z) \in \R^3$.} $$ 
+Soit $(x_0,y_0,z_0) \in \R^3$ ; comme $\phi(x_0^2 + y_0^2 + z_0^2) > 0$ on a
+$f_{(X, Y, Z)}(x_0, y_0, z_0) > 0$
+et donc $f_X(x_0) \neq 0$,
+$f_Y(y_0) \neq 0$ et $f_Z(z_0) \neq 0$. Pour tout $x \in \R^3$, comme
+$$
+f_X(x) f_Y(y_0) f_Z(z_0) = \phi(x^2 + y_0^2 + z^2) = \phi(y_0^2 + x^2 + z_0^2)
+= f_X(y_0) f_Y(x) f_Z(z_0),
+$$
+on a l'égalité
+$$
+f_X(x) = \frac{f_X(y_0)}{f_Y(y_0)} f_Y(x).
+$$
+Comme on a par ailleurs
+$$
+\int_{-\infty}^{+\infty} f_X(x) \, dx = \int_{-\infty}^{+\infty} f_Y(x) \, dx = 1,
+$$
+il est nécessaire que le ratio ${f_X(y_0)}/{f_Y(y_0)}$ soit égal à $1$. 
+On a donc $f_X = f_Y$ ;  la preuve que 
+$f_Y = f_Z$ s'obtient de manière similaire.
+
+Pour finir, puisque pour tout $x \in \R$ on a
+$f(x)^3 = f_{(X, Y, Z)}(x, x, x) = \phi(3 x^2) > 0$, 
+la fonction $f$ est bien positive en tout point.
+
+#### Question 2 {.answer #answer-Maxwell-2}
+
+L’égalité
+$$f(x)f(y)f(z) = \phi(x^2 + y^2 + z^2 )  \; \text{ pour tout } (x, y, z) \in \R^3$$
+implique $f (x)f'(y)f (z) = 2y\phi' (x^2 + y^2 + z^2 )$ 
+et $f' (x)f (y)f (z) = 2x\phi' (x^2 + y^2 + z^2 ).$ On en déduit que 
+$$xf (x)f' (y)f (z) = f' (x)yf (y)f (z)  \; \text{ pour tout } (x, y, z) \in \R^3.$$
+
+Soit $(x, y_0, z_0) \in \mathbb{R}^3$ avec $y_0 \neq 0$ ; on a $f(x) > 0$,
+$f(y_0) > 0$ et $f(z_0) > 0$. En posant 
+$$
+c = \frac{f'(y_0) f(z_0)}{y_0 f(y_0) f(z_0)},
+$$
+on voit que
+$$f' (x) = cxf(x) \; \mbox{pour tout $x \in \R$.}$$
+On peut réécrire cette équation différentielle sous la forme
+$$
+(\ln f(x))' = cx.
+$$
+En intégrant les deux membres de l'équation entre $0$ et $x$, on obtient
+$$
+\ln f(x) - \ln f(0) = c\frac{x^2}{2}
+$$
+et donc
+$$
+f(x) = f(0) e^{c x^2/2},
+$$
+ce qui est bien la forme cherchée $f(x) = a e^{cx^2/2}$.
+
+#### Question 3 {.answer #answer-Maxwell-3}
+
+Comme $\int_\R f (x) dx = 1$, on a nécessairement $c < 0$ et on en déduit que
+$$f (x) = \frac{1}{\sqrt{2\pi \sigma^2}}\exp\left(-\frac{x^2}{2\sigma^2}\right).$$ 
+Les variables aléatoires $X$, $Y$ et $Z$ suivent donc loi gaussienne centrée 
+et la covariance du vecteur est $\sigma^2 I_3$, où $I_3$ est la matrice identité.
+
+#### Question 4 {.answer #answer-Maxwell-4}
+On a 
+$$\frac{1}{2} m\Esp(\|V \|^2 ) = \frac{1}{2} m\Esp(V_1^2 +V_2^2 + V_3^2).$$ 
+Comme $\Esp(V_i^2) = \sigma^2$, on en déduit que $E_c = \frac{3}{2}m \sigma^2$
+et par conséquent que 
+$$\sigma^2 = \frac{kT}{m}.$$
+
+
+#### Question 5 {.answer #answer-Maxwell-5}
+
+À l’aide de la méthode de la fonction muette, on montre que $V_1^2$ suit une loi gamma de paramètres $(1/2,\frac{1}{2\sigma^2})$. En effet, en appliquant le changement de variable $y=x^2$ sur $\R_-^\ast$ et $\R_+^\ast$, on obtient :
+$$f_{V_1^2} (y) = \left(f(-\sqrt{y}) + f(\sqrt{y})\right) \frac{1}{2\sqrt{y}} 1_{]0,+\infty[}(x) = f(\sqrt{y}) \frac{1}{\sqrt{y}} 1_{]0,+\infty[}(x)$$
+par parité de $f$, soit
+\begin{align*}
+f_{V_1^2} (y) &= \frac{1}{\sqrt{\pi}}\left(\frac{1}{2\sigma^2}\right)^{1/2} y^{-1/2} \exp\left(-\frac{y}{2\sigma^2}\right)\\
+              &= \frac{1}{\Gamma(1/2)}\left(\frac{1}{2\sigma^2}\right)^{1/2} y^{-1/2} \exp\left(-\frac{y}{2\sigma^2}\right)
+\end{align*}
+On déduit de l'indication que $\|V\|^2 = V_1^2 +V_2^2 + V_3^2$ suit une loi gamma de paramètres $(3/2,\frac{1}{2\sigma^2})$.
+Sa densité est
+$$f_{\|V\|^2}(x) = \frac{1}{\sqrt{2\pi}\sigma^3}\sqrt{x} e^{- x/2\sigma^2}1_{]0,+\infty[}(x).$$
+
+À l’aide de la méthode de la fonction muette, en appliquant le changement de variable $v = \sqrt{x}$ sur $\R_+^\ast$ et avec $\sigma^2 = \frac{kT}{m}$, on montre enfin que $\|V\|$ est une variable de densité :
+
+$$f_{\|V\|}(v) = \frac{\sqrt{2}}{\sqrt{\pi}}\left(\frac{m}{kT}\right)^{3/2}v^2 e^{- mv^2/2kT} 1_{]0,+\infty[}(v).$$
+
+Il s’agit de la densité de la loi de Maxwell.
