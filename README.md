@@ -41,6 +41,8 @@ Mines ParisTech, cycle ingénieur civil, unité d'enseignement Mathématiques (U
 
   - :link: [lien au format iCal](https://calendar.google.com/calendar/ical/coobt3rgshmvkjsfgpeehgucoc%40group.calendar.google.com/public/basic.ics)
 
+  - :classical_building: [emploi du temps des trois prochaines semaines (salles)](https://oasis.mines-paristech.fr/prod/oasis/ensmp/Page/TimeTableView.php?year_in_cursus=1&type=week&nb_iterations=5&course_type=TC_ou_ES_ou_ESF_ou_OPTION_ou_AF_ou_DescOPTION_ou_Extern)
+
 
 :speech_balloon: Forum
 --------------------------------------------------------------------------------
