@@ -5,7 +5,7 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
-\renewcommand{\C}{\mathbb{C}}
+\newcommand{\C}{\mathbb{C}}
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\tr}{\operatorname{tr}}
 \newcommand{\Esp}{\mathbb{E}}
