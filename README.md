@@ -16,7 +16,7 @@ Mines ParisTech, cycle ingénieur civil, unité d'enseignement Mathématiques (U
 | Topologie | 1 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/Topo.pdf) |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TopoCD1quizz.pdf) |
 | Calcul Différentiel | 1 |  | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/CalDiff1.pdf)  |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TopoCD2quizz.pdf) |
 |   | 2 |  | --  | | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TopoCD3quizz.pdf) |
-| |   3 |   |  --  |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TopoCD4quizz.pdf) |
+| |   3 |   |  [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/CalDiff3.pdf)  |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TopoCD4quizz.pdf) |
 | Corr. exos Topo CD CalInt |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/ExoCorrTopoCDMesInt.pdf) |  |  |
 | Calcul Intégral | 1 |  | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/MesInt12.pdf) |  |  [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/MesIntQuizz1.pdf) |
 |  | 2  |  | |  |  [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/MesIntQuizz2.pdf)  |
