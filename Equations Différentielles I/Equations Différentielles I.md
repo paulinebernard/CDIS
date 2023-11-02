@@ -600,7 +600,7 @@ Le théorème suivant nous montre que pour un horizon de temps fini donné, on p
 
 Soient $J$ ouvert de $\R$, $X$ ouvert de $\R^{n}$, $f: J\times X \to \R^n$ continue et continûment différentiable par rapport à $x$, $(t_0,x_0)\in J\times X$, et $x:I\to\R^n$ l'unique solution maximale au problème de Cauchy défini par $f$ et $(t_0,x_0)$. Pour tout $\underline{t},\overline{t}$ tel que $t_0\in\left[\underline{t},\overline{t} \right]\subset I$, il existe $\delta_m>0$ et $\lambda\in \R$ tels que pour tout $\delta\in \R^n$ vérifiant $|\delta|\leq \delta_m$, l'unique solution maximale $x_\delta$ au problème de Cauchy défini par $f$ et $(t_0,x_0+\delta)$ est définie au moins sur $\left[\underline{t},\overline{t} \right]$ et vérifie
 $$
-|x(t)-x_{\delta}(t)| \leq e^{\lambda (t-t_0)} |\delta| \qquad \forall t\in \left[\underline{t},\overline{t} \right] \ .
+|x(t)-x_{\delta}(t)| \leq e^{\lambda |t-t_0|} |\delta| \qquad \forall t\in \left[\underline{t},\overline{t} \right] \ .
 $$
 
 
@@ -650,7 +650,7 @@ Henri Poincaré écrit :
 
 En effet, le précédent théorème nous prouve seulement que des perturbations suffisamment petites donnent des solutions arbitrairement proches en temps fini. Mais, en pratique, il est rarement possible de choisir l'amplitude des perturbations (erreurs de capteurs, erreurs numériques etc.) et il se pourrait que l'ordre de grandeur des perturbations produisant des erreurs *acceptables* sur les solutions ne soit pas réalisable. Plus précisément, le théorème suggère qu'à perturbation $|\delta|$ donnée, l'écart entre les solutions pourrait croître exponentiellement vite. C'est le cas bien sûr des systèmes qui divergent exponentiellement (tels que $\dot{x}=x$), mais aussi de certains systèmes à trajectoires bornées, pour lesquels il existe $\overline{t}>0$ tel que
 $$
-\frac{|x(t)-x_\delta(t)|}{|\delta|} \approx e^{\lambda t}  \qquad \forall t\leq \overline{t} \ .
+\frac{|x(t)-x_\delta(t)|}{|\delta|} \approx e^{\lambda t}  \qquad \forall 0\leq t\leq \overline{t} \ .
 $$
 Dans ce cas, $\frac{1}{\lambda}$ représente l'ordre de grandeur du temps maximal jusqu'auquel l'erreur sur les solutions reste du même ordre de grandeur que l'erreur initiale : on parle d'*horizon de Lyapunov*. Toute prédiction au delà de cet horizon est illusoire et le système est alors dit *chaotique*.
 
@@ -804,7 +804,7 @@ Considérons deux masses $m_1,m_2$ évoluant sur un support horizontal, accroch�
 m_1\ddot{y}_1 &= - \lambda_1 \dot{y}_1 - k_1 y_1 + k_{12} (y_2-y_1) \\
 m_2\ddot{y}_2 &= - \lambda_2 \dot{y}_2 - k_2 y_2 - k_{12} (y_2-y_1)
 \end{align*}
-où $\lambda_1,\lambda_2$ sont des coefficients de frottement positifs ou nuls. Réduire l'équation différentielle à l'ordre $1$, la résoudre et déterminer les points d'équilibre. En supposant $m_1=m_2$, $\lambda_1=\lambda_2$, $k_1=k_2=k_{12}$, étudier leur stabilité pour $\lambda>0$ et $\lambda = 0$. *On pourra cosnidérer les nouvelles variables $y_1+y_2$ et $y_1-y_2$.*
+où $\lambda_1,\lambda_2$ sont des coefficients de frottement positifs ou nuls. Réduire l'équation différentielle à l'ordre $1$, la résoudre et déterminer les points d'équilibre. En supposant $m_1=m_2$, $\lambda_1=\lambda_2$, $k_1=k_2=k_{12}$, étudier leur stabilité pour $\lambda>0$ et $\lambda = 0$. *On pourra considérer les nouvelles variables $y_1+y_2$ et $y_1-y_2$.*
 
 
 ### Lien entre stabilité et stabilité du linéarisé tangent {.theorem #theo_linTangent}
@@ -946,7 +946,7 @@ Dans une analyse de Lyapunov, on a vu plus haut que la quantité $\langle\nabla 
 
 ### Oscillateurs couplés II {.exercise .question #ressort-2 .two}
 
-Reprendre l'[exercice sur le oscillateurs couplés](#ressort-1) et démontrer la stabilité du point d'équilibre dans le cas général. Montrer ensuite qu'il est globalement asymptotiquement stable si $\lambda_1>0$ ou $\lambda_2>0$. On pourra pour cela considérer l'énergie mécanique du système.
+Reprendre l'[exercice sur les oscillateurs couplés](#ressort-1) et démontrer la stabilité du point d'équilibre dans le cas général. Montrer ensuite qu'il est globalement asymptotiquement stable si $\lambda_1>0$ ou $\lambda_2>0$. On pourra pour cela considérer l'énergie mécanique du système.
 
 
 ### Stabilité asymptotique II {.exercise .question #asymp_glob-2 .two}
@@ -988,17 +988,17 @@ Les solutions sont-elles continues par rapport aux conditions initiales au sens 
 ## Autour du Lemme de Grönwall {.exercice #exo_gronwall}
 
 ### Question 1 (Lemme de Grönwall) {.question #gro-1}
-Soient $t^-, t^+\in \R$, $u,\alpha, \beta : [t^-,t^+]\to\Rgeq$ continues, tels que
+Soient $I$ un intervalle de $\R$, $t_0 \in I$, $u,\alpha, \beta : I\to\Rgeq$ continues, tels que
 $$
-u(t) \leq \alpha(t) + \int_{t_0}^{t}\beta(s) u(s)ds \qquad \forall t\in [t^-,t^+] \ .
+u(t) \leq \alpha(t) + \int_{t_0}^{t}\beta(s) u(s)ds \qquad \forall t\in I \ .
 $$
 Montrer qu'alors
 $$
-u(t) \leq \alpha(t) +  \int_{t_0}^{t} \alpha(s)\beta(s) \exp\left(\int_{s}^t\beta(r)dr \right) ds\qquad \forall t\in [t^-,t^+]\ .
+u(t) \leq \alpha(t) +  \int_{t_0}^{t} \alpha(s)\beta(s) \exp\left(\int_{s}^t\beta(r)dr \right) ds\qquad \forall t\in I, \ t\geq t_0 \ .
 $$
 En déduire que si $\alpha$ est constant,
 $$
-u(t) \leq \alpha \exp\left(\int_{t_0}^t\beta(r)dr \right) \qquad \forall t\in [t^-,t^+] \ .
+u(t) \leq \alpha \exp\left(\int_{t_0}^t\beta(r)dr \right) \qquad \forall t\in I, \ t\geq t_0 \ .
 $$
 *Indice : poser $v(t)=\int_{t_0}^t\beta(s)u(s)ds$ et étudier la dérivée de $v(t)\exp\left(-\int_{t_0}^t\beta(r)dr\right)$*.
 
@@ -1452,7 +1452,7 @@ Lorsque $x_0>0$, les solutions sont continues par rapport à la condition initia
 
 ### Question 1 (Lemme de Grönwall) {.answer #answer-gro-1}
 
-Soit $v$ l'application définie par $v(t)=\int_{t_0}^t\beta(s)u(s)ds$ sur $[t^-,t^+]$. Elle vérifie
+Soit $v$ l'application définie par $v(t)=\int_{t_0}^t\beta(s)u(s)ds$ sur $I$. Elle vérifie
 $$
 \dot{v}(t) = \beta(t)u(t) \quad , \quad u(t) \leq \alpha(t)+v(t) \ ,
 $$
@@ -1460,12 +1460,12 @@ et donc puisque $\beta$ est à valeurs positives,
 $$
 \dot{v}(t) \leq \alpha(t)\beta(t)+\beta(t)v(t) \ .
 $$
-Soit maintenant $w$ l'application définie par $w(t)=v(t)\exp\left(-\int_{t_0}^t\beta(r)dr\right)$. $w$ est dérivable sur $[t^-,t^+]$ et 
+Soit maintenant $w$ l'application définie par $w(t)=v(t)\exp\left(-\int_{t_0}^t\beta(r)dr\right)$. $w$ est dérivable sur $I$ et pour tout $t\in I$,
 \begin{align*}
 \dot{w}(t) &= (\dot{v}(t)-\beta(t)v(t))\exp\left(-\int_{t_0}^t\beta(r)dr\right)\\
 &\leq \alpha(t)\beta(t)\exp\left(-\int_{t_0}^t\beta(r)dr\right)
 \end{align*}
-En intégrant des deux côté entre $t_0$ et $t$, on obtient
+En intégrant des deux côtés entre $t_0$ et $t\geq t_0$, on obtient
 $$
 w(t)-w(t_0)\leq \int_{t_0}^t \alpha(s)\beta(s)\exp\left(-\int_{t_0}^s\beta(r)dr\right)ds
 $$
@@ -1483,32 +1483,29 @@ ce qui donne le résultat.
 
 ### Question 2 {.answer #answer-gro-2}
 
-Soit $x:I\subset J\to \R^n$ une solution maximale au problème de Cauchy. Par le théorème de [représentation intégrale des solutions](#theo_eq_integrale), 
+Soit $x:I\subset J\to \R^n$ une solution maximale au problème de Cauchy. Par le théorème de [représentation intégrale des solutions](#theo_eq_integrale), pour tout $t\in I$,
 $$
 x(t)=x_0 + \int_{t_0}^t f(s,x(s))ds \ ,
 $$
 et donc, utilisant l'hypothèse de borne au plus affine de $f$, 
 $$
-\|x(t)\| \leq \|x_0\| + \int_{t_0}^t |b(s)| + |a(s)|\|x(s)\|ds \ .
+\|x(t)\| \leq \|x_0\| + \int_{t_0}^t |b(s)| + |a(s)|\|x(s)\|ds 
 $$
-Sur tout segment $[t^-,t^+]\subset I$, on peut donc appliquer le Lemme de Grönwall, ce qui donne
+pour tout $t\in I$ avec $t\geq t_0$.
+Le Lemme de Grönwall donne alors
 $$
 \|x(t)\| \leq \alpha(t) +  \int_{t_0}^{t} \alpha(s)\beta(s) \exp\left(\int_{s}^t\beta(r)dr \right)
 $$
-avec $\alpha(t)=\|x_0\| + \int_{t_0}^t |b(s)|$ et $\beta(t)= |a(t)|$ qui sont continues sur $J$. Donc $x$ ne peut pas exploser pour $t\in J$, donc d'après le [théoreme du domaine maximal d'existence](#theo_bouts), vu que $f$ est définie sur $J\times\R^n$, nécessairement $I=J$.
+avec $\alpha(t)=\|x_0\| + \int_{t_0}^t |b(s)|$ et $\beta(t)= |a(t)|$ qui sont continues sur $J$. Donc $x$ ne peut pas exploser en temps fini supérieurs à $t_0$ dans $J$ (le membre de droite restant borné). En reprenant le raisonnement en temps inférieurs à $t_0$ en renversant le temps et considérant $-f$ au lieu de $f$, on obtient que $x$ ne peut pas non plus exploser en temps fini inférieurs à $t_0$ dans $J$. Donc nécessairement $I=J$ d'après le [théoreme du domaine maximal d'existence](#theo_bouts), vu que $f$ est définie sur $J\times\R^n$.
 
 ### Question 3 {.answer #answer-gro-3}
 
 Soient $(t_0,x_0)\in J\times X$ et $\delta\in \R^n$ tel que $(t_0,x_0+\delta)\in J\times X$. Soient $x:I\to \R^n$ et $x_\delta : I'\to \R^n$ les solutions maximales aux problèmes de Cauchy associés (uniques par le théorème de Cauchy Lipschitz), 
-et $\underline{t},\overline{t}>0$ tel que $[ \underline{t},\overline{t}]\subset I$. On sait que
+et $\underline{t},\overline{t}$ tels que $[ \underline{t},\overline{t}]\subset I$. On sait que
 \begin{align*}
 x(t)&=x_0  + \int_{t_0}^t f(s,x(s))ds & \forall t\in I\\
 x_\delta(t)&=x_0 +\delta  + \int_{t_0}^t f(s,x_\delta(s))ds &\forall t\in I'
 \end{align*}
-ce qui donne
-$$
-|x(t)-x_\delta(t)|\leq |\delta| + \int_{t_0}^t |f(s,x(s))-f(s,x_\delta(s))|ds \qquad \forall t\in I\cap I' \ .
-$$
 <!-- Si $[t_0,\overline{t}]\subset I\cap I_\delta$, -->
 Puisque $x$ est continue, l'ensemble $x([ \underline{t},\overline{t}])$ est un sous-ensemble compact de l'ouvert $X$. Donc il existe $\varepsilon>0$ tel que le "tube" 
 $$
@@ -1518,15 +1515,20 @@ est inclus dans $J\times X$. On va montrer que $(t,x_\delta(t))$ est définie et
 $$
 (t,x_\delta(t)) \in \cC \qquad \forall t\in [ \underline{t}',\overline{t}']
 $$ 
-Puisque $\cC$ est compact, et $\partial_x f$ est continue sur $\cC$, $M= \max_\cC \|\partial_x f\|$ est bien défini. Donc d'après le théorème des accroissements finis appliqué sur le segment $[ (s,x(s)),(s,x_\delta(s))]$ inclus dans $\cC$,
+Puisque $\cC$ est compact, et $\partial_x f$ est continue sur $\cC$, $M= \max_\cC \|\partial_x f\|$ est bien défini. 
+Commençons par étudier le comportement des solutions pour $t\geq t_0$. On a 
 $$
-|x(t)-x_\delta(t)|\leq |\delta| + \int_{t_0}^t M |x(s)-x_\delta(s)|ds \qquad \forall t\in [ \underline{t}',\overline{t}'] \ .
+|x(t)-x_\delta(t)|\leq |\delta| + \int_{t_0}^t |f(s,x(s))-f(s,x_\delta(s))|ds \qquad \forall t\in I\cap I' \ , \ t\geq t_0 \ .
+$$
+Donc d'après le théorème des accroissements finis appliqué sur le segment $[ (s,x(s)),(s,x_\delta(s))]$ inclus dans $\cC$,
+$$
+|x(t)-x_\delta(t)|\leq |\delta| + \int_{t_0}^t M |x(s)-x_\delta(s)|ds \qquad \forall t\in [ t_0,\overline{t}'] \ .
 $$
 Donc par le Lemme de Grönwall, 
 $$
-|x(t)-x_\delta(t)|\leq |\delta|e^{M(t-t_0)} \qquad \forall t\in [ \underline{t}',\overline{t}'] \ .
+|x(t)-x_\delta(t)|\leq |\delta|e^{M(t-t_0)} \qquad \forall t\in [ t_0,\overline{t}'] \ .
 $$
-Pour $\delta$ suffisamment petit, $|\delta|e^{M(t-t_0)}\leq \varepsilon$ sur $[ t_0,\overline{t}]$. On a alors nécessairement $\underline{t}'=\underline{t}$ et $\overline{t}'=\overline{t}$ et le résultat est montré. Notons que la preuve est bien toujours valable pour $f$ localement Lipschitzienne par rapport à $x$ sur $J\times X$, puisqu'il suffit alors de prendre pour $M$ la constante de Lipschitz de $f$ par rapport à $x$ sur $\cC$ qui est compact.
+Pour $\delta$ suffisamment petit, $|\delta|e^{M(t-t_0)}\leq \varepsilon$ sur $[ t_0,\overline{t}]$. On a alors nécessairement $\overline{t}'=\overline{t}$. Par un changement de temps dans les solutions pour les parcourir en rétrograde avec la dynamique $-f$ au lieu de $f$, on montre de la même manière que $\underline{t}'=\underline{t}$ et le résultat est montré. Notons que la preuve est bien toujours valable pour $f$ localement Lipschitzienne par rapport à $x$ sur $J\times X$, puisqu'il suffit alors de prendre pour $M$ la constante de Lipschitz de $f$ par rapport à $x$ sur $\cC$ qui est compact.
 <!--Il suffit donc de montrer que $[t_0,\overline{t}]\subset I\cap I_\delta$.-->
 
 
