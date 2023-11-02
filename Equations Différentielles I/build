@@ -152,7 +152,7 @@ def insert_authors(doc, *options):
     else: # latex target
         github_icon = ""
     
-    content = "STEP, MINES ParisTech[^1]\n\n"
+    content = "UE11, Mines Paris - PSL [^1]\n\n"
     content += r"""[^1]: Ce document est un des produits du projet 
 [GITHUB_ICON `paulinebernard/CDIS`](https://github.com/) issu de la collaboration de 
 [(P)auline Bernard](mailto:pauline.bernard@mines-paristech.fr) (CAS) et
@@ -191,10 +191,10 @@ def add_date(doc):
         meta = doc[0][0]
         inlines = [Str(day), Space(), Str(month), Space(), Str(year)]
 
-        short_hash = "#" + git_hash()[:7]
-        empty_attr = ("", [], [])
-        code_hash = Code(empty_attr, short_hash)
-        inlines.extend([Space(), Str("("), code_hash, Str(")")])
+        # short_hash = "#" + git_hash()[:7]
+        # empty_attr = ("", [], [])
+        # code_hash = Code(empty_attr, short_hash)
+        # inlines.extend([Space(), Str("("), code_hash, Str(")")])
 
         meta["date"] = MetaInlines(inlines)
     return doc

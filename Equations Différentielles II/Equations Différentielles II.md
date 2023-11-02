@@ -778,7 +778,7 @@ Plus généralement, proposer un schéma pour simuler un système Hamiltonien du
 \dot{q} &= \nabla_p H(q,p) \\
 \dot{p} &= - \nabla_q H(q,p)
 \end{align*}
-où $(q,p)\in \R^N \times \R^N$ sont les positions généralisées et quantités de mouvement, $H$ est le Hamiltonien que l'on pourra vérifier être conservé le long des trajectoires.
+où $(q,p)\in \R^N \times \R^N$ sont les positions généralisées et quantités de mouvement, $H$ est le Hamiltonien que l'on pourra vérifier être conservé le long des trajectoires. 
 
 ### 
 A noter que les conclusions de cet exercice sont les mêmes si l'on utilise un schéma d'Euler implicite sur la première composante et un schéma d'Euler explicite sur la deuxième. Ces deux schémas s'appellent respectivement Euler symplectique A et B.
