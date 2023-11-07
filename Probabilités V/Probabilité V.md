@@ -294,7 +294,7 @@ Cette méthode permet de simuler directement deux variables gaussiennes centrée
 # Simulation d'un vecteur gaussien à densité
 On souhaite simuler un vecteur gaussien $X = (X_1,\ldots,X_d)$ à valeurs dans $\R^d$ d'espérance $m$ et de matrice de covariance $C$ définie positive (et donc inversible) données. 
 
-Puisque la matrice $C$ est inversible, elle admet une racine carrée, c'est-à-dire qu'il existe une matrice $N$ telle que $C = N\,N^t$. En effet, on peut par exemple décomposer $C$ de la manière suivante :
+Puisque la matrice $C$ est définie positive, elle admet une racine carrée, c'est-à-dire qu'il existe une matrice $N$ telle que $C = N\,N^t$. En effet, on peut par exemple décomposer $C$ de la manière suivante :
 $$C = V\,D\,V^t,$$
 où $V$ est une matrice orthogonale et $D$ est la matrice diagonale dont les termes diagonaux sont les valeurs propres (toutes strictement positives) de $C$. Il suffit alors de prendre $N = V\,D^{1/2}$, où $D^{1/2}$ est la matrice diagonale dont les termes diagonaux sont les racines carrées des valeurs propres. 
 

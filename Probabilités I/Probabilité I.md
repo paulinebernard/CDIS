@@ -406,7 +406,7 @@ $n$ événements $A_1, \dots, A_n$ sont *mutuellement indépendants* ou simpleme
 \end{equation*}
 
 ### Remarque {.remark}
- Attention, l'indépendance des évènements deux à deux ne suffit pas pour l'indépendance mutuelle de tous les évènements.
+ Attention, l'indépendance des évènements deux à deux n'implique pas l'indépendance mutuelle des évènements.
 
 ## Remarque : réflexion sur le concept de probabilité 
 
