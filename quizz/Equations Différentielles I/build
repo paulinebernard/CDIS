@@ -41,7 +41,7 @@ def transform(doc):
     solve_toc_nesting(doc)
     anonymify(doc)
 
-    add_date(doc)
+    #add_date(doc)
     insert_authors(doc)
 
     tt_url(doc)
@@ -151,7 +151,7 @@ def insert_authors(doc, *options):
         github_icon = r"$\mbox{\faGithub}$"
     else: # latex target
         github_icon = ""
-    content = "MINES ParisTech"
+    content = "UE11, Mines Paris - PSL"
     
 #     content = "MINES ParisTech[^1]\n\n"
 #     content += r"""[^1]: Ce document est un des produits du projet
