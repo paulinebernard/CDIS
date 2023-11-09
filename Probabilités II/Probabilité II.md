@@ -98,8 +98,8 @@ On note $\L^1$ l'ensemble de toutes les variables réelles $X$ intégrables. Les
 
 ### Démontrer ces propriétés {.exercise .one #basics}
 
-<!-- ### Rappel : cas discret {.remark}
-Dans le cas d'une variable aléatoire discrète $Y$ à valeurs dans $\N^\ast$, son espérance est définie par la quantité $\Esp(Y) = \sum_{i\in\N^\ast} i\P(Y=i)$, pourvu que celle-ci soit finie. On voit immédiatement que les propriétés ci-dessus sont également vérifiées. -->
+### Rappel : cas discret {.remark}
+Dans le cas d'une variable aléatoire discrète $X$ à valeurs dans $\N^\ast$, son espérance est définie par la quantité $\Esp(X) = \sum_{i\in\N^\ast} i\P(X=i)$, pourvu que celle-ci soit finie. On voit immédiatement que les propriétés ci-dessus sont également vérifiées.
 
 ### {.post}
 
@@ -217,7 +217,7 @@ Enfin, si $g$ n'est pas positive, on utilise la décomposition $g = g^+ - g^-$ e
 
 
 ### Cas particulier {.remark}
-L'espérance et la variance sont des cas particulier de ce résultat. 
+L'espérance et la variance sont des cas particuliers de ce résultat. 
 
 ## Exemples de loi à densité
 
@@ -337,7 +337,7 @@ Autrement dit, en pratique, on appliquera Fubini-Tonelli à la valeur absolue de
 
 ### Changement de variables {.theorem #theorem-changement-de-variables}
 Soient $D_1$ et $D_2$ des ouverts de $\mathbb{R}^n$ et 
-$h: D_1 \to D_2$ un $C^1$-difféomorphisme de $D_1$ sur $D_2$ :
+$h: D_1 \to D_2$ un $C^1$-difféomorphisme de $D_1$ sur $D_2$, c'est-à-dire
 une fonction continûment différentiable et bijective
 dont l'inverse $h^{-1}: D_2 \to D_1$ est également continûment différentiable. 
 La matrice jacobienne associée à la différentielle de $h$ étant notée $J_h$,
@@ -396,7 +396,7 @@ Une variable aléatoire $X$ à valeurs dans $\R^n$ (ou vecteur aléatoire) est s
 
 De même qu'en dimension 1, la loi de $X$ est caractérisée par la fonction de répartition multi-dimensionnelle $F : \R^n \to \R$ définie par 
 $$F(x_1,\ldots,x_n) = \P_X(X_1\leq x_1,\ldots,X_n\leq x_n)$$
-Mais caractériser les fonctions de répartition sur $\R^n$ est délicat, de sorte que cette notion est rarement utilisée. Nous allons plus particulièrement nous intéresser aux vecteurs aléatoires à densité. On gardera tout de même à l'esprit que les lois de probabilités définies sur $(\R^n,\B(\R^n))$ n'admettent pas toutes une densité !
+Cependant, caractériser les fonctions de répartition sur $\R^n$ est délicat, de sorte que cette notion est rarement utilisée. Nous allons plus particulièrement nous intéresser aux vecteurs aléatoires à densité. On gardera tout de même à l'esprit que les lois de probabilités définies sur $(\R^n,\B(\R^n))$ n'admettent pas toutes une densité !
 
 ### Vecteur aléatoire à densité {.definition #defvect}
 On dit que $X$ admet la densité $f$ si la fonction réelle $f$ sur $\R^n$ est positive, intégrable et vérifie 
@@ -534,7 +534,7 @@ $$\cov(X,Y) = \cov(X,X^2) = \Esp(X^3) - \Esp(X)\Esp(X^2) = 0$$
 
 # Identification de densité
 
-Un problème important est le suivant. Soit $X$ une variable aléatoire réelle, admettant la densité $f_X$. Soit $g$ une fonction mesurable, de sorte que $Y = g(X)$ soit aussi une variable aléatoire. Est-ce que $Y$ admet une densité, et si oui, comment la calculer ?
+Un problème important est le suivant. Soit $X$ une variable aléatoire réelle, admettant la densité $f_X$. Soit $g$ une fonction mesurable, de sorte que $Y = g(X)$ est aussi une variable aléatoire. Est-ce que $Y$ admet une densité, et si oui, comment la calculer ?
 
 On peut déjà remarquer que cette densité n’existe pas toujours. Si par exemple $g(x) = a$ pour tout $x$, la loi de $Y$ est la mesure de Dirac en $a$, qui n’a pas de densité par rapport à la mesure de Lebesgue.
 
@@ -574,8 +574,6 @@ Nous donnons ici quelques exemples d'application de cette méthode :
         \end{align*}
    et on en déduit
         $$f_Y(y) = (f_X(-\sqrt{y})+f_X(\sqrt{y}))\frac{1}{2\sqrt{y}}1_{\left]0,+\infty\right[}$$
-
-### Conséquences {.remark}
 
 Dans le cas des vecteurs aléatoires, l'idée est la même. Soit $X = (X_1,\ldots,X_n)$, un vecteur aléatoire de densité $f_X$ sur $\R^n$, $g$ une fonction de $\R^n$ dans $\R^m$ et $Y = g(X)$. Plusieurs cas sont à considérer :
 
