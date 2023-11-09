@@ -7,7 +7,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Rgeq}{\R_{\geq 0}}
 \newcommand{\Rg}{\R_{> 0}}
-\renewcommand{\C}{\mathbb{C}}
+\newcommand{\C}{\mathbb{C}}
 
 \newcommand{\cS}{\mathcal{S}}
 \newcommand{\cC}{\mathcal{C}}
@@ -387,11 +387,11 @@ La preuve complète est donnée en [annexe](#pr_theo_bouts). On commence par obs
 En pratique, pour montrer que les solutions maximales sont définies pour tout temps, i.e., sur $\R$, il suffit donc de montrer qu'elle ne peuvent pas exploser en temps fini (par exemple si elle sont bornées sur tout intervalle de temps fini), et qu'elle ne peuvent pas tendre vers le bord de $X\times J$ en temps fini (par exemple si $X\times J= \R^n \times \R$). Un cas particulier où les solutions maximales sont forcément définies sur $J$ entier est donné ci-dessous.
 
 ### Critère d'existence globale {.theorem #theo_exist_glob}
-Soient $J$ un intervalle ouvert de $\R$ et $f:J\times\R^n\to\R^n$ continue. S'il existe $a,b: J\to\R$ continues telles que  
+Soient $J$ un intervalle ouvert de $\R$ et $f:J\times\R^n\to\R^n$ continue. Si $f$ a une *croissance au plus affine*, c'est-à-dire, s'il existe $a,b: J\to\R$ continues telles que  
 $$
 \|f(t,x)\|\leq a(t) \|x\| + b(t) \quad \forall (t,x)\in J\times \R^n \ ,
 $$
-alors toute solution maximale est définie sur $J$ entier. On dit alors que $f$ a une *croissance au plus affine*.
+alors toute solution maximale est définie sur $J$ entier. 
 
 ### Démonstration {.proof} 
 Prouvé dans l'exercice [*Autour du Lemme de Grönwall*](#exo_gronwall). 
@@ -468,7 +468,7 @@ Le théorème suivant, dit de *Cauchy-Lipschitz*, montre que l'unicité des solu
 
 ### Théorème de Cauchy-Lipschitz (ou de Picard-Lindelöf) {.theorem #theo_lips}
 Soient $J$ ouvert de $\R$, $X$ ouvert de $\R^{n}$, $f: J\times X \to \R^n$ continue et continûment différentiable par rapport à $x$, i.e. $(t,x)\mapsto \partial_x f(t,x)$ existe et est continue sur $J\times X$.
-Alors pour tout $(t_0,x_0)\in J\times X$, il existe une unique solution maximale $x:I\to\R^n$ au problème de Cauchy défini par $f$ et $(t_0,x_0)$. 
+Alors pour tout $(t_0,x_0)\in J\times X$, il existe une unique solution maximale $x:I\subset J\to\R^n$ au problème de Cauchy défini par $f$ et $(t_0,x_0)$. 
 <!-- De plus,  l'intervalle $I$ est ouvert et contient un voisinage de $t_0$.-->
 
 ### Démonstration {.proof} 
@@ -1616,7 +1616,7 @@ Enfin, la trajectoire initialisée à zéro reste à zéro.
 
 Le portrait de phase est donné [ci-dessous](#fig_cycle_limite).
 
-![Portrait de phase de l'exercice Cycle Limite I](images/cycle_limite.py){#fig_cycle_limite}
+![Portrait de phase de l'exercice Cycle Limite I](images/cycle_limite.png){#fig_cycle_limite}
 
 
 ## Cycle limite II {.correction #correc_cycle_lim_volterra}

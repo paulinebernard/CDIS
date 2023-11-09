@@ -59,8 +59,8 @@ def Q(f, xs, ys):
 # ------------------------------------------------------------------------------
 def cycle_limite():
     fig = figure()
-    x1 = linspace(-2, 2, 1000)
-    x2 = linspace(-2, 2, 1000)
+    x1 = linspace(-2, 2, 100)
+    x2 = linspace(-2, 2, 100)
     grid(True)
     axis('equal')
     streamplot(*Q(f, x1, x2), color="k") 
