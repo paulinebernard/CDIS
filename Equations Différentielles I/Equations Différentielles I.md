@@ -1581,10 +1581,10 @@ qui a pour valeurs propres $1\pm i$. La partie réelle étant positive, le point
 $f:\R^2 \to \R^2$ définie par $f(x) =(x_1+x_2-x_1(x_1^2+x_2^2) ,-x_1+x_2-x_2(x_1^2+x_2^2))$ est continûment différentiable sur $\R^2$. Donc d'après le théorème de Cauchy-Lipschitz, le système admet une unique solution maximale pour toute condition initiale. De plus,
 \begin{align*}
 \frac{d}{dt}V(x(t)) &= \langle \nabla V(x) , f(x) \rangle \\
-&= x_1^2+x_1x_2-x_1^2(x_1^2+x_2^2) -x_1x_2 +x_2^2 - x_2^2(x_1^2+x_2^2)\\
-&= -(x_1^2+x_2^2-1)(x_1^2+x_2^2)
+&= 2(x_1^2+x_1x_2-x_1^2(x_1^2+x_2^2) -x_1x_2 +x_2^2 - x_2^2(x_1^2+x_2^2))\\
+&= -2(x_1^2+x_2^2-1)(x_1^2+x_2^2) = -2 (V(x)-1)V(x)
 \end{align*}
-Donc $\frac{d}{dt}V(x(t))$ est négatif à l'extérieur du disque de centre 0 et de rayon 1, zéro sur la frontière, et positif à l'intérieur si $x\neq 0$ et zéro sinon. Il s'ensuit en particulier que $\|x\|$ décroit lorsque $\|x\|>1$, donc les solutions restent bornées en temps positif. Or, vu que $f$ est continue sur $\R^2$, on sait du [Théorème du domaine maximal d'existence](#theo_bouts) que la seule raison pour laquelle une solution maximale ne serait pas définie pour tout $t\geq t_0$ serait qu'elle explose en temps fini. C'est impossible ici.
+Donc $\frac{d}{dt}V(x(t))$ est négatif lorsque $V(x)>1$, i.e., à l'extérieur du disque de centre 0 et de rayon 1, zéro lorsque $V(x)=1$, i.e., sur le cercle, et positif lorsque $0<V(x)<1$, i.e., à l'intérieur du disque, et zéro à l'équilibre. Il s'ensuit en particulier que $V(x)=\|x\|^2$ décroit lorsque $\|x\|>1$, donc les solutions restent bornées en temps positif. Or, vu que $f$ est continue sur $\R^2$, on sait du [Théorème du domaine maximal d'existence](#theo_bouts) que la seule raison pour laquelle une solution maximale ne serait pas définie pour tout $t\geq t_0$ serait qu'elle explose en temps fini. C'est impossible ici.
 
 ### Question 3 {.answer #answer-cycle-lim-3} 
 Supposons que $x_0:=x(t_0)$ vérifie $\|x_0\|\neq 1$ et qu'il existe $t_1$ tel que $\|x(t_1)\|= 1$. Considérons le problème de Cauchy de condition initiale $x^*:=x(t_1)$ à $t=t_1$. Il admet donc une solution qui au temps $t_0$ vaut $x_0$. Mais il existe une autre solution 
