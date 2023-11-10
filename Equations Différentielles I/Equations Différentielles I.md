@@ -899,9 +899,9 @@ Alors si $x(0)\in B(a,\eta)$, $V(x(t))\leq V(x(0))\leq \varepsilon_V$ donc $x(t)
 
 Supposons maintenant $\langle\nabla V (x), f(x)\rangle < 0$ pour tout $x\in W\setminus \{a\}$. Alors par le point précédent $a$ est stable. Il suffit de montrer l'attractivité locale. Par stabilité, si $x(0)\in B(a,\eta)$,  $x(t)\in B(a,\varepsilon)\subset W$ pour tout $t$ et $t\to V(x(t))$ est donc strictement décroissante. Comme elle est aussi bornée inférieurement par 0, elle converge vers $\ell \geq 0$. Supposons $\ell>0$. Alors, par continuité de $V$, il existe $0<\nu<\varepsilon$ et $\overline{t}>0$ tel que pour tout $t\geq \overline{t}$, $\|x(t)-a\| \geq \nu$. Soit 
 $$
-\gamma = \max_{\nu \leq \max \|x(t)-a\| \leq \varepsilon} \langle\nabla V (x), f(x)\rangle   
+\gamma = \max_{\nu \leq \|x-a\| \leq \varepsilon} \langle\nabla V (x), f(x)\rangle   
 $$
-qui existe par continuité de $V$ sur un compact.  Puisque $\langle\nabla V (x), f(x)\rangle < 0$ sur $W\setminus \{a\}$, $\gamma<0$. Alors, pour tout $t\geq \overline{t}$,
+qui existe par continuité de $\nabla V$ et $f$ sur un compact.  Puisque $\langle\nabla V (x), f(x)\rangle < 0$ sur $W\setminus \{a\}$, $\gamma<0$. Alors, pour tout $t\geq \overline{t}$,
 $$
 V(x(t)) = V(x(\overline{t})) + \int_0^t \langle\nabla V (x(t)), f(x(t))\rangle \leq  V(x(\overline{t})) + \gamma (t-\overline{t}) \ .
 $$
@@ -938,7 +938,7 @@ Soit $v:[t_0,+\infty[\to \R$ de classe $C^2$ telle que
 Alors $\lim_{t\to +\infty} \dot{v}(t) = 0$. 
 
 ### Démonstration {.proof} 
-La première hypothèse dit que $\int_{t_0}^{+\infty} \dot{v}(t)dt$ est finie et la deuxième implique que $\dot{v}$ est uniformément continue sur $[t_0,+\infty[$. Le lemme de Barbalat permet alors de conclure qur $\dot{v}$ converge vers zéro.
+La première hypothèse dit que $\int_{t_0}^{+\infty} \dot{v}(t)dt$ est finie et la deuxième implique que $\dot{v}$ est uniformément continue sur $[t_0,+\infty[$. Le lemme de Barbalat (dans son énoncé classique) permet alors de conclure qur $\dot{v}$ converge vers zéro.
 
 ###
 
