@@ -7,7 +7,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Rgeq}{\R_{\geq 0}}
 \newcommand{\Rg}{\R_{> 0}}
-\renewcommand{\C}{\mathbb{C}}
+\newcommand{\C}{\mathbb{C}}
 
 \newcommand{\cS}{\mathcal{S}}
 \newcommand{\cC}{\mathcal{C}}
@@ -387,11 +387,11 @@ La preuve complète est donnée en [annexe](#pr_theo_bouts). On commence par obs
 En pratique, pour montrer que les solutions maximales sont définies pour tout temps, i.e., sur $\R$, il suffit donc de montrer qu'elle ne peuvent pas exploser en temps fini (par exemple si elle sont bornées sur tout intervalle de temps fini), et qu'elle ne peuvent pas tendre vers le bord de $X\times J$ en temps fini (par exemple si $X\times J= \R^n \times \R$). Un cas particulier où les solutions maximales sont forcément définies sur $J$ entier est donné ci-dessous.
 
 ### Critère d'existence globale {.theorem #theo_exist_glob}
-Soient $J$ un intervalle ouvert de $\R$ et $f:J\times\R^n\to\R^n$ continue. S'il existe $a,b: J\to\R$ continues telles que  
+Soient $J$ un intervalle ouvert de $\R$ et $f:J\times\R^n\to\R^n$ continue. Si $f$ a une *croissance au plus affine*, c'est-à-dire, s'il existe $a,b: J\to\R$ continues telles que  
 $$
 \|f(t,x)\|\leq a(t) \|x\| + b(t) \quad \forall (t,x)\in J\times \R^n \ ,
 $$
-alors toute solution maximale est définie sur $J$ entier. On dit alors que $f$ a une *croissance au plus affine*.
+alors toute solution maximale est définie sur $J$ entier. 
 
 ### Démonstration {.proof} 
 Prouvé dans l'exercice [*Autour du Lemme de Grönwall*](#exo_gronwall). 
@@ -468,7 +468,7 @@ Le théorème suivant, dit de *Cauchy-Lipschitz*, montre que l'unicité des solu
 
 ### Théorème de Cauchy-Lipschitz (ou de Picard-Lindelöf) {.theorem #theo_lips}
 Soient $J$ ouvert de $\R$, $X$ ouvert de $\R^{n}$, $f: J\times X \to \R^n$ continue et continûment différentiable par rapport à $x$, i.e. $(t,x)\mapsto \partial_x f(t,x)$ existe et est continue sur $J\times X$.
-Alors pour tout $(t_0,x_0)\in J\times X$, il existe une unique solution maximale $x:I\to\R^n$ au problème de Cauchy défini par $f$ et $(t_0,x_0)$. 
+Alors pour tout $(t_0,x_0)\in J\times X$, il existe une unique solution maximale $x:I\subset J\to\R^n$ au problème de Cauchy défini par $f$ et $(t_0,x_0)$. 
 <!-- De plus,  l'intervalle $I$ est ouvert et contient un voisinage de $t_0$.-->
 
 ### Démonstration {.proof} 
@@ -899,9 +899,9 @@ Alors si $x(0)\in B(a,\eta)$, $V(x(t))\leq V(x(0))\leq \varepsilon_V$ donc $x(t)
 
 Supposons maintenant $\langle\nabla V (x), f(x)\rangle < 0$ pour tout $x\in W\setminus \{a\}$. Alors par le point précédent $a$ est stable. Il suffit de montrer l'attractivité locale. Par stabilité, si $x(0)\in B(a,\eta)$,  $x(t)\in B(a,\varepsilon)\subset W$ pour tout $t$ et $t\to V(x(t))$ est donc strictement décroissante. Comme elle est aussi bornée inférieurement par 0, elle converge vers $\ell \geq 0$. Supposons $\ell>0$. Alors, par continuité de $V$, il existe $0<\nu<\varepsilon$ et $\overline{t}>0$ tel que pour tout $t\geq \overline{t}$, $\|x(t)-a\| \geq \nu$. Soit 
 $$
-\gamma = \max_{\nu \leq \max \|x(t)-a\| \leq \varepsilon} \langle\nabla V (x), f(x)\rangle   
+\gamma = \max_{\nu \leq \|x-a\| \leq \varepsilon} \langle\nabla V (x), f(x)\rangle   
 $$
-qui existe par continuité de $V$ sur un compact.  Puisque $\langle\nabla V (x), f(x)\rangle < 0$ sur $W\setminus \{a\}$, $\gamma<0$. Alors, pour tout $t\geq \overline{t}$,
+qui existe par continuité de $\nabla V$ et $f$ sur un compact.  Puisque $\langle\nabla V (x), f(x)\rangle < 0$ sur $W\setminus \{a\}$, $\gamma<0$. Alors, pour tout $t\geq \overline{t}$,
 $$
 V(x(t)) = V(x(\overline{t})) + \int_0^t \langle\nabla V (x(t)), f(x(t))\rangle \leq  V(x(\overline{t})) + \gamma (t-\overline{t}) \ .
 $$
@@ -938,7 +938,7 @@ Soit $v:[t_0,+\infty[\to \R$ de classe $C^2$ telle que
 Alors $\lim_{t\to +\infty} \dot{v}(t) = 0$. 
 
 ### Démonstration {.proof} 
-La première hypothèse dit que $\int_{t_0}^{+\infty} \dot{v}(t)dt$ est finie et la deuxième implique que $\dot{v}$ est uniformément continue sur $[t_0,+\infty[$. Le lemme de Barbalat permet alors de conclure qur $\dot{v}$ converge vers zéro.
+La première hypothèse dit que $\int_{t_0}^{+\infty} \dot{v}(t)dt$ est finie et la deuxième implique que $\dot{v}$ est uniformément continue sur $[t_0,+\infty[$. Le lemme de Barbalat (dans son énoncé classique) permet alors de conclure qur $\dot{v}$ converge vers zéro.
 
 ###
 
@@ -1581,10 +1581,10 @@ qui a pour valeurs propres $1\pm i$. La partie réelle étant positive, le point
 $f:\R^2 \to \R^2$ définie par $f(x) =(x_1+x_2-x_1(x_1^2+x_2^2) ,-x_1+x_2-x_2(x_1^2+x_2^2))$ est continûment différentiable sur $\R^2$. Donc d'après le théorème de Cauchy-Lipschitz, le système admet une unique solution maximale pour toute condition initiale. De plus,
 \begin{align*}
 \frac{d}{dt}V(x(t)) &= \langle \nabla V(x) , f(x) \rangle \\
-&= x_1^2+x_1x_2-x_1^2(x_1^2+x_2^2) -x_1x_2 +x_2^2 - x_2^2(x_1^2+x_2^2)\\
-&= -(x_1^2+x_2^2-1)(x_1^2+x_2^2)
+&= 2(x_1^2+x_1x_2-x_1^2(x_1^2+x_2^2) -x_1x_2 +x_2^2 - x_2^2(x_1^2+x_2^2))\\
+&= -2(x_1^2+x_2^2-1)(x_1^2+x_2^2) = -2 (V(x)-1)V(x)
 \end{align*}
-Donc $\frac{d}{dt}V(x(t))$ est négatif à l'extérieur du disque de centre 0 et de rayon 1, zéro sur la frontière, et positif à l'intérieur si $x\neq 0$ et zéro sinon. Il s'ensuit en particulier que $\|x\|$ décroit lorsque $\|x\|>1$, donc les solutions restent bornées en temps positif. Or, vu que $f$ est continue sur $\R^2$, on sait du [Théorème du domaine maximal d'existence](#theo_bouts) que la seule raison pour laquelle une solution maximale ne serait pas définie pour tout $t\geq t_0$ serait qu'elle explose en temps fini. C'est impossible ici.
+Donc $\frac{d}{dt}V(x(t))$ est négatif lorsque $V(x)>1$, i.e., à l'extérieur du disque de centre 0 et de rayon 1, zéro lorsque $V(x)=1$, i.e., sur le cercle, et positif lorsque $0<V(x)<1$, i.e., à l'intérieur du disque, et zéro à l'équilibre. Il s'ensuit en particulier que $V(x)=\|x\|^2$ décroit lorsque $\|x\|>1$, donc les solutions restent bornées en temps positif. Or, vu que $f$ est continue sur $\R^2$, on sait du [Théorème du domaine maximal d'existence](#theo_bouts) que la seule raison pour laquelle une solution maximale ne serait pas définie pour tout $t\geq t_0$ serait qu'elle explose en temps fini. C'est impossible ici.
 
 ### Question 3 {.answer #answer-cycle-lim-3} 
 Supposons que $x_0:=x(t_0)$ vérifie $\|x_0\|\neq 1$ et qu'il existe $t_1$ tel que $\|x(t_1)\|= 1$. Considérons le problème de Cauchy de condition initiale $x^*:=x(t_1)$ à $t=t_1$. Il admet donc une solution qui au temps $t_0$ vaut $x_0$. Mais il existe une autre solution 
@@ -1616,7 +1616,7 @@ Enfin, la trajectoire initialisée à zéro reste à zéro.
 
 Le portrait de phase est donné [ci-dessous](#fig_cycle_limite).
 
-![Portrait de phase de l'exercice Cycle Limite I](images/cycle_limite.py){#fig_cycle_limite}
+![Portrait de phase de l'exercice Cycle Limite I](images/cycle_limite.png){#fig_cycle_limite}
 
 
 ## Cycle limite II {.correction #correc_cycle_lim_volterra}
