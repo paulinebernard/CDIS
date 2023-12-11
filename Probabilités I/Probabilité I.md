@@ -1001,7 +1001,7 @@ $$\P(A\cap B \cap C) = \P(A)\P(B)\P(C)$$
 ### Question 3 {.answer #answer-ic-3}
 
 On a $\P(A^c\cap B^c) = \P((A \cup B)^c) = 1 - \P(A) - \P(B) + \P(A\cap B)$, donc
-$$\P(A\cap B)\P(A^c \cap B^c) = \P(A\cap B) - \P(A\cap B)(\P(A) + \P(B) + \P(A\cap B))$$
+$$\P(A\cap B)\P(A^c \cap B^c) = \P(A\cap B) - \P(A\cap B)(\P(A) + \P(B) - \P(A\cap B))$$
 Par ailleurs, on a 
 $$\left\{ \begin{array}{ll}
         \P(A \cap B^c)  & = \P(A \setminus (A\cap B)) = \P(A) - \P(A\cap B) \\
