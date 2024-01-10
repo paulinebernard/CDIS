@@ -142,7 +142,7 @@ On a vu au chapitre II du cours de Probabilités que l'on pouvait transformer de
 
 ## Méthode d'inversion
 
-L'objectif de ce paragraphe est de définir quand et comment il est possible de simuler une variable aléatoire réelle $X$ de fonction de répartition (f.d.r.) $F_X$ en transformant la simulation d'une variable aléatoire $U$ de loi Uniforme sur $]0,1[$. En d'autres termes, on cherche à déterminer les conditions sous lesquelles il est possible d'identifier une fonction borélienne $\psi :\,]0,1[ \to \R$ telle que $X \overset{\L}{=} \psi(U)$.
+L'objectif de ce paragraphe est de définir quand et comment il est possible de simuler une variable aléatoire réelle $X$ de fonction de répartition (f.d.r.) $F_X$ en transformant la simulation d'une variable aléatoire $U$ de loi uniforme sur $]0,1[$. En d'autres termes, on cherche à déterminer les conditions sous lesquelles il est possible d'identifier une fonction borélienne $\psi :\,]0,1[ \to \R$ telle que $X \overset{\L}{=} \psi(U)$.
 
 Commençons par un cadre simple, où $F_X$ est **bijective** d'un intervalle non vide de $\R$ sur $]0,1[$.
 
@@ -158,7 +158,7 @@ $$G(x) = \left|\begin{array}{ll} 1 & \text{si } x \geq 1,\\ \P\left(F_X(X)\leq x
 ### Exemples d'application 1 {.exercise .question .one #exemples1}
 Donner un algorithme de simulation d'une v.a.r. $X$ suivant une loi
 
-* Uniforme sur un intervalle $I \subset \R$,
+* uniforme sur un intervalle $I \subset \R$,
 * Exponentielle de paramètre $\lambda \in \R_+^\ast$,
 * de Cauchy, de densité $x\in\R \mapsto \left(\pi\left(1+x^2\right)\right)^{-1}$,
 * de Laplace de paramètres $\mu \in \R$ et $s\in\R_+^\ast$, de densité $x\in\R \mapsto \frac{1}{2s}\,\exp\left\{-\frac{|x-\mu|}{s}\right\}$,
@@ -198,36 +198,36 @@ Donner un algorithme de simulation d'une v.a.r. $X$ suivant une loi
 * Uniforme sur l'union de deux segments non vides et disjoints $[a,b], [c,d]\subset\R$, de densité $x\in\R \mapsto (b-a + d-c)^{-1}\,1_{[a,b]\cup[c,d]}(x)$ ?
 
 ### Limitations 
-La méthode d'inversion peut sembler universelle pour simuler une v.a.r. $X$ à partir de $U \sim \mathcal{U}_{]0,1[}$. Cependant, elle nécessite en pratique de disposer d'une expression analytique de $F_X$ pour en déduire sa réciproque généralisée. Or ce n'est typiquement pas le cas de nombreuses lois usuelles comme la loi Normale. On va donc déterminer d'autres procédures pour simuler des variables suivant de telles lois.
+La méthode d'inversion peut sembler universelle pour simuler une v.a.r. $X$ à partir de $U \sim \mathcal{U}_{]0,1[}$. Cependant, elle nécessite en pratique de disposer d'une expression analytique de $F_X$ pour en déduire sa réciproque généralisée. Ce n'est typiquement pas le cas de nombreuses lois usuelles comme la loi Normale. On va donc déterminer d'autres procédures pour simuler des variables suivant de telles lois.
 
 ## Méthode de rejet
 
-La méthode de rejet est une alternative populaire à la méthode d'inversion, lorsque cette dernière ne peut être utilisée directement et que **la loi cible possède une densité**. On la doit à @vonNeumann. Pour en comprendre le fondement, il nous faut d'abord introduire une généralisation naturelle de la loi Uniforme dans $\R$ à tout $\R^d$ ($d\in\N^\ast$). On notera $\lambda$ la mesure de Lebesgue sur $\R^d$.
+La méthode de rejet est une alternative populaire à la méthode d'inversion, lorsque cette dernière ne peut être utilisée directement et que **la loi cible possède une densité**. On la doit à @vonNeumann. Pour en comprendre le fondement, il nous faut d'abord introduire une généralisation naturelle de la loi uniforme dans $\R$ à tout $\R^d$ ($d\in\N^\ast$). On notera $\lambda$ la mesure de Lebesgue sur $\R^d$.
 
 ### Loi uniforme sur un borélien {.definition}
-La loi Uniforme sur un borélien $A\subset\R^d$ de volume $\lambda(A) > 0$ est une loi de probabilité admettant pour densité $$f : x\in\R^d \mapsto \dfrac{1_A(x)}{\lambda(A)}.$$
+La loi uniforme sur un borélien $A\subset\R^d$ de volume $\lambda(A) > 0$ est une loi de probabilité admettant pour densité $$f : x\in\R^d \mapsto \dfrac{1_A(x)}{\lambda(A)}.$$
 
-### Loi Uniforme sur un pavé {.exercise .question .one #unipave}
-Comment simuler un vecteur aléatoire $(U_1,\dots,U_d)$ de loi Uniforme sur un pavé non vide $[a_1,b_1]\times\dots\times[a_d,b_d] \subset \R^d$ ?
+### Loi uniforme sur un pavé {.exercise .question .one #unipave}
+Comment simuler un vecteur aléatoire $(U_1,\dots,U_d)$ de loi uniforme sur un pavé non vide $[a_1,b_1]\times\dots\times[a_d,b_d] \subset \R^d$ ?
 
 ### {.anonymous}
 
 Une propriété fondamentale de cette loi est qu'elle reste stable par conditionnement, dans le sens suivant.
 
 ### Stabilité par conditionnement {.proposition #stabunif}
-Soit $U$ un vecteur aléatoire de loi Uniforme sur un borélien $A\subset\R^d$ de volume $\lambda(A) > 0$. Alors pour tout borélien $B \subset A$ de volume $\lambda(B) > 0$, la loi conditionnelle $\P_{U\mid U\in B}$ de $U$ sachant que $U \in B$ est Uniforme sur $B$.
+Soit $U$ un vecteur aléatoire de loi uniforme sur un borélien $A\subset\R^d$ de volume $\lambda(A) > 0$. Alors pour tout borélien $B \subset A$ de volume $\lambda(B) > 0$, la loi conditionnelle $\P_{U\mid U\in B}$ de $U$ sachant que $U \in B$ est uniforme sur $B$.
 
 ### Démonstration {.exercise .question .one #unicond}
 
 ### Simulation {.exercise .question .one #simunibor}
-Déduire de la [proposition précédente](#stabunif) une méthode pour simuler un vecteur aléatoire de loi Uniforme sur un borélien $B \subset \R^d$ **borné** et de volume $\lambda(B) > 0$.
+Déduire de la [proposition précédente](#stabunif) une méthode pour simuler un vecteur aléatoire de loi uniforme sur un borélien $B \subset \R^d$ **borné** et de volume $\lambda(B) > 0$.
 
 ### {.anonymous}
 
-Il est aussi possible de simuler un vecteur aléatoire de loi Uniforme sur certains boréliens non vides et non bornés, comme l'établit la proposition ci-dessous.
+Il est aussi possible de simuler un vecteur aléatoire de loi uniforme sur certains boréliens non vides et non bornés, comme l'établit la proposition ci-dessous.
 
 ### Loi uniforme sur le sous-graphe d'une densité {.proposition #simunifdens} 
-Soient une densité $f : \R \to \R$, une v.a.r. $X$ et une variable $U$ uniforme sur $]0,1[$, indépendante de $X$. On note $A_f := \left\{ (x,y) \in \R \times \R_+ : f(x) \geq y \right\}$ le domaine limité par le graphe de $f$ et l'axe des abscisses (souvent appelé sous-graphe de $f$). Si $X$ est de densité $f$, alors le couple $(X,Uf(X))$ suit une loi Uniforme sur $A_f$. 
+Soient une densité $f : \R \to \R$, une v.a.r. $X$ et une variable $U$ uniforme sur $]0,1[$, indépendante de $X$. On note $A_f := \left\{ (x,y) \in \R \times \R_+ : f(x) \geq y \right\}$ le domaine limité par le graphe de $f$ et l'axe des abscisses (souvent appelé sous-graphe de $f$). Si $X$ est de densité $f$, alors le couple $(X,Uf(X))$ suit une loi uniforme sur $A_f$. 
 
 ### Démonstration {.proof}
 Commençons par remarquer que $\lambda(A_f) = 1$. Quel que soit $(z,v)\in\R^2$, par indépendance de $X$ et $U$ et par Fubini on a 
@@ -237,7 +237,7 @@ Commençons par remarquer que $\lambda(A_f) = 1$. Quel que soit $(z,v)\in\R^2$, 
 &= \int_{-\infty}^z \int_{-\infty}^v 1_{]0,f(x)[}(u)\,du\,dx\\
 & = \int_{-\infty}^z \int_{-\infty}^v 1_{A_f}(x,u)\,du\,dx.
 \end{align*}
-Ainsi, $(X,Uf(X))$ admet pour densité $1_{A_f}$, qui correspond bien à celle d'une loi Uniforme sur $A_f$.
+Ainsi, $(X,Uf(X))$ admet pour densité $1_{A_f}$, qui correspond bien à celle d'une loi uniforme sur $A_f$.
 
 ### {.anonymous}
 
@@ -269,27 +269,26 @@ On a vu que la méthode d'inversion est inappropriée pour simuler une variable 
 George E. P. Box et Mervin E. Muller ont proposé en 1958 une telle méthode (@BoxMuller). Elle exploite la propriété d'invariance par rotation de la densité d'un couple de variables gaussiennes indépendantes centrées réduites.
 
 ### Proposition {.proposition #boxmuller}
-Soient $U$ et $V$ deux variables indépendantes, de loi Uniforme sur $]0,1[$. Alors les variables aléatoires $X = \sqrt{-2\ln(U)}\cos\left(2\pi V\right)$ et $Y = \sqrt{-2\ln(U)}\sin\left(2\pi V\right)$ sont indépendantes et suivent toutes deux une loi normale centrée réduite.
+Soient $U$ et $V$ deux variables indépendantes, de loi uniforme sur $]0,1[$. Alors les variables aléatoires $X = \sqrt{-2\ln(U)}\cos\left(2\pi V\right)$ et $Y = \sqrt{-2\ln(U)}\sin\left(2\pi V\right)$ sont indépendantes et suivent toutes deux une loi normale centrée réduite.
 
 ### Démonstration {.proof}
 
 On considère $(\widetilde{X},\widetilde{Y})$ un vecteur aléatoire dont les deux composantes sont indépendantes, de loi normale centrée réduite. On note ses coordonnées polaires aléatoires $\widetilde{R}$ et $\widetilde{\Theta}$. On a vu dans le cours de Probabilités II que dans ce cas, $\widetilde{R}$ et $\widetilde{\Theta}$ sont indépendantes, la première de densité $f_{\widetilde{R}} : r \in \R \mapsto r\,e^{-\frac{r^2}{2}} 1_{\R_+^\ast}(r)$ et la seconde de loi uniforme sur $]0,2\pi]$.
 
-Or on remarque que $X$ et $Y$ ont la forme de coordonnées cartésiennes obtenues à partir d'un rayon et d'un angle : en posant $R = \sqrt{-2\ln(U)}$ et $\Theta = 2\pi V$ on obtient $X =R\cos(\Theta)$ et $Y = R\sin(\Theta)$. Par indépendance de $U$ et $V$, on sait déjà que $R$ et $\Theta$ sont indépendantes. Pour que le vecteur $(X,Y)$ ait la même distribution que $(\widetilde{X},\widetilde{Y}) = \left(\widetilde{R}\cos(\widetilde{\Theta}),\widetilde{R}\sin(\widetilde{\Theta})\right)$, il suffit donc de montrer que $R \overset{\L}{=} \widetilde{R}$ et $\Theta \overset{\L}{=} \widetilde{\Theta}$.
+$X$ et $Y$ sont les coordonnées cartésiennes obtenues à partir d'un rayon et d'un angle : en posant $R = \sqrt{-2\ln(U)}$ et $\Theta = 2\pi V$ on obtient $X =R\cos(\Theta)$ et $Y = R\sin(\Theta)$. Par indépendance de $U$ et $V$, $R$ et $\Theta$ sont indépendantes. Pour que le vecteur $(X,Y)$ ait la même distribution que $(\widetilde{X},\widetilde{Y}) = \left(\widetilde{R}\cos(\widetilde{\Theta}),\widetilde{R}\sin(\widetilde{\Theta})\right)$, il suffit de montrer que $R \overset{\L}{=} \widetilde{R}$ et $\Theta \overset{\L}{=} \widetilde{\Theta}$.
 
-* Commençons par étudier la loi de $R$, de fonction de répartition notée $F_R$. On remarque que la fonction $u\in\, ]0,1[ \mapsto \sqrt{-2\ln(u)} \in \R_+^\ast$ est bijective, strictement décroissante. Ainsi, pour tout $r\in\R_-$ on a $\P\left(R \leq r \right) = 0$ et pour tout $r \in \R_+^\ast$ on a
+* Commençons par étudier la loi de $R$, de fonction de répartition $F_R$. On remarque que la fonction $u\in\, ]0,1[ \mapsto \sqrt{-2\ln(u)} \in \R_+^\ast$ est bijective, strictement décroissante. Ainsi, pour tout $r\in\R_-$ on a $\P\left(R \leq r \right) = 0$ et pour tout $r \in \R_+^\ast$ on a
 $$\P(R \leq r) = \P\left(\sqrt{-2\ln(U)} \leq r \right) = \P\left(U \geq e^{-\frac{r^2}{2}} \right) = 1 - e^{-\frac{r^2}{2}}.$$
-En d'autres termes, pour tout $r\in\R$, $$F_R(r) = \left|\begin{array}{ll} 1 - e^{-\frac{r^2}{2}} & \text{si } r>0,\\ 0 &\text{sinon,} \end{array}\right.$$
-qui correspond exactement à la fonction de répartition de $\widetilde{R}$ : quel que soit $r\in\R$
+qui correspond à la fonction de répartition associée à la densité $f_{\widetilde{R}}$.
 $$\int_{-\infty}^r f_{\widetilde{R}}(x)\,dx = \left|\begin{array}{ll}\displaystyle \int_0^r x\,e^{-\frac{x^2}{2}}\,dx = \left[-e^{-\frac{x^2}{2}} \right]_0^r = 1 - e^{-\frac{r^2}{2}}  & \text{si } r>0,\\[1em] 0 & \text{sinon.} \end{array}\right.$$
 
-* Regardons maintenant la loi de $\Theta$, de fonction de répartition $F_\Theta$. Puisque la fonction $v \in\, ]0,1[\, \mapsto 2\pi v \in\, ]0,2\pi[$ est bijective strictement croissante, on a directement que pour tout $\theta \in \R$
+* En ce qui concerne la loi de $\Theta$, de fonction de répartition $F_\Theta$, puisque la fonction $v \in\, ]0,1[\, \mapsto 2\pi v \in\, ]0,2\pi[$ est bijective strictement croissante, on a que pour tout $\theta \in \R$
 $$F_\Theta(\theta) = \left|\begin{array}{ll} 1 & \text{si } \theta \geq 2\pi,\\ \P\left(V\leq \frac{\theta}{2\pi} \right) = \dfrac{\theta}{2\pi} & \text{si } \theta \in\, ]0,2\pi[,\\ 0 & \text{si } \theta \leq 0,\end{array}\right.$$
-qui n'est autre que la fonction de répartition d'une loi uniforme sur $]0,2\pi[$.
+qui est bien la fonction de répartition d'une loi uniforme sur $]0,2\pi[$.
 
 ### {.anonymous}
 
-Cette méthode permet de simuler directement deux variables gaussiennes centrées réduites indépendantes à partir de deux variables uniformes indépendantes. Pour simuler une variable gaussienne d'espérance $m \in \R$ et de variance $\sigma^2 \in \R_+^\ast$ quelconques, il suffit de se rappeler que si $X$ suit une loi normale centrée réduite, alors $\sigma X + m$ suit une loi normale d'espérance $m$ et de variance $\sigma^2$.
+Cette méthode permet de simuler directement deux variables gaussiennes centrées réduites indépendantes à partir de deux variables uniformes indépendantes. Pour simuler une variable gaussienne d'espérance $m \in \R$ et de variance $\sigma^2 \in \R_+^\ast$ quelconques, on se rappelera que si $X$ suit une loi normale centrée réduite, alors $\sigma X + m$ suit une loi normale d'espérance $m$ et de variance $\sigma^2$.
 
 # Simulation d'un vecteur gaussien à densité
 On souhaite simuler un vecteur gaussien $X = (X_1,\ldots,X_d)$ à valeurs dans $\R^d$ d'espérance $m$ et de matrice de covariance $C$ définie positive (et donc inversible) données. 
@@ -298,7 +297,7 @@ Puisque la matrice $C$ est définie positive, elle admet une racine carrée, c'e
 $$C = V\,D\,V^t,$$
 où $V$ est une matrice orthogonale et $D$ est la matrice diagonale dont les termes diagonaux sont les valeurs propres (toutes strictement positives) de $C$. Il suffit alors de prendre $N = V\,D^{1/2}$, où $D^{1/2}$ est la matrice diagonale dont les termes diagonaux sont les racines carrées des valeurs propres. 
 
-En pratique, il est coûteux numériquement d'effectuer le calcul des valeurs propres et des vecteurs propres de $C$. On va plutôt calculer sa [*décomposition ou factorisation de Cholesky*](https://fr.wikipedia.org/wiki/Factorisation_de_Cholesky) qui permet d'écrire
+En pratique, il est coûteux numériquement d'effectuer le calcul des valeurs propres et des vecteurs propres de $C$. On va plutôt calculer sa [*décomposition* ou *factorisation de Cholesky*](https://fr.wikipedia.org/wiki/Factorisation_de_Cholesky) qui permet d'écrire
 $$C = L\,L^t$$
 avec $L$ une matrice triangulaire inférieure [^chol].
 
@@ -326,7 +325,7 @@ dont le second terme peut être vu comme l'espérance de $h(U) = \frac{2}{\pi(1+
 $$\widehat{p}_3 = \frac{1}{2} - \frac{1}{n}\sum_{i=1}^n \frac{2}{\pi(1+U_i^2)},$$
 dont la variance vaut $\V(\widehat{p}_3) = (\Esp(h(X)^2) - \Esp(h(U))^2)/n = 0.0285/n$ (par intégration par parties). Enfin, on peut encore réécrire (voir @ripley)
 $$p = \int_0^{1/2}\frac{y^{-2}}{\pi(1+y^{-2})}dy,$$
-qui peut être vue comme $\Esp\left(\frac{V^{-2}}{2\pi(1+V^{-2})}\right)$ avec $V\sim \mathcal{U}_{]0,1/2[}$. L'estimateur formé à partir de cette représentation et d'un échantillon $(V_1,\ldots,V_n)$ i.i.d. de loi uniforme sur $[0,1/2]$ a une variance de $0.95\, 10^{-4}/n$. Il est donc bien plus efficace que $\widehat{p}_1$ puisqu'il nécessite environ $\sqrt{10^3}=32$ fois moins de simulations pour atteindre la même précision.
+qui peut être vue comme $\Esp\left(\frac{V^{-2}}{2\pi(1+V^{-2})}\right)$ avec $V\sim \mathcal{U}_{]0,1/2[}$. L'estimateur formé à partir de cette représentation et d'un échantillon $(V_1,\ldots,V_n)$ i.i.d. de loi uniforme sur $[0,1/2]$ a une variance de $0.95\, 10^{-4}/n$. Il est donc bien plus efficace que $\widehat{p}_1$ puisqu'il nécessite environ $\sqrt{10^3}\approx 32$ fois moins de simulations pour atteindre la même précision.
 
 On a ainsi vu sur ce cas particulier que l'estimation d'une intégrale de la forme 
 $$\mathcal{I}=\Esp\left(h(X)\right)=\int_{\R^d} h(x) f(x) dx,$$
@@ -553,7 +552,7 @@ Il suffit d'associer à "pile" un événement portant sur $U \sim \mathcal{U}_{]
     c + (u(b-a + d -c) - (b-a)) \text{ sinon }
     \end{cases}$$
 
-### Loi Uniforme sur un pavé {.answer  .one #answer-unipave}
+### Loi uniforme sur un pavé {.answer  .one #answer-unipave}
 On note $[a_1,b_1]\times\dots\times[a_d,b_d] \subset \R^d$.
 On peut voir que la densité d'une v.a. uniforme sur un tel pavé s'écrit $f(x) = \frac{1}{b_1 - a_1} \cdots \frac{1}{b_d - a_d} 1_{[a_1,b_1]\times\dots\times[a_d,b_d]}(x)$ soit comme le produit des densités de ses coordonnées qui sont donc indépendantes. On peut donc simuler la variable d'intérêt avec cet algorithme :
 
