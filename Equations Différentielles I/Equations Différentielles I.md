@@ -7,7 +7,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Rgeq}{\R_{\geq 0}}
 \newcommand{\Rg}{\R_{> 0}}
-\newcommand{\C}{\mathbb{C}}
+<!--\newcommand{\C}{\mathbb{C}}-->
 
 \newcommand{\cS}{\mathcal{S}}
 \newcommand{\cC}{\mathcal{C}}
@@ -38,7 +38,7 @@ Ce cours est une introduction à l'étude non linéaire des équations différen
 
 - savoir justifier l'existence de solutions par le théorème de Peano lorsque "$f$ est continue".
 
-- comprendre la notion de solution maximale et savoir qu'elles sont définies tant qu'elles "n'explosent" pas et tant qu'elles n'atteignent pas la frontière du domaine où l'équation différentielle est définie. Savoir justifier qu'une solution est globale si ces éventualités ne peuvent se réaliser en temps fini et/ou en faisant appel au critère "linéairement borné".
+- comprendre la notion de solution maximale et savoir qu'elles sont définies tant qu'elles "n'explosent" pas et tant qu'elles n'atteignent pas la frontière du domaine où l'équation différentielle est définie. Savoir justifier qu'une solution est définie sur tout l'intervalle de temps $\R$ si ces éventualités ne peuvent se réaliser en temps fini et/ou en faisant appel au critère "linéairement borné".
 
 - savoir justifier l'unicité des solutions maximales par le théorème de Cauchy-Lipschitz lorsque "$f$ est continûment différentiable par rapport à $x$".
 
@@ -444,10 +444,18 @@ $$
 \langle\nabla V (x), f(t,x)\rangle \leq a(t) V(x) + b(t)  \qquad \forall (t,x)\in \R\times \R^n
 $$
 avec $a,b:\R \to \R$ continues. Montrer que quelque soit la condition initiale $(t_0,x_0)\in \R\times \R^n$, les solutions maximales de 
-$$
-\dot{x} = f(t,x)
-$$
+$\dot{x} = f(t,x)$
 sont définies sur $[t_0,+\infty[$. On pourra pour cela étudier l'évolution de $t\mapsto V(x(t))$.
+
+### Solutions globales III {.exercise .question #glob_sol3 .two}
+Soient $f:\R \times \R^n \to \R^n$ continue et  $V:\R^n \to \R$ telle que 
+$$
+\lim_{\|x\| \to +\infty} V(x) = +\infty \quad \text{et} \quad \langle\nabla V(x), f(t,x)\rangle \leq 0  \qquad \forall (t,x)\in \R\times \R^n \ .
+$$
+Montrer que quelque soit la condition initiale $(t_0,x_0)\in \R\times \R^n$, les solutions maximales de 
+$\dot{x} = f(t,x)$
+sont définies et bornées sur $[t_0,+\infty[$. On pourra pour cela étudier l'évolution de $t\mapsto V(x(t))$.
+
 
 Unicité des solutions maximales
 -------------------------------
@@ -572,7 +580,7 @@ admet une unique solution maximale définie sur $\R$.
 Régularité et stabilité des solutions
 ==========================================
 
-Depuis l'apparition de la mécanique Newtonienne au XVIIème sciècle, l'étude des équations différentielles a toujours été motivée par l'espoir de compréhension et de prédiction du comportement futur ou passé de systèmes physiques.
+Depuis l'apparition de la mécanique Newtonienne au XVIIème ssource activate ./enviècle, l'étude des équations différentielles a toujours été motivée par l'espoir de compréhension et de prédiction du comportement futur ou passé de systèmes physiques.
 En particulier, une question ayant taraudé et divisé les scientifiques au cours des siècles est celle de la stabilité du système à trois corps (Terre-Lune-Soleil), ou plus généralement du système solaire.  Enchanté devant les avancées de la mécanique céleste, Pierre-Simon Laplace écrit en 1814 :
 
 >Nous devons donc envisager l'état présent de l'univers comme l'effet de son état antérieur, et comme la cause de celui qui va suivre. Une intelligence qui pour un instant donné connaîtrait toutes les forces dont la nature est animée et la situation respective des êtres qui la composent, si d'ailleurs elle était assez vaste pour soumettre ses données à l'analyse, embrasserait dans la même formule les mouvements des plus grands corps de l'univers et ceux du plus léger atome : rien ne serait incertain pour elle, et l'avenir comme le passé serait présent à ses yeux.
@@ -679,7 +687,7 @@ Propriétés asymptotiques
 
 Dans la section précédente nous avons répondu à la première question qui était la sensibilité des solutions aux erreurs de condition initiale et de modèle. Mais cette étude était en temps fini et nous nous intéressons maintenant à la seconde question qui est le comportement asymptotique des solutions. L'étude théorique asymptotique des solutions prend ses origines dans la thèse de Lyapunov [@lyap]. Le but est de rechercher des critères sur la fonction $f$ qui nous permettent de prédire ce comportement : est-ce que les solutions divergent ? est-ce qu'elles tendent vers un point en particulier ? vers un cycle limite ? 
 
-Dans la suite, pour simplifier, nous étudions les équations différentielles dites *autonomes*, c'est-à-dire dont la fonction $f$ est indépendante du temps. On se donne donc une fonction continue $f:X\subset\R^n\to \R^n$, et on prend par défaut $t_0=0$. 
+Dans la suite, pour simplifier, nous étudions les équations différentielles dites *autonomes*, c'est-à-dire dont la fonction $f$ est indépendante du temps. On se donne donc une fonction continue $f:X\to \R^n$, avec $X$ un ouvert de $\R^n$ et on prend par défaut $t_0=0$. 
 <!--Puisque l'on souhaite étudier plus particulièrement le comportement *asymptotique* des solutions de $\dot{x}=f(x)$, on se restreint aux solutions *complètes*, c'est-à-dire définies sur $\Rgeq = [0,+\infty)$.-->
 
 ### Point d'équilibre {.definition #def_ptEq}
@@ -708,7 +716,7 @@ Ce système a pour points d'équilibre $(k\pi,0)$, $k\in \Z$, qui correspondent 
 
 ### Attractivité {.definition #def_attract}
 
-Un point d'équilibre $a$ est dit *localement attractif* si *toutes les solutions maximales initialisées suffisamment proche de $a$ sont globales et convergent vers $a$*, c'est-à-dire s'il existe $\eta>0$ tel que pour tout $x_0$ vérifiant $|x_0-a|\leq \eta$, toute solution maximale $x \in S_f(x_0)$ est définie sur $\Rgeq$ et vérifie
+Un point d'équilibre $a$ est dit *localement attractif* si *toutes les solutions maximales initialisées suffisamment proche de $a$ sont définies en tout temps positif et convergent vers $a$*, c'est-à-dire s'il existe $\eta>0$ tel que pour tout $x_0$ vérifiant $|x_0-a|\leq \eta$, toute solution maximale $x \in S_f(x_0)$ est définie sur $\Rgeq$ et vérifie
 <!--
 $$
 |x(0)-a|\leq \eta \qquad \Longrightarrow \qquad \lim_{t\to+\infty} x(t)=a \ .
@@ -717,7 +725,7 @@ $$
 $$
 \lim_{t\to+\infty} x(t)=a \ .
 $$
-De plus, $a$ est dit *globalement attractif* si *toutes les solutions maximales sont globales et convergent vers $a$*.
+De plus, $a$ est dit *globalement attractif* si *toutes les solutions maximales sont définies en tout temps positif et convergent vers $a$*.
 
 Cette notion intuitive ne dit rien sur le comportement des solutions pendant le transitoire, c'est-à-dire avant de converger vers $a$. Des solutions initialisées proche de $a$ pourraient s'en éloigner arbitrairement loin avant de converger, ou mettre un temps arbitrairement long pour revenir dans un voisinage de $a$. Pour garantir une certaine uniformité et robustesse de cette attractivité par rapport à la condition initiale, on a recours à une notion plus forte qui est la *stabilité asymptotique*. 
 
@@ -725,7 +733,7 @@ Cette notion intuitive ne dit rien sur le comportement des solutions pendant le 
 
 Un point d'équilibre $a$ est dit:
 
-- *stable* si *les solutions restent arbitrairement proche de $a$ quand elles sont initialisées suffisamment proche de $a$*, c'est-à-dire pour tout $\varepsilon >0$, il existe $\eta>0$ tel que pour tout $x_0$ vérifiant $|x_0-a|\leq \eta$, toute solution maximale $x \in S_f(x_0)$ est définie sur $\Rgeq$ et vérifie
+- *stable* si *les solutions sont définies en tout temps positif et restent arbitrairement proche de $a$ quand elles sont initialisées suffisamment proche de $a$*, c'est-à-dire pour tout $\varepsilon >0$, il existe $\eta>0$ tel que pour tout $x_0$ vérifiant $|x_0-a|\leq \eta$, toute solution maximale $x \in S_f(x_0)$ est définie sur $\Rgeq$ et vérifie
 <!--$$
 |x(0)-a|\leq \eta \qquad \Longrightarrow \qquad |x(t)-a|\leq \varepsilon \quad \forall t\in \Rgeq \ .
 $$-->
@@ -821,15 +829,13 @@ Voir l'annexe [\textit{Stabilité locale et linéarisé tangent}](#app_stab_lin)
 ###
 
 Notons cependant que rien ne peut être conclu quant à la stabilité (ou stabilité asymptotique) de $a$ si les parties réelles de $J_f(a)$ sont négatives ou nulles : on peut avoir asymptotiquement stable, seulement stable ou instable. Par exemple, 0 est globalement asymptotiquement stable pour
-$$
-\dot{x} = - x^3
-$$
-dont le linéarisé est nul en zéro, alors que $(0,0)$ est instable pour
+$\dot{x} = - x^3$ mais instable pour $\dot{x} = x^3$ alors que ces deux dynamiques ont le même linéarisé (nul) en zéro.
+<!--alors que $(0,0)$ est instable pour
 \begin{align*}
 \dot{x}_1 &= x_2 \\
 \dot{x}_2 &= 0
 \end{align*}
-qui admet deux valeurs propres nulles.
+qui admet deux valeurs propres nulles. -->
 
 ### Retour au pendule {.example #ex_pendule_jacob}
 Reprenons l'[exemple du pendule amorti](#ex_pendule). On a
@@ -863,31 +869,17 @@ L'est-il globalement ?
 
 ###
 
-Lorsque le linéarisé ne permet pas de conclure sur la stabilité asymptotique locale, ou que l'on veut un résultat global, on a recours à la caractérisation non linéaire suivante.
+Lorsque le linéarisé ne permet pas de conclure sur la stabilité asymptotique locale, ou que l'on veut un résultat global, on a recours à des caractérisations non linéaires, notamment celle de *Lyapunov* présentée en [exercice](#exo_lyap). Elle consiste à étudier, le long des solutions de l'équation différentielle, l'évolution d'une quantité positive, semblable à une énergie,  qui s'annule seulement au niveau du point d'équilibre. En démontrant que cette quantité est conservée, ou mieux, décroit le long des solutions, on peut typiquement déduire des propriétés de stabilité ou stabilité asymptotique (potentiellement globale) du point d'équilibre.
 
-### Caractérisation par Lyapunov {.theorem #theo_lyap}
-Soit $f: X \to \R^n$ continue, $a$ un point d'équilibre de $f$ dans $X$, et $W$ un voisinage de $a$ dans $X$.
-Soit $V:W\to\Rgeq$ continûment différentiable telle que 
+### Stabilité par décroissance d'une fonction définie positive {.theorem #stab_decroissance}
+Soient $X$ ouvert de $\R^n$, $f: X \to \R^n$ continue, $a$ un point d'équilibre de $f$ dans $X$, $W$ un voisinage de $a$ dans $X$, et $V:X\to\Rgeq$ continue telle que 
 $$
 V(x) > 0 \quad  \forall x\in W\setminus\{a\} \qquad , \qquad V(a)= 0 \ .
 $$
-
--  Si $\langle\nabla V (x), f(x)\rangle \leq 0$ pour tout $x\in W$ alors $a$ est stable.
-
-- Si $\langle \nabla V (x), f(x) \rangle < 0$ pour tout $x\in W\setminus \{a\}$ alors $a$ est localement asymptotiquement stable.
-
-- Si $\lim_{\|x\|\to +\infty} V(x) = +\infty$, $W=\R^n$, et $\langle\nabla V (x), f(x)\rangle < 0$ pour tout  $x\neq a$ alors $a$ est globalement asymptotiquement stable.
-
-$V$ est alors appelée *fonction de Lyapunov*. En fait, 
-$$
-\langle\nabla V (x(t)), f(x(t))\rangle = \langle\nabla V (x(t)), \dot{x}(t)\rangle = \frac{d}{dt} V(x(t))
-$$  
-le long d'une trajectoire $t\mapsto x(t)$ de l'équation différentielle $\dot{x} = f(x)$. $V$ représente donc une grandeur positive qui décroît ou est conservée le long des trajectoires. Pour des systèmes physiques, elle est souvent reliée à l'énergie.
-
-Le fait que $\lim_{\|x\|\to +\infty} V(x)= +\infty$ sert à montrer que toute les trajectoires sont bornées et donc définies pour tout $t$. Sans cette hypothèse, et même si $V$ décroit strictement le long de toutes les trajectoires, on pourrait avoir des trajectoires qui explosent en temps fini.
+Si toute solution $x: I\subset \Rgeq \to \R^n$ de $\dot x = f(x)$ initialisée dans $W$ est telle que $t\mapsto V(x(t))$ est décroissante sur $I$ alors $a$ est stable.
 
 ### Démonstration {.proof}  
-Supposons d'abord que $\langle\nabla V (x), f(x)\rangle \leq 0$ pour tout $x\in W$. On a donc pour toute solution $t\mapsto x(t)$ initialisée dans $W$, $V(x(t))\leq V(x(0))$ tant que  $x(t)\in W$. Prenons $\varepsilon>0$ suffisamment petit tel que $\overline{B}(a,2\varepsilon)\subset W$. On veut montrer qu'il existe $\eta$ tel que toute trajectoire initialisée dans $B(a,\eta)$ reste dans $B(a,\varepsilon)\subset W$. Tout d'abord, il existe $\varepsilon_V>0$ tel que 
+Prenons $\varepsilon>0$ suffisamment petit tel que $\overline{B}(a,2\varepsilon)\subset W$. Montrons qu'il existe $\eta$ tel que toute solution initialisée dans $B(a,\eta)$ reste dans $B(a,\varepsilon)\subset W$. Tout d'abord, il existe $\varepsilon_V>0$ tel que 
 $$
 \forall x\in \overline{B}(a,2\varepsilon) \ : \ V(x)\leq \varepsilon_V \ \Longrightarrow x\in B(a,\varepsilon) \ .
 $$
@@ -895,38 +887,38 @@ En effet, sinon, il existerait une suite $(x_k)_{k\in \N}$ d'éléments de $\ove
 $$
 x\in B(a,\eta)  \ \Longrightarrow V(x)\leq \varepsilon_V \ .
 $$
-Alors si $x(0)\in B(a,\eta)$, $V(x(t))\leq V(x(0))\leq \varepsilon_V$ donc $x(t)\in B(a,\varepsilon)\subset W$ pour tout $t$ tant qu'elle est définie. Par le [théorème du domaine maximal d'existence](#theo_bouts), $x$ est définie sur $\Rgeq$. Ceci prouve la stabilité de $a$.
+Finalement, soit une solution maximale $x$ de $\dot x = f(x)$ avec $x(0)\in B(a,\eta)$. Par décroissance de $t\mapsto V(x(t))$ par hypothèse, $V(x(t))\leq V(x(0))\leq \varepsilon_V$ donc $x(t)\in B(a,\varepsilon)\subset W$ pour tout $t\geq 0$ où elle est définie. Par le [théorème du domaine maximal d'existence](#theo_bouts), $x$ est définie sur $\Rgeq$ et on obtient la stabilité de $a$.
 
-Supposons maintenant $\langle\nabla V (x), f(x)\rangle < 0$ pour tout $x\in W\setminus \{a\}$. Alors par le point précédent $a$ est stable. Il suffit de montrer l'attractivité locale. Par stabilité, si $x(0)\in B(a,\eta)$,  $x(t)\in B(a,\varepsilon)\subset W$ pour tout $t$ et $t\to V(x(t))$ est donc strictement décroissante. Comme elle est aussi bornée inférieurement par 0, elle converge vers $\ell \geq 0$. Supposons $\ell>0$. Alors, par continuité de $V$, il existe $0<\nu<\varepsilon$ et $\overline{t}>0$ tel que pour tout $t\geq \overline{t}$, $\|x(t)-a\| \geq \nu$. Soit 
-$$
-\gamma = \max_{\nu \leq \|x-a\| \leq \varepsilon} \langle\nabla V (x), f(x)\rangle   
-$$
-qui existe par continuité de $\nabla V$ et $f$ sur un compact.  Puisque $\langle\nabla V (x), f(x)\rangle < 0$ sur $W\setminus \{a\}$, $\gamma<0$. Alors, pour tout $t\geq \overline{t}$,
-$$
-V(x(t)) = V(x(\overline{t})) + \int_0^t \langle\nabla V (x(t)), f(x(t))\rangle \leq  V(x(\overline{t})) + \gamma (t-\overline{t}) \ .
-$$
-Mais comme $\gamma<0$ cette quantité devient strictement négative au bout d'un certain temps, ce qui est impossible. Donc $\lim_{t\to +\infty} V(x(t))=0$. Finalement, reproduisant le même raisonnement que pour l'existence de $\varepsilon_V$, on peut garantir que $\|x-a\|$ est arbitrairement petit en prenant $V(x)$ suffisamment petit. Donc on en déduit que $\lim_{t\to +\infty} \|x(t)-a\|=0$.
 
-Supposons enfin que $\lim_{\|x\|\to +\infty} V(x) = +\infty$ et $W=\R^n$. Alors $V(x(t))< V(x(0))$ pour tout $t\in I$ donc $x(t)\in V^{-1}(\left[ 0,V(x(0)) \right])$ pour tout $t$. Le fait que $\lim_{\|x\|\to +\infty} V(x) = +\infty$ est équivalent au fait que l'image réciproque de toute compact est compact (on dit que $V$ est propre). Donc $V^{-1}(\left[ 0,V(x(0)) \right])$ est compact  et par le [théorème du domaine maximal d'existence nécessairement](#theo_bouts) $x(t)$ est défini pour tout $t\geq 0$, et reste dans ce compact. Alors on peut reproduire le même raisonnement que plus haut et obtenir la convergence de $x$ vers $a$.
-
-### Pendule par Lyapunov {.example #ex_pendule_lyap}
-Reprenons le [pendule](#ex_pendule) mais cette fois-ci, non amorti, c'est-à-dire avec $\rho=0$. Nous n'avons pas pu prouver la stabilité du point d'équilibre $(0,0)$ par l'étude de la matrice Jacobienne car ses valeurs propres sont imaginaires pures. Essayons par analyse de Lyapunov. Inspirés par la physique, considérons $V:\left] -\pi, \pi\right[\times \R \to \Rgeq$ définie par
+### Stabilité du pendule {.example #ex_pendule_lyap}
+Reprenons le [pendule](#ex_pendule) mais cette fois-ci, non amorti, c'est-à-dire avec $\rho=0$. Nous n'avons pas pu prouver la stabilité du point d'équilibre $(0,0)$ par l'étude de la matrice Jacobienne car ses valeurs propres sont imaginaires pures. Inspirés par la physique, considérons $V:\left] -\pi, \pi\right[\times \R \to \Rgeq$ définie par
 $$
 V(x_1,x_2) = \frac{1}{2} m\ell^2 x_2^2 + mg\ell(1-\cos(x_1)) \ .
 $$
 Le premier terme correspond à l'énergie cinétique du pendule, et le deuxième son énergie potentielle.
-$V$ est continûment différentiable, à valeurs positives et s'annule seulement en $x=0$.
-De plus,
-$$
-\langle\nabla V (x), f(x)\rangle = m\ell^2 x_2\left(-\frac{g}{\ell} \sin x_1\right) + mg \ell \sin x_1 x_2 = 0
-$$
+$V$ est continue, à valeurs positives et s'annule seulement en $x=0$.
+De plus, pour toute solution $t\mapsto x(t)$,
+\begin{align*}
+\frac{d}{dt} V(x(t)) &=  m\ell^2 x_2(t) \dot x_2(t) + mg \ell \sin(x_1(t)) \dot x_1(t) \\
+&= m\ell^2 x_2(t)\left(-\frac{g}{\ell} \sin(x_1(t))\right) + mg \ell \sin(x_1(t)) x_2(t) \\
+&= 0 
+\end{align*}
 ce qui traduit la conservation de l'énergie en l'absence de frottement. On en déduit donc la stabilité du point d'équilibre $(0,0)$.
+
+### Fonctions et critères de Lyapunov {.remark #rem-crit_lyap}
+Un telle fonction $V$ décroissante le long des solutions est appelée *fonction de Lyapunov*. Comme dans l'exemple précédent, on vérifie sa décroissance en étudiant le signe,  de
+$$
+\frac{d}{dt} V(x(t)) = \langle\nabla V (x(t)), \dot{x}(t)\rangle = \langle\nabla V (x(t)), f(x(t))\rangle \ .
+$$  
+Mais vu que l'on ne sait généralement pas résoudre l'équation différentielle, on ne connait pas l'expression de $x(t)$ et on se ramène donc à étudier le signe de la quantité $\langle\nabla V (x), f(x)\rangle$ pour $x\in \R^n$ dans un voisignage de $a$, ou globalement, par un calcul algébrique sans considérer les solutions de l'équation différentielle. Ceci débouche sur les critères de *Lyapunov* présentés en [exercice](#exo_lyap).   On peut se demander s'il existe toujours une telle fonction de Lyapunov, autour d'un point d'équilibre stable/asymptotiquement stable. La réponse est oui, mais c'est une question délicate étudiée en détail dans [@BacRos].
+
+Au delà de la stabilité donnée par le résultat précédent, les conditions de Lyapunov permettent aussi de démontrer la stabilité asymptotique locale du point d'équilibre lorsque l'on a une décroissante *stricte*, c'est-à-dire lorsque $\langle\nabla V (x), f(x)\rangle<0$ pour $x\neq a$ dans un voisinage de $a$. Cette stabilité asymptotique devient *globale* lorsque cette inégalité est valide globalement et lorsque de plus la fonction $V$ est propre, c'est-à-dire si $\lim_{\|x\| \to +\infty} V(x) = +\infty$. Attention cette dernière hypothèse est importante car elle garantie que les solutions restent bornées et sont bien définies sur $\Rgeq$. Sinon on pourrait avoir des solutions qui explosent en temps fini alors que $V$ décroit strictement.  
 
 ###
 
-On peut se demander s'il existe toujours une fonction de Lyapunov autour d'un point d'équilibre stable/asymptotiquement stable. La réponse est oui, mais c'est une question délicate étudiée en détail dans [@BacRos].
+Souvent cependant, la fonction de Lyapunov $V$ ne décroit pas *strictement* et ces derniers critères ne s'appliquent pas. On étudie alors la convergence asymptotique des solutions vers le point d'équilibre de manière ad-hoc en utilisant une variation très pratique du fameux *lemme de Barbalat*.
 
-En fait, quand on essaye une approche par Lyapunov, on tombe souvent sur des cas où l'on a $\langle\nabla V (x), f(x)\rangle \leq 0$ pour tout $x$ mais pas forcément une inégalité stricte pour $x\neq a$. Autrement dit, la fonction de Lyapunov n'est pas *stricte*. Le théorème de Lyapunov ne donne donc a priori que la stabilité et pas la stabilité asymptotique. Pourtant, on peut souvent aller plus loin et déduire des propriétés asymptotiques des solutions en appliquant une variation très pratique du fameux *lemme de Barbalat*.
+<!--En fait, quand on essaye une approche par Lyapunov, on tombe souvent sur des cas où l'on a $\langle\nabla V (x), f(x)\rangle \leq 0$ pour tout $x$ mais pas forcément une inégalité stricte pour $x\neq a$. Autrement dit, la fonction de Lyapunov n'est pas *stricte*. Le théorème de Lyapunov ne donne donc a priori que la stabilité et pas la stabilité asymptotique. Pourtant, on peut souvent aller plus loin et déduire des propriétés asymptotiques des solutions en appliquant une variation très pratique du fameux *lemme de Barbalat*. -->
 
 ### Lemme de Barbalat {.theorem #theo_barbalat}
 Soit $v:[t_0,+\infty[\to \R$ de classe $C^2$ telle que 
@@ -942,11 +934,28 @@ La première hypothèse dit que $\int_{t_0}^{+\infty} \dot{v}(t)dt$ est finie et
 
 ###
 
-Dans une analyse de Lyapunov, on a vu plus haut que la quantité $\langle\nabla V (x), f(x)\rangle$ prise le long des solutions correspond à $\dot{v}(t)$ où $v(t) = V(x(t))$. Si cette quantité est négative ou nulle partout, on a le fait que $v$ décroit. Comme $v$ est par ailleurs minorée par 0, elle converge asymptotiquement. Si on a par ailleurs démontré la bornitude des solutions, on a typiquement aussi celle de leurs dérivées puisque $\dot{x} = f(x)$, et donc aussi celle de $\ddot{v}$. Par Barbalat, on déduit que $\langle\nabla V (x), f(x)\rangle$ tend vers 0, inférant ainsi des propriétés asymptotiques sur les solutions. Par l'application répétée de Barbalat, on peut ainsi arriver à montrer l'attractivité globale du point d'équilibre, qui s'ajoute à la stabilité pour donner sa stabilité asymptotique.
+Toujours dans le contexte d'une fonction définie positive décroissante, et en supposant que $f$ et $V$ sont aussi régulières que nécessaires, on a le fait que $v(t) = V(x(t))$ décroit, et donc $\dot{v}(t)\leq 0$ pour tout $t\geq 0$. Comme $v$ est minorée par 0, elle converge asymptotiquement. Si on a par ailleurs démontré la bornitude des solutions (en temps positif), on a typiquement aussi celle de leurs dérivées puisque $\dot{x} = f(x)$, et donc aussi celle de $\ddot{v}$. Par Barbalat, on déduit que $\dot{v}(t) = \langle\nabla V (x(t)), f(x(t))\rangle$ tend vers 0, inférant ainsi des propriétés asymptotiques sur les solutions. Par l'application répétée de Barbalat, on peut arriver à montrer l'attractivité locale ou globale du point d'équilibre, qui s'ajoute à la stabilité pour donner sa stabilité asymptotique.
+
+### Méthode d'analyse non linéaire de stabilité
+La méthode consiste donc à
+
+ - chercher une fonction $V$ définie positive par rapport au point d'équilibre qui décroit le long des solutions (on considère souvent des sommes de carrés);
+
+ - en déduire la stabilité du point d'équilibre par [théorème](#stab_decroissance);
+
+ - montrer que les solutions sont bornées en temps positifs (par exemple en utilisant que $\lim_{\|x\| \to +\infty} V(x) = +\infty$, voir [exercice](#glob_sol3));
+
+ - en déduire par récurrence que toutes les dérivées successives nécessaires des solutions sont bornées en utilisant que $\dot{x} = f(x)$ et la régularité de $f$;
+
+ - utiliser le lemma de Barbalat (potentiellement un certain nombre de fois sur les dérivées successives) pour montrer que les solutions (toutes ou celles dans un voisinage) convergent vers le point d'équilibre;
+
+ - combiner avec la stabilité pour déduire la stabilité asymptotique locale ou globale.
+
+
 
 ### Oscillateurs couplés II {.exercise .question #ressort-2 .two}
 
-Reprendre l'[exercice sur les oscillateurs couplés](#ressort-1) et démontrer la stabilité du point d'équilibre dans le cas général. Montrer ensuite qu'il est globalement asymptotiquement stable si $\lambda_1>0$ ou $\lambda_2>0$. On pourra pour cela considérer l'énergie mécanique du système.
+Reprendre l'[exercice sur les oscillateurs couplés](#ressort-1) et démontrer la stabilité du point d'équilibre dans le cas général. Montrer que les solutions sont bornées en temps positif et que le point d'équilibre est globalement asymptotiquement stable si $\lambda_1>0$ ou $\lambda_2>0$. On pourra pour cela considérer l'énergie mécanique du système.
 
 
 ### Stabilité asymptotique II {.exercise .question #asymp_glob-2 .two}
@@ -957,7 +966,7 @@ $$
 \dot{x}_2 &=& -x_1^3-x_2
 \end{array}
 $$
-<!--*Indice : Essayer de trouver une fonction de Lyapunov... $x_2^2$ donne de la négativité en $x_2$, $(x_1+x_2)^2$ de la négativité en $x_1$... voir comment compléter...*.-->
+*Indice : $x_2^2$ donne de la négativité en $x_2$, voir comment compléter avec des termes positifs en $x_1$...*.
 
 Exercices complémentaires
 ==============================================================================
@@ -1058,6 +1067,24 @@ Montrer que si $\|x(t_0)\|\neq 1$ alors $\|x(t)\|\neq 1$ pour tout $t\in  I$.
 ### Question 4 {.question #cycle-lim-4}
 En déduire le comportement des solutions en fonction de la condition initiale.
 
+## Critères de stabilité de Lyapunov {.exercice #exo_lyap}
+Soient $X$ ouvert de $\R^n$, $f: X \to \R^n$ continue, $a$ un point d'équilibre de $f$ dans $X$, $W$ un voisinage de $a$ dans $X$, et $V:W\to\Rgeq$ continûment différentiable telle que 
+$$
+V(x) > 0 \quad  \forall x\in W\setminus\{a\} \qquad , \qquad V(a)= 0 \ .
+$$
+
+### Question 1 {.question #lyap-1}
+Montrer que si $\langle\nabla V (x), f(x)\rangle \leq 0$ pour tout $x\in W$ alors $a$ est stable.
+
+### Question 2 {.question #lyap-2}
+Montrer que si $\langle \nabla V (x), f(x) \rangle < 0$ pour tout $x\in W\setminus \{a\}$ alors $a$ est localement asymptotiquement stable.
+
+### Question 3 {.question #lyap-3}
+Montrer que si $\lim_{\|x\|\to +\infty} V(x) = +\infty$, $W=\R^n$, et $\langle\nabla V (x), f(x)\rangle < 0$ pour tout  $x\neq a$ alors $a$ est globalement asymptotiquement stable.
+
+<!--###
+Notons que l'hypothèse $\lim_{\|x\|\to +\infty} V(x)= +\infty$ sert à montrer que toute les trajectoires sont bornées et donc définies pour tout $t$. Sans cette hypothèse, et même si $V$ décroit strictement le long de toutes les trajectoires, on pourrait avoir des trajectoires qui explosent en temps fini.
+-->
 
 
 ## Cycle limite II ($+$)  {.exercice #exo_cycle-lim-volterra}
@@ -1210,6 +1237,16 @@ $$
 $$
 C'est donc impossible et $\tmax = +\infty$. 
 
+
+### Solutions globales III {.answer #answer-glob_sol3}
+
+Considérons une condition initiale dans $\R\times \R^n$ et une solution maximale $t\mapsto x(t)$  définie sur un intervalle $I$. Alors
+$$
+\frac{d}{dt} V(x(t)) = \langle\nabla V (x(t)), f(t,x(t))\rangle \leq 0 \quad \forall t\in I \ ,
+$$
+donc $t\mapsto V(x(t))$ décroit et est donc bornée en temps positif par $V(x(0))$. D'après le théorème du domaine maximal, puisque $\R\times \R^n$ n'a pas de frontière, la seule raison pour laquelle $[t_0,+\infty)$ ne serait pas inclus dans $I$ serait que la solution diverge en temps fini. Or c'est impossible car par hypothèse, on aurait alors $t\mapsto V(x(t))$ qui diverge. Donc $x$ est définie sur $[0,+\infty[$. Supposons maintenant qu'elle est non bornée sur $[0,+\infty[$.  Alors il existe une suite de temps $(t_n)$ avec $\lim_{n\to +\infty} t_n=+\infty$ et $\lim_{n\to +\infty} \|x(t_n)\|=+\infty$, et on a $\lim_{n\to +\infty} V(x(t_n))=+\infty$, ce qui est impossible. Donc $x$ est bien définie et bornée sur $[0,+\infty[$.
+
+
 ### Unicité de la solution maximale {.answer #answer-ini_sol}
 
 Nous avons vu dans l'exercice Solutions globales I que les solutions maximales de ce système sont définies sur $\R$. Par ailleurs, la fonction $f:(t,x_1,x_2)\mapsto (\sin x_1 - \sqrt{|t|} x_2 ,\sqrt{1+x_1^2})$ est continûment différentiable par rapport à $x$ sur $\R\times\R^2$. Donc pour chaque condition initiale dans $\R\times\R^2$, il existe une unique solution maximale.
@@ -1323,13 +1360,16 @@ $$
 V(x)
 = \frac{1}{2} k_1 x_1^2 + \frac{1}{2} k_2 x_3^2 + \frac{1}{2} k_{12} (x_1-x_3)^2 + \frac{1}{2} m_1 x_2^2 + \frac{1}{2} m_2 x_4^2 \ .
 $$
-Cette quantité décroit le long des trajectoires, puisque 
+Il s'agit d'une fonction à valeurs positives, et telle que $V(x)=0$ équivaut à $x=0$.
+Si on considère une solution $x$, on calcule 
 $$
-\langle\nabla V (x), f(x)\rangle = -\lambda_1 x_2^2 - \lambda_2 x_4^2 \leq 0 \ .
+\frac{d}{dt} V(x(t)) = -\lambda_1 x_2(t)^2 - \lambda_2 x_4(t)^2 \leq 0 \ .
 $$ 
-D'après le théorème de Lyapunov, puisque $V$ est à valeurs positives, continûment différentiable et telle que $V(x)=0$ est équivalent à $x=0$, la position d'équilibre 0 est donc stable.
+D'après le [théorème de stabilité par décroissance d'une fonction définie positive](#stab_decroissance), la position d'équilibre 0 est donc stable.
 
-Par ailleurs, on voit que $V$ étant décroissante le long des solutions, elle est bornée le long des solutions. Vu que $\lim_{\|x\|\to \infty} V(x)=+\infty$, on en déduit que les solutions maximales sont bornées sur $[0,+\infty[$. En effet, s'il existait une suite de temps $(t_n)$ avec $\lim_{n\to +\infty} t_n=+\infty$ et $\lim_{n\to +\infty} \|x(t_n)\|=+\infty$, on aurait $\lim_{n\to +\infty} V(x(t_n))=+\infty$, ce qui est impossible. De plus, vu que $\dot x = Ax$, les dérivées successives des solutions s'écrivent comme des combinaisons linéaires des solutions et sont donc elles aussi toutes bornées sur  $[0,+\infty[$.
+Par ailleurs, on voit que $V$ étant décroissante le long des solutions, elle est bornée le long des solutions. Vu que $\lim_{\|x\|\to \infty} V(x)=+\infty$, on en déduit que les solutions maximales sont bornées sur $[0,+\infty[$. En effet, s'il existait une suite de temps $(t_n)$ avec $\lim_{n\to +\infty} t_n=+\infty$ et $\lim_{n\to +\infty} \|x(t_n)\|=+\infty$, on aurait $\lim_{n\to +\infty} V(x(t_n))=+\infty$, ce qui est impossible. 
+
+De plus, vu que $\dot x = Ax$, les dérivées successives des solutions s'écrivent comme des combinaisons linéaires des solutions et sont donc elles aussi toutes bornées sur  $[0,+\infty[$.
 
 Soit $v:[0,+\infty[\to \R$ définie par $v(t) = V(x(t))$ pour une solution $x:[0,+\infty)\to \R$. $v$ est minorée par 0 et décroissante car
 $$
@@ -1368,27 +1408,36 @@ J_f(0,0) =
 $$
 qui admet 0 et -1 comme valeurs propres. Nous ne pouvons donc rien conclure sur la stabilité de 0 par le linéarisé.
 
-Considérons la fonction $V:\R^2\to \R_{\geq 0}$ définie par
+Considérons $V:\R^2\to \R_{\geq 0}$ définie par
+$$
+V(x_1,x_2)= x_1^4 + 2 x_2^2
+$$
+qui est positive et ne s'annule qu'en $x=0$. De plus, elle vérifie le long des solutions
+$$
+\frac{d}{dt} V(x(t)) = - 4x_2(t)^2 \leq 0
+$$
+donc $V$ décroit le long des solutions et 0 est stable. 
+
+La décroissance de $t\mapsto V(x(t))$ implique aussi que $t\mapsto V(x(t))$ est bornée, ce qui empêche les solutions de diverger, car $\lim_{\|x\|\to +\infty} V(x) = +\infty$. Donc les solutions ne peuvent pas diverger en temps fini positif, et les solutions maximales sont définies sur $[0,\infty[$. Elles sont même bornées (en temps positif), car sinon il existerait une suite de temps $(t_n)$ avec $\lim_{n\to +\infty} t_n=+\infty$ et $\lim_{n\to +\infty} \|x(t_n)\|=+\infty$, et on aurait $\lim_{n\to +\infty} V(x(t_n))=+\infty$, ce qui est impossible. Le long de n'importe quelle solution maximale $t\mapsto x(t)$, on a donc (i) $v(t)=V(x(t))$ qui décroit et est minoré, donc converge lorsque $t$ tend vers l'infini, (ii) $\dot{v}(t) = - 4x_2^2(t)$, et (iii) $\ddot{v}(t)= - 8x_2(t)\dot{x}_2(t)=- 8x_2(t)(-x_1(t)^3-x_2(t))$ bornée. Donc, par le lemme de Barbalat, $t\mapsto x_2(t)$ converge vers 0 lorsque $t$ tend vers l'infini. Par ailleurs, de manière similaire, $\ddot{x}_2(t) = -3x_1^2x_2-(-x_1(t)^3-x_2(t))$ est bornée, et donc en appliquant Barbalat de nouveau à $x_2$, on en déduit que $\dot{x}_2$ tend vers 0 et donc $x_1$ tend vers 0. Ainsi, $(0,0)$ est globalement attractif, et on a vu qu'il est stable, donc il est bien globalement asymptotiquement stable. 
+
+Notons qu'avec l'habitude, on aurait pu considérer la fonction $V:\R^2\to \R_{\geq 0}$ définie par
 $$
 V(x_1,x_2)= x_1^4 + x_2^2 + (x_1+x_2)^2
 $$
-$V$ est continûment différentiable, positive et ne s'annule qu'en $x=0$. De plus, elle vérifie
+qui est aussi positive et ne s'annule qu'en $x=0$. En effet, celle-ci a le bon goût de vérifier
 \begin{align*}
+\frac{d}{dt} V(x(t))  
+&= 4x_1^3x_2 - 2 x_1^3x_2 - 2x_2^2 + 2(x_1+x_2)(x_2-x_1^3-x_2)\\
+&= -2x_2(t)^2 -2 x_1(t)^4 
+\end{align*}
+qui est strictement négatif tant que la solution n'est pas au point d'équilibre. L'application du Lemme de Barbalat donne alors directement la convergence de la solution vers 0 sans avoir à l'appliquer plusieurs fois. En fait dans ce cas, le troisième [*critère de Lyapunov*](#exo_lyap) ($\langle \nabla V(x) , f(x) \rangle<0$ pour tout $x\neq 0$ et $\lim_{\|x\|\to +\infty} V(x) = +\infty$) permet de déduire directement la stabilité asymptotique globale. 
+<!--\begin{align*}
 \langle \nabla V(x) , f(x) \rangle 
 &= 4x_1^3x_2 - 2 x_1^3x_2 - 2x_2^2 + 2(x_1+x_2)(x_2-x_1^3-x_2)\\
 &= -2x_2^2 -2 x_1^4 \qquad <0 \quad \forall x\neq 0
 \end{align*}
-$V$ est donc une fonction de Lyapunov et on a bien la stabilité asymptotique locale. De plus, $V$ est propre, i.e., $\lim_{\|x\|\to +\infty} V(x) = +\infty$, donc la stabilité asymptotique est globale.
-
-Si jamais on ne trouve pas l'expression d'une fonction de Lyapunov stricte $V$, une alternative est de considérer plus simplement la fonction $W:\R^2\to \R_{\geq 0}$ définie par
-$$
-W(x_1,x_2)= x_1^4 + 2 x_2^2
-$$
-$W$ est continûment différentiable, positive et ne s'annule qu'en $x=0$. De plus, elle vérifie
-$$
-\langle \nabla W(x) , f(x) \rangle = - 4x_2^2 \leq 0
-$$
-donc 0 est stable et $W$ décroit le long des solutions (et est donc borné). On ne peut pas directement appliquer Lyapunov parce que *la décroissance n'est pas stricte en $x_1$*. Voici comment procéder alors. Le fait que $W$ soit bornée le long des solutions empêche les solutions de diverger, car $\lim_{\|x\|\to +\infty} W(x) = +\infty$. Donc les solutions ne peuvent pas diverger en temps fini positif, et les solutions maximales sont définies sur $[0,\infty[$. Elles sont même bornées, car sinon il existerait une suite de temps $(t_n)$ avec $\lim_{n\to +\infty} t_n=+\infty$ et $\lim_{n\to +\infty} \|x(t_n)\|=+\infty$, et on aurait $\lim_{n\to +\infty} W(x(t_n))=+\infty$, ce qui est impossible. Le long de n'importe quelle solution $t\mapsto x(t)$, on a donc (i) $w(t)=W(x(t))$ qui décroit et est minoré, donc converge lorsque $t$ tend vers l'infini, (ii) $\dot{w}(t) = - 4x_2^2(t)$, et (iii) $\ddot{w}(t)= - 8x_2(t)\dot{x}_2(t)=- 8x_2(t)(-x_1(t)^3-x_2(t))$ bornée. Donc, par le lemme de Barbalat, $t\mapsto x_2(t)$ converge vers 0 lorsque $t$ tend vers l'infini. Par ailleurs, de manière similaire, $\ddot{x}_2 = -3x_1^2x_2-(-x_1(t)^3-x_2(t))$ est bornée, et donc en appliquant Barbalat de nouveau à $x_2$, on en déduit que $\dot{x}_2$ tend vers 0 et donc $x_1$ tend vers 0. Ainsi, $(0,0)$ est globalement attractif, et on a vu qu'il est stable, donc il est bien globalement asymptotiquement stable. 
+c'est-à-dire une décroissance stricte le long des solutions. 
+$V$ est donc une fonction de Lyapunov et on a bien la stabilité asymptotique locale. De plus, $V$ est propre, i.e., $\lim_{\|x\|\to +\infty} V(x) = +\infty$, donc la stabilité asymptotique est globale. -->
 
 ## Ecoulement dans un réservoir {.correction #correc_Torricelli}
 
@@ -1619,6 +1668,34 @@ Le portrait de phase est donné [ci-dessous](#fig_cycle_limite).
 ![Portrait de phase de l'exercice Cycle Limite I](images/cycle_limite.png){#fig_cycle_limite}
 
 
+## Critères de stabilité de Lyapunov {.correction #correc_lyap}  
+
+### Question 1 {.answer #answer-lyap-1}
+Supposons d'abord que $\langle\nabla V (x), f(x)\rangle \leq 0$ pour tout $x\in W$. On a donc pour toute solution $t\mapsto x(t)$ initialisée dans $W$, $V(x(t))\leq V(x(0))$ tant que  $x(t)\in W$. Prenons $\varepsilon>0$ suffisamment petit tel que $\overline{B}(a,2\varepsilon)\subset W$. On veut montrer qu'il existe $\eta$ tel que toute trajectoire initialisée dans $B(a,\eta)$ reste dans $B(a,\varepsilon)\subset W$. Tout d'abord, il existe $\varepsilon_V>0$ tel que 
+$$
+\forall x\in \overline{B}(a,2\varepsilon) \ : \ V(x)\leq \varepsilon_V \ \Longrightarrow x\in B(a,\varepsilon) \ .
+$$
+En effet, sinon, il existerait une suite $(x_k)_{k\in \N}$ d'éléments de $\overline{B}(a,2\varepsilon)$ telle que pour tout $k>0$, $V(x_k)\leq \frac{1}{k}$ et $\|x_k-a\|\geq \varepsilon$. L'ensemble $\overline{B}(a,2\varepsilon)$ étant compact, on peut en extraire une sous-suite convergeant vers $x^\star$ qui vérifie nécessairement $V(x^\star)=0$  par continuité de $V$ et $\|x^\star-a\|\geq \varepsilon$, i.e. $x^\star \neq a$. Ceci est impossible par hypothèse. On a donc l'existence de $\varepsilon_V$. Maintenant, par continuité de $V$ en $a$ et puisque $V(a)=0$, il existe aussi $\eta>0$ tel que 
+$$
+x\in B(a,\eta)  \ \Longrightarrow V(x)\leq \varepsilon_V \ .
+$$
+Alors si $x(0)\in B(a,\eta)$, $V(x(t))\leq V(x(0))\leq \varepsilon_V$ donc $x(t)\in B(a,\varepsilon)\subset W$ pour tout $t$ tant qu'elle est définie. Par le [théorème du domaine maximal d'existence](#theo_bouts), $x$ est définie sur $\Rgeq$. Ceci prouve la stabilité de $a$.
+
+### Question 2 {.answer #answer-lyap-2}
+Supposons maintenant $\langle\nabla V (x), f(x)\rangle < 0$ pour tout $x\in W\setminus \{a\}$. Alors par le point précédent $a$ est stable. Il suffit de montrer l'attractivité locale. Par stabilité, si $x(0)\in B(a,\eta)$,  $x(t)\in B(a,\varepsilon)\subset W$ pour tout $t$ et $t\to V(x(t))$ est donc strictement décroissante. Comme elle est aussi bornée inférieurement par 0, elle converge vers $\ell \geq 0$. Supposons $\ell>0$. Alors, par continuité de $V$, il existe $0<\nu<\varepsilon$ et $\overline{t}>0$ tel que pour tout $t\geq \overline{t}$, $\|x(t)-a\| \geq \nu$. Soit 
+$$
+\gamma = \max_{\nu \leq \|x-a\| \leq \varepsilon} \langle\nabla V (x), f(x)\rangle   
+$$
+qui existe par continuité de $\nabla V$ et $f$ sur un compact.  Puisque $\langle\nabla V (x), f(x)\rangle < 0$ sur $W\setminus \{a\}$, $\gamma<0$. Alors, pour tout $t\geq \overline{t}$,
+$$
+V(x(t)) = V(x(\overline{t})) + \int_0^t \langle\nabla V (x(t)), f(x(t))\rangle \leq  V(x(\overline{t})) + \gamma (t-\overline{t}) \ .
+$$
+Mais comme $\gamma<0$ cette quantité devient strictement négative au bout d'un certain temps, ce qui est impossible. Donc $\lim_{t\to +\infty} V(x(t))=0$. Finalement, reproduisant le même raisonnement que pour l'existence de $\varepsilon_V$, on peut garantir que $\|x-a\|$ est arbitrairement petit en prenant $V(x)$ suffisamment petit. Donc on en déduit que $\lim_{t\to +\infty} \|x(t)-a\|=0$.
+
+### Question 3 {.answer #answer-lyap-3}
+Supposons enfin que $\lim_{\|x\|\to +\infty} V(x) = +\infty$ et $W=\R^n$. Alors $V(x(t))< V(x(0))$ pour tout $t\in I$ donc $x(t)\in V^{-1}(\left[ 0,V(x(0)) \right])$ pour tout $t$. Le fait que $\lim_{\|x\|\to +\infty} V(x) = +\infty$ est équivalent au fait que l'image réciproque de toute compact est compact (on dit que $V$ est propre). Donc $V^{-1}(\left[ 0,V(x(0)) \right])$ est compact  et par le [théorème du domaine maximal d'existence nécessairement](#theo_bouts) $x(t)$ est défini pour tout $t\geq 0$, et reste dans ce compact. Alors on peut reproduire le même raisonnement que plus haut et obtenir la convergence de $x$ vers $a$.
+
+
 ## Cycle limite II {.correction #correc_cycle_lim_volterra}
 On étudie le comportement des solutions de $\dot{x}=f(x)$ pour
 $$
@@ -1712,7 +1789,7 @@ On prouve alors en même temps que les solutions initialisées dans $\mathbb{R}_
 $$
 V(x) = H(x)-H(\bar{x})
 $$
-est une fonction $C^1$ sur $\mathbb{R}_{>0}\times\mathbb{R}_{>0}$, positive, qui ne s'annule localement qu'en $\bar{x}$. Vu que $H$ est conservée le long des trajectoires, on peut déduire du théorème de Lyapunov que $\bar{x}$ est stable. 
+est une fonction $C^1$ sur $\mathbb{R}_{>0}\times\mathbb{R}_{>0}$, positive, qui ne s'annule localement qu'en $\bar{x}$. Vu que $H$ est conservée le long des trajectoires, on peut déduire que $\bar{x}$ est stable par le [théorème de décroissance](#stab_decroissance). 
 
 ### Question 4 {.answer #answer-cycle-lim-volterra-4}
 
@@ -1726,6 +1803,7 @@ Le portrait de phase est donné [ci-dessous](#fig_cycle_limiteII).
 Pour que $x_1$ vale $x_1^*$ à l'équilibre, il faut que $x_2$ vale $x_2^* = \frac{\alpha}{\beta}$ et $u^* = x_2^*(\gamma-\delta x_1^*)$.
 
 ### Question 6 {.answer #answer-cycle-lim-volterra-6}
+On utilise ici pour simplifier le deuxième [critère de Lyapunov](#exo_lyap).
 La fonction $V$ est $C^1$, à valeurs positives et s'annule si et seulement si $x_1=x_1^*$ et $x_2 = v(x_1^*)=x_2^*$. C'est donc une fonction de Lyapunov associée à $(x_1^*,x_2^*)$. Calculons sa dérivée le long des trajectoires.
 \begin{multline*}
 \langle \nabla V(x) , f(x) \rangle = -x_1\lambda_1(x_1-x_1^*)^2 -x_1\beta(x_1-x_1^*)(x_2-v_r(x_1)) \\

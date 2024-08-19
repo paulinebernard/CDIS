@@ -308,7 +308,7 @@ Reprenons les exemples donnés plus haut.
 - Euler explicite : $\Phi(t,x,\dt)= f(t,x)$ indépendamment de $\dt$ donc la condition est trivialement satisfaite.
 
 - Méthode de Heun : 
-$\Phi(t,x,\dt) = \frac{f(t,x) + f(t,x+\dt f(t,x))}{2}$ donne bien $f(t,x)$ si $\dt=0$.
+$\Phi(t,x,\dt) = \frac{f(t,x) + f(t+\dt,x+\dt f(t,x))}{2}$ donne bien $f(t,x)$ si $\dt=0$.
 
 - Runge Kutta d'ordre 4 : lorsque $\dt=0$, $F_1=F_2=F_3=F_4=f(t,x)$ donc $\Phi(t,x,0) = \frac{F_1+2F_2+2F_3+F_4}{6}=f(t,x)$.
 
