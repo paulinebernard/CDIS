@@ -34,34 +34,42 @@ Objectifs du cours
 
 Ce cours est une introduction à l'étude non linéaire des équations différentielles. Pour une étude plus complète voir par exemple [@Hale]. En première lecture, les objectifs "opérationnels" sont les suivants :
 
-- savoir réduire une équation différentielle à l'ordre 1.
+ - savoir réduire une équation différentielle à l'ordre 1.
 
-- savoir justifier l'existence de solutions par le théorème de Peano lorsque "$f$ est continue".
+ - savoir justifier l'existence de solutions par le théorème de Peano lorsque "$f$ est continue".
 
-- comprendre la notion de solution maximale et savoir qu'elles sont définies tant qu'elles "n'explosent" pas et tant qu'elles n'atteignent pas la frontière du domaine où l'équation différentielle est définie. Savoir justifier qu'une solution est définie sur tout l'intervalle de temps $\R$ si ces éventualités ne peuvent se réaliser en temps fini et/ou en faisant appel au critère "linéairement borné".
+ - comprendre la notion de solution maximale et savoir qu'elles sont définies tant qu'elles "n'explosent" pas et tant qu'elles n'atteignent pas la frontière du domaine où l'équation différentielle est définie. Savoir justifier qu'une solution est définie sur tout l'intervalle de temps $\R$ si ces éventualités ne peuvent se réaliser en temps fini et/ou en faisant appel au critère "linéairement borné".
 
-- savoir justifier l'unicité des solutions maximales par le théorème de Cauchy-Lipschitz lorsque "$f$ est continûment différentiable par rapport à $x$".
+ - savoir justifier l'unicité des solutions maximales par le théorème de Cauchy-Lipschitz lorsque "$f$ est continûment différentiable par rapport à $x$".
 
-- comprendre (qualitativement) dans quelle mesure une erreur sur la condition initiale se répercute sur les solutions en temps fini. 
+ - comprendre (qualitativement) dans quelle mesure une erreur sur la condition initiale se répercute sur les solutions en temps fini. 
 
-- savoir trouver les points d'équilibre.
+ - savoir trouver les points d'équilibre.
 
-- savoir déterminer si un système linéaire est globalement asymptotiquement stable en regardant le signe de la partie réelle de ses valeurs propres.
+ - savoir déterminer si un système linéaire est globalement asymptotiquement stable en regardant le signe de la partie réelle de ses valeurs propres.
 
-- savoir déterminer si un point d'équilibre est localement asymptotiquement stable/instable par les valeurs propres de la matrice Jacobienne associée.
+ - savoir déterminer si un point d'équilibre est localement asymptotiquement stable/instable par les valeurs propres de la matrice Jacobienne associée.
 
-- savoir calculer la dérivée  d'une fonction de Lyapunov le long des trajectoires et en déduire qu'un point d'équilibre est stable ou  localement/globalement asymptotiquement stable.
+ - savoir montrer la stabilité d'un point d'équilibre par la décroissance d'une fonction définie positive.
+
+ - savoir montrer la bornitude des solutions en temps positif lorsque cette fonction décroissante est propre.
+
+ - savoir étudier la convergence des solutions vers un point d'équilibre par l'application répétée du lemme de Barbalat.
 
 
 En deuxième lecture :
 
-- comprendre la preuve du théorème de Cauchy-Lipschitz en voyant la solution comme un point fixe de la représentation intégrale des solutions.
+ - comprendre la preuve du théorème de Cauchy-Lipschitz en voyant la solution comme un point fixe de la représentation intégrale des solutions.
 
-- savoir que l'on peut relâcher l'hypothèse du théorème de Cauchy-Lipschitz à "$f$ Lipschitzienne par rapport à $x$". 
+ - savoir que l'on peut relâcher l'hypothèse du théorème de Cauchy-Lipschitz à "$f$ Lipschitzienne par rapport à $x$". 
 
-- comprendre ce qu'est un système chaotique et ce que représente son exposant de Lyapunov.
+ - comprendre ce qu'est un système chaotique et ce que représente son exposant de Lyapunov.
 
-- comprendre ce que la notion de stabilité apporte en plus de l'attractivité dans la notion de stabilité asymptotique.
+ - comprendre ce que la notion de stabilité apporte en plus de l'attractivité dans la notion de stabilité asymptotique.
+
+ - connaître, comprendre et savoir appliquer les critères de stabilité de Lyapunov. 
+
+
 
 
 **Notations** 
@@ -368,15 +376,21 @@ Voir en [annexe](#pr_theo_bouts).
 -->
 
 ### Domaine maximal d'existence {.theorem #theo_bouts}
-Soient $J$ ouvert de $\R$, $X$ ouvert de $\R^{n}$, $f: J\times X \to \R^n$ continue et $(t_0,x_0)\in J\times X$. Toute solution maximale $x:I\to \R^n$ du problème de Cauchy défini par $f$ et $(t_0,x_0)$ est définie sur un intervalle ouvert $\left]\tmin,\tmax\right[$ avec $\tmin,\tmax\in \R\cup\{+\infty,-\infty\}$. De plus, si $\tmin$ est fini alors $(t,x(t))$ tend vers la frontière de $J\times X$ ou diverge lorsque $t$ tend vers $\tmin$, i.e.,
-$$
-\lim_{t\to \tmin} d\Big((t,x(t)),\partial (J\times X) \Big) = 0  \quad  \text{ou} \quad 
-\lim_{t\to \tmin} \|x(t)\| = +\infty 
-$$
-et de la même manière, si $\tmax$ est fini alors
+Soient $J$ ouvert de $\R$, $X$ ouvert de $\R^{n}$, $f: J\times X \to \R^n$ continue et $(t_0,x_0)\in J\times X$. Toute solution du problème de Cauchy défini par $f$ et $(t_0,x_0)$ est prolongeable en une solution maximale et toute solution maximale $x:I\to \R^n$  est définie sur un intervalle ouvert $\left]\tmin,\tmax\right[$ avec $\tmin,\tmax\in \R\cup\{+\infty,-\infty\}$. De plus, si $\tmax$ est fini alors nécessairement
+
+ - soit $(t,x(t))$ tend vers la frontière de $J\times X$ lorsque $t$ tend vers $\tmax$,
+
+ - soit $x$ diverge lorsque $t$ tend vers $\tmax$,
+
+c'est-à-dire,
 $$
 \lim_{t\to \tmax} d\Big((t,x(t)),\partial (J\times X) \Big) = 0  \quad  \text{ou} \quad 
-\lim_{t\to \tmax} \|x(t)\| = +\infty  \ .
+\lim_{t\to \tmax} \|x(t)\| = +\infty 
+$$
+et de la même manière, si $\tmin$ est fini alors
+$$
+\lim_{t\to \tmin} d\Big((t,x(t)),\partial (J\times X) \Big) = 0  \quad  \text{ou} \quad 
+\lim_{t\to \tmin} \|x(t)\| = +\infty  \ .
 $$
 
 ### Démonstration {.proof} 
@@ -384,7 +398,7 @@ La preuve complète est donnée en [annexe](#pr_theo_bouts). On commence par obs
 
 ###
 
-En pratique, pour montrer que les solutions maximales sont définies pour tout temps, i.e., sur $\R$, il suffit donc de montrer qu'elle ne peuvent pas exploser en temps fini (par exemple si elle sont bornées sur tout intervalle de temps fini), et qu'elle ne peuvent pas tendre vers le bord de $X\times J$ en temps fini (par exemple si $X\times J= \R^n \times \R$). Un cas particulier où les solutions maximales sont forcément définies sur $J$ entier est donné ci-dessous.
+En pratique, pour montrer que les solutions maximales sont définies pour tout temps, i.e., sur $\R$, il suffit donc de montrer qu'elle ne peuvent pas exploser en temps fini (par exemple si elle sont bornées sur tout intervalle de temps fini), et qu'elle ne peuvent pas tendre vers le bord de $J\times X$ en temps fini (par exemple si $J\times X= \R \times \R^n$). Un cas particulier où les solutions maximales sont forcément définies sur $J$ entier est donné ci-dessous.
 
 ### Critère d'existence globale {.theorem #theo_exist_glob}
 Soient $J$ un intervalle ouvert de $\R$ et $f:J\times\R^n\to\R^n$ continue. Si $f$ a une *croissance au plus affine*, c'est-à-dire, s'il existe $a,b: J\to\R$ continues telles que  
