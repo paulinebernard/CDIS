@@ -15,7 +15,6 @@ Mines Paris - PSL, cycle ingénieur civil, unité d'enseignement Mathématiques 
 | Poly complet |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24PolyCompletCorr.pdf) |  |  |
 | Fondamentaux |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24PolyFonda.pdf) |  |  |
 | Topologie | 1 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24PolyTopo.pdf) |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TopoCD1quizz.pdf) |
-| Calcul Différentiel | 1 |  | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/CalDiff1.pdf)  |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TopoCD2quizz.pdf) |
 |   | 2 |  | --  | | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TopoCD3quizz.pdf) |
 | |   3 |   |  [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/CalDiff3.pdf)  |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TopoCD4quizz.pdf) |
 | Corr. exos Topo CD CalInt |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/ExoCorrTopoCDMesInt.pdf) |  |  |
