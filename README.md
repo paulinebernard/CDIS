@@ -11,7 +11,7 @@ Mines Paris - PSL, cycle ingénieur civil, unité d'enseignement Mathématiques 
 
 | Chapitre      | # | E-book | Papier | Notebook | Quizz | 
 | ------------- | ------: | -----------:  |  :----: |  :----:  | :-----: |
-| Topo rattrapage |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24TD0.pdf) |  |  |
+| Topo mise à niveau |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24TD0.pdf) |  |  |
 | Poly complet |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24PolyCompletCorr.pdf) |  |  |
 | Fondamentaux |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24PolyFonda.pdf) |  |  |
 | Topologie | 1 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24PolyTopo.pdf) |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TopoCD1quizz.pdf) |
