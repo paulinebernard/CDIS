@@ -21,7 +21,7 @@ Mines Paris - PSL, cycle ingénieur civil, unité d'enseignement Mathématiques 
 | --  | 4 |   | -- |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24TD4.pdf)  |
 |  |  |   |  |  |  |
 | III Espaces de Hilbert | 5 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24Chap3Hilbert.pdf) |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24TD5.pdf)  |
-| V Espaces de Hilbert | 6 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24Chap5CD.pdf) |  |   |
+| V Calcul Différentiel | 6 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24Chap5CD.pdf) |  |   |
 |  |  |   |  |  |  |
 |  |  |   |  |  |  |
 | Equations Différentielles | 1 | [:computer: PDF](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Différentielles%20I/output/Equations%20Différentielles%20I.pdf) | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Différentielles%20I/output/Equations%20Différentielles%20I%20(a4%2C%20recto-verso).pdf)  |  [:notebook: IPYNB](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Diff%C3%A9rentielles%20I/Equations%20Diff%C3%A9rentielles%20I.ipynb) | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Equations%20Diff%C3%A9rentielles%20I/output/Equations%20Diff%C3%A9rentielles%20I.pdf)
