@@ -337,7 +337,7 @@ Soient $J$ ouvert de $\R$, $X$ ouvert de $\R^{n}$, $f: J\times X \to \R^n$ conti
 $$
 \dot{x}=f(t,x)
 $$
-si elle n'est pas *prolongeable* en une solution définie plus longtemps dans $J\times X$. En d'autres termes, il n'existe pas de solution $x' : I'\to\R^n$ avec $I$ strictement inclus dans $I'$ et telle que $x=x'$ sur $I$.
+si elle n'est pas *prolongeable* en une solution définie plus longtemps dans $J\times X$. En d'autres termes, il n'existe pas de solution $x' : I'\to\R^n$ avec $I$ strictement inclus dans $I'$ et telle que $x=x'$ sur $I$. On dit alors que $I$ est l'*intervalle maximal d'existence* de la solution.
 
 <!--
 Dans la section précédente, nous avons vu que lorsque $f$ est $C^1$ par rapport à $x$, la solution maximale au problème de Cauchy (qui est alors unique) est définie sur un intervalle ouvert. 
@@ -376,18 +376,18 @@ Voir en [annexe](#pr_theo_bouts).
 -->
 
 ### Domaine maximal d'existence {.theorem #theo_bouts}
-Soient $J$ ouvert de $\R$, $X$ ouvert de $\R^{n}$, $f: J\times X \to \R^n$ continue et $(t_0,x_0)\in J\times X$. Toute solution du problème de Cauchy défini par $f$ et $(t_0,x_0)$ est prolongeable en une solution maximale et toute solution maximale $x:I\to \R^n$  est définie sur un intervalle ouvert $\left]\tmin,\tmax\right[$ avec $\tmin,\tmax\in \R\cup\{+\infty,-\infty\}$. De plus, si $\tmax$ est fini alors nécessairement
+Soient $J$ ouvert de $\R$, $X$ ouvert de $\R^{n}$, $f: J\times X \to \R^n$ continue et $(t_0,x_0)\in J\times X$. Toute solution du problème de Cauchy défini par $f$ et $(t_0,x_0)$ est prolongeable en une solution maximale et toute solution maximale $x:I\to \R^n$  est définie sur un intervalle ouvert $\left]\tmin,\tmax\right[$ avec $\tmin,\tmax\in \R\cup\{+\infty,-\infty\}$. De plus, si $\tmax$ (resp. $\tmin$) est fini alors
 
- - soit $(t,x(t))$ tend vers la frontière de $J\times X$ lorsque $t$ tend vers $\tmax$,
+ - ou bien $(t,x(t))$ tend vers la frontière de $J\times X$ lorsque $t$ tend vers $\tmax$ (resp. $\tmin$),
 
- - soit $x$ diverge lorsque $t$ tend vers $\tmax$,
+ - ou bien $x$ diverge lorsque $t$ tend vers $\tmax$ (resp. $\tmin$),
 
-c'est-à-dire,
+c'est-à-dire, si $\tmax$ est fini alors
 $$
 \lim_{t\to \tmax} d\Big((t,x(t)),\partial (J\times X) \Big) = 0  \quad  \text{ou} \quad 
 \lim_{t\to \tmax} \|x(t)\| = +\infty 
 $$
-et de la même manière, si $\tmin$ est fini alors
+et si $\tmin$ est fini alors
 $$
 \lim_{t\to \tmin} d\Big((t,x(t)),\partial (J\times X) \Big) = 0  \quad  \text{ou} \quad 
 \lim_{t\to \tmin} \|x(t)\| = +\infty  \ .
@@ -1992,7 +1992,30 @@ Soit $p\in \N$ tel que $|t_p-\tmax|< \tau_m$ et $\|x(t_p)-\tmax\|< r$. Alors $\l
 -->
 
 ## Preuve du théorème du domaine maximal d'existence {.app #pr_theo_bouts}
-Soit $x: I \to \R^n$ une solution maximale dans $S_f(t_0,x_0)$. Par définition, $I$ est un intervalle contenant $t_0$. Soient $\tmax= \sup I$ et $\tmin= \inf I$. Supposons $\tmax \in I$ et dénotons $(t_1,x_1) = (\tmax,x(\tmax))$. Toujours par définition, $(t_1,x_1)\in J\times X$, donc par le [théorème de Peano](#theo_peano) il existe $\tau>0$ et $x' : [\tmax-\tau,\tmax+\tau] \to \R^n$ dans $S_f(t_1,x_1)$. Considérons $\tilde{I} = I\cup [\tmax,\tmax+\tau]$, et  $\tilde{x}: \tilde{I}  \to \R^n$ définie par
+Soit $x: I \to \R^n$ une solution dans $S_f(t_0,x_0)$. Si $x$ n'est pas une solution maximale, elle peut être prolongée sur un intervalle $I'$ contenant strictement $I$ par définition, donc on peut supposer sans perte de généralité que $I$ est fermé d'un côté, disons à droite, et nous allons montrer qu'elle peut être prolongée sur un intervalle maximal d'existence à droite. Si elle peut être prolongée sur $[t_0,+\infty)$, c'est directement un intervalle maximal à droite et donc on suppose que $x$ est définie sur $[t_0,t_1]$ et ne peut être prolongée sur $[t_0,+\infty)$. La preuve de ce qu'il se passe à gauche de $t_0$ est similaire.
+
+Soit $K$ un compact de $J\times X$ contenant $x(t)$ pour $t\in [t_0,t_1]$ (qui existe par continuité de $x$ sur le compact $[t_0,t_1]$). Comme  $J\times X$ est ouvert, il existe $\tau,r$ strictement positifs tels que 
+$$
+\cC:= \bigcup_{(t_{\rm init},x_{\rm init})\in K} [t_{\rm init}-\tau,t_{\rm init}+\tau] \times B_f(x_{\rm init},r) \subset J\times X \ .
+$$
+$\cC$ est compact et $f$ continue sur $\cC$ donc il existe $0<\tau_m<\tau$ tel que $\tau_m \max_\cC \|f\| \leq r$. En reproduisant la preuve du théorème de Peano-Arzelà, on voit que pour toute condition initiale $(t_{\rm init},x_{\rm init})$ dans $K$, il existe une solution au problème de Cauchy définie au moins sur $[t_{\rm init}-\tau_m,t_{\rm init}+\tau_m]$.
+
+Revenons donc à notre solution $x$ définie sur $[t_0,t_1]$ dans $K$. Dénotant $x_1:= x(t_1)$, on a $(t_1,x_1)\in K$ donc il existe $x' : [t_1-\tau_m,t_1+\tau_m] \to \R^n$ dans $S_f(t_1,x_1)$. Alors on peut construire $\tilde{x}: [t_0,t_1+\tau_m]  \to \R^n$ telle que
+$$
+\tilde{x}(t) = 
+\left\{
+\begin{array}{ll}
+x(t) & \text{si } t\in [t_0,t_1] \\
+x'(t) & \text{si } t>t_1
+\end{array}
+\right.
+$$
+$\tilde{x}$ est bien continue et à valeurs dans $J\times X$ sur  $[t_0,t_1+\tau_m]$. De plus, elle est de classe $C^1$ sur $]t_0,t_1+\tau_m[\setminus \{ t_1\}$ telle que $\dot{\tilde{x}}(t) = f(t,\tilde{x}(t))$ pour tout $t\in ]t_0,t_1+\tau_m[\setminus \{ t_1\}$. Par continuité de $\tilde{x}$ en $t_1$ et de $f$ en $(t_1,x_1)$, on en déduit que $\tilde{x}$ est bien $C^1$ sur $]t_0,t_1+\tau_m[$. Donc $\tilde{x}\in S_f(t_0,x_0)$. On a donc trouvé une prolongation $\tilde{x}$ de la solution $x$ sur l'intervalle $[t_0,t_1+\tau_m]$. Si $(t_1+\tau_m,\tilde{x}(t_1+\tau_m))$ est toujours dans $K$, on peut itérer le processus. Parce que $\tau_m$ est uniforme sur $K$ et $K$ est compact, on construit ainsi en un nombre fini d'itérations une extension $\tilde{x}$ de $x$ qui va finir par sortir de $K$, c'est-à-dire, définie sur $[t_0,t_K]$ avec $t_K>t_1$ tel que $(t_K,\tilde{x}(t_K))\notin K$.
+
+Considérons maintenant une suite strictement croissante de compacts $(K_n)$ de $J\times X$, avec $K_0=K$, telle que pour tout $n$, $K_n \subset \mathring{\overbrace{K_{n+1}}}$ et $\cup_n \mathring{\overbrace{K_{n}}} = J\times K$. Pour chaque $n$, on construit récursivement une extension $\tilde{x}$ de $x$ sur des intervalles de plus en plus grand $[t_0,t_{K_n}]$ tels que $(t_{K_n},\tilde{x}(t_{K_n})) \notin K_n$. Puisqu'on a supposé que $x$ n'était pas prolongeable sur $[t_0,+\infty[$, la suite des $(t_{K_n})$ est strictement croissante, bornée, et on peut donc en extraire une sous-suite qui converge. On note $\tmax$ cette limite. On a donc construit une prolongation $\tilde{x}$ de $x$ définie sur $[t_0,\tmax)$. De plus, par croissance des $K_n$, la suite des $(t_{K_n},\tilde{x}(t_{K_n})) \notin K_n$ sort définitivement de chacun des $K_n$ et donc devient ``de plus en plus grand''. Ou bien $(\tilde{x}(t_{K_n}))$ est non-bornée, ou bien $(\tilde{x}(t_{K_n}))$ est bornée, et on peut en extraire un sous-suite qui converge disons vers $x^*$, qui est dans la frontière de $J\times X$. Donc dans les deux cas, $x$ ne peut pas être prolongée à droite au delà de $\tmax$. On a donc bien prolongée $x$ en une solution maximale à droite. On fait de même à gauche. 
+
+Maitenant, considérons une solution maximale $x: I \to \R^n$ dans $S_f(t_0,x_0)$. Alors $I$ est ouvert, de la forme $]\tmin,\tmax[$ avec $\tmin,\tmax$ dans $\R\cup \{+\infty,-\infty\}$, car sinon, on pourrait prolonger $x$ de la même manière que plus haut sur un intervalle strictement plus grand.
+<!-- Soit $x: I \to \R^n$ une solution maximale dans $S_f(t_0,x_0)$. Par définition, $I$ est un intervalle contenant $t_0$. Soient $\tmax= \sup I$ et $\tmin= \inf I$. Supposons $\tmax \in I$ et dénotons $(t_1,x_1) = (\tmax,x(\tmax))$. Toujours par définition, $(t_1,x_1)\in J\times X$, donc par le [théorème de Peano](#theo_peano) il existe $\tau>0$ et $x' : [\tmax-\tau,\tmax+\tau] \to \R^n$ dans $S_f(t_1,x_1)$. Considérons $\tilde{I} = I\cup [\tmax,\tmax+\tau]$, et  $\tilde{x}: \tilde{I}  \to \R^n$ définie par
 $$
 \tilde{x}(t) = 
 \left\{
@@ -2002,9 +2025,12 @@ x'(t) & \text{si } t>\tmax
 \end{array}
 \right.
 $$
-$\tilde{x}$ est bien continue et à valeurs dans $J\times X$ sur  $\tilde{I}$. De plus, elle est de classe $C^1$ sur $\mathring{\tilde{I}}\setminus \{ \tmax\}$ telle que $\dot{\tilde{x}}(t) = f(t,\tilde{x}(t))$ pour tout $t\in \mathring{\tilde{I}}\setminus \{ \tmax\}$. Par continuité de $\tilde{x}$ en $\tmax$ et de $f$ en $(t_1,x_1)$, on en déduit que $\tilde{x}$ est bien $C^1$ sur $\mathring{\tilde{I}}$. Donc $\tilde{x}\in S_f(t_0,x_0)$, ce qui contredit la maximalité de $x$ car $I \subsetneq \tilde{I}$. On conclut donc que $\tmax\notin I$ et de même $\tmin\notin I$. Donc $I$ est ouvert.
+$\tilde{x}$ est bien continue et à valeurs dans $J\times X$ sur  $\tilde{I}$. De plus, elle est de classe $C^1$ sur $\mathring{\tilde{I}}\setminus \{ \tmax\}$ telle que $\dot{\tilde{x}}(t) = f(t,\tilde{x}(t))$ pour tout $t\in \mathring{\tilde{I}}\setminus \{ \tmax\}$. Par continuité de $\tilde{x}$ en $\tmax$ et de $f$ en $(t_1,x_1)$, on en déduit que $\tilde{x}$ est bien $C^1$ sur $\mathring{\tilde{I}}$. Donc $\tilde{x}\in S_f(t_0,x_0)$, ce qui contredit la maximalité de $x$ car $I \subsetneq \tilde{I}$. On conclut donc que $\tmax\notin I$ et de même $\tmin\notin I$. Donc $I$ est ouvert.-->
 
-Supposons $\tmax$ fini. Montrons qu'alors lorsque $t$ tend vers $\tmax$, soit $x(t)$ diverge, soit $(t,x(t))$ tend vers la frontière de $J\times X$. La propriété se montre de manière similaire en $\tmin$. Pour cela, nous allons montrer que lorsque $t$ se rapproche de $\tmax$, $(t,x(t))$ finit par sortir définitivement de tout sous-ensemble $K$ compact de $J\times X$. Soit donc $K$ compact (donc fermé et borné) de $J\times X$. 
+Supposons $\tmax$ fini. Montrons qu'alors lorsque $t$ tend vers $\tmax$, soit $x(t)$ diverge, soit $(t,x(t))$ tend vers la frontière de $J\times X$. La propriété se montre de manière similaire en $\tmin$. Pour cela, nous allons montrer que lorsque $t$ se rapproche de $\tmax$, $(t,x(t))$ finit par sortir définitivement de tout sous-ensemble $K$ compact de $J\times X$. 
+<!--Cela revient à montrer que $(t,x(t))$ ne peut avoir de valeur d'adhérence dans aucun compact $K$ de $J\times X$ lorsque $t$ tend vers $\tmax$. -->
+Soit donc $K$ compact de $J\times X$. 
+<!--Supposons qu'il existe $(\tmax,x_K)\in K$ et une suite $(t_n)$ tendant vers $\tmax$ telle que $\lim_{t\to\tmax} (t,x(t))=(\tmax,x_K)$. -->
 
 Supposons d'abord qu'il existe $\tau$ tel que $(t,x(t))\in K$ pour tout $t\in [\tau,\tmax[$. Puisque $f$ est continue, $\|f(t,x)\|$ est borné disons par $M$ sur $K$. Donc pour toute suite $(t_k)$ d'éléments de $[\tau,\tmax[$ tendant vers $\tmax$, par la représentation intégrale des solutions,
 $$
@@ -2026,11 +2052,11 @@ Notons $\xi =(\tmax,\overline{x})$. Soit $\varepsilon >0$ tel que $\overline{B}(
 $$
 \| (t_p',x(t_p')) - \xi \| = 2\varepsilon  \qquad , \qquad (t,x(t))\in \overline{B}(\xi,2\varepsilon) \quad \forall t\in [ t_p,t_p' ] \ .
 $$
-Soit alors $M$ le maximum de $\| f\|$ sur le fermé borné $\overline{B}(\xi,2\varepsilon)$. Par la représentation intégrale, et pour $p$ suffisamment grand, on a donc
+Soit alors $M$ le maximum de $\| f\|$ sur le compact $\overline{B}(\xi,2\varepsilon)$. Par la représentation intégrale, et pour $p$ suffisamment grand, on a donc
 $$
 \frac{\varepsilon}{2} \leq \|x(t_p')-x(t_p) \| \leq \int_{t_p}^{t_p'} \|f(s,x(s))\| ds \leq M (t_p'-t_p) \leq M (t_{p+1}-t_p)  \ .
 $$
-Il s'ensuit que pour $p$ suffisamment grand, $t_{p+1}-t_p \geq \frac{\varepsilon}{2M}$, ce qui est impossible puisque $(t_p)$ tend vers $\tmax$. On peut donc conclure que $(t,x(t))$ sort de manière définitive de tout fermé borné $K$ lorsque $t$ s'approche de $\tmax$.
+Il s'ensuit que pour $p$ suffisamment grand, $t_{p+1}-t_p \geq \frac{\varepsilon}{2M}$, ce qui est impossible puisque $(t_p)$ tend vers $\tmax$. On peut donc conclure que $(t,x(t))$ sort de manière définitive de tout compact $K$ lorsque $t$ s'approche de $\tmax$.
 
 <!--
 Soient $\tau>0$, $r>0$ et $\tau_m\in \left(0,\tau \right]$ tels que 
