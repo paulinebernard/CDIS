@@ -563,7 +563,7 @@ D'après [la définition de la fonction de répartition](#deffdr), on a $\P_X(]x
 $$\P_X(B) = \sum_{i=1}^n \P_X(]x_i,y_i]) = \sum_{i=1}^n F(y_i)-F(x_i),$$
 car les intervalles sont disjoints. 
 
-Si $\P_Y$ est une autre probabilité telle que $F(x) = \P_Y(]-\infty,x])$, alors ce qui précède montre que $\P_X = \P_Y$ sur $\B_0$ qui engendre $\B(\R)$. $\P_X$ et $\P_Y$ étant des mesures finies, le corollaire III.3.11 du cours de calcul intégral nous permet d'assurer que $\P_X = \P_Y$ pour tous les éléments de $\B(\R)$, autrement dit que ces deux mesures de probabilités sont identiques sur $(\R,\B(\R))$.
+Si $\P_Y$ est une autre probabilité telle que $F(x) = \P_Y(]-\infty,x])$, alors ce qui précède montre que $\P_X = \P_Y$ sur $\B_0$ qui engendre $\B(\R)$. $\P_X$ et $\P_Y$ étant des mesures finies, la proposition B.3.12 du cours de calcul intégral nous permet d'assurer que $\P_X = \P_Y$ pour tous les éléments de $\B(\R)$, autrement dit que ces deux mesures de probabilités sont identiques sur $(\R,\B(\R))$.
 
 ### Caractérisation de la fonction de répartition {.theorem #theofdr}
 Une fonction $F$ est la fonction de répartition d'une unique probabilité $\P_X$ sur $(\R,\B(\R))$ si et seulement si elle vérifie les trois conditions suivantes :
