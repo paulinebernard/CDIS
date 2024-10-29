@@ -82,7 +82,7 @@ En deuxième lecture :
 
 - $B(x,r)$ : boule ouverte centrée en $x$ et de rayon $r$.
 
-- $\overline{B}(x,r)$ : boule fermée centrée en $x$ et de rayon $r$.
+- $B_f(x,r)$ : boule fermée centrée en $x$ et de rayon $r$.
 
 - Pour $x:I\subset\R\to \R^n$, $\dot{x}(t)=\frac{dx}{dt}(t)$ et $\ddot{x}(t)=\frac{d^2x}{dt^2}(t)$.
 
@@ -501,7 +501,7 @@ La partie cruciale est donc le résultat local suivant qui constitue en fait le 
 
 **Théorème de Cauchy-Lipschitz local** Soient $J$ ouvert de $\R$, $X$ ouvert de $\R^{n}$, $f: J\times X \to \R^n$ continue et continûment différentiable par rapport à $x$, et $(t_0,x_0)\in J\times X$. Soient $\tau>0$ et $r>0$ tels que 
 $$
-\cC:=\left[t_0-\tau,t_0+\tau \right]\times \overline{B}(x_0,r)\subset J\times X \ .
+\cC:=\left[t_0-\tau,t_0+\tau \right]\times B_f(x_0,r)\subset J\times X \ .
 $$
 Pour tout $\tau_m\in \left[0,\tau \right]$ tel que $\tau_m  \max_{\cC} \|f\| \leq r$,
 <!--- $$
@@ -515,7 +515,7 @@ La preuve consiste à voir les solutions comme des points fixes d'un certain op�
 
 Tout d'abord, $\cC$ étant compact, par continuité de $f$, $\max_\cC \|f\|$ existe bien.  Par ailleurs, l'ensemble des fonctions continues de $[t_0-\tau_m,t_0+\tau_m]$ dans $\R^n$, que nous notons $E$, est complet[^Ecomplet] pour la norme uniforme $\|\cdot\|_\infty$, et définissons  
 $$
-F = \{x\in E \: : \: x(\left[t_0-\tau_m,t_0+\tau_m \right])\subset \overline{B}(x_0,r) \} \ .
+F = \{x\in E \: : \: x(\left[t_0-\tau_m,t_0+\tau_m \right])\subset B_f(x_0,r) \} \ .
 $$
 On peut montrer que[^Fferme] $F$ est un sous-ensemble fermé de $E$. $F$ est donc complet  (toujours pour la norme uniforme $\|\cdot\|_\infty$). 
 Pour tout $x\in F$, par définition, $(s,x(s))\in \cC\subset J\times X$ pour tout $s\in \left[t_0-\tau_m,t_0+\tau_m \right]$ ; on peut donc définir l'opérateur $\Gamma : F\to E$ par
@@ -555,7 +555,7 @@ Donc pour tout $p\in \N$, $\|\Gamma^p(x_a)-\Gamma^p(x_b)\|_\infty \leq \frac{(\t
 La première preuve d'existence et unicité locale de solutions sous l'hypothèse que $f$ est continûment différentiable par rapport à $x$ est dûe à Augustin Louis Cauchy (1820) et repose sur l'utilisation du théorème d'accroissements finis[^accfinis_Cauchy]. Mais on remarque dans notre preuve qu'il suffirait qu'il existe $k>0$ tel que
 \begin{multline*}
 \|f(t,x_a)-f(t,x_b)\|\leq k \|x_a-x_b\| \\
- \forall t\in \left[t_0-\tau_m,t_0+\tau_m \right], \forall (x_a,x_b)\in \overline{B}(x_0,r)\times \overline{B}(x_0,r) \ ,
+ \forall t\in \left[t_0-\tau_m,t_0+\tau_m \right], \forall (x_a,x_b)\in B_f(x_0,r)\times B_f(x_0,r) \ ,
 \end{multline*}
 c'est-à-dire que la fonction $f$ soit *lipschitzienne* par rapport à $x$ au voisinage de $(t_0,x_0)$. Cette propriété fut introduite par le mathématicien allemand Rudolf Lipschitz  quelques années plus tard (1868) pour prouver le même résultat de façon indépendante : d'où le nom de *théorème de Cauchy-Lipschitz*. Notons que cette dernière hypothèse est plus faible que celle de Cauchy car elle impose seulement que $x\mapsto f(t,x)$ soit lipschitzienne au voisinage de $(t_0,x_0)$, au lieu de différentiable. Par exemple, $x\mapsto |x|$ est lipschitzienne (mais pas différentiable) et $\dot{x}=|x|$ admet donc une unique solution maximale quelque soit la condition initiale.
 
@@ -893,11 +893,11 @@ $$
 Si toute solution $x: I\subset \Rgeq \to \R^n$ de $\dot x = f(x)$ initialisée dans $W$ est telle que $t\mapsto V(x(t))$ est décroissante sur $I$ alors $a$ est stable.
 
 ### Démonstration {.proof}  
-Prenons $\varepsilon>0$ suffisamment petit tel que $\overline{B}(a,2\varepsilon)\subset W$. Montrons qu'il existe $\eta$ tel que toute solution initialisée dans $B(a,\eta)$ reste dans $B(a,\varepsilon)\subset W$. Tout d'abord, il existe $\varepsilon_V>0$ tel que 
+Prenons $\varepsilon>0$ suffisamment petit tel que $B_f(a,2\varepsilon)\subset W$. Montrons qu'il existe $\eta$ tel que toute solution initialisée dans $B(a,\eta)$ reste dans $B(a,\varepsilon)\subset W$. Tout d'abord, il existe $\varepsilon_V>0$ tel que 
 $$
-\forall x\in \overline{B}(a,2\varepsilon) \ : \ V(x)\leq \varepsilon_V \ \Longrightarrow x\in B(a,\varepsilon) \ .
+\forall x\in B_f(a,2\varepsilon) \ : \ V(x)\leq \varepsilon_V \ \Longrightarrow x\in B(a,\varepsilon) \ .
 $$
-En effet, sinon, il existerait une suite $(x_k)_{k\in \N}$ d'éléments de $\overline{B}(a,2\varepsilon)$ telle que pour tout $k>0$, $V(x_k)\leq \frac{1}{k}$ et $\|x_k-a\|\geq \varepsilon$. L'ensemble $\overline{B}(a,2\varepsilon)$ étant compact, on peut en extraire une sous-suite convergeant vers $x^\star$ qui vérifie nécessairement $V(x^\star)=0$  par continuité de $V$ et $\|x^\star-a\|\geq \varepsilon$, i.e. $x^\star \neq a$. Ceci est impossible par hypothèse. On a donc l'existence de $\varepsilon_V$. Maintenant, par continuité de $V$ en $a$ et puisque $V(a)=0$, il existe aussi $\eta>0$ tel que 
+En effet, sinon, il existerait une suite $(x_k)_{k\in \N}$ d'éléments de $B_f(a,2\varepsilon)$ telle que pour tout $k>0$, $V(x_k)\leq \frac{1}{k}$ et $\|x_k-a\|\geq \varepsilon$. L'ensemble $B_f(a,2\varepsilon)$ étant compact, on peut en extraire une sous-suite convergeant vers $x^\star$ qui vérifie nécessairement $V(x^\star)=0$  par continuité de $V$ et $\|x^\star-a\|\geq \varepsilon$, i.e. $x^\star \neq a$. Ceci est impossible par hypothèse. On a donc l'existence de $\varepsilon_V$. Maintenant, par continuité de $V$ en $a$ et puisque $V(a)=0$, il existe aussi $\eta>0$ tel que 
 $$
 x\in B(a,\eta)  \ \Longrightarrow V(x)\leq \varepsilon_V \ .
 $$
@@ -1685,11 +1685,11 @@ Le portrait de phase est donné [ci-dessous](#fig_cycle_limite).
 ## Critères de stabilité de Lyapunov {.correction #correc_lyap}  
 
 ### Question 1 {.answer #answer-lyap-1}
-Supposons d'abord que $\langle\nabla V (x), f(x)\rangle \leq 0$ pour tout $x\in W$. On a donc pour toute solution $t\mapsto x(t)$ initialisée dans $W$, $V(x(t))\leq V(x(0))$ tant que  $x(t)\in W$. Prenons $\varepsilon>0$ suffisamment petit tel que $\overline{B}(a,2\varepsilon)\subset W$. On veut montrer qu'il existe $\eta$ tel que toute trajectoire initialisée dans $B(a,\eta)$ reste dans $B(a,\varepsilon)\subset W$. Tout d'abord, il existe $\varepsilon_V>0$ tel que 
+Supposons d'abord que $\langle\nabla V (x), f(x)\rangle \leq 0$ pour tout $x\in W$. On a donc pour toute solution $t\mapsto x(t)$ initialisée dans $W$, $V(x(t))\leq V(x(0))$ tant que  $x(t)\in W$. Prenons $\varepsilon>0$ suffisamment petit tel que $B_f(a,2\varepsilon)\subset W$. On veut montrer qu'il existe $\eta$ tel que toute trajectoire initialisée dans $B(a,\eta)$ reste dans $B(a,\varepsilon)\subset W$. Tout d'abord, il existe $\varepsilon_V>0$ tel que 
 $$
-\forall x\in \overline{B}(a,2\varepsilon) \ : \ V(x)\leq \varepsilon_V \ \Longrightarrow x\in B(a,\varepsilon) \ .
+\forall x\in B_f(a,2\varepsilon) \ : \ V(x)\leq \varepsilon_V \ \Longrightarrow x\in B(a,\varepsilon) \ .
 $$
-En effet, sinon, il existerait une suite $(x_k)_{k\in \N}$ d'éléments de $\overline{B}(a,2\varepsilon)$ telle que pour tout $k>0$, $V(x_k)\leq \frac{1}{k}$ et $\|x_k-a\|\geq \varepsilon$. L'ensemble $\overline{B}(a,2\varepsilon)$ étant compact, on peut en extraire une sous-suite convergeant vers $x^\star$ qui vérifie nécessairement $V(x^\star)=0$  par continuité de $V$ et $\|x^\star-a\|\geq \varepsilon$, i.e. $x^\star \neq a$. Ceci est impossible par hypothèse. On a donc l'existence de $\varepsilon_V$. Maintenant, par continuité de $V$ en $a$ et puisque $V(a)=0$, il existe aussi $\eta>0$ tel que 
+En effet, sinon, il existerait une suite $(x_k)_{k\in \N}$ d'éléments de $B_f(a,2\varepsilon)$ telle que pour tout $k>0$, $V(x_k)\leq \frac{1}{k}$ et $\|x_k-a\|\geq \varepsilon$. L'ensemble $B_f(a,2\varepsilon)$ étant compact, on peut en extraire une sous-suite convergeant vers $x^\star$ qui vérifie nécessairement $V(x^\star)=0$  par continuité de $V$ et $\|x^\star-a\|\geq \varepsilon$, i.e. $x^\star \neq a$. Ceci est impossible par hypothèse. On a donc l'existence de $\varepsilon_V$. Maintenant, par continuité de $V$ en $a$ et puisque $V(a)=0$, il existe aussi $\eta>0$ tel que 
 $$
 x\in B(a,\eta)  \ \Longrightarrow V(x)\leq \varepsilon_V \ .
 $$
@@ -1949,7 +1949,7 @@ $$
 $$
 où $d_X$ et $d_Y$ sont les distances sur $X$ et $Y$ respectivement.
 
-Revenons maintenant à nos moutons. On suppose donc $f$ continue sur $J\times X$ et on veut montrer que $S_f(t_0,x_0)\neq \emptyset$. Soient d'abord $\tau >0$ et $r>0$, tels que $\cC := [t_0-\tau,t_0+\tau]\times \overline{B}(x_0,r) \subset J\times X$. Soit $\tau_m\in]0, \tau]$ tel que $\tau_m\max_\cC \|f\|\leq r$. On va montrer l'existence d'une solution définie par sa forme intégrale 
+Revenons maintenant à nos moutons. On suppose donc $f$ continue sur $J\times X$ et on veut montrer que $S_f(t_0,x_0)\neq \emptyset$. Soient d'abord $\tau >0$ et $r>0$, tels que $\cC := [t_0-\tau,t_0+\tau]\times B_f(x_0,r) \subset J\times X$. Soit $\tau_m\in]0, \tau]$ tel que $\tau_m\max_\cC \|f\|\leq r$. On va montrer l'existence d'une solution définie par sa forme intégrale 
 $$
 x(t) = x_0 + \int_{t_0}^t f(s,x(s)) ds
 $$
@@ -1962,15 +1962,15 @@ x_\epsilon(t) &= x_0 & \forall t\in [t_0-1,t_0] \\
 \end{align*}
 Ces fonctions sont définies et continues sur $[t_0-1,t_0]$. Puis sur $[t_0,t_0+\epsilon]\cap[t_0,t_0+\tau_m]$, on voit que l'intégrale ne dépend que de $x_\epsilon$ sur $[t_0-1,t_0]$, donc elle est toujours bien définie et continue. De proche en proche, $x_\epsilon$ est donc bien définie et continue sur $[t_0-1,t_0+\tau_m]$. En fait, $\epsilon$ représente un petit retard introduit dans l'intégrale pour la rendre explicite. Si l'on arrive à montrer que ces fonctions converge vers une fonction continue lorsque $\epsilon$ tend vers 0, cette limite sera solution de l'équation intégrale sur $[t_0,t_0+\tau_m]$ et sera donc solution. 
 
-La première étape est de montrer de proche en proche, grâce au retard, que $x_\epsilon(t)\in \overline{B}(x_0,r)$ pour tout $t\in [t_0-1,t_0+\tau_m]$ puisque $\tau_m\max_\cC \|f\|\leq r$. Donc
+La première étape est de montrer de proche en proche, grâce au retard, que $x_\epsilon(t)\in B_f(x_0,r)$ pour tout $t\in [t_0-1,t_0+\tau_m]$ puisque $\tau_m\max_\cC \|f\|\leq r$. Donc
 $$
-\forall \epsilon \in ]0,1[ \ , \ x_\epsilon \in E:=C([t_0-1,t_0+\tau_m],\overline{B}(x_0,r)) \ .
+\forall \epsilon \in ]0,1[ \ , \ x_\epsilon \in E:=C([t_0-1,t_0+\tau_m],B_f(x_0,r)) \ .
 $$
 De plus, pour tout $\epsilon \in ]0,1[$ et pour tout $(t,t')\in [t_0-1,t_0+\tau_m]^2$,
 $$
 \|x_\epsilon(t) - x_\epsilon(t') \| \leq \max_\cC \|f\| \, |t-t'|
 $$
-donc la famille $S:=\{x_\epsilon , \ \epsilon \in ]0,1[ \}$ est équicontinue. De plus, vu que leur image est bornée dans $\overline{B}(x_0,r)$ de dimension finie, elle est bien bien relativement compacte. Le théorème d'Ascoli nous dit alors que $S$ est relativement compacte dans $E$. Il existe donc une sous suite $x_{\epsilon_k}$ telle que $\lim_{k\to +\infty} \epsilon_k =0$ et $\lim_{k\to +\infty} x_{\epsilon_k} = x^\star \in E$ au sense de la norme uniforme $\|\cdot \|$. Par uniforme continuité de $f$ sur le compact $\cC$, on en déduit alors que pour tout $s\in [t_0,t_0+\tau_m]$, $\lim_{k\to +\infty} f(s,x_{\epsilon_k}(s-\epsilon_k))= f(s,x^\star(s))$ et donc que $x^\star$ est bien solution de l'équation intégrale, ce qui donne le résultat.
+donc la famille $S:=\{x_\epsilon , \ \epsilon \in ]0,1[ \}$ est équicontinue. De plus, vu que leur image est bornée dans $B_f(x_0,r)$ de dimension finie, elle est bien bien relativement compacte. Le théorème d'Ascoli nous dit alors que $S$ est relativement compacte dans $E$. Il existe donc une sous suite $x_{\epsilon_k}$ telle que $\lim_{k\to +\infty} \epsilon_k =0$ et $\lim_{k\to +\infty} x_{\epsilon_k} = x^\star \in E$ au sense de la norme uniforme $\|\cdot \|$. Par uniforme continuité de $f$ sur le compact $\cC$, on en déduit alors que pour tout $s\in [t_0,t_0+\tau_m]$, $\lim_{k\to +\infty} f(s,x_{\epsilon_k}(s-\epsilon_k))= f(s,x^\star(s))$ et donc que $x^\star$ est bien solution de l'équation intégrale, ce qui donne le résultat.
 
 <!--
 ## Preuve du théorème des bouts {.app #pr_theo_bouts}
@@ -1986,9 +1986,9 @@ On a donc $\lim_{p\to+\infty} t_p = \tmax$, et par compacité de $K$, on peut ex
 
 Soient $\tau>0$, $r>0$ et $\tau_m\in \left(0,\tau \right]$ tels que 
 $$
-\cC:=\left[\tmax-2\tau,\tmax+2\tau \right]\times \overline{B}(\overline{x},2r)\subset J\times X \quad , \quad \tau_m  \max_{\cC} \|f\| \leq r\ .
+\cC:=\left[\tmax-2\tau,\tmax+2\tau \right]\times B_f(\overline{x},2r)\subset J\times X \quad , \quad \tau_m  \max_{\cC} \|f\| \leq r\ .
 $$
-Soit $p\in \N$ tel que $|t_p-\tmax|< \tau_m$ et $\|x(t_p)-\tmax\|< r$. Alors $\left[t_p-\tau,t_p+\tau \right]\times \overline{B}(x(t_p),r)\subset J\times X$ et le théorème de Cauchy Lipschitz nous dit qu'il existe une solution $y:[t_p-\tau_m,t_p+\tau_m]\to \R^n$ au problème de Cauchy $\dot{y}=f(t,y)$, $y(t_n)=x(t_n)$. On a alors $t_p+\tau_m>\tmax$, et par unicité, $x\equiv y$ sur $[t_p,\tmax)$. Donc $x$ peut être prolongée, ce qui contredit sa maximalité.
+Soit $p\in \N$ tel que $|t_p-\tmax|< \tau_m$ et $\|x(t_p)-\tmax\|< r$. Alors $\left[t_p-\tau,t_p+\tau \right]\times B_f(x(t_p),r)\subset J\times X$ et le théorème de Cauchy Lipschitz nous dit qu'il existe une solution $y:[t_p-\tau_m,t_p+\tau_m]\to \R^n$ au problème de Cauchy $\dot{y}=f(t,y)$, $y(t_n)=x(t_n)$. On a alors $t_p+\tau_m>\tmax$, et par unicité, $x\equiv y$ sur $[t_p,\tmax)$. Donc $x$ peut être prolongée, ce qui contredit sa maximalité.
 -->
 
 ## Preuve du théorème du domaine maximal d'existence {.app #pr_theo_bouts}
@@ -2048,11 +2048,11 @@ $$
 $$
 On a donc $\lim_{p\to+\infty} t_p = \tmax$, et par compacité de $K$, on peut extraire de $(t_p,x(t_p))_{p\in \N}$ une sous-suite qui converge vers $(\tmax,\overline{x})\in K$. Pour simplifier les notations, on suppose donc directement $\lim_{p\to+\infty} x(t_p) =\overline{x}$.
 
-Notons $\xi =(\tmax,\overline{x})$. Soit $\varepsilon >0$ tel que $\overline{B}(\xi,2\varepsilon)\subset J\times X$. Il existe $p^*$ tel que pour tout $p\geq p^*$, $(t_{p},x(t_{p}))\in \overline{B}(\xi,\varepsilon)$.  Mais puisque $\overline{B}(\xi,2\varepsilon)$ est un sous-ensemble compact de $J\times X$, on sait que $(t,x(t))$ en sort de manière persistente. Donc sans perte de généralité, on peut supposer que pour tout $p$, il existe $t_p < t_p' < t_{p+1}$ tel que 
+Notons $\xi =(\tmax,\overline{x})$. Soit $\varepsilon >0$ tel que $B_f(\xi,2\varepsilon)\subset J\times X$. Il existe $p^*$ tel que pour tout $p\geq p^*$, $(t_{p},x(t_{p}))\in B_f(\xi,\varepsilon)$.  Mais puisque $B_f(\xi,2\varepsilon)$ est un sous-ensemble compact de $J\times X$, on sait que $(t,x(t))$ en sort de manière persistente. Donc sans perte de généralité, on peut supposer que pour tout $p$, il existe $t_p < t_p' < t_{p+1}$ tel que 
 $$
-\| (t_p',x(t_p')) - \xi \| = 2\varepsilon  \qquad , \qquad (t,x(t))\in \overline{B}(\xi,2\varepsilon) \quad \forall t\in [ t_p,t_p' ] \ .
+\| (t_p',x(t_p')) - \xi \| = 2\varepsilon  \qquad , \qquad (t,x(t))\in B_f(\xi,2\varepsilon) \quad \forall t\in [ t_p,t_p' ] \ .
 $$
-Soit alors $M$ le maximum de $\| f\|$ sur le compact $\overline{B}(\xi,2\varepsilon)$. Par la représentation intégrale, et pour $p$ suffisamment grand, on a donc
+Soit alors $M$ le maximum de $\| f\|$ sur le compact $B_f(\xi,2\varepsilon)$. Par la représentation intégrale, et pour $p$ suffisamment grand, on a donc
 $$
 \frac{\varepsilon}{2} \leq \|x(t_p')-x(t_p) \| \leq \int_{t_p}^{t_p'} \|f(s,x(s))\| ds \leq M (t_p'-t_p) \leq M (t_{p+1}-t_p)  \ .
 $$
@@ -2061,9 +2061,9 @@ Il s'ensuit que pour $p$ suffisamment grand, $t_{p+1}-t_p \geq \frac{\varepsilon
 <!--
 Soient $\tau>0$, $r>0$ et $\tau_m\in \left(0,\tau \right]$ tels que 
 $$
-\cC:=\left[\tmax-2\tau,\tmax+2\tau \right]\times \overline{B}(\overline{x},2r)\subset J\times X \quad , \quad \tau_m  \max_{\cC} \|f\| \leq r\ .
+\cC:=\left[\tmax-2\tau,\tmax+2\tau \right]\times B_f(\overline{x},2r)\subset J\times X \quad , \quad \tau_m  \max_{\cC} \|f\| \leq r\ .
 $$
-Soit $p\in \N$ tel que $|t_p-\tmax|< \tau_m$ et $\|x(t_p)-\tmax\|< r$. Alors $\left[t_p-\tau,t_p+\tau \right]\times \overline{B}(x(t_p),r)\subset J\times X$ et le théorème de Cauchy Lipschitz nous dit qu'il existe une solution $y:[t_p-\tau_m,t_p+\tau_m]\to \R^n$ au problème de Cauchy $\dot{y}=f(t,y)$, $y(t_n)=x(t_n)$. On a alors $t_p+\tau_m>\tmax$, et par unicité, $x\equiv y$ sur $[t_p,\tmax)$. Donc $x$ peut être prolongée, ce qui contredit sa maximalité.
+Soit $p\in \N$ tel que $|t_p-\tmax|< \tau_m$ et $\|x(t_p)-\tmax\|< r$. Alors $\left[t_p-\tau,t_p+\tau \right]\times B_f(x(t_p),r)\subset J\times X$ et le théorème de Cauchy Lipschitz nous dit qu'il existe une solution $y:[t_p-\tau_m,t_p+\tau_m]\to \R^n$ au problème de Cauchy $\dot{y}=f(t,y)$, $y(t_n)=x(t_n)$. On a alors $t_p+\tau_m>\tmax$, et par unicité, $x\equiv y$ sur $[t_p,\tmax)$. Donc $x$ peut être prolongée, ce qui contredit sa maximalité.
 -->
 
 
@@ -2122,10 +2122,10 @@ Pour toute suite $(x_n)$ d'éléments de $F$ convergeant vers $x^*$, pour tout $
 $$
 \|x_n(t)-x^*(t)\|\leq \|x_n-x^*\|_{\infty} \quad \underset{n\to \infty}{\longrightarrow} 0
 $$
-donc la suite $(x_n(t))$ d'éléments du fermé $\overline{B}(x_0,r)$  converge dans $\R^n$ vers $x^*(t)$ qui est donc dans $\overline{B}(x_0,r)$. Ceci implique $x^*\in F$.
+donc la suite $(x_n(t))$ d'éléments du fermé $B_f(x_0,r)$  converge dans $\R^n$ vers $x^*(t)$ qui est donc dans $B_f(x_0,r)$. Ceci implique $x^*\in F$.
 
 [^solutionF]:
-Il suffit de montrer que $x([t_0-\tau_m,t_0+\tau_m])\subset \overline{B}(x_0,r)$. Supposons le contraire et sans perdre en généralité supposons que $S := \{ t\in [t_0,t_0+\tau_m] \: : \: \|x(t)-x_0\|>r \}$ est non vide.
+Il suffit de montrer que $x([t_0-\tau_m,t_0+\tau_m])\subset B_f(x_0,r)$. Supposons le contraire et sans perdre en généralité supposons que $S := \{ t\in [t_0,t_0+\tau_m] \: : \: \|x(t)-x_0\|>r \}$ est non vide.
 Soit $t^*=\inf S$. Nécessairement $t_0 < t^* < t_0+\tau_m$. Donc par la [représentation intégrale](#theo_eq_integrale), 
 $$
 \|x(t^*)-x_0\|\leq (t^*-t_0) \max_{s\in [t_0,t^*]} \|f(s,x(s)) \| < \tau_m \max_\cC \|f\|< r \ .
