@@ -1186,7 +1186,8 @@ Si on mesure $t\mapsto x(t)$, montrer que l'on peut alors toujours choisir $t\ma
 Comment faire si l'on veut maintenant faire suivre au système une trajectoire de référence $t\mapsto x_r(t)$ ?
 
 
-Solutions
+
+Solutions des exercices
 ================================================================================
 
 ## Exercices essentiels

@@ -1048,19 +1048,45 @@ dont les valeurs propres sont $1/(1 \pm i\omega \dt)$ de norme $1/\sqrt{1+\dt^2 
 Or on peut vérifier que le long des vraies solutions, l'énergie $\omega^2 x_1^2 + x_2^2$ est constante donc les trajectoires sont bornées et ne peuvent pas converger vers zéro. Aucun des deux schémas n'approxime les solutions correctement sur le long-terme.
 
 ### Question 2 {.answer #answer-symp-2}
-On vérifie par le calcul que 
+Le schéma symplectique donne
 $$
-\omega^2 x_1^2 + x_2^2 +\dt \, \omega^2 x_1x_2 = 
-x^\top
 \left( 
   \begin{matrix}
-  \omega^2 & \frac{\dt  \, w^2}{2} \\
-  \frac{\dt \, w^2}{2} & 1
+  \omega^2 & 0 \\
+  \dt \, w^2 & 1
   \end{matrix}
 \right)
-x
-$$ 
-est constante. Pour $\omega^2-\frac{\dt^2 \omega^4}{4}>0$, soit $\omega \dt <2$, cette matrice est définie positive, donc les solutions restent sur une ellipse. Cette ellipse se rapproche de la vraie solution lorsque $\dt$ tend vers 0. Ce schéma est donc approprié pour simuler les trajectoires sur un temps long.
+\left( 
+  \begin{matrix}
+  x_1^{j+1}\\
+  x_2^{j+1}
+  \end{matrix}
+\right)
+=
+\left( 
+  \begin{matrix}
+  \omega^2 & \dt \, w^2 \\
+  0 & 1
+  \end{matrix}
+\right)
+\left( 
+  \begin{matrix}
+  x_1^{j}\\
+  x_2^{j}
+  \end{matrix}
+\right)
+$$
+En multipliant à gauche alternativement par 
+$\left( \begin{matrix}x_1^{j+1} & x_2^{j+1}\end{matrix}\right)$
+et
+$\left( \begin{matrix}x_1^{j} & x_2^{j}\end{matrix}\right)$,
+on obtient 
+\begin{align*}
+\omega^2 (x_1^{j+1})^2 + (x_2^{j+1})^2 +\dt \, \omega^2 x_1^{j+1}x_2^{j+1}
+&= \omega^2 x_1^{j+1} x_1^j + x_2^{j+1}x_2^j +\dt \, \omega^2 x_1^{j+1}x_2^{j} \\
+&= \omega^2 (x_1^{j})^2 + (x_2^{j})^2 +\dt \, \omega^2 x_1^{j}x_2^{j} 
+\end{align*}
+et donc la quantité $\omega^2 x_1^2 + x_2^2 +\dt \, \omega^2 x_1x_2$ est bien constante. Pour $\omega^2-\frac{\dt^2 \omega^4}{4}>0$, soit $\omega \dt <2$, cette matrice est définie positive, donc les solutions restent sur une ellipse. Cette ellipse se rapproche de la vraie solution lorsque $\dt$ tend vers 0. Ce schéma est donc approprié pour simuler les trajectoires sur un temps long.
 
 ### Question 3 {.answer #answer-symp-3}
 L'algorithme symplectique est décrit par $x^{j+1}=Ax^j$ avec 
@@ -1078,7 +1104,7 @@ s^2 - (2-\dt^2 \, \omega^2) s + 1
 $$
 On a les cas suivants :
 
-- si $(1-\dt^2 \, \omega^2)^2 -4 <0$, i.e., si $\omega \dt <2$, les valeurs propres sont imaginaires conjuguées et de module 1.
+- si $(2-\dt^2 \, \omega^2)^2 -4 <0$, i.e., si $\omega \dt <2$, les valeurs propres sont imaginaires conjuguées et de module 1.
 
 - si $\omega \dt > 2$, les valeurs propres sont réelles de produit 1, donc l'une est supérieure à 1 est le schéma diverge.
 
