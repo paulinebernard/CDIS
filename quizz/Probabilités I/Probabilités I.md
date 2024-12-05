@@ -5,7 +5,7 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
-\renewcommand{\C}{\mathbb{C}}
+\newcommand{\C}{\mathbb{C}}
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\tr}{\operatorname{tr}}
 
@@ -26,7 +26,7 @@ Soit $(\Omega, \mathcal{A}, \P)$ un espace de probabilité. Soient $A$, $B \in \
 
 #### Question 2 
 
-Soit $(\Omega, \mathcal(A), \P) = (\R_+,\mathcal{B}(\R_+),\P)$ où $\P$ est la loi exponentielle de paramètre $\theta$.
+Soit $(\Omega, \mathcal(A), \P)$ l'espace de probabilité défini par $(\Omega, \mathcal{A}, \P) = (\R_+,\mathcal{B}(\R_+),\P)$ où $\P$ est la loi exponentielle de paramètre $\theta$.
 Soit la variable aléatoire 
 $$X : \omega \in \Omega \mapsto \left\{\begin{array}{ll}
 0 & \text{ si } \omega \in [0,1],\\
@@ -39,15 +39,15 @@ $$X : \omega \in \Omega \mapsto \left\{\begin{array}{ll}
 
   - [ ] C: $\P(X \in \{0,1\}) = 1$
 
-#### Question 3 (réponse multiple)
+#### Question 3 
 
-Soit $X$ une variable aléatoire telle que $\mathbb{P}(X \in [0, 1]) = 0$. Alors 
+Soit $(\Omega, \mathcal{A}, \P)$ un espace de probabilité tel que $\Omega = \R$. Soit $X$ une variable aléatoire telle que $\mathbb{P}(X \in [0, 1]) = 0$. Alors 
 
-  - [ ] A: $X(\omega) = 0$ quand $\omega \in [0, 1]$
+  - [ ] A: $X(\omega) = 0$ quand $\omega \in [0, 1]$.
 
-  - [ ] B: La fonction de répartition $F$ associée est nulle sur [0, 1]
+  - [ ] B: La fonction de répartition $F$ associée est nulle sur [0, 1].
 
-  - [ ] C: Si $X$ est de densité $f$, alors $f$ est nulle sur [0, 1] .
+  - [ ] C: Si $X$ est de densité $f$, alors $f$ est nulle (presque-partout) sur [0, 1] .
 
 #### Question 4 
 
