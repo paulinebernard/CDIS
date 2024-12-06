@@ -102,11 +102,11 @@ $\P_{Y|X=x}$ ainsi définie est simplement la probabilité sur $(\R,\B(\R))$ ima
 
 La formule ci-dessus s'écrit $\P_{X,Y}(B_1 \times B_2) = \int_{B_1} \P(Y \in B_2 | X=x) \P_X(dx)$, où $\P_{X,Y}$ est la loi du couple. Elle se généralise à tout borélien $B$ de $\R^2$ de la manière suivante :
 $$
-\begin{align*}
+\begin{aligned}
 \P_{X,Y}(B) &= \P((X,Y)\in B) = \sum_{x \in X(\Omega)} \P(X=x, (x,Y) \in B) \\
       &= \sum_{x \in X(\Omega)} \P(X=x) \P((x,Y) \in B | X=x) \\
       &= \sum_{x \in X(\Omega)} \P(X=x) \P_{Y|X=x}(B_x),
-\end{align*}
+\end{aligned}
 $$
 où $B_x = \{y\in \R, (x,y) \in B\}$. Ainsi, pour tout $B$ borélien de $\R^2$,
 
@@ -389,7 +389,7 @@ Une manière naturelle de formaliser cette notion d'approximation est de se donn
 $$ \Esp((Y-f(X))^2). $$
 Le prédicteur $f$ choisi ainsi minimiserait donc "en moyenne" sur les réalisations de $(X,Y)$ l'écart quadratique entre $Y$ et $f(X)$.
 
-On va montrer dans cette section que le prédicteur optimal $f^*(X)$ de $Y$, au sens décrit ci-dessus, est précisément donné par l'espérance conditionnelle de $Y$ sachant $X$, c'est-à-dire en prenant $f^*(X)=\psi(X) = \Esp(Y|X)$. Ce faisant, nous fournirons une interprétation géométrique particulièrement frappante de l'espérance conditionnelle: celle-ci peut-être vue comme la projection orthogonale de la variable $Y$ dans l'espace constitué des variables aléatoires de la forme $f(X)$ (cf. Figure [ci-dessous](#fig_proj)). Pour ce faire, il convient d'abord de réintroduire quelques notions relatives aux espaces de Hilbert, vues dans le cadre du cours de calcul intégral et nous permettant de définir la notion de projection orthogonale de manière univoque. En particulier, nous nous restreindrons à un espace de variables aléatoires sur lequel notre objectif de prediction, $ \Esp((Y-f(X))^2) $, est bien défini: l'espace $L^2(\Omega)$ des variables aléatoire de carré intégrable. 
+On va montrer dans cette section que le prédicteur optimal $f^*(X)$ de $Y$, au sens décrit ci-dessus, est précisément donné par l'espérance conditionnelle de $Y$ sachant $X$, c'est-à-dire en prenant $f^*(X)=\psi(X) = \Esp(Y|X)$. Ce faisant, nous fournirons une interprétation géométrique particulièrement frappante de l'espérance conditionnelle: celle-ci peut-être vue comme la projection orthogonale de la variable $Y$ dans l'espace constitué des variables aléatoires de la forme $f(X)$ (cf. Figure [ci-dessous](#fig_proj)). Pour ce faire, il convient d'abord de réintroduire quelques notions relatives aux espaces de Hilbert, vues dans le cadre du cours de calcul intégral et nous permettant de définir la notion de projection orthogonale de manière univoque. En particulier, nous nous restreindrons à un espace de variables aléatoires sur lequel notre objectif de prediction, $\Esp((Y-f(X))^2)$, est bien défini: l'espace $L^2(\Omega)$ des variables aléatoire de carré intégrable. 
 
 ![Illustration géométrique de l'espérance conditionnelle](images/Proj.png){#fig_proj}
 
@@ -411,14 +411,15 @@ On a vu dans le cours de calcul intégral que l'espace $L^2(\Omega)$, muni de la
 $$\langle X \vert Y\rangle = \int_{\Omega} X(\omega) Y(\omega) \P(d\omega) = \Esp(XY), \quad X,Y\in L^2(\Omega).$$
 L'application $\langle \cdot \vert \cdot\rangle$  est bien définie puisque, d'après l'inégalité de Cauchy-Schwartz, on a pour tous $X,Y\in L^2(\Omega)$:
 $$\langle X \vert Y\rangle^2=\Esp(XY)^2 \leq \Esp(X^2)\Esp(Y^2)=\Vert X\Vert_2^2\Vert Y\Vert_2^2<\infty.$$
-De plus, l'application $\langle \cdot \vert \cdot\rangle$ définit un produit scalaire sur $ L^2(\Omega)$ car elle est vérifie les propriétés suivantes pour tous  $X,Y\in L^2(\Omega)$:
+De plus, l'application $\langle \cdot \vert \cdot\rangle$ définit un produit scalaire sur $L^2(\Omega)$ car elle est vérifie les propriétés suivantes pour tous  $X,Y\in L^2(\Omega)$:
+
 * Symétrique: $\langle X \vert Y\rangle= \Esp(XY)=\Esp(YX)=\langle X \vert Y\rangle$,
 * Positive: $\langle X \vert X\rangle= \Esp(X^2) \ge 0$,
 * Définie: $\langle X \vert X\rangle=0 \Leftrightarrow \Esp(X^2)=0 \Leftrightarrow X=0$ .
 
 On remarque enfin que la norme associée au produit scalaire $\langle \cdot \vert \cdot\rangle$ n'est autre que la norme $\Vert\cdot\Vert_2$ introduite précédemment (car pour tout $X\in L^2(\Omega)$, $\langle X \vert X\rangle^{1/2}=\Esp(X^2)^{1/2}=\Vert X\Vert$). On en déduit donc que l'espace $L^2(\Omega)$ muni du produit scalaire $\langle \cdot \vert \cdot\rangle$ est bien un espace de Hilbert (car il est complet pour la norme $\Vert \cdot\Vert_2$).
 
-L'intérêt de se ramener à travailler avec un espace de Hilbert est que sur de tels espaces, il est possible de définir de manière univoque la notion de projection orthogonale sur un sous-espace (convexe, fermé et non-vide). En effet, la projection orthogonale d'un élément $Y\in L^2(\Omega)$ sur un sous-espace convexe, fermé et non-vide $K \subset L^2(\Omega)$  est alors définie comme l'unique élément $P_k(Y)\in K$ qui minimise la distance $\Vert Y - P_k(Y)\Vert_2$, et donc l'erreur moyenne quadratique $ \Esp((Y-P_k(Y))^2) $, entre $Y$ et les éléments de $K$. On retrouve en particulier l'objectif de prédiction décrit plus haut, la projection orthogonale $P_K(Y)$ pouvant être interprétée comme le meilleur prédicteur de $Y$ parmi les éléments de $K$. Pour revenir au problème initial, il suffit donc de choisir le sous-espace $K$ de manière à ce qu'il ne contienne que des éléments s'exprimant comme des fonctions de $X$. C'est ce que nous ferons dans les prochaines sous-sections.
+L'intérêt de se ramener à travailler avec un espace de Hilbert est que sur de tels espaces, il est possible de définir de manière univoque la notion de projection orthogonale sur un sous-espace (convexe, fermé et non-vide). En effet, la projection orthogonale d'un élément $Y\in L^2(\Omega)$ sur un sous-espace convexe, fermé et non-vide $K \subset L^2(\Omega)$  est alors définie comme l'unique élément $P_k(Y)\in K$ qui minimise la distance $\Vert Y - P_k(Y)\Vert_2$, et donc l'erreur des moindres carrés $\Esp((Y-P_k(Y))^2)$ entre $Y$ et les éléments de $K$. On retrouve en particulier l'objectif de prédiction décrit plus haut, la projection orthogonale $P_K(Y)$ pouvant être interprétée comme le meilleur prédicteur de $Y$ parmi les éléments de $K$. Pour revenir au problème initial, il suffit donc de choisir le sous-espace $K$ de manière à ce qu'il ne contienne que des éléments s'exprimant comme des fonctions de $X$. C'est ce que nous ferons dans les prochaines sous-sections.
 
 Ce point de vue nouveau sur la recherche d'un prédicteur optimal est particulièrement intéressant car il permet d'une part de montrer que l'existence et l'unicité de ce prédicteur optimal (si du moins il est recherché dans un sous-espace $K \subset L^2(\Omega)$ convexe, fermé et non-vide). D'autre part, nous disposons de critères permettant en pratique d'identifier ce prédicteur optimal. Puisqu'il correspond à la projection orthogonale $P_K(Y)$ de $Y$ sur $K$, le prédicteur optimal sur $K$ est caractérisé comme étant l'unique élément de $K$ vérifiant la propriété
 $$ \langle Y - P_K(Y) \vert U - P_K(Y)\rangle \le 0 \quad  \forall U\in K.$$
@@ -511,6 +512,7 @@ $$
 \end{aligned}
 $$
 où la seconde égalité se déduit du fait que $f(X)$ est $\P$-intégrable, et la troisième égalité découle du théorème de l'espérance totale. Par conséquent, par unicité de la projection orthogonale, on en déduit que $P_{L^2_X(\Omega)}(Y)=\psi(X)$. On peut donc conclure que, pour toutes variables aléatoires $X,Y\in L^2(\Omega)$, 
+
 * l'espérance conditionnelle $\psi(X)=\Esp(Y|X)$ n'est autre que la projection orthogonale de $Y$ sur $L^2_X(\Omega)$,
 * l'espérance conditionelle $\psi(X)=\Esp(Y|X)$ est le prédicteur optimal (au sens des moindres carrés) de $Y$ à partir d'une fonction de $X$. 
 
