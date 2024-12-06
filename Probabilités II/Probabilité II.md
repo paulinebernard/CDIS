@@ -1,6 +1,6 @@
 % Probabilités II
 
-\newcommand{\R}{\mathbb{R}}
+$\newcommand{\R}{\mathbb{R}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbb{Z}}
 \renewcommand{\P}{\mathbb{P}}
@@ -13,6 +13,7 @@
 \newcommand{\Esp}{\mathbb{E}}
 \newcommand{\V}{\mathbb{V}}
 \newcommand{\cov}{\text{Cov}}
+$
 
 \newcommand{\zero}{$\mathord{\boldsymbol{\circ}}$}
 \newcommand{\one}{$\mathord{\bullet}$}
@@ -1132,7 +1133,7 @@ On en déduit que la loi de N est la loi binomiale de paramètre $(10, 1 - e^{- 
 ### Question 4 {.answer #answer-dureevie4} 
 
 La probabilité que l’équipement en série soit défaillant avant 1 an vaut :
-$$ P(N \geq 1) = 1 - \P(N = 0) = 1 - e^{-1/2} \approx 9.9 ~10^{-1} = 99\%$$
+$$ P(N \geq 1) = 1 - \P(N = 0) = 1 - e^{-10/2} \approx 9.9 ~10^{-1} = 99\%$$
 
 ### Question 5 {.answer #answer-dureevie5} 
 La probabilité que l’équipement en parallèle soit défaillant avant 1 an vaut :
