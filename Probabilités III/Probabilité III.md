@@ -419,7 +419,7 @@ De plus, l'application $\langle \cdot \vert \cdot\rangle$ définit un produit sc
 
 On remarque enfin que la norme associée au produit scalaire $\langle \cdot \vert \cdot\rangle$ n'est autre que la norme $\Vert\cdot\Vert_2$ introduite précédemment (car pour tout $X\in L^2(\Omega)$, $\langle X \vert X\rangle^{1/2}=\Esp(X^2)^{1/2}=\Vert X\Vert$). On en déduit donc que l'espace $L^2(\Omega)$ muni du produit scalaire $\langle \cdot \vert \cdot\rangle$ est bien un espace de Hilbert (car il est complet pour la norme $\Vert \cdot\Vert_2$).
 
-L'intérêt de se ramener à travailler avec un espace de Hilbert est que sur de tels espaces, il est possible de définir de manière univoque la notion de projection orthogonale sur un sous-espace (convexe, fermé et non-vide). En effet, la projection orthogonale d'un élément $Y\in L^2(\Omega)$ sur un sous-espace convexe, fermé et non-vide $K \subset L^2(\Omega)$  est alors définie comme l'unique élément $P_k(Y)\in K$ qui minimise la distance $\Vert Y - P_k(Y)\Vert_2$, et donc l'erreur des moindres carrés $\Esp((Y-P_k(Y))^2)$ entre $Y$ et les éléments de $K$. On retrouve en particulier l'objectif de prédiction décrit plus haut, la projection orthogonale $P_K(Y)$ pouvant être interprétée comme le meilleur prédicteur de $Y$ parmi les éléments de $K$. Pour revenir au problème initial, il suffit donc de choisir le sous-espace $K$ de manière à ce qu'il ne contienne que des éléments s'exprimant comme des fonctions de $X$. C'est ce que nous ferons dans les prochaines sous-sections.
+L'intérêt de se ramener à travailler avec un espace de Hilbert est que sur de tels espaces, il est possible de définir de manière univoque la notion de projection orthogonale sur un sous-espace (convexe, fermé et non-vide). En effet, la projection orthogonale d'un élément $Y\in L^2(\Omega)$ sur un sous-espace convexe, fermé et non-vide $K \subset L^2(\Omega)$  est alors définie comme l'unique élément $P_K(Y)\in K$ qui minimise la distance $\Vert Y - P_K(Y)\Vert_2$, et donc l'erreur des moindres carrés $\Esp((Y-P_K(Y))^2)$ entre $Y$ et les éléments de $K$. On retrouve en particulier l'objectif de prédiction décrit plus haut, la projection orthogonale $P_K(Y)$ pouvant être interprétée comme le meilleur prédicteur de $Y$ parmi les éléments de $K$. Pour revenir au problème initial, il suffit donc de choisir le sous-espace $K$ de manière à ce qu'il ne contienne que des éléments s'exprimant comme des fonctions de $X$. C'est ce que nous ferons dans les prochaines sous-sections.
 
 Ce point de vue nouveau sur la recherche d'un prédicteur optimal est particulièrement intéressant car il permet d'une part de montrer que l'existence et l'unicité de ce prédicteur optimal (si du moins il est recherché dans un sous-espace $K \subset L^2(\Omega)$ convexe, fermé et non-vide). D'autre part, nous disposons de critères permettant en pratique d'identifier ce prédicteur optimal. Puisqu'il correspond à la projection orthogonale $P_K(Y)$ de $Y$ sur $K$, le prédicteur optimal sur $K$ est caractérisé comme étant l'unique élément de $K$ vérifiant la propriété
 $$ \langle Y - P_K(Y) \vert U - P_K(Y)\rangle \le 0 \quad  \forall U\in K.$$
@@ -446,7 +446,6 @@ b^* & = \Esp(Y)  - a^*~\Esp(X)
 Détailler le calcul de $a^*$ et $b^*$.
 
 ### {.anonymous}
-
 On vérifie aisément que les valeurs $a=a^*$ et $b=b^*$ minimise bien l'erreur $\ell(a,b)=\Esp((Y - (aX + b))^2)$ et donc la meilleure approximation affine de $Y$ basée sur $X$ au sens des moindres carrés est la fonction $f^*(X)$ définie par
 $$ f^*(X)=a^* X + b^*=\Esp(Y) + \rho(X,Y)\frac{\sigma_Y}{\sigma_X} (X -\Esp(X)).$$
 L'erreur quadratique moyenne vaut alors
@@ -457,7 +456,7 @@ $$\begin{aligned}
 
 On voit ainsi que cette erreur est proche de 0 lorsque $|\rho(X,Y)| \approx 1$ tandis qu'elle est proche de $\V(Y) = \sigma^2_Y$ lorsque $\rho(X,Y) \approx 0$. On notera au passage qu'on obtient que la meilleure approximation de $Y$ par une constante (ce qui revient à prendre $X=0$) est son espérance.
 
-### Remarque {.remark}
+### Limites de la régression linéaire {.remark}
 L'hypothèse d'une relation linéaire est très forte et pas nécessairement toujours adaptée pour expliquer des relations de dépendances entre variables. Soit en effet une variable aléatoire réelle $X$ de $\L^3$ (i.e. $X^3$ est $\P_X$ intégrable) symétrique, c'est-à-dire telle que $X$ et $-X$ sont de même loi. On a alors $\Esp(X) = -\Esp(X) = 0$. Les variables $X$ et $X^2$ ne sont clairement pas indépendantes. Pour autant, on a $\cov(X,X^2) = \Esp(X^3) = -\Esp(X^3) = 0$ et le coefficient de régression $a$ ci-dessus est nul. 
 
 Suivant maintenant les résultats de la sous-section précédente, une deuxième approche permettant de trouver le prédicteur affine optimal de $Y$ basé sur $X$ consiste à réécrire ce problème comme la recherche d'une projection orthogonale de $Y$ sur un sous-espace convexe et fermé $K\subset L^2(\Omega)$.
