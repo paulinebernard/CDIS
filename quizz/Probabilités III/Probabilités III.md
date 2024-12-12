@@ -1,7 +1,7 @@
 % Probabilités III
 
 <!-- LaTeX Macros -->
-\newcommand{\N}{\mathbb{N}}
+$\newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
@@ -10,7 +10,7 @@
 \newcommand{\tr}{\operatorname{tr}}
 \newcommand{\Esp}{\mathbb{E}}
 \newcommand{\E}{\mathcal{E}}
-
+$
 
 \newcommand{\zero}{$\mathord{\boldsymbol{\circ}}$}
 \newcommand{\one}{$\mathord{\bullet}$}
@@ -19,19 +19,19 @@
 \newcommand{\four}{$\mathord{\bullet}\mathord{\bullet}\mathord{\bullet}\mathord{\bullet}$}
 
 #### Question 1
-Soient $X \sim \E(\lambda)$, $\lambda >0$, et $Y \sim \mathcal{B}(1/2)$ deux variables aléatoires réelles indépendantes, et $Z = X Y + (1-Y)\lambda$. La densité $f_{Z | Y =1}$ est égale à 
+Soient $X \sim \E(\lambda)$, $\lambda >0$, et $Y \sim \mathcal{B}(1/2)$ deux variables aléatoires réelles indépendantes, et $Z = X Y + (1-Y)\lambda$. 
 
-  - [ ] A : $\frac{\lambda}{2} \exp(-\lambda z)1_{\R^\ast_+}(z)$
+  - [ ] A : La fonction de répartition conditionnelle $F_{Z | Y =1}$ vaut $F_{Z | Y =1}(z)=\mathbb{P}(Z\le z\vert Y=1)=(1-e^{-\lambda z})\mathbb{1}_{\R_+^*}(z)$
 
-  - [ ] B : $\lambda \exp(-\lambda z)1_{\R^\ast_+}(z)$
+  - [ ] B : La fonction de répartition conditionnelle $F_{Z | Y =0}$ vaut $F_{Z | Y =0}(z)=\mathbb{P}(Z\le z\vert Y=0)=\mathbb{1}_{[\lambda,+\infty[}(z)$
 
-  - [ ] C : $Z$ n'admet pas de densité
+  - [ ] C : $Z$ admet une densité
 
   - [ ] D : $Z = \lambda$ p.s.
 
 
 #### Question 2 (réponses multiples)
-Avec les hypothèses précédentes, on a
+Soient $X \sim \E(\lambda)$, $\lambda >0$, et $Y \sim \mathcal{B}(1/2)$ deux variables aléatoires réelles indépendantes, et $Z = X Y + (1-Y)\lambda$. Alors:
 
   - [ ]  A : $\Esp (Z | Y = 1) = \frac{1}{\lambda}$
 
