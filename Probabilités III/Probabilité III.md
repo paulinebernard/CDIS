@@ -389,16 +389,14 @@ Le prédicteur $f$ choisi ainsi minimiserait donc "en moyenne" sur les réalisat
 
 On va montrer dans cette section que le prédicteur optimal $f^*(X)$ de $Y$, au sens décrit ci-dessus, est précisément donné par l'espérance conditionnelle de $Y$ sachant $X$, c'est-à-dire en prenant $f^*(X)=\psi(X) = \Esp(Y|X)$. Ce faisant, nous fournirons une interprétation géométrique particulièrement frappante de l'espérance conditionnelle: celle-ci peut-être vue comme la projection orthogonale de la variable $Y$ dans l'espace constitué des variables aléatoires de la forme $f(X)$ (cf. Figure [ci-dessous](#fig_proj)). Pour ce faire, il convient d'abord de réintroduire quelques notions relatives aux espaces de Hilbert, vues dans le cadre du cours de calcul intégral et nous permettant de définir la notion de projection orthogonale de manière univoque. En particulier, nous nous restreindrons à un espace de variables aléatoires sur lequel notre objectif de prediction, $\Esp((Y-f(X))^2)$, est bien défini: l'espace $L^2(\Omega)$ des variables aléatoires de carré intégrable. 
 
-![Illustration géométrique de l'espérance conditionnelle](images/Proj.tex){#fig_proj}
+![Illustration géométrique de l'espérance conditionnelle comme une projection orthogonale sur un espace de $L^2(\Omega)$](images/Proj.tex){#fig_proj}
 
 
 
 
 ## Rappels sur les espaces de Hilbert et application en probabilités
 
-
-
-Pour commencer, revenons à la définition même des variables aléatoires. Soit $(\Omega, \mathcal{A},\P)$  un espace probabilisé (et donc mesuré). On rappelle que par définition, une variable aléatoire $Y$ sur cet espace n'est autre qu'une fonction $\mathcal{A}$-mesurable $Y : \Omega \rightarrow \R$. Adoptant ce point de vue, on considère alors l'espace fonctionnel  $L^2(\Omega)$ introduit dans le cours de calcul intégral. Pour rappel, cet espace contient l'ensemble des fonctions $\mathcal{A}$-mesurables (i.e. des variables aléatoires) $Y$ telles que $\vert Y\vert^2$ soit integrable c'est-à-dire telles que
+Pour commencer, revenons à la définition même des variables aléatoires. Soit $(\Omega, \mathcal{A},\mathbb{P})$  un espace probabilisé (et donc mesuré). On rappelle que par définition, une variable aléatoire $Y$ sur cet espace n'est autre qu'une fonction $\mathcal{A}$-mesurable $Y : \Omega \rightarrow \R$. Adoptant ce point de vue, on considère alors l'espace fonctionnel  $L^2(\Omega)$ introduit dans le cours de calcul intégral. Pour rappel, cet espace contient l'ensemble des fonctions $\mathcal{A}$-mesurables (i.e. des variables aléatoires) $Y$ telles que $\vert Y\vert^2$ soit integrable c'est-à-dire telles que
 $$
 \Vert Y\Vert_2 = \bigg(\int_{\Omega} \vert Y(\omega)\vert^2 d\P(\omega)\bigg)^{1/2}=\mathbb{E}(Y^2)^{1/2} < \infty.
 $$
@@ -519,7 +517,10 @@ $$
                           &= \Esp(\V(Y|X)) + \V(\Esp(Y|X)).
 \end{aligned}
 $$
-où on a utilisé la formule de l'espérance totale et introduit la variable aléatoire variance conditionnelle $\V(Y|X) = \Esp((Y - \Esp(Y|X))^2|X)$ comme cas particulier de la [définition vue plus haut](#defespcondg).
+où on a utilisé la formule de l'espérance totale et introduit la variable aléatoire variance conditionnelle $\V(Y|X) = \Esp((Y - \Esp(Y|X))^2|X)$ comme cas particulier de la [définition vue plus haut](#defespcondg). Cette décomposition est illustrée dans la [figure qui suit](#fig_proj2).
+
+![Illustration géométrique de la formule de la variance totale. L'espace $\mathrm{Vect}\lbrace 1\rbrace$ désigne le sous-espace de $L^2(\Omega)$ composé des variables aléatoires constantes (p.s.).](images/Proj2.tex){#fig_proj2}
+
 
 ### Variance totale {.exercise .question .one #vartot}
 Redémontrer ce résultat sans utiliser la notion d'orthogonalité.
