@@ -1,7 +1,7 @@
 % Probabilités III
 
 <!-- LaTeX Macros -->
-$\newcommand{\N}{\mathbb{N}}
+\newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
@@ -10,7 +10,7 @@ $\newcommand{\N}{\mathbb{N}}
 \newcommand{\tr}{\operatorname{tr}}
 \newcommand{\Esp}{\mathbb{E}}
 \newcommand{\E}{\mathcal{E}}
-$
+
 
 \newcommand{\zero}{$\mathord{\boldsymbol{\circ}}$}
 \newcommand{\one}{$\mathord{\bullet}$}
@@ -21,9 +21,9 @@ $
 #### Question 1
 Soient $X \sim \E(\lambda)$, $\lambda >0$, et $Y \sim \mathcal{B}(1/2)$ deux variables aléatoires réelles indépendantes, et $Z = X Y + (1-Y)\lambda$. 
 
-  - [ ] A : La fonction de répartition conditionnelle $F_{Z | Y =1}$ vaut $F_{Z | Y =1}(z)=\mathbb{P}(Z\le z\vert Y=1)=(1-e^{-\lambda z})\mathbb{1}_{\R_+^*}(z)$
+  - [ ] A : La fonction de répartition conditionnelle $F_{Z | Y =1}$ vaut $F_{Z | Y =1}(z)=\mathbb{P}(Z\le z\vert Y=1)=(1-e^{-\lambda z})1_{\R_+^*}(z)$
 
-  - [ ] B : La fonction de répartition conditionnelle $F_{Z | Y =0}$ vaut $F_{Z | Y =0}(z)=\mathbb{P}(Z\le z\vert Y=0)=\mathbb{1}_{[\lambda,+\infty[}(z)$
+  - [ ] B : La fonction de répartition conditionnelle $F_{Z | Y =0}$ vaut $F_{Z | Y =0}(z)=\mathbb{P}(Z\le z\vert Y=0)=1_{[\lambda,+\infty[}(z)$
 
   - [ ] C : $Z$ admet une densité
 

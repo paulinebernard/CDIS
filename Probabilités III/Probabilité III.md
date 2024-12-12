@@ -1,7 +1,6 @@
 % Probabilités III
 
 
-$
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Q}{\mathbb{Q}}
 \renewcommand{\P}{\mathbb{P}}
@@ -14,7 +13,6 @@ $
 \newcommand{\Esp}{\mathbb{E}}
 \newcommand{\V}{\mathbb{V}}
 \newcommand{\cov}{\text{Cov}}
-$
 
 \newcommand{\zero}{$\mathord{\boldsymbol{\circ}}$}
 \newcommand{\one}{$\mathord{\bullet}$}
@@ -71,17 +69,17 @@ On s'est consacré jusqu'à présent à l'étude de variables aléatoires indép
 ## Lois conditionnelles dans un couple
 
 Soient deux variables aléatoire $X$ et $Y$ définies sur le même espace probabilisé $(\Omega, \A, \P)$. Dans le cas où $X$ et $Y$ sont indépendantes, on a vu que pour tous boréliens $B_1$ et $B_2$ de $\B(\R)$, on a 
-$$\P(X\in B_1, Y\in B_2)= \P(X\in B_1)\P(Y\in B_2) = \P_X(B_1)\P_Y(B_2) = \int_{B_1}\P_Y(B_2)\P_X(dx),$$
+$$\P(X\in B_1, Y\in B_2)= \P(X\in B_1)\P(Y\in B_2) = \P_X(B_1)\P_Y(B_2) = \int_{B_1}\P_Y(B_2)d\P_X(x),$$
 où on a utilisé le [théorème de Fubini](Probabilité II.pdf #fubiniproba).
 
 Du fait de l'indépendance, on a aussi $\P_Y(B_2) = \P(Y\in B_2) = \P(Y \in B_2 | X \in B_1) = \P_Y(B_2|X \in B_1)$ ce qui exprime que pour tout borélien $B_1$, la loi conditionnelle de $Y$ sachant $X\in B_1$ est identique à la loi de $Y$.
 
 Lorsque $X$ et $Y$ en sont pas indépendantes, on va chercher à établir une égalité de la forme
-$$\P(X\in B_1, Y\in B_2) = \P_X(B_1)\P_Y(B_2 |X\in B_1) = \int_{B_1}\P_{Y|X=x}(B_2)\P_X(dx)$$
+$$\P(X\in B_1, Y\in B_2) = \P_X(B_1)\P_Y(B_2 |X\in B_1) = \int_{B_1}\P_{Y|X=x}(B_2)d\P_X(x)$$
 et s'intéresser à caractériser la *loi conditionnelle de $Y$ sachant $X=x$*, que l'on notera donc $\P_{Y|X=x}$.
 
 De même, pour toute application $g : \R^2 \to \R$ mesurable telle que $g(X,Y)$ admette une espérance (relativement à la loi du couple $\P_{X,Y}$), on voudrait écrire :
-$$\Esp(g(X,Y)) = \int_{\R} \left( \int_{\R} g(x,y) \P_{Y|X=x}(dy)\right) \P_X(dx)$$
+$$\Esp(g(X,Y)) = \int_{\R} \left( \int_{\R} g(x,y) d\P_{Y|X=x}(y)\right) d\P_X(x)$$
 
 Pour bien fixer les idées, on va décrire spécifiquement les cas où $X$ est discrète puis où le couple $(X,Y)$ admet une densité avant d'aborder le cas général.
 
@@ -92,7 +90,7 @@ On peut imposer que $\forall x \in X(\Omega)$ on ait $\P(X=x) > 0$, quitte à mo
 \begin{align*}
 \P(X \in B_1, Y \in B_2) &= \sum_{x \in X(\Omega)\cap B_1} \P(X=x, Y\in B_2)\\
                          &= \sum_{x \in X(\Omega)\cap B_1} \P(X=x) \P(Y \in B_2 | X=x)\\
-                         &= \int_{B_1} \P(Y \in B_2 | X=x) \P_X(dx)
+                         &= \int_{B_1} \P(Y \in B_2 | X=x) d\P_X(x)
 \end{align*}
 puisque $\P_X = \sum_{x \in X(\Omega)} \P(X=x)\delta_x$. On obtient ainsi l'écriture souhaitée en posant
 $$\P_{Y|X=x}(B_2) = \P(Y \in B_2 | X=x),\,\,\,\forall x \in X(\Omega), \forall B_2\in\B(\R).$$
@@ -100,7 +98,7 @@ $$\P_{Y|X=x}(B_2) = \P(Y \in B_2 | X=x),\,\,\,\forall x \in X(\Omega), \forall B
 ### Image de la probabilité conditionnelle {.remark}
 $\P_{Y|X=x}$ ainsi définie est simplement la probabilité sur $(\R,\B(\R))$ image par $Y$ de la probabilité conditionnelle $\P(\cdot|X=x)$ définie sur $(\Omega,\A)$, autrement dit, la **loi de $Y$ relative à $\P(\cdot|X=x)$** et non à $\P$.
 
-La formule ci-dessus s'écrit $\P_{X,Y}(B_1 \times B_2) = \int_{B_1} \P(Y \in B_2 | X=x) \P_X(dx)$, où $\P_{X,Y}$ est la loi du couple. Elle se généralise à tout borélien $B$ de $\R^2$ de la manière suivante :
+La formule ci-dessus s'écrit $\P_{X,Y}(B_1 \times B_2) = \int_{B_1} \P(Y \in B_2 | X=x) d\P_X(x)$, où $\P_{X,Y}$ est la loi du couple. Elle se généralise à tout borélien $B$ de $\R^2$ de la manière suivante :
 $$
 \begin{aligned}
 \P_{X,Y}(B) &= \P((X,Y)\in B) = \sum_{x \in X(\Omega)} \P(X=x, (x,Y) \in B) \\
@@ -110,10 +108,10 @@ $$
 $$
 où $B_x = \{y\in \R, (x,y) \in B\}$. Ainsi, pour tout $B$ borélien de $\R^2$,
 
-$$\Esp(1_B(X,Y)) = \int_{\R^2} 1_B(x,y)\P_{X,Y}(dx dy) = \int_\R \left(\int_\R 1_B(x,y) \P_{Y|X=x}(dy)\right)  \P_X(dx)$$
+$$\Esp(1_B(X,Y)) = \int_{\R^2} 1_B(x,y)d\P_{X,Y}(x y) = \int_\R \left(\int_\R 1_B(x,y) d\P_{Y|X=x}(y)\right)  d\P_X(x)$$
 
 Par linéarité de l'espérance, on peut ainsi exprimer l'espérance d'une fonction étagée. Pour avoir le résultat pour une fonction mesurable positive, on exprime celle-ci comme limite simple d'une suite croissante de fonctions étagées, et on applique le théorème de convergence monotone. Enfin, on applique cette construction à $g_+$ et $g_-$ pour une fonction $g$ de signe quelconque $\P_{X,Y}$-intégrable. En d'autres termes, on reprend le procédé de construction de l'intégrale de Lebesgue. On obtient ainsi la formule souhaitée :
-$$\Esp(g(X,Y)) = \int_{\R} \left( \int_{\R} g(x,y) \P_{Y|X=x}(dy)\right) \P_X(dx).$$
+$$\Esp(g(X,Y)) = \int_{\R} \left( \int_{\R} g(x,y) d\P_{Y|X=x}(y)\right) d\P_X(x).$$
 
 ### Pour fixer les idées (1) {.example #ex1}
 
@@ -193,9 +191,9 @@ On peut établir le résultat suivant, qui complète le [théorème de Fubini](P
 
 ### Fubini conditionnel {.theorem #fubinicond}
 Soit un couple $(X,Y)$ de variables aléatoires réelles de loi jointe $\P_{X,Y}$, il existe une famille $\left(\P_{Y|X=x}\right)_{x\in\R}$ de probabilités sur $(\R,\B(\R))$, unique à une égalité $\P_X$-presque partout près[^footequi], qui vérifie pour tous $B_1, B_2$ boréliens de $\R$ :
-$$ \P_{X,Y}(B_1 \times B_2) = \int_{B_1} \left( \int_{B_2} \P_{Y|X=x}(dy) \right) \P_X(dx).$$
+$$ \P_{X,Y}(B_1 \times B_2) = \int_{B_1} \left( \int_{B_2} d\P_{Y|X=x}(y) \right) d\P_X(x).$$
 Ces probabilités sont appelées *lois conditionnelles* de $Y$ sachant $X =x$. On a de plus pour toute application $g : \R^2 \to \R$ telle que $g(X,Y)$ admette une espérance :
-$$\Esp(g(X,Y)) = \int_\R \left( \int_\R g(x,y)\P_{Y|X=x}(dy) \right) \P_X(dx).$$ 
+$$\Esp(g(X,Y)) = \int_\R \left( \int_\R g(x,y)d\P_{Y|X=x}(y) \right) d\P_X(x).$$ 
 
 [^footequi]: c'est-à-dire qu'on peut définir ces probabilités de la manière qu'on souhaite pour les boréliens $B$ tels que $\P_X(B)=0$.
 
@@ -203,7 +201,7 @@ $$\Esp(g(X,Y)) = \int_\R \left( \int_\R g(x,y)\P_{Y|X=x}(dy) \right) \P_X(dx).$$
 
 * Ce résultat peut être interprété comme un **théorème de Fubini conditionnel**, dans le sens où il permet une intégration séquentielle, mais ici la mesure de probabilité du couple $(X,Y)$ s'exprime comme un produit de mesures dont l'un des termes dépend de la variable d'intégration de l'autre. En particulier, si on change l'ordre d'intégration, on change les mesures qui interviennent.
 * Fréquemment, dans les applications, la famille des lois conditionnelles est une donnée du modèle considéré, et leur existence ne pose donc pas de problème !
-* On retrouve les cas vus précédemment en notant que pour tout borélien $B_1$ de $\R$ on a $\P_X(B_1) = \int_{B_1}\P_X(dx) = \sum_{x \in B_1} \P(X=x)$ lorsque $X$ est discrète, et que pour tous boréliens $B_1$ et $B_2$ de $\R$ on a $\P_X(B_1) = \int_{B_1} f_X(x)dx$ et $\P_{X,Y}(B_1 \times B_2) = \int_{B_1 \times B_2}f_{X,Y}(x,y) dx dy$.
+* On retrouve les cas vus précédemment en notant que pour tout borélien $B_1$ de $\R$ on a $\P_X(B_1) = \int_{B_1}d\P_X(x) = \sum_{x \in B_1} \P(X=x)$ lorsque $X$ est discrète, et que pour tous boréliens $B_1$ et $B_2$ de $\R$ on a $\P_X(B_1) = \int_{B_1} f_X(x)dx$ et $\P_{X,Y}(B_1 \times B_2) = \int_{B_1 \times B_2}f_{X,Y}(x,y) dx dy$.
 * Dans tout ce qui précède, les rôles de $X$ et $Y$ peuvent évidemment être inversés. 
 
 ## Conséquences
@@ -212,7 +210,7 @@ Le [théorème précédent](#fubinicond) a deux conséquences majeures. Il fourn
 ### Formule de balayage conditionnel {.proposition #balcond}
 
 * La loi marginale $\P_Y$ de $Y$ s’exprime comme la moyenne des lois conditionnelles $\P_{Y|X=x}$ pondérée par la loi de $X$. Pour tout $B$ borélien de $\R$
-$$\P_Y(B) = \int_\R \left( \int_{B} \P_{Y|X=x}(dy) \right) \P_X(dx) = \int_\R \P_{Y|X=x}(B) \P_X(dx)$$
+$$\P_Y(B) = \int_\R \left( \int_{B} d\P_{Y|X=x}(y) \right) d\P_X(x) = \int_\R \P_{Y|X=x}(B) d\P_X(x)$$
 * Dans le cas où $X$ est discrète (à valeurs dans $I$ dénombrable), on retrouve une expression de la formule des probabilités totales et composées :
 $$\P_Y(B) = \P(Y\in B) = \sum_{x \in I} \P(Y \in B | X = x)\P(X=x)$$
 * Dans le cas où le couple $(X,Y)$ admet une densité, puisqu'on a $f_{X,Y}(x,y) = f_{Y | X=x}(y)f_X(x)$, on obtient l'expression suivante pour la densité marginale :
@@ -235,8 +233,8 @@ de sorte que $Y$ suit une loi exponentielle de paramètre $(1-\alpha)$.
 En inversant les rôles, on va pouvoir identifier la loi de $X$ sachant $Y \in B$ en notant que
 \begin{align*}
 \P_{X,Y}(\{n\} \times B) &= \P_X(\{n\})\P_{Y|X=n}(B) \\
-                         &= \int_B \frac{(\alpha t)^n}{n!} e^{-\alpha t} \P_Y(dt)\\
-                         &= \int_B \P_{X | Y =t}(\{n\}) \P_Y(dt)
+                         &= \int_B \frac{(\alpha t)^n}{n!} e^{-\alpha t} d\P_Y(t)\\
+                         &= \int_B \P_{X | Y =t}(\{n\}) d\P_Y(t)
 \end{align*}
 où l'on reconnaît que $\P_{X =n | Y =t}(\{n\}) = \frac{(\alpha t)^n}{n!} e^{-\alpha t}$, c'est-à-dire que $X$ sachant $Y = t$ suit une loi de Poisson de paramètre $\alpha t$ pour $\P_Y$-presque tout $t$.
 
@@ -251,9 +249,9 @@ En utilisant, le [théorème de Fubini conditionnel](#fubinicond), on obtient é
 
 ### Démonstration {.proof}
 
-1. Si $X$ et $Y$ sont indépendantes, pour tous $B_1$, $B_2$ boréliens de $\R$, $\P_{X,Y} (B_1 \times B_2) = \P_X(B_1)\P_Y(B_2) = \int_{B_1}\P_Y(B_2)\P_X(dx) = \int_{B_2}\P_X(B_1) \P_Y(dy)$. Le résultat d'unicité du [théorème de Fubini conditionnel](#fubinicond) (à une égalité $\P_X$-presque sûre près), nous indique alors que $\P_{Y|X=x}(B_2) = \P_Y(B_2)$.
+1. Si $X$ et $Y$ sont indépendantes, pour tous $B_1$, $B_2$ boréliens de $\R$, $\P_{X,Y} (B_1 \times B_2) = \P_X(B_1)\P_Y(B_2) = \int_{B_1}\P_Y(B_2)d\P_X(x) = \int_{B_2}\P_X(B_1) d\P_Y(y)$. Le résultat d'unicité du [théorème de Fubini conditionnel](#fubinicond) (à une égalité $\P_X$-presque sûre près), nous indique alors que $\P_{Y|X=x}(B_2) = \P_Y(B_2)$.
 
-   Inversement, si $\P_{Y |X = x} = \P_Y$, alors $\P_{X,Y} (B_1 \times B_2) = \int_{B_1}\P_{Y|X=x}(B_2)\P_X(dx) = \int_{B_1}\P_Y(B_2)\P_X(dx) = \P_X(B_1)\P_Y(B_2)$.
+   Inversement, si $\P_{Y |X = x} = \P_Y$, alors $\P_{X,Y} (B_1 \times B_2) = \int_{B_1}\P_{Y|X=x}(B_2)d\P_X(x) = \int_{B_1}\P_Y(B_2)d\P_X(x) = \P_X(B_1)\P_Y(B_2)$.
 
 2. Si $X$ et $Y$ sont indépendantes, $f_{X,Y} (x,y) = f_X(x) f_Y(y)$, d'où $f_{Y|X=x}(y) = f_Y(y)$.
 
@@ -267,7 +265,7 @@ Puisque $\P_{Y|X=x}$ est la loi d'une variable aléatoire, on peut définir l'es
 Soit $Y \in \L^1$.
 
  1. L'*espérance conditionnelle de $Y$ sachant $\{X=x\}$* est définie par 
-    $$\Esp(Y|X=x) = \int_\R y \P_{Y|X=x} (dy).$$
+    $$\Esp(Y|X=x) = \int_\R y d\P_{Y|X=x} (y).$$
  2. L'*espérance conditionnelle de $Y$ sachant $X$* est la **variable aléatoire** définie par :
     $$\Esp(Y|X) = \psi(X), \text{ avec } \psi(x) = \Esp(Y|X=x).$$
 
@@ -293,7 +291,7 @@ On peut étendre cette définition aux variables de la forme $g(X,Y)$.
 Soit $(X,Y)$ un couple de variables aléatoires réelles et $g$ une fonction mesurable positive ou $\P_{X,Y}$-intégrable sur $\R^2$.
 
  1. L'*espérance conditionnelle de $g(X,Y)$ sachant $\{X=x\}$* est définie par 
-    $$\Esp(g(X,Y)|X=x) = \int_\R g(x,y) \P_{Y|X=x} (dy).$$
+    $$\Esp(g(X,Y)|X=x) = \int_\R g(x,y) d\P_{Y|X=x} (y).$$
  2. L'*espérance conditionnelle de $g(X,Y)$ sachant $X$* est la **variable aléatoire** définie par :
     $$\Esp(g(X,Y)|X) = \psi(X), \text{ avec } \psi(x) = \Esp(g(X,Y)|X=x).$$
 
@@ -306,7 +304,7 @@ C'est une conséquence directe du [théorème de Fubini conditionnel](#fubinicon
 
 ### {.anonyomous}
 Ce résultat permet de calculer $\Esp( Y )$ en conditionnant par une variable auxiliaire $X$ :
-$$\Esp( Y ) = \int_\R \Esp(Y | X = x) \P_X(dx)$$
+$$\Esp( Y ) = \int_\R \Esp(Y | X = x) d\P_X(x)$$
 
 Il généralise la [formule des probabilités totales](Probabilité I.pdf #formprobatot), qui correspond ici à $Y = 1_A$ , et $B_x = \{X = x\}$ où les $B_x$ forment cette fois une partition non dénombrable de $\R$. On l’écrit souvent sous la forme
 $$ \Esp \left( \Esp(Y | X) \right) = \Esp( Y )$$
@@ -326,9 +324,9 @@ est une généralisation de l’égalité 1. ci-dessus, au cas où $a = g(X)$, q
 
 ### Transfert conditionnel {.proposition #transfcond}
 Soient un couple $(X,Y)$ de variables aléatoires réelles de loi jointe $\P_{X,Y}$ et $g$ une fonction mesurable positive ou $\P_{X,Y}$-intégrable sur $\R^2$. On a pour $\P_X$-presque tout $x$ dans $\R$
-$$\Esp(g(X,Y)|X=x) = \Esp(g(x,Y)|X=x) = \int_{\R}g(x,y) \P_{Y|X=x} (dy)$$
+$$\Esp(g(X,Y)|X=x) = \Esp(g(x,Y)|X=x) = \int_{\R}g(x,y) d\P_{Y|X=x} (y)$$
 Si de plus $X$ et $Y$ sont indépendantes, on a :
-$$\Esp(g(X,Y)|X=x) = \Esp(g(x,Y)|X=x) = \int_{\R}g(x,y) \P_Y(dy).$$
+$$\Esp(g(X,Y)|X=x) = \Esp(g(x,Y)|X=x) = \int_{\R}g(x,y) d\P_Y(y).$$
 
 Autrement dit, lorsqu'on conditionne par l'événement $\{X=x\}$, cela revient à fixer la valeur de la variable aléatoire $X$ à la constante $x$.
 
@@ -402,12 +400,12 @@ On va montrer dans cette section que le prédicteur optimal $f^*(X)$ de $Y$, au 
 
 Pour commencer, revenons à la définition même des variables aléatoires. Soit $(\Omega, \mathcal{A},\P)$  un espace probabilisé (et donc mesuré). On rappelle que par définition, une variable aléatoire $Y$ sur cet espace n'est autre qu'une fonction $\mathcal{A}$-mesurable $Y : \Omega \rightarrow \R$. Adoptant ce point de vue, on considère alors l'espace fonctionnel  $L^2(\Omega)$ introduit dans le cours de calcul intégral. Pour rappel, cet espace contient l'ensemble des fonctions $\mathcal{A}$-mesurables (i.e. des variables aléatoires) $Y$ telles que $\vert Y\vert^2$ soit integrable c'est-à-dire telles que
 $$
-\Vert Y\Vert_2 = \bigg(\int_{\Omega} \vert Y(\omega)\vert^2 \P(d\omega)\bigg)^{1/2}=\mathbb{E}(Y^2)^{1/2} < \infty.
+\Vert Y\Vert_2 = \bigg(\int_{\Omega} \vert Y(\omega)\vert^2 d\P(\omega)\bigg)^{1/2}=\mathbb{E}(Y^2)^{1/2} < \infty.
 $$
 En particulier, contrairement à l'espace $\mathcal{L}^2$ introduit au chapitre précédent, dans l'espace $L^2(\Omega)$ les fonctions égales $\P$-presque-partout sont confondues. C'est-à-dire que deux fonctions $X$ et $Y$ égales $\P$-presque-partout correspondent à un même élément de $L^2(\Omega)$ appelé classe d'équivalence. Ainsi, pour $X, Y \in L^2(\Omega)$, l'égalité $X=Y$ signifiera donc que $X$ et $Y$ sont dans la même classe d'équivalence, soit, en termes probabilistes, que les variables $X$ et $Y$ sont égales presque-sûrement.  
 
 On a vu dans le cours de calcul intégral que l'espace $L^2(\Omega)$, muni de la norme $\Vert \cdot\Vert_2$, était un espace de Banach, c'est-à-dire un espace vectoriel normé et complet pour cette norme. Montrons que de plus, $L^2(\Omega)$ peut être considéré comme un espace de Hilbert, c'est-à-dire un espace vectoriel muni d'un produit scalaire et complet pour la norme associée à ce produit scalaire. Considérons à cet effet l'application bilinéaire $\langle \cdot \vert \cdot\rangle$ définie par
-$$\langle X \vert Y\rangle = \int_{\Omega} X(\omega) Y(\omega) \P(d\omega) = \Esp(XY), \quad X,Y\in L^2(\Omega).$$
+$$\langle X \vert Y\rangle = \int_{\Omega} X(\omega) Y(\omega) d\P(\omega) = \Esp(XY), \quad X,Y\in L^2(\Omega).$$
 L'application $\langle \cdot \vert \cdot\rangle$  est bien définie puisque, d'après l'inégalité de Cauchy-Schwartz, on a pour tous $X,Y\in L^2(\Omega)$:
 $$\langle X \vert Y\rangle^2=\Esp(XY)^2 \leq \Esp(X^2)\Esp(Y^2)=\Vert X\Vert_2^2\Vert Y\Vert_2^2<\infty.$$
 De plus, l'application $\langle \cdot \vert \cdot\rangle$ définit un produit scalaire sur $L^2(\Omega)$ car elle vérifie les propriétés suivantes pour tous  $X,Y\in L^2(\Omega)$:
@@ -737,7 +735,7 @@ On considère dans tout cet exercice $B_1$ et $B_2$ des Boréliens.
 
 D'après les hypothèses on a
 \begin{align*}
-\P_{X,Y}(B_1\times B_2) &= \int_{B_2} \left(\int_{B_1} \P_{X\mid Y = y}(dx) \right) \P_Y(dy) \hspace{1em}\text{par Fubini conditionnel,}\\
+\P_{X,Y}(B_1\times B_2) &= \int_{B_2} \left(\int_{B_1} d\P_{X\mid Y = y}(x) \right) d\P_Y(y) \hspace{1em}\text{par Fubini conditionnel,}\\
 &= \int_{B_2} \left(\int_{B_1} y\,e^{-y x}\,1_{\R_+^\ast}(x)\,dx \right) \lambda\,e^{-\lambda y}\,1_{\R_+^\ast}(y)\,dy\\
 &= \int_{B_1} \int_{B_2} \lambda\, y\,e^{-(x+\lambda)\,y}1_{\R_+^\ast}(x)\,1_{\R_+^\ast}(y) \,dy\, dx \hspace{1em}\text{par Fubini.}
 \end{align*}
@@ -761,7 +759,7 @@ Comme $\Gamma(2) = 1$, on reconnaît ici la densité d'une loi Gamma d'indice $2
 
 D'après les hypothèses, en procédant comme précédemment, on a
 \begin{align*}
-\P_{X,Y}(B_1\times B_2) &= \int_{B_2} \left(\int_{B_1} \P_{X\mid Y = y}(dx) \right) \P_Y(dy)\\
+\P_{X,Y}(B_1\times B_2) &= \int_{B_2} \left(\int_{B_1} d\P_{X\mid Y = y}(x) \right) d\P_Y(y)\\
 &= \int_{B_2} \left(\sum_{x\in B_1} \dfrac{y^{x}}{x!}\,e^{-y}\,1_{\N}(x) \right) \dfrac{\theta^{\alpha}}{\Gamma(\alpha)}\,y^{\alpha-1}e^{-\theta y}\,1_{\R_+}(y)\,dy\\
 &= \sum_{x\in B_1\cap\N} \left(\dfrac{1}{x!} \int_{B_2\cap\R_+} \dfrac{\theta^{\alpha}}{\Gamma(\alpha)}\,y^{x+\alpha-1}e^{-(\theta+1) y}\,dy\right)\\
 &= \sum_{x\in B_1\cap\N} \biggl(\dfrac{\Gamma(x+\alpha)\,\theta^\alpha}{x!\,\Gamma(\alpha)\,(\theta+1)^{x+\alpha}}\\
@@ -793,7 +791,7 @@ C'était prévisible : en posant arbitrairement $T_0 = 0$, le temps d'attente mo
 Soit $n\in\N^\ast$. Quels que soient $x\in\R$ et $B$ borélien on a
 \begin{align*}
 \P_{Y_n \mid X_n = x}(B) &= \Esp\left(1_B(X_n+\epsilon_n) \mid X_n = x \right)\\
-&= \int_\R 1_B(x+y)\,\P_{\epsilon_n\mid X_n = x}(dy)\\
+&= \int_\R 1_B(x+y)\,d\P_{\epsilon_n\mid X_n = x}(y)\\
 & = \int_\R 1_B(x+y)\,f_\epsilon(y)\,dy \hspace{1em}\text{par indépendance de $X_n$ et $\epsilon_n$}\\
 &= \int_B f_\epsilon(y-x)\,dy.
 \end{align*}
@@ -804,8 +802,8 @@ Soient $n\in\N^\ast$, $(x_1,\dots,x_n)\in\R^n$ et $B_1,\dots,B_n$ des boréliens
 \begin{align*}
 &\P_{Y_{1:n}\mid X_{1:n}=x_{1:n}}(B_1\times\dots\times B_n)
 =\Esp\left(\prod_{i = 1}^n 1_{B_i}(X_i + \epsilon_i) \Bigm\vert X_{1:n} = x_{1:n} \right)\\
-&= \int_{\R^n} \prod_{i = 1}^n 1_{B_i}(x_i + y_i)\,\P_{\epsilon_{1:n}\mid X_{1:n} = x_{1:n}}(dy_{1:n})\\
-&= \int_{\R^n} \prod_{i = 1}^n 1_{B_i}(x_i + y_i)\,\P_{\epsilon_{1:n}}(dy_{1:n}) \ \text{par indépendance des $\epsilon_i$ et $X_j$,}\\
+&= \int_{\R^n} \prod_{i = 1}^n 1_{B_i}(x_i + y_i)\,d\P_{\epsilon_{1:n}\mid X_{1:n} = x_{1:n}}(y_{1:n})\\
+&= \int_{\R^n} \prod_{i = 1}^n 1_{B_i}(x_i + y_i)\,d\P_{\epsilon_{1:n}}(y_{1:n}) \ \text{par indépendance des $\epsilon_i$ et $X_j$,}\\
 &= \prod_{i = 1}^n \int_{\R} 1_{B_i}(x_i + y_i)\,f_\epsilon(x_i)\,dy_{i} \ \text{par Fubini et indépendance et même loi des $\epsilon_i$,}\\
 &= \prod_{i = 1}^n \int_{\R} 1_{B_i}(y_i)\,f_\epsilon(y_i - x_i)\,dy_i\\
 & = \prod_{i = 1}^n \int_{\R} 1_{B_i}(y_i)\,f_{Y_i\mid X_i = x_i}(y_i)\,dy_i\ \text{par la question 1,}\\
