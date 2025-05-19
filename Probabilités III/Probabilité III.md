@@ -604,6 +604,23 @@ $$\cov(X,Y \mid Z) = \Esp\Bigl( \bigl( X - \Esp(X\mid Z) \bigr)\bigl( Y - \Esp(Y
 
 Etablir la formule de la covariance totale : $$\cov(X,Y) = \Esp\bigl(\cov(X,Y\mid Z)\bigr) + \cov\bigl( \Esp(X\mid Z), \Esp(Y\mid Z) \bigr).$$
 
+## Débruitage (formule de Tweedie)
+
+Les photographies sont souvent entâchées d'un bruit qui dégrade leur qualité, notamment lorsque la lumière est faible. Pour améliorer le rendu, des algorithmes de débruitage sont mis en oeuvre. Dans cet exercice, on se propose de donner un éclairage probabiliste sur ce problème.
+
+On considère que l'image d'intérêt $X$ est un vecteur aléatoire de $\R^d$ de densité $f_X$ (quitte à réarranger les pixels et les canaux RGB) et que le bruit $Z$ est de densité $f_Z$, gaussienne, centrée, de covariance $\Sigma$. L'image bruitée peut donc être représentée par $Y = X + Z$.
+
+### Question 1 {.question #tweedie1}
+Exprimer la densité $f_Y$ de $Y$ en fonction de $f_X$ et $f_Z$.
+
+### Question 2 {.question #tweedie2}
+Calculer le gradient de $\log f_Y$, que l'on appelle aussi le score de la loi de $Y$.
+
+### Question 3 {.question #tweedie3}
+En déduire une expression de $\Esp(X|Y)$ ne faisant pas intervenir la densité $f_X$. Cette propriété est particulièrement intéressante en pratique puisque pour ce type de problèmes, on ne dispose généralement que d'obervations bruitées qui vont nous permettre d'approximer les quantités nécessaires pour effectuer ce calcul selon une approche statistique. Elle est par ailleurs au coeur des algorithmes modernes de génération d'image.
+
+
+
 ## Non-réponse 
 *Inspiré du cours de probabilité de M. Christine (ENSAE ParisTech).*
 
@@ -830,6 +847,34 @@ En utilisant la formule de l'espérance totale et la linéarité de l'espérance
 &\ \ \  + \Esp\bigl( \Esp(X\mid Z)\Esp(Y\mid Z) \bigr) - \Esp\bigl( \Esp(X \mid Z) \bigr)\Esp\bigl( \Esp(Y \mid Z) \bigr)\\
 &= \Esp\bigl(\cov(X,Y\mid Z)\bigr) + \cov\bigl( \Esp(X\mid Z), \Esp(Y\mid Z) \bigr).
 \end{align*}
+
+
+## Débruitage (formule de Tweedie)
+
+### Question 1 {.answer #answer-tweedie1}
+$f_Y(y) = \int_{\R^d} f_{X,Y}(x,y) dx = \int_{\R^d} f_{Y|X=x}(y) f_X(x) dx = \int_{\R^d} f_Z(y-x) f_X(x) dx$
+où $f_Z(y-x) = f_{Y|X=x}(y) = (2 \pi)^{-d/2} (\det \Sigma)^{1/2}\exp\left(-\frac12 (y-x)^t\Sigma^{-1}(y-x)\right)$. On notera que l'on retrouve le produit de convolution de $f_X$ et $f_Z$ comme densité de $X+Z$.
+
+### Question 2 {.answer #answer-tweedie2}
+On remarque d'abord que $\nabla \log f_Y = \frac{\nabla f_Y}{f_Y}$. Ensuite, par application du résultat de l'exercice B.8.5 du poly de maths 1 (intégrales à paramètres) dont on vérifie aisément les hypothèses, on a 
+$$\nabla f_Y(y) = \int_{\R^d} \nabla f_{Y|X=x}(y) f_X(x) dx$$
+et
+\begin{align*}
+\nabla f_{Y|X=x}(y) &= (2 \pi)^{-d/2} (\det \Sigma)^{1/2}\exp\left(-\frac12 (y-x)^t\Sigma^{-1}(y-x)\right) \Sigma^{-1}(x-y)\\
+&= f_{Y|X=x}(y) \Sigma^{-1}(x-y)
+\end{align*}
+Finalement,
+$$\nabla \log f_Y(y) = \frac{\int_{\R^d} f_{Y|X=x}(y) \Sigma^{-1}(x-y) f_X(x) dx}{f_Y(y)}$$
+
+### Question 3 {.answer #answer-tweedie3}
+En utilisant l'égalité $f_{X,Y}(x,y) = f_{Y|X=x}f_X(x) = f_{X|Y=y}(x)f_Y(y)$, on obtient
+\begin{align*}
+\nabla \log f_Y(y) &= \frac{\int_{\R^d} f_{Y|X=x}(y) \Sigma^{-1}(x-y) f_X(x) dx}{f_Y(y)}\\
+&= \int_{\R^d} f_{X|Y=y}(x) \Sigma^{-1}(x-y) dx \\
+& = \Sigma^{-1}\left(\int_{\R^d} x f_{X|Y=y}(x) dx -y \right)
+\end{align*}
+d'où $\Esp(X|Y=y) = y + \Sigma\nabla\log f_Y(y)$.
+
 
 ## Non-réponse 
 
