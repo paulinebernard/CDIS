@@ -15,14 +15,14 @@ Mines Paris - PSL, cycle ingénieur civil, unité d'enseignement Mathématiques 
 | Poly complet MàJ 07/09/25 |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25Poly.pdf) |  |  |
 | Fondamentaux & Compléments |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25Fonda.pdf) |  |  |
 | Développements |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25Devs.pdf) |  |  |
-|  I Topologie | 1 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25Topo.pdf) |  | |
+|  I Topologie | 1 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25Topo.pdf) |  | -- |
 | --  | 2 |  | --  | | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25TD2.pdf) |
-| II Mesure-integration-espaces fonctionnels | 3 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24Chap2.pdf) |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24TD3.pdf)  |
-| --  | 4 |   | -- |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24TD4.pdf)  |
+| II Mesure-integration-espaces fonctionnels | 3 |   | -- |  | Q3 |
+| --  | 4 |   | -- |  | Q4  |
 |  |  |   |  |  |  |
-| III Espaces de Hilbert | 5 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24Chap3Hilbert.pdf) |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24TD5.pdf)  |
-| V Calcul Différentiel | 6 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24Chap5CD.pdf) |  |  [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24TD6.pdf) |
-| -- | 7 |   | -- |  |  [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24TD5.pdf) |
+| III Espaces de Hilbert | 5 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24Chap3Hilbert.pdf) |  | Q5 |
+| V Calcul Différentiel | 6 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24Chap5CD.pdf) |  | Q6|
+| -- | 7 |   | -- |  |  Q7|
 | IV Analyse fonctionnelle (hors programme exam) | 8 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24Chap4AF.pdf) |  |  |
 |  |  |   |  |  |  |
 |  |  |   |  |  |  |
