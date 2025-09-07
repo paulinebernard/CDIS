@@ -20,8 +20,8 @@ Mines Paris - PSL, cycle ingénieur civil, unité d'enseignement Mathématiques 
 | II Mesure-integration-espaces fonctionnels | 3 |   | -- |  | Q3 |
 | --  | 4 |   | -- |  | Q4  |
 |  |  |   |  |  |  |
-| III Espaces de Hilbert | 5 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24Chap3Hilbert.pdf) |  | Q5 |
-| V Calcul Différentiel | 6 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24Chap5CD.pdf) |  | Q6|
+| III Espaces de Hilbert | 5 |   | -- |  | Q5 |
+| V Calcul Différentiel | 6 |   | -- |  | Q6|
 | -- | 7 |   | -- |  |  Q7|
 | IV Analyse fonctionnelle (hors programme exam) | 8 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24Chap4AF.pdf) |  |  |
 |  |  |   |  |  |  |
