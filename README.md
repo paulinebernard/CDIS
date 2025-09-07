@@ -15,8 +15,8 @@ Mines Paris - PSL, cycle ingénieur civil, unité d'enseignement Mathématiques 
 | Poly complet MàJ 07/09/25 |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25Poly.pdf) |  |  |
 | Fondamentaux & Compléments |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24FondaComps.pdf) |  |  |
 | Développements |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25Devs.pdf) |  |  |
-|  I Topologie | 1 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25Topo.pdf) |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24TD0Corr.pdf) |
-| --  | 2 |  | --  | | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24TD2.pdf) |
+|  I Topologie | 1 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25Topo.pdf) |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25TD0Corr.pdf) |
+| --  | 2 |  | --  | | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25TD2.pdf) |
 | II Mesure-integration-espaces fonctionnels | 3 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24Chap2.pdf) |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24TD3.pdf)  |
 | --  | 4 |   | -- |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24TD4.pdf)  |
 |  |  |   |  |  |  |
