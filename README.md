@@ -15,10 +15,10 @@ Mines Paris - PSL, cycle ingénieur civil, unité d'enseignement Mathématiques 
 | Topo mise à niveau |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25TD0corr.pdf) |  |  |
 | Fondamentaux & Compléments |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25Fonda.pdf) |  |  |
 | Développements |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25Devs.pdf) |  |  |
-|  I Topologie | 1 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25Topo.pdf) |  | -- |
-| --  | 2 |  | --  | | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25TD2.pdf) |
-| II Mesure-integration-espaces fonctionnels | 3 |   | -- |  | Q3 |
-| --  | 4 |   | -- |  | Q4  |
+|  I Topologie | 1 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25Topo.pdf) |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TD1Quizz.pdf)  |
+| --  | 2 |  | --  | | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TD2Quizz.pdf) |
+| II Mesure-integration-espaces fonctionnels | 3 |   | -- |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TD3Quizz.pdf) |
+| --  | 4 |   | -- |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TD4Quizz.pdf)  |
 |  |  |   |  |  |  |
 | III Espaces de Hilbert | 5 |   | -- |  | Q5 |
 | V Calcul Différentiel | 6 |   | -- |  | Q6|
