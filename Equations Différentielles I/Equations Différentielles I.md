@@ -995,13 +995,13 @@ $$
 où $g$ est la pesanteur.
 
 ### Question 1 {.question #tor-1}
-Etant donné un temps initial $t_0$ et une hauteur initiale $x_0\geq 0$, justifier sans calcul que le problème de Cauchy associé admet des solutions et que les solutions maximales sont définies sur $\R$. Pour quelles valeurs de $x_0$ pouvons-nous dire qu'elles sont uniques ?
+Etant donné un temps initial $t_0$ et une hauteur initiale $x_0\geq 0$, justifier sans calcul que le problème de Cauchy associé admet des solutions et que les solutions maximales sont définies sur $\R$. Que pouvons-nous dire a priori sur l'unicité des solutions maximales ?
 
 ### Question 2 {.question #tor-2}
-Pour $(t_0,x_0)\in \R\times \R_{\geq0}$, résoudre le problème de Cauchy associé en se restreignant aux solutions $x(t)\geq 0$.
+Pour $(t_0,x_0)\in \R\times \R_{\geq0}$, résoudre le problème de Cauchy associé.
 
 ### Question 3 {.question #tor-3} 
-Comment pourrait s'interpréter physiquement la multitude de solutions trouvées ?
+On qualifie la solution de "physique" si elle reste dans $\R_{\geq0}$. Commenter l'unicité de la solution physique en fonction de $x_0$. Comment pourrait s'interpréter physiquement la multitude de solutions trouvées ?
 
 ### Question 4 {.question #tor-4}
 Les solutions sont-elles continues par rapport aux conditions initiales au sens du [théorème de régularité des solutions](#theo_reg_CI) donné plus haut ? Pourquoi ?
@@ -1457,18 +1457,19 @@ $V$ est donc une fonction de Lyapunov et on a bien la stabilité asymptotique lo
 ## Ecoulement dans un réservoir {.correction #correc_Torricelli}
 
 ### Question 1 {.answer #answer-tor-1}
-$f:(t,x)\mapsto -k\sqrt{|x|}$ est continue sur $\R\times \R$ donc le théorème de Peano nous garantie l'existence de solutions au problème de Cauchy pour toute condition initiale. 
+$f:(t,x)\mapsto -k\sqrt{|x|}$ est continue sur $\R\times \R$ donc le théorème de Peano nous garantie l'existence de solutions au problème de Cauchy dans $\R$ pour toute condition initiale. 
 
-De plus, $\sqrt{|x|}\leq 1+|x|$ pour tout $x\in \R$ donc $f$ est linéairement bornée et toute solution maximale est globale, donc ici définie sur $\R$. 
+De plus, $\sqrt{|x|}\leq 1+|x|$ pour tout $x\in \R$ donc $f$ est bornée de manière affine et toute solution maximale (dans $\R$) est définie sur $\R$. 
 
-Enfin, $f$ est continûment différentiable sur $\R\times (\R\setminus \{0\})$ donc lorsque $x_0\neq 0$, il existe une unique solution maximale dans $\R\setminus \{0\}$ d'après le théorème de Cauchy-Lipschitz. Lorsque $x_0=0$ par contre, $f$ n'est pas différentiable en 0 (ni même lipschitzienne) donc le théorème de Cauchy-Lipschitz ne s'applique pas.
+Enfin, $f$ est continûment différentiable sur $\R\times (\R\setminus \{0\})$ donc lorsque $x_0\neq 0$, il existe une unique solution maximale dans $\R\setminus \{0\}$ d'après le théorème de Cauchy-Lipschitz (appliqué ici sur l'ouvert $X=\R\setminus \{0\}$). Autrement dit, la solution est unique tant qu'elle reste dans $\R\setminus \{0\}$. Par contre, $f$ n'est pas différentiable en 0 (ni même lipschitzienne) donc le théorème de Cauchy-Lipschitz ne s'applique pas sur $X=\R$ : on ne peut plus garantir l'unicité à partir du moment où la solution maximale passe par 0. 
 
 ### Question 2 {.answer #answer-tor-2}
 Soit d'abord $x_0>0$. Tant que $x(t)>0$, on a
 $$
 \dot{x}=-k\sqrt{|x|} \quad \Leftrightarrow \quad \frac{\dot{x}}{\sqrt{x}}=-k  \quad \Leftrightarrow \quad x(t) = \left(\sqrt{x_0}-\frac{k}{2}(t-t_0)\right)^2
 $$
-Donc tant que $x(t)>0$, la solution est unique (comme prévu dans la question précédente) et par continuité, elle atteint 0 en $t=t_0+2\sqrt{x_0}/k$. A partir de là, vu que $\dot{x}\leq 0$, la seule solution possible qui reste positive est la solution constamment égale à 0 : le réservoir est vide et le reste. Donc pour $(t_0,x_0)$ avec $x_0>0$, il existe une unique solution maximale positive au problème de Cauchy définie par
+Donc tant que $x(t)>0$, la solution est unique (comme prévu dans la question précédente) et par continuité, elle atteint 0 en $t_1=t_0+2\sqrt{x_0}/k$. 
+<!--A partir de là, vu que $\dot{x}\leq 0$, la seule solution possible qui reste positive est la solution constamment égale à 0 : le réservoir est vide et le reste. Donc pour $(t_0,x_0)$ avec $x_0>0$, il existe une unique solution maximale positive au problème de Cauchy définie par
 $$
 x(t)= 
 \left\{
@@ -1478,38 +1479,44 @@ x(t)=
 \end{array}
 \right.
 $$
-
-Maintenant si $x_0=0$.  Pour $t\geq t_0$, la seule possibilité est de rester à 0. En temps rétrograde, soit $x$ reste à 0 soit il existe $t_1 < t_0$ tel que $x(t_1)>0$. Alors la solution correspondante est unique et donnée par la formule ci-dessus en remplaçant $(t_0,x_0)$ par $(t_1,x(t_1))$. Après réécriture, les solutions maximales s'écrivent en fait
+-->
+A partir de là, une solution est de rester constamment égal à 0. Sinon, considérons $t_2$ l'infimum des temps supérieurs à $t_1$ tels que $x(t)$ est non nul. Alors vu que $\dot{x}\leq 0$, on a $x(t)< 0$ pour tout $t\in ]t_2,+\infty[$. Sur cet intervalle,
+$$
+\dot{x}=-k\sqrt{|x|} \quad \Leftrightarrow \quad \frac{\dot{x}}{\sqrt{-x}}=-k  \quad \Leftrightarrow \quad x(t) = -\left(\frac{k}{2}(t-t_2)\right)^2
+$$
+On voit alors que toutes les fonctions de ce type avec $t_2\geq t_1$ arbitraire sont solutions. Pour $x_0>0$, l'ensemble des solutions est donc l'ensemble des fonctions définies par
 $$
 x(t)= 
 \left\{
 \begin{array}{ll}
-\frac{k^2}{4}(t-t^-)^2 & \forall t\in ]-\infty,t^-] \\
-0 & \forall t\in [t^-,+\infty[
+\left(\sqrt{x_0}-\frac{k}{2}(t-t_0)\right)^2 & \forall t\in ]-\infty,t_0+2\sqrt{x_0}/k] \\
+0 & \forall t\in [t_0+2\sqrt{x_0}/k,t_2] \\
+-\left(\frac{k}{2}(t-t_2)\right)^2 & \forall t\in [t_2,+\infty)
 \end{array}
 \right.
 $$
-pour chaque $t^-\leq t_0$. Il y a donc une infinité de solutions.
+pour n'importe quel $t_2\in [t_0+2\sqrt{x_0}/k,+\infty]$. Il y a donc une infinité de solutions (unicité du passé et non unicité du futur).
 
-*Remarque*: si l'on s'était intéressé aux solutions négatives, on aurait trouvé une infinité de solutions au problème de Cauchy pour $x_0>0$. En effet, à partir de $x_0=0$, on a aussi de manière symétrique, les solutions
+Maintenant si $x_0=0$.  Pour $t\geq t_0$, on reproduit le même raisonnement. De même, pour $t\leq t_0$, soit $x$ reste à 0 soit il existe $t_1 < t_0$ tel que $x(t_1)>0$, et on obtient que les solutions maximales s'écrivent 
 $$
 x(t)= 
 \left\{
 \begin{array}{ll}
-0 & \forall t\in [t_0, t^+[\\
--\frac{k^2}{4}(t-t^+)^2 & \forall t\in [t^+,+\infty[
+\frac{k^2}{4}(t-t_1)^2 & \forall t\in ]-\infty,t_1_] \\
+0 & \forall t\in [t_1_,t_2]\\
+\frac{k^2}{4}(t-t^-)^2 & \forall t\in [t_2,+\infty]
 \end{array}
 \right.
 $$
-pour tout $t^+\geq t_0$. Ceci ne contredit pas le théorème de Cauchy Lispchitz. En effet, celui-ci ne garantie l'unicité de la solution maximale que dans le domaine où $f$ est continûment différentiable par rapport à $x$, c'est-à-dire ici tant qu'elle est non nulle, plus précisément sur l'intervalle ouvert $]-\infty,t_0+2\sqrt{x_0}/k[$. 
+pour n'importe quels $t_1 \in [-\infty,t_0]$ et $t_2 \in [t_0,+\infty]$. Il y a donc une infinité de solutions (à la fois dans le passé et le futur).
 
 ### Question 3 {.answer #answer-tor-3} 
 
-La multiplicité des solutions peut être expliquée par le fait  que lorsqu'on voit le réservoir vide à $t_0$ on ne sait pas depuis quand il est vide.
+Lorsque $x_0>0$, il y a une seule solution physique, celle qui va à zéro et y reste à jamais. Par contre, lorsque $x_0=0$, il y a une infinité de passés possibles car lorsqu'on voit le réservoir vide à $t_0$ on ne sait pas depuis quand il est vide...
 
 ### Question 4 {.answer #answer-tor-4}
 
-Lorsque $x_0>0$, les solutions sont continues par rapport à la condition initiale tant qu'elles restent positives. Par contre, si $x_0=0$, une solution possible est $x\equiv 0$ alors que pour tout $\delta>0$, la solution partant de $x_0+\delta$ est donnée par $x_\delta(t)=\left(\sqrt{x_0+\delta}-\frac{k}{2}(t-t_0)\right)^2$ pour $t\leq t_0$. Donc sur un horizon de temps fixé (rétrograde) $[\underline{t},t_0]$, la différence $\|x-x_\delta\|$ ne peut être rendue arbitrairement petite en faisant tendre $\delta$ vers 0. Le même phénomène apparaît en temps positif lorsque l'on considère  les solutions négatives (voir remarque plus haut). En ce sens, on n'a pas la continuité des solutions par rapport à la condition initiale. Cela ne contredit pas le théorème car $f(x)=-\sqrt{|x|}$ n'est pas $C^1$, ni lipschitzienne en 0. 
+Lorsque $x_0>0$, les solutions sont continues par rapport à la condition initiale tant qu'elles restent strictement positives (théorème appliqué sur le domaine $X= \R\setminus \{0\}$ où $f$ est $C^1$). Par contre, si $x_0=0$, une solution possible est $x\equiv 0$ alors que pour tout $\delta>0$, la solution partant de $x_0+\delta$ est donnée par $x_\delta(t)=\left(\sqrt{x_0+\delta}-\frac{k}{2}(t-t_0)\right)^2$ pour $t\leq t_0$. Donc sur un horizon de temps fixé (rétrograde) $[\underline{t},t_0]$, la différence $\|x-x_\delta\|$ ne peut être rendue arbitrairement petite en faisant tendre $\delta$ vers 0. Le même phénomène apparaît en temps positif lorsque l'on considère  les solutions négatives. En ce sens, on n'a pas la continuité des solutions par rapport à la condition initiale. Cela ne contredit pas le théorème car $f(x)=-\sqrt{|x|}$ n'est pas $C^1$, ni lipschitzienne en 0. 
 
 
 ## Autour du Lemme de Grönwall {.correction #correc_gronwall}
