@@ -43,7 +43,7 @@ d'exercices.
 
 - \one connaître le principe de l'intégration par la méthode Monte Carlo
 - \one savoir que cette approche se justifie par la loi des grands nombres
-- \one savoir que l'approximation fournie par le TCL fournit un contrôle de l'erreur
+- \one savoir que l'approximation fournie par le TCL offre un contrôle de l'erreur
 
 #### Génération de nombres pseudo-aléatoires
 

@@ -11,18 +11,18 @@ Mines Paris - PSL, cycle ingénieur civil, unité d'enseignement Mathématiques 
 
 | Chapitre      | # | E-book | Papier | Notebook | Quizz | 
 | ------------- | ------: | -----------:  |  :----: |  :----:  | :-----: |
-| Topo mise à niveau |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24TD0Corr.pdf) |  |  |
-| Poly complet MàJ 17/10/24 |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24PolyCompletCorr.pdf) |  |  |
-| Fondamentaux & Compléments |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24FondaComps.pdf) |  |  |
-| Développements |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24Devs.pdf) |  |  |
-|  I Topologie | 1 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24PolyTopo.pdf) |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24TD0Corr.pdf) |
-| --  | 2 |  | --  | | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24TD2.pdf) |
-| II Mesure-integration-espaces fonctionnels | 3 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24Chap2.pdf) |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24TD3.pdf)  |
-| --  | 4 |   | -- |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24TD4.pdf)  |
+| Poly 02/10/25 avec corrections |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25Poly.pdf) |  |  |
+| Topo mise à niveau |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25TD0corr.pdf) |  |  |
+| Fondamentaux & Compléments |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25Fonda.pdf) |  |  |
+| Développements |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25Devs.pdf) |  |  |
+|  I Topologie | 1 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25Topo.pdf) |  | [:book: Q1](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TD1Quizz.pdf)  |
+| --  | 2 |  | --  | | [:book: Q2](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TD2Quizz.pdf) |
+| II Mesure-integration-espaces fonctionnels | 3 |   | -- |  | [:book: Q3](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TD3Quizz.pdf) |
+| --  | 4 |   | -- |  | [:book: Q4](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TD4Quizz.pdf)  |
 |  |  |   |  |  |  |
-| III Espaces de Hilbert | 5 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24Chap3Hilbert.pdf) |  | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24TD5.pdf)  |
-| V Calcul Différentiel | 6 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24Chap5CD.pdf) |  |  [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24TD6.pdf) |
-| -- | 7 |   | -- |  |  [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24TD5.pdf) |
+| III Espaces de Hilbert | 5 |   | -- |  | Q5 |
+| V Calcul Différentiel | 6 |   | -- |  | Q6|
+| -- | 7 |   | -- |  |  Q7|
 | IV Analyse fonctionnelle (hors programme exam) | 8 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m24Chap4AF.pdf) |  |  |
 |  |  |   |  |  |  |
 |  |  |   |  |  |  |

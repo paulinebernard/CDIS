@@ -71,7 +71,7 @@ d'exercices.
 # Préambule 
 
 Dans ce chapitre, on va s'intéresser à l'étude des suites de variables aléatoires. On introduira notamment différents modes de convergence. En particulier, on établira la *loi des grands nombres* qui montre rigoureusement que, quand le nombre de répétitions de l’expérience tend vers l’infini, la fréquence de réalisation
-d’un événement converge vers la probabilité de réalisation de cet événement. Ce résultat justife également la démarche employée en statistique où l'on cherche par exemple à estimer une espérance par une moyenne empirique : cette moyenne empirique va ainsi converger vers la quantité ciblée. Enfin, on présentera le théorème central limite qui nous indiquera la vitesse à laquelle cette convergence a lieu ainsi qu'un moyen de contrôler l'erreur commise en remplaçant une espérance par sa contrepartie empirique.
+d’un événement converge vers la probabilité de réalisation de cet événement. Ce résultat justifie également la démarche employée en statistique où l'on cherche par exemple à estimer une espérance par une moyenne empirique : cette moyenne empirique va ainsi converger vers la quantité ciblée. Enfin, on présentera le théorème central limite qui nous indiquera la vitesse à laquelle cette convergence a lieu ainsi qu'un moyen de contrôler l'erreur commise en remplaçant une espérance par sa contrepartie empirique.
 
 Notons d'abord qu'on peut étendre les définitions des espaces $\L^1$ et $\L^2$ pour un $p \in \N^\ast$ quelconque.
 
@@ -202,7 +202,7 @@ Ce type de convergence, pour lequel on n'a pas convergence pour tout $\omega$, m
 
 [^NBpf]: cf. [exercice plus haut](#pf)
 
-On considère une suite $(X_n)_{n\in \N^\ast}$ de variables aléatoires, définies sur un même espace de probabilité $(\Omega, \A, \P)$, et à valeurs dans $\R^d$. On considère également sur le même espace un vecteur "limite" $X$. On notera $|\cdot|$ la valeurs absolue dans $\R$ ou la norme euclidienne dans $\R^d$.
+On considère une suite $(X_n)_{n\in \N^\ast}$ de variables aléatoires, définies sur un même espace de probabilité $(\Omega, \A, \P)$, et à valeurs dans $\R^d$. On considère également sur le même espace un vecteur "limite" $X$. On notera $|\cdot|$ la valeur absolue dans $\R$ ou la norme euclidienne dans $\R^d$.
 
 ### Modes de convergences {.definition}
 
@@ -247,7 +247,7 @@ La convergence presque sûre et la convergence en moyenne entraînent la converg
 ### Démonstration {.proof}
 Soient $n\in\N^\ast$, $\varepsilon > 0$ et $A_{n,\varepsilon} = \{|X_n - X| > \varepsilon \}$.
 
- * Supposons que $X_n \to X$ p.s. et soit $N$ l'ensemble de probabilité nulle en dehors duquel on a $X_n(\omega) \to X(\omega)$. Si $\omega \notin N$, on a $\omega \notin A_{n,\varepsilon}$ pour tout $n \geq n_0$, où $n_0$ dépend de $\omega$ et de $\varepsilon$, ce qui implique que les variables aléatoires $Y_{n,\varepsilon} = 1_{N^c\cap A_{n,\varepsilon}}$ tendent simplement vers 0 lorsque $n \to \infty$. Comme on a aussi $0 \leq Y_{n,\varepsilon} \leq 1$ le théorème de convergence dominée implique que $\Esp(Y_{n,\varepsilon}) \xrightarrow[n \to \infty]{} 0.$ Mais
+ * Supposons que $X_n \to X$ p.s. et soit $N$ l'ensemble de probabilité nulle en dehors duquel on a $X_n(\omega) \to X(\omega)$. Si $\omega \notin N$, on a $\omega \notin A_{n,\varepsilon}$ pour tout $n \geq n_0$, où $n_0$ dépend de $\omega$ et de $\varepsilon$, ce qui implique que les variables aléatoires $Y_{n,\varepsilon} = 1_{N^c\cap A_{n,\varepsilon}}$ tendent simplement vers 0 lorsque $n \to \infty$. Comme on a aussi $0 \leq Y_{n,\varepsilon} \leq 1$ le théorème de convergence dominée implique que $\Esp(Y_{n,\varepsilon}) \xrightarrow[n \to \infty]{} 0.$ Par suite,
  $$\P(A_{n,\varepsilon}) \leq \P(N^c \cap A_{n,\varepsilon}) + \P(N) = \P(N^c \cap A_{n,\varepsilon}) = \Esp(Y_{n,\varepsilon}) \xrightarrow[n \to \infty]{} 0.$$
 
  * Supposons que $X_n \xrightarrow{\L^1} X$. Pour $\varepsilon >0$, on a $1_{A_{n,\varepsilon}} \leq \frac{1}{\varepsilon}|X_n - X|$, donc 
