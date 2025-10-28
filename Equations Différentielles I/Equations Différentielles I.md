@@ -1502,9 +1502,9 @@ $$
 x(t)= 
 \left\{
 \begin{array}{ll}
-\frac{k^2}{4}(t-t_1)^2 & \forall t\in ]-\infty,t_1_] \\
-0 & \forall t\in [t_1_,t_2]\\
-\frac{k^2}{4}(t-t^-)^2 & \forall t\in [t_2,+\infty]
+\frac{k^2}{4}(t-t_1)^2 & \forall t\in ]-\infty,t_1] \\
+0 & \forall t\in [t_1,t_2]\\
+-\frac{k^2}{4}(t-t_2)^2 & \forall t\in [t_2,+\infty]
 \end{array}
 \right.
 $$
