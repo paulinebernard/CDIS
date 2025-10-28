@@ -2,11 +2,11 @@
 
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Rgeq}{\R_{\geq 0}}
 \newcommand{\Rg}{\R_{> 0}}
-\renewcommand{\C}{\mathbb{C}}
 
 \newcommand{\dt}{{\Delta t}}
 
