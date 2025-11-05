@@ -669,7 +669,7 @@ D_{KL}(f||f_\theta) & = \int f(x) \log\left(\frac{f(x)}{f_\theta(x)}\right) dx \
 où $H(f) = -\int f(x) \log f(x) dx$ est l'**entropie** de la densité $f$. Celle-ci s'interprète comme 
 Ce terme ne dépend pas de $\theta$, donc minimiser $D_{KL}(f||f_\theta)$ revient à maximiser $\Esp_f(\log f_\theta(X))$. En statistique, $f_\theta(X)$ est appelée la *vraisemblance* de l'observation $X$ pour le paramètre $\theta$, et $\log f_\theta(X)$ la *log-vraisemblance*. L'estimateur $\hat{\theta}$ est ainsi appelé *estimateur du maximum de vraisemblance*.
 
-En pratique, on dispose d'un échantillon $X_1,\ldots,X_n$ de variables aléatoires indépendantes et identiquement distribuées selon la loi de densité $f$. On peut alors estimer $\Esp_f(\log f_\theta(X))$ par la moyenne empirique
+En pratique, on dispose d'un échantillon $X_1,\ldots,X_n$ de variables aléatoires indépendantes et identiquement distribuées selon la loi de densité $f$. Le choix de la forme paramétrique est généralement guidé par des considérations théoriques, portant sur la physique du phénomène étudié, ou empiriques, en regardant par exemple l'histogramme des données. On peut ensuite estimer $\Esp_f(\log f_\theta(X))$ par la moyenne empirique
 $$ \frac{1}{n} \sum_{i=1}^n \log f_\theta(X_i),$$
 et l'estimateur du maximum de vraisemblance s'écrit
 $$ \hat{\theta}_n = \arg\max_{\theta \in \Theta} \frac{1}{n} \sum_{i=1}^n \log f_\theta(X_i).$$
