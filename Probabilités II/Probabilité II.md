@@ -72,10 +72,10 @@ Objectifs d'apprentissage
 La loi de probabilité d'une variable aléatoire définie sur l'espace probabilisé $(\Omega,\A,\P)$ va nous permettre de calculer aisément des grandeurs caractéristiques telles que sa valeur moyenne et sa variance (lorsqu'elles existent). Elles sont définies ci-dessous.
 
 ### Espérance d'une variable aléatoire réelle {.definition #defesp}
-La variable aléatoire $X : \Omega \to \R$ de loi $\P_X$ est dite  *intégrable* si l'intégrale $\int_\R |x| d\P_X(x)$ est définie, autrement dit si  $x$ est $\P_X$-intégrable. On définit alors son *espérance* par 
+La variable aléatoire $X : \Omega \to \R$ de loi $\P_X$ est dite  *intégrable* si l'intégrale $\int_\R |x| d\P_X(x)$ est finie, autrement dit si  $x$ est $\P_X$-intégrable. On définit alors son *espérance* par 
         $$\Esp(X) = \int_\R x d\P_X(x) = \int_\Omega X(\omega) d\P(\omega)$$
 
-Si la variable aléatoire $X$ admet une densité $f$ par rapport à la mesure de Lebesgue, elle sera  *intégrable* si l'intégrale $\int_\R |x|f(x) dx$ est définie, autrement dit si le produit $x f(x)$ est intégrable par rapport à la mesure de Lebesgue. Son *espérance* vaut alors
+Si la variable aléatoire $X$ admet une densité $f$ par rapport à la mesure de Lebesgue, elle sera  *intégrable* si l'intégrale $\int_\R |x|f(x) dx$ est finie, autrement dit si le produit $x f(x)$ est intégrable par rapport à la mesure de Lebesgue. Son *espérance* vaut alors
         $$\Esp(X) = \int_\R x f(x)dx$$
 
 
@@ -193,7 +193,7 @@ Enfin, il peut être intéressant de pouvoir calculer l'espérance d'une fonctio
 ### Espérance de $g(X)$ {.proposition #esperanceg}
 Soit $X$ une variable aléatoire réelle de loi $\P_X$, et $g$ une fonction mesurable de $(\R,\B(\R))$ dans $(\R,\B(\R))$. Alors $g(X)$ est $\P_X$ - intégrable si et seulement si l'intégrale
 $$\int_\R |g(x)| d\P_X(x),$$
-est définie et dans ce cas
+est finie et dans ce cas
 $$\Esp(g(X)) = \int_\R g(x)d\P_X(x) = \int_\Omega g(X(\omega)) d\P(\omega)$$
 
 Si $\P_X$ admet une densité $f$ par rapport à la mesure de Lebesgue, alors $g(X)$ est $\P_X$ - intégrable si et seulement si le produit $fg$ est intégrable par rapport à la mesure de Lebesgue. On a alors :
