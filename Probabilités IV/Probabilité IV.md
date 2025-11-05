@@ -864,15 +864,6 @@ Le théorème de Weierstrass est un résultat classique d'analyse dont l'énonc�
 
 Dans cet exercice, nous allons voir une démonstration constructive de ce théorème dans le cas particulier où $I = [0,1]$.
 
-### Préliminaires {.question #weier-prelim}
-
-Nous allons avoir besoin de deux résultats intermédiaires pour établir la preuve du théorème de Weierstrass sur $[0,1]$. 
-
-* **Théorème de convergence dominée.** Soient $(X,\mathcal{A},\mu)$ un espace mesuré, $(f_n)_{n\in\N^\ast}$ une suite de fonctions mesurables $X \to [-\infty,+\infty]$ et $g : X \to [-\infty,+\infty]$ une fonction intégrable, telles que pour tout $n\in\N^\ast$ on a $|f_n| \leq g$ $\mu$-**presque partout**. Supposons qu'il existe $f : X \to [-\infty,+\infty]$ telle que $f_n$ converge simplement vers $f$ $\mu$-**presque partout** quand $n\to+\infty$. Alors $f$ est intégrable et $$\int_X f_n\mu \xrightarrow[n\to+\infty]{} \int_X f\mu.$$
-    
-* **Inégalité de Jensen.** Soient $(\Omega,\mathcal{A},\P)$ un espace probabilisé, $X : \Omega \to \R$ une variable aléatoire  intégrable et $f : \R \to \R$ une fonction mesurable convexe, telle que $f(X) \in \mathcal{L}^1$. Alors $$f\left(\Esp(X)\right) \leq \Esp\left(f(X)\right).$$
-Démontrer ce résultat.
-    
 ### Preuve du théorème. {.question #weier-thm}
 
 Soit $\left(X_n\right)_{n\in\N^\ast}$ une suite de variable aléatoires indépendantes, suivant toutes la même loi de Bernoulli de paramètre $x \in ]0,1[$. Pour tout $n\in\N^\ast$ on pose $M_n := \frac{1}{n}\,\sum_{i = 1}^n X_i$. On considère une fonction $f : [0,1] \to \R$ continue.
@@ -1115,28 +1106,6 @@ On peut en fait aller plus loin et montrer que l'on a la convergence presque sû
 
 ## Théorème de Weierstrass sur $[0,1]$ 
 
-### Préliminaires {.answer #answer-weier-prelim}
-
-
-**Théorème de convergence dominée presque partout** --- Puisque $f_n$ converge vers $f$ $\mu$-presque partout, il existe un ensemble $E$ borélien et négligeable tel que
-$$f_n(x) \to f(x),\,\,\, \forall x \in X \setminus E$$
-De même, puisque $|f_n(x)|\leq g(x)$ $\mu$-presque partout, les ensembles $F_n = \{x \in X; |f(x)| > g(x) \}$ sont boréliens et négligeables pour tout $n \in \N^\ast$. Alors $N = E \cup_{n\in\N^\ast} F_n$ est borélien et négligeable.
-
-Soit $\tilde{f}_n = 1_{N^c}f_n$ et $\tilde{f}=1_{N^c}f$, les restrictions à $N^c$ des $f_n$ et $f$. Alors le théorème de convergence dominée s'applique à la suite des $(\tilde{f}_n)_{n\in\N^\ast}$. On a ainsi que $\tilde{f}$ est intégrable et 
-$$\int_X \tilde{f} \mu = \lim_{n\to\infty}\int_X \tilde{f}_n \mu.$$
-
-Puisque $f = \tilde{f}$ $\mu$-p.p. et $f_n = \tilde{f}_n$ $\mu$-p.p., on a $\int_X f \mu = \int_X \tilde{f} \mu$ et $\int_X f_n \mu = \int_X \tilde{f}_n \mu$. Alors $f$ est intégrable et 
-$$\int_X f_n\mu \xrightarrow[n\to+\infty]{} \int_X f\mu.$$
-
-
-**Inégalité de Jensen** --- Puisque $f$ est convexe, pour tout $a \in \R$ il existe $\lambda_a \in \R$ tel que pour tout $x\in\R$ on a $$f(x) \geq f(a) + \lambda_a\,(x-a).$$ C'est une conséquence directe de la caractérisation de la convexité par les inégalités des pentes. C'est vrai en particulier pour $x =X(\omega)$, $\omega \in \Omega$, et $a = \Esp(X)$ : pour tout $\omega \in \Omega$,
-$$f\left(X(\omega)\right) \geq f\left(\Esp(X)\right) + \lambda_{\Esp(X)}\,\left(X(\omega) - \Esp(X)\right).$$
-En intégrant de chaque côté de l'inégalité, on obtient bien
-\begin{align*}
-\int_\Omega f\left(X(\omega)\right) \,\P(d\omega) = \Esp\left(f(X)\right) &\geq f\left(\Esp(X)\right) + \lambda_{\Esp(X)}\,\left(\int_\Omega X(\omega)\,\P(d\omega) - \Esp(X)\right)\\
-& = f\left(\Esp(X)\right) + \lambda_{\Esp(X)}\,\left(\Esp(X) - \Esp(X)\right)\\
-& = f\left(\Esp(X)\right).
-\end{align*}
 
 ### Preuve du théorème. {.answer #answer-weier-thm}
 

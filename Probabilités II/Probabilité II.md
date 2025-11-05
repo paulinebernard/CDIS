@@ -218,7 +218,21 @@ Enfin, si $g$ n'est pas positive, on utilise la décomposition $g = g^+ - g^-$ e
 
 
 ### Cas particulier {.remark}
-L'espérance et la variance sont des cas particuliers de ce résultat. 
+L'espérance et la variance sont des cas particuliers de ce résultat.
+
+### Inégalité de Jensen {.proposition #jensen}
+Soit $X$ une variable aléatoire réelle intégrable de loi $\P_X$, et soit $g : \R \to \R$ une fonction convexe telle que $g(X)$ soit $\P_X$ - intégrable. On a alors 
+$$ g(\Esp(X)) \leq \Esp(g(X)).$$
+
+### Démonstration {.proof}
+Puisque $g$ est convexe, pour tout $a \in \R$ il existe $\lambda_a \in \R$ tel que pour tout $x\in\R$ on a $$g(x) \geq g(a) + \lambda_a\,(x-a).$$ C'est une conséquence directe de la caractérisation de la convexité par les inégalités des pentes. C'est vrai en particulier pour $x =X(\omega)$, $\omega \in \Omega$, et $a = \Esp(X)$ : pour tout $\omega \in \Omega$,
+$$g\left(X(\omega)\right) \geq g\left(\Esp(X)\right) + \lambda_{\Esp(X)}\,\left(X(\omega) - \Esp(X)\right).$$
+En intégrant de chaque côté de l'inégalité, on obtient bien
+\begin{align*}
+\int_\Omega g\left(X(\omega)\right) \,\P(d\omega) = \Esp\left(g(X)\right) &\geq g\left(\Esp(X)\right) + \lambda_{\Esp(X)}\,\left(\int_\Omega X(\omega)\,\P(d\omega) - \Esp(X)\right)\\
+& = g\left(\Esp(X)\right) + \lambda_{\Esp(X)}\,\left(\Esp(X) - \Esp(X)\right)\\
+& = g\left(\Esp(X)\right).
+\end{align*}
 
 ## Exemples de loi à densité
 
@@ -612,6 +626,54 @@ La fonction $f_Z$ est appelée *le produit de convolution* des des fonctions $f_
 ### Loi bêta {.exercise .question .three #exo-loibeta}
 
 Soit $X = (U,V)$ un vecteur aléatoire de $\R^2$, avec $U$ et $V$ indépendantes de lois $\Gamma(\alpha,\theta)$ et $\Gamma(\beta,\theta)$. Identifier la densité de $Y = \frac{U}{U+V}$, puis de $Z = U+V$.
+
+# Modélisation statistique 
+
+On a vu un certain nombre d'exemples de lois de probabilité à densité. Celles-ci font intervenir des paramètres qui permettent d'ajuster la forme de la densité aux données observées. Par exemple, la loi normale fait intervenir deux paramètres : l'espérance et la variance. Dans cette section, nous formalisons l'approche statistique qui consiste à choisir une loi de probabilité pour modéliser un phénomène aléatoire, puis à estimer les paramètres de cette loi à partir d'observations.
+
+La première hypothèse que nous faisons est que le phénomène étudié peut être modélisé par une variable aléatoire $X$ de densité $f$ inconnue. La première étape de la modélisation consiste à choisir une famille de densités $(f_\theta)_{\theta \in \Theta}$, où $\Theta$ est un ensemble de paramètres. Par exemple, pour la loi normale, on peut choisir $\Theta = \R \times \R_+^*$ et $f_{(m,\sigma)}$ la densité de la loi $\mathcal{N}(m,\sigma^2)$.
+
+La seconde étape consiste à estimer le paramètre $\theta$ de manière à ce que la densité $f_\theta$ soit la plus proche possible de la densité $f$ inconnue. On a donc besoin d'une notion de proximité entre deux densités. Plusieurs choix sont possibles, mais le plus courant est celui de la divergence de Kullback-Leibler.
+
+### Divergence de Kullback-Leibler {.definition #defKL}
+Soient $f$ et $g$ deux densités de probabilité sur $\R$, telles que $g(x) > 0$ pour tout $x$ tel que $f(x) > 0$. La *divergence de Kullback-Leibler* de $g$ par rapport à $f$ est définie par 
+$$ D_{KL}(f||g) = \int f(x) \log\left(\frac{f(x)}{g(x)}\right) dx.$$
+
+### Remarque {.remark}
+La divergence de Kullback-Leibler n'est pas une distance au sens mathématique du terme. En effet, elle n'est pas symétrique et ne satisfait pas l'inégalité triangulaire. En revanche, on a toujours $D_{KL}(f||g) \geq 0$, avec égalité si et seulement si $f = g$ presque partout.
+
+### Positivité de la divergence de Kullback-Leibler {.proposition #corKL}
+Soient $f$ et $g$ deux densités de probabilité sur $\R$, telles que $g(x) > 0$ pour tout $x$ tel que $f(x) > 0$. Alors 
+$$ D_{KL}(f||g) \geq 0,$$
+avec égalité si et seulement si $f = g$ presque partout.
+
+### Démonstration {.proof}
+La fonction $\log$ est strictement concave, donc $-\log$ est strictement convexe. On peut donc appliquer [l'inégalité de Jensen](#jensen) :
+\begin{align*}
+D_{KL}(f||g) & = \int_\R f(x) \log\left(\frac{f(x)}{g(x)}\right) dx = - \int_\R f(x) \left(-\log\left(\frac{g(x)}{f(x)}\right)\right) dx \\
+& = - \Esp\left(-\log\left(\frac{g(X)}{f(X)}\right)\right) \geq - \left(-\log\left(\Esp\left(\frac{g(X)}{f(X)}\right)\right)\right) = -\log(1) = 0.
+\end{align*}
+On a égalité si et seulement si $\frac{g(x)}{f(x)}$ est presque sûrement constant, ce qui revient à dire que $f = g$ presque partout.
+
+### Divergence de Kullback-Leibler entre deux gaussiennes {.exercise #exoklgauss}
+Soient $f$ et $g$ les densités de deux lois normales $\mathcal{N}(m_1,\sigma_1^2)$ et $\mathcal{N}(m_2,\sigma_2^2)$. Montrer que $D_{KL}(f||g) = \log \left(\frac{\sigma_2}{\sigma_1}\right) + \frac{\sigma_1^2 + (\mu_1 - \mu_2)^2}{2\sigma_2^2} - \frac{1}{2}$.
+
+Revenons à notre problème d'estimation de paramètres. Soit $X$ une variable aléatoire de densité inconnue $f$. On choisit une famille de densités $(f_\theta)_{\theta \in \Theta}$, et on cherche à minimiser la divergence de Kullback-Leibler entre $f$ et $f_\theta$ :
+$$ \hat{\theta} = \arg\min_{\theta \in \Theta} D_{KL}(f||f_\theta).$$
+On peut réécrire la divergence de Kullback-Leibler sous la forme suivante :
+\begin{align*}
+D_{KL}(f||f_\theta) & = \int f(x) \log\left(\frac{f(x)}{f_\theta(x)}\right) dx \\
+& = \int f(x) \log(f(x)) dx - \int f(x) \log(f_\theta(x)) dx \\
+& = -H(f) - \Esp_f(\log f_\theta(X)),
+\end{align*}
+où $H(f) = -\int f(x) \log f(x) dx$ est l'**entropie** de la densité $f$. Celle-ci s'interprète comme 
+Ce terme ne dépend pas de $\theta$, donc minimiser $D_{KL}(f||f_\theta)$ revient à maximiser $\Esp_f(\log f_\theta(X))$. En statistique, $f_\theta(X)$ est appelée la *vraisemblance* de l'observation $X$ pour le paramètre $\theta$, et $\log f_\theta(X)$ la *log-vraisemblance*. L'estimateur $\hat{\theta}$ est ainsi appelé *estimateur du maximum de vraisemblance*.
+
+En pratique, on dispose d'un échantillon $X_1,\ldots,X_n$ de variables aléatoires indépendantes et identiquement distribuées selon la loi de densité $f$. On peut alors estimer $\Esp_f(\log f_\theta(X))$ par la moyenne empirique
+$$ \frac{1}{n} \sum_{i=1}^n \log f_\theta(X_i),$$
+et l'estimateur du maximum de vraisemblance s'écrit
+$$ \hat{\theta}_n = \arg\max_{\theta \in \Theta} \frac{1}{n} \sum_{i=1}^n \log f_\theta(X_i).$$
+Cela revient à remplacer $f$ par la mesure empirique de l'échantillon $\tilde{p} = \frac{1}{n} \sum_{i=1}^n \delta_{X_i}$ dans la définition de la divergence de Kullback-Leibler.
 
 
 Exercices complémentaires
@@ -1101,6 +1163,28 @@ La loi bêta apparaît naturellement dans une expérience d'urnes, donnée par G
 Nous obtenons aussi facilement la densité de $Z$. En effet, on a $f_{Y'}(y,z) = f_Y(y)f_Z(z)$ ($Y$ et $Z$ sont donc indépendantes), où
 $$f_Z(z) = \frac{\theta^{\alpha+\beta}}{\Gamma(\alpha+\beta)}z^{\alpha+\beta -1}e^{-\theta z}1_{\left]0,+\infty\right[}$$
 On a ainsi démontré que si $U$ et $V$ sont deux variables aléatoires indépendantes de lois respectives $\Gamma(\alpha,\theta)$ et $\Gamma(\beta,\theta)$, alors $U+V$ suit la loi $\Gamma(\alpha+\beta,\theta)$ et est indépendante de $\frac{U}{U+V}$ qui suit une loi bêta de paramètres $(\alpha,\beta)$.
+
+### Divergence de Kullback-Leibler entre deux gaussiennes {.answer #answer-exoklgauss}
+On a
+$$f(x) = \frac{1}{\sqrt{2\pi}\sigma_1} e^{-\frac{(x-\mu_1)^2}{2\sigma_1^2}}$$
+et 
+$$g(x) = \frac{1}{\sqrt{2\pi}\sigma_2} e^{-\frac{(x-\mu_2)^2}{2\sigma_2^2}}$$
+
+On en déduit que
+\begin{align*}
+D_{KL} (f || g) &= \int_{-\infty}^{+\infty} f(x) \log \left(\frac{f(x)}{g(x)}\right) dx \\
+                &= \int_{-\infty}^{+\infty} f(x) \left[ \log \left(\frac{\sigma_2}{\sigma_1}\right) + \frac{(x-\mu_2)^2}{2\sigma_2^2} - \frac{(x-\mu_1)^2}{2\sigma_1^2} \right] dx \\
+                &= \log \left(\frac{\sigma_2}{\sigma_1}\right) + \frac{1}{2\sigma_2^2} \int_{-\infty}^{+\infty} f(x) (x-\mu_2)^2 dx - \frac{1}{2\sigma_1^2} \int_{-\infty}^{+\infty} f(x) (x-\mu_1)^2 dx
+\end{align*}
+On a :
+\begin{align*}
+\int_{-\infty}^{+\infty} f(x) (x-\mu_2)^2 dx &= \int_{-\infty}^{+\infty} f(x) ((x-\mu_1)+\mu_1-\mu_2)^2 dx \\
+&= \int_{-\infty}^{+\infty} f(x) (x-\mu_1)^2 dx + (\mu_1 - \mu_2)^2 \\
+&= \sigma_1^2 + (\mu_1 - \mu_2)^2 
+\end{align*}
+On en déduit la formule annoncée :
+$$D_{KL} (f || g) = \log \left(\frac{\sigma_2}{\sigma_1}\right) + \frac{\sigma_1^2 + (\mu_1 - \mu_2)^2}{2\sigma_2^2} - \frac{1}{2}$$
+
 
 
 ## Durée de vie
