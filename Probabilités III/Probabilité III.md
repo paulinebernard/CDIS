@@ -55,7 +55,7 @@ d'exercices.
 
 - \two savoir que la régression linéaire est la meilleure approximation linéaire (au sens des moindres carrés) d'une variable aléatoire par une autre
 - \three savoir retrouver ce résultat
-- \four connaître l'interprétation géométrique de l'espérance conditionnelle dans le cas $\L^2$
+- \three connaître l'interprétation géométrique de l'espérance conditionnelle dans le cas $\L^2$
 - \one connaître et savoir utiliser la formule de la variance totale
 
 
@@ -372,37 +372,42 @@ $$f_{Y|Z=z}(y) = \frac{1}{(2\pi)^{k/2}\sqrt{\det (CS_Y)}}\exp \left(-\frac{1}{2}
 
 C'est-à-dire que la variable aléatoire $Y|Z=z$ est gaussienne d'espérance $m_{Y|Z=z} = \psi(z) = m_Y + C_{Y,Z}C_Z^{-1}(z-m_Z)$ et de matrice de covariance $CS_Y = C_Y - C_{Y,Z}C_Z^{-1}C_{Z,Y}$. Autrement dit, l'espérance conditionnelle de $Y$ sachant $Z$ est la variable aléatoire $\Esp(Y|Z) = \psi(Z) =(m_Y + C_{Y,Z}C_Z^{-1}(Z-m_Z))$. On notera que la covariance conditionnelle donnée par $CS_Y$ ne dépend pas de la valeur prise par $Z$.
 
-[^mckbk]: voir par exemple l'excellent [matrix cookbook](https://www.ics.uci.edu/~welling/teaching/KernelsICS273B/MatrixCookBook.pdf).
+[^mckbk]: voir par exemple l'excellent [matrix cookbook](https://www2.compute.dtu.dk/pubdb/edoc/imm3274.pdf).
 
 
 
 # Régression et espérance conditionnelle des variables de carré intégrable
 
-La régression est un ensemble de méthodes (d'apprentissage) statistiques très utilisées pour analyser la relation d'une variable par rapport à une ou plusieurs autres. Ces méthodes visent notamment à décrire les liens de dépendance entre variables mais aussi de prédire au mieux la valeur d’une quantité non observée en fonction d'une ou plusieurs autres variables.
+La régression est un ensemble de méthodes (d'apprentissage) statistiques très utilisées pour analyser la relation d'une variable par rapport à une ou plusieurs autres. Ces méthodes visent notamment à décrire les liens de dépendance entre variables mais aussi à prédire au mieux la valeur d’une quantité non observée en fonction d'une ou plusieurs autres variables.
 
 
-Pour fixer les idées, supposons que nous nous intéressons au lien entre une variable d'intérêt $Y$ et une variable explicative $X$ dans le but de pouvoir prédire la valeur de $Y$ étant donnée l'observation de $X$. Dans un cadre probabiliste, les variables $X$ et $Y$ sont considérées comme un couple de variables aléatoires $(X,Y)$, et leur possible observation comme des réalisations de ce couple. Notre but est alors de proposer une certaine fonction $f : \R \rightarrow \R$, que l'on appellera prédicteur, qui permette d'approximer $Y$ par $f(X)$. 
+Pour fixer les idées, supposons que l'on s'intéresse au lien entre une variable d'intérêt $Y$ et une variable explicative $X$ dans le but de prédire la valeur de $Y$ étant donnée l'observation de $X$. Le but est alors de proposer une certaine fonction $f : \R \rightarrow \R$ qui permette d'approximer $Y$ par $f(X)$. Une telle fonction $f$ est appelée un *prédicteur* de $Y$ en fonction de $X$.
 
-Une manière naturelle de formaliser cette notion d'approximation est de se donner pour objectif de trouver une fonction $f$ permettant de minimiser l'erreur commise en remplaçant $Y$ par $f(X)$, par exemple au sens des moindres carrés. Ainsi, notre but devient de trouver un prédicteur $f$ qui minimise
+<!-- Une manière naturelle de formaliser cette notion d'approximation est de se donner pour objectif de trouver une fonction $f$ permettant de minimiser l'erreur commise en remplaçant $Y$ par $f(X)$, par exemple au sens des moindres carrés. Ainsi, notre but devient de trouver un prédicteur $f$ qui minimise
 $$ \Esp((Y-f(X))^2). $$
-Le prédicteur $f$ choisi ainsi minimiserait donc "en moyenne" sur les réalisations de $(X,Y)$ l'écart quadratique entre $Y$ et $f(X)$.
+Le prédicteur $f$ choisi ainsi minimiserait donc "en moyenne" sur les réalisations de $(X,Y)$ l'écart quadratique entre $Y$ et $f(X)$. -->
 
-On va montrer dans cette section que le prédicteur optimal $f^*(X)$ de $Y$, au sens décrit ci-dessus, est précisément donné par l'espérance conditionnelle de $Y$ sachant $X$, c'est-à-dire en prenant $f^*(X)=\psi(X) = \Esp(Y|X)$. Ce faisant, nous fournirons une interprétation géométrique particulièrement frappante de l'espérance conditionnelle: celle-ci peut-être vue comme la projection orthogonale de la variable $Y$ dans l'espace constitué des variables aléatoires de la forme $f(X)$ (cf. Figure [ci-dessous](#fig_proj)). Pour ce faire, il convient d'abord de réintroduire quelques notions relatives aux espaces de Hilbert, vues dans le cadre du cours de calcul intégral et nous permettant de définir la notion de projection orthogonale de manière univoque. En particulier, nous nous restreindrons à un espace de variables aléatoires sur lequel notre objectif de prediction, $\Esp((Y-f(X))^2)$, est bien défini: l'espace $L^2(\Omega)$ des variables aléatoires de carré intégrable. 
+On va montrer dans cette section que, dans le cadre des variables de carré intégrable, une solution naturelle à ce problème est précisément donnée par l'espérance conditionnelle de $Y$ sachant $X$. Nous nous appuierons pour ce faire sur une interprétation géométrique de l'espérance conditionnelle en tant que projection orthogonale dans un espace de Hilbert. Cette approche justifie en particulier l'usage des méthodes de moindres carrés dans les problèmes de régression.
 
-![Illustration géométrique de l'espérance conditionnelle comme une projection orthogonale sur un espace de $L^2(\Omega)$](images/Proj.tex){#fig_proj}
+<!-- Ce faisant, nous fournirons une interprétation géométrique particulièrement frappante de l'espérance conditionnelle: celle-ci peut-être vue comme la projection orthogonale de la variable $Y$ dans l'espace constitué des variables aléatoires de la forme $f(X)$ (cf. Figure [ci-dessous](#fig_proj)).  -->
+<!-- Pour ce faire, il convient d'abord de réintroduire quelques notions relatives aux espaces de Hilbert, vues dans le cadre du cours de calcul intégral et nous permettant de définir la notion de projection orthogonale de manière univoque. En particulier, nous nous restreindrons à un espace de variables aléatoires sur lequel notre objectif de prediction, $\Esp((Y-f(X))^2)$, est bien défini: l'espace $L^2(\Omega)$ des variables aléatoires de carré intégrable.  -->
+
 
 
 
 
 ## Rappels sur les espaces de Hilbert et application en probabilités
 
-Pour commencer, revenons à la définition même des variables aléatoires. Soit $(\Omega, \mathcal{A},\mathbb{P})$  un espace probabilisé (et donc mesuré). On rappelle que par définition, une variable aléatoire $Y$ sur cet espace n'est autre qu'une fonction $\mathcal{A}$-mesurable $Y : \Omega \rightarrow \R$. Adoptant ce point de vue, on considère alors l'espace fonctionnel  $L^2(\Omega)$ introduit dans le cours de calcul intégral. Pour rappel, cet espace contient l'ensemble des fonctions $\mathcal{A}$-mesurables (i.e. des variables aléatoires) $Y$ telles que $\vert Y\vert^2$ soit integrable c'est-à-dire telles que
+<!-- Pour commencer, revenons à la définition même des variables aléatoires.  -->
+Soit $(\Omega, \mathcal{A},\mathbb{P})$  un espace probabilisé. On rappelle que par définition, une variable aléatoire $Y$ sur cet espace est une fonction $\mathcal{A}$-mesurable $Y : \Omega \rightarrow \R$. On considère alors l'espace fonctionnel  $L^2(\Omega)$ introduit dans le cours de calcul intégral. Pour rappel, cet espace contient l'ensemble des fonctions $\mathcal{A}$-mesurables (i.e. des variables aléatoires) $Y$ telles que $\vert Y\vert^2$ soit intégrable c'est-à-dire telles que
 $$
 \Vert Y\Vert_2 = \bigg(\int_{\Omega} \vert Y(\omega)\vert^2 d\P(\omega)\bigg)^{1/2}=\mathbb{E}(Y^2)^{1/2} < \infty.
 $$
-En particulier, contrairement à l'espace $\mathcal{L}^2$ introduit au chapitre précédent, dans l'espace $L^2(\Omega)$ les fonctions égales $\P$-presque-partout sont confondues. C'est-à-dire que deux fonctions $X$ et $Y$ égales $\P$-presque-partout correspondent à un même élément de $L^2(\Omega)$ appelé classe d'équivalence. Ainsi, pour $X, Y \in L^2(\Omega)$, l'égalité $X=Y$ signifiera donc que $X$ et $Y$ sont dans la même classe d'équivalence, soit, en termes probabilistes, que les variables $X$ et $Y$ sont égales presque-sûrement.  
+En particulier, contrairement à l'espace $\mathcal{L}^2$ introduit au chapitre précédent, dans l'espace $L^2(\Omega)$ les fonctions égales $\P$-presque partout sont confondues. C'est-à-dire que deux fonctions $X$ et $Y$ égales $\P$-presque partout correspondent à un même élément de $L^2(\Omega)$ appelé classe d'équivalence. Ainsi, pour $X, Y \in L^2(\Omega)$, l'égalité $X=Y$ signifiera donc que $X$ et $Y$ sont dans la même classe d'équivalence, autrement dit que les variables $X$ et $Y$ sont égales presque sûrement.  
 
-On a vu dans le cours de calcul intégral que l'espace $L^2(\Omega)$, muni de la norme $\Vert \cdot\Vert_2$, était un espace de Banach, c'est-à-dire un espace vectoriel normé et complet pour cette norme. Montrons que de plus, $L^2(\Omega)$ peut être considéré comme un espace de Hilbert, c'est-à-dire un espace vectoriel muni d'un produit scalaire et complet pour la norme associée à ce produit scalaire. Considérons à cet effet l'application bilinéaire $\langle \cdot \vert \cdot\rangle$ définie par
+On a vu dans le cours de calcul intégral que l'espace $L^2(\Omega)$, muni de la norme $\Vert \cdot\Vert_2$, était un espace de Banach, c'est-à-dire un espace vectoriel normé et complet pour cette norme. On va maintenant introduire un produit scalaire sur cet espace, dont la norme associée sera précisément la norme $\Vert \cdot\Vert_2$, et montrer que $L^2(\Omega)$ est ainsi un espace de Hilbert.
+
+On considère à cet effet l'application bilinéaire $\langle \cdot \vert \cdot\rangle$ définie par
 $$\langle X \vert Y\rangle = \int_{\Omega} X(\omega) Y(\omega) d\P(\omega) = \Esp(XY), \quad X,Y\in L^2(\Omega).$$
 L'application $\langle \cdot \vert \cdot\rangle$  est bien définie puisque, d'après l'inégalité de Cauchy-Schwartz, on a pour tous $X,Y\in L^2(\Omega)$:
 $$\langle X \vert Y\rangle^2=\Esp(XY)^2 \leq \Esp(X^2)\Esp(Y^2)=\Vert X\Vert_2^2\Vert Y\Vert_2^2<\infty.$$
@@ -412,32 +417,29 @@ De plus, l'application $\langle \cdot \vert \cdot\rangle$ définit un produit sc
 * Positive: $\langle X \vert X\rangle= \Esp(X^2) \ge 0$,
 * Définie: $\langle X \vert X\rangle=0 \Leftrightarrow \Esp(X^2)=0 \Leftrightarrow X=0$ .
 
-On remarque enfin que la norme associée au produit scalaire $\langle \cdot \vert \cdot\rangle$ n'est autre que la norme $\Vert\cdot\Vert_2$ introduite précédemment (car pour tout $X\in L^2(\Omega)$, $\langle X \vert X\rangle^{1/2}=\Esp(X^2)^{1/2}=\Vert X\Vert$). On en déduit donc que l'espace $L^2(\Omega)$ muni du produit scalaire $\langle \cdot \vert \cdot\rangle$ est bien un espace de Hilbert (car il est complet pour la norme $\Vert \cdot\Vert_2$).
+On remarque enfin que la norme associée au produit scalaire $\langle \cdot \vert \cdot\rangle$ est bien la norme $\Vert\cdot\Vert_2$ introduite précédemment (car pour tout $X\in L^2(\Omega)$, $\langle X \vert X\rangle^{1/2}=\Esp(X^2)^{1/2}=\Vert X\Vert_2$). On en déduit que l'espace $L^2(\Omega)$ muni du produit scalaire $\langle \cdot \vert \cdot\rangle$ est un espace de Hilbert.
 
-L'intérêt de se ramener à travailler avec un espace de Hilbert est que sur de tels espaces, il est possible de définir de manière univoque la notion de projection orthogonale sur des sous-espaces. En effet, la projection orthogonale d'un élément $Y\in L^2(\Omega)$ sur un sous-espace convexe, fermé et non-vide $K \subset L^2(\Omega)$  est définie comme l'unique élément $P_K(Y)\in K$ qui minimise la distance $\Vert Y - P_K(Y)\Vert_2$, et donc l'erreur des moindres carrés $\Esp((Y-P_K(Y))^2)$ entre $Y$ et les éléments de $K$. On retrouve en particulier l'objectif de prédiction décrit plus haut, ce qui permet de conclure que la projection orthogonale $P_K(Y)$ est bien le prédicteur optimal $Y$ parmi les éléments de $K$. On en déduit la propriété suivante qui permet en pratique de caractériser ce prédicteur optimal d'après les propriétés de la projection orthogonale vues dans le cours de calcul intégral.
+L'intérêt de travailler avec un espace de Hilbert est qu'il est possible d'y définir de manière univoque la notion de projection orthogonale. En effet, la projection orthogonale d'un élément $Y\in L^2(\Omega)$ sur un sous-espace convexe, fermé et non-vide $K \subset L^2(\Omega)$  est définie comme l'unique élément $P_K(Y)\in K$ qui minimise la distance $\Vert Y - P_K(Y)\Vert_2$, autrement dit l'erreur des moindres carrés $\Esp((Y-P_K(Y))^2)$ entre $Y$ et les éléments de $K$. On retrouve en particulier l'objectif de prédiction décrit en introduction, ce qui permet de conclure que la projection orthogonale $P_K(Y)$ est le prédicteur optimal de $Y$ au sens des moindres carrés parmi les éléments de $K$. On en déduit la propriété suivante qui permet de caractériser ce prédicteur optimal d'après les propriétés de la projection orthogonale vues dans le cours de calcul intégral.
 
 
 ### Prédicteur optimal sur un convexe fermé {.proposition #identEC}
 Soit $Y\in L^2(\Omega)$ et soit $K \subset L^2(\Omega)$ convexe, fermé et non-vide. Le prédicteur optimal, au sens des moindres carrés, de $Y$ sur $K$ est la projection orthogonale de $Y$ sur $K$. Il est donc caractérisé comme étant l'unique élément de $K$ vérifiant la propriété
-$$ \langle Y - P_K(Y) \vert U - P_K(Y)\rangle \le 0 \quad  \forall U\in K.$$
+$$ \langle Y - P_K(Y) \vert U - P_K(Y)\rangle \le 0 \quad  \forall ~U\in K.$$
 Si de plus $K$ est un sous-espace vectoriel, cette caractérisation prend une forme plus simple, à savoir:
-$$ \langle Y - P_K(Y) \vert U \rangle = 0 \quad  \forall U\in K.$$
+$$ \langle Y - P_K(Y) \vert U \rangle = 0 \quad  \forall ~U\in K.$$
 
 
 
-Pour revenir à notre problème initial de prédiction optimale de $Y$ par une fonction de $X$, il suffit donc de choisir le sous-espace $K$ de projection de manière à ce qu'il ne contienne que des éléments s'exprimant comme des fonctions de $X$, et d'identifier parmi les éléments de $K$ celui qui satisfaisant la [propriété ci-dessus](#identEC). C'est ce que nous ferons dans les prochaines sous-sections.
-
-
-
+Pour revenir à notre problème initial de prédiction optimale de $Y$ par une fonction de $X$, il s'agit donc de choisir le sous-espace $K$ de projection de manière à ce qu'il ne contienne que des éléments s'exprimant comme des fonctions de $X$, et d'identifier parmi les éléments de $K$ celui qui satisfait la [propriété ci-dessus](#identEC).
 
 
 ## Cas particulier: la régression linéaire
 
-Reprenons les variables $X,Y\in L^2(\Omega)$ introduites en début de section, et notre problème initial de prédiction de $Y$ à partir de $X$. On suppose en particulier et que les espérances, variances et la covariance de $X$ et $Y$ sont connues.  Dans cette sous-section, nous nous restreignons à des prédicteurs affines, c'est-à-dire que nous souhaitons trouver la meilleure approximation, au sens des moindres carrés, de $Y$ par une fonction affine de $X$ de la forme $f(X)=aX + b$. Un tel prédicteur est appelé *régression linéaire de $Y$ par $X$*, et peut être calculé à partir des résultats de la sous-section précédente. 
+Reprenons les variables $X,Y\in L^2(\Omega)$ introduites en début de section, et le problème initial de prédiction de $Y$ à partir de $X$. Dans cette sous-section, nous nous restreignons à des prédicteurs affines, c'est-à-dire que nous souhaitons trouver la meilleure approximation, au sens des moindres carrés, de $Y$ par une fonction affine de $X$ de la forme $f(X)=aX + b$. Un tel prédicteur est appelé *régression linéaire de $Y$ par $X$*. 
 
-En effet, on remarque que tout prédicteur affine $f(X)=aX+b$ peut être vu comme une combinaison linéaire de deux variables aléatoires de $L^2(\Omega)$ : $X$, et la variable aléatoire égale à $1$ presque-sûrement, que l'on note également $1\in L^2(\Omega)$. Par conséquent, $f(X)\in K$ où $K$ désigne le sous-espace vectoriel de $L^2(\Omega)$ engendré par $X\in L^2(\Omega)$ et $1\in L^2(\Omega)$. Ainsi, trouver un prédicteur affine optimal de $Y$ revient à trouver un prédicteur optimal de $Y$ dans le sous-espace vectoriel $K$.
+Tout prédicteur affine $f(X)=aX+b$ peut être vu comme une combinaison linéaire de deux variables aléatoires de $L^2(\Omega)$ : $X$, et la variable aléatoire $1$ égale à $1$ presque sûrement. Par conséquent, $f(X)\in K$ où $K$ désigne le sous-espace vectoriel de $L^2(\Omega)$ engendré par $X\in L^2(\Omega)$ et $1\in L^2(\Omega)$. Ainsi, trouver un prédicteur affine optimal de $Y$ revient à trouver un prédicteur optimal de $Y$ dans le sous-espace vectoriel $K$.
 
-Le sous-espace $K$ étant un sous-espace vectoriel fermé de $L^2(\Omega)$ (car de dimension finie), on peut utiliser la [propriété de caractérisation](#identEC) du prédicteur optimal vu précédemment, et conclure que le prédicteur affine optimal de $Y$ par $X$ est la projection orthogonale $P_K(Y)$ de $Y$ sur $K$.  En particulier, puisque tout élément de $K$ est une combinaison linéaire de $X$ et $1$, on peut écrire que $P_K(Y) = a^*X + b^*  1$, où les coefficients $a^*,b^*$ vérifient:
+$K$ étant un sous-espace vectoriel fermé de $L^2(\Omega)$ (car de dimension finie), la [propriété de caractérisation](#identEC) du prédicteur optimal permet de conclure que le prédicteur affine optimal de $Y$ par $X$ est la projection orthogonale $P_K(Y)$ de $Y$ sur $K$.  En particulier, puisque tout élément de $K$ est une combinaison linéaire de $X$ et $1$, on peut écrire que $P_K(Y) = a^*X + b^*  1$, où les coefficients $a^*,b^*$ vérifient:
 $$ \langle Y - (a^*  X + b^*  1) \vert a  X + b  1 \rangle = 0 \quad  \forall a,b\in\R,$$
 Cette égalité devant être vérifiée pour tous $a,b\in\R$, elle implique, par bilinéarité du produit scalaire, que les coefficients $a^*$ et $b^*$ soient solutions du système:
 $$
@@ -463,19 +465,9 @@ En conclusion, le meilleur prédicteur affine, au sens des moindres carrés, de 
 $$ f^*(X)=P_K(Y)=a^* X + b^*=\Esp(Y) + \rho(X,Y)\frac{\sigma_Y}{\sigma_X} (X -\Esp(X)),$$
 et l'erreur quadratique moyenne associée à ce prédicteur vaut:
 $$\begin{aligned}
-\Esp\left(\left(Y - f^*(X)\right)^2\right) & = \ell(a^*,b^*)= \sigma_Y^2 + \rho^2(X,Y)\sigma^2_Y - 2\rho^2(X,Y)\sigma^2_Y\\
+\Esp\left(\left(Y - f^*(X)\right)^2\right) & = \sigma_Y^2 + \rho^2(X,Y)\sigma^2_Y - 2\rho^2(X,Y)\sigma^2_Y\\
                         & = \sigma^2_Y(1-\rho^2(X,Y)).
 \end{aligned}$$
-On voit ainsi que cette erreur est proche de 0 lorsque $|\rho(X,Y)| \approx 1$ tandis qu'elle est proche de $\V(Y) = \sigma^2_Y$ lorsque $\rho(X,Y) \approx 0$. On notera au passage qu'on obtient que la meilleure approximation de $Y$ par une constante (ce qui revient à prendre $X=0$) est son espérance.
-
-On vérifie aisément que les valeurs $a=a^*$ et $b=b^*$ minimise bien l'erreur $\ell(a,b)=\Esp((Y - (aX + b))^2)$ (cf. [Exercice](#detail) plus bas) et donc la meilleure approximation affine de $Y$ basée sur $X$ au sens des moindres carrés est la fonction $f^*(X)$ définie par
-$$ f^*(X)=a^* X + b^*=\Esp(Y) + \rho(X,Y)\frac{\sigma_Y}{\sigma_X} (X -\Esp(X)).$$
-L'erreur quadratique moyenne vaut alors
-$$\begin{aligned}
-\Esp\left(\left(Y - f^*(X)\right)^2\right) & = \ell(a^*,b^*)= \sigma_Y^2 + \rho^2(X,Y)\sigma^2_Y - 2\rho^2(X,Y)\sigma^2_Y\\
-                        & = \sigma^2_Y(1-\rho^2(X,Y)).
-\end{aligned}$$
-
 On voit ainsi que cette erreur est proche de 0 lorsque $|\rho(X,Y)| \approx 1$ tandis qu'elle est proche de $\V(Y) = \sigma^2_Y$ lorsque $\rho(X,Y) \approx 0$. On notera au passage qu'on obtient que la meilleure approximation de $Y$ par une constante (ce qui revient à prendre $X=0$) est son espérance.
 
 ### Une deuxième approche {.exercise .question .one #detail}
@@ -489,11 +481,11 @@ L'hypothèse d'une relation linéaire est très forte et pas nécessairement tou
 
 ## Cas général
 
-Dans le paragraphe précédent, on s'est intéressé à approximer une variable aléatoire $Y\in L^2(\Omega)$ par une fonction affine d'une autre variable $X\in L^2(\Omega)$. On va montrer ici que si on généralise la recherche du prédicteur optimal à l'ensemble des fonctions de $X$ de carré intégrable, la solution est donnée précisément par l'espérance conditionnelle $\psi(X) = \Esp(Y|X)$.
+Dans le paragraphe précédent, on s'est intéressé à approximer une variable aléatoire $Y\in L^2(\Omega)$ par une fonction affine d'une autre variable $X\in L^2(\Omega)$. On va montrer ici que si on généralise la recherche du prédicteur optimal à l'ensemble des fonctions $f$ telles que $f(X)$ est de carré intégrable, la solution est donnée par l'espérance conditionnelle $\psi(X) = \Esp(Y|X)$.
 
-En effet, considérons d'une part le sous-espace $L^2_X(\Omega)\subset L^2(\Omega)$ constitué des (classes d'équivalence) des variables aléatoires de la forme $f(X)$, avec $f : \R \rightarrow\R$ borélienne et telle que $f(X) \in L^2(\Omega)$. On remarque que $L^2_X(\Omega)$ est sous-espace vectoriel de $L^2(\Omega)$. On admettra par ailleurs que $L^2_X(\Omega)$ est fermé. Par conséquent, le prédicteur optimal de $Y$ dans $L^2_X(\Omega)$ n'est autre que la projection orthogonale de $Y$ sur $K=L^2_X(\Omega)$, et on peut une nouvelle fois appliquer la [propriété de caractérisation](#identEC) associée pour l'identifier.
+En effet, considérons le sous-espace $L^2_X(\Omega)\subset L^2(\Omega)$ constitué des (classes d'équivalence) des variables aléatoires de la forme $f(X)$, avec $f : \R \rightarrow\R$ borélienne et telle que $f(X) \in L^2(\Omega)$. On remarque que $L^2_X(\Omega)$ est sous-espace vectoriel de $L^2(\Omega)$. On admettra par ailleurs que $L^2_X(\Omega)$ est fermé. Par conséquent, le prédicteur optimal de $Y$ dans $L^2_X(\Omega)$ est donné par la projection orthogonale de $Y$ sur $K=L^2_X(\Omega)$, et on peut une nouvelle fois appliquer la [propriété de caractérisation](#identEC) associée pour l'identifier.
 
-D'autre part, on note que l'espérance conditionnelle $\psi(X) = \Esp(Y|X) \in L^2_X(\Omega)$ et que pour tout $f(X)\in L^2_X(\Omega)$,
+On note par ailleurs que l'espérance conditionnelle $\psi(X) = \Esp(Y|X) \in L^2_X(\Omega)$ et que pour tout $f(X)\in L^2_X(\Omega)$,
 $$ 
 \begin{aligned}
   \langle Y - \psi(X) \vert f(X) \rangle =  \Esp\big((Y - \psi(X))f(X)\big)
@@ -502,12 +494,13 @@ $$
 &= \Esp\big(Yf(X)\big) - \Esp\big(Yf(X)\big)=0
 \end{aligned}
 $$
-où la seconde égalité se déduit du fait que $f(X)$ est $\P$-intégrable, et la troisième égalité découle du théorème de l'espérance totale. Ainsi l'espérance conditionnelle vérifie la [propriété de caractérisation](#identEC) et par conséquent, par unicité de la projection orthogonale, on en déduit que $P_{L^2_X(\Omega)}(Y)=\psi(X)$. On peut donc conclure que, pour toutes variables aléatoires $X,Y\in L^2(\Omega)$, 
+où la seconde égalité se déduit du fait que $f(X)$ est $\P$-intégrable, et la troisième découle du théorème de l'espérance totale. Ainsi l'espérance conditionnelle vérifie la [propriété de caractérisation](#identEC) et par unicité de la projection orthogonale, on en déduit que $P_{L^2_X(\Omega)}(Y)=\psi(X)$. 
 
-* l'espérance conditionnelle $\psi(X)=\Esp(Y|X)$ n'est autre que la projection orthogonale de $Y$ sur $L^2_X(\Omega)$,
-* l'espérance conditionelle $\psi(X)=\Esp(Y|X)$ est le prédicteur optimal (au sens des moindres carrés) de $Y$ à partir d'une fonction de $X$. 
+![Illustration géométrique de l'espérance conditionnelle comme projection orthogonale sur un sous-espace de $L^2(\Omega)$](images/Proj.tex){#fig_proj}
 
-Il est alors immédiat que le "résidu" $Y-\Esp(Y|X)$ est non corrélé avec $X$ du fait de l'orthogonalité. On en déduit aussi la *formule de la variance totale* :
+En conclusion, l'espérance conditionnelle $\Esp(Y|X)$ est le meilleur prédicteur de $Y$ au sens des moindres carrés parmi les fonctions de $X$. On notera qu'en pratique, dans les problèmes de régression, on se restreint souvent à des classes de fonctions paramétrées (par exemple les fonctions affines vues précédemment, ou les réseaux de neurones dans l'apprentissage profond) car on ne dispose que rarement de l'expression explicite de l'espérance conditionnelle.
+
+Il est ensuite immédiat que le "résidu" $Y-\Esp(Y|X)$ est non corrélé avec $X$ du fait de l'orthogonalité. On en déduit ainsi la *formule de la variance totale* :
 $$
 \begin{aligned}
 \V(Y) = \|Y - \Esp(Y)\|^2 &=  \|Y - \Esp(Y|X) + \Esp(Y|X) - \Esp(Y)\|^2 \\
@@ -517,13 +510,13 @@ $$
                           &= \Esp(\V(Y|X)) + \V(\Esp(Y|X)).
 \end{aligned}
 $$
-où on a utilisé la formule de l'espérance totale et introduit la variable aléatoire variance conditionnelle $\V(Y|X) = \Esp((Y - \Esp(Y|X))^2|X)$ comme cas particulier de la [définition vue plus haut](#defespcondg). Cette décomposition est illustrée dans la [figure qui suit](#fig_proj2).
+où on a utilisé la formule de l'espérance totale et introduit la variable aléatoire variance conditionnelle $\V(Y|X) = \Esp((Y - \Esp(Y|X))^2|X)$ comme cas particulier de la [définition vue plus haut](#defespcondg). Cette décomposition est illustrée dans la [figure ci-après](#fig_proj2).
 
-![Illustration géométrique de la formule de la variance totale. L'espace $\mathrm{Vect}\lbrace 1\rbrace$ désigne le sous-espace de $L^2(\Omega)$ composé des variables aléatoires constantes (p.s.).](images/Proj2.tex){#fig_proj2}
+![Illustration géométrique de la formule de la variance totale. L'espace $\mathrm{Vect}\lbrace 1\rbrace$ désigne le sous-espace de $L^2(\Omega)$ composé des variables aléatoires p.s. constantes.](images/Proj2.tex){#fig_proj2}
 
 
 ### Variance totale {.exercise .question .one #vartot}
-Redémontrer ce résultat sans utiliser la notion d'orthogonalité.
+Démontrer ce résultat sans utiliser la notion d'orthogonalité.
 
 
 Exercices
@@ -617,7 +610,9 @@ Exprimer la densité $f_Y$ de $Y$ en fonction de $f_X$ et $f_Z$.
 Calculer le gradient de $\log f_Y$, que l'on appelle aussi le score de la loi de $Y$.
 
 ### Question 3 {.question #tweedie3}
-En déduire une expression de $\Esp(X|Y)$ ne faisant pas intervenir la densité $f_X$. Cette propriété est particulièrement intéressante en pratique puisque pour ce type de problèmes, on ne dispose généralement que d'obervations bruitées qui vont nous permettre d'approximer les quantités nécessaires pour effectuer ce calcul selon une approche statistique. Elle est par ailleurs au coeur des algorithmes modernes de génération d'image.
+En déduire une expression de $\Esp(X|Y)$ ne faisant pas intervenir la densité $f_X$. 
+
+Cette propriété est particulièrement intéressante en pratique puisque pour ce type de problèmes, on ne dispose généralement que d'obervations bruitées qui vont nous permettre d'approximer les quantités nécessaires pour effectuer ce calcul selon une approche statistique. Elle est par ailleurs au coeur des algorithmes modernes de génération d'image.
 
 
 

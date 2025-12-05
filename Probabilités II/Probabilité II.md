@@ -424,7 +424,7 @@ De la même manière que dans le [cas unidimensionnel](#esperanceg), on a :
 ### Fonction d'un vecteur aléatoire {.proposition #esperancegvect}
 Soit $X$ un vecteur aléatoire de densité $f$, et soit $g$ une fonction de $\R^n$ dans $\R$, mesurable. On a alors $g(X)\in \L^1$ si et seulement si 
 $$\int_{-\infty}^{+\infty} \ldots \int_{-\infty}^{+\infty} |g(x_1,\ldots,x_n)|f(x_1,\ldots,x_n) dx_1 \ldots dx_n,$$
-est définie et dans ce cas, on a 
+est finie et dans ce cas, on a 
 $$\Esp(g(X)) = \int_{-\infty}^{+\infty} \ldots \int_{-\infty}^{+\infty} g(x_1,\ldots,x_n)f(x_1,\ldots,x_n) dx_1 \ldots dx_n.$$
 
 Pour revenir à la densité d'une composante d'un vecteur aléatoire, on intègre par rapport aux autres variables. On le présente ici dans le cas d'un couple $Z=(X,Y)$ de variables aléatoires. On généralise aisément à une dimension supérieure.
@@ -657,6 +657,8 @@ On a égalité si et seulement si $\frac{g(x)}{f(x)}$ est presque sûrement cons
 
 ### Divergence de Kullback-Leibler entre deux gaussiennes {.exercise #exoklgauss}
 Soient $f$ et $g$ les densités de deux lois normales $\mathcal{N}(m_1,\sigma_1^2)$ et $\mathcal{N}(m_2,\sigma_2^2)$. Montrer que $D_{KL}(f||g) = \log \left(\frac{\sigma_2}{\sigma_1}\right) + \frac{\sigma_1^2 + (\mu_1 - \mu_2)^2}{2\sigma_2^2} - \frac{1}{2}$.
+
+### {.anonymous}
 
 Revenons à notre problème d'estimation de paramètres. Soit $X$ une variable aléatoire de densité inconnue $f$. On choisit une famille de densités $(f_\theta)_{\theta \in \Theta}$, et on cherche à minimiser la divergence de Kullback-Leibler entre $f$ et $f_\theta$ :
 $$ \hat{\theta} = \arg\min_{\theta \in \Theta} D_{KL}(f||f_\theta).$$
