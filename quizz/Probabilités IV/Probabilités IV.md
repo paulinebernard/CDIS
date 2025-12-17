@@ -46,7 +46,7 @@ Soit $(X_n)_{n\in \N^\ast}$ une suite de v.a. indépendantes de loi $\mathcal{E}
 
   - [ ]  A : $X_n \xrightarrow[n \to \infty]{\P} 1$ 
 
-  - [ ]  B : $\frac{1}{n}\sum_{i=1}^n X_i \to 1$ p.s. quand $n \to \infty$
+  - [ ]  B : $\frac{1}{n}\sum_{i=1}^n \lambda_i X_i \to 1$ p.s. quand $n \to \infty$
 
   - [ ]  C : $\Esp(X_n) \to 1$ quand $n \to \infty$
 

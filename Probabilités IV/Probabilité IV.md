@@ -324,7 +324,7 @@ Enfin, $\lim_{K\to +\infty} \P(|X| > K) = 0$ (par convergence dominée) et donc 
 
 ## La loi des grands nombres 
 
-On présente maintenant l’un des résultats essentiels de la théorie des probabilités. Ce résultat montre rigoureusement que, quand le nombre de répétitions de l’expérience tend vers l’infini, la fréquence de réalisation d’un événement converge p.s. vers la probabilité de réalisation de cet événement. Ce résultat, appelé **Loi des grands nombres**, a d’autres portées fondamentales. Il est en particulier à l’origine de méthodes de calcul numérique appelées Méthodes de Monte-Carlo, qui sont extrêmement puissantes et robustes. Elles sont par exemple très utilisées en Physique, en Mathématiques Financières, dans les méthodes de quantification d'incertitudes. Une introduction à ces méthodes sera donnée au chapitre V.
+On présente maintenant l’un des résultats essentiels de la théorie des probabilités. Ce résultat montre rigoureusement que, quand le nombre de répétitions de l’expérience tend vers l’infini, la fréquence de réalisation d’un événement converge p.s. vers la probabilité de réalisation de cet événement. Ce résultat, appelé **Loi des grands nombres**, a d’autres portées fondamentales. Il est en particulier à l’origine de méthodes de calcul numérique appelées Méthodes de Monte-Carlo, qui sont extrêmement puissantes et robustes. Elles sont par exemple très utilisées en Physique, en Mathématiques Financières ou encore dans les problèmes de quantification d'incertitudes. Une introduction à ces méthodes sera donnée au chapitre V.
 
 Dans ce paragraphe, on considère une suite $(X_n)_{n\in\N^\ast}$ de variables aléatoires **indépendantes et de même loi** (ou indépendantes et identiquement distribuées, i.i.d. en abrégé). On considère la "moyenne" des $n$ premières variables aléatoires :
 $$ M_n = \frac{X_1 + \ldots + X_n}{n},$$
@@ -442,7 +442,7 @@ Soit $f$ une fonction réelle continue bornée. D'après la [proposition de cont
 
 ### {.anonymous}
 
-On peut finalement résumer les liens d'implications entre les différents modes de convergence à l'aide de la figure suivante :
+On peut finalement résumer les liens d'implications entre les différents modes de convergence à l'aide de la figure ci-desous.
 
 ![Relations entre modes de convergence](images/cvgces.tex)
 
