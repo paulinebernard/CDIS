@@ -185,7 +185,7 @@ $$F^{-} : u \in\, ]0,1[\, \mapsto \inf\left\{ x \in \R : F(x) \geq u \right\} \i
 * La réciproque généralisée de la f.d.r. $F_X$ d'une v.a.r. $X$ est aussi appelée *fonction quantile*. On pourra notamment remarquer que $F_X^{-}\left(\frac{1}{2}\right)$ est la médiane de $X$.
 * Lorsque $F$ réalise une bijection d'un intervalle non vide $I\subset \R$ sur $]0,1[$, sa réciproque généralisée coïncide avec sa bijection réciproque.
 
-On a alors le résultat suivant, qui stipule que $\psi = F_X^-$ est une solution universelle à notre problème. La preuve détaillée est donnée en Annexe.
+On a alors le résultat suivant, qui indique que $\psi = F_X^-$ est une solution universelle à notre problème. La preuve détaillée est donnée en Annexe.
 
 ### Méthode d'inversion {.theorem #invgen}
 Soient $U$ une variable uniforme sur $]0,1[$ ainsi que $X$ une variable aléatoire réelle de fonction de répartition $F_X$ et de réciproque généralisée $F_X^-$. Alors $F_X^-(U) \overset{\L}{=} X$. 
@@ -202,7 +202,7 @@ La méthode d'inversion peut sembler universelle pour simuler une v.a.r. $X$ à 
 
 ## Méthode de rejet
 
-La méthode de rejet est une alternative populaire à la méthode d'inversion, lorsque cette dernière ne peut être utilisée directement et que **la loi cible possède une densité**. On la doit à @vonNeumann. Pour en comprendre le fondement, il nous faut d'abord introduire une généralisation naturelle de la loi uniforme dans $\R$ à tout $\R^d$ ($d\in\N^\ast$). On notera $\lambda$ la mesure de Lebesgue sur $\R^d$.
+La méthode de rejet est une alternative populaire à la méthode d'inversion, lorsque cette dernière ne peut être utilisée directement et que **la loi cible possède une densité**. On la doit à @vonNeumann. Pour en comprendre le fondement, il faut d'abord introduire une généralisation naturelle de la loi uniforme dans $\R$ à $\R^d$ ($d\in\N^\ast$). On notera $\lambda$ la mesure de Lebesgue sur $\R^d$.
 
 ### Loi uniforme sur un borélien {.definition}
 La loi uniforme sur un borélien $A\subset\R^d$ de volume $\lambda(A) > 0$ est une loi de probabilité admettant pour densité $$f : x\in\R^d \mapsto \dfrac{1_A(x)}{\lambda(A)}.$$
