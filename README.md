@@ -11,10 +11,10 @@ Mines Paris - PSL, cycle ingénieur civil, unité d'enseignement Mathématiques 
 
 | Chapitre      | # | E-book | Papier | Notebook | Quizz | 
 | ------------- | ------: | -----------:  |  :----: |  :----:  | :-----: |
-| Poly 02/10/25 avec corrections |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25Poly.pdf) |  |  |
-| Topo mise à niveau |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25TD0corr.pdf) |  |  |
-| Fondamentaux & Compléments |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25Fonda.pdf) |  |  |
-| Développements |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25Devs.pdf) |  |  |
+| Poly 08/26 |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/Poly0826.pdf) |  |  |
+| Topo mise à niveau |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TD0.pdf) |  |  |
+| Fondamentaux & Compléments |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/Fonda.pdf) |  |  |
+| Développements |  |   | |  |  |
 |  I Topologie | 1 |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/m25Topo.pdf) |  | [:book: Q1](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TD1Quizz.pdf)  |
 | --  | 2 |  | --  | | [:book: Q2](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TD2Quizz.pdf) |
 | II Mesure-integration-espaces fonctionnels | 3 |   | -- |  | [:book: Q3](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TD3Quizz.pdf) |
