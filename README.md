@@ -15,7 +15,7 @@ Mines Paris - PSL, cycle ingénieur civil, unité d'enseignement Mathématiques 
 | Topo mise à niveau |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TD0.pdf) |  |  |
 | Fondamentaux & Compléments |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/Fonda.pdf) |  |  |
 | Développements |  |   | |  |  |
-|  I Topologie | 1 |   | -- |  | [:book: Q1](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TD1Quizz.pdf)  |
+|  I Topologie | 1 |   | -- |  | --  |
 | --  | 2 |  | --  | | -- |
 | II Mesure-integration-espaces fonctionnels | 3 |   | -- |  | --|
 | --  | 4 |   | -- |  | -- |
