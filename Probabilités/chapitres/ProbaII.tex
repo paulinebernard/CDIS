@@ -1,0 +1,1580 @@
+\chapter{Objectifs d'apprentissage}\label{II-objectifs-dapprentissage}
+
+\runinhead{Moments d'une variable
+aléatoire}\phantomsection\label{II-moments-dune-variable-aluxe9atoire}
+
+\begin{itemize}
+\tightlist
+\item
+  $\mathord{\bullet}$ connaître la définition de l'espérance d'une
+  variable aléatoire
+\item
+  $\mathord{\bullet}$ connaître l'interprétation de l'espérance
+\item
+  $\mathord{\bullet}$ connaître les propriétés de base de l'espérance
+\item
+  $\mathord{\bullet}$ connaître la définition de la variance d'une
+  variable aléatoire
+\item
+  $\mathord{\bullet}$ savoir que la variance est toujours positive
+\item
+  $\mathord{\bullet}$ savoir ce que signifie variable centrée-réduite
+\item
+  $\mathord{\bullet}$ connaître la définition de la covariance
+\item
+  $\mathord{\bullet}$ savoir que la covariance est une forme bilinéaire
+\item
+  $\mathord{\bullet}$ connaître et savoir manipuler l'inégalité de
+  Cauchy-Schwarz
+\item
+  $\mathord{\bullet}\mathord{\bullet}$ connaître les conditions
+  d'existence de l'espérance d'une fonction (mesurable) d'une variable
+  aléatoire
+\item
+  $\mathord{\bullet}\mathord{\bullet}$ savoir exprimer la probabilité
+  d'un événement de la forme \(X \in A\) sous la forme d'une espérance
+\item
+  $\mathord{\bullet}\mathord{\bullet}$ connaître et savoir calculer les
+  moments des lois usuelles
+\end{itemize}
+
+\runinhead{Vecteurs
+aléatoires}\phantomsection\label{II-vecteurs-aluxe9atoires}
+
+\begin{itemize}
+\tightlist
+\item
+  $\mathord{\bullet}$ savoir que les composantes d'un vecteur aléatoire
+  sont des variables aléatoires définies sur le même espace de
+  probabilité
+\item
+  $\mathord{\bullet}$ connaître la définition d'un vecteur aléatoire à
+  densité
+\item
+  $\mathord{\bullet}\mathord{\bullet}$ connaître les conditions
+  d'existence de l'espérance d'une fonction (mesurable) d'un vecteur
+  aléatoire à densité
+\item
+  $\mathord{\bullet}\mathord{\bullet}$ savoir calculer les densités
+  marginales d'un vecteur aléatoire à densité
+\item
+  $\mathord{\bullet}\mathord{\bullet}$ savoir qu'un couple de variables
+  aléatoires à densité n'admet pas nécessairement de densité
+\item
+  $\mathord{\bullet}$ connaître la définition de l'espérance d'un
+  vecteur aléatoire à densité
+\item
+  $\mathord{\bullet}$ connaître la définition de la matrice de
+  covariance d'un vecteur aléatoire à densité
+\item
+  $\mathord{\bullet}$ savoir que la matrice de covariance est
+  semi-définie positive
+\end{itemize}
+
+\runinhead{Variables et vecteurs aléatoires
+indépendantes}\phantomsection\label{II-variables-et-vecteurs-aluxe9atoires-induxe9pendantes}
+
+\begin{itemize}
+\tightlist
+\item
+  $\mathord{\bullet}$ connaître la définition de l'indépendance de deux
+  vecteurs/variables aléatoires
+\item
+  $\mathord{\bullet}$ savoir caractériser l'indépendance de deux
+  vecteurs/variables aléatoires à densité
+\item
+  $\mathord{\bullet}\mathord{\bullet}$ savoir que si \(X\) et \(Y\) sont
+  indépendantes, alors \(g(X)\) et \(h(Y)\) sont aussi indépendantes
+\item
+  $\mathord{\bullet}\mathord{\bullet}$ savoir que si \(X\) et \(Y\) sont
+  indépendantes et si \(g(X)\) et \(h(Y)\) sont intégrables alors
+  \(\mathbb{E}(g(X)g(Y)) = \mathbb{E}(g(X))\mathbb{E}(g(Y))\)
+\item
+  $\mathord{\bullet}$ savoir que la covariance de deux variables
+  indépendantes est nulle
+\item
+  $\mathord{\bullet}\mathord{\bullet}$ savoir que la réciproque est
+  fausse et connaître un contre-exemple
+\end{itemize}
+
+\runinhead{Identification de
+densité}\phantomsection\label{II-identification-de-densituxe9}
+
+\begin{itemize}
+\tightlist
+\item
+  $\mathord{\bullet}\mathord{\bullet}$ savoir identifier la densité
+  d'une fonction d'une variable aléatoire par la méthode de la fonction
+  muette
+\item
+  $\mathord{\bullet}\mathord{\bullet}$ savoir identifier la densité
+  d'une fonction d'un vecteur aléatoire par la méthode de la fonction
+  muette
+\end{itemize}
+
+\chapter{Moments d'une variable
+aléatoire}\label{II-moments-dune-variable-aluxe9atoire-1}
+
+La loi de probabilité d'une variable aléatoire définie sur l'espace
+probabilisé \((\Omega,\mathcal{A},\mathbb{P})\) va nous permettre de
+calculer aisément des grandeurs caractéristiques telles que sa valeur
+moyenne et sa variance (lorsqu'elles existent). Elles sont définies
+ci-dessous.
+
+\addcontentsline{toc}{subsection}{Espérance d'une variable aléatoire
+réelle}
+\begin{definition}[{Espérance d'une variable aléatoire
+réelle}]\phantomsection\label{II-defesp}
+
+La variable aléatoire \(X : \Omega \to \mathbb{R}\) de loi
+\(\mathbb{P}_X\) est dite \emph{intégrable} si l'intégrale
+\(\int_\mathbb{R}|x| d\mathbb{P}_X(x)\) est finie, autrement dit si
+\(x\) est \(\mathbb{P}_X\)-intégrable. On définit alors son
+\emph{espérance} par
+\[\mathbb{E}(X) = \int_\mathbb{R}x d\mathbb{P}_X(x) = \int_\Omega X(\omega) d\mathbb{P}(\omega)\]
+
+Si la variable aléatoire \(X\) admet une densité \(f\) par rapport à la
+mesure de Lebesgue, elle sera \emph{intégrable} si l'intégrale
+\(\int_\mathbb{R}|x|f(x) dx\) est finie, autrement dit si le produit
+\(x f(x)\) est intégrable par rapport à la mesure de Lebesgue. Son
+\emph{espérance} vaut alors \[\mathbb{E}(X) = \int_\mathbb{R}x f(x)dx\]
+\end{definition}
+
+\addcontentsline{toc}{subsection}{Interprétation}
+\begin{remarque}[{Interprétation}]\phantomsection\label{II-interpruxe9tation}
+
+\(\mathbb{E}(X)\) est un nombre réel qui donne une valeur moyenne
+résumant la variable aléatoire \(X\).
+
+L'espérance mathématique d'une variable aléatoire est un concept
+fondamental de la théorie des probabilités. La dénomination d'espérance
+pour cette quantité fait référence aux problèmes de jeux et d'espérance
+de gain. Cette terminologie imagée a été introduite par Pascal.
+
+On note \(\mathcal{L}^1\) l'ensemble de toutes les variables réelles
+\(X\) intégrables. Les propriétés suivantes découlent directement des
+propriétés de l'intégrale.
+\end{remarque}
+
+\addcontentsline{toc}{subsection}{Propriétés de base}
+\begin{proposition}[{Propriétés de
+base}]\phantomsection\label{II-propl1}
+
+\begin{itemize}
+\tightlist
+\item
+  \(\mathcal{L}^1\) est un espace vectoriel et
+  \(\forall X,Y \in \mathcal{L}^1\), \(\forall a,b \in \mathbb{R}\)
+  \[\mathbb{E}(aX + bY) = a\mathbb{E}(X) + b\mathbb{E}(Y).\]
+\item
+  \(X \in \mathcal{L}^1 \Leftrightarrow |X| \in \mathcal{L}^1\), et dans
+  ce cas \[|\mathbb{E}(X)| \leq \mathbb{E}(|X|).\]
+\item
+  Si \(X \geq 0\) et \(X \in \mathcal{L}^1\), alors
+  \(\mathbb{E}(X) \geq 0.\)
+\item
+  Si \(X,Y \in \mathcal{L}^1\) sont telles que \(X \leq Y\), alors
+  \[ \mathbb{E}(X) \leq \mathbb{E}(Y).\]
+\item
+  L'espérance d'une variable presque-sûrement constante est égale à
+  cette constante~:
+  \[ \text{Si } \mathbb{P}(X(\omega) = a ) = 1, \text{ alors } \mathbb{E}(X) = a.\]
+\item
+  Si \(\exists b \in \mathbb{R}_+\) tel que \(|X| \leq b\), alors
+  \(X \in \mathcal{L}^1\) et \(\mathbb{E}(X) \leq b\).
+\end{itemize}
+\end{proposition}
+
+\runinhead{Exercice -- Démontrer ces
+propriétés (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Démontrer
+ces propriétés}\label{II-basics}
+\addcontentsline{toc}{subsection}{Rappel~: cas discret}
+
+\begin{remarque}[{Rappel~: cas
+discret}]\phantomsection\label{II-rappel-cas-discret}
+Dans le cas d'une variable aléatoire discrète \(X\) à valeurs dans
+\(\mathbb{N}^\ast\), son espérance est définie par la quantité
+\(\mathbb{E}(X) = \sum_{i\in\mathbb{N}^\ast} i\mathbb{P}(X=i)\), pourvu
+que celle-ci soit finie. On voit immédiatement que les propriétés
+ci-dessus sont également vérifiées.
+\end{remarque}
+
+Outre l'espace \(\mathcal{L}^1\), nous pouvons définir l'espace
+\(\mathcal{L}^2\) des variables aléatoires réelles dont le carré \(X^2\)
+est dans \(\mathcal{L}^1\).
+
+\addcontentsline{toc}{subsection}{Variance}
+\begin{definition}[{Variance}]\phantomsection\label{II-defvar}
+
+La variable aléatoire \(X : \Omega \to \mathbb{R}\) de loi
+\(\mathbb{P}_X\) est dite \emph{de carré intégrable} si
+\(\mathbb{E}(X^2) = \int_{\mathbb{R}} x^2 \mathbb{P}_X(dx) = \int_{\Omega} X^2(\omega)\mathbb{P}(d\omega) < +\infty\).
+Sa \emph{variance} est définie par
+\[\mathbb{V}(X) = \mathbb{E}((X-\mathbb{E}(X))^2)\]
+
+Si la variable aléatoire \(X\) admet une densité \(f\) par rapport à la
+mesure de Lebesgue, elle sera \emph{de carré intégrable} si
+\(\mathbb{E}(X^2) = \int_\mathbb{R}x^2 f(x)dx\) est définie, autrement
+dit si le produit \(x^2 f(x)\) est intégrable par rapport à la mesure de
+Lebesgue.
+\end{definition}
+
+\addcontentsline{toc}{subsection}{Propriétés}
+\begin{proposition}[{Propriétés}]\phantomsection\label{II-propl2}
+
+\(\mathcal{L}^2\) est un sous-espace vectoriel de \(\mathcal{L}^1\), et
+si \(X \in \mathcal{L}^2\),
+\[|\mathbb{E}(X)| \leq \mathbb{E}(|X|) \leq \sqrt{\mathbb{E}(X^2)}\]
+\end{proposition}
+
+\begin{preuve}
+Soient \(X\) et \(Y\) deux variables aléatoires réelles de
+\(\mathcal{L}^2\) et \(a \in \mathbb{R}\). Comme
+\((aX+ Y)^2 \leq 2 a^2 X^2 + 2 Y^2\), alors
+\(aX + Y \in \mathcal{L}^2\). Ainsi, \(\mathcal{L}^2\) est un espace
+vectoriel.
+
+L'inclusion \(\mathcal{L}^2 \subset \mathcal{L}^1\) découle de
+\(|X| \leq 1 + X^2\) et de la \protect\hyperref[II-propl1]{proposition
+précédente (p.~\pageref*{II-propl1})} (linéarité).
+
+La première inégalité a déjà été vue
+\protect\hyperref[II-propl1]{ci-dessus (p.~\pageref*{II-propl1})}. Pour
+la seconde, nous pouvons nous limiter au cas où \(X\) est positive. Soit
+alors \(a = \mathbb{E}(X)\) et \(Y = X-a\). Par linéarité, on a
+\[ \mathbb{E}(Y^2) = \mathbb{E}(X^2) - 2a \mathbb{E}(X) + a^2 = \mathbb{E}(X^2)-a^2.\]
+Et \(\mathbb{E}(Y^2) \geq 0\) par le troisième point de la
+\protect\hyperref[II-propl1]{proposition
+ci-dessus (p.~\pageref*{II-propl1})}. Par conséquent,
+\(\mathbb{E}(X)^2 = a^2 \leq \mathbb{E}(X^2)\) ce qui est le résultat
+recherché.\hfill$\blacksquare$
+\end{preuve}
+
+\runinhead{Exercice -- Approximation par une
+constante (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Approximation
+par une constante}\label{II-exo-approx}
+Soit \(X\) une v.a. de carré intégrable. Montrer que
+\(\mathbb{E}((X - a)^2 )\) atteint son minimum lorsque
+\(a = \mathbb{E}(X)\).\solref{II-answer-exo-approx}
+
+\addcontentsline{toc}{subsection}{La variance est positive}
+\begin{remarque}[{La variance est
+positive}]\phantomsection\label{II-la-variance-est-positive}
+
+En vertu de cette
+\protect\hyperref[II-propl2]{proposition (p.~\pageref*{II-propl2})},
+\(\mathbb{V}(X)\) est \textbf{positive} et sa racine carrée \(\sigma_X\)
+s'appelle l'\emph{écart-type} de \(X\). L'écart-type est une grandeur
+qui mesure la moyenne (en un certain sens) de l'écart des valeurs de
+\(X\) à sa moyenne, d'où son nom.
+
+On a également \[\mathbb{V}(X) = \mathbb{E}(X^2)-\mathbb{E}(X)^2\] que
+l'on obtient en développant \((X-\mathbb{E}(X))^2\). Cette manipulation
+anodine est fort utile dans la pratique. On retiendra que ``La variance
+est égale à la moyenne des carrés moins le carré de la moyenne''. On
+désigne le terme \(\mathbb{E}(X^2)\) par l'expression \emph{moment
+d'ordre deux} tandis que la variance est parfois appelée \emph{moment
+centré d'ordre deux}.
+\end{remarque}
+
+\addcontentsline{toc}{subsection}{Variable centrée réduite}
+\begin{remarque}[{Variable centrée
+réduite}]\phantomsection\label{II-variable-centruxe9e-ruxe9duite}
+
+D'après ce qui précède, si \(X\) est une variable aléatoire de carré
+intégrable, d'espérance \(\mathbb{E}(X)\) et d'écart-type
+\(\sigma_X >0\), alors la variable aléatoire
+\[\frac{X-\mathbb{E}(X)}{\sigma_X}\] est d'espérance nulle et de
+variance 1. On dira qu'une telle variable aléatoire est \emph{centrée et
+réduite}.
+
+On peut remarquer que si \(X\) et \(Y\) sont dans \(\mathcal{L}^2\), la
+variable aléatoire \(XY\) est dans \(\mathcal{L}^1\), puisque
+\(|XY| \leq \frac{1}{2}(X^2+Y^2)\). On peut ainsi définir la
+\emph{covariance} de deux variables aléatoires~:
+\end{remarque}
+
+\addcontentsline{toc}{subsection}{Covariance}
+\begin{definition}[{Covariance}]\phantomsection\label{II-defcov}
+
+Si \(X\) et \(Y\) sont dans \(\mathcal{L}^2\), la variable aléatoire
+\((X-\mathbb{E}(X))(Y-\mathbb{E}(Y))\) est intégrable. On appelle la
+\emph{covariance} de \(X\) et \(Y\) l'espérance de cette variable
+aléatoire et on la note~:
+\[\text{Cov}(X,Y) = \mathbb{E}((X-\mathbb{E}(X))(Y-\mathbb{E}(Y))).\] Le
+\emph{coefficient de corrélation} des variables aléatoires \(X\) et
+\(Y\) est le nombre
+\[\rho(X,Y) = \frac{\text{Cov}(X,Y)}{\sqrt{\mathbb{V}(X)}\sqrt{\mathbb{V}(Y)}}\]
+qui est bien défini lorsque \(\mathbb{V}(X)>0\) et \(\mathbb{V}(Y)>0\).
+\end{definition}
+
+\runinhead{Exercice -- Calcul d'une
+covariance (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Calcul
+d'une covariance}\label{II-cov-unif}
+Soit \(U \sim \mathcal{U}_{[0,1]}\) et \(V = 1-U\). Calculer
+\(\text{Cov}(U,V)\) et \(\rho(U,V)\).\solref{II-answer-cov-unif}
+
+Du fait de la linéarité de l'espérance, on a
+\[\text{Cov}(X,Y) = \mathbb{E}(XY) - \mathbb{E}(X)\mathbb{E}(Y)\] et
+d'ailleurs, on voit que la formule de calcul de la variance donnée plus
+haut est un cas particulier de cette formulation car
+\(\mathbb{V}(X) = \text{Cov}(X,X)\). La linéarité de l'espérance nous
+donne encore pour \(a,a',b,b' \in \mathbb{R}\) \begin{align*} 
+\mathbb{E}((aX+b)(a'Y+b')) &= aa'\mathbb{E}(XY) + ab'\mathbb{E}(X) +a'b\mathbb{E}(Y) + bb'\\
+\mathbb{E}(aX+b)\mathbb{E}(a'Y+b') &= aa'\mathbb{E}(X)\mathbb{E}(Y) + ab'\mathbb{E}(X) +a'b\mathbb{E}(Y) + bb'
+\end{align*} On en déduit que la covariance est une forme bilinéaire sur
+l'espace vectoriel des variables aléatoires de carré intégrable, et nous
+avons \[\text{Cov}(aX+b,a'Y+b') = aa'\text{Cov}(X,Y)\] En particulier,
+on a \[ \mathbb{V}(aX) = a^2\mathbb{V}(X)\] On en déduit que les
+coefficients de corrélation de \(X\) et \(Y\) et de \(aX+b\) et
+\(a'Y+b'\) sont égaux lorsque \(aa' >0\).
+
+\addcontentsline{toc}{subsection}{Inégalité de Cauchy-Schwarz}
+\begin{proposition}[{Inégalité de
+Cauchy-Schwarz}]\phantomsection\label{II-CS}
+
+Soit \(X\) et \(Y\) deux variables aléatoires de carré intégrable, alors
+on a \emph{l'inégalité de Cauchy-Schwarz}~:
+\[|\mathbb{E}(XY)| \leq \mathbb{E}(|XY|) \leq \sqrt{\mathbb{E}(X^2)\mathbb{E}(Y^2)}\]
+avec égalité si et seulement si \(X\) et \(Y\) sont presque-sûrement
+proportionnelles.
+\end{proposition}
+
+\begin{preuve}
+La première inégalité a été démontrée plus haut. Pour la seconde, on a
+\(\forall x \in \mathbb{R}\) d'après la linéarité de l'espérance~:
+\[x^2\mathbb{E}(X^2) + 2x\mathbb{E}(XY)+ \mathbb{E}(Y^2) = \mathbb{E}((xX+Y)^2) \geq 0.\]
+Mais ceci n'est possible que si ce trinôme en \(x\) n'a au plus qu'une
+seul racine réelle\,; son discriminant
+\[4\left((\mathbb{E}(XY))^2 - \mathbb{E}(X^2)\mathbb{E}(Y^2)\right)\]
+doit donc être négatif ou nul ce qui donne le résultat.
+
+Le discriminant est nul si et seulement si le trinôme admet une racine
+double \(x_0\) et dans ce cas, \(Y(\omega) = -x_0 X(\omega)\) pour
+presque tout \(\omega\).\hfill$\blacksquare$
+\end{preuve}
+
+\runinhead{Exercice -- Coefficient de
+corrélation (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Coefficient
+de corrélation}\label{II-CS-corr}
+Montrer que le coefficient de corrélation de \(X\) et \(Y\) vérifie
+\[-1\leq \rho(X,Y) \leq 1.\]
+
+\solref{II-answer-CS-corr}
+
+Enfin, il peut être intéressant de pouvoir calculer l'espérance d'une
+fonction mesurable d'une variable aléatoire réelle qui est une variable
+aléatoire en vertu de la
+\href{Probabilité\%20I.pdf\%20\#composition}{proposition de
+composition}.
+
+\addcontentsline{toc}{subsection}{Espérance de \(g(X)\)}
+\begin{proposition}[{Espérance de
+\(g(X)\)}]\phantomsection\label{II-esperanceg}
+
+Soit \(X\) une variable aléatoire réelle de loi \(\mathbb{P}_X\), et
+\(g\) une fonction mesurable de \((\mathbb{R},\mathcal{B}(\mathbb{R}))\)
+dans \((\mathbb{R},\mathcal{B}(\mathbb{R}))\). Alors \(g(X)\) est
+\(\mathbb{P}_X\) - intégrable si et seulement si l'intégrale
+\[\int_\mathbb{R}|g(x)| d\mathbb{P}_X(x),\] est finie et dans ce cas
+\[\mathbb{E}(g(X)) = \int_\mathbb{R}g(x)d\mathbb{P}_X(x) = \int_\Omega g(X(\omega)) d\mathbb{P}(\omega)\]
+
+Si \(\mathbb{P}_X\) admet une densité \(f\) par rapport à la mesure de
+Lebesgue, alors \(g(X)\) est \(\mathbb{P}_X\) - intégrable si et
+seulement si le produit \(fg\) est intégrable par rapport à la mesure de
+Lebesgue. On a alors~:
+\[\mathbb{E}(g(X)) =  \int_\mathbb{R}g(x)d\mathbb{P}_X(x) = \int_\mathbb{R}g(x)f(x)dx = \int_\Omega g(X(\omega)) d\mathbb{P}(\omega)\]
+\end{proposition}
+
+\begin{preuve}
+On rappelle que la loi de probabilité \(\mathbb{P}_X\) est définie pour
+\(B\in \mathcal{B}(\mathbb{R})\) par
+\(\mathbb{P}_X(B)= \mathbb{P}(X^{-1}(B))\). Par conséquent
+\[\mathbb{E}(1_B(X)) = \mathbb{P}(X^{-1}(B)) = \mathbb{P}_X(B) = \int_\mathbb{R}1_B (X) d\mathbb{P}(x).\]
+Ainsi, si \(g\) est une fonction étagée positive
+(\(g \in \mathcal{E}^+\)), on obtient le résultat voulu par linéarité.
+
+Si \(g\) est positive, soit \((g_n)_{n \in \mathbb{N}^\star}\) une suite
+croissante de fonctions étagées positives convergeant simplement vers
+\(g\). On a alors \begin{align*}
+\mathbb{E}(g(x)) & = \mathbb{E}(\lim_{n\to \infty}g_n(X))\\
+           & = \lim_{n\to \infty} \mathbb{E}(g_n(X)) ~\text{ par le théorème de convergence monotone}\\
+           & = \lim_{n\to \infty} \int_\mathbb{R}g_n(x) d\mathbb{P}_X(x)\\
+           & = \int_\mathbb{R}\lim_{n\to \infty} g_n(x) d\mathbb{P}_X(x) ~\text{ par le théorème de convergence monotone}\\
+           & = \int_\mathbb{R}g(x) d\mathbb{P}_X(x).
+\end{align*}
+
+Enfin, si \(g\) n'est pas positive, on utilise la décomposition
+\(g = g^+ - g^-\) et on déduit le résultat par
+soustraction.\hfill$\blacksquare$
+\end{preuve}
+
+\addcontentsline{toc}{subsection}{Cas particulier}
+\begin{remarque}[{Cas
+particulier}]\phantomsection\label{II-cas-particulier}
+
+L'espérance et la variance sont des cas particuliers de ce résultat.
+\end{remarque}
+
+\addcontentsline{toc}{subsection}{Inégalité de Jensen}
+\begin{proposition}[{Inégalité de
+Jensen}]\phantomsection\label{II-jensen}
+
+Soit \(X\) une variable aléatoire réelle intégrable de loi
+\(\mathbb{P}_X\), et soit \(g : \mathbb{R}\to \mathbb{R}\) une fonction
+convexe telle que \(g(X)\) soit \(\mathbb{P}_X\) - intégrable. On a
+alors \[ g(\mathbb{E}(X)) \leq \mathbb{E}(g(X)).\]
+\end{proposition}
+
+\begin{preuve}
+Puisque \(g\) est convexe, pour tout \(a \in \mathbb{R}\) il existe
+\(\lambda_a \in \mathbb{R}\) tel que pour tout \(x\in\mathbb{R}\) on a
+\[g(x) \geq g(a) + \lambda_a\,(x-a).\] C'est une conséquence directe de
+la caractérisation de la convexité par les inégalités des pentes. C'est
+vrai en particulier pour \(x =X(\omega)\), \(\omega \in \Omega\), et
+\(a = \mathbb{E}(X)\)~: pour tout \(\omega \in \Omega\),
+\[g\left(X(\omega)\right) \geq g\left(\mathbb{E}(X)\right) + \lambda_{\mathbb{E}(X)}\,\left(X(\omega) - \mathbb{E}(X)\right).\]
+En intégrant de chaque côté de l'inégalité, on obtient bien
+\begin{align*}
+\int_\Omega g\left(X(\omega)\right) \,\mathbb{P}(d\omega) = \mathbb{E}\left(g(X)\right) &\geq g\left(\mathbb{E}(X)\right) + \lambda_{\mathbb{E}(X)}\,\left(\int_\Omega X(\omega)\,\mathbb{P}(d\omega) - \mathbb{E}(X)\right)\\
+& = g\left(\mathbb{E}(X)\right) + \lambda_{\mathbb{E}(X)}\,\left(\mathbb{E}(X) - \mathbb{E}(X)\right)\\
+& = g\left(\mathbb{E}(X)\right).
+\end{align*}\hfill$\blacksquare$
+\end{preuve}
+
+\section{Exemples de loi à
+densité}\label{II-exemples-de-loi-uxe0-densituxe9}
+
+Nous donnons ici quelques exemples de densités de probabilité. Nous
+reprenons en particulier les
+\href{Probabilité\%20I.pdf\%20\#exampledens}{trois exemples de densités
+donnés au premier cours}~:
+
+\subsection{\emph{Loi uniforme}}\label{II-loi-uniforme}
+
+sur \([a,b]\), où \(a < b\) et on note \(X \sim \mathcal{U}_{[a,b]}\) si
+\(X\) est de densité \[ f(x) = \frac{1}{b-a} 1_{[a,b]} (x).\]
+
+\runinhead{Exercice -- Moments d'une variable aléatoire de loi uniforme
+sur
+\([a,b]\) (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Moments
+d'une variable aléatoire de loi uniforme sur
+\([a,b]\)}\label{II-moments-unif}
+Soit \(X \sim \mathcal{U}_{[a,b]}\). Montrer que son espérance vaut
+\[ \mathbb{E}(X) = \int_a^b \frac{x}{b-a} dx = \frac{a+b}{2}\] et que sa
+variance vaut
+\[ \mathbb{V}(X) = \mathbb{E}(X^2) - \mathbb{E}(X)^2 = \frac{(b-a)^2}{12}.\]
+
+\solref{II-answer-moments-unif}
+
+\subsection{\emph{Loi exponentielle}}\label{II-loi-exponentielle}
+
+de paramètre \(\theta > 0\) et on note \(X \sim \mathcal{E}(\theta)\) si
+\(X\) est de densité \[ f(x) = \theta e^{-\theta x} 1_{\{x>0\}} (x).\]
+
+\runinhead{Exercice -- Moments d'une v.a.
+exponentielle (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Moments
+d'une v.a. exponentielle}\label{II-moments-expo}
+Montrer que son espérance et sa variance valent
+\[ \mathbb{E}(X) = \frac{1}{\theta} \text{ et } \mathbb{V}(X) = \frac{1}{\theta^2}\]
+
+\solref{II-answer-moments-expo}
+
+\subsection{\emph{Loi gamma}}\label{II-loi-gamma}
+
+On rappelle tout d'abord que la fonction gamma est définie pour
+\(\alpha \in \left] 0, + \infty \right[\) par
+\[\Gamma(\alpha) = \int_0^{+\infty} x^{\alpha-1}e^{-x} dx.\] En
+intégrant par partie, on obtient la relation
+\(\Gamma(\alpha+1) = \alpha \Gamma(\alpha)\), et on a \(\Gamma(1) = 1\).
+On en déduit que \(\Gamma(n) = (n-1)!\).
+
+Une variable aléatoire \(X\) suit une loi gamma de paramètre d'échelle
+\(\theta\) et d'indice \(\alpha\) et on note
+\(X \sim \Gamma(\alpha,\theta)\), si sa loi admet la densité
+\[f(x) = \frac{1}{\Gamma(\alpha)}\theta^\alpha x^{\alpha -1} e^{-\theta x}.\]
+
+\runinhead{Exercice -- Moments d'une v.a. de loi
+gamma (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Moments
+d'une v.a. de loi gamma}\label{II-moments-gamma}
+Soit \(X\sim \Gamma(\alpha,\theta)\). Montrer que son espérance et sa
+variance valent~:
+
+\[ \mathbb{E}(X) = \frac{\alpha}{\theta} \text{ et } \mathbb{V}(X) = \frac{\alpha}{\theta^2}.\]
+
+On remarquera que \(\Gamma(1,\theta)\) est la loi exponentielle de
+paramètre \(\theta\).
+
+Lorsque \(\alpha\) est entier, la loi gamma permet de modéliser le temps
+d'attente avant la \(n\)-ième occurence d'événements indépendants de loi
+exponentielle de paramètre \(\theta\).\solref{II-answer-moments-gamma}
+
+\subsection{\emph{Loi normale}}\label{II-loi-normale}
+
+de paramètres \(\mu\) et \(\sigma^2\) et on note
+\(X \sim \mathcal{N}(\mu,\sigma^2)\) si \(X\) est de densité
+\[f(x) = \frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)\]
+Son espérance et sa variance valent
+\[\mathbb{E}(X) =  \mu \text{ et } \mathbb{V}(X) = \sigma^2\]
+
+\runinhead{Exercice -- Moments d'une v.a.
+gaussienne (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Moments
+d'une v.a. gaussienne}\label{II-moments-gauss}
+Après avoir vérifié que \(f\) est bien une densité, calculer l'espérance
+et la variance de
+\(X \sim \mathcal{N}(\mu,\sigma^2)\)\solref{II-answer-moments-gauss}
+
+\addcontentsline{toc}{subsection}{Estimation statistique}
+\begin{remarque}[{Estimation
+statistique}]\phantomsection\label{II-estimation-statistique}
+
+Dans les exemples ci-dessus, on peut remarquer que les densités sont
+paramétrées par des nombres réels qui sont liés directement aux valeurs
+de l'espérance et de la variance de la variable. C'est très utile en
+statistique où l'on cherchera à estimer la valeur de ces paramètres à
+partir des observations disponibles. Dans le cas de la loi normale, la
+moyenne et la variance (empiriques) des échantillons fourniront ainsi
+directement des estimateurs des paramètres.
+
+Il existe des variables aléatoires qui n'ont pas d'espérance, comme le
+montre l'exercice suivant.
+\end{remarque}
+
+\runinhead{Exercice -- \emph{Loi de
+Cauchy} (\(\mathord{\bullet}\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{\emph{Loi
+de Cauchy}}\label{II-exo-cauchy}
+Un gyrophare envoie un flash lumineux dans une direction aléatoire
+uniforme d'angle \(\theta\). On cherche la distribution de l'abscisse
+\(X\) du point d'impact du rayon lumineux sur un écran plan infini situé
+à distance 1 du gyrophare. Donner la densité de \(X\). Calculer son
+espérance.\solref{II-answer-exo-cauchy}
+
+\chapter{Rappels sur les intégrales
+multiples}\label{II-rappels-sur-les-intuxe9grales-multiples}
+
+Dans la suite, nous aurons besoin de quelques résultats à propos des
+intégrales multiples que nous reformulons ici dans le contexte des
+probabilités.
+
+\addcontentsline{toc}{subsection}{Théorème de Fubini (pour les
+probabilités)}
+\begin{theoreme}[{Théorème de Fubini (pour les
+probabilités)}]\phantomsection\label{II-fubiniproba}
+
+Soient \(\mathbb{P}_X\) et \(\mathbb{P}_Y\) deux probabilités définies
+respectivement sur \((\mathbb{R}^n, \mathcal{B}(\mathbb{R}^n))\) et
+\((\mathbb{R}^m, \mathcal{B}(\mathbb{R}^m))\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Soient \(A \in \mathcal{B}(\mathbb{R}^n)\) et
+  \(B \in \mathcal{B}(\mathbb{R}^m)\), alors
+  \[\mathbb{P}(A \times B) = \mathbb{P}_X(A)\mathbb{P}_Y(B)\] définit de
+  manière unique une probabilité sur
+  \((\mathbb{R}^{n+m}, \mathcal{B}(\mathbb{R}^{n+m}))\) (que l'on note
+  aussi \(\mathbb{P}_X \otimes \mathbb{P}_Y\)).
+\item
+  Soit \(f\) une fonction \(\mathcal{B}(\mathbb{R}^{n+m})\)-mesurable
+  positive ou \(\mathbb{P}_X \otimes \mathbb{P}_Y\)-intégrable, alors la
+  fonction \(x \mapsto \int f(x, y)\mathbb{P}_Y(dy)\) est
+  \(\mathcal{B}(\mathbb{R}^{n})\)-mesurable, la fonction
+  \(y \mapsto \int f (x, y) \mathbb{P}_X(dx)\) est
+  \(\mathcal{B}(\mathbb{R}^m)\)-mesurable et
+  \[\int f d\mathbb{P}_X\otimes\mathbb{P}_Y = \int \left(\int f(x,y) \mathbb{P}_Y(dy) \right) \mathbb{P}_X(dx) = \int \left(\int f(x,y) \mathbb{P}_X(dx) \right) \mathbb{P}_Y(dy)\]
+\end{enumerate}
+\end{theoreme}
+
+\runinhead{Exercice -- Calcul de l'aire d'un
+triangle (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Calcul
+de l'aire d'un triangle}\label{II-triangle}
+Considérons le triangle \[
+T = \{(x, y) \in \mathbb{R}^2 \; | \; x \geq 0, \, y \geq 0 \mbox{ et } x + y \leq  1\}.
+\] En supposant l'intégrale ci-dessous bien définie, calculer~: \[
+a(T) = \int_{\mathbb{R}^2} 1_T(x, y) \, dxdy.
+\]
+
+\solref{II-answer-triangle}
+
+\runinhead{Exercice -- Contre-exemple (\(\mathord{\bullet}\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Contre-exemple}\label{II-fubini-counter-example}
+Comparer les valeurs des intégrales multiples \[
+\int_0^1 \left[\int_0^1 \frac{x^2 - y^2}{(x^2+y^2)^2} \, dx \right] \, dy
+\; \mbox{ et } \;
+\int_0^1 \left[\int_0^1 \frac{x^2 - y^2}{(x^2+y^2)^2} \, dy \right] \, dx,
+\] puis expliquer le résultat. Indication~: on remarquera que \[
+\frac{x^2 - y^2}{(x^2+y^2)^2} = \frac{\partial}{\partial x} \left(-\frac{x}{x^2+y^2}\right) 
+\] \solref{II-answer-fubini-counter-example}
+
+Pour pouvoir appliquer le théorème de Fubini, il faut savoir a priori
+que la fonction est intégrable et pas seulement que ses intégrales
+multiples sont bien définies
+(cf.~\protect\hyperref[II-fubini-counter-example]{``Contre-exemple''
+ci-dessus (p.~\pageref*{II-fubini-counter-example})}). Si la fonction
+est à valeurs positives toutefois, l'examen de ses intégrales multiples
+permet de s'assurer de l'intégrabilité\,; c'est le théorème de
+Fubini-Tonelli vu dans le cours de calcul intégral.
+
+Autrement dit, en pratique, on appliquera Fubini-Tonelli à la valeur
+absolue de la fonction pour vérifier que celle-ci est intégrable, puis
+Fubini, s'il est applicable, pour effectuer le calcul de l'intégrale.
+
+\addcontentsline{toc}{subsection}{Changement de variables}
+\begin{theoreme}[{Changement de
+variables}]\phantomsection\label{II-theorem-changement-de-variables}
+
+Soient \(D_1\) et \(D_2\) des ouverts de \(\mathbb{R}^n\) et
+\(h: D_1 \to D_2\) un \(C^1\)-difféomorphisme de \(D_1\) sur \(D_2\),
+c'est-à-dire une fonction continûment différentiable et bijective dont
+l'inverse \(h^{-1}: D_2 \to D_1\) est également continûment
+différentiable. La matrice jacobienne associée à la différentielle de
+\(h\) étant notée \(J_h\), la fonction \(f: D_2 \to \mathbb{R}\) est
+intégrable si et seulement si la fonction
+\((f \circ h) |\det J_h| : D_1 \to \mathbb{R}\) est intégrable et dans
+ce cas, \[
+\int_{D_2} f(y) \, dy = \int_{D_1} f(h(x)) |\det J_h(x)| \, dx.
+\]
+
+\begin{center}\fbox{[figure manquante : changement-de-variables.svg.pdf]}\captionof{figure}{Changement
+de variables}\end{center}
+\end{theoreme}
+
+\runinhead{Exercice -- Homothétie (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Homothétie}\label{II-h}
+Soit \(f:\mathbb{R}^n \to \mathbb{R}\) une fonction intégrable. Montrer
+que pour tout coefficient \(\alpha > 0\), l'intégrale \[
+\int_{\mathbb{R}^n} f(\alpha x) dx
+\] est bien définie et la calculer en fonction de l'intégrale de \(f\)
+sur \(\mathbb{R}^n\).\solref{II-answer-h}
+
+\runinhead{Exercice -- Volume et
+translation (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Volume
+et translation}\label{II-vr}
+Montrer que si \(A\) est mesurable et de volume fini dans
+\(\mathbb{R}^3\) l'image de \(A\) par une translation est également
+mesurable et de même volume.\solref{II-answer-vr}
+
+\runinhead{Exercice -- Coordonnées
+polaires (\(\mathord{\bullet}\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Coordonnées
+polaires}\label{II-cp}
+Soit \[
+C = \{(x, y) \in \mathbb{R}^2 \; | \; y \neq 0 \mbox{ ou } x > 0\}
+\; \mbox{ et } \;
+P = \{(r,\theta) \in \mathbb{R}^2 \; | \; r>0 \mbox{ et } -\pi < \theta < \pi\}.\]
+On note \(h\) la fonction de \(P\) dans \(C\) définie par
+\(h(r, \theta) = (r \cos \theta, r \sin \theta)\). Montrer que pour
+toute fonction \(f: C \to \mathbb{R}\) intégrable, si l'on pose
+\(g(r,\theta) = f(x, y)\) où \((x, y) = h(r,\theta)\), alors \[
+\int_{C} f(x, y) \, d(x,y) = \int_{P} g(r,\theta)  r \, d(r, \theta).
+\]
+
+\solref{II-answer-cp}
+
+\runinhead{Exercice -- Absence du déterminant
+jacobien (\(\mathord{\bullet}\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Absence
+du déterminant jacobien}\label{II-adj}
+Supposons \(D_1\), \(D_2\), \(h\) et \(f\) conformes aux hypothèses
+\protect\hyperref[II-theorem-changement-de-variables]{du théorème de
+changement de
+variables (p.~\pageref*{II-theorem-changement-de-variables})}. On
+suppose de plus que \(f \circ h\) est intégrable sur \(D_1\). Exprimer
+l'intégrale \[
+\int_{D_1} f (h(x)) \, dx
+\] comme une intégrale sur \(D_2\).\solref{II-answer-adj}
+
+\chapter{Vecteurs aléatoires}\label{II-vecteurs-aluxe9atoires-1}
+
+Nous allons généraliser ici la notion de variable aléatoire en
+considérant qu'elle peut prendre ses valeurs dans \(\mathbb{R}^n\). Les
+vecteurs aléatoires se rencontrent naturellement lorsqu'on s'intéresse à
+plusieurs quantités conjointement, par exemple dans le cas de la météo,
+la température, la pluviométrie et la vitesse et la direction du vent.
+
+\section{Définitions}\label{II-duxe9finitions}
+
+Une variable aléatoire \(X\) à valeurs dans \(\mathbb{R}^n\) (ou vecteur
+aléatoire) est simplement une collection de \(n\) variables réelles
+définies sur le même espace probabilisé
+\((\Omega, \mathcal{A}, \mathbb{P})\), qui sont les \emph{composantes}
+de \(X\). On écrit \(X = (X_1,\ldots,X_n)\).
+
+De même qu'en dimension 1, la loi de \(X\) est caractérisée par la
+fonction de répartition multi-dimensionnelle
+\(F : \mathbb{R}^n \to \mathbb{R}\) définie par
+\[F(x_1,\ldots,x_n) = \mathbb{P}_X(X_1\leq x_1,\ldots,X_n\leq x_n)\]
+Cependant, caractériser les fonctions de répartition sur
+\(\mathbb{R}^n\) est délicat, de sorte que cette notion est rarement
+utilisée. Nous allons plus particulièrement nous intéresser aux vecteurs
+aléatoires à densité. On gardera tout de même à l'esprit que les lois de
+probabilités définies sur \((\mathbb{R}^n,\mathcal{B}(\mathbb{R}^n))\)
+n'admettent pas toutes une densité\,!
+
+\addcontentsline{toc}{subsection}{Vecteur aléatoire à densité}
+\begin{definition}[{Vecteur aléatoire à
+densité}]\phantomsection\label{II-defvect}
+
+On dit que \(X\) admet la densité \(f\) si la fonction réelle \(f\) sur
+\(\mathbb{R}^n\) est positive, intégrable et vérifie
+\[\int_{\mathbb{R}^n} f(x) dx = \int_{-\infty}^{+\infty} \ldots \int_{-\infty}^{+\infty} f(x_1,\ldots,x_n) dx_1 \ldots dx_n= 1\]
+et si
+\[\mathbb{P}_X(X_1\leq x_1,\ldots,X_n\leq x_n) = \int_{-\infty}^{x_1} \ldots \int_{-\infty}^{x_n} f(x_1,\ldots,x_n) dx_1 \ldots dx_n.\]
+
+De la même manière que dans le \protect\hyperref[II-esperanceg]{cas
+unidimensionnel (p.~\pageref*{II-esperanceg})}, on a~:
+\end{definition}
+
+\addcontentsline{toc}{subsection}{Fonction d'un vecteur aléatoire}
+\begin{proposition}[{Fonction d'un vecteur
+aléatoire}]\phantomsection\label{II-esperancegvect}
+
+Soit \(X\) un vecteur aléatoire de densité \(f\), et soit \(g\) une
+fonction de \(\mathbb{R}^n\) dans \(\mathbb{R}\), mesurable. On a alors
+\(g(X)\in \mathcal{L}^1\) si et seulement si
+\[\int_{-\infty}^{+\infty} \ldots \int_{-\infty}^{+\infty} |g(x_1,\ldots,x_n)|f(x_1,\ldots,x_n) dx_1 \ldots dx_n,\]
+est finie et dans ce cas, on a
+\[\mathbb{E}(g(X)) = \int_{-\infty}^{+\infty} \ldots \int_{-\infty}^{+\infty} g(x_1,\ldots,x_n)f(x_1,\ldots,x_n) dx_1 \ldots dx_n.\]
+
+Pour revenir à la densité d'une composante d'un vecteur aléatoire, on
+intègre par rapport aux autres variables. On le présente ici dans le cas
+d'un couple \(Z=(X,Y)\) de variables aléatoires. On généralise aisément
+à une dimension supérieure.
+\end{proposition}
+
+\addcontentsline{toc}{subsection}{Densités marginales}
+\begin{proposition}[{Densités
+marginales}]\phantomsection\label{II-loimarg}
+
+Supposons que \(Z\) admette une densité \(f\). Alors \(X\) et \(Y\)
+admettent les densités \(f_X\) et \(f_Y\) données par
+\[f_X(x) = \int_\mathbb{R}f(x,y) dy,\,\,\, f_Y(y) = \int_\mathbb{R}f(x,y) dx.\]
+
+Les fonctions \(f_X\) et \(f_Y\) s'appellent les \emph{densités
+marginales} de \(f\).
+\end{proposition}
+
+\begin{preuve}
+Pour tout \(x \in \mathbb{R}\), on a par définition
+\[ \mathbb{P}(X \leq x) = \mathbb{P}(Z \in ]-\infty,x] \times \mathbb{R}) = \mathbb{E}(1_{]-\infty,x] \times \mathbb{R}}(Z)) = \int_{-\infty}^x du \left(\int_\mathbb{R}f(u,v) dv\right),\]
+où l'on a utilisé le théorème de Fubini-Tonelli pour
+\(1_{]-\infty,x] \times \mathbb{R}}(u,v)f(u,v)\) qui est bien positive.
+Donc si \(f_X\) est définie par \(f_X(x) = \int_\mathbb{R}f(x,y) dy\),
+on obtient que \(\mathbb{P}(X \leq x) = \int_{-\infty}^x f_X(u) du\), ce
+qui montre que \(f_X\) est la densité de \(X\). Le raisonnement est
+analogue pour \(Y\).\hfill$\blacksquare$
+\end{preuve}
+
+\addcontentsline{toc}{subsection}{Réciproque\,?}
+\begin{remarque}[{Réciproque\,?}]\phantomsection\label{II-ruxe9ciproque}
+
+La réciproque de cette proposition est fausse en revanche~: les
+variables aléatoires \(X\) et \(Y\) peuvent avoir des densités sans que
+le couple \(Z = (X, Y )\) en ait une.
+
+Supposons par exemple que \(X = Y\). Si
+\(\Delta = \{(x,x) ; x\in \mathbb{R}\}\) est la diagonale de
+\(\mathbb{R}^2\), nous avons évidemment \(\mathbb{P}_Z(\Delta) = 1\)
+mais si la \protect\hyperref[II-esperancegvect]{proposition
+précédente (p.~\pageref*{II-esperancegvect})} était valide pour
+\(\mathbb{P}_Z\), on aurait
+\(\mathbb{P}_Z(\Delta) = \mathbb{E}(1_\Delta) = \int_{\mathbb{R}^2} 1_\Delta f_Z(z)dz = 0\)
+car \(\Delta\) est de volume nul dans \(\mathbb{R}^2\).
+
+En particulier, il faut faire attention au fait que dans le cas général,
+la densité d'un couple de variables aléatoires n'est pas le produit des
+densités.
+\end{remarque}
+
+\runinhead{Exercice -- Lancer de
+fléchette (\(\mathord{\bullet}\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Lancer
+de fléchette}\label{II-exo-flechette}
+On lance une fléchette sur une cible circulaire de rayon unité. Le
+joueur est suffisamment maladroit pour que le point \(M\) d'impact de la
+fléchette soit supposé uniformément distribué sur la cible (On décide de
+n'observer que les lancés qui atteignent la cible). Exprimer la densité
+du couple formé par les coordonnées cartésiennes \((X,Y)\) de \(M\) puis
+leurs densités marginales.\solref{II-answer-exo-flechette}
+
+\section{Moments d'un vecteur
+aléatoire}\label{II-moments-dun-vecteur-aluxe9atoire}
+
+\addcontentsline{toc}{subsection}{Vecteur espérance et covariance}
+\begin{definition}[{Vecteur espérance et
+covariance}]\phantomsection\label{II-vecteur-espuxe9rance-et-covariance}
+
+Si les composantes \(X_i\) du vecteur aléatoire \(X = (X_1,\ldots,X_n)\)
+sont intégrables, on peut définir le \emph{vecteur espérance}
+\[\mathbb{E}(X) = (\mathbb{E}(X_1),\ldots,\mathbb{E}(X_n))\] Si les
+composantes \(X_i\) du vecteur aléatoire \(X = (X_1,\ldots,X_n)\) sont
+de carré intégrable, la \emph{matrice de covariance} de \(X\) est la
+matrice \(C_X = (c_{i,j})_{1 \leq i \leq n , 1 \leq j \leq n}\) de
+taille \(n \times n\) et dont les éléments valent
+\[c_{i,j} = \text{Cov}(X_i,X_j)\]
+\end{definition}
+
+\addcontentsline{toc}{subsection}{Matrice de covariance}
+\begin{proposition}[{Matrice de
+covariance}]\phantomsection\label{II-matrice-de-covariance}
+
+La matrice de covariance est symétrique non-négative (ou encore
+semi-définie positive).
+\end{proposition}
+
+\begin{preuve}
+La symétrie est évidente. Non-négative signifie que pour tous réels
+\(a_1,\ldots,a_n\), on a
+\(\sum_{i=1}^n \sum_{j=1}^n a_i a_j c_{i,j} \geq 0\). Un calcul simple
+montre que
+\[ \sum_{i=1}^n \sum_{j=1}^n a_i a_j c_{i,j} = \mathbb{V}(\sum_{i=1}^n a_i X_i) \geq 0.\]
+
+\hfill$\blacksquare$
+\end{preuve}
+
+\addcontentsline{toc}{subsection}{Vecteur Gaussien \(n\)-dimensionel}
+\begin{exemple}[{Vecteur Gaussien
+\(n\)-dimensionel}]\phantomsection\label{II-vecteur-gaussien-n-dimensionel}
+
+Un exemple important de vecteurs aléatoires est celui des vecteurs
+gaussiens, que nous étudierons plus en détail au chapitre suivant.
+Soient \(m \in \mathbb{R}^n\) et \(C\) une matrice symétrique définie
+positive (c'est-à-dire telle que pour tout \(x \in \mathbb{R}^n\) non
+identiquement nul \(x^tCx > 0\) où \(^t\) désigne la transposée). Le
+vecteur \(X \in \mathbb{R}^n\) est un vecteur aléatoire gaussien
+d'espérance \(m\) et de matrice de covariance \(C\) si sa densité
+s'écrit
+\[ f(x) = \frac{1}{(2\pi)^{n/2}\sqrt{\det (C)}}\exp (-\frac{1}{2}(x-m)^tC^{-1}(x-m)) \]
+On a alors \(\mathbb{E}(X) = m\) et \(C_X =C\).
+
+\begin{center}\includegraphics{PdfGauss3D.tex.pdf}\captionof{figure}{Densité
+de probabilité de la loi normale bivariée centrée, réduite, de
+coefficient de corrélation 1/2}\end{center}
+\end{exemple}
+
+\chapter{Variables aléatoires
+indépendantes}\label{II-variables-aluxe9atoires-induxe9pendantes}
+
+Lorsqu'on modélise plusieurs variables conjointement, une hypothèse
+importante est celle de l'indépendance. Ce caractère traduit l'absence
+de lien de causalité entre les variables. Par exemple, on fait
+naturellement l'hypothèse d'indépendance lorsque l'on considère une
+répétition d'une même expérience dans les mêmes conditions.
+
+Dans ce paragraphe, on considère un couple \((X,Y)\) de vecteurs
+aléatoires respectivement à valeurs dans \(\mathbb{R}^m\) et
+\(\mathbb{R}^n\). Les résultats s'étendent sans peine à une famille
+finie quelconque.
+
+On peut se ramener aux évènements pour caractériser l'indépendance de
+deux vecteurs aléatoires. En effet, considérons le vecteur aléatoire
+\(Z = (X,Y)\), \(A\) et \(B\) deux ensembles dans
+\(\mathcal{B}({\mathbb{R}^m})\) et \(\mathcal{B}({\mathbb{R}^n})\). On a
+vu que les évènements \(X\in A\) et \(Y \in B\) sont indépendants si et
+seulement si
+\(\mathbb{P}_Z(X \in A, Y \in B) = \mathbb{P}(X^{-1}(A) \cap Y^{-1}(B)) = \mathbb{P}(X^{-1}(A))\mathbb{P}(Y^{-1}(B)) = \mathbb{P}_X(X \in A)\mathbb{P}_Y(Y \in B)\).
+Pour que deux vecteurs aléatoires soient indépendants, on va donc
+demander que ceci soit valable quels que soient \(A\) et \(B\).
+
+\addcontentsline{toc}{subsection}{Vecteurs aléatoires indépendants}
+\begin{definition}[{Vecteurs aléatoires
+indépendants}]\phantomsection\label{II-defvai}
+
+Les vecteurs aléatoires \(X\) et \(Y\) sont \emph{indépendants} si pour
+tous ensembles \(A\) et \(B\) des tribus correspondantes,
+\[\mathbb{P}(X \in A, Y \in B) = \mathbb{P}(X \in A)\mathbb{P}(Y \in B)\]
+\end{definition}
+
+En termes de mesures de probabilité, cette égalité s'écrit
+\[\mathbb{P}_{(X,Y)}(A \times B) = \mathbb{P}_X(A)\mathbb{P}_Y(B) = (\mathbb{P}_X \otimes \mathbb{P}_Y) (A \times B).\]
+Autrement dit, \(X\) et \(Y\) sont indépendantes si et seulement si la
+mesure de probabilité du couple \((X,Y)\) est la mesure produit
+\(P_X \otimes P_Y\) dont l'existence et l'unicité sont garanties par le
+théorème de
+\protect\hyperref[II-fubiniproba]{Fubini (p.~\pageref*{II-fubiniproba})}.
+
+Cette définition se traduit dans le cas à densité dans la proposition
+suivante que l'on énonce sans perte de généralité pour un couple de
+variables aléatoires.
+
+\addcontentsline{toc}{subsection}{Caractérisation de l'indépendance --
+cas à densité}
+\begin{proposition}[{Caractérisation de l'indépendance -- cas à
+densité}]\phantomsection\label{II-caractuxe9risation-de-linduxe9pendance-cas-uxe0-densituxe9}
+
+Soient \(X\) et \(Y\) deux variables aléatoires réelles de densités
+\(f_X\) et \(f_Y\). \(X\) et \(Y\) sont indépendantes si et seulement si
+le couple \(Z = (X,Y)\) a pour densité (sur \(\mathbb{R}^2\))~:
+\[f_Z(x,y) = f_X(x)f_Y(y).\]
+\end{proposition}
+
+\begin{preuve}
+S'il y a indépendance, la
+\protect\hyperref[II-defvai]{définition (p.~\pageref*{II-defvai})}
+implique
+\[P(X\leq x, Y\leq y) = P(X\leq x) \mathbb{P}(Y\leq y) = \int_{-\infty}^x f_X(u) du \int_{-\infty}^y f_Y(v) dv\]
+ce qui montre que \(\mathbb{P}_Z\) vérifie la
+\protect\hyperref[II-defvect]{définition d'un vecteur aléatoire à
+densité (p.~\pageref*{II-defvect})} avec \(f_Z=f_X f_Y\).
+
+Inversement, si \(f_Z=f_X f_Y\), on a pour tous \(A\), \(B\) de
+\(\mathcal{B}({\mathbb{R}})\)
+\[\mathbb{P}(X\in A, Y\in B) = \int_A \int_B f_X(x) f_Y(y) dxdy = \mathbb{P}(X \in A)\mathbb{P}(Y \in B)\]
+où on a utilisé le théorème de Fubini-Tonelli.\hfill$\blacksquare$
+\end{preuve}
+
+\runinhead{Exercice -- Lancer de fléchette
+(suite) (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Lancer
+de fléchette (suite)}\label{II-exo-flechettebis}
+Les coordonnées cartésiennes \((X,Y)\) de \(M\) sont elles
+indépendantes\,?\solref{II-answer-exo-flechettebis}
+
+Considérons maintenant deux fonctions mesurables \(g\) et \(h\) définies
+sur \(\mathbb{R}^m\) et \(\mathbb{R}^n\).
+
+\addcontentsline{toc}{subsection}{Fonctions de vecteurs aléatoires
+indépendants}
+\begin{proposition}[{Fonctions de vecteurs aléatoires
+indépendants}]\phantomsection\label{II-indep_fct}
+
+Avec les notations précédentes, si \(X\) et \(Y\) sont indépendantes de
+densités respectives \(f_X\) et \(f_Y\), les variables aléatoires
+\(g(X)\) et \(h(Y)\) sont aussi indépendantes. Si de plus \(g(X)\) et
+\(h(Y)\) sont intégrables, alors le produit \(g(X)h(Y)\) est aussi
+intégrable, et on a
+\[ \mathbb{E}(g(X)h(Y)) = \mathbb{E}(g(X))\mathbb{E}(h(Y))\]
+\end{proposition}
+
+\begin{preuve}
+La première assertion est évidente par définition de l'indépendance. Par
+ailleurs, si \(g(X)\) et \(h(Y)\) sont intégrables, en notant
+\(f_{(X,Y)}\) la densité du couple \((X,Y)\), et en utilisant le
+théorème de Fubini, on a \begin{align*}
+\mathbb{E}(g(X)h(Y))  & = \int_{\mathbb{R}^{m+n}} g(x)h(y) f_{(X,Y)}(x,y) dx dy \\
+                & = \int_{\mathbb{R}^m} \int_{\mathbb{R}^n} g(x)h(y)f_X(x) f_Y(y) dx dy \\
+                & = \left(\int_{\mathbb{R}^m}  g(x) f_X(x) dx \right) \left(\int_{\mathbb{R}^n} h(y) f_Y(y) dy\right)\\
+                & = \mathbb{E}(g(X))\mathbb{E}(h(Y))
+\end{align*}\hfill$\blacksquare$
+\end{preuve}
+
+\addcontentsline{toc}{subsection}{Cas général}
+\begin{remarque}[{Cas
+général}]\phantomsection\label{II-cas-guxe9nuxe9ral}
+
+Ce résultat est encore valable dans le cas général (sans densité). Il
+suffit de remplacer \(f_{(X,Y)}(x,y) dx dy\) par
+\(d\mathbb{P}_{X,Y}(x,y) = d\mathbb{P}_X(x)d\mathbb{P}_Y(y)\) dans la
+démonstration précédente.
+
+On déduit de ce résultat et de la
+\protect\hyperref[II-defcov]{définition de la
+covariance (p.~\pageref*{II-defcov})} que~:
+\end{remarque}
+
+\addcontentsline{toc}{subsection}{Covariance de variables aléatoires
+indépendantes}
+\begin{corollaire}[{Covariance de variables aléatoires
+indépendantes}]\phantomsection\label{II-covariance-de-variables-aluxe9atoires-induxe9pendantes}
+
+Si les variables aléatoires réelles \(X\) et \(Y\) sont indépendantes et
+de carré intégrable, alors \(\text{Cov}(X,Y) = 0\) et \(\rho(X,Y) = 0\).
+\end{corollaire}
+
+\runinhead{Exercice -- Démonstration (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Démonstration}\label{II-demo-cov-indep}
+Démontrer ce résultat.\solref{II-answer-demo-cov-indep}
+
+\subsection{Remarque}\label{II-remarque}
+
+Attention, la réciproque est fausse. Par exemple, si
+\(X \sim \mathcal{U}_{[-1,1]}\) et \(Y = X^2\). \(X\) et \(Y\) ne sont
+clairement pas indépendantes mais on a
+
+\[\text{Cov}(X,Y) = \text{Cov}(X,X^2) = \mathbb{E}(X^3) - \mathbb{E}(X)\mathbb{E}(X^2) = 0\]
+
+\chapter{Identification de
+densité}\label{II-identification-de-densituxe9-1}
+
+Un problème important est le suivant. Soit \(X\) une variable aléatoire
+réelle, admettant la densité \(f_X\). Soit \(g\) une fonction mesurable,
+de sorte que \(Y = g(X)\) est aussi une variable aléatoire. Est-ce que
+\(Y\) admet une densité, et si oui, comment la calculer\,?
+
+On peut déjà remarquer que cette densité n'existe pas toujours. Si par
+exemple \(g(x) = a\) pour tout \(x\), la loi de \(Y\) est la mesure de
+Dirac en \(a\), qui n'a pas de densité par rapport à la mesure de
+Lebesgue.
+
+Pour résoudre ce problème, l'idée consiste à essayer de mettre
+\(E(h(Y )) = E(h \circ g(X))\) sous la forme \(\int h(y)f_Y (y)dy\) pour
+une fonction convenable \(f_Y\), et une classe de fonctions \(h\)
+suffisamment grande. La fonction \(f_Y\) sera alors la densité cherchée.
+
+La \protect\hyperref[II-esperanceg]{proposition qui assure que \(g(X)\)
+est intégrable pour une variable aléatoire réelle
+\(X\) (p.~\pageref*{II-esperanceg})} implique
+\[ \mathbb{E}(h(Y)) = \mathbb{E}(h \circ g (X)) = \int_{\mathbb{R}} h \circ g(x) f_X(x) dx\]
+
+et on fait le changement de variable \(y = g(x)\) dans cette intégrale.
+Cela nécessite que \(g\) soit dérivable et bijective ``par morceaux'',
+et il faut faire très attention aux domaines où \(g\) est croissante ou
+décroissante. Puisque la fonction \(h\) est arbitraire, on appelle
+couramment cette technique la \emph{méthode de la fonction muette}.
+Cette approche résulte en fait de la proposition suivante~:
+
+\addcontentsline{toc}{subsection}{Méthode de la fonction muette}
+\begin{proposition}[{Méthode de la fonction
+muette}]\phantomsection\label{II-muxe9thode-de-la-fonction-muette}
+
+Si il existe une fonction \(f\) positive telle que pour toute fonction
+mesurable \(h\) telle que \(h(x) f(x)\) soit intégrable,
+\[\mathbb{E}(h(X)) = \int_\mathbb{R}h(x) f(x) dx\] alors la loi de \(X\)
+admet la densité \(f\) par rapport à la mesure de Lebesgue.
+\end{proposition}
+
+\begin{preuve}
+Supposons qu'un tel \(f\) existe. Soit
+\(B \in \mathcal{B}(\mathbb{R})\), alors \(1_B\) est mesurable. En
+particulier, si \(B = ]-\infty,x], ~x\in\mathbb{R}\), on a
+\[\mathbb{P}(X\leq x) = \mathbb{P}(X \in B) = \mathbb{P}_X(B) = \mathbb{E}(1_B(X)) = \int_{- \infty}^x f(y)dy\]
+Par ailleurs, prenant \(B = \mathbb{R}\), on a
+\(1 = \mathbb{P}(X\in \mathbb{R}) = \int_\mathbb{R}f(y) dy\). Par
+conséquent, \(\mathbb{P}_X\) admet la densité \(f\).\hfill$\blacksquare$
+\end{preuve}
+
+Nous donnons ici quelques exemples d'application de cette méthode~:
+
+\begin{itemize}
+\tightlist
+\item
+  Soit \(Y = aX + b\), où \(a\) et \(b\) sont des constantes. Si
+  \(a=0\), alors \(Y = b\) et la loi de \(Y\) est la masse de Dirac en
+  \(b\) (sans densité). Si \(a \neq 0\), on fait le changement de
+  variable \(y = ax+b\), ce qui donne
+  \[ \mathbb{E}(h(Y)) = \int_\mathbb{R}h(ax+b) f_X(x) dx = \int_\mathbb{R}h(y) f_X(\frac{y-b}{a})\frac{1}{|a|} dy \]
+  Donc \[ f_Y(y) = f_X(\frac{y-b}{a})\frac{1}{|a|} \]
+\item
+  Soit \(Y =X^2\). La fonction \(g\) est décroissante sur
+  \(\mathbb{R}_-\) et croissante sur \(\mathbb{R}_+\). Le changement de
+  variable \(y = x^2\) donne alors \begin{align*}
+       \mathbb{E}(h(Y)) &= \int_{-\infty}^0 h(x^2) f_X(x) dx + \int_0^{+\infty} h(x^2) f_X(x) dx\\
+                  &= \int_0^{+\infty} h(y) f_X(-\sqrt{y})\frac{1}{2\sqrt{y}} dy + \int_0^{+\infty} h(y) f_X(\sqrt{y})\frac{1}{2\sqrt{y}}dy
+       \end{align*} et on en déduit
+  \[f_Y(y) = (f_X(-\sqrt{y})+f_X(\sqrt{y}))\frac{1}{2\sqrt{y}}1_{\left]0,+\infty\right[}\]
+\end{itemize}
+
+Dans le cas des vecteurs aléatoires, l'idée est la même. Soit
+\(X = (X_1,\ldots,X_n)\), un vecteur aléatoire de densité \(f_X\) sur
+\(\mathbb{R}^n\), \(g\) une fonction de \(\mathbb{R}^n\) dans
+\(\mathbb{R}^m\) et \(Y = g(X)\). Plusieurs cas sont à considérer~:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(m > n\), le vecteur \(Y\) n'admet pas de densité.
+\item
+  \(m=n\), on utilise comme dans le cas unidimensionel le changement de
+  variable \(y = g(x)\) dans
+  \[ \mathbb{E}(h(Y)) = \mathbb{E}(h \circ g (X)) = \int_{\mathbb{R}^n} h \circ g(x) f_X(x) dx \]
+  Supposons d'abord que \(g\) soit une bijection continûment
+  différentiable de \(A\) dans \(B\), ouverts de \(\mathbb{R}^n\). Sous
+  l'hypothèse que \(h \circ g(x) f_X(x)\) soit intégrable, le
+  \href{Calcul\%20Intégral\%20III.pdf}{théorème de changement de
+  variable} nous assure~:
+  \[ \int_A h\circ g (x) f_X(x) dx = \int_B h(y) f_X \circ g^{-1}(y) \frac{1}{|\det J_g (g^{-1}(y))|} dy,\]
+  où \(J_g\) désigne la matrice de Jacobi associée à la différentielle
+  de \(g\). Dans le cas où \(f_X(x) = 0\) en dehors de \(A\), on obtient
+  que \(Y\) admet la densité
+  \[ f_Y(y) = 1_B(y)f_X \circ g^{-1}(y)\frac{1}{|\det J_g (g^{-1}(y))|}.\]
+  Lorsque \(g\) est simplement continûment différentiable, il existe
+  souvent une partition finie \((A_i)_{1\leq i \leq n}\) de l'ensemble
+  \(\{x ; f(x) >0\}\), telle que \(g\) soit bijective sur chaque
+  \(A_i\). On note alors \(B_i = g(A_i)\) l'image de \(A_i\) par \(g\).
+  On découpe alors l'intégrale selon les \(A_i\), on applique la formule
+  précédente à chaque morceau et on somme pour obtenir~:
+  \[ f_Y(y) = \sum_{i=1}^n 1_{B_i}(y)f_X \circ g^{-1}(y) \frac{1}{|\det J_g (g^{-1}(y))|},\]
+  où \(g^{-1}\) est bien définie sur chaque \(B_i\) comme image
+  réciproque de la restriction de g à \(A_i\).
+\item
+  \(m < n\), on commence par ``compléter'' \(Y\), en essayant de
+  construire une application \(g'\) de \(\mathbb{R}^n\) dans
+  \(\mathbb{R}^n\) dont les \(m\) premières composantes coïncident avec
+  les composantes de \(g\) et pour laquelle on peut appliquer l'une des
+  deux formules précédentes. On obtient ainsi la densité \(f_Y'\) de
+  \(Y' = g'(X)\) puis on obtient la densité de \(Y\) en calculant sa loi
+  marginale~:
+  \[f_Y(y_1,\ldots,y_m) = \int_{\mathbb{R}^{n-m}} f_{Y'}(y_1,\ldots,y_m,y_{m+1},\ldots y_n) dy_{m+1}\ldots dy_n.\]
+\end{enumerate}
+
+\addcontentsline{toc}{subsection}{\textbf{Coordonnées polaires}}
+\begin{exemple}[{\textbf{Coordonnées
+polaires}}]\phantomsection\label{II-polar}
+
+Soit \(X = (U,V)\) un vecteur aléatoire de \(\mathbb{R}^2\), et
+\(Y = (R,\Theta)\) ses coordonnées polaires. La transformation \(g\) est
+un difféomorphisme de \(A = \mathbb{R}^2\setminus\{0\}\) dans
+\(B = \left]0,+\infty\right[\times \left]0,2\pi\right]\), et son inverse
+\(g^{-1}\) s'écrit~: \(u = r\cos \theta,\, v= r\sin \theta\). Le
+Jacobien de \(g^{-1}\) au point \((r,\theta)\) vaut \(r\), donc le point
+2. ci-dessus entraîne que
+\[ f_Y(r,\theta) = r f_X(r\cos\theta,r\sin\theta)1_B(r,\theta)\] Par
+exemple, si \(U\) et \(V\) sont indépendantes et de loi
+\(\mathcal{N}(0,1)\), on a
+\(f_X(u,v) = \frac{1}{2\pi}\exp\left(-\frac{u^2+v^2}{2}\right)\) et donc
+\[ f_Y(r,\theta) = \frac{1}{2\pi} r\exp\left(-\frac{r^2}{2}\right)1_{\left]0,+\infty\right[ }(r)1_{\left]0,2\pi\right]}(\theta).\]
+En particulier, on remarque que \(R\) et \(\Theta\) sont indépendantes
+de densités respectives
+\(r\exp\left(-\frac{r^2}{2}\right)1_{\left]0,+\infty\right[}(r)\) et
+\(1_{\left]0,2\pi\right]}(\theta)\).
+\end{exemple}
+
+\runinhead{Exercice -- Lancer de fléchette
+(fin) (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Lancer
+de fléchette (fin)}\label{II-exo-flechetteter}
+Donner la densité du couple \((R,\Theta)\) des coordonnées polaires de
+\(M\). Sont-elles indépendantes\,?\solref{II-answer-exo-flechetteter}
+
+\addcontentsline{toc}{subsection}{\textbf{Somme de deux variables
+aléatoires indépendantes}}
+\begin{exemple}[{\textbf{Somme de deux variables aléatoires
+indépendantes}}]\phantomsection\label{II-sum}
+
+Soient \(U\) et \(V\) indépendantes et admettant les densités \(f_U\) et
+\(f_V\), on cherche la densité de la somme \(Z = U+V\). On commence par
+compléter \(Z\) en le couple \(T = (U,Z)\) (par exemple), correspondant
+à la bijection \(g(u,v) = (u, u+v)\) sur \(\mathbb{R}^2\) dont le
+jacobien est 1 et d'inverse \(g^{-1}(x,y) = (x,x-y)\). Appliquant le
+point 3. ci-dessus, on obtient~:
+\[f_Z(z) = \int_{\mathbb{R}}f_U(u)f_V(z-u) du = \int_{\mathbb{R}}f_U(z-v)f_V(v)dv.\]
+La fonction \(f_Z\) est appelée \emph{le produit de convolution} des des
+fonctions \(f_U\) et \(f_V\).
+\end{exemple}
+
+\runinhead{Exercice -- Loi
+bêta (\(\mathord{\bullet}\mathord{\bullet}\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Loi
+bêta}\label{II-exo-loibeta}
+Soit \(X = (U,V)\) un vecteur aléatoire de \(\mathbb{R}^2\), avec \(U\)
+et \(V\) indépendantes de lois \(\Gamma(\alpha,\theta)\) et
+\(\Gamma(\beta,\theta)\). Identifier la densité de
+\(Y = \frac{U}{U+V}\), puis de
+\(Z = U+V\).\solref{II-answer-exo-loibeta}
+
+\chapter{Modélisation statistique}\label{II-moduxe9lisation-statistique}
+
+On a vu un certain nombre d'exemples de lois de probabilité à densité.
+Celles-ci font intervenir des paramètres qui permettent d'ajuster la
+forme de la densité aux données observées. Par exemple, la loi normale
+fait intervenir deux paramètres~: l'espérance et la variance. Dans cette
+section, nous formalisons l'approche statistique qui consiste à choisir
+une loi de probabilité pour modéliser un phénomène aléatoire, puis à
+estimer les paramètres de cette loi à partir d'observations.
+
+La première hypothèse que nous faisons est que le phénomène étudié peut
+être modélisé par une variable aléatoire \(X\) de densité \(f\)
+inconnue. La première étape de la modélisation consiste à choisir une
+famille de densités \((f_\theta)_{\theta \in \Theta}\), où \(\Theta\)
+est un ensemble de paramètres. Par exemple, pour la loi normale, on peut
+choisir \(\Theta = \mathbb{R}\times \mathbb{R}_+^*\) et
+\(f_{(m,\sigma)}\) la densité de la loi \(\mathcal{N}(m,\sigma^2)\).
+
+La seconde étape consiste à estimer le paramètre \(\theta\) de manière à
+ce que la densité \(f_\theta\) soit la plus proche possible de la
+densité \(f\) inconnue. On a donc besoin d'une notion de proximité entre
+deux densités. Plusieurs choix sont possibles, mais le plus courant est
+celui de la divergence de Kullback-Leibler.
+
+\addcontentsline{toc}{subsection}{Divergence de Kullback-Leibler}
+\begin{definition}[{Divergence de
+Kullback-Leibler}]\phantomsection\label{II-defKL}
+
+Soient \(f\) et \(g\) deux densités de probabilité sur \(\mathbb{R}\),
+telles que \(g(x) > 0\) pour tout \(x\) tel que \(f(x) > 0\). La
+\emph{divergence de Kullback-Leibler} de \(g\) par rapport à \(f\) est
+définie par
+\[ D_{KL}(f||g) = \int f(x) \log\left(\frac{f(x)}{g(x)}\right) dx.\]
+\end{definition}
+
+\begin{remarque}\phantomsection\label{II-remarque-1}
+La divergence de Kullback-Leibler n'est pas une distance au sens
+mathématique du terme. En effet, elle n'est pas symétrique et ne
+satisfait pas l'inégalité triangulaire. En revanche, on a toujours
+\(D_{KL}(f||g) \geq 0\), avec égalité si et seulement si \(f = g\)
+presque partout.
+\end{remarque}
+
+\addcontentsline{toc}{subsection}{Positivité de la divergence de
+Kullback-Leibler}
+\begin{proposition}[{Positivité de la divergence de
+Kullback-Leibler}]\phantomsection\label{II-corKL}
+
+Soient \(f\) et \(g\) deux densités de probabilité sur \(\mathbb{R}\),
+telles que \(g(x) > 0\) pour tout \(x\) tel que \(f(x) > 0\). Alors
+\[ D_{KL}(f||g) \geq 0,\] avec égalité si et seulement si \(f = g\)
+presque partout.
+\end{proposition}
+
+\begin{preuve}
+La fonction \(\log\) est strictement concave, donc \(-\log\) est
+strictement convexe. On peut donc appliquer
+\protect\hyperref[II-jensen]{l'inégalité de
+Jensen (p.~\pageref*{II-jensen})}~: \begin{align*}
+D_{KL}(f||g) & = \int_\mathbb{R}f(x) \log\left(\frac{f(x)}{g(x)}\right) dx = - \int_\mathbb{R}f(x) \left(-\log\left(\frac{g(x)}{f(x)}\right)\right) dx \\
+& = - \mathbb{E}\left(-\log\left(\frac{g(X)}{f(X)}\right)\right) \geq - \left(-\log\left(\mathbb{E}\left(\frac{g(X)}{f(X)}\right)\right)\right) = -\log(1) = 0.
+\end{align*} On a égalité si et seulement si \(\frac{g(x)}{f(x)}\) est
+presque sûrement constant, ce qui revient à dire que \(f = g\) presque
+partout.\hfill$\blacksquare$
+\end{preuve}
+
+\runinhead{Exercice -- Divergence de Kullback-Leibler entre deux
+gaussiennes}\phantomsection\addcontentsline{toc}{subsubsection}{Divergence
+de Kullback-Leibler entre deux gaussiennes}\label{II-exoklgauss}
+Soient \(f\) et \(g\) les densités de deux lois normales
+\(\mathcal{N}(m_1,\sigma_1^2)\) et \(\mathcal{N}(m_2,\sigma_2^2)\).
+Montrer que
+\(D_{KL}(f||g) = \log \left(\frac{\sigma_2}{\sigma_1}\right) + \frac{\sigma_1^2 + (\mu_1 - \mu_2)^2}{2\sigma_2^2} - \frac{1}{2}\).\solref{II-answer-exoklgauss}
+
+Revenons à notre problème d'estimation de paramètres. Soit \(X\) une
+variable aléatoire de densité inconnue \(f\). On choisit une famille de
+densités \((f_\theta)_{\theta \in \Theta}\), et on cherche à minimiser
+la divergence de Kullback-Leibler entre \(f\) et \(f_\theta\)~:
+\[ \hat{\theta} = \arg\min_{\theta \in \Theta} D_{KL}(f||f_\theta).\] On
+peut réécrire la divergence de Kullback-Leibler sous la forme suivante~:
+\begin{align*}
+D_{KL}(f||f_\theta) & = \int f(x) \log\left(\frac{f(x)}{f_\theta(x)}\right) dx \\
+& = \int f(x) \log(f(x)) dx - \int f(x) \log(f_\theta(x)) dx \\
+& = -H(f) - \mathbb{E}_f(\log f_\theta(X)),
+\end{align*} où \(H(f) = -\int f(x) \log f(x) dx\) est
+l'\textbf{entropie} de la densité \(f\). Celle-ci s'interprète comme Ce
+terme ne dépend pas de \(\theta\), donc minimiser
+\(D_{KL}(f||f_\theta)\) revient à maximiser
+\(\mathbb{E}_f(\log f_\theta(X))\). En statistique, \(f_\theta(X)\) est
+appelée la \emph{vraisemblance} de l'observation \(X\) pour le paramètre
+\(\theta\), et \(\log f_\theta(X)\) la \emph{log-vraisemblance}.
+L'estimateur \(\hat{\theta}\) est ainsi appelé \emph{estimateur du
+maximum de vraisemblance}.
+
+En pratique, on dispose d'un échantillon \(X_1,\ldots,X_n\) de variables
+aléatoires indépendantes et identiquement distribuées selon la loi de
+densité \(f\). Le choix de la forme paramétrique est généralement guidé
+par des considérations théoriques, portant sur la physique du phénomène
+étudié, ou empiriques, en regardant par exemple l'histogramme des
+données. On peut ensuite estimer \(\mathbb{E}_f(\log f_\theta(X))\) par
+la moyenne empirique \[ \frac{1}{n} \sum_{i=1}^n \log f_\theta(X_i),\]
+et l'estimateur du maximum de vraisemblance s'écrit
+\[ \hat{\theta}_n = \arg\max_{\theta \in \Theta} \frac{1}{n} \sum_{i=1}^n \log f_\theta(X_i).\]
+Cela revient à remplacer \(f\) par la mesure empirique de l'échantillon
+\(\tilde{p} = \frac{1}{n} \sum_{i=1}^n \delta_{X_i}\) dans la définition
+de la divergence de Kullback-Leibler.
+
+\chapter{Exercices
+complémentaires}\label{II-exercices-compluxe9mentaires}
+
+\section{Durée de vie}\label{II-duruxe9e-de-vie}
+
+La durée de vie, exprimée en années, d'un circuit électronique est une
+variable aléatoire \(T\) dont la fonction de répartition \(F\) est
+définie par~: \[F (t) = (1 - e^{-t^2 /2} )1_{t\geq 0}\]
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{II-dureevie1}
+Donner la densité de probabilité \(f\) de \(T\) . Calculer
+\(\mathbb{E}(T)\).\solref{II-answer-dureevie1}
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{II-dureevie2}
+Sachant que le circuit a déjà fonctionné durant 1 an, quelle est la
+probabilité qu'il continue à fonctionner encore durant au moins 2 ans\,?
+La loi est-elle sans mémoire\,?
+
+Un équipement électronique E est composé de 10 circuits identiques et
+indépendants. Au circuit \(i (1 \leq i \leq 10)\) est associée la
+variable aléatoire \(X_i\) , avec \(X_i = 1\) si la durée de vie du
+circuit \(i\) est inférieure à un an et \(X_i = 0\)
+sinon.\solref{II-answer-dureevie2}
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{II-dureevie3}
+Quelle est la loi du nombre \(N\) de circuits de E dont la durée de vie
+est inférieure à 1 an\,?\solref{II-answer-dureevie3}
+
+\runinhead{Question
+4}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+4}\label{II-dureevie4}
+L'équipement E est dit en série si la défaillance de l'un de ses
+circuits entraîne sa défaillance. Quelle est alors la probabilité qu'il
+soit défaillant avant 1 an\,?\solref{II-answer-dureevie4}
+
+\runinhead{Question
+5}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+5}\label{II-dureevie5}
+L'équipement E est dit en parallèle si sa défaillance ne peut se
+produire que si tous ses circuits sont défaillants. Quelle est alors la
+probabilité qu'il soit défaillant avant 1
+an\,?\solref{II-answer-dureevie5}
+
+\section{Crues centennales de la
+Seine}\label{II-crues-centennales-de-la-seine}
+
+On suppose que la hauteur d'eau maximale au cours de l'année \(n\) est
+décrite par une variable aléatoire \(X_n\) de densité \(f(x)\) et de
+fonction de répartition \(F(x)\), identique pour toutes les \(X_n\), que
+l'on suppose également indépendantes.
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{II-crue1}
+Calculer la fonction de répartition du maximum sur \(n\) années
+\(Y = \max(X_1,\ldots,X_n)\).\solref{II-answer-crue1}
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{II-crue2}
+En déduire la densité de \(Y\).\solref{II-answer-crue2}
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{II-crue3}
+Expliciter la densité de \(Y\) lorsque les \(X_i\) sont de loi uniforme
+sur \([0,1]\).\solref{II-answer-crue3}
+
+\runinhead{Question
+4}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+4}\label{II-crue4}
+Selon mêmes hypothèses, calculer la hauteur minimale des quais pour que
+la probabilité de voir la Seine déborder sur une période de \(n\) années
+soit inférieure à 1/1000.\solref{II-answer-crue4}
+
+\runinhead{Question
+5}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+5}\label{II-crue5}
+Toujours selon les mêmes hypothèses, calculer la médiane de \(Y\). La
+comparer avec celle des \(X_i\). Commenter.\solref{II-answer-crue5}
+
+\section{Indépendance et vecteurs
+gaussiens}\label{II-induxe9pendance-et-vecteurs-gaussiens}
+
+Soit \(Z := (X,Y)\) un vecteur gaussien (i.e.~qui suit une loi Normale
+bi-variée) d'espérance \(m\) et de matrice de covariance définie
+positive \(C\). Notons \(f_Z\) sa densité.
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{II-covindepgauss-joint}
+Rappeler la forme de \(f_Z\) et en donner une expression non matricielle
+faisant apparaître le coefficient de corrélation noté
+\(\rho\).\solref{II-answer-covindepgauss-joint}
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{II-covindepgauss-marg}
+Expliciter les lois marginales de \(X\) et de
+\(Y\).\solref{II-answer-covindepgauss-marg}
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{II-covindepgauss-indep}
+Montrer que \(X\) et \(Y\) sont indépendantes ssi
+\(\text{Cov}\left(X,Y\right) = 0\).\solref{II-answer-covindepgauss-indep}
+
+\section{Symétrie de la
+gaussienne}\label{II-symuxe9trie-de-la-gaussienne}
+
+Soit \(X\) une variable aléatoire réelle de loi Normale centrée réduite,
+dont la densité est notée \(f\) et la fonction de répartition \(F\).
+Pour tout \(c>0\) on pose
+\[X_c := \left|\begin{array}{ll} X & \text{si } |X| > c,\\ -X & \text{si } |X| \leq c.\end{array}\right.\]
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{II-gausssym-loi}
+Déterminer la loi de \(X_c\).\solref{II-answer-gausssym-loi}
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{II-gausssym-cov}
+Calculer la covariance de \(X\) et de \(X_c\) et montrer qu'il existe
+une valeur \(c_0\) de \(c\) qui l'annule.\solref{II-answer-gausssym-cov}
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{II-gausssym-indep}
+Les deux variables \(X\) et \(X_{c_0}\) sont-elles
+indépendantes\,?\solref{II-answer-gausssym-indep}
+
+\runinhead{Question
+4}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+4}\label{II-gausssym-vecgauss}
+Le vecteur aléatoire \((X,X_{c_0})\) est-il
+gaussien\,?\solref{II-answer-gausssym-vecgauss}
+
+\section{Loi du \(\chi^2\)}\label{II-loi-du-chi2}
+
+On considère une variable aléatoire \(X\) gaussienne centrée réduite. On
+note \(f\) sa densité et \(F\) sa fonction de répartition.
+
+\runinhead{A 1 degré de
+liberté}\phantomsection\addcontentsline{toc}{subsubsection}{A 1 degré de
+liberté}\label{II-khi2-1dl}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Calculer la densité de la variable aléatoire \(Y := X^2\). En donner
+  une expression faisant apparaître la fonction gamma (on rappelle que
+  \(\Gamma\left(\frac{1}{2}\right)=\sqrt{\pi}\)).
+\end{enumerate}
+
+On dit que \(Y\) suit une \emph{loi du \(\chi^2\) à \(1\) degré de
+liberté}, et on note \(Y \sim \chi^2\).\solref{II-answer-khi2-1dl}
+
+\runinhead{A n degrés de
+liberté}\phantomsection\addcontentsline{toc}{subsubsection}{A n degrés
+de liberté}\label{II-khi2-ndl}
+Soient maintenant \(n\in\mathbb{N}^\ast\) et \(X_1,\dots,X_n\) des
+copies indépendantes de \(X\). Pour tout \(i \in \{1,\dots,n\}\) on pose
+\(Y_i := X_i^2\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Montrer que la variable aléatoire \(Y := \sum_{i = 1}^n Y_i\) admet
+  pour densité
+  \[ f_Y : x\in\mathbb{R}\mapsto \left|\begin{array}{ll} \dfrac{x^{\frac{n}{2} - 1}}{2^{\frac{n}{2}}\,\Gamma\left(\frac{n}{2}\right)}\,\exp\left\{ -\dfrac{x}{2} \right\} & \text{si } x> 0,\\ 0 & \text{si } x \leq 0. \end{array}\right.\]
+  On pourra procéder par récurrence sur \(n\).
+\end{enumerate}
+
+On dit que \(Y\) suit une \emph{loi du \(\chi^2\) à \(n\) degrés de
+liberté} et on note \(Y \sim \chi^2_n\).\solref{II-answer-khi2-ndl}
+
+\section{Combinaisons linéaires de variables Gaussiennes
+indépendantes}\label{II-combinaisons-linuxe9aires-de-variables-gaussiennes-induxe9pendantes}
+
+Soit \(X\) une variable aléatoire de loi Normale centrée réduite, dont
+on note \(f\) la densité et \(F\) la fonction de répartition.
+
+\runinhead{Préliminaires}\phantomsection\addcontentsline{toc}{subsubsection}{Préliminaires}\label{II-CLIGauss-pre}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Rappeler la loi de la variable aléatoire \(s\,X + m\), où
+  \(s, m \in \mathbb{R}\).
+\end{enumerate}
+
+\solref{II-answer-CLIGauss-pre}
+
+\runinhead{Combinaisons
+linéaires}\phantomsection\addcontentsline{toc}{subsubsection}{Combinaisons
+linéaires}\label{II-CLIGauss-cl}
+Soient maintenant \(n\in\mathbb{N}^\ast\) variables aléatoires
+\(X_1,\dots,X_n\) indépendantes et de même loi que \(X\) (on dit que ce
+sont des \emph{copies indépendantes} de \(X\)). Pour tout vecteur
+\(a = (a_1,\dots,a_n) \in (\mathbb{R}^{*})^n\) on pose
+\(S_n^a := \sum_{i = 1}^n a_i\,X_i\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  Montrer que pour \(S_n^a\) suit une loi Normale d'espérance nulle et
+  de variance \(\sum_{i = 1}^n a_i^2\) (on pourra raisonner par
+  récurrence sur \(n\)).
+\item
+  Soient \(a,b\in(\mathbb{R}^{*})^n\). Sous quelle condition a-t-on
+  \(\text{Cov}\left(S_n^a, S_n^b\right) = 0\)\,?
+\end{enumerate}
+
+\solref{II-answer-CLIGauss-cl}
+
+\section{Loi de Maxwell}\label{II-loi-de-maxwell}
+
+On désire déterminer la distribution des vitesses des molécules d'un gaz
+monoatomique parfait à l'équilibre (loi de Maxwell (1859)).
+
+On représente la vitesse d'une molécule d'un gaz monoatomique parfait à
+l'équilibre dans un repère orthonormal par un vecteur aléatoire
+\(V = (V_1 , V_2 , V_3 )\). Le choix du repère étant arbitraire, il est
+naturel de supposer que la loi de \(V\) est invariante par rotation
+(autour de l'origine) et que les composantes de \(V\) sont
+indépendantes.
+
+\subsection{Partie 1}\label{II-partie-1}
+
+Soit \((X, Y, Z)\) un vecteur aléatoire à valeurs dans \(\mathbb{R}^3\)
+de densité \(f_{(X, Y, Z)}\). Ce vecteur aléatoire est supposé invariant
+par rotation~: il existe une fonction
+\(\phi: \left[0, +\infty\right[ \to \left]0, +\infty\right[\)
+(strictement positive) telle que \[
+f_{(X, Y, Z)}(x,y,z) = \phi(x^2+y^2+z^2) \;  \mbox{ pour tout $(x, y, z) \in \mathbb{R}^3$.}
+\]
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{II-Maxwell-1}
+On suppose de plus les variables aléatoires \(X\), \(Y\) et \(Z\)
+indépendantes. Montrer qu'il existe une fonction
+\(f: \mathbb{R}\to \left[0, +\infty\right[\) qui soit une densité telle
+que \[
+f_{(X, Y, Z)}(x, y, z) = f(x) f(y) f(z) \; \mbox{ pour tout $(x, y, z) \in \mathbb{R}^3$.} 
+\] Montrer finalement que \(f(x) > 0\) pour tout
+\(x \in \mathbb{R}\).\solref{II-answer-Maxwell-1}
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{II-Maxwell-2}
+On suppose de plus que les densités marginales de \(X, Y\) et \(Z\)
+ainsi que la fonction \(\phi\) sont continûment différentiables
+(c'est-à-dire de classe \(C^1\)). Montrer que la densité de chacune des
+composantes s'écrit sous la forme \(f (x) = a e^{cx^2/2}\), avec \(a\)
+et \(c\) deux constantes réelles.\solref{II-answer-Maxwell-2}
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{II-Maxwell-3}
+En déduire que le vecteur \((X, Y, Z)\) suit une loi gaussienne
+d'espérance l'origine dont on précisera la matrice de covariance en
+fonction de la constante
+\(\sigma = 1/\sqrt{|c|}\).\solref{II-answer-Maxwell-3}
+
+\subsection{Partie 2}\label{II-partie-2}
+
+On suppose que le vecteur aléatoire \((X, Y, Z) = V\) vérifie les
+hypothèses des questions précédentes.
+
+\runinhead{Question
+4}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+4}\label{II-Maxwell-4}
+Calculer l'énergie cinétique moyenne d'un atome du gaz, c'est-à-dire
+l'espérance \[
+E_c := \mathbb{E}\left(\frac{1}{2}m\|V\|^2\right)
+\] où \(m\) est la masse d'un atome du gaz. L'énergie cinétique moyenne
+d'un atome du gaz de masse \(m\) étant égale à \(\frac{3}{2} kT\) où
+\(k\) est la constante de Boltzmann et \(T\) la température du gaz, en
+déduire la valeur de \(\sigma^2\) en fonction de \(k\), \(T\) et
+\(m\).\solref{II-answer-Maxwell-4}
+
+\runinhead{Question
+5}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+5}\label{II-Maxwell-5}
+On rappelle que si \(X\) et \(Y\) sont deux variables aléatoires
+indépendantes de loi respective \(\Gamma (a,\lambda)\) et
+\(\Gamma (b,\lambda)\), alors la loi de \(X + Y\) est la loi
+\(\Gamma (a+b,\lambda)\). On rappelle également que la densité \(g\) de
+la loi \(\Gamma (a,\lambda)\) vérifie \[
+g(x) = \frac{1}{\Gamma(a)}\lambda^a x^{a -1} e^{-\lambda x} 1_{]0,+\infty[}(x)
+\; \mbox{ pour tout $x\in\mathbb{R}$},
+\] où \(\Gamma\) est la fonction définie par
+\[\Gamma(a) = \int_0^{+\infty} x^{a-1}e^{-x} dx \text{ pour } a \in \left] 0, + \infty \right[.\]
+On remarquera que \(\Gamma(1/2) = \sqrt{\pi}\) et que
+\(\Gamma(x+1) = x \Gamma(x).\)
+
+Calculer la loi de \(V_1^2\). En déduire la loi de \(\|V \|^2\) puis la
+densité de \(\|V \| = \sqrt{V_1^2 + V_2^2 + V_3^2}\). La probabilité
+associée est appelée loi de Maxwell.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\solref{II-answer-Maxwell-5}

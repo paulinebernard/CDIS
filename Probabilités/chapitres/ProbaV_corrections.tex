@@ -1,0 +1,346 @@
+\chapter{Solutions}
+
+\runinhead{Calcul numérique d'une
+probabilité}\phantomsection\addcontentsline{toc}{subsubsection}{Calcul
+numérique d'une probabilité}\label{V-answer-mc1}
+cf.~notebook
+
+\runinhead{Exemples d'application
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Exemples
+d'application 1}\label{V-answer-exemples1}
+On suppose que \(U \sim \mathcal{U}_{]0,1[}\)
+
+\begin{itemize}
+\item
+  Uniforme sur un intervalle \(I \subset \mathbb{R}\)~:
+
+  Si \(I = ]a,b[,~a< b\), alors la fonction de répartition de
+  \(X \sim \mathcal{U}_I\) est
+  \(F_X(x) = \frac{x-a}{b-a} 1_{]a,b[}(x) + 1_{[b,+\infty[}(x)\), d'où
+  par inversion \(X = a + (b-a)U\)
+\item
+  Exponentielle de paramètre \(\lambda \in \mathbb{R}_+^\ast\)~:
+
+  la fonction de répartition de \(X \sim \mathcal{E}(\lambda)\) est
+  \(F_X (x) = 1-\exp(-\lambda x)\), d'où par inversion
+  \(X = -\frac{\ln(1-U)}{\lambda}\). Pour simplifier, on remarquera que
+  si \(U \sim \mathcal{U}_{]0,1 [ }\) , alors
+  \(1- U \sim \mathcal{U}_{]0,1[}\), d'où
+  \(X = -\frac{\ln(U)}{\lambda}\)
+\item
+  de Cauchy, de densité
+  \(x\in\mathbb{R}\mapsto \left(\pi\left(1+x^2\right)\right)^{-1}\),
+
+  la loi de Cauchy admet la fonction de répartition
+  \(F(x) = \frac{1}{\pi} \arctan (x) + \frac{1}{2}\), d'où
+  \(X = \tan(\pi U -1/2)\)
+\item
+  de Laplace de paramètres \(\mu \in \mathbb{R}\) et
+  \(s\in\mathbb{R}_+^\ast\), de densité
+  \(x\in\mathbb{R}\mapsto \frac{1}{2s}\,\exp\left\{-\frac{|x-\mu|}{s}\right\}\),
+
+  la loi de Laplace admet la fonction de répartition
+  \[F(x) = \left\{ \begin{array}{ll}
+    \frac{1}{2} \exp(x) & \text{ si } x < 0,\\
+    1 - \frac{1}{2} \exp(-x) & \text{ si } x \geq 0,
+    \end{array} \right. = \frac{1}{2}\left(1 + \text{sgn}(x)(1-\exp(-|x|))\right)\]
+
+  d'où \(X = \text{sgn}(U - 1/2)\ln(1-2|U-1/2|)\), où sgn est la
+  fonction signe.
+\item
+  Logistique de paramètres \(\mu \in \mathbb{R}\) et
+  \(s\in\mathbb{R}_+^\ast\), de fonction de répartition
+  \(x\in\mathbb{R}\mapsto \left(1 + \exp\left\{-\frac{x-\mu}{s} \right\}\right)^{-1}\)~:
+
+  par inversion,
+  \(X = s \left(-\ln\left(\frac{1}{U}-1\right)+ \mu\right)\)
+\end{itemize}
+
+\runinhead{Pile ou
+face}\phantomsection\addcontentsline{toc}{subsubsection}{Pile ou
+face}\label{V-answer-pf}
+Il suffit d'associer à ``pile'' un événement portant sur
+\(U \sim \mathcal{U}_{]0,1[}\) de la bonne probabilité, \(p \in ]0,1[\),
+par exemple \(\{U \leq p\}\). On obtient ainsi l'algorithme~:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Générer \(u\) selon \(\mathcal{U}_{]0,1[}\)
+\item
+  Renvoyer ``pile'' si \(u \leq p\), ``face'' sinon
+\end{enumerate}
+
+\runinhead{Exemples d'application
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Exemples
+d'application 2}\label{V-answer-exemples2}
+
+\begin{itemize}
+\item
+  Binomiale de paramètres \(n\in\mathbb{N}^\ast\) et \(p \in\, ]0,1[\),
+
+  La fonction de répartition de la loi binomiale est donnée par
+  \[F(x) = \begin{cases}
+    0&\text{si } \;x<0\\
+    \sum_{{k=0}}^{{\lfloor x\rfloor }}{n \choose k}p^{k}(1-p)^{{n-k}} & \text{si } \;0\leq x<n\\
+    1&\text{si} \;x \geq n
+    \end{cases}\]
+
+  où \({\lfloor x\rfloor }\) est la partie entière de \(x\).\\
+  On peut alors découper \(]0,1[\) en intervalles de la forme
+  \(]\sum_{{k=0}}^{{m}}{n \choose k}p^{k}(1-p)^{{n-k}},\sum_{{k=0}}^{{m+1}}{n \choose k}p^{k}(1-p)^{{n-k}}[\)
+  pour \(m \in \{0,n-1\}\) et renvoyer \(m+1\) si un \(u\) généré selon
+  \(\mathcal{U}_{] 0,1[}\) appartient à l'un de ces intervalles, 0
+  sinon.
+
+  Il est cependant beaucoup plus simple de remarquer qu'une variable
+  aléatoire de loi \(\mathcal{B}(n,p)\) s'obtient comme la somme de
+  \(n\) variables de Bernoulli que l'on peut simuler comme
+  \protect\hyperref[V-answer-pf]{ci-dessus (p.~\pageref*{V-answer-pf})}.
+\end{itemize}
+
+\begin{itemize}
+\item
+  Uniforme sur l'union de deux segments non vides et disjoints
+  \([a,b], [c,d]\subset\mathbb{R}\), de densité
+  \(x\in\mathbb{R}\mapsto (b-a + d-c)^{-1}\,1_{[a,b]\cup[c,d]}(x)\)
+
+  La fonction de répartition d'une telle variable est
+  \[F(x) = \frac{x-a}{b-a + d-c} 1_{]a,b[}(x) + \frac{b-a}{b-a + d-c} 1_{[b,c]}(x) + \frac{x-c+b-a}{b-a + d-c} 1_{]c,d[}(x) + 1_{[d,+\infty[}(x)\]
+  Pour simuler cette variable, on peut donc utiliser l'algorithme
+  suivant~:
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Générer \(u\) selon \(\mathcal{U}_{]0,1[}\)
+  \item
+    Retourner \[\begin{cases} 
+      a + u(b-a + d -c) & \text{ si } u \in ]0,\frac{b-a}{b-a + d-c}[ \\
+      c + (u(b-a + d -c) - (b-a)) \text{ sinon }
+      \end{cases}\]
+  \end{enumerate}
+\end{itemize}
+
+\runinhead{Loi uniforme sur un
+pavé}\phantomsection\addcontentsline{toc}{subsubsection}{Loi uniforme
+sur un pavé}\label{V-answer-unipave}
+On note \([a_1,b_1]\times\dots\times[a_d,b_d] \subset \mathbb{R}^d\). On
+peut voir que la densité d'une v.a. uniforme sur un tel pavé s'écrit
+\(f(x) = \frac{1}{b_1 - a_1} \cdots \frac{1}{b_d - a_d} 1_{[a_1,b_1]\times\dots\times[a_d,b_d]}(x)\)
+soit comme le produit des densités de ses coordonnées qui sont donc
+indépendantes. On peut donc simuler la variable d'intérêt avec cet
+algorithme~:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Générer \(u_1,\ldots,u_d\) indépendamment selon
+  \(\mathcal{U}_{]0,1[}\)
+\item
+  Retourner \((a_1 + u_1(b_1-a_1), \ldots, a_d + u_d(b_d-a_d))\)
+\end{enumerate}
+
+\runinhead{Démonstration}\phantomsection\addcontentsline{toc}{subsubsection}{Démonstration}\label{V-answer-unicond}
+Soit \(C \in \mathcal{B}(B)\) (considérer les boréliens de \(B\) suffit
+à caractériser la loi conditionnelle à l'événement \(U \in B\) puisque
+si \(C \cap B = \varnothing\), alors nécessairement,
+\(\mathbb{P}(U \in C |U \in B) = 0\)). On a \begin{align*}
+\mathbb{P}(U \in C |U \in B) & = \frac{\mathbb{P}(U\in C, U \in B)}{\mathbb{P}(U \in B)} = \frac{\mathbb{P}(U\in C)}{\mathbb{P}(U \in B)} \\
+& = \frac{\int_C \frac{dx}{\lambda(A)}}{\int_B \frac{dx}{\lambda(A)}} \text{ puisque } U \sim \mathcal{U}_A \\
+& = \frac{\lambda(C)}{\lambda(B)} = \int_C \frac{1}{\lambda(B)} dx
+\end{align*} on reconnaît bien la loi uniforme sur \(B\).
+
+\runinhead{Simulation}\phantomsection\addcontentsline{toc}{subsubsection}{Simulation}\label{V-answer-simunibor}
+On prend un pavé \(R\) tel que \(B \subset R\) puis on applique
+l'algorithme suivant~:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  générer \(u\) selon \(\mathcal{U}_R\)
+\item
+  Si \(u \notin R\), retour en 1.
+\item
+  retourner \(u\)
+\end{enumerate}
+
+\runinhead{Taux de
+rejet}\phantomsection\addcontentsline{toc}{subsubsection}{Taux de
+rejet}\label{V-answer-tauxrej}
+Puisque le couple \((Y, Uf_Y(Y))\) est uniforme sur \(A_f\), alors le
+couple \((Y, aUf_Y(Y))\) est uniforme sur \(A_{af}\), d'où
+\begin{align*}
+\mathbb{P}(\{aUf_Y(Y) > f_X(Y)\}) & = \mathbb{E}(1_{\{aUf_Y(Y) > f_X(Y)\}}) \\
+& = \mathbb{E}(\mathbb{E}(1_{\{aUf_Y(y) > f_X(y)\}}|Y=y)) \\
+& = \int_R \int_0^{af_Y(y)} 1_{\{auf_Y(Y) > f_X(Y)\}} \frac{1}{af_Y(y)} du f_Y(y) dy \\
+& = \int_R \left(1 - \frac{f_X(y)}{af_Y(y)}\right) f_Y(y) dy \\
+& = 1 - \frac{1}{a}
+\end{align*}
+
+\section{Loi uniforme dans un
+domaine}\label{V-loi-uniforme-dans-un-domaine-1}
+
+cf.~notebook
+
+\section{Simulation selon la loi
+géométrique}\label{V-simulation-selon-la-loi-guxe9omuxe9trique-1}
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{V-answer-loigeom1}
+\(\mathbb{P}(X=n) = p (1-p)^{n-1} = (1-q)q^{n-1} \text{, où } p \text{ est la probabilité de succès, } n=1,2,\ldots\)
+\begin{align*}
+\mathbb{E}[X]&=\sum_{i=1}^{\infty}i\mathbb{P}(X=i)\\
+&=\sum_{i=1}^{\infty} i (1-q)q^{i-1}\\
+&=(1-q)\sum_{i=1}^{\infty} iq^{i-1}\\
+&=(1-q)\sum_{i=1}^{\infty} \frac{\mathrm{d}}{\mathrm{d} q} q^i\\
+&=(1-q)\frac{\mathrm{d}}{\mathrm{d} q}\left(\sum_{i=1}^{\infty}  q^i\right)\\
+&=(1-q)\frac{\mathrm{d}}{\mathrm{d} q}\left(\frac{q}{1-q}\right), \text{ car } \sum_{i=1}^{\infty}  q^i = q \sum_{i=0}^{\infty}  q^i = \frac{q}{1-q}\\
+&=(1-q)\frac{1}{(1-q)^2} \\
+&=\frac{1}{(1-q)}\\
+&=\frac{1}{p}
+\end{align*} \bigskip Pour la variance
+\(\mathbb{V}[X] = \mathbb{E}[X^2]-\mathbb{E}[X]\) \begin{align*}
+\mathbb{E}[X^2]&=\sum_{i=1}^{\infty}i^2\mathbb{P}(X=i)\\
+&=\sum_{i=1}^{\infty} i^2 (1-q)q^{i-1}\\
+&=(1-q)\sum_{i=1}^{\infty} i^2q^{i-1}\\
+&=(1-q)\sum_{i=1}^{\infty}\left( i\left((i+1)q^{i-1} - q^{i-1}\right)\right)\\
+&=(1-q)\sum_{i=1}^{\infty}\left( i(i+1)q^{i-1} - iq^{i-1}\right)\\
+&=(1-q)\sum_{i=1}^{\infty}\left( \frac{\mathrm{d}^2}{\mathrm{d} q^2} q^{i+1} - \frac{\mathrm{d}}{\mathrm{d} q} q^i\right)\\
+&=(1-q)\left( \frac{\mathrm{d}^2}{\mathrm{d} q^2}\left(\sum_{i=1}^{\infty}q^{i+1}\right)-\frac{\mathrm{d}}{\mathrm{d} q}\left(\sum_{i=1}^{\infty}  q^i\right)\right)
+\end{align*} On a déjà calculé le second terme ci-dessus. \begin{align*}
+\frac{\mathrm{d}^2}{\mathrm{d} q^2}\sum_{i=1}^{\infty}q^{i+1} &= \frac{\mathrm{d}^2}{\mathrm{d} q^2}q \sum_{i=1}^{\infty}q^{i}\\
+&=\frac{\mathrm{d}^2}{\mathrm{d} q^2}\frac{q^2}{1-q}
+\end{align*} Calcul des dérivées~: \begin{align*}
+\frac{\mathrm{d}}{\mathrm{d} q}\frac{q^2}{1-q} &= \frac{2q(1-q)+q^2}{(1-q)^2}\\
+&= \frac{2q-q^2}{(1-q)^2}
+\end{align*}
+
+\begin{align*}
+\frac{\mathrm{d}}{\mathrm{d} q}\frac{2q-q^2}{(1-q)^2}&=\frac{2(1-q)(1-q)^2+2(1-q)(2q-q^2)}{(1-q)^4}\\
+&= \frac{2(1-q)^2+2(2q-q^2)}{(1-q)^3}\\
+&= \frac{2 - 4q +2q^2 + 4q -2q^2}{(1-q)^3}\\
+&= \frac{2}{(1-q)^3}
+\end{align*} On en déduit \begin{align*}
+\mathbb{E}[X^2]&=(1-q)\left(\frac{2}{(1-q)^3}-\frac{1}{(1-q)^2}\right)\\
+&=\frac{2}{(1-q)^2}-\frac{1}{(1-q)}\\
+&=\frac{2-(1-q)}{(1-q)^2}\\
+&=\frac{1+q}{(1-q)^2}
+\end{align*} Et finalement \begin{align*}
+\mathbb{V}[X] &= \mathbb{E}[X^2]-\mathbb{E}[X]\\
+&= \frac{1+q}{(1-q)^2}-\frac{1}{(1-q)^2}\\
+&=\frac{q}{(1-q)^2}\\
+&=\frac{1-p}{p^2}
+\end{align*}
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{V-answer-loigeom2}
+cf.~notebook
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{V-answer-loigeom3}
+
+\begin{align*}
+\mathbb{P}(\lceil X \rceil = n) & = \mathbb{P}(n-1 < X \leq n) \\
+& = F_X(n) - F_X(n-1) \\
+& = e^{-\lambda (n-1)}(1-e^{-\lambda})
+\end{align*} d'où \(\lambda = -\ln(1-p)\)
+
+\runinhead{Question
+4}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+4}\label{V-answer-loigeom4}
+cf.~notebook
+
+\section{Simulation de la loi gaussienne par la méthode de
+rejet}\label{V-simulation-de-la-loi-gaussienne-par-la-muxe9thode-de-rejet-1}
+
+\(X\) est une variable aléatoire de loi gaussienne d'espérance \(m=0\)
+et de variance \(\sigma^2=1\), \(\mathcal{N}(0,1)\). Sa densité est
+\[f(x) = \frac{1}{\sqrt{2\pi}}\exp\left(-\frac{1}{2}x^2\right),~x\in \mathbb{R}\]
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{V-answer-lgrej1}
+Soit \(x \in \mathbb{R}\) \begin{align*}
+x^2 & \geq 2|x| - 1 \\
+\frac{1}{\sqrt{2\pi}}e^{-x^2/2} & \leq \sqrt{\frac{e}{2\pi}} e^{-|x|}
+\end{align*}
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{V-answer-lgrej2}
+\(g\) est bien positive et son intégrale sur \(\mathbb{R}\) vaut
+\[\int_\mathbb{R}g(x) dx = \int_\mathbb{R}\frac{1}{2} e^{-|x|} dx = \int_{\mathbb{R}^+} e^{-x} dx = 1\]
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{V-answer-lgrej3}
+voir dans \protect\hyperref[V-exemples1]{exemples d'application
+1 (p.~\pageref*{V-exemples1})}.
+
+\runinhead{Question
+4}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+4}\label{V-answer-lgrej4}
+cf.~notebook
+
+\section{Simulation de la loi de Wigner}\label{V-answer-wigner}
+
+cf.~notebook
+
+\section{Loi des grands nombres et théorème central
+limite}\label{V-loi-des-grands-nombres-et-thuxe9oruxe8me-central-limite-1}
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{V-answer-lgntcl1}
+cf.~notebook
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{V-answer-lgntcl2}
+cf.~notebook
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{V-answer-lgntcl3}
+cf.~notebook
+
+\section{Simulation d'un mélange de
+gaussiennes}\label{V-simulation-dun-muxe9lange-de-gaussiennes-1}
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{V-answer-melloi1}
+cf.~notebook
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{V-answer-melloi2}
+cf.~notebook
+
+\section{Echantillonnage
+d'importance}\label{V-echantillonnage-dimportance-3}
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{V-answer-echimp1}
+On a
+\(F_{X|X>3}(x) = \mathbb{P}(X \leq x |X > 3) = \frac{\mathbb{P}(X\leq x, X>3)}{1-F_X(3)} = \frac{F_X(x)-F_X(3)}{1-F_X(3)}1_{]3,+\infty[}(x)\)
+d'où \(f_{X|X>3}(x) = \frac{f_X(x)}{1-F_X(3)}1_{]3,+\infty[}(x)\)
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{V-answer-echimp2}
+cf.~notebook
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{V-answer-echimp3}
+cf.~notebook

@@ -1,0 +1,489 @@
+\chapter{Solutions}
+
+\runinhead{Démonstration}\phantomsection\addcontentsline{toc}{subsubsection}{Démonstration}\label{IV-answer-bienaymuxe9cheby}
+C'est une application immédiate de
+\protect\hyperref[IV-inegmarkov]{l'inégalité de
+Markov (p.~\pageref*{IV-inegmarkov})} à \((X-\mathbb{E}(X))\) avec
+\(p =2\).
+
+\runinhead{Pile ou face
+infini}\phantomsection\addcontentsline{toc}{subsubsection}{Pile ou face
+infini}\label{IV-answer-pf}
+En suivant l'indication, on a \(\mathbb{P}(A_n) = p\), d'où
+\(\sum_{n=1}^\infty \mathbb{P}(A_n) = \infty\). Le lemme de
+Borel-Cantelli nous indique alors que
+\(\mathbb{P}(\lim \sup_{n \to \infty} A_n) = \mathbb{P}\left(\cap_{n\geq 1} \cup_{k \geq n} A_n \right) = 1\).
+Autrement dit, on a presque sûrement un nombre infini de faces. En
+passant au complémentaire, on en déduit que l'événement \(A\) est de
+probabilité nulle.
+
+\runinhead{En proba et en
+moyenne}\phantomsection\addcontentsline{toc}{subsubsection}{En proba et
+en moyenne}\label{IV-answer-lien}
+Pour tout \(\varepsilon \in ]0,1[\), la probabilité
+\(\mathbb{P}(|X_n|\geq \varepsilon) = \frac{1}{n}\) tend vers 0 quand
+\(n\) tend vers l'infini. Ainsi, la suite
+\((X_n)_{n\in \mathbb{N}^\ast}\) tend vers \(X=0\) en probabilité. Comme
+\(\mathbb{E}(X_n) = \frac{1}{n}\), elle tend également en moyenne vers
+0.
+
+\runinhead{En proba mais pas en
+moyenne}\phantomsection\addcontentsline{toc}{subsubsection}{En proba
+mais pas en moyenne}\label{IV-answer-lien2}
+Par le même argument que ci-dessus, nous voyons que la suite
+\((Y_n)_{n\in \mathbb{N}^\ast}\) converge en probabilité vers 0, mais
+comme \(\mathbb{E}(Y_n) = n\), la suite ne converge pas en moyenne vers
+0 (ni vers aucune autre limite finie).
+
+\runinhead{Presque
+sûre}\phantomsection\addcontentsline{toc}{subsubsection}{Presque
+sûre}\label{IV-answer-lien3}
+Si \(\omega \in \{U > 0\}\) est fixé, alors
+\(\exists n_0 \in \mathbb{N}\) tel que \(U(\omega) > \frac{1}{n_0}\), et
+donc tel que \(Z_n(\omega) = 0\) pour tout \(n \geq n_0\). Comme
+\(\mathbb{P}(U>0)=1\), ceci montre que la suite
+\((Z_n)_{n\in \mathbb{N}^\ast}\) converge presque sûrement vers 0.
+
+\runinhead{Intervalles de longueur aléatoire
+(1)}\phantomsection\addcontentsline{toc}{subsubsection}{Intervalles de
+longueur aléatoire (1)}\label{IV-answer-ia}
+\(\mathbb{E}(X_n) = \frac{1}{n}\), et la suite \(X_n\) tend vers
+\(X = 0\) en moyenne, et donc en probabilité.
+
+\runinhead{Intervalles de longueur aléatoire
+(2)}\phantomsection\addcontentsline{toc}{subsubsection}{Intervalles de
+longueur aléatoire (2)}\label{IV-answer-ia2}
+Supposons que les \(A_n\) soient placés bout-à-bout, en recommençant en
+0 chaque fois qu'on arrive au point 1. Il est clair que l'on parcourt
+indéfiniment l'intervalle {[}0, 1{]} (car la série de terme général
+\(1/n\) diverge). Ainsi la suite numérique \(X_n (\omega)\) ne converge
+pour aucun \(\omega\), et on n'a pas \(X_n \to X\) presque-sûrement.
+Cependant comme la série \(\sum_n 1/n^2\) converge, il s'en suit que
+\(X_{n^2} \to X = 0\) presque-sûrement. En effet, posant
+\(B_n =\{\omega \in \Omega, X_{n^2}(\omega)=1\}\), on a
+\(\mathbb{P}(B_n) = \frac{1}{n^2}\) et
+\(\sum_{n=1}^{+\infty} \mathbb{P}(B_n) = \frac{\pi^2}{6}\). Le
+\protect\hyperref[IV-BC]{lemme de Borel Cantelli (p.~\pageref*{IV-BC})}
+nous indique alors que \(\mathbb{P}(B) = 0\) où
+\(B = \cap_{n\geq 1}\cup_{k\geq n} B_n\) et donc
+\(X_{n^2}(\omega) \to 0,\, \forall \omega \notin B\).
+
+\runinhead{Loi faible des grands
+nombres}\phantomsection\addcontentsline{toc}{subsubsection}{Loi faible
+des grands nombres}\label{IV-answer-wlln}
+Par l'inégalité de Bienaymé-Chebyshev, on a
+\[\mathbb{P}(|M_n-m| > \epsilon) \leq \frac{\mathbb{V}(M_n)}{\epsilon} = \frac{\sigma^2}{n\epsilon},\]
+où \(\sigma^2 = \mathbb{V}(X_i), \forall i \in \mathbb{N}^\ast\).
+
+\runinhead{Exponentielle}\phantomsection\addcontentsline{toc}{subsubsection}{Exponentielle}\label{IV-answer-expo}
+On a
+\(\log\left(\prod_{i=1}^n Y_i\right)^{1/n} = \frac{1}{n}\sum_{i=1}^n X_i \to m\)
+p.s. par la \protect\hyperref[IV-lfgn]{loi forte des grands
+nombre (p.~\pageref*{IV-lfgn})}. Puisque l'exponentielle est continue,
+la \protect\hyperref[IV-propconv4]{proposition de
+continuité (p.~\pageref*{IV-propconv4})} nous indique que
+\(\left(\prod_{i=1}^n Y_i\right)^{1/n} \to e^m\) p.s.
+
+\runinhead{Variance}\phantomsection\addcontentsline{toc}{subsubsection}{Variance}\label{IV-answer-variance}
+Les variables aléatoires \(Y_i = (X_i - m)^2\) sont i.i.d. telles que
+\(\mathbb{E}(Y_i)= \sigma^2\). Par la \protect\hyperref[IV-lfgn]{loi
+forte des grands nombre (p.~\pageref*{IV-lfgn})}, on a
+\[\lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n (X_i - m)^2 \to \sigma^2  \text{   p.s.}\]
+
+\runinhead{Suite
+gaussienne}\phantomsection\addcontentsline{toc}{subsubsection}{Suite
+gaussienne}\label{IV-answer-suitegauss}
+Soit \(f\) une fonction continue bornée sur \(\mathbb{R}\). On a
+\begin{align*}
+\mathbb{E}(f(X_n)) &= \int_\mathbb{R}f(y) \frac{1}{\sqrt{2\pi}\sigma_n} \exp\left(-\frac{y^2}{2\sigma^2_n}\right) dy \\
+             &\xrightarrow[n \to \infty]{} \int_\mathbb{R}f(y) \frac{1}{\sqrt{2\pi}\sigma} \exp\left(-\frac{y^2}{2\sigma^2}\right) dy
+\end{align*} où l'on a utilisé le théorème de convergence dominée
+appliqué à la suite de fonctions
+\(\frac{1}{\sqrt{2\pi}\sigma_n} \exp\left(-\frac{y^2}{2\sigma^2_n}\right)\).
+
+\runinhead{Surbooking}\phantomsection\addcontentsline{toc}{subsubsection}{Surbooking}\label{IV-answer-surbooking}
+Le nombre de passager \(S_{420}\) se présentant effectivement à
+l'embarquement suit une loi binomiale \(\mathcal{B}(420,0.92)\). On veut
+donc calculer
+\(\mathbb{P}(S_{420} > 400) = 1 - \mathbb{P}(S_{420}<400)\). Le TCL nous
+fournit l'approximation
+\[\frac{S_{420} - np}{\sqrt{n p (1-p)}} = \frac{S_{420} - 386.4}{5.56} \approx Y \sim \mathcal{N}(0,1)\]
+Ainsi, \(\mathbb{P}(S_{420}<400) \approx \Phi(2.44) \approx 0.99\) La
+probabilité de surbooking est donc de 1\%.
+
+\section{Inégalités de
+concentration}\label{IV-inuxe9galituxe9s-de-concentration-1}
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{IV-answer-idc1}
+L'inégalité de Chebyshev nous donne pour tout \(a>0\)
+\[\mathbb{P}\left(\left|\frac{1}{n}\sum_{i=1}^n X_i - m \right| > a\right) \leq \frac{\mathbb{V}(X_1)}{n a^2}\]
+Prenant, \(\frac{\mathbb{V}(X_1)}{n a^2} = \delta\), on obtient
+\(a = \frac{1}{\sqrt{n\delta}}\), d'où le résultat. On retrouve au
+passage la même vitesse de convergence que celle donnée par le TCL.
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{IV-answer-idc2}
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi})}
+\tightlist
+\item
+  \(M(u) = \mathbb{E}(e^{u(X_1 -m)}) = \phi_{X_1}(-iu) = e^{u^2 \sigma^2/2}\),
+  où \(\phi_{X_1}\) est la fonction caractéristique de \(X_1\).
+\item
+  On a \(e^{u(M_n-nm)} \geq e^{ua} 1_{S_n -nm \geq a}\), d'où
+  \[\mathbb{P}(S_n -nm \geq a) \leq \frac{\mathbb{E}(e^{u(M_n-nm)})}{e^{ua}} = e^{-ua}M(u)^n\]
+  par indépendance des \(X_i\).
+\item
+  \begin{align*}
+  \mathbb{P}(|Y_n - m| \geq \varepsilon) &= \mathbb{P}(S_n - nm \geq n\varepsilon) + P(S_n - nm \leq -n\varepsilon) \\
+                         &\leq e^{-nu\varepsilon} (M (u))^n + e^{-n(-u)(-\varepsilon)} (M (-u))^n = 2e^{-nu\varepsilon}(M (u))^n \\
+                         &\leq 2e^{-nu\varepsilon}e^{nu^2\sigma^2/2}, \,\,\, \forall u \geq 0
+  \end{align*} La meilleure majoration va être obtenue en minimisant
+  l'exposant, c'est-à-dire pour \(u = \varepsilon/\sigma^2\). Nous en
+  déduisons l'inégalité de Chernov.
+\end{enumerate}
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{IV-answer-idc3}
+Par l'inégalité de Bienaymé-Chebyshev,
+\(\mathbb{P}(|Y_n - m| > \varepsilon) \leq \frac{\mathbb{V}(Y_n)}{\varepsilon^2} = \frac{\sigma^2}{n\varepsilon^2}\).
+
+Ainsi, \(\mathbb{P}(|Y_n - m| \leq \varepsilon)\leq \alpha\) dès que
+\(1-\frac{\sigma^2}{n\varepsilon^2}\). Avec \(\varepsilon = 0,05\), il
+vient \(n \geq 80000\).
+
+Par l'inégalité de Chernov, nous obtenons
+\(2e^{- n\varepsilon^2/20} \leq 0, 05\). Il vient que \(n \geq 29512\).
+Pour avoir une évaluation du même ordre de la probabilité cherchée, nous
+pouvons donc prendre un échantillon beaucoup plus petit si nous
+utilisons l'inégalité de Chernov. A taille d'échantillon fixée, nous
+aurons une meilleure évaluation avec cette inégalité.
+
+\section{Lemme de Borel-Cantelli}\label{IV-lemme-de-borel-cantelli-1}
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{IV-answer-bc1}
+On voit dans un premier temps que
+\(\bigcap_{n\geq 0} \bigcup_{k \geq n} A_k \in \mathcal{A}\) par unions
+et intersections dénombrables. On a
+\[\mathbb{P}(\lim \sup_n A_n ) = \lim_{p \to \infty} \mathbb{P}(\cup_{n\geq p} A_n) \leq \lim_{p \to \infty} \sum_{n \geq p} \mathbb{P}(A_n),\]
+où on remarque que les deux suites sont décroissantes.
+
+Si la série \(\sum_n \mathbb{P}(A_n)\) est convergente, le reste de
+cette série tend vers 0 et l'inégalité implique que
+\(\mathbb{P}(\lim \sup_n A n) = 0\).
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{IV-answer-bc2}
+Supposons maintenant que les \(A_n\) soient indépendants et que la série
+diverge. Soit \(m\) un nombre entier. Nous avons \begin{align*}
+\mathbb{P}(\cup_{i=p}^m A_i) &= 1- \mathbb{P}(\cap_{i=p}^m A_i^c) = 1- \prod_{i=p}^m \mathbb{P}(A_i^c) \text{ par indépendance}\\
+& = 1- \prod_{i=p}^m (1-\mathbb{P}(A_i)) \geq 1- e^{-\sum_{i=p}^m\mathbb{P}(A_i)}
+\end{align*} du fait de l'inégalité \(1 - x \leq e^{-x}\) pour
+\(x \geq 0\). Ainsi,
+\[ \mathbb{P}(\cup_{i=p}^{\infty} A_i) \geq 1- e^{-\sum_{i=p}^{\infty} \mathbb{P}(A_i)} = 1 \]
+et l'on conclut finalement que pour tout \(p\),
+\(\mathbb{P}(\cup_{i=p}^{\infty} A_i) = 1\), ce qui implique finalement
+que \(\mathbb{P}(\lim \sup_{n \to \infty} A_n) = 1\).
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{IV-answer-bc3}
+Prendre tous les \(A_n\) égaux à un même événement \(A\) de probabilité
+\(\mathbb{P}(A) \in \left]0,1\right[\).
+
+\section{Convergence vers une
+constante}\label{IV-convergence-vers-une-constante-1}
+
+\runinhead{Convergence
+\(\mathcal{L}^2\)}\phantomsection\addcontentsline{toc}{subsubsection}{Convergence
+\(\mathcal{L}^2\)}\label{IV-answer-cvtocst-l2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Supposons \(X_n \overset{\mathcal{L}^2}{\longrightarrow} X\) quand
+  \(n\to+\infty\),
+  i.e.~\(\mathbb{E}\left(\left(X_n - X\right)^2\right) \xrightarrow[n\to+\infty]{} 0\).
+\end{enumerate}
+
+Par positivité de la variance, on a tout d'abord
+\[\mathbb{E}\left(\left(X_n - X\right)^2\right) \geq \left(\mathbb{E}\left(X_n-X\right)\right)^2 \geq 0,\]
+qui garantit que
+\(\left|\mathbb{E}\left(X_n-X\right)\right| = \left|\mathbb{E}(X_n) - \mathbb{E}(X)\right| \to 0\)
+quand \(n\to+\infty\).
+
+Ensuite, par inégalité triangulaire on a \begin{align*}
+\left|\mathbb{V}\left(X_n\right) - \mathbb{V}\left(X\right)\right| &= \left|\mathbb{E}\left(X_n^2\right) - \mathbb{E}(X_n)^2 - \mathbb{E}\left(X^2\right) + \mathbb{E}(X)^2 \right|\\
+& \leq \left|\mathbb{E}\left(X_n^2 - X^2\right)\right| + \left|\mathbb{E}(X_n)^2 - \mathbb{E}(X)^2\right|.
+\end{align*}
+
+Or, comme nous avons vu que
+\(\mathbb{E}(X_n) \xrightarrow[n\to+\infty]{} \mathbb{E}(X)\), on a
+directement que
+\(\left|\mathbb{E}(X_n)^2 - \mathbb{E}(X)^2\right| \xrightarrow[n\to+\infty]{} 0\).
+Par ailleurs, \begin{align*}
+\left|\mathbb{E}\left(X_n^2 - X^2\right)\right| &= \left|\mathbb{E}\left( \left(X_n-X\right)^2 \right) - 2\mathbb{E}\left(X^2\right) + 2\mathbb{E}\left(X\,X_n\right)\right|\\
+&= \left|\mathbb{E}\left( \left(X_n-X\right)^2 \right) + 2\mathbb{E}\left(X\,(X_n-X)\right)\right|\\
+&\leq \mathbb{E}\left( \left(X_n-X\right)^2 \right) + 2\left|\mathbb{E}\left(X\,(X_n-X)\right)\right|.
+\end{align*} Par l'inégalité de Cauchy-Schwartz on a
+\[\left|\mathbb{E}\left(X\,(X_n-X)\right)\right|^2 \leq \mathbb{E}\left(X^2\right)\,\mathbb{E}\left( \left(X_n-X\right)^2 \right),\]
+donc
+\[\left|\mathbb{E}\left(X_n^2 - X^2\right)\right| \leq \mathbb{E}\left( \left(X_n-X\right)^2 \right) + 2\sqrt{\mathbb{E}\left(X^2\right)}\,\sqrt{\mathbb{E}\left( \left(X_n-X\right)^2 \right)},\]
+qui tend bien vers \(0\) quand \(n\to+\infty\) par hypothèse. On en
+conclut que
+\(\left|\mathbb{V}\left(X_n\right) - \mathbb{V}\left(X\right)\right|\xrightarrow[n\to+\infty]{} 0.\)
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Par définition, \(X_n \overset{\mathcal{L}^2}{\longrightarrow} a\)
+  quand \(n\to+\infty\) ssi
+  \(\mathbb{E}\left(\left(X_n - a\right)^2\right) \xrightarrow[n\to+\infty]{} 0\).
+\end{enumerate}
+
+Le premier sens de l'équivalence est immédiatement obtenu par la
+question précédente, en prenant \(X = a\) presque-sûrement.
+
+Réciproquement, pour tout \(n\in\mathbb{N}^\ast\), par linéarité de
+l'espérance on a \begin{align*}
+\mathbb{E}\left( \left(X_n-a\right)^2 \right) &= \mathbb{E}\left( X_n^2 + a^2 - 2aX_n \right) = \mathbb{E}\left(X_n^2\right) + a^2 - 2a\mathbb{E}\left(X_n\right)\\
+&= \mathbb{V}\left(X_n\right) + a^2 - 2a\mathbb{E}\left(X_n\right) + \mathbb{E}\left(X_n\right)^2\\
+&= \mathbb{V}\left(X_n\right) + \left(\mathbb{E}(X_n) - a\right)^2.
+\end{align*} On en déduit immédiatement le deuxième sens de
+l'équivalence.
+
+\runinhead{Convergences en loi et
+probabilité}\phantomsection\addcontentsline{toc}{subsubsection}{Convergences
+en loi et probabilité}\label{IV-answer-cvtocst-loiprob}
+Supposons que \(X_n \overset{\mathcal{L}}{\longrightarrow} a\) quand
+\(n\to+\infty\). Cela revient à dire que \(X_n\) tend en loi vers la
+variable aléatoire \(X = a\) p.s. quand \(n\to+\infty\). Dans ce cas,
+\(X\) a pour fonction de répartition
+\(x\in\mathbb{R}\mapsto 1_{[a,+\infty[}(x)\) et pour tout
+\(x \in \mathbb{R}\backslash\{a\}\), on a
+\[\mathbb{P}\left(X_n \leq x \right) \xrightarrow[n\to+\infty]{} 1_{[a,+\infty[}(x).\]
+
+Soit maintenant \(\varepsilon > 0\). D'après la croissance de la
+fonction de répartition et l'hypothèse de convergence en loi, on a
+\begin{align*}
+\mathbb{P}\left(\left|X_n - a\right| \geq \varepsilon \right) &= \mathbb{P}\left(X_n \geq a + \varepsilon \right) + \mathbb{P}\left(X_n \leq a - \varepsilon \right)\\
+&= 1 - \mathbb{P}\left(X_n < a + \varepsilon \right) + \mathbb{P}\left(X_n \leq a - \varepsilon \right)\\
+&\leq 1 - \mathbb{P}\left(X_n \leq a + \frac{\varepsilon}{2} \right) + \mathbb{P}\left(X_n \leq a - \varepsilon \right)\\
+& \xrightarrow[n\to+\infty]{} 1 - 1_{[a,+\infty[}\left(a+\frac{\varepsilon}{2}\right) + 1_{[a,+\infty[}\left(a-\varepsilon\right) = 0.
+\end{align*}
+
+Ainsi, on a bien \(X_n \overset{\mathbb{P}}{\longrightarrow} a\) quand
+\(n\to+\infty\).
+
+\section{Fonction de répartition
+empirique}\label{IV-fonction-de-ruxe9partition-empirique-1}
+
+\runinhead{Préliminaire}\phantomsection\addcontentsline{toc}{subsubsection}{Préliminaire}\label{IV-answer-fdremp-loi}
+La variable aléatoire \(1_{]-\infty,x]}(X)\) est à valeurs dans
+\(\{0,1\}\) et
+\[\mathbb{P}\left( 1_{]-\infty,x]}(X) = 1\right) = F(x) = 1 - \mathbb{P}\left( 1_{]-\infty,x]}(X) = 0\right).\]
+On reconnaît une loi de Bernoulli de paramètre \(F(x)\). On en déduit
+directement que \(\mathbb{E}(1_{]-\infty,x]}(X)) = F(x)\) et
+\(\mathbb{V}(1_{]-\infty,x]}(X)) = F(x)\,(1-F(x))\).
+
+\runinhead{Biais}\phantomsection\addcontentsline{toc}{subsubsection}{Biais}\label{IV-answer-fdremp-biais}
+Sous les hypothèses de l'exercice, on a \begin{align*}
+\mathbb{E}\left(F_n(x) \right) &= \dfrac{1}{n}\,\sum_{i = 1}^n \mathbb{E}\left( 1_{]-\infty,x]}(X_i) \right) \hspace{1em}\text{par linéarité de l'espérance,}\\
+& = \dfrac{1}{n}\,\sum_{i = 1}^n \mathbb{E}\left( 1_{]-\infty,x]}(X) \right) \hspace{1em}\text{car $X_1,\dots,X_n$ ont même loi que $X$,}\\
+& = \dfrac{1}{n}\,\sum_{i = 1}^n F(x) \hspace{1em}\text{d'après la première question,}\\
+& = F(x).
+\end{align*}
+
+\runinhead{Erreur quadratique
+moyenne}\phantomsection\addcontentsline{toc}{subsubsection}{Erreur
+quadratique moyenne}\label{IV-answer-fdremp-mse}
+Soit \(n\in\mathbb{N}^\ast\). D'après la question précédente, on a
+
+\(\mathbb{E}\left( \left(F_n(x) - F(x)\right)^2 \right) = \mathbb{E}\left( \left(F_n(x) - \mathbb{E}(F_n(x))\right)^2 \right) = \mathbb{V}\left(F_n(x)\right).\)
+
+Or \begin{align*}
+\mathbb{V}\left(F_n(x)\right) &= \dfrac{1}{n^2}\,\sum_{i = 1}^n \mathbb{V}\left(1_{]-\infty,x]}(X_i)\right) \hspace{1em}\text{par indépendance des variables,}\\
+&= \dfrac{1}{n^2}\,\sum_{i = 1}^n \mathbb{V}\left(1_{]-\infty,x]}(X)\right) \hspace{1em}\text{car $X_1,\dots,X_n$ ont même loi que $X$,}\\
+&= \dfrac{1}{n^2}\,\sum_{i = 1}^n F(x)\,(1-F(x)) \hspace{1em}\text{d'après la première question,}\\
+&= \dfrac{1}{n}\, F(x)\,(1-F(x)) \xrightarrow[n\to+\infty]{} 0.
+\end{align*}
+
+On en conclut que
+\(F_n(x) \overset{\mathcal{L}^2}{\longrightarrow} F(x)\) quand
+\(n\to+\infty\).
+
+\runinhead{Consistance}\phantomsection\addcontentsline{toc}{subsubsection}{Consistance}\label{IV-answer-fdremp-ps}
+On remarque que pour tout \(n\in\mathbb{N}^\ast\), \(F_n(x)\) n'est
+autre que la moyenne de \(n\) variables aléatoires indépendantes de même
+loi de Bernoulli de paramètre \(F(x)\). La loi forte des grands nombres
+nous assure donc qu'elle converge presque-sûrement vers l'espérance de
+cette loi, qui n'est autre que \(F(x)\).
+
+\addcontentsline{toc}{subsection}{Pour aller plus loin}
+\begin{remarque}[{Pour aller plus
+loin}]\phantomsection\label{IV-pour-aller-plus-loin}
+
+On peut en fait aller plus loin et montrer que l'on a la convergence
+presque sûre uniformément sur \(\mathbb{R}\) voir par exemple
+\href{http://math.univ-lyon1.fr/~gelineau/devagreg/Theoreme_Dini.pdf}{ce
+document}, c'est le théorème de Glivenko-Cantelli très utile en
+statistiques.
+\end{remarque}
+
+\section{Théorème de Weierstrass sur
+\([0,1]\)}\label{IV-thuxe9oruxe8me-de-weierstrass-sur-01-1}
+
+\runinhead{Preuve du
+théorème.}\phantomsection\addcontentsline{toc}{subsubsection}{Preuve du
+théorème.}\label{IV-answer-weier-thm}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Comme \(X_1,\dots,X_n\) sont indépendantes de même loi de Bernoulli de
+  paramètre \(x\in]0,1[\), \(M_n\) est à valeurs dans
+  \(\bigl\{\frac{k}{n} : k \in \{0,\dots,n\} \bigr\}\) et pour tout
+  \(k\in\{0,\dots,n\}\) on a
+  \[\mathbb{P}\left(M_n = \dfrac{k}{n}\right) = \binom{n}{k} x^k\,(1-x)^{n-k}.\]
+  Ainsi,
+  \[\mathbb{E}\left(f(M_n)\right) = \sum_{k=0}^{n} \binom{n}{k} f\left(\dfrac{k}{n}\right)\, x^k\,(1-x)^{n-k}.\]
+\end{enumerate}
+
+Les polynômes de la forme
+\(B_{n,k} : u\in [0,1] \mapsto \binom{n}{k} u^k\,(1-u)^{n-k}\) sont
+appelés \emph{polynômes de Bernstein}.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Comme une variable de Bernoulli admet une espérance égale à son
+  paramètre, la loi (forte) des grands nombres nous assure que
+  \(M_n \to x\) p.s. quand \(n\to+\infty\). Puisque \(f\) est continue,
+  on a de même \(f\left(M_n\right) \to f(x)\) p.s. quand
+  \(n\to+\infty\).
+\end{enumerate}
+
+Par ailleurs, la continuité de \(f\) sur \([0,1]\) nous assure que \(f\)
+est bornée (l'image d'un compact par une fonction continue
+\(\mathbb{R}\to \mathbb{R}\) est un compact). Ainsi, pour tout
+\(n\in\mathbb{N}^\ast\), la variable aléatoire \(f\left(M_n\right)\)
+l'est également. Cela nous permet d'appliquer le théorème de convergence
+dominée de la question 1~: en notant \((\Omega,\mathcal{A},\mathbb{P})\)
+l'espace probabilisé sur lequel sont définies nos variables aléatoires,
+
+\[\mathbb{E}\left( f\left(M_n\right) \right) = \int_{\Omega} f\left(M_n(\omega)\right)\,\mathbb{P}(d\omega) \xrightarrow[n\to+\infty]{} \int_{\Omega} f(x)\,\mathbb{P}(d\omega) = f(x).\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\item
+  En combinant les résultats des deux questions précédentes, on obtient
+  que la suite \(\left(P_n\right)_{n\in\mathbb{N}^\ast}\) des polynômes
+  définis pour tout \(n\in\mathbb{N}^\ast\) par
+  \[P_n : x \in ]0,1[ \mapsto \sum_{k=0}^{n} \binom{n}{k} f\left(\dfrac{k}{n}\right)\, x^k\,(1-x)^{n-k}\]
+  converge simplement vers \(f(x)\). On étend simplement ce résultat à
+  \([0,1]\) en remarquant que pour tout \(n\in\mathbb{N}^\ast\) on a
+  directement l'égalité
+  \[P_n(0) = f\left(\dfrac{0}{n}\right) = f(0) \text{ et } P_n(1) = f\left(\dfrac{n}{n}\right) = f(1).\]
+  On a même toujours l'égalité
+  \(P_n(x) = \mathbb{E}\left( f\left(M_n\right) \right)\) pour
+  \(x\in[0,1]\) si l'on remarque qu'une loi de Bernoulli de paramètre
+  \(a\in \{0,1\}\) n'est autre d'une Dirac en \(\{a\}\), ce qui signifie
+  que \(M_n = a\) p.s. et donc que
+  \(\mathbb{E}\left(f(M_n)\right) = f(a) = P_n(a)\).
+\item
+  On souhaite montrer que
+  \[\forall\,\varepsilon > 0 \ \exists\,N_\varepsilon\in\mathbb{N}^\ast : \left(n\geq N_\varepsilon\right) \Rightarrow \left(\forall\,x\in[0,1] : \left|P_n(x) - f(x)\right|\leq \varepsilon\right).\]
+\end{enumerate}
+
+Remarquons tout d'abord que la fonction \(f\) étant bornée, elle admet
+un maximum sur \([0,1]\), que l'on note \(K\). Puisqu'elle est continue
+sur un segment réel, elle est aussi uniformément continue~:
+\[\forall\,\varepsilon > 0\ \ \exists\,\delta_{\varepsilon} > 0 : \forall\,(x,y) \in ]0,1[^2,\ \ |x-y| < \delta_\varepsilon \Rightarrow \left|f(x) - f(y)\right| < \varepsilon.\]
+Soient \(\varepsilon > 0\), puis \(\delta = \delta_{\varepsilon/2} > 0\)
+pour lequel l'implication précédente est vraie avec
+\(\dfrac{\varepsilon}{2}\). Alors pour tous \(n\in\mathbb{N}^\ast\) et
+\(x\in]0,1[\) on a \begin{align*}
+\left|\mathbb{E}\left( f(M_n) \right) - f(x)\right| & \leq \mathbb{E}\left( \left|f(M_n) - f(x) \right| \right) \hspace{1em}\text{par l'inégalité de Jensen,}\\
+& = \mathbb{E}\left( \left|f(M_n) - f(x) \right|\,1_{[0,\delta[}\left(\left|M_n - x\right|\right) \right)\\
+&\ \ \ + \mathbb{E}\left( \left|f(M_n) - f(x) \right|\,1_{[\delta,+\infty[}\left(\left|M_n - x\right|\right) \right)\\
+&\leq \dfrac{\varepsilon}{2} + 2|K|\,\mathbb{P}\left(\left|M_n-x\right|\geq \delta\right) \hspace{1em}\text{par inégalité triangulaire,}\\
+&\leq \dfrac{\varepsilon}{2} + 2|K|\,\dfrac{\mathbb{V}(M_n)}{\delta^2} \hspace{1em}\text{par Bienaymé-Chebyshev.}
+\end{align*} Or pour tout \(n\in\mathbb{N}^\ast\) \begin{align*}
+\mathbb{V}(M_n) &= \mathbb{V}\left(\dfrac{1}{n}\,\sum_{i = 1}^n X_i \right)\\
+&= \dfrac{1}{n^2}\,\sum_{i = 1}^n \mathbb{V}(X_i) \hspace{1em}\text{par indépendance de $X_1,\dots,X_n$,}\\
+&= \dfrac{1}{n^2}\,\sum_{i = 1}^n x(1-x) \hspace{1em}\text{car $X_1,\dots,X_n$ suivent la même loi de Bernoulli},\\
+&= \dfrac{x(1-x)}{n} < \dfrac{1}{4n} \hspace{1em}\text{car $x \in ]0,1[$.}
+\end{align*} Par conséquent, pour tout \(n\in\mathbb{N}^\ast\),
+\[\left|\mathbb{E}\left( f(M_n) \right) - f(x)\right| < \dfrac{\varepsilon}{2} + \dfrac{|K|}{2n\delta^2}.\]
+En prenant \(N_\varepsilon\) le plus petit entier naturel supérieur ou
+égal à \(\dfrac{|K|}{\varepsilon\,\delta^2}\), on obtient alors que pour
+tout \(n\geq N_\varepsilon\),
+\(\left|\mathbb{E}\left( f(M_n) \right) - f(x)\right| < \varepsilon.\)
+Comme \(\varepsilon\) et \(N_\varepsilon\) sont les mêmes quel que soit
+\(x \in [0,1]\), on obtient bien la convergence uniforme désirée.
+
+\section{Théorème de Slutsky}\label{IV-thuxe9oruxe8me-de-slutsky-1}
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{IV-answer-slut1}
+La démonstration est analogue à celle de la
+\protect\hyperref[IV-cvceloifdr]{la proposition sur la convergence des
+f.d.r. (p.~\pageref*{IV-cvceloifdr})}, où on peut voir que l'on peut
+remplacer les fonctions continues bornées \(f_{p,b}\) approchant
+\(1_{\left]-\infty,b\right]}\) par des fonctions lipschitziennes
+bornées. Voir la démonstration du théorème 18.7 dans Jacod and Protter
+(\protect\hyperlink{refIV-Jacod}{2003}) pour une version complète.
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{IV-answer-slut2}
+Du fait du résultat de la question 1, il suffit de montrer que
+\(\lim_{n \to \infty} \mathbb{E}(f (Y_n)) = \mathbb{E}(f (X))\), pour
+toute fonction lipschitzienne bornée. Soit \(f\) une telle fonction. On
+a alors \(|f (x)| \leq k\) et \(|f (x) -f (y)| \leq C|x - y|\), pour des
+constantes \(k\) et \(C\).
+
+Soit \(\varepsilon > 0\) donné. On a \begin{align*}
+|\mathbb{E}(f (Y_n )) - \mathbb{E}(f (X_n ))| &\leq \mathbb{E}(|f (Y_n) - f (X_n )|) \\
+                                  &\leq \mathbb{E}(|f (Y_n) - f (X_n )|(1_{|Y_n-X_n|\leq \varepsilon} + 1_{|Y_n-X_n| > \varepsilon}))\\
+                                  &\leq C \varepsilon + 2k P(|X_n - Y_n | > \varepsilon)
+\end{align*} Le deuxième terme du membre de droite tend vers 0 quand
+\(n\) tend vers l'infini, car \((X_n - Y_n )_n\) converge en probabilité
+vers 0. Comme \(\varepsilon\) est arbitrairement petit, nous en
+déduisons que
+\(\lim_{n\to\infty}|\mathbb{E}(f (Y_n )) - \mathbb{E}(f (X_n ))| = 0\),
+d'où le résultat.
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{IV-answer-slut3}
+Soit \(u \in R^d\) . On a~:
+\[|\phi_{Y_n} (u) - \phi_X (u)| \leq |\phi_{Y_n} (u) - \phi_{X_n} (u)| + |\phi_{X_n} (u) - \phi_{X} (u)|\]
+D'une part, le \protect\hyperref[IV-levytheorem]{théorème de
+Lévy (p.~\pageref*{IV-levytheorem})} partie 1. montre que
+\(|\phi_{X_n}(u) - \phi_X (u)|\) tend vers 0 quand \(n \to \infty\).
+D'autre part, \begin{align*}
+|\phi_{Y_n} (u) - \phi_{X_n} (u)|  & = |\mathbb{E}(e^{i< u, Y_n>} - e^{i< u, X_n>})| \\
+& = |\mathbb{E}(e^{i<u,X_n>} (e^{i<u,Y_n-X_n>} - 1))|\leq \mathbb{E}(|e^{i<u,Y_n-X_n>} - 1|)
+\end{align*} tend vers 0 quand \(n \to \infty\) d'après
+\protect\hyperref[IV-propconv2]{la proposition --- cas
+borné (p.~\pageref*{IV-propconv2})} appliquée aux variables aléatoires
+\(e^{i<u,Y_n -X_n>}-1\) dont la convergence en proba vers 0 est assurée
+par la \protect\hyperref[IV-propconv4]{propriété de
+continuité (p.~\pageref*{IV-propconv4})}.

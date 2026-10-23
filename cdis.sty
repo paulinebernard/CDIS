@@ -1,0 +1,127 @@
+% cdis.sty -- mise en forme commune des polys du projet CDIS (Mines Paris - PSL, UE11)
+% Usage : \documentclass[french,a4paper,11pt,open=any,headings=small]{scrbook}
+%         \usepackage{../cdis}   % depuis un sous-dossier (Equations Différentielles/, Probabilités/, ...)
+% Chaque poly garde dans son propre fichier : le \hypersetup (titre, auteur du pdf), ses macros, \title/\author et ses \input.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{../cdis}[2026/10/23 mise en forme commune des polys CDIS]
+
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=3.4cm,footskip=1cm]{geometry}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{%
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath}
+}{}
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{}
+\usepackage{bookmark}
+\hypersetup{pdflang={fr},hidelinks}
+\urlstyle{tt}
+\usepackage{graphicx}
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\setkeys{Gin}{width=\maxwidth,height=0.36\textheight,keepaspectratio}
+\graphicspath{{images/}}
+\def\fps@figure{htbp}
+\renewcommand{\topfraction}{0.85}\renewcommand{\bottomfraction}{0.7}\renewcommand{\textfraction}{0.1}\renewcommand{\floatpagefraction}{0.75}
+\setlength{\emergencystretch}{3em}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{2} % chapitres, sections, sous-sections numérotés
+\DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm} % les sources utilisent {\rm ...}
+\usepackage{fontawesome}
+\usepackage{grffile}
+\usepackage[shorthands=off,main=french]{babel}
+\frenchbsetup{StandardLists=true} % puces standard (et non tirets) pour itemize
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newenvironment{cslreferences}%
+  {\setlength{\parindent}{0pt}%
+  \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces}%
+  {\par}
+
+% ---- Environnements (définitions, théorèmes, ...) : sobres, sans couleur ----
+\usepackage[most]{tcolorbox}
+\tcbset{envbase/.style={enhanced,breakable,sharp corners,boxrule=0pt,frame hidden,colback=white,
+  left=9pt,right=0pt,top=2pt,bottom=2pt,before skip=1.1\baselineskip,after skip=1.1\baselineskip,
+  before upper={\let\footnote\tcbfootnote \setlength{\parindent}{0pt}\setlength{\parskip}{0.5\baselineskip}}}}
+% Notes de bas de page dans les environnements : renvoyées en bas de page
+% (par défaut tcolorbox les place en fin de boîte, avec des lettres).
+\usepackage{etoolbox}
+\newcommand{\tcbfnlist}{}
+\newcommand{\tcbfootnote}[1]{%
+  \stepcounter{footnote}%
+  \edef\tcbtmp{\noexpand\footnotetext[\the\value{footnote}]}%
+  \expandafter\gappto\expandafter\tcbfnlist\expandafter{\tcbtmp{#1}}%
+  \footnotemark[\value{footnote}]}
+\newcommand{\tcbflushfn}{\tcbfnlist\gdef\tcbfnlist{}}
+
+\newtcolorbox{definition}[1][]{envbase,borderline west={1.2pt}{0pt}{black},
+  before upper={\let\footnote\tcbfootnote \textbf{Définition\ifblank{#1}{}{\ -- #1}.}\par\setlength{\parindent}{0pt}\setlength{\parskip}{0.5\baselineskip}}}
+\newtcolorbox{theoreme}[1][]{envbase,borderline west={1.2pt}{0pt}{black},
+  before upper={\let\footnote\tcbfootnote \textbf{Théorème\ifblank{#1}{}{\ -- #1}.}\par\setlength{\parindent}{0pt}\setlength{\parskip}{0.5\baselineskip}\itshape}}
+\newtcolorbox{remarque}[1][]{envbase,
+  before upper={\let\footnote\tcbfootnote \textbf{Remarque\ifblank{#1}{}{\ -- #1}.}\par\setlength{\parindent}{0pt}\setlength{\parskip}{0.5\baselineskip}}}
+\newtcolorbox{exemple}[1][]{envbase,
+  before upper={\let\footnote\tcbfootnote \textbf{Exemple\ifblank{#1}{}{\ -- #1}.}\par\setlength{\parindent}{0pt}\setlength{\parskip}{0.5\baselineskip}}}
+\newtcolorbox{preuve}{envbase,left=0pt,
+  before upper={\let\footnote\tcbfootnote \setlength{\parindent}{0pt}\setlength{\parskip}{0.5\baselineskip}\textit{Démonstration.}\ }}
+
+\AfterEndEnvironment{definition}{\tcbflushfn}\AfterEndEnvironment{theoreme}{\tcbflushfn}\AfterEndEnvironment{remarque}{\tcbflushfn}\AfterEndEnvironment{exemple}{\tcbflushfn}\AfterEndEnvironment{preuve}{\tcbflushfn}
+
+% Pas de saut de page avant les chapitres
+\patchcmd{\scr@startchapter}{\if@openright\cleardoublepage\else\clearpage\fi}{\par\addpenalty{-300}}{}{\PackageWarning{poly}{patch chapitre echoue}}
+\renewcommand*{\chapterpagestyle}{headings}
+\RedeclareSectionCommand[beforeskip=1.8\baselineskip,afterskip=1\baselineskip]{chapter}
+% Titres de niveau subsubsection ("Question n", "Exercice -- ...") en ligne avec le texte qui suit, moins d'espace autour
+\RedeclareSectionCommand[runin=true,beforeskip=0.7\baselineskip,afterskip=0.6em]{subsubsection}
+% Titres en ligne des exercices, questions et corrigés : même rendu que le subsubsection ci-dessus, mais sans le
+% mécanisme runin de KOMA qui, quand un saut de page suit, fait chevaucher le titre de section suivant et son texte.
+\usepackage{needspace}
+\newcommand{\runinhead}[1]{\par\needspace{3\baselineskip}\vspace{0.7\baselineskip}\noindent{\normalfont\sffamily\bfseries #1}\hspace{0.6em}\ignorespaces}
+
+% Environnements supplémentaires propres au cours de probabilités (même style que \theoreme)
+\newtcolorbox{proposition}[1][]{envbase,borderline west={1.2pt}{0pt}{black},
+  before upper={\let\footnote\tcbfootnote \textbf{Proposition\ifblank{#1}{}{\ -- #1}.}\par\setlength{\parindent}{0pt}\setlength{\parskip}{0.5\baselineskip}\itshape}}
+\newtcolorbox{corollaire}[1][]{envbase,borderline west={1.2pt}{0pt}{black},
+  before upper={\let\footnote\tcbfootnote \textbf{Corollaire\ifblank{#1}{}{\ -- #1}.}\par\setlength{\parindent}{0pt}\setlength{\parskip}{0.5\baselineskip}\itshape}}
+\newtcolorbox{lemme}[1][]{envbase,borderline west={1.2pt}{0pt}{black},
+  before upper={\let\footnote\tcbfootnote \textbf{Lemme\ifblank{#1}{}{\ -- #1}.}\par\setlength{\parindent}{0pt}\setlength{\parskip}{0.5\baselineskip}\itshape}}
+\AfterEndEnvironment{proposition}{\tcbflushfn}\AfterEndEnvironment{corollaire}{\tcbflushfn}\AfterEndEnvironment{lemme}{\tcbflushfn}
+% Figures dans un environnement (listes dans un exemple, ...) : tcolorbox n'accepte pas de flottants,
+% on les remplace localement par des figures centrées non flottantes, avec leur légende.
+\newcommand{\figureinbox}{\renewenvironment{figure}[1][]{\par\begin{center}\def\@captype{figure}}{\end{center}\par}}
+\AtBeginEnvironment{definition}{\figureinbox}\AtBeginEnvironment{theoreme}{\figureinbox}\AtBeginEnvironment{proposition}{\figureinbox}
+\AtBeginEnvironment{corollaire}{\figureinbox}\AtBeginEnvironment{lemme}{\figureinbox}\AtBeginEnvironment{remarque}{\figureinbox}
+\AtBeginEnvironment{exemple}{\figureinbox}\AtBeginEnvironment{preuve}{\figureinbox}
+\usepackage{longtable,booktabs} % tableaux
+
+% ---- Macros communes à tous les cours ----
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Rgeq}{\R_{\geq 0}}
+\newcommand{\Rg}{\R_{> 0}}
+
+% ---- Corrections des exercices : \correctionstrue pour les inclure, \correctionsfalse pour un poly sans corrigés ----
+\newif\ifcorrections
+% Par défaut avec corrections. Une version sans corrections s'obtient par :
+%   latexmk -pdf -jobname=poly_sans_corrections -usepretex="\def\sanscorrections{1}" poly.tex
+\ifdefined\sanscorrections \correctionsfalse \else \correctionstrue \fi
+% Lien vers la cible d'une solution : par défaut une ancre \hypertarget ; un poly dont les solutions
+% portent seulement un \label peut le redéfinir : \renewcommand{\cdissollink}[2]{\hyperref[#1]{#2}}
+\newcommand{\cdissollink}[2]{\hyperlink{#1}{#2}}
+% Renvoi vers la solution d'un exercice, affiché seulement si les corrections sont incluses
+\newcommand{\solref}[1]{\ifcorrections\ (\protect\cdissollink{#1}{Solution p. \pageref*{#1}}.)\fi}
+
+\counterwithin*{chapter}{part} % la numérotation des chapitres repart à 1 dans chaque partie
+\renewcommand{\theHchapter}{\thepart.\arabic{chapter}}
+\endinput

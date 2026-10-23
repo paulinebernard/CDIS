@@ -1,0 +1,618 @@
+\chapter{Solutions}
+
+\section{Exercices essentiels}\label{I-exercices-essentiels}
+
+\runinhead{Propriétés
+élémentaires}\phantomsection\addcontentsline{toc}{subsubsection}{Propriétés
+élémentaires}\label{I-answer-propelem}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(\mathbb{P}(A) \in [0,1]\) est donné par la définition. Par ailleurs,
+  on a \(\Omega = A \cup A^c\) et \(A\cap A^c = \varnothing\). En
+  considérant la suite \(A_1 = A\), \(A_2 = A^c\) et
+  \(A_n = \varnothing\) pour \(n > 2\), le point 2. de la définition
+  nous donne
+  \(1 = \mathbb{P}(\Omega) = \mathbb{P}(A) + \mathbb{P}(A^c)\).
+\item
+  Puisque \(A \subset B\), on a l'union disjointe
+  \(B = (B\cap A) \cup (B\cap A^c) = A \cup (B\cap A^c)\). Comme
+  \(\mathbb{P}(B\cap A^c) \geq 0\) par définition, on en déduit le
+  résultat.
+\item
+  On a \((A\cup B) = B \cup (A\cap B^c)\), avec
+  \(B \cap (A\cap B^c) =\varnothing\) ainsi que
+  \(A = (A\cap B^c) \cup (A\cap B)\), où
+  \((A\cap B^c) \cap (A\cap B) = \varnothing\). On en déduit
+  \(\mathbb{P}(A\cup B) = \mathbb{P}(B) + \mathbb{P}(A\cap B^c)\) et
+  \(\mathbb{P}(A) = \mathbb{P}(A\cap B^c) + \mathbb{P}(A\cap B)\), d'où
+  le résultat.
+\item
+  Par récurrence. On a déjà vu que
+  \(\mathbb{P}(A\cup B) \leq \mathbb{P}(A) + \mathbb{P}(B)\). Notant
+  \(B = \bigcup_{i=1}^n A_i\), alors
+  \(\mathbb{P}(\bigcup_{i=1}^{n+1} A_i) \leq \mathbb{P}(B) + \mathbb{P}(A_{n+1})\),
+  et l'hypothèse de récurrence nous indique
+  \(\mathbb{P}\left(\bigcup_{i=1}^n A_i\right) \leq \sum_{i=1}^n \mathbb{P}(A_i)\),
+  d'où le résultat.
+\item
+  Par récurrence. On a déjà vu que
+  \(\mathbb{P}(A \cup B ) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A \cap B)\).
+  Notant \(B = \bigcup_{i=1}^n A_i\), alors \begin{align*}
+      \mathbb{P}(\bigcup_{i=1}^{n+1} A_i) =& \mathbb{P}(B \cup A_{n+1}) \\
+                                  =& \mathbb{P}(B) + \mathbb{P}(A_{n+1}) - \mathbb{P}(B \cap A_{n+1}) \\
+                                  =& \sum_{i=1}^n \mathbb{P}(A_i) - \sum_{1 \leq i < j \leq n} \mathbb{P}(A_i \cap A_j) + \ldots + (-1)^n \mathbb{P}\left(\bigcap_{i=1}^n A_i\right) \\
+                                   &+ \mathbb{P}(A_{n+1})\\
+                                   &-\sum_{i=1}^n \mathbb{P}(A_i\cap A_{n+1}) + \sum_{1 \leq i < j \leq n} \mathbb{P}(A_i \cap A_j) + \ldots + (-1)^{n+1} \mathbb{P}\left(\bigcap_{i=1}^n A_i\cap A_{n+1}\right)\\
+                                   =& \sum_{i=1}^{n+1} \mathbb{P}(A_i) - \sum_{1 \leq i < j \leq n +1 } \mathbb{P}(A_i \cap A_j) + \ldots + (-1)^{n+1} \mathbb{P}\left(\bigcap_{i=1}^{n+1} A_i\right).
+  \end{align*}
+\end{enumerate}
+
+\runinhead{Continuité
+monotone}\phantomsection\addcontentsline{toc}{subsubsection}{Continuité
+monotone}\label{I-answer-contmon}
+On définit une suite \((B_n)_{n\in \mathbb{N}^\ast}\) telle que
+\(B_1 = A_1\) et \(B_n = A_n \setminus A_{n-1}\), pour \(n\geq 2\). Les
+\(B_n\) ainsi définis sont deux à deux disjoints et
+\(\cup B_n = \cup A_n\), donc~:
+\[ \mathbb{P}\left(\bigcup_{n\in\mathbb{N}^\ast} A_n\right) = \sum_n \mathbb{P}(B_n) = \lim_{n \to \infty} \sum_{p=1}^n \mathbb{P}(B_p) = \lim_{n \to \infty} \mathbb{P}(A_n).\]
+
+\runinhead{Une définition alternative de la
+probabilité}\phantomsection\addcontentsline{toc}{subsubsection}{Une
+définition alternative de la probabilité}\label{I-answer-altdef}
+Soit \(A_n\) une suite d'éléments de \(\mathcal{A}\) deux-à-deux
+disjoints. On définit \(B_n = \cup_{p \leq n} A_n\) et
+\(B = \cup_n A_n\). Comme \(\mathbb{P}\) est additive, on a
+\(\mathbb{P}(B_n) = \sum_{p \leq n} \mathbb{P}(A_n)\) qui croît vers
+\(\sum_n \mathbb{P}(A_n)\) et aussi vers \(\mathbb{P}(B)\) d'après le
+point 3.
+
+En considérant les résultats de ces deux exercices, on obtient une
+définition alternative de la probabilité en substituant la
+\protect\hyperref[I-contmon]{continuité
+monotone (p.~\pageref*{I-contmon})} et l'additivité à la propriété de
+\protect\hyperref[I-defproba]{\(\sigma\)-additivité (p.~\pageref*{I-defproba})}.
+
+\runinhead{Inégalité}\phantomsection\addcontentsline{toc}{subsubsection}{Inégalité}\label{I-answer-boolinf}
+On a déjà vu le cas fini avec \protect\hyperref[I-propelem]{l'inégalité
+de Boole (p.~\pageref*{I-propelem})}. On pose
+\(B_n = \cup_{i=1}^n A_i\), qui croît vers l'ensemble
+\(C = \cup_n A_n\). D'après \protect\hyperref[I-propelem]{l'inégalité de
+Boole (p.~\pageref*{I-propelem})}, on a
+\[\mathbb{P}(B_n) \leq \sum_{i=1}^n \mathbb{P}(A_i)\] Mais
+\(\mathbb{P}(B_n) \to_{n \to \infty} \mathbb{P}(C)\) d'après le
+\protect\hyperref[I-contmon]{théorème de continuité
+monotone (p.~\pageref*{I-contmon})}, tandis que
+\(\sum_{i=1}^n \mathbb{P}(A_i) \to_{n \to \infty} \sum_{n\in\mathbb{N}^\ast} \mathbb{P}(A_n)\).
+En passant à la limite, on obtient donc le résultat.
+
+\runinhead{Test}\phantomsection\addcontentsline{toc}{subsubsection}{Test}\label{I-answer-test}
+On considère les événements \(A\) ``l'individu est séropositif'', et
+\(B\) ``le test de détection donne un résultat positif''. Les données
+ci-dessus nous indiquent \(P(A) = 10^{-4}\) d'où
+\(\mathbb{P}(A^c) = 0,9999\) , \(\mathbb{P}(B|A) = 0,99\) et
+\(\mathbb{P}(B|A^c) = 0,001\). Nous trouvons alors \begin{align*}
+\mathbb{P}(A|B) &= \frac{\mathbb{P}(A \cap B)}{\mathbb{P}(B)}\\
+        &= \frac{\mathbb{P}(B |A ) \mathbb{P}(A)}{\mathbb{P}(B |A)\mathbb{P}(A) + \mathbb{P}(B|A^c)\mathbb{P}(A^c)}\\
+        &= \frac{0,99 \times 10^{-4}}{0,99 \times 10^{-4} + 0,001 \times 0,9999}\\
+        &\approx 0,09.
+\end{align*} On remarque que contrairement à l'intuition, cette
+probabilité est faible.
+
+\runinhead{Démonstration}\phantomsection\addcontentsline{toc}{subsubsection}{Démonstration}\label{I-answer-indep}
+Pour \((A^c,B)\), si \(\mathbb{P}(B) = 0\), alors
+\(\mathbb{P}(A^c \cap B) = 0 = \mathbb{P}(B)\mathbb{P}(A^c)\). Sinon,
+\(\mathbb{P}(A^c \cap B) = \mathbb{P}(B)\mathbb{P}(A^c|B) = \mathbb{P}(B)(1-\mathbb{P}(A|B)) = \mathbb{P}(B)(1-\mathbb{P}(A))=\mathbb{P}(B)\mathbb{P}(A^c)\).
+
+Pour \((A,B^c)\), on inverse les rôles de \(A\) et \(B\) ci-dessus.
+
+Pour \((A^c,B^c)\), on remarque que \(A^c \cap B^c = (A \cup B)^c\),
+d'où
+\(\mathbb{P}(A^c \cap B^c) = 1-\mathbb{P}(A \cup B) = 1-\mathbb{P}(A) - \mathbb{P}(B) +\mathbb{P}(A)\mathbb{P}(B) = (1-\mathbb{P}(A))(1-\mathbb{P}(B)) = \mathbb{P}(A^c)\mathbb{P}(B^c)\)
+
+\runinhead{Auto-indépendant\,?}\phantomsection\addcontentsline{toc}{subsubsection}{Auto-indépendant\,?}\label{I-answer-autoindep}
+\(A\) est indépendant de lui-même ssi
+\(\mathbb{P}(A) = \mathbb{P}(A \cap A) = \mathbb{P}(A)\mathbb{P}(A)\),
+autrement dit si \(\mathbb{P}(A) = 0\) ou si \(\mathbb{P}(A) = 1\).
+
+\runinhead{Durée de
+fonctionnement}\phantomsection\addcontentsline{toc}{subsubsection}{Durée
+de fonctionnement}\label{I-answer-ex.expo}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(\mathbb{P}(X \in [50,150]) = \int_{50}^{150} \frac{1}{100}\exp\left(-\frac{x}{100}\right) dx = \exp(-1/2)-\exp(-3/2) \approx 0,38.\)
+\item
+  \(\mathbb{P}(X \leq 100) = \int_{0}^{100} \frac{1}{100}\exp\left(-\frac{x}{100}\right) dx = 1-e^{-1} \approx 0,63.\)
+\item
+  \(\mathbb{P}(X = 100) = 0\)
+\end{enumerate}
+
+\runinhead{Précipitations}\phantomsection\addcontentsline{toc}{subsubsection}{Précipitations}\label{I-answer-ex.pluie}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \[F(x) = \left\{ \begin{array}{ll}
+  0 & \text{si } x < 0 \\
+  1/2 & \text{si } x = 0 \\ 
+  1/2 + 1/2 \int_0^x \frac{1}{10}\exp\left(-\frac{x}{10}\right) & \text{si } x > 0 
+  \end{array} \right.\]
+\item
+  \(F\) n'est pas continue, \(X\) n'admet donc pas de densité
+  (\protect\hyperref[I-fdr-va-dens]{voir la
+  proposition (p.~\pageref*{I-fdr-va-dens})}).
+\end{enumerate}
+
+\section{Indépendance et
+conditionnement}\label{I-induxe9pendance-et-conditionnement-1}
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{I-answer-ic-1}
+On a
+\(1 = \mathbb{P}(A\cup B) = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A\cap B)\),
+donc \(1 = \mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A)\mathbb{P}(B)\)
+si et seulement si \(A\) et \(B\) sont indépendants. Cette égalité se
+réécrit \((1-\mathbb{P}(A))(1-\mathbb{P}(B))=0\), qui est vérifiée ssi
+\(A\) ou \(B\) est presque sûr.
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{I-answer-ic-2}
+Par définition, on a \(A\) et \(B\) indépendants relativement à
+\(\mathbb{P}(\,\,|C)\) ssi
+\[\mathbb{P}(A\cap B |C) = \mathbb{P}(A|C)\mathbb{P}(B|C) = \mathbb{P}(A)\mathbb{P}(B),\]
+car \(A\) et \(B\) sont chacun indépendants de \(C\), d'où
+\[\frac{\mathbb{P}(A\cap B \cap C)}{\mathbb{P}(C)} = \mathbb{P}(A)\mathbb{P}(B)\]
+par
+\protect\hyperref[I-defprobacond]{définition (p.~\pageref*{I-defprobacond})}\,;
+et comme \(A\), \(B\) et \(C\) sont indépendants 2 à 2,
+\[\mathbb{P}(A\cap B \cap C) = \mathbb{P}(A)\mathbb{P}(B)\mathbb{P}(C)\]
+équivaut à \(A\), \(B\) et \(C\) sont mutuellement indépendants.
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{I-answer-ic-3}
+On a
+\(\mathbb{P}(A^c\cap B^c) = \mathbb{P}((A \cup B)^c) = 1 - \mathbb{P}(A) - \mathbb{P}(B) + \mathbb{P}(A\cap B)\),
+donc
+\[\mathbb{P}(A\cap B)\mathbb{P}(A^c \cap B^c) = \mathbb{P}(A\cap B) - \mathbb{P}(A\cap B)(\mathbb{P}(A) + \mathbb{P}(B) - \mathbb{P}(A\cap B))\]
+Par ailleurs, on a \[\left\{ \begin{array}{ll}
+        \mathbb{P}(A \cap B^c)  & = \mathbb{P}(A \setminus (A\cap B)) = \mathbb{P}(A) - \mathbb{P}(A\cap B) \\
+        \mathbb{P}(A^c \cap B)  &=  \mathbb{P}(B \setminus (A\cap B)) = \mathbb{P}(B) - \mathbb{P}(A\cap B)
+        \end{array}
+        \right.\] Donc
+\[ \mathbb{P}(A \cap B^c)\mathbb{P}(A^c\cap B) = \mathbb{P}(A)\mathbb{P}(B) -\mathbb{P}(A\cap B)(\mathbb{P}(A) + \mathbb{P}(B)- \mathbb{P}(A\cap B))\]
+On a donc bien l'égalité ssi
+\(\mathbb{P}(A)\mathbb{P}(B) = \mathbb{P}(A\cap B)\)
+
+\section{Problème de Monty Hall}\label{I-answer-mh}
+
+Considérons les événements \(A\) = `la porte choisie en premier est la
+bonne' et \(B\) = `la dernière porte est la bonne'.
+
+On a évidemment \(\mathbb{P}(A) = \frac{1}{3}\), puisque le choix
+initial se fait uniformément parmi les 3 portes.
+
+Pour \(B\), on doit tenir compte de l'information donnée par le
+présentateur. On a par \protect\hyperref[I-formprobatot]{la formule des
+probabilités totales (p.~\pageref*{I-formprobatot})}
+\[\mathbb{P}(B) = \mathbb{P}(B|A)\mathbb{P}(A) + \mathbb{P}(B|A^c)\mathbb{P}(A^c) = 0.\frac{1}{3} + 1.\frac{2}{3} = \frac{2}{3}\]
+En effet \(\mathbb{P}(B|A^c) = 1\) car si la porte choisie initialement
+n'est pas la bonne, c'est nécessairement la dernière.
+
+Il convient donc de changer son choix compte tenu de la nouvelle
+information. Pour se convaincre du résultat, on peut refaire le calcul
+avec disons 100 portes et le présentateur qui ouvre 98 autres portes
+après le choix du candidat.
+
+\section{Mesure de Probabilité}\label{I-mesure-de-probabilituxe9-1}
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{I-answer-mes-proba1}
+On vérifie facilement les axiomes~:
+
+\begin{itemize}
+\tightlist
+\item
+  dans \([0,1]\)
+\item
+  \(Q(\Omega)= 1\)
+\item
+  la \(\sigma\)-additivité s'obtient en décomposant l'intégrale sur des
+  \(A_n\) disjoints
+\end{itemize}
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{I-answer-mes-proba2}
+Si \(\mathbb{P}(A)=0\), alors
+\(Q(A) = \int_{\Omega} X(\omega) 1_A(\omega)\mathbb{P}(d\omega) = \int_{A} X(\omega)\mathbb{P}(d\omega) = 0\)
+car on intègre \(X\) sur \(A\) \(\mathbb{P}\)-négligeable.
+
+contre-exemple~:
+\((\Omega,\mathcal{A},\mathbb{P}) = (\mathbb{R},\mathcal{B}(\mathbb{R}),\mathbb{P})\)
+avec \(\mathbb{P}\) symétrique et qui charge tout \(\mathbb{R}\) (la loi
+normale centrée réduite par exemple) et \(X \sim \mathcal{B}_{1/2}\)
+(loi de Bernoulli), définie telle que \(X(\omega) = 0\) si
+\(\omega \in ]-\infty,0] = A\). On a alors \(\mathbb{P}(A) = 1/2\),
+\(Q(A) = 0\) et on vérifie bien les hypothèses.
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{I-answer-mes-proba3}
+\(Y\) positive ou bornée donc \(\mathbb{E}_Q(Y)\) est bien définie.
+
+\(\mathbb{E}_Q(Y) = \int_{\Omega} Y(\omega) Q(d\omega) = \int_{\Omega} Y(\omega) X(\omega) \mathbb{P}(d\omega) = \mathbb{E}_\mathbb{P}(XY)\)
+
+\runinhead{Question
+4}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+4}\label{I-answer-mes-proba4}
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi})}
+\item
+  \(\mathbb{P}(X > 0) = 1\), donc \(\exists N \in \mathcal{A}\) tq
+  \(\mathbb{P}(N) = 0\) et \(\forall \, \omega \in N^c,~ X(\omega) > 0\)
+
+  Par conséquent, d'après la q.3
+
+  \[\mathbb{E}_Q\left(\frac{1}{X}\right) = \int_{N^c} \frac{1}{X(\omega)}X(\omega) \mathbb{P}(d\omega) = 1\]
+\item
+  Soit \(A \in \mathcal{A}\), on a
+  \(R(A) = \mathbb{E}_Q(\frac{1}{X}1_A) = \int_{A \cap N^c} \frac{1}{X(\omega)}X(\omega) \mathbb{P}(d\omega) = \mathbb{P}(A)\)
+\item
+  On a \(\forall \omega \in N^c, ~ X(\omega) > 0\) et donc
+  \(1_{A \cap N^c}(\omega)\,X(\omega) \geq 0\). Par conséquent, si
+  \(Q(A\cap N^c) = 0\), alors
+  \(\mathbb{E}_Q(A\cap N^c) = \int_{A \cap N^c} X(\omega) \mathbb{P}(d\omega) = 0\)
+  ce qui n'a lieu que si \(\mathbb{P}(A\cap N^c) = 0\).
+\end{enumerate}
+
+Enfin \(A \cap N \subset N\) et \(\mathbb{P}(N) = 0\) d'où
+\(\mathbb{P}(A \cap N) = 0\)
+
+\section{Queues de distributions}\label{I-queues-de-distributions-1}
+
+\runinhead{Etude en
+\(+\infty\)}\phantomsection\addcontentsline{toc}{subsubsection}{Etude en
+\(+\infty\)}\label{I-answer-dlfdr-pi}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Soit \(u>0\). Comme \(h\) est intégrable, on peut écrire
+  \begin{align*}
+  \int_{-\infty}^{+\infty} h(x)\,dx = \int_{-\infty}^{+\infty} x\,f(x)\,dx & = \int_{-\infty}^{u} x\,f(x)\,dx + \int_{u}^{+\infty} x\,f(x)\,dx\\
+  &\geq \int_{-\infty}^{u} x\,f(x)\,dx + u\,\int_{u}^{+\infty} f(x)\,dx\\
+  &= \int_{-\infty}^{u} h(x)\,dx + u\,\left(1- F(u)\right).
+  \end{align*}
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Soit toujours \(u>0\). Toute fonction de répartition étant à valeurs
+  dans \([0,1]\), on a \(u\,\left(1-F(u)\right) \geq 0\). En utilisant
+  la question précédente on obtient donc l'encadrement \begin{align*}
+  0 \leq u\,\left(1-F(u)\right) & \leq \int_{-\infty}^{+\infty} h(x)\,dx - \int_{-\infty}^u h(x)\,dx\\
+  &= \int_{u}^{+\infty} h(x)\,dx = \int_{-\infty}^{+\infty} h(x)\,1_{[u,+\infty]}(x)\,dx.
+  \end{align*} Or pour tout \(x\in \mathbb{R}\) on a
+  \(\left|h(x)\,1_{[u,+\infty]}(x)\right| \leq \left|h(x)\right|\), qui
+  est intégrable. On peut donc appliquer le
+  \href{Calcul\%20Intégral\%20II.pdf\%20\#TCD}{théorème de convergence
+  dominée}, qui nous donne~: \begin{align*}
+  \lim_{u\to+\infty} u\,(1-F(u)) & = \int_{-\infty}^{+\infty} h(x)\,\lim_{u\to+\infty} 1_{[u,+\infty]}(x)\,dx\\
+  & = \int_{-\infty}^{+\infty} h(x)\,1_{\varnothing}(x)\,dx = 0.
+  \end{align*} On en conclut que \(1-F(x) = o\left(\dfrac{1}{x}\right)\)
+  lorsque \(x\to+\infty\).
+\end{enumerate}
+
+\runinhead{Etude en
+\(-\infty\)}\phantomsection\addcontentsline{toc}{subsubsection}{Etude en
+\(-\infty\)}\label{I-answer-dlfdr-mi}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Prenons maintenant \(u<0\). Comme \(h\) est intégrable, on peut écrire
+  \begin{align*}
+  \int_{-\infty}^{+\infty} h(x)\,dx = \int_{-\infty}^{+\infty} x\,f(x)\,dx & = \int_{-\infty}^{u} x\,f(x)\,dx + \int_{u}^{+\infty} x\,f(x)\,dx\\
+  &\leq u\, \int_{-\infty}^{u} f(x)\,dx + \int_{u}^{+\infty} x\,f(x)\,dx\\
+  &= u\,F(u) + \int_{u}^{+\infty} h(x)\,dx.
+  \end{align*} Or, comme \(F\) prend ses valeurs dans \([0,1]\),
+  \(u\,F(u) \leq 0\). On obtient donc \begin{align*}
+  0 \geq u\,F(u) & \geq \int_{-\infty}^{+\infty} h(x)\,dx - \int_{u}^{+\infty} h(x)\,dx\\
+  &= \int_{-\infty}^{u} h(x)\,dx = \int_{-\infty}^{+\infty} h(x)\,1_{[-\infty,u]}(x)\,dx.
+  \end{align*} Comme précédemment, cette dernière fonction sous
+  l'intégrale est dominée par \(-\left|h\right|\) (à gauche) et
+  \(\left|h\right|\) (à droite), toutes deux intégrables, donc d'après
+  le \href{Calcul\%20Intégral\%20II.pdf\%20\#TCD}{théorème de
+  convergence dominée} \begin{align*}
+  \lim_{u\to-\infty} u\,F(u) & = \int_{-\infty}^{+\infty} h(x)\,\lim_{u\to-\infty} 1_{[-\infty,u]}(x)\,dx\\
+  & = \int_{-\infty}^{+\infty} h(x)\,1_{\varnothing}(x)\,dx = 0.
+  \end{align*} On a donc bien \(F(x) = o\left(\dfrac{1}{x}\right)\)
+  lorsque \(x\to-\infty\).
+\end{enumerate}
+
+\runinhead{Interprétation}\phantomsection\addcontentsline{toc}{subsubsection}{Interprétation}\label{I-answer-dlfdr-interpret}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  L'hypothèse que \(h\) est intégrable nous donne une indication sur la
+  vitesse de convergence de \(1-F(x)\) et \(F(x)\) lorsque \(x\) tend
+  respectivement vers \(+\infty\) et \(-\infty\)~: elles convergent vers
+  \(0\) au moins aussi vite que \(\dfrac{1}{x}\). On dit que les queues
+  de la distribution sont ``relativement'' fines.
+\end{enumerate}
+
+Pour mieux comprendre l'impact de ce résultat, prenons un exemple
+pratique. Considérons un phénomène aléatoire comme la concentration en
+polluant dans l'air, modélisé par une loi de probabilité sur
+\(\mathbb{R}\) de densité \(f\) nulle sur \(\mathbb{R}_-^\ast\). Etre
+capable de déterminer la probabilité que la concentration dépasse un
+seuil critique \(x\) est alors très important pour les organismes de
+contrôle de la qualité de l'air. Or cet événement correspond
+mathématiquement à l'événement \([x,+\infty]\). Dans ce cas,
+\(1 - F(x)\) nous donne cette probabilité selon le modèle considéré. Le
+résultat nous indique que si l'on choisit un modèle tel que \(h\) est
+intégrable, alors cette probabilité décroît plus rapidement que
+\(\dfrac{1}{x}\) lorsque le seuil \(x\) augmente. En d'autres termes,
+les événements extrêmes (quand \(x\) est grand) restent ``assez'' rares.
+L'impact du choix de modèle n'est donc pas négligeable~: si on prend une
+distribution à queues trop fines alors que les pics de pollution ne sont
+en réalité pas si rares que ça, \(1-F(x)\) risque de sous-estimer le
+risque réel de dépassement du seuil\,!
+
+\runinhead{Etude de la
+réciproque}\phantomsection\addcontentsline{toc}{subsubsection}{Etude de
+la réciproque}\label{I-answer-dlfdr-reciproque}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\item
+  La fonction \(F\) considérée est continue et dérivable par morceaux
+  sur \(\mathbb{R}\)\,; le seul point où \(F\) n'est pas dérivable est
+  \(e\) (le taux d'accroissement n'a pas les mêmes limites à gauche et à
+  droite). Elle possède donc \protect\hyperref[I-fdr-va-dens]{une
+  densité (p.~\pageref*{I-fdr-va-dens})} qui s'obtient en dérivant
+  chaque morceau~: pour tout \(x\in\mathbb{R}\),
+  \[f(x) = \left|\begin{array}{ll} e\,\dfrac{\ln(x) + 1}{x^2\,\ln(x)^2} & \text{si } x \geq e,\\ 0 & \text{sinon.}\end{array}\right.\]
+\item
+  On remarque que pour tout \(x\geq e\),
+  \(x\,\left(1-F(x)\right) = \dfrac{e}{\ln(x)} \xrightarrow[x\to+\infty]{} 0\),
+  donc le développement asymptotique \((1)\) est bien vérifié. En outre,
+  comme \(x\,F(x) = 0\) pour tout \(x < e\), le développement
+  asymptotique \((2)\) est aussi bien respecté.
+\item
+  Pour tout \(x\in\mathbb{R}\),
+  \[ h(x) = \left|h(x)\right| = \left|\begin{array}{ll} e\,\dfrac{\ln(x) + 1}{x\,\ln(x)^2} & \text{si } x \geq e,\\ 0 & \text{sinon,} \end{array}\right.\]
+  et on pose \(h(\pm\infty) = \lim\limits_{x\to\pm\infty}h(x) = 0\). Par
+  conséquent, \(h\) est clairement intégrable sur \([-\infty,e]\), où
+  elle est égale presque partout (partout sauf en \(e\)) à la fonction
+  nulle. Pour savoir si \(h\) est intégrable sur toute la droite réelle
+  il nous faut donc regarder si elle l'est sur \([e,+\infty]\). On
+  remarque en outre que pour tout \(x\geq e\),
+  \[h(x) \geq \dfrac{1}{x\,\ln(x)}, \] et le terme de droite n'est pas
+  intégrable (en effet, une primitive de \(\frac1{x \ln(x)}\) est
+  \(\ln(ln(x))\) qui tend vers \(+\infty\) en \(+\infty\)). Par
+  conséquent, \(h\) n'est pas intégrable.
+\item
+  La fonction de répartition \(F\) considérée respecte bien les
+  développements asymptotiques \((1)\) et \((2)\), mais la fonction
+  \(h\) associée n'est pas intégrable. Nous avons donc montré que la
+  réciproque de la propriété est fausse.
+\end{enumerate}
+
+\runinhead{Liens entre les développements
+asymptotiques}\phantomsection\addcontentsline{toc}{subsubsection}{Liens
+entre les développements asymptotiques}\label{I-answer-dlfdr-liensdl}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{8}
+\tightlist
+\item
+  On remarque que \(F\) satisfait \((2)\) mais pas \((1)\), tandis que
+  \(G\) satisfait \((1)\) mais pas \((2)\). On en conclut que \((1)\)
+  n'implique pas \((2)\) et inversement.
+\end{enumerate}
+
+\section{Densité et fonction de répartition d'une loi
+Normale}\label{I-densituxe9-et-fonction-de-ruxe9partition-dune-loi-normale-1}
+
+\runinhead{Propriétés
+générales}\phantomsection\addcontentsline{toc}{subsubsection}{Propriétés
+générales}\label{I-answer-fdrgaussprop}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Faisons l'étude de \(f\).
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Domaine.} \(f : \mathbb{R}\to \mathbb{R}^+\).
+\item
+  \textbf{Parité.} On remarque que \(f\) est paire~:
+  \(\forall\,x\in\mathbb{R}\), \(f(x) = f(-x)\).
+\item
+  \textbf{Limites aux bornes.}
+  \(\lim\limits_{x\to-\infty} f(x) = \lim\limits_{x\to+\infty} f(x) = 0\).
+  Ainsi, la parité est aussi vraie aux bornes.
+\item
+  \textbf{Dérivabilité.} \(f\) est continue sur \(\mathbb{R}\) et
+  infiniment dérivable sur \(\mathbb{R}\) en tant que composée de
+  fonctions infiniment dérivables. Pour tout \(x\in\mathbb{R}\) sa
+  dérivée première s'écrit \(f^\prime(x) = -x\,f(x)\) et a dérivée
+  seconde \(f^{\prime\prime}(x) =(x^2 - 1)\,f(x)\).
+\item
+  \textbf{Variations.} \(f^\prime\) est strictement positive (resp.
+  négative) ssi \(-\infty < x < 0\) (resp. \(+\infty > x > 0\)). Elle
+  est nulle en \(0\), \(+\infty\) et \(-\infty\). Ainsi, \(f\) est
+  strictement croissante sur \(]-\infty,0[\), vaut
+  \(\left(2\,\pi\right)^{-1/2}\) en \(0\), puis est strictement
+  décroissante sur \(]0,+\infty[\).
+\item
+  \textbf{Convexité/Concavité.} \(f^{\prime\prime}\) est strictement
+  positive (resp. négative) sur \(\mathbb{R}\backslash\,]-1,1[\) (resp.
+  \(]-1,1[\)). \(f\) est donc convexe sur
+  \(\mathbb{R}\backslash\,]-1,1[\) et concave sur \(]-1,1[\).
+\end{itemize}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Par définition, pour tout \(x\in\mathbb{R}\)
+  \[ F(x) = \int_{-\infty}^x \dfrac{1}{\sqrt{2\,\pi}}\,\exp\left\{-\dfrac{u^2}{2}\right\}\,du.\]
+  On pose \(F(+\infty) = 1\) et \(F(-\infty) = 0\). Lorsque \(x = 0\),
+  comme \(f\) est paire et que son intégrale sur \([-\infty,+\infty]\)
+  vaut \(1\) (c'est \protect\hyperref[I-defdens]{une
+  densité (p.~\pageref*{I-defdens})}), son intégrale sur \([-\infty,0]\)
+  (i.e.~\(F(0)\)) vaut \(\dfrac{1}{2}\). Lorsque \(x > 0\), en
+  décomposant l'intégrale puis en utilisant un
+  \href{Calcul\%20Intégral\%20I.pdf\%20\#changement-de-variable}{changement
+  de variable} on obtient
+  \[F(x) = \dfrac{1}{2} + \int_{0}^x \dfrac{1}{\sqrt{2\,\pi}}\,\exp\left\{-\dfrac{u^2}{2}\right\}\,du = \dfrac{1}{2} + \int_{0}^{\frac{x}{\sqrt{2}}} \dfrac{1}{\sqrt{\pi}}\,e^{-v^2}\,dv = \dfrac{1}{2} + \dfrac{1}{2}\,\text{erf}\left(\dfrac{x}{\sqrt{2}}\right).\]
+  Lorsque \(x<0\), on peut procéder de la même manière avec \(1 - F(x)\)
+  et obtenir la même égalité que ci-dessus.
+\end{enumerate}
+
+\runinhead{Encadrement de \(1 - F(x)\) pour tout
+\(x > 0\)}\phantomsection\addcontentsline{toc}{subsubsection}{Encadrement
+de \(1 - F(x)\) pour tout \(x > 0\)}\label{I-answer-fdrgaussenca}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\item
+  Soit \(x>0\). Par définition,
+  \[1 - F(x) = \int_{-\infty}^{+\infty} f(u)\,du - \int_{-\infty}^x f(u)\,du = \int_{x}^{+\infty} \dfrac{1}{\sqrt{2\,\pi}}\,\exp\left\{-\dfrac{u^2}{2}\right\}\,du. \]
+  Or pour tout \(u\geq x\) on a \(u/x \geq 1\), donc
+  \[1 - F(x) \leq \dfrac{1}{\sqrt{2\,\pi}}\,\int_{x}^{+\infty} \dfrac{u}{x}\, \exp\left\{-\dfrac{u^2}{2}\right\}\,du = \dfrac{-1}{x}\,\int_{x}^{+\infty} f^\prime(u)\,du. \]
+  Or \(f^\prime\) a pour primitive \(f\) donc on a
+  \[1-F(x) \leq -\dfrac{f(+\infty) - f(x)}{x} = \dfrac{f(x)}{x}. \]
+\item
+  Soit \(x>0\). Par définition,
+  \[\left(1 + \dfrac{1}{x^2}\right)\,\left(1-F(x)\right) = \int_x^{+\infty} \left(1 + \dfrac{1}{x^2} \right)\,f(u)\,du.\]
+  Or pout tout \(u \geq x\) on a \(\dfrac{1}{u^2} \leq \dfrac{1}{x^2}\),
+  d'où
+  \[\left(1 + \dfrac{1}{x^2}\right)\,\left(1-F(x)\right) \geq \int_{x}^{+\infty} \left( 1 + \dfrac{1}{u^2} \right)\,f(u)\,du.\]
+  Remarquons maintenant que d'après la question 1,
+  \(\left(\dfrac{f(x)}{x} \right)^\prime = \dfrac{-x^2\,f(x) - f(x)}{x^2} = -\left(1+\dfrac{1}{x^2}\right)\,f(x)\).
+  En d'autres termes, \(A : x\in\mathbb{R}\mapsto -\dfrac{f(x)}{x}\) est
+  une primitive de
+  \(x\in\mathbb{R}\mapsto \left(1+\dfrac{1}{x^2}\right)\,f(x)\). On
+  obtient alors par
+  \[\left(1 + \dfrac{1}{x^2}\right)\,\left(1-F(x)\right) \geq - \left(A(+\infty) - A(x)\right) = A(x) = \dfrac{f(x)}{x}.\]
+  On en déduit directement l'inégalité de gauche~:
+  \[ 1-F(x) \geq f(x)\,\dfrac{x^2}{(x^2+1)\,x} = f(x)\,\dfrac{x}{x^2+1}. \]
+\end{enumerate}
+
+\runinhead{Equivalent de \(1-F(x)\) quand
+\(x\to+\infty\).}\phantomsection\addcontentsline{toc}{subsubsection}{Equivalent
+de \(1-F(x)\) quand \(x\to+\infty\).}\label{I-answer-fdrgaussequi}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\item
+  Soit \(x>0\). L'encadrement que nous avons démontré peut être réécrit
+  \[ \dfrac{x^2}{1+x^2} \leq \dfrac{1-F(x)}{\dfrac{f(x)}{x}} \leq 1, \]
+  et comme \(\dfrac{x^2}{1+x^2} \to 1\) lorsque \(x\to+\infty\), on
+  obtient que \(1-F(x) \sim \dfrac{f(x)}{x}\) quand \(x\to+\infty\).
+\item
+  Pour tout \(x \in [-\infty,+\infty]\) on a
+  \(\left|h(x)\right| = \left|x\,f(x)\right| = |x|\,f(x)\) puisque
+  \(f\geq 0\). Lorsque \(x \in [0,+\infty]\),
+  \(\left|h(x)\right| = h(x)\), or d'après la question 1, \(h\) admet
+  pour primitive \(-f\), qui vaut \(0\) en \(+\infty\) et \(-\infty\)
+  puis \((2\,\pi)^{-1/2}\) en \(0\). Par conséquent, (d'après
+  l'extension du \href{Calcul\%20Intégral\%20I.pdf\%20\#TFC}{théorème
+  fondamental du calcul}) l'intégrale de \(\left|h\right|\) sur
+  \([0,+\infty]\) existe, et vaut \((2\,\pi)^{-1/2}\). Or
+  \(\left|h\right|\) est paire, son intégrale sur \([-\infty,0]\) existe
+  donc aussi et vaut \((2\,\pi)^{-1/2}\). On en conclut que \(h\) est
+  bien absolument intégrable sur \([-\infty,+\infty]\). En remarquant
+  qu'elle est impaire, on obtient immédiatement que son intégrale vaut
+  \(0\).
+\end{enumerate}
+
+On est donc bien dans le cadre de l'exercice sur les queues de
+distributions. L'équivalent que nous avons trouvé implique bien que
+\(1-F(x) = o\left(\dfrac{1}{x} \right)\) lorsque \(x\to+\infty\). Il
+nous donne juste plus de précisions quant au comportement de \(1-F(x)\)
+lorsque \(x\to+\infty\) dans le cas spécifique de la loi Normale centrée
+réduite~: on connaît sa vitesse de convergence.
+
+\runinhead{Loi Normale
+générale.}\phantomsection\addcontentsline{toc}{subsubsection}{Loi
+Normale générale.}\label{I-answer-fdrgaussgen}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Soit \(x\in\mathbb{R}\). On remarque que
+  \(g(x) = \dfrac{1}{\sigma}\,f\left(\dfrac{x-\mu}{\sigma} \right)\).
+  Cela implique en particulier que
+  \[G(x) =  \int_{-\infty}^x \dfrac{1}{\sigma}\,f\left(\dfrac{u-\mu}{\sigma} \right)\,du = \int_{-\infty}^{\frac{x-\mu}{\sigma}} f(u)\,du = F\left(\dfrac{x-\mu}{\sigma}\right).\]
+  On obtient alors l'encadrement suivant, pour tout \(x>\mu\)~:
+  \[ \dfrac{x-\mu}{1 + \dfrac{(x-\mu)^2}{\sigma^2}}\,g(x) \leq 1 - G(x) \leq \dfrac{\sigma^2\,g(x)}{x-\mu}.  \]
+\end{enumerate}
+
+On en déduit que
+\(1-G(x) \sim \dfrac{\sigma^2\,g(x)}{x-\mu} \sim \sigma^2\,\dfrac{g(x)}{x}\)
+lorsque \(x\to+\infty\).
+
+\section{Loi de vie et de mort}\label{I-loi-de-vie-et-de-mort-1}
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{I-answer-viemort1}
+Par définition, on a
+\[ G_{t_0}(t) = \mathbb{P}(T>t+t_0|T>t_0) = \frac{\mathbb{P}(T>t+t_0,T>t)}{\mathbb{P}(T>t)} = \frac{G(t+t_0)}{G(t)}\]
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{I-answer-viemort2}
+D'après la question précédente, \(G\) vérifie alors
+\(G(t_0+t) = G(t)G(t_0)\) pour tous \(t, t_0 > 0\). Comme \(G\) est
+décroissante, continue à droite et tend vers 0 à l'infini, on en déduit
+que \(G(t) = e ^{-\theta t}\), pour un \(\theta > 0\). On reconnaît la
+fonction de répartition complémentaire d'une loi exponentielle de
+paramètre \(\theta\).
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{I-answer-viemort3}
+
+\begin{align*}
+D(t) &= \lim_{\Delta t \to 0} \frac{1}{\Delta t}\mathbb{P}(t < T \leq t + \Delta t | T >t)\\
+     &= \lim_{\Delta t \to 0} \frac{1}{\Delta t}\frac{\mathbb{P}(t < T \leq t + \Delta t)}{\mathbb{P}(T >t)}\\
+     &= \frac{1}{G(t)} \lim_{\Delta t \to 0} \frac{G(t) - G(t + \Delta t)}{\Delta t}\\
+     &= -\frac{g(t)}{G(t)}
+\end{align*} Ainsi, \(D(t) = \frac{d}{dt}(-\ln G(t))\) et comme
+\(G(0) = 1\), alors on a pour \(t >0\)
+\[G(t) = \exp\left(-\int_0^tD(s) ds\right)\] Si \(D\) est constant, on
+retrouve une loi exponentielle.

@@ -1,0 +1,1829 @@
+\chapter{Objectifs d'apprentissage}\label{IV-objectifs-dapprentissage}
+
+Cette section s'efforce d'expliciter et de hiérarchiser les acquis
+d'apprentissages associés au chapitre. Ces objectifs sont organisés en
+paliers~:
+
+($\mathord{\boldsymbol{\circ}}$) Prérequis ($\mathord{\bullet}$)
+Fondamental ($\mathord{\bullet}\mathord{\bullet}$) Standard
+($\mathord{\bullet}\mathord{\bullet}\mathord{\bullet}$) Avancé
+($\mathord{\bullet}\mathord{\bullet}\mathord{\bullet}\mathord{\bullet}$)
+Expert
+
+Sauf mention particulière, la connaissance des démonstrations du
+document n'est pas exigible\footnote{l'étude des démonstrations du cours
+  peut toutefois contribuer à votre apprentissage, au même titre que la
+  résolution d'exercices.}
+
+\runinhead{Préambule}\phantomsection\label{IV-pruxe9ambule}
+
+\begin{itemize}
+\tightlist
+\item
+  $\mathord{\bullet}$ connaître la définition des espaces
+  \(\mathcal{L}^p\)
+\item
+  $\mathord{\bullet}\mathord{\bullet}$ connaître la propriété
+  d'inclusion dans les espaces \(\mathcal{L}^p\)
+\item
+  $\mathord{\bullet}$ connaître l'inégalité de Markov
+\item
+  $\mathord{\bullet}$ connaître l'inégalité de Bienaymé-Chebyshev
+\end{itemize}
+
+\runinhead{Suites de v.a.
+indépendantes}\phantomsection\label{IV-suites-de-v.a.-induxe9pendantes}
+
+\begin{itemize}
+\tightlist
+\item
+  $\mathord{\bullet}\mathord{\bullet}\mathord{\bullet}\mathord{\bullet}$ connaître
+  le théorème d'existence et d'unicité de la mesure produit sur les
+  espaces produit de dimension infinie
+\item
+  $\mathord{\bullet}\mathord{\bullet}$ connaître la définition d'une
+  suite de variables aléatoires indépendantes
+\item
+  $\mathord{\bullet}\mathord{\bullet}$ connaître et savoir utiliser le
+  lemme de Borel-Cantelli
+\end{itemize}
+
+\runinhead{Convergence et loi des grands
+nombres}\phantomsection\label{IV-convergence-et-loi-des-grands-nombres}
+
+\begin{itemize}
+\tightlist
+\item
+  $\mathord{\bullet}\mathord{\bullet}$ connaître les différents modes de
+  convergence des suites de v.a.
+\item
+  $\mathord{\bullet}\mathord{\bullet}\mathord{\bullet}$ savoir
+  caractériser le(s) mode(s) de convergence d'une suite de v.a.
+\item
+  $\mathord{\bullet}\mathord{\bullet}$ connaître les liens d'implication
+  entre les différents modes de convergence
+\item
+  $\mathord{\bullet}\mathord{\bullet}$ connaître la propriété de
+  continuité
+\item
+  $\mathord{\bullet}$ connaître la loi faible des grands nombre
+\item
+  $\mathord{\bullet}$ connaître la loi forte des grands nombre (sous les
+  hypothèses minimales)
+\end{itemize}
+
+\runinhead{Convergence en loi et théorème central
+limite}\phantomsection\label{IV-convergence-en-loi-et-thuxe9oruxe8me-central-limite}
+
+\begin{itemize}
+\tightlist
+\item
+  $\mathord{\bullet}$ connaître la définition de la convergence en loi
+\item
+  $\mathord{\bullet}$ savoir que la convergence en probabilité implique
+  la convergence en loi
+\item
+  $\mathord{\bullet}\mathord{\bullet}$ savoir que la convergence simple
+  des fonctions de répartition équivaut à la convergence en loi
+\item
+  $\mathord{\bullet}$ connaître et savoir utiliser le théorème central
+  limite
+\end{itemize}
+
+\chapter{Préambule}\label{IV-pruxe9ambule-1}
+
+Dans ce chapitre, on va s'intéresser à l'étude des suites de variables
+aléatoires. On introduira notamment différents modes de convergence. En
+particulier, on établira la \emph{loi des grands nombres} qui montre
+rigoureusement que, quand le nombre de répétitions de l'expérience tend
+vers l'infini, la fréquence de réalisation d'un événement converge vers
+la probabilité de réalisation de cet événement. Ce résultat justifie
+également la démarche employée en statistique où l'on cherche par
+exemple à estimer une espérance par une moyenne empirique~: cette
+moyenne empirique va ainsi converger vers la quantité ciblée. Enfin, on
+présentera le théorème central limite qui nous indiquera la vitesse à
+laquelle cette convergence a lieu ainsi qu'un moyen de contrôler
+l'erreur commise en remplaçant une espérance par sa contrepartie
+empirique.
+
+Notons d'abord qu'on peut étendre les définitions des espaces
+\(\mathcal{L}^1\) et \(\mathcal{L}^2\) pour un \(p \in \mathbb{N}^\ast\)
+quelconque.
+
+\addcontentsline{toc}{subsection}{Espace \(\mathcal{L}^p\)}
+\begin{definition}[{Espace
+\(\mathcal{L}^p\)}]\phantomsection\label{IV-espace-mathcallp}
+
+Soit \(X\) une variable aléatoire. On note \(X \in \mathcal{L}^p\), ou
+\(\mathcal{L}^p(\Omega,\mathcal{A},\mathbb{P})\), si et seulement si
+\(\mathbb{E}(|X|^p) = \int_\mathbb{R}|x|^p \mathbb{P}_X(dx) = \int_{\Omega} |X|^p(\omega)\mathbb{P}(d\omega) < +\infty\).
+
+Si \(X \in \mathcal{L}^p\), on dit qu'elle admet un moment d'ordre
+\(p\). Du fait que \(\mathbb{P}\) est une mesure finie, on a la
+stabilité par inclusion suivante~:
+\end{definition}
+
+\addcontentsline{toc}{subsection}{Inclusion}
+\begin{proposition}[{Inclusion}]\phantomsection\label{IV-inclusion}
+
+Soit \(p \in \mathbb{N}^\ast\), on a l'inclusion~:
+\[ \mathcal{L}^{p+1}(\Omega,\mathcal{A},\mathbb{P}) \subset \mathcal{L}^p(\Omega,\mathcal{A},\mathbb{P})\]
+\end{proposition}
+
+\begin{preuve}
+Supposons \(X \in \mathcal{L}^{p+1}(\Omega,\mathcal{A},\mathbb{P})\). On
+a
+\[|X|^p \leq \max(1,|X|^{p+1}) = 1_{|X| < 1} + 1_{|X| \geq 1} |X|^{p+1}.\]
+Le terme de droite est intégrable, en effet~:
+\[\mathbb{E}\left(1_{|X| < 1} + 1_{|X| \geq 1} |X|^{p+1}\right) \leq \int_\Omega \mathbb{P}(d\omega) + \int_\Omega |X(\omega)|^{p+1} \mathbb{P}(d\omega) = 1 + \mathbb{E}(|X|^{p+1}).\]
+donc \(|X|^p\) est intégrable.\hfill$\blacksquare$
+\end{preuve}
+
+On donne ici dans le cas général les inégalités de Markov et de
+Bienaymé-Chebyshev, déjà vues en CPGE.
+
+\addcontentsline{toc}{subsection}{Inégalité de Markov}
+\begin{theoreme}[{Inégalité de
+Markov}]\phantomsection\label{IV-inegmarkov}
+
+Soient \(p \in \mathbb{N}^\ast\) et \(a \in \mathbb{R}_+^\ast\). Soit
+\(X \in \mathcal{L}^p(\Omega,\mathcal{A},\mathbb{P})\), on a
+\[\mathbb{P}(|X|\geq a) \leq \frac{\mathbb{E}(|X|^p)}{a^p}\]
+\end{theoreme}
+
+\begin{preuve}
+On a \[|X|^p \geq a^p 1_{[a, +\infty[}(|X|)\] et en prenant l'espérance,
+on obtient ainsi
+\[\mathbb{E}(|X|^p) \geq a^p \mathbb{E}(1_{[a, +\infty[}(|X|)) = a^p \mathbb{P}(|X|\geq a).\]
+
+\hfill$\blacksquare$
+\end{preuve}
+
+\addcontentsline{toc}{subsection}{Inégalité de Bienaymé-Chebyshev}
+\begin{corollaire}[{Inégalité de
+Bienaymé-Chebyshev}]\phantomsection\label{IV-inegbc}
+
+Soit \(X \in \mathcal{L}^2\), on a
+\[\mathbb{P}(|X-\mathbb{E}(X)| \geq a) \leq \frac{\mathbb{V}(X)}{a^2}\]
+\end{corollaire}
+
+\runinhead{Exercice -- Démonstration (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Démonstration}\label{IV-bienaymuxe9cheby}
+\solref{IV-answer-bienaymuxe9cheby}
+
+\addcontentsline{toc}{subsection}{Interprétation}
+\begin{remarque}[{Interprétation}]\phantomsection\label{IV-interpruxe9tation}
+
+L'inégalité de Bienaymé-Chebyshev est très utile en pratique. Elle
+permet de mesurer la probabilité des grands écarts entre \(X\) et sa
+moyenne. Par exemple, avec \(a = 10 \sigma\), il en résulte qu'il est
+improbable qu'une variable aléatoire \(X\) dévie de son espérance
+\(\mathbb{E}(X)\) de plus de 10 fois son écart-type (la probabilité est
+inférieure à 0.01). Cette inégalité, tout à fait générale, n'est
+cependant pas très précise, et surestime très souvent en pratique le
+membre de gauche. On préférera, quand c'est possible, calculer
+directement ces probabilités à partir de la loi de \(X\).
+\end{remarque}
+
+\chapter{Suites de variables
+indépendantes}\label{IV-suites-de-variables-induxe9pendantes}
+
+Au début du chapitre II, nous avons vu comment construire des couples
+(et même des \(n\)-uplets en itérant) de variables aléatoires réelles
+indépendantes en considérant l'espace produit, munis des tribus produit
+et des (mesures de) probabilités produit. Il est malheureusement
+beaucoup plus délicat, mais indispensable pour les applications (en
+particulier la loi des grands nombres), de construire une \textbf{suite
+infinie de variables indépendantes} de lois données.
+
+Plus précisément, pour chaque entier \(n\) on se donne une v.a.r.
+\(X_n\) définie sur un espace de probabilité
+\((\Omega_n,\mathcal{A}_n,\mathbb{P}_n)\), à valeurs dans
+\((\mathbb{R},\mathcal{B}(\mathbb{R}))\) et de loi \(\mathbb{P}_{X_n}\)
+(pour construire chaque \(X_n\), on peut procéder comme ci-dessus).
+Ensuite, on pose \begin{align*}
+\Omega &= \prod_{n=1}^{\infty}\Omega_n \text{        (produit cartésien dénombrable),}\\
+\mathcal{A}&= \bigotimes_{n=1}^{\infty}\mathcal{A}_n,
+\end{align*} où \(\bigotimes_{n=1}^{\infty}\mathcal{A}_n\) désigne la
+plus petite tribu de \(\Omega\) à laquelle appartienne tous les
+ensembles de la forme
+\[A_1 \times A_2 \times \ldots\times A_k \times \Omega_{k+1} \times \Omega_{k+2} \times \ldots, \,\,\, A_i \in \mathcal{A}_i, \,\,\, k \in \mathbb{N}^\ast\]
+
+On a alors le théorème suivant, que l'on admettra, qui constitue un
+résultat non trivial de la théorie de la mesure et qui généralise le
+\href{Probabilité\%20III.pdf\%20\#fubiniproba}{théorème de Fubini}.
+
+\addcontentsline{toc}{subsection}{Mesure produit sur un espace de
+dimension infinie}
+\begin{theoreme}[{Mesure produit sur un espace de dimension
+infinie}]\phantomsection\label{IV-probaespaceden}
+
+Avec les notations ci-dessus, il existe une unique probabilité
+\(\mathbb{P}\) sur \((\Omega,\mathcal{A})\), telle que
+\[\mathbb{P}(A_1 \times \ldots\times A_k \times \Omega_{k+1} \times \ldots) =\prod_{i=1}^k \mathbb{P}_i(A_i)\]
+pour tous \(k \in \mathbb{N}^{\ast}\) et \(A_i \in \mathcal{A}_i\),
+\(i \in \{1,\ldots,k\}\).
+
+Nous sommes maintenant en mesure de définir une suite de variables
+aléatoires toutes définies sur le même espace de probabilité
+\((\Omega, \mathcal{A}, \mathbb{P})\).
+\end{theoreme}
+
+\addcontentsline{toc}{subsection}{Suites de variables aléatoires
+indépendantes}
+\begin{definition}[{Suites de variables aléatoires
+indépendantes}]\phantomsection\label{IV-suites-de-variables-aluxe9atoires-induxe9pendantes}
+
+La suite \((X_n)_{n\in \mathbb{N}^\ast}\) de variables aléatoires est
+dite \emph{indépendante} si pour tout \(n \in \mathbb{N}^\ast\), la
+famille finie \(X_1,\ldots,X_n\) est indépendante.
+
+Il est facile de vérifier que l'indépendance est préservée par certaines
+transformations.
+\end{definition}
+
+\addcontentsline{toc}{subsection}{Conséquences}
+\begin{proposition}[{Conséquences}]\phantomsection\label{IV-consuxe9quences}
+
+L'indépendance de la suite \((X_n)_{n\in \mathbb{N}^\ast}\) entraîne
+celle de
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  toute sous-suite \((X_{i_k})_{k\in \mathbb{N}^\ast}\),
+\item
+  toute suite de vecteurs issus de \(X_n\),
+\item
+  toute suite de la forme \((f_n(X_n))_{n\in \mathbb{N}^\ast}\), où les
+  fonctions \(f_n\) sont des fonctions mesurables.
+\end{enumerate}
+\end{proposition}
+
+\addcontentsline{toc}{subsection}{Développement dyadique}
+\begin{exemple}[{Développement
+dyadique}]\phantomsection\label{IV-duxe9veloppement-dyadique}
+
+Nous considérons l'ensemble \(\Omega = [0, 1[\) muni de la tribu
+borélienne restreinte à cet ensemble, et de la mesure de Lebesgue. A
+chaque réel \(\omega\), nous associons son développement dyadique
+(unique si l'on impose que les \(\omega_i\) ne soient pas tous égaux à 1
+à partir d'un certain rang)~:
+\[ \omega = \sum_{i\in \mathbb{N}^\ast} \frac{\omega_i}{2^i},\,\,\, \omega_i \in \{0,1\}.\]
+L'application \(X_i : \Omega \to \{0,1\}\), qui à \(\omega\) associe
+\(X_i(\omega) = \omega_i\) est une variable aléatoire sur \(\Omega\). En
+effet, pour \(x_i \in \{0,1\}\), \(1\leq i \leq n\),
+\[ \{X_i = x_i\} = \bigcup_{x_1,\ldots, x_{i-1} \in \{0,1\}} \left[ \sum_{j=1}^i \frac{x_j}{2^j}, \sum_{j=1}^i \frac{x_j}{2^j} + \frac{1}{2^i}\right[, \]
+qui est bien un élément de la tribu borélienne de \(\Omega = [0,1[\), et
+\[\mathbb{P}(\{X_i = x_i\}) = \frac{1}{2^i} \sum_{x_1,\ldots, x_{i-1} \in \{0,1\}} 1 = \frac{1}{2}.\]
+Montrons l'indépendance des variables aléatoires
+\((X_i)_{1\leq i \leq n}\). Nous avons
+\[ \bigcap_{1\leq i \leq n} \{X_i = x_i\} = \left[ \sum_{i=1}^n \frac{x_i}{2^i}, \sum_{i=1}^n \frac{x_i}{2^i} + \frac{1}{2^n}\right[ \]
+si bien que
+\[ \mathbb{P}\left(\bigcap_{1\leq i \leq n} \{X_i = x_i\}\right) = \frac{1}{2^n} = \prod_{1\leq i \leq n} \mathbb{P}(\{X_i = x_i\}).\]
+Cela démontre que les variables aléatoires \(X_i\) sont indépendantes et
+de loi de Bernoulli de paramètre \(\frac{1}{2}\) . Ainsi, nous venons de
+construire sur \(\Omega\) une suite de variables aléatoires telle que
+toute sous-suite finie est constituée de variables aléatoires
+indépendantes. C'est donc une suite de variables aléatoires
+indépendantes de loi de Bernoulli de paramètre \(\frac{1}{2}\) .
+
+On note enfin le résultat très utile suivant portant sur les suites
+d'événements indépendants.
+\end{exemple}
+
+\addcontentsline{toc}{subsection}{Borel-Cantelli}
+\begin{lemme}[{Borel-Cantelli}]\phantomsection\label{IV-BC}
+
+Soit \((A_n)_{n\in\mathbb{N}^\ast}\) une suite d'événements sur l'espace
+probabilisé \((\Omega,\mathcal{A}, \mathbb{P})\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Si \(\sum_{n=1}^{\infty} \mathbb{P}(A_n) < \infty\), alors
+  \(\mathbb{P}(\limsup\limits_{n \to \infty} A_n) = \mathbb{P}\left(\bigcap_{n\geq 1} \bigcup_{k \geq n} A_k \right) =0\).
+\item
+  Si \(\sum_{n=1}^{\infty} \mathbb{P}(A_n) = \infty\) et si les
+  événements \(A_n\) sont mutuellement indépendants, alors on a
+  \(\mathbb{P}(\limsup\limits_{n \to \infty} A_n) = 1\).
+\end{enumerate}
+\end{lemme}
+
+\begin{preuve}
+Exercice.\hfill$\blacksquare$
+\end{preuve}
+
+\runinhead{Exercice -- Pile ou face
+infini (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Pile
+ou face infini}\label{IV-pf}
+On considère un jeu de pile ou face infini où on a une probabilité
+\(p, 0< p < 1\), d'obtenir face. Montrer que l'événement
+\(A = \{\omega : \text{ il n'y a qu'un nombre fini de faces}\}\) est de
+probabilité nulle. (Considérer les événements
+\(A_n = \{\text{on a face au }n\text{-ième tirage}\}\), puis montrer que
+\(\sum_{n=1}^\infty \mathbb{P}(A_n) = \infty\)).\solref{IV-answer-pf}
+
+\chapter{Convergences et loi des grands
+nombres}\label{IV-convergences-et-loi-des-grands-nombres}
+
+\section{Convergences des variables
+aléatoires}\label{IV-convergences-des-variables-aluxe9atoires}
+
+Dans ce paragraphe, on va décrire les notions de convergence de
+variables (on y inclut les vecteurs) aléatoires. On verra que plusieurs
+notions sont possibles, non équivalentes, ce qui enrichit mais complique
+aussi la description des comportements asymptotiques.
+
+En calcul intégral, on a beaucoup étudié le cas de suites de fonctions
+convergeant simplement. Une variable aléatoire étant une fonction, on a
+donc la même notion qui revient à écrire qu'une suite
+\((X_n)_{n\in \mathbb{N}^\ast}\) de variables aléatoires converge
+simplement vers \(X\) si \(\lim_{n \to \infty} X_n(\omega) = X(\omega)\)
+pour tout \(\omega \in \Omega\). Cette définition naturelle est
+malheureusement à peu près inutile en probabilités, comme l'illustre
+l'exemple suivant.
+
+\addcontentsline{toc}{subsection}{Pile ou face infini (bis)}
+\begin{exemple}[{Pile ou face infini
+(bis)}]\phantomsection\label{IV-pfinf}
+
+Soit \((X_n)_{n\in \mathbb{N}^\ast}\) une suite de v.a. réelles qui sont
+indépendantes et de même loi (on notera \emph{i.i.d} pour
+\emph{indépendantes et identiquement distribuées}), avec
+\(\mathbb{P}(X_n = 1) = p\) et \(\mathbb{P}(X_n=0) = 1-p\). Ce sont donc
+des v.a. de loi de Bernoulli de paramètre \(p\) qui modélisent par
+exemple les résultats d'un jeu de pile ou face. Lorsque \(n\) est grand,
+on s'attend à ce que la proportion de faces (\(X_n=1\)) soit à peu près
+égale à \(p\) (c'est l'essence de la conception objectiviste des
+probabilités). Mathématiquement, on voudrait que
+\[\lim_{n \to \infty} \frac{X_1(\omega) + \ldots +X_n(\omega)}{n} = p \text{   pour tout }\omega\in\Omega.\]
+C'est en fait complètement faux. En effet, si on considère par exemple
+la suite \(\omega_0 = {p,p,p,\ldots}\) qui ne contient que des piles, on
+obtient
+\[\lim_{n \to \infty} \frac{X_1(\omega_0) + \ldots +X_n(\omega_0)}{n} = 0\]
+et plus généralement, on a
+\(\lim_{n \to \infty} \frac{1}{n}\sum_{i=1}^n X_i(\omega) = 0\) pour
+tout \(\omega\) dans l'ensemble
+\(A = \{\omega : \text{ il n'y a qu'un nombre fini de faces}\}\). On
+peut même trouver des \(\omega\) pour lesquels la fréquence converge
+vers n'importe quel nombre fixé dans \([0,1]\)\,! Bien entendu,
+l'événement \(A\) est invraisemblable et on peut montrer qu'il vérifie
+\(\mathbb{P}(A) = 0\)\footnote{cf.~\protect\hyperref[IV-pf]{exercice
+  plus haut (p.~\pageref*{IV-pf})}}. On verra cependant que la
+\textbf{loi des grands nombres} assure~:
+\[\mathbb{P}\left(\left\{\omega ; \lim_{n \to \infty} \frac{1}{n}\sum_{i=1}^n X_i(\omega) = p\right\}\right)=1.\]
+Ce type de convergence, pour lequel on n'a pas convergence pour tout
+\(\omega\), mais seulement pour presque tout \(\omega\) (autrement dit
+\(\mathbb{P}\)-presque partout) est typiquement ce qui arrive pour des
+variables aléatoires.
+
+On considère une suite \((X_n)_{n\in \mathbb{N}^\ast}\) de variables
+aléatoires, définies sur un même espace de probabilité
+\((\Omega, \mathcal{A}, \mathbb{P})\), et à valeurs dans
+\(\mathbb{R}^d\). On considère également sur le même espace un vecteur
+``limite'' \(X\). On notera \(|\cdot|\) la valeur absolue dans
+\(\mathbb{R}\) ou la norme euclidienne dans \(\mathbb{R}^d\).
+\end{exemple}
+
+\addcontentsline{toc}{subsection}{Modes de convergences}
+\begin{definition}[{Modes de
+convergences}]\phantomsection\label{IV-modes-de-convergences}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  La suite \((X_n)_{n\in \mathbb{N}^\ast}\) \emph{converge presque
+  sûrement} vers \(X\), ce qui s'écrit \(X_n \to X\) p.s., s'il existe
+  un ensemble \(N \in \mathcal{A}\) de probabilité nulle tel que
+  \[ X_n (\omega) \xrightarrow[n \to \infty]{}  X(\omega),\,\,\, \forall \omega \notin N.\]
+\item
+  La suite \((X_n)_{n\in \mathbb{N}^\ast}\) \emph{converge en
+  probabilité} vers \(X\), ce qui s'écrit
+  \(X_n \xrightarrow{\mathbb{P}} X\), si \(\forall \varepsilon >0\) on a
+  \[ \mathbb{P}(|X_n-X| \geq \varepsilon) \xrightarrow[n \to \infty]{}  0. \]
+\item
+  La suite \((X_n)_{n\in \mathbb{N}^\ast}\) \emph{converge en moyenne}
+  (ou dans \(\mathcal{L}^1\)) vers \(X\), ce qui s'écrit
+  \(X_n \xrightarrow{\mathcal{L}^1} X\), si \(X_n\) et \(X\) sont dans
+  \(\mathcal{L}^1\) et si
+  \[ \mathbb{E}(|X_n - X|) \xrightarrow[n \to \infty]{}  0 .\]
+\end{enumerate}
+\end{definition}
+
+\addcontentsline{toc}{subsection}{Convergence \(\mathcal{L}^p\)}
+\begin{remarque}[{Convergence
+\(\mathcal{L}^p\)}]\phantomsection\label{IV-convergence-mathcallp}
+
+La définition de la convergence dans \(\mathcal{L}^1\) se généralise aux
+ordres supérieurs, pour \(p \in \mathbb{N}^\ast\), on parle de
+convergence dans \(\mathcal{L}^p\) (en moyenne quadratique si \(p=2\))
+ce qui s'écrit \(X_n \xrightarrow{\mathcal{L}^p} X\), si \(X_n\) et
+\(X\) sont dans \(\mathcal{L}^p\) et si
+\[ \mathbb{E}(|X_n - X|^p) \xrightarrow[n \to \infty]{}  0 .\]
+
+Ces modes de convergences ne sont pas équivalents comme le montrent les
+exemples suivants.
+\end{remarque}
+
+\runinhead{Exercice -- En proba et en
+moyenne (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{En
+proba et en moyenne}\label{IV-lien}
+Soit \((X_n)_{n\in \mathbb{N}^\ast}\) une suite de variables aléatoires
+de Bernoulli à valeurs dans \(\{0,1\}\) telles que
+\[ \mathbb{P}(X_n=1) = \frac{1}{n} ;\,\,\,\, \mathbb{P}(X_n = 0) = 1- \frac{1}{n}.\]
+Montrer que la suite \((X_n)_{n\in \mathbb{N}^\ast}\) converge en
+probabilité et en moyenne vers 0.\solref{IV-answer-lien}
+
+\runinhead{Exercice -- En proba mais pas en
+moyenne (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{En
+proba mais pas en moyenne}\label{IV-lien2}
+Soit maintenant une suite \((Y_n)_{n\in \mathbb{N}^\ast}\) de variables
+aléatoires de Bernoulli à valeurs dans \(\{0,n^2\}\) telles que
+\[ \mathbb{P}(Y_n=n^2) = \frac{1}{n} ;\,\,\,\, \mathbb{P}(Y_n = 0) = 1- \frac{1}{n}.\]
+Montrer que la suite \((Y_n)_{n\in \mathbb{N}^\ast}\) converge en
+probabilité vers 0 mais pas en moyenne.\solref{IV-answer-lien2}
+
+\runinhead{Exercice -- Presque
+sûre (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Presque
+sûre}\label{IV-lien3}
+Soit \(U\) une variable aléatoire uniforme sur \([0 , 1]\). Posons
+\(Z_n = 1_{\{ U \leq \frac{1}{n}\} }\). Alors
+\[ \mathbb{P}(Z_n = 1)= \frac{1}{n} ;\,\,\,\, \mathbb{P}(Z_n = 0) = 1 - \frac{1}{n}\]
+Montrer que la suite \((Z_n)_{n\in\mathbb{N}^\ast}\) converge presque
+sûrement vers 0.\solref{IV-answer-lien3}
+
+Il existe cependant des liens entre ces différents modes de convergences
+que l'on explore ci-dessous.
+
+\addcontentsline{toc}{subsection}{p.s. / \(\mathcal{L}^1\)
+\(\Rightarrow\) en proba}
+\begin{proposition}[{p.s. / \(\mathcal{L}^1\) \(\Rightarrow\) en
+proba}]\phantomsection\label{IV-propconv1}
+
+La convergence presque sûre et la convergence en moyenne entraînent la
+convergence en probabilité.
+\end{proposition}
+
+\begin{preuve}
+Soient \(n\in\mathbb{N}^\ast\), \(\varepsilon > 0\) et
+\(A_{n,\varepsilon} = \{|X_n - X| > \varepsilon \}\).
+
+\begin{itemize}
+\item
+  Supposons que \(X_n \to X\) p.s. et soit \(N\) l'ensemble de
+  probabilité nulle en dehors duquel on a \(X_n(\omega) \to X(\omega)\).
+  Si \(\omega \notin N\), on a \(\omega \notin A_{n,\varepsilon}\) pour
+  tout \(n \geq n_0\), où \(n_0\) dépend de \(\omega\) et de
+  \(\varepsilon\), ce qui implique que les variables aléatoires
+  \(Y_{n,\varepsilon} = 1_{N^c\cap A_{n,\varepsilon}}\) tendent
+  simplement vers 0 lorsque \(n \to \infty\). Comme on a aussi
+  \(0 \leq Y_{n,\varepsilon} \leq 1\) le théorème de convergence dominée
+  implique que
+  \(\mathbb{E}(Y_{n,\varepsilon}) \xrightarrow[n \to \infty]{} 0.\) Par
+  suite,
+  \[\mathbb{P}(A_{n,\varepsilon}) \leq \mathbb{P}(N^c \cap A_{n,\varepsilon}) + \mathbb{P}(N) = \mathbb{P}(N^c \cap A_{n,\varepsilon}) = \mathbb{E}(Y_{n,\varepsilon}) \xrightarrow[n \to \infty]{} 0.\]
+\item
+  Supposons que \(X_n \xrightarrow{\mathcal{L}^1} X\). Pour
+  \(\varepsilon >0\), on a
+  \(1_{A_{n,\varepsilon}} \leq \frac{1}{\varepsilon}|X_n - X|\), donc
+  \[ \mathbb{P}(A_{n,\varepsilon}) \leq \frac{1}{\varepsilon}\mathbb{E}(|X_n - X|) \xrightarrow[n \to \infty]{} 0.\]
+\end{itemize}
+
+\hfill$\blacksquare$
+\end{preuve}
+
+La convergence en probabilité n'entraîne pas la convergence en moyenne,
+comme nous l'avons vu dans \protect\hyperref[IV-lien2]{l'exemple
+précédent (p.~\pageref*{IV-lien2})}, ne serait-ce que parce qu'elle
+n'implique pas l'appartenance de \(X_n\) et \(X\) à \(\mathcal{L}^1\).
+Si les \(X_n\) ne sont ``pas trop grands'', il y a cependant équivalence
+entre les deux modes de convergence. En voici un exemple.
+
+\addcontentsline{toc}{subsection}{Cas borné}
+\begin{proposition}[{Cas borné}]\phantomsection\label{IV-propconv2}
+
+S'il existe une constante \(a\) telle que \(|X_n| \leq a\) presque
+sûrement, il y a équivalence entre \(X_n \xrightarrow{\mathbb{P}} X\) et
+\(X_n \xrightarrow{\mathcal{L}^1} X\).
+\end{proposition}
+
+\begin{preuve}
+Etant donnée la \protect\hyperref[IV-propconv1]{proposition
+précédente (p.~\pageref*{IV-propconv1})}, dont on reprend les notations,
+il suffit de montrer que la convergence en probabilité implique la
+convergence en moyenne lorsque \(|X_n| \leq a\).
+
+Comme \(|X_n| \leq a\) p.s., on a
+\(\{|X| > a +\varepsilon\} \subset A_{n,\varepsilon}\), et donc
+\(\mathbb{P}(|X| > a +\varepsilon ) \leq \mathbb{P}(A_{n,\varepsilon})\).
+En faisant \(n \to \infty\), on en déduit que
+\(\mathbb{P}(|X| > a + \varepsilon) = 0\). Ceci est vrai pour tout
+\(\varepsilon\) et donc \[\mathbb{P}(|X|> a) = 0.\] Comme
+\(|X_n| \leq a\), on a aussi
+\[ |X_n -X| \leq \varepsilon + (X_n + X) 1_{A_{n,\varepsilon}} \leq \varepsilon + 2a 1_{A_{n,\varepsilon}}\]
+sur l'ensemble \(\{|X| \leq a \}\) qui est de probabilité 1. On a ainsi
+\[ \mathbb{E}(|X_n - X|) \leq \varepsilon +2a \mathbb{P}(A_{n,\varepsilon})\]
+On en déduit que
+\(\lim \sup_{n \to \infty} \mathbb{E}(|X_n - X|) \leq \varepsilon\), et
+comme \(\varepsilon\) est arbitrairement proche de 0, on a le résultat
+souhaité.\hfill$\blacksquare$
+\end{preuve}
+
+Les rapports entre convergence presque-sûre et convergence en
+probabilité sont plus subtils. La première de ces deux convergences est
+plus forte que la seconde d'après la
+\protect\hyperref[IV-propconv1]{proposition plus
+haut (p.~\pageref*{IV-propconv1})}, mais ``à peine plus'', comme le
+montre le résultat suivant.
+
+\addcontentsline{toc}{subsection}{Existence d'une sous-suite
+convergente}
+\begin{proposition}[{Existence d'une sous-suite
+convergente}]\phantomsection\label{IV-propconv3}
+
+Si \(X_n \xrightarrow{\mathbb{P}} X\), il existe une sous-suite
+\((n_k)\) telle que \(X_{n_k} \to X\) p.s. quand \(k \to \infty\).
+\end{proposition}
+
+\begin{preuve}
+On remarque d'abord que l'on peut réécrire la définition de la
+convergence en probabilité de la manière suivante~:
+\(\forall \varepsilon >0\) et \(\delta > 0\), il existe
+\(N = N(\delta,\varepsilon)\) tel que
+\[n\geq N \Rightarrow \mathbb{P}(|X_n-X| > \varepsilon ) < \delta.\]
+
+Comme la suite \((X_n)_{n\in \mathbb{N}^\ast}\) converge en probabilité
+vers \(X\), on peut définir une sous-suite de la manière suivante~:
+posons \(n_1 = 1\), et soit
+\[n_j = \inf \left\{ n > n_{j-1} ; \mathbb{P}\left(|X_m - X| > \frac{1}{2^j} \right) < \frac{1}{3^j}, \text{ pour } m \geq n \right\}.\]
+On a alors
+\[\sum_j \mathbb{P}\left(|X_{n_j} - X| > \frac{1}{2^j} \right) < \sum_j \frac{1}{3^j} < \infty\]
+et en appliquant le \protect\hyperref[IV-BC]{lemme de
+Borel-Cantelli (p.~\pageref*{IV-BC})} aux ensembles
+\[A_j =\left\{|X_{n_{j}} - X| > \frac{1}{2^j} \right\},\] on obtient que
+la suite \((X_{n_j})_{j\in \mathbb{N}^\ast}\) converge
+presque-sûrement.\hfill$\blacksquare$
+\end{preuve}
+
+\runinhead{Exercice -- Intervalles de longueur aléatoire
+(1) (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Intervalles
+de longueur aléatoire (1)}\label{IV-ia}
+Soient \(\Omega = \mathbb{R}\) muni de sa tribu borélienne et
+\(\mathbb{P}\) la probabilité uniforme sur {[}0, 1{]}. Soit
+\(X_n = 1_{A_n}\) , où \(A_n\) est un intervalle de {[}0, 1{]} de
+longueur \(\frac{1}{n}\).
+
+Montrer que la suite des \(X_n\) converge en moyenne et en
+proba.\solref{IV-answer-ia}
+
+\runinhead{Exercice -- Intervalles de longueur aléatoire
+(2) (\(\mathord{\bullet}\mathord{\bullet}\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Intervalles
+de longueur aléatoire (2)}\label{IV-ia2}
+Montrer que la suite des \(X_n\) ne converge pas presque sûrement.
+Extraire une sous-suite qui converge presque
+sûrement.\solref{IV-answer-ia2}
+
+\addcontentsline{toc}{subsection}{Continuité}
+\begin{proposition}[{Continuité}]\phantomsection\label{IV-propconv4}
+
+Soit \(f\) une fonction continue de \(\mathbb{R}^d\) dans
+\(\mathbb{R}\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Si \(X_n \to X\) presque-sûrement, alors \(f(X_n) \to f(X)\)
+  presque-sûrement.
+\item
+  Si \(X_n \xrightarrow{\mathbb{P}} X\), alors
+  \(f(X_n) \xrightarrow{\mathbb{P}} f(X)\).
+\end{enumerate}
+\end{proposition}
+
+\begin{preuve}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Soit \(N\) l'ensemble de probabilité nulle en dehors duquel on a
+  \(X_n(\omega) \xrightarrow[n \to \infty]{} X(\omega)\). Si
+  \(\omega \notin N\), il vient
+  \[ \lim_{n \to \infty}f(X_n(\omega)) = f(\lim_{n \to \infty}X_n(\omega)) = f(X(\omega))\]
+  par continuité de \(f\), d'où le résultat.
+\item
+  On remarque d'abord que si \(K >0\) et \(\varepsilon >0\),
+  \[\{|f(X_n)-f(X)| \geq \varepsilon\} \subset \{|X| > K\}\cup\{|X| \leq K, |f(X_n)-f(X)| \geq \varepsilon\}.\]
+  La fonction \(f\) est uniformément continue sur
+  \(\{x : |x| \leq K\}\), donc il existe \(\eta > 0\) tel que
+  \(|x-y| <\eta\) et \(|x| \leq 2K\) et \(|y|\leq 2K\) impliquent
+  \(|f(x) - f(y)| <\varepsilon\). On a donc
+  \[\{|f(X_n)-f(X)| \geq \varepsilon\} \subset \{|X| > K\}\cup\{|X_n-X| \geq \eta\}\]
+  d'où
+  \[\mathbb{P}(|f(X_n)-f(X)| \geq \varepsilon) \leq \mathbb{P}(|X| > K) + \mathbb{P}(|X_n-X| \geq \eta).\]
+  Par hypothèse, il vient
+  \[ \lim_{n \to \infty} \mathbb{P}(|f(X_n)-f(X)| \geq \varepsilon) \leq \mathbb{P}(|X| > K) .\]
+  Enfin, \(\lim_{K\to +\infty} \mathbb{P}(|X| > K) = 0\) (par
+  convergence dominée) et donc la limite ci-dessus est nulle. On a ainsi
+  le résultat.
+\end{enumerate}
+
+\hfill$\blacksquare$
+\end{preuve}
+
+\section{La loi des grands nombres}\label{IV-la-loi-des-grands-nombres}
+
+On présente maintenant l'un des résultats essentiels de la théorie des
+probabilités. Ce résultat montre rigoureusement que, quand le nombre de
+répétitions de l'expérience tend vers l'infini, la fréquence de
+réalisation d'un événement converge p.s. vers la probabilité de
+réalisation de cet événement. Ce résultat, appelé \textbf{Loi des grands
+nombres}, a d'autres portées fondamentales. Il est en particulier à
+l'origine de méthodes de calcul numérique appelées Méthodes de
+Monte-Carlo, qui sont extrêmement puissantes et robustes. Elles sont par
+exemple très utilisées en Physique, en Mathématiques Financières ou
+encore dans les problèmes de quantification d'incertitudes. Une
+introduction à ces méthodes sera donnée au chapitre V.
+
+Dans ce paragraphe, on considère une suite
+\((X_n)_{n\in\mathbb{N}^\ast}\) de variables aléatoires
+\textbf{indépendantes et de même loi} (ou indépendantes et identiquement
+distribuées, i.i.d. en abrégé). On considère la ``moyenne'' des \(n\)
+premières variables aléatoires~:
+\[ M_n = \frac{X_1 + \ldots + X_n}{n},\] et notre objectif est de
+montrer que \(M_n\) converge vers l'espérance des \(X_n\) lorsque
+celle-ci existe (comme les \(X_n\) ont même loi, cette espérance est la
+même pour tout \(n\)).
+
+Nous allons démontrer dans un premier temps la loi des grands nombres
+pour des variables aléatoires de carré intégrable.
+
+\addcontentsline{toc}{subsection}{Loi des grands nombres cas
+\(\mathcal{L}^2\)}
+\begin{theoreme}[{Loi des grands nombres cas
+\(\mathcal{L}^2\)}]\phantomsection\label{IV-loi-des-grands-nombres-cas-mathcall2}
+
+Soit \((X_n)_{n\in\mathbb{N}^\ast}\) une suite de variables aléatoires
+indépendantes, de même loi et de \textbf{carré intégrable}, et
+\(m = \mathbb{E}(X_n)\) leur espérance. Alors la suite
+\((M_n)_{n\in\mathbb{N}^\ast}\) définie par
+\[M_n = \frac{X_1 + \ldots + X_n}{n}\] converge vers \(m\),
+\textbf{presque sûrement et en moyenne}, quand \(n\) tend vers l'infini.
+Elle converge donc aussi en probabilité. On a même convergence en
+\emph{moyenne quadratique}, à savoir que~:
+\[ \mathbb{E}((M_n - m)^2) \xrightarrow[n \to \infty]{} 0.\]
+\end{theoreme}
+
+\runinhead{Exercice -- Loi faible des grands
+nombres (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Loi
+faible des grands nombres}\label{IV-wlln}
+Le résultat sur la convergence en probabilité est appelé \emph{loi
+faible des grands nombres}. Démontrer ce
+résultat.\solref{IV-answer-wlln}
+
+Le résultat est peu informatif et permet d'obtenir certains contrôles
+d'erreurs. Le résultat prouvant la convergence presque-sûre est appelé
+\emph{loi forte des grands nombres}. Sa preuve est plus délicate et
+utilise le \protect\hyperref[IV-BC]{lemme de
+Borel-Cantelli (p.~\pageref*{IV-BC})}.
+
+\subsection{Démonstration}\label{IV-duxe9monstration-7}
+
+Notons \(\sigma^2\) la variance des variables \(X_n\), bien définie
+puisqu'on les a supposées de carré intégrable. En vertu de la linéarité
+de l'espérance, on a
+\[ \mathbb{E}(M_n) = m,\,\,\,\, \mathbb{E}((M_n-m)^2) = \mathbb{V}(M_n) = \frac{\sigma^2}{n},\]
+d'où la convergence en moyenne quadratique.
+
+Comme \(\mathbb{E}(Y)^2 \leq \mathbb{E}(Y^2)\), on en déduit que
+\(\mathbb{E}(|M_n -m|)\to 0\), donc on a aussi la convergence en
+moyenne.
+
+La preuve de la convergence presque-sûre est plus délicate.
+
+Quitte à remplacer \(X_n\) par \(X_n - m\) (et donc \(M_n\) par
+\(M_n - m\)), nous pouvons supposer que \(m = 0\).
+
+Montrons tout d'abord que la sous-suite
+\((M_{n^2})_{n \in \mathbb{N}^\ast}\) converge presque-sûrement vers 0.
+
+La convergence dans \(\mathcal{L}^1\) impliquant la convergence en
+probabilité, on sait qu'on peut extraire de \((M_n)_n\) une sous-suite
+convergeant p.s. vers 0. Cependant, cela ne suffit pas puisqu'on veut
+que la suite \((M_n)_n\) elle-même converge p.s. Pour le montrer, on
+construit d'abord une sous suite-particulière qui converge p.s. puis on
+traite les termes qui se trouvent entre deux éléments successifs de la
+sous-suite.
+
+D'après l'\protect\hyperref[IV-inegbc]{inégalité de
+Bienaymé-Chebyshev (p.~\pageref*{IV-inegbc})} et ce qui précède, on a
+pour \(q\in \mathbb{N}^\ast\)
+\[\mathbb{P}\left(|M_{n^2}|\geq \frac{1}{q}\right) \leq \frac{\sigma^2 q^2}{n^2}\]
+
+Donc si \(A_{n,q} = \{|M_{n^2}|\geq \frac{1}{q}\}\), nous obtenons que
+\(\sum_{n\geq 1} \mathbb{P}(A_{n,q}) < \infty\). Posons ensuite
+\(B_{n,q} = \cup_{m\geq n} A_{m,q}\) et
+\(C_q = \cap_{n \geq 1} B_{n,q} = \lim\sup_n A_{n,q}\). En appliquant le
+\protect\hyperref[IV-BC]{lemme de Borel-Cantelli (p.~\pageref*{IV-BC})},
+on obtient que \(\mathbb{P}(C_q) = 0\). En conséquence, si on pose
+\(N = \cup_{q \in \mathbb{N}^\ast} C_q\), on obtient
+\(\mathbb{P}(N) \leq \sum_{q\in\mathbb{N}^\ast} \mathbb{P}(C_q)= 0\).
+
+Si \(\omega \notin N\), alors
+\(\omega \in \cap_{q \in \mathbb{N}^\ast} (C_q)^c\). Ainsi,
+\(\omega \notin C_q\) pour tout \(q \geq 1\), et donc
+\(\omega \notin B_{n,q}\) pour \(n\) assez grand (car \(B_{n,q}\) est
+décroissant en \(n\)). Cela signifie que pour tout \(\omega \notin N\),
+pour tout \(q \geq 1\), il existe un \(n\) assez grand tel que
+\(M_{k^2} \leq \frac{1}{q}\) dès que \(k \geq n\). Autrement dit,
+\(M_{n^2} \to 0\) si \(\omega \notin N\), avec \(\mathbb{P}(N) = 0\),
+d'où \[ M_{n^2} \xrightarrow[n \to \infty]{} 0 \text{ p.s.}\]
+
+Montrons maintenant que la suite \((M_n)_{n\in\mathbb{N}^\ast}\) tend
+presque-sûrement vers 0.
+
+Pour tout entier \(n\), notons \(p(n)\), l'entier tel que
+\(p(n)^2 \leq n \leq (p(n)+1)^2\). Alors,
+\[ M_n - \frac{p(n)^2}{n}M_{p(n)^2} = \frac{1}{n} \sum_{p = p(n)^2+1}^{n} X_p,\]
+et puisque les variables aléatoires de la somme sont indépendantes, il
+vient \begin{align*}
+\mathbb{E}\left(\left(M_n - \frac{p(n)^2}{n}M_{p(n)^2}\right)^2\right) & = \frac{n-p(n)^2}{n^2}\sigma^2 \\
+                                                                 & \leq \frac{2p(n)+1}{n^2} \sigma^2 \\
+                                                                 & \leq \frac{2\sqrt{n}+1}{n^2} \sigma^2 \leq \frac{3}{n^{3/2}}\sigma^2
+\end{align*}
+
+où on a utilisé le fait que \(p(n) \leq \sqrt{n}\).
+
+En appliquant de nouveau l'\protect\hyperref[IV-inegbc]{inégalité de
+Bienaymé-Chebyshev (p.~\pageref*{IV-inegbc})}, on obtient
+\[ \mathbb{P}\left(\left|M_n - \frac{p(n)^2}{n}M_{p(n)^2}\right|>a\right) \leq \frac{2\sqrt{n}+1}{n^2} \frac{\sigma^2}{a^2}\]
+Comme la série \(\sum_n \frac{2\sqrt{n}+1}{n^2}\) converge, le même
+raisonnement que pour \(M_{n^2}\) décrit ci-dessus, montre que
+\[ M_n - \frac{p(n)^2}{n}M_{p(n)^2} \to 0 \text{ p.s.}\] Par ailleurs,
+on a déjà montré que \(M_{p(n)^2} \to 0\) p.s. et
+\(\frac{p(n)^2}{n} \to 1\). On en déduit que \(M_n \to 0\) p.s.
+
+Plus généralement, le théorème suivant donne les hypothèses minimales
+assurant la validité de la loi des grands nombres, à savoir que les
+\(X_n\) sont dans \(\mathcal{L}_1\) (on se référera par exemple à
+\href{https://perso.univ-rennes1.fr/ismael.bailleul/AGREG/COURS/LFGN.pdf}{ce
+document en ligne} ou à Jacod and Protter
+(\protect\hyperlink{refIV-Jacod}{2003}) pour la démonstration).
+
+\addcontentsline{toc}{subsection}{Loi des grands nombres cas
+\(\mathcal{L}^1\)}
+\begin{theoreme}[{Loi des grands nombres cas
+\(\mathcal{L}^1\)}]\phantomsection\label{IV-lfgn}
+
+Soit \((X_n)_{n\in\mathbb{N}^\ast}\) une suite de variables aléatoires
+indépendantes, de même loi et \textbf{intégrables}, et
+\(m = \mathbb{E}(X_n)\) leur espérance. Alors la suite
+\((M_n)_{n\in\mathbb{N}^\ast}\) définie par
+\[M_n = \frac{X_1 + \ldots + X_n}{n}\] converge vers \(m\),
+\textbf{presque sûrement et en moyenne}, quand \(n\) tend vers l'infini.
+\end{theoreme}
+
+\runinhead{Exercice -- Exponentielle (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Exponentielle}\label{IV-expo}
+Soit \((X_i)_{i \in \mathbb{N}^\ast}\) une suite de variables aléatoires
+i.i.d. d'espérance \(m\) et \(Y_i = e^{X_i}\). Montrer que~:
+\[\left(\prod_{i=1}^n Y_i\right)^{1/n}\] converge presque sûrement vers
+une constante à déterminer.\solref{IV-answer-expo}
+
+\runinhead{Exercice -- Variance (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Variance}\label{IV-variance}
+Soit \((X_i)_{i \in \mathbb{N}^\ast}\) une suite de variables aléatoires
+i.i.d. d'espérance \(m\) et de variance \(\sigma^2\). Montrer que~:
+\[\lim_{n \to \infty} \frac{1}{n}\sum_{i=1}^n (X_i - m)^2 \to \sigma^2 \text{   p.s.}\]
+
+\solref{IV-answer-variance}
+
+\chapter{Convergence en loi et théorème central
+limite}\label{IV-convergence-en-loi-et-thuxe9oruxe8me-central-limite-1}
+
+Nous allons introduire maintenant une nouvelle notion de convergence de
+suites de variables aléatoires. La convergence en loi définie dans ce
+paragraphe va concerner les lois des variables aléatoires. Elle
+signifiera que les lois sont asymptotiquement ``proches'', sans que les
+variables aléatoires elles-mêmes le soient nécessairement.
+
+\section{Convergence en loi}\label{IV-convergence-en-loi}
+
+On considère des vecteurs aléatoires \(X_n\) et \(X\), tous à valeurs
+dans le même espace \(\mathbb{R}^d\), mais pouvant éventuellement être
+définis sur des espaces de probabilité différents.
+
+\addcontentsline{toc}{subsection}{Convergence en loi}
+\begin{definition}[{Convergence en
+loi}]\phantomsection\label{IV-defconvloi}
+
+On dit que la suite \((X_n)_{n\in \mathbb{N}^\ast}\) \emph{converge en
+loi} vers \(X\) et on écrit \(X_n \xrightarrow{\mathcal{L}} X\), si pour
+toute fonction réelle \(f\) \textbf{continue bornée} sur
+\(\mathbb{R}^d\),
+\[\mathbb{E}(f(X_n)) \xrightarrow[n \to \infty]{} \mathbb{E}(f(X)).\]
+\end{definition}
+
+\addcontentsline{toc}{subsection}{Cas fini}
+\begin{exemple}[{Cas fini}]\phantomsection\label{IV-cas-fini}
+
+Un cas très simple est celui où toutes les variables aléatoires \(X_n\)
+prennent un nombre fini de valeurs \(\{ x_i , 1 \leq i \leq N \}\).
+Alors, la suite \((X_n)_{n \in \mathbb{N}^\ast}\) converge en loi vers
+\(X\) si et seulement si
+\[\lim_{n \to +\infty} \mathbb{P}(X_n = x_i ) = \mathbb{P}(X = x_i),\,\,\, \forall 1 \leq i \leq N\]
+Il suffit d'écrire pour \(f\) continue bornée
+\[ \mathbb{E}(f (X_n)) = \sum_{i=1}^N f (x_i ) P(X_n = x_i) \]
+
+Dans l'exemple ci-dessus, \(N\) est fini et fixé. Mais nous avons un
+résultat analogue (en faisant tendre \(N\) vers l'infini) si les
+variables aléatoires ont un nombre dénombrable de valeurs. En
+particulier, le cas de la convergence de la loi binomiale vers la loi de
+Poisson a été traité en CPGE.
+\end{exemple}
+
+\addcontentsline{toc}{subsection}{Univers de définition}
+\begin{remarque}[{Univers de
+définition}]\phantomsection\label{IV-univers-de-duxe9finition}
+
+Dans la
+\protect\hyperref[IV-defconvloi]{définition (p.~\pageref*{IV-defconvloi})},
+les v.a. \(X_n\) et \(X\) peuvent être définies sur des univers
+distincts puisque seules leurs lois sont en cause. Il arrive même qu'une
+suite \(X_n\) converge vers une limite \(X\) qui ne peut pas exister sur
+les espaces sur lesquels sont définies les \(X_n\), parce que ceux-ci
+sont trop ``petits''~: par exemple, si \(X_n\) est une variable
+binomiale à \(n\) modalités, convenablement normalisée, et la limite
+\(X\) est gaussienne (on pourra justifier ceci par le
+\protect\hyperref[IV-TCL]{théorème central
+limite (p.~\pageref*{IV-TCL})}); l'espace naturel sur lequel est définie
+\(X_n\) contient \(n+1\) points, et sur un tel espace toutes les v.a.
+sont discrètes. La convergence en loi permet donc une sorte de
+convergence pour des v.a. pour lesquelles toute autre forme de
+convergence serait impossible.
+\end{remarque}
+
+\runinhead{Exercice -- Suite
+gaussienne (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Suite
+gaussienne}\label{IV-suitegauss}
+Soit \((X_n)_{n \in \mathbb{N}^\ast}\) et \(X\) des variables aléatoires
+de lois respectives \(\mathcal{N}(0,\sigma^2_n)\) et
+\(\mathcal{N}(0,\sigma^2)\). On suppose que la suite de réels positifs
+\((\sigma_n)_{n\in \mathbb{N}^\ast}\) converge vers \(\sigma > 0\) quand
+\(n\) tend vers l'infini. Montrer que la suite
+\((X_n)_{n \in \mathbb{N}^\ast}\) converge en loi vers
+\(X\).\solref{IV-answer-suitegauss}
+
+La convergence en loi est plus faible que la convergence en probabilité
+et donc aussi que les convergences presque-sûre et en moyenne.
+
+\addcontentsline{toc}{subsection}{En proba \(\Rightarrow\) en loi}
+\begin{proposition}[{En proba \(\Rightarrow\) en
+loi}]\phantomsection\label{IV-en-proba-rightarrow-en-loi}
+
+Soient \((X_n)_{n\in\mathbb{N}\ast}\) et \(X\) des v.a., toutes définies
+sur le même espace de probabilité \((\Omega, \mathcal{A}, \mathbb{P})\).
+Si \(X_n \xrightarrow{\mathbb{P}} X\), alors
+\(X_n\xrightarrow{\mathcal{L}} X\).
+\end{proposition}
+
+\begin{preuve}
+Soit \(f\) une fonction réelle continue bornée. D'après la
+\protect\hyperref[IV-propconv4]{proposition de
+continuité (p.~\pageref*{IV-propconv4})}, on a
+\(f(X_n) \xrightarrow{\mathbb{P}} f(X)\) et donc \(f(X_n)\) converge
+aussi en moyenne vers \(f(X)\) par la
+\protect\hyperref[IV-propconv2]{proposition --- cas
+borné (p.~\pageref*{IV-propconv2})}. Comme
+\(|\mathbb{E}(Y)|\leq \mathbb{E}(|Y|)\) pour toute variable aléatoire
+réelle \(Y\), on en déduit
+\(\mathbb{E}(f(X_n)) \to \mathbb{E}(f(X))\).\hfill$\blacksquare$
+\end{preuve}
+
+On peut finalement résumer les liens d'implications entre les différents
+modes de convergence à l'aide de la figure ci-desous.
+
+\begin{figure}
+\centering
+\includegraphics{cvgces.tex.pdf}
+\caption{Relations entre modes de convergence}
+\end{figure}
+
+Un moyen efficace de caractériser la convergence en loi des variables
+aléatoires réelles passe par l'étude de la suite des fonctions de
+répartition.
+
+\addcontentsline{toc}{subsection}{Convergence en loi et fonction de
+répartition}
+\begin{proposition}[{Convergence en loi et fonction de
+répartition}]\phantomsection\label{IV-cvceloifdr}
+
+Soient \((X_n)_{n\in\mathbb{N}^\ast}\) et \(X\) des variables aléatoires
+réelles de fonctions de répartition respectives \(F_n\) et \(F\). Pour
+que \(X_n \xrightarrow{\mathcal{L}} X\), il faut et il suffit que
+\(F_n(x) \xrightarrow[n\to \infty]{} F(x)\) pour tout \(x\) en lequel
+\(F\) est continue.
+
+Notons que puisque la fonction \(F\) est continue à droite et
+croissante, l'ensemble des points où \(F\) est continue est l'ensemble
+\(D = \{x : F (x-) = F (x)\}\), et son complémentaire est au plus
+dénombrable. Ainsi, \(D\) est dense\footnote{Soient \(\Omega\) un espace
+  topologique et \(A\) une partie de \(\Omega\). On dit que \(A\) est
+  \emph{dense} dans \(\Omega\) si l'une des propriétés équivalentes est
+  satisfaite~: tout ouvert non vide de \(\Omega\) contient des éléments
+  de \(A\)\,; l'adhérence de \(A\) est égale à \(\Omega\)\,; tout point
+  de \(\Omega\) est adhérent à \(A\)\,; le complémentaire de \(A\) est
+  d'intérieur vide.} dans \(\mathbb{R}\).
+\end{proposition}
+
+\begin{preuve}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Supposons d'abord que \(X_n \xrightarrow{\mathcal{L}} X\). Soit
+  \(a \in \mathbb{R}\) tel que \(F(a-)=F(a)\). Pour tout
+  \(p \in \mathbb{N}^\ast\) et tout \(b \in \mathbb{R}\), il existe une
+  fonction \(f_{p,b}\) continue bornée sur \(\mathbb{R}\) telle que
+  \[ 1_{]-\infty,b]} \leq f_{p,b} \leq 1_{]-\infty,b + \frac{1}{p}]}.\]
+  Alors, par définition,
+  \(\mathbb{E}(f_{p,b}(X_n)) \to \mathbb{E}(f_{p,b}(X))\) quand \(n\)
+  tend vers l'infini. L'inégalité ci-dessus implique que
+  \(F_n(a) = \mathbb{P}(X_n \leq a) \leq \mathbb{E}(f_{p,a}(X_n))\) et
+  \(\mathbb{E}(f_{p,a}(X)) \leq F(a+1/p)\)\,; donc
+  \(\lim\sup_n F_n(a) \leq F(a+1/p)\) pour tout \(p\) et donc on a aussi
+  \(\lim\sup_n F_n(a) \leq F(a)\). On a également que
+  \(F_n(a) \geq \mathbb{E}(f_{p,a-1/p}(X_n))\) et
+  \(\mathbb{E}(f_{p,a-1/p}(X)) \geq F(a-1/p)\)\,; donc
+  \(\lim\inf_n F_n(a) \geq F(a-1/p)\) pour tout \(p\) et donc aussi
+  \(\lim\inf_n F_n(a) \geq F(a)\), puique \(F(a-)=F(a)\). Ces deux
+  résultats impliquent que \(F_n(a) \xrightarrow[n\to \infty]{} F(a)\).
+\item
+  Inversement, supposons \(F_n(x) \xrightarrow[n\to \infty]{} F(x)\)
+  pour tout \(x\in T\), où \(T\) est une partie dense de \(\mathbb{R}\).
+  Soit \(f\) une fonction continue bornée sur \(\mathbb{R}\) et
+  \(\varepsilon > 0\). Soient \(a,b \in T\) avec
+  \(F(a) \leq \varepsilon\) et \(F(b) \geq 1-\varepsilon\). Il existe
+  \(n_0\) tel que
+  \[ n\geq n_0 \Rightarrow \mathbb{P}(X_n\notin ]a,b]) = 1-F_n(b)+F_n(a) \leq 3\varepsilon.\]
+  La fonction \(f\) est uniformément continue sur \([a,b]\), donc il
+  existe un nombre fini de points \(a_0 = a < a_1 < \ldots < a_k = b\)
+  appartenant tous à \(T\), et tels que
+  \(|f(x) - f(a_i)|\leq \varepsilon\) si \(a_{i-1} \leq x \leq a_i\).
+  Donc \[ g(x) = \sum_{i=1}^k f(a_i)1_{]a_{i-1},a_i]}(x)\] vérifie
+  \(|f-g| \leq \varepsilon\) sur \(]a,b]\). Si \(M = \sup_x |f(x)|\), il
+  vient alors
+  \[|\mathbb{E}(f(X_n))-\mathbb{E}(g(X_n))| \leq M \mathbb{P}(X_n \notin [a,b]) + \varepsilon,\]
+  de même pour \(X\). Enfin,
+  \(\mathbb{E}(g(X_n)) = \sum_{i=1}^k f(a_i)(F_n(a_i) - F_n(a_{i-1})\),
+  et de même pour \(X\) par définition de \(g\). Comme
+  \((F_n(a_i))_{n \in \mathbb{N}^\ast}\) converge vers \(F(a_i)\) pour
+  tout \(i\), on en déduit l'existence de \(n_1\) tel que
+  \[ n\geq n_1 \Rightarrow |\mathbb{E}(g(X_n)) - \mathbb{E}(g(X))|\leq \varepsilon.\]
+  Finalement, on a
+  \[ n \geq \sup(n_0,n_1) \Rightarrow |\mathbb{E}(f(X_n))-\mathbb{E}(f(X))|\leq 3\varepsilon + 5 M \varepsilon .\]
+  Vu l'arbitraire sur \(\varepsilon\), on en déduit que
+  \(\mathbb{E}(f(X_n))\) converge vers \(\mathbb{E}(f(X))\), d'où le
+  résultat.
+\end{enumerate}
+
+\hfill$\blacksquare$
+\end{preuve}
+
+\addcontentsline{toc}{subsection}{Cas où \(X\) admet une densité}
+\begin{corollaire}[{Cas où \(X\) admet une
+densité}]\phantomsection\label{IV-cas-ouxf9-x-admet-une-densituxe9}
+
+Si la suite \((X_n)_{n\in\mathbb{N}^\ast}\) de variables aléatoires
+réelles converge en loi vers \(X\), et si la loi de \(X\) admet une
+densité, alors pour tous \(a< b\),
+\[ \mathbb{P}(X_n \in ]a,b]) \xrightarrow[n\to \infty]{} \mathbb{P}(X\in]a,b]).\]
+\end{corollaire}
+
+\begin{preuve}
+La fonction de répartition de \(X\) est alors continue en tout point.
+(Mais pas nécessairement celle des variables aléatoires
+\(X_n\).)\hfill$\blacksquare$
+\end{preuve}
+
+\section{Théorème central
+limite}\label{IV-thuxe9oruxe8me-central-limite}
+
+Ce théorème est aussi connu sous le nom de théorème de la limite
+centrale. Plus simplement, il apparaît souvent sous l'abréviation TCL.
+
+On considère une suite de variables aléatoire
+\((X_n)_{n \in \mathbb{N}^\ast}\) indépendantes, de même loi et de carré
+intégrable. On note \(m\) et \(\sigma^2\) l'espérance et la variance
+commune aux variables \(X_n\), et \[S_n = X_1 + \ldots + X_n\] ainsi
+(\(S_n = n M_n\)). On a vu que la loi des grands nombres assure que
+\(M_n\) converge vers \(m\) presque-sûrement et en moyenne. On va
+s'intéresser à la vitesse à laquelle cette convergence a lieu.
+
+Pour évaluer cette vitesse, c'est-à-dire trouver un équivalent de
+\(\frac{S_n}{n} - m\), on est amené à étudier la limite éventuelle de la
+suite \(n^\alpha (\frac{S_n}{n} - m)\) pour différentes valeurs de
+\(\alpha\)~: si \(\alpha\) est ``petit'' cette suite va encore tendre
+vers 0, et elle va ``exploser'' si \(\alpha\) est ``grand''. On peut
+espérer que pour une (et alors nécessairement une seule) valeur de
+\(\alpha\), cette suite converge vers une limite qui n'est ni infinie ni
+nulle.
+
+Il se trouve que la réponse à cette question a un aspect ``négatif''~:
+la suite \(n^\alpha (\frac{S_n}{n} - m)\) ne converge au sens
+presque-sûr, ou même en probabilité, pour aucune valeur de \(\alpha\).
+Elle a aussi un aspect ``positif''~: cette suite converge, au sens de la
+convergence en loi, pour la même valeur \(\alpha = 1/2\) quelle que soit
+la loi des \(X_n\), et toujours vers une loi normale.
+
+Ce résultat, qui peut sembler miraculeux, a été énoncé par Laplace
+(1749-1827) et démontré beaucoup plus tard par Lyapounov (1901). Il
+montre le caractère universel de la loi normale en probabilités (d'où
+son nom).
+
+\addcontentsline{toc}{subsection}{central limite (TCL)}
+\begin{theoreme}[{central limite (TCL)}]\phantomsection\label{IV-TCL}
+
+Si les \(X_n\) sont des variables aléatoires réelles, indépendantes et
+de même loi, de carré intégrable, d'espérance \(m\) et de variance
+\(\sigma^2 >0\), alors les variables
+\[ \frac{S_n -nm}{\sigma \sqrt{n}}\] convergent en loi vers une variable
+aléatoire de loi \(\mathcal{N}(0,1)\).
+
+En d'autres termes, \(\sqrt{n}(M_n - m)\) converge vers une variable
+normale de loi \(\mathcal{N}(0,\sigma^2)\).
+\end{theoreme}
+
+\begin{preuve}
+Soit \(\phi\) la fonction caractéristique de \(X_n - m\), et
+\(Y_n = \frac{S_n -nm}{\sigma \sqrt{n}}\). Comme les \(X_n\) sont
+indépendantes, la \protect\hyperref[IV-fct_carac_sum]{proposition ---
+somme (p.~\pageref*{IV-fct_carac_sum})} entraîne que la fonction
+caractéristique de \(Y_n\) est \begin{align*}
+    \phi_{Y_n}(u) & = \phi_{\frac{1}{\sigma\sqrt{n}}\sum_{j=1}^n(X_j-m)}(u) \\
+                  & = \phi_{\sum_{j=1}^n(X_j-m)}\left(\frac{u}{\sigma\sqrt{n}}\right) \\
+                  & = \prod_{j=1}^n \phi \left(\frac{u}{\sigma\sqrt{n}}\right)\\
+                  & = \phi\left(\frac{u}{\sigma\sqrt{n}}\right)^n
+\end{align*} Comme \(\mathbb{E}(X_n -m) = 0\) et
+\(\mathbb{E}((X_n-m)^2) = \sigma^2\), la
+\protect\hyperref[IV-fct_carac_deriv]{proposition --- fonction
+caractéristique et moments (p.~\pageref*{IV-fct_carac_deriv})} entraîne
+que \[\phi'(0) = 0 \text{     et } \phi''(0) = -\sigma^2\] Si on fait le
+développement de Taylor à l'ordre 2 au voisinage de zéro, on obtient
+\[\phi(u) = 1 - \frac{u^2\sigma^2}{2} + u^2 h(|u|),\] où \(h(u) \to 0\)
+quand \(u \to 0\). On a ainsi \begin{align*}
+    \phi_{Y_n}(u) & = \phi\left(\frac{u}{\sigma\sqrt{n}}\right)^n \\
+                  & = e^{n\log \phi\left(\frac{u}{\sigma\sqrt{n}}\right)} \\
+                  & = e^{n\log (1 - \frac{u^2}{2n} + \frac{u^2}{n\sigma^2} h(\frac{u}{\sigma\sqrt{n}}))}
+\end{align*} où \(\log\) désigne la valeur principale du logarithme
+complexe\footnote{voir par exemple
+  https://fr.wikipedia.org/wiki/Logarithme\_complexe} (elle vaut 0 au
+point 1 et est continue dans le cercle complexe de centre 1 et de rayon
+1/2 et admet le même développement limité au voisinage de \(z=1\) que le
+logarithme réel). Comme \(\phi(0) = 1\) et que \(\phi\) est continue en
+0, on a que pour \(u\) fixé et \(n\) assez grand,
+\[\left| \phi\left(\frac{u}{\sigma\sqrt{n}}\right)-1\right| \leq 1/2.\]
+En faisant \(n \to \infty\), on obtient
+\[\lim_{n \to \infty} \phi_n(u) = \exp -\frac{u^2}{2}\] Le
+\protect\hyperref[IV-levytheorem]{théorème de
+Lévy (p.~\pageref*{IV-levytheorem})} implique alors que \(Y_n\) converge
+en loi vers \(Z\) de fonction caractéristique \(\phi_Z(u) = e^{-u^2/2}\)
+où l'on reconnaît la fonction caractéristique de la loi
+\(\mathcal{N}(0,1)\).\hfill$\blacksquare$
+\end{preuve}
+
+\addcontentsline{toc}{subsection}{Conséquence}
+\begin{remarque}[{Conséquence}]\phantomsection\label{IV-consuxe9quence}
+
+On peut déduire de ce résultat que \(n^\alpha (\frac{S_n}{n} - m)\)
+converge vers 0 (resp. \(+\infty\)) en probabilité lorsque
+\(\alpha < 1/2\) (resp. \(\alpha > 1/2\)).
+\end{remarque}
+
+\subsection{Exemple~: convergence des lois
+binomiales}\label{IV-exemple-convergence-des-lois-binomiales}
+
+Supposons que \(S_n\) suive une loi binomiale \(\mathcal{B}(p,n)\). Cela
+revient à dire que \(S_n\) a la même loi qu'une somme \(X_1+\ldots+X_n\)
+de \(n\) variables aléatoires \(X_i\) indépendantes de loi
+\(\mathcal{B}(p,1)\), i.e.~\(\mathbb{P}(X_i= 1) = p\) et
+\(\mathbb{P}(X_i= 0) = 1- p\). On a alors \(m=p\) et
+\(\sigma^2= p(1-p)\).
+
+On veut calculer \(\mathbb{P}(S_n \leq x)\) pour \(x\) fixé et \(n\)
+grand.
+
+Si \(p\) est petit de sorte que \(\theta = np\) ne soit pas trop grand
+(en pratique, \(\theta \leq 5\) convient), on peut utiliser
+l'approximation par une loi de Poisson, vue en CPGE. Si \(p\) est très
+proche de 1, de sorte que \(\theta = n(1 - p)\) soit comme ci-dessus,
+alors \(n - S_n\) suit à son tour une loi proche de la loi de Poisson de
+paramètre \(\theta\).
+
+Dans les autres cas, on utilise la loi des grands nombres et le théorème
+central limite~: \begin{align*}
+\frac{S_n}{n} & \xrightarrow{\mathbb{P}} p,\\
+\frac{S_n - np}{\sqrt{n p(1-p)}} & \xrightarrow{\mathcal{L}} Y \sim \mathcal{N}(0,1)
+\end{align*}
+
+Si on désigne par \(\Phi\) la fonction de répartition de la loi
+\(\mathcal{N}(0,1)\), il vient
+\[\mathbb{P}(S_n \leq x) \approx \Phi \left(\frac{x - np}{\sqrt{n p(1-p)}}\right)\]
+
+Imaginons que l'on lance 1000 fois une pièce (non truquée). On cherche
+la probabilité d'obtenir plus de 545 fois le côté Face. Le calcul exact
+utilisant les lois binomiales est extrêmement lourd. Le résultat
+ci-dessus nous donne une très bonne approximation. On a
+\[ \mathbb{P}(S_{1000} > 545) = \mathbb{P}\left(\frac{S_{1000} - 500}{\sqrt{250}} > \frac{45}{\sqrt{250}}\right) \approx \int_{\frac{45}{\sqrt{250}}}^{+\infty} \frac{1}{\sqrt{2\pi}} e^{-x^2/2} dx.\]
+
+Cette dernière intégrale se calcule numériquement (on trouve encore des
+abaques où les valeurs de \(\Phi\) sont tabulées) et on obtient
+\[ \mathbb{P}(S_{1000} > 545) \approx 1 - \Phi(2,84) \approx 0,0023.\]
+
+\runinhead{Exercice -- Surbooking (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Surbooking}\label{IV-surbooking}
+400 places dans un avion, 420 billets vendus, 8\% de taux de
+non-présentation~: quelle probabilité de surbooking\,? On utilisera une
+approximation judicieuse.\solref{IV-answer-surbooking}
+
+Le \protect\hyperref[IV-TCL]{théorème (p.~\pageref*{IV-TCL})} admet une
+version multidimensionnelle, de preuve similaire. On considère des
+vecteurs aléatoires \(X_n\) à valeurs dans \(\mathbb{R}^d\),
+indépendants et de même loi, dont les composantes sont de carré
+intégrable. On a un vecteur espérance \(m = E(X_n)\), et une matrice de
+covariance \(C = (c_{ij} )_{i,j=1,\ldots,d}\) avec
+\(c_ij = \text{Cov}(X_i,X_j)\). On peut alors énoncer le TCL
+multi-dimensionnel.
+
+\addcontentsline{toc}{subsection}{central limite multi-dimensionnel}
+\begin{theoreme}[{central limite
+multi-dimensionnel}]\phantomsection\label{IV-central-limite-multi-dimensionnel}
+
+Les vecteurs aléatoires \(\frac{S_n-nm}{\sqrt{n}}\) convergent en loi
+vers un vecteur aléatoire gaussien centré (i.e.~d'espérance nulle), de
+matrice \(C\).
+\end{theoreme}
+
+\addcontentsline{toc}{subsection}{Vitesse de convergence}
+\begin{remarque}[{Vitesse de
+convergence}]\phantomsection\label{IV-vitesse-de-convergence}
+
+Il est important de noter ici que la vitesse de convergence ne dépend
+pas de la dimension des vecteurs \(X_n\).
+\end{remarque}
+
+\chapter{Annexe}\label{IV-annexe}
+
+\section{Fonctions
+caractéristiques}\label{IV-fonctions-caractuxe9ristiques}
+
+Dans ce paragraphe, nous introduisons un outil important en calcul des
+probabilités~: il s'agit de ce que l'on appelle \emph{la fonction
+caractéristique} d'une variable aléatoire, et qui dans d'autres branches
+des mathématiques s'appelle aussi \emph{la transformée de Fourier}. Elle
+nous sera notamment nécessaire, via le théorème de Lévy, pour démontrer
+le théorème central limite. L'essentiel de cette section peut être
+considéré hors programme, dans le sens où, bien que très utile en
+pratique, sa connaissance ne sera pas évaluée à l'examen.
+
+On notera \(< x, y >\) le produit scalaire de deux vecteurs de
+\(\mathbb{R}^n\) . Si \(u \in \mathbb{R}^n\) , la fonction (complexe)
+\(x \mapsto e^{i < u,x>}\) est continue, de module 1. Donc si \(X\) est
+un vecteur aléatoire à valeurs dans \(\mathbb{R}^n\) , nous pouvons
+considérer \(e^{i < u,X>}\) comme une variable aléatoire à valeurs
+complexes. Ses parties réelle \(Y = \cos(< u, X>)\) et imaginaire
+\(Z = \sin(< u, X>)\) sont des variables aléatoires réelles. Ces
+variables aléatoires réelles sont de plus bornées par 1, donc elles
+admettent une espérance. Il est alors naturel d'écrire que l'espérance
+de \(e^{i < u,x>}\) est
+\[\mathbb{E}(e^{i < u,X>}) = \mathbb{E}(Y) + i \mathbb{E}(Z) = \mathbb{E}(\cos< u, X>) + i\mathbb{E}(\sin< u, X>) \]
+
+\addcontentsline{toc}{subsection}{Fonction caractéristique}
+\begin{definition}[{Fonction
+caractéristique}]\phantomsection\label{IV-fonction-caractuxe9ristique}
+
+Si \(X\) est un vecteur aléatoire à valeurs dans \(\mathbb{R}^n\), sa
+\emph{fonction caractéristique} est la fonction \(\phi_X\) de
+\(\mathbb{R}^n\) dans \(\mathbb{C}\) définie par
+\[ \phi_X(u) = \mathbb{E}(e^{i < u,X>}) = \int_{\mathbb{R}^n} e^{i < u,x>} \mathbb{P}_X(dx).\]
+\end{definition}
+
+\addcontentsline{toc}{subsection}{Interprétation}
+\begin{remarque}[{Interprétation}]\phantomsection\label{IV-interpruxe9tation-1}
+
+La fonction caractéristique ne dépend en fait \textbf{que de la loi
+\(\mathbb{P}_X\) de \(X\)}~: c'est la ``transformée de Fourier'' de la
+loi \(\mathbb{P}_X\).
+
+Nous verrons que cette fonction porte bien son nom, au sens où elle
+caractérise la loi \(\mathbb{P}_X\). C'est une notion qui, de ce point
+de vue, généralise la fonction génératrice
+\(G_X(s) = \mathbb{E}(s^X), \, s \in [0,1]\), vue en CPGE dans le cas
+discret. Elle vérifie \[\phi_X(u) = G_X(e^{iu}) = \mathbb{E}(e^{iuX}) \]
+pour une variable \(X\) à valeurs dans \(\mathbb{N}\).
+\end{remarque}
+
+\addcontentsline{toc}{subsection}{Propriétés de la fonction
+caractéristique}
+\begin{proposition}[{Propriétés de la fonction
+caractéristique}]\phantomsection\label{IV-propriuxe9tuxe9s-de-la-fonction-caractuxe9ristique}
+
+\(\phi_X\) est de module inférieur à 1, continue, avec
+\[ \phi(0) = 1 ;\,\,\, \phi_X(-u) = \overline{\phi_X(u)}.\]
+\end{proposition}
+
+\begin{preuve}
+\(|z|\) désigne le module d'un nombre complexe \(z\).
+
+Comme \(\mathbb{E}(Y)^2 \leq \mathbb{E}(Y^2)\) pour toute variable
+réelle \(Y\), on a~:
+\[ |\phi_X(u)|^2 = \mathbb{E}(\cos< u, X>)^2 + \mathbb{E}(\sin< u, X>)^2 \leq \mathbb{E}(\cos^2< u, X> + \sin^2< u, X>) = 1.\]
+
+Pour montrer la continuité, considérons une suite
+\(u_p \xrightarrow[p \to \infty]{} u\). Il y a convergence simple de
+\(e^{i < u_p,X>}\) vers \(e^{i < u,X>}\). Comme ces variables aléatoires
+sont de module inférieur à 1, le théorème de convergence dominée assure
+que \(\phi_X(u_p) \xrightarrow[p \to \infty]{} \phi_X(u)\). \(\phi_X\)
+est donc continue.\hfill$\blacksquare$
+\end{preuve}
+
+\addcontentsline{toc}{subsection}{Transformation linéaire}
+\begin{proposition}[{Transformation
+linéaire}]\phantomsection\label{IV-fct_carac_vec}
+
+Si \(X\) est un vecteur aléatoire à valeurs dans \(\mathbb{R}^n\), si
+\(a \in \mathbb{R}^m\) et \(A\) est une matrice réelle de taille
+\(m \times n\), alors
+\[ \phi_{a+AX}(u) = e^{i < u,a>} \phi_X (A^t u), \forall u \in \mathbb{R}^m\]
+\end{proposition}
+
+\begin{preuve}
+Nous avons \(e^{i< u, a + AX>} = e^{i < u,a>}e^{i <A^tu, X>}\). En
+effet, \(< u, A X> = < A^t u, X>\). On prend ensuite les espérances pour
+obtenir le résultat.\hfill$\blacksquare$
+\end{preuve}
+
+\begin{exemple}\phantomsection\label{IV-ex}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(X\) suit une loi binomiale \(\mathcal{B}(n,p)\)~:
+  \(\phi_X(u) = (p e^{iu}+ 1- p)^n\).
+\item
+  \(X\) suit une loi de Poisson \(\mathcal{P}(\theta)\)~:
+  \(\phi_X(u) = e^{\theta (e^{iu}-1)}\).
+\item
+  \(X\) suit une loi uniforme
+  \(\mathcal{U}_{[a,b]}\)~:\(\phi_X(u) = \frac{e^{iua} - e^{iub}}{iu(b-a)}\).
+\item
+  \(X\) suit une loi exponentielle \(\mathcal{E}(\lambda)\),
+  \(\lambda > 0\)~: \(\phi_X(u) = \frac{\lambda}{\lambda - iu}\).
+\item
+  \(X\) suit une loi normale \(\mathcal{N}(0,1)\)~:
+  \(\phi_X(u) = e^{-u^2/2}\). (calcul ci-dessous)
+\item
+  \(X\) suit une loi normale \(\mathcal{N}(\mu,\sigma^2)\)~:
+  \(\phi_X(u) = e^{iu\mu -u^2\sigma^2/2}\). (application directe de
+  \protect\hyperref[IV-fct_carac_vec]{la proposition
+  ci-dessus (p.~\pageref*{IV-fct_carac_vec})})
+\end{enumerate}
+\end{exemple}
+
+\subsection{Fonction caractéristique d'une variable
+gaussienne}\label{IV-fctcaracgauss}
+
+Soit \(X \sim \mathcal{N}(0,1)\). On a \begin{align*}
+\phi_X(u) = \mathbb{E}(e^{iuX}) &= \int_\mathbb{R}e^{iux}\frac{1}{\sqrt{2\pi}}e^{-x^2/2}dx \\
+                          &= \int_\mathbb{R}\frac{\cos(ux)}{\sqrt{2\pi}}e^{-x^2/2}dx + \int_\mathbb{R}\frac{i\sin(ux)}{\sqrt{2\pi}}e^{-x^2/2}dx
+\end{align*} Comme \(x \mapsto \frac{\sin(ux)}{\sqrt{2\pi}}e^{-x^2/2}\)
+est impaire et intégrable, son intégrale est nulle, d'où
+\[\phi_X(u) = \int_\mathbb{R}\frac{\cos(ux)}{\sqrt{2\pi}}e^{-x^2/2}dx.\]
+D'après la \protect\hyperref[IV-fct_carac_deriv]{proposition ---
+fonction caractéristique et moments (p.~\pageref*{IV-fct_carac_deriv})},
+on peut dériver les deux membres par rapport à \(u\), et on obtient
+\[\phi'_X(u) = \frac{1}{\sqrt{2\pi}}\int_\mathbb{R}-x\sin(ux)e^{-x^2/2}dx\]
+puis par intégration par parties
+\[\phi'_X(u) = -\frac{1}{\sqrt{2\pi}}\int_\mathbb{R}u\cos(ux)e^{-x^2/2}dx = -u\phi_X(u).\]
+Ainsi, \(\phi_X\) satisfait à l'équation différentielle
+\(\phi'_X(u) = -u\phi_X(u)\), dont la solution générale est
+\[\phi_X(u) = C e^{-u^2/2}.\] Comme \(\phi_X(0) = 1,\) on en déduit
+finalement que \[\phi_X(u) = e^{-u^2/2}.\]
+
+L'intérêt majeur de la fonction caractéristique réside dans le fait
+qu'elle caractérise la loi de la variable aléatoire (d'où son nom).
+
+\addcontentsline{toc}{subsection}{Caractérisation}
+\begin{theoreme}[{Caractérisation}]\phantomsection\label{IV-caracfc}
+
+La fonction caractéristique \(\phi_X\) caractérise la loi du vecteur
+aléatoire \(X\). Ainsi, si deux vecteurs aléatoires \(X\) et \(Y\) ont
+même fonction caractéristique, ils ont même loi.
+\end{theoreme}
+
+\begin{preuve}
+Soient les fonctions suivantes avec \(\sigma > 0\)~:
+\[ f_\sigma (x) = \frac{1}{(2\pi \sigma^2)^{n/2}}\exp\left(-\frac{|x|^2}{2\sigma^2}\right) \text{ et } \widehat{f}_\sigma (u)= \exp\left(-\frac{|u|^2\sigma^2}{2}\right).\]
+On note que \(f_\sigma\) est la densité d'un vecteur gaussien \(Z\) de
+dimension \(n\), centré et de matrice de covariance \(\sigma^2 I_n\),
+autrement dit dont les composantes sont indépendantes, centrées, de
+variances \(\sigma^2\).
+
+On a \begin{align*}
+\mathbb{E}(e^{i < u,Z>}) = \int f_\sigma (x) e^{i < u,x>} dx &= \int_{\mathbb{R}^n} \prod_{j=1}^n \frac{1}{\sqrt{2\pi \sigma^2}}\exp\left(-\frac{x_j^2}{2\sigma^2}+iu_j x_j\right) dx_1\ldots dx_n \\
+                                  &= \prod_{j=1}^n \int_{\mathbb{R}} \frac{1}{\sqrt{2\pi \sigma^2}}\exp\left(-\frac{t^2}{2\sigma^2}+iu_j t\right) dt \\
+                                  &= \prod_{j=1}^n e^{-u_j^2\sigma^2/2}\\
+                                  & = \widehat{f}_\sigma(u)
+\end{align*} d'après l'exemple 5 \href{ex}{ci-dessus} et en utilisant le
+théorème de Fubini. On remarque ainsi que
+\[ f_\sigma (u-v) = \frac{1}{(2\pi \sigma^2)^{n/2}} \widehat{f}_{\sigma}\left(\frac{u-v}{\sigma^2}\right) = \frac{1}{(2\pi \sigma^2)^{n/2}} \int f_\sigma (x) e^{i < u -v ,x>/\sigma^2} dx.\]
+
+Supposons que \(X\) et \(Y\) admettent la même fonction caractéristique
+\(\phi_X = \phi_{Y}\). En utilisant le théorème de Fubini, on a
+\begin{align*}
+\mathbb{E}_X(f_\sigma (X-v)) &= \int f_\sigma (u-v) \mathbb{P}_X (du) \\
+                       &= \int_{\mathbb{R}^n} \frac{1}{(2\pi \sigma^2)^{n/2}} \left( \int_{\mathbb{R}^n} f_\sigma (x) e^{i < u -v ,x>/\sigma^2} dx \right) \mathbb{P}_X (du)\\
+                       &= \int_{\mathbb{R}^n} f_\sigma (x) \frac{1}{(2\pi \sigma^2)^{n/2}} \left( \int_{\mathbb{R}^n}  e^{i < u ,x/\sigma^2>} \mathbb{P}_X(du) \right) e^{-i < v ,x>/\sigma^2} dx\\
+                       &= \int_{\mathbb{R}^n} f_\sigma (x) \frac{1}{(2\pi \sigma^2)^{n/2}} \phi_X\left(\frac{x}{\sigma^2}\right) e^{-i < v ,x>/\sigma^2} dx,
+\end{align*}
+
+et la même égalité reste vraie pour \(\mathbb{P}_{Y}\). On en déduit que
+\[\mathbb{E}(g(X)) = \int g(u) \mathbb{P}_X (du) = \int g(u) \mathbb{P}_Y (du) = \mathbb{E}(g(X'))\]
+pour toute fonction \(g\) de l'espace vectoriel de fonction engendrées
+par \(u \mapsto f_\sigma (u-v)\).
+
+D'après le théorème de Stone-Weiertrass\footnote{voir par exemple
+  Simmons (\protect\hyperlink{refIV-Simmons}{2003}) p.160.}, cet espace
+est dense dans l'ensemble \(C_0\) des fonctions continues sur
+\(\mathbb{R}^n\) et ayant une limite nulle à l'infini, pour la topologie
+de la convergence uniforme (la norme est le sup sur \(\mathbb{R}^n\)).
+
+Par suite, \(\mathbb{E}(g(X)) = \mathbb{E}(g(X'))\) pour toute fonction
+\(g \in C_0\). Comme l'indicatrice de tout ouvert est limite croissante
+de fonctions de \(C_0\), on en déduit que
+\(\mathbb{P}_X(A) = \mathbb{E}(1_A (X))\) est égal à
+\(\mathbb{P}_{X'}(A) = \mathbb{E}(1_A (X'))\) pour tout ouvert \(A\), ce
+qui implique \(P_X = P_{X'}\).\hfill$\blacksquare$
+\end{preuve}
+
+La fonction caractéristique offre également un moyen commode de
+caractériser l'indépendance.
+
+\begin{corollaire}\phantomsection\label{IV-corollaire}
+Soit \(X = (X_1,\ldots,X_n)\) un vecteur aléatoire à valeurs dans
+\(\mathbb{R}^n\). Ses composantes \(X_i\) sont indépendantes si et
+seulement si pour tous \(u_1, \ldots, u_n \in \mathbb{R}\),
+\[ \phi_X(u_1,\ldots,u_n) = \prod_{j=1}^n \phi_{X_j}(u_j) \] où
+\(\phi_X\) désigne la fonction caractéristique du vecteur aléatoire
+\(X\), et \(\phi_{X_j}\) celle de la composante \(X_j\) pour chaque
+\(j\).
+\end{corollaire}
+
+\begin{preuve}
+On a \(< u,X> = \sum_{j=1}^n u_j X_j\). Si les \(X_i\) sont
+indépendantes, et comme \(e^{i < u,x>} = \prod_j e^{i u_j x_j}\), nous
+obtenons directement le résultat en utilisant la
+\href{Probabilité\%20II.pdf\%20\#indep_fct}{proposition} (valable dans
+le cas général) qui montre que l'espérance du produit de fonctions de
+variables aléatoires indépendantes est égal au produit des espérances.
+
+Supposons inversement qu'on ait
+\(\phi_X (u_1,\ldots,u_n) = \prod_{j=1}^n \phi_{X_j}(u_j)\). On peut
+alors construire des variables aléatoires \(X'_j\) indépendantes, telles
+que \(X'_j\) et \(X_j\) aient même loi pour tout \(j\) et donc telles
+que \(\phi_{X'_j} = \phi_{X_j}\). Si \(X' = (X'_1,\ldots,X'_n)\), on a
+donc \(\phi_{X'} = \phi_X\). Donc \(X\) et \(X'\) ont même loi, ce qui
+entraîne que pour tous boréliens \(A_j\), on ait
+\[ \mathbb{P}(\bigcap_j \{X_j \in A_j\}) = \mathbb{P}(\bigcap_j \{X'_j \in A_j\}) = \prod_j \mathbb{P}(\{X'_j \in A_j\}) = \prod_j \mathbb{P}(\{X_j \in A_j\})\]
+d'où l'indépendance.\hfill$\blacksquare$
+\end{preuve}
+
+\addcontentsline{toc}{subsection}{Somme}
+\begin{proposition}[{Somme}]\phantomsection\label{IV-fct_carac_sum}
+
+Si \(X\) et \(Y\) sont deux vecteurs aléatoires indépendants à valeurs
+dans \(\mathbb{R}^n\), la fonction caractéristique de la somme \(X+Y\)
+est donnée par \[ \phi_{X+Y} = \phi_X\phi_Y\]
+\end{proposition}
+
+\begin{preuve}
+Comme \(e^{i< u, X+Y>}=e^{i< u, X>}e^{i< u, Y>}\), il suffit d'appliquer
+la \href{Probabilité\%20II.pdf\%20\#indep_fct}{proposition} déjà
+utilisée dans la preuve du corollaire ci-dessus.\hfill$\blacksquare$
+\end{preuve}
+
+\subsection{Exemples~:}\label{IV-exemples}
+
+Soient \(X\) et \(Y\) deux variables aléatoires réelles indépendantes et
+\(Z = X+Y\)~:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Si \(X\) suit la loi normale \(\mathcal{N}(m,\sigma^2)\) et \(Y\) suit
+  \(\mathcal{N}(m',\sigma'^2)\), alors \(Z\) suit une loi
+  \(\mathcal{N}(m+m',\sigma^2+\sigma'^2)\), d'après
+  l'\protect\hyperref[IV-ex]{exemple ci-dessus (p.~\pageref*{IV-ex})}
+  point 6. et la \protect\hyperref[IV-fct_carac_sum]{proposition
+  ci-dessus (p.~\pageref*{IV-fct_carac_sum})}.
+\item
+  Si \(X\) et \(Y\) suivent des lois de Poisson de paramètres \(\theta\)
+  et \(\theta'\), alors \(Z\) suit une loi de Poisson de paramètre
+  \(\theta + \theta'\), d'après l'\protect\hyperref[IV-ex]{exemple
+  ci-dessus (p.~\pageref*{IV-ex})} point 2. et la
+  \protect\hyperref[IV-fct_carac_sum]{proposition
+  ci-dessus (p.~\pageref*{IV-fct_carac_sum})}.
+\item
+  Si \(X\) suit une loi binomiale \(\mathcal{B}(n,p)\) et \(Y\) la loi
+  biomiale \(\mathcal{B}(m,p)\), alors \(Z\) suit une loi binomiale
+  \(\mathcal{B}(n+m,p)\), d'après l'\protect\hyperref[IV-ex]{exemple
+  ci-dessus (p.~\pageref*{IV-ex})} point 1. et la
+  \protect\hyperref[IV-fct_carac_sum]{proposition
+  ci-dessus (p.~\pageref*{IV-fct_carac_sum})}.
+\end{enumerate}
+
+\addcontentsline{toc}{subsection}{Fonction caractéristique et moments}
+\begin{proposition}[{Fonction caractéristique et
+moments}]\phantomsection\label{IV-fct_carac_deriv}
+
+Soit \(X\) un vecteur aléatoire de \(\mathbb{R}^n\). Si la variable
+\(|X|^m\) (où \(|\cdot|\) désigne la norme euclidienne) est intégrable
+pour un entier \(m\), la fonction \(\phi_X\) est \(m\) fois continûment
+différentiable sur \(\mathbb{R}^n\) et pour tout choix des indices
+\(i_1,\ldots, i_m\),
+\[ \frac{\partial^m}{\partial u_{i_1}\ldots \partial u_{i_m}} \phi_X(u) = i^m \mathbb{E}(e^{i < u,X >}X_{i_1}\ldots X_{i_m}),\]
+où les \(X_j\) sont les composantes de \(X\).
+\end{proposition}
+
+\begin{preuve}
+Le résultat se démontre par application itérée du théorème de dérivation
+sous le signe somme.\hfill$\blacksquare$
+\end{preuve}
+
+\begin{remarque}\phantomsection\label{IV-remarque}
+En prenant \(u=0\) dans la
+\protect\hyperref[IV-fct_carac_sum]{proposition ---
+somme (p.~\pageref*{IV-fct_carac_sum})}, la formule permet de calculer
+\(\mathbb{E}(X_{i_1}\ldots X_{i_m})\) en fonction des dérivées à
+l'origine de \(\phi_X\), autrement dit de calculer tous les moments du
+vecteur \(X\), s'ils existent. Par exemple, si \(X\) est à valeurs
+réelles et est intégrable (respectivement de carré intégrable), on a
+\[\mathbb{E}(X) = i \phi'_X(0), \,\,\,(\text{resp. } \mathbb{E}(X^2) = \phi"_X(0))\]
+
+On donne ici la définition générale d'un vecteur gaussien, qui nous sera
+utile pour la démonstration du théorème central limite.
+\end{remarque}
+
+\addcontentsline{toc}{subsection}{Vecteur Gaussien (cas général)}
+\begin{definition}[{Vecteur Gaussien (cas
+général)}]\phantomsection\label{IV-gauss_vec}
+
+Un vecteur aléatoire \(X=(X_1,\ldots,X_n)\) à valeurs dans
+\(\mathbb{R}^n\) est dit gaussien si toute combinaison linéaire de ses
+composantes, soit \(\sum_{j=1}^n a_j X_j\) où \(a_j \in \mathbb{R}\),
+suit une loi normale uni-dimensionnelle (éventuellement dégénérée, par
+exemple si on prend \(a_j = 0\) pour tout j).
+\end{definition}
+
+\addcontentsline{toc}{subsection}{Cas gaussien}
+\begin{theoreme}[{Cas
+gaussien}]\phantomsection\label{IV-fct_carac_gauss}
+
+\(X\) est un vecteur gaussien si et seulement si sa fonction
+caractéristique s'écrit \[\phi_X(u) = e^{i< u,m> - \frac{1}{2}< u,Cu>}\]
+où \(m = \mathbb{E}(X) \in \mathbb{R}^n\) et \(C\) est la matrice de
+covariance de \(X\) qui est donc semi-définie positive.
+\end{theoreme}
+
+\begin{preuve}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Supposons \(\phi_X(u) = e^{i< u,m> - \frac{1}{2}< u,Cu>}\). Pour toute
+  combinaison linéaire \(Y = \sum_j a_j X_j = < a, X >\), et pour tout
+  \(v \in \mathbb{R}\), on a
+  \[ \phi_Y(v) = \phi_X(va) = e^{iv< a ,m> - \frac{v^2}{2}< a,Ca>}\]
+  donc \(Y\) suit la loi \(\mathcal{N}(< a, m>, < a, Ca>)\).
+\item
+  Inversement, soit \(C\) la matrice de covariance de \(X\) et \(m\) son
+  vecteur moyenne. Si \(Y = < a, X > = \sum_{j=1}^n a_j X_j\) avec
+  \(a\in\mathbb{R}^n\), un calcul simple montre
+  \[ \mathbb{E}(Y) = < a, m >, \mathbb{V}(Y) = < a, Ca> \] Par
+  hypothèse, \(Y\) suit une loi normale donc vu le point 6. de
+  l'\protect\hyperref[IV-ex]{exemple plus haut (p.~\pageref*{IV-ex})},
+  sa fonction caractéristique est
+  \[ \phi_Y(v) = e^{iv< a ,m> - \frac{v^2}{2}< a,Ca>} \] Mais
+  \(\phi_Y(1) = \phi_{< a,X>} (1) = \mathbb{E}(e^{i < a, X>}) = \phi_X(a)\),
+  d'où le résultat.
+\end{enumerate}
+
+\hfill$\blacksquare$
+\end{preuve}
+
+Le théorème suivant caractérise la convergence en loi à l'aide des
+fonctions caractéristiques. C'est un critère extrêmement utile dans la
+pratique.
+
+\addcontentsline{toc}{subsection}{de Lévy}
+\begin{theoreme}[{de Lévy}]\phantomsection\label{IV-levytheorem}
+
+Soit \((X_n)_{n \in \mathbb{N}^\ast}\) une suite de vecteurs aléatoires
+à valeurs dans \(\mathbb{R}^d\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Si la suite \((X_n)_{n \in \mathbb{N}^\ast}\) converge en loi vers
+  \(X\), alors \(\phi_{X_n}\) converge simplement vers \(\phi_X\).
+\item
+  Si les \(\phi_{X_n}\) convergent simplement vers une fonction
+  (complexe) \(\phi\) sur \(\mathbb{R}^d\) et si cette fonction est
+  \textbf{continue} en 0, alors c'est la fonction caractéristique d'une
+  variable aléatoire \(X\) et \(X_n \xrightarrow{\mathcal{L}} X\).
+\end{enumerate}
+\end{theoreme}
+
+\begin{preuve}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  On remarque que \(\phi_{X_n}(u) = \mathbb{E}(g_u(X_n))\) et
+  \(\phi_X(u) = \mathbb{E}(g_u(X))\) où \(g_u\) est la fonction continue
+  bornée \(g_u(x) = e^{i < u,x>}\). On applique alors la
+  \protect\hyperref[IV-defconvloi]{définition (p.~\pageref*{IV-defconvloi})}.
+\item
+  Se reporter à Jacod and Protter (\protect\hyperlink{refIV-Jacod}{2003}).
+\end{enumerate}
+
+\hfill$\blacksquare$
+\end{preuve}
+
+\chapter{Exercices}\label{IV-exercices}
+
+\section{Inégalités de
+concentration}\label{IV-inuxe9galituxe9s-de-concentration}
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{IV-idc1}
+Soit \((X_n)_n\) une suite de variables aléatoires indépendantes et
+identiquement distribuées d'espérance \(\mathbb{E}(X_i) = m\) et de
+variance \(\mathbb{V}(X_i) = \sigma^2 \leq 1\). Montrer que pour tout
+\(\delta \in \left]0,1\right[\), avec probabilité au moins \(1-\delta\)
+on a
+\[\left|\frac{1}{n}\sum_{i=1}^n X_i - m \right| \leq \sqrt{\frac{1}{\delta n}}\]
+
+On peut trouver des bornes à décroissance beaucoup plus rapide dans des
+cas particuliers.\solref{IV-answer-idc1}
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{IV-idc2}
+On suppose désormais que les \(X_i\) sont de loi
+\(\mathcal{N}(m, \sigma^2 )\).
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi})}
+\item
+  On pose pour \(u \in \mathbb{R}: M(u) = \mathbb{E}(e^{u(X_1 -m)})\).
+  Calculer \(M (u)\).
+\item
+  On pose \(S_n = X_1 + \ldots + X_n\) . Montrer que
+  \(\forall a \in \mathbb{R}, \forall u \in \mathbb{R}_+\),
+  \[\mathbb{P}(S_n - nm > a) \leq e^{-ua} (M(u))^n,\] et que
+  \(\forall a \in \mathbb{R}, \forall u \in \mathbb{R}_-\),
+  \[\mathbb{P}(S_n - nm < -a) \leq e^{ua} (M(u))^n.\]
+\item
+  Soit \(Y_n =\frac{S_n}{n}\). Montrer que \(\forall \varepsilon >0\),
+  \[\mathbb{P}(|Y_n - m| > \varepsilon) \leq 2 \exp\left(\frac{-n\varepsilon^2}{2\sigma^2}\right).\]
+  Cette inégalité est appelée inégalité de Chernov.
+\end{enumerate}
+
+On peut dériver ce type d'inégalités pour différentes lois de
+probabilité. On voit qu'ici la concentration auprès de la moyenne se
+fait à vitesse exponentielle. On a le même type de résultats pour la loi
+de Bernoulli par exemple ce qui est très utile en apprentissage
+statistique dans les problèmes de classification.\solref{IV-answer-idc2}
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{IV-idc3}
+
+\begin{enumerate}
+\def\labelenumi{\roman{enumi})}
+\setcounter{enumi}{3}
+\item
+  On suppose que \(m = 1\) et que \(\sigma^2 = 10\). Quelle taille
+  d'échantillon doit-on choisir pour obtenir
+  \[\mathbb{P}(|Y_n - m| < \varepsilon) \geq \alpha,\] avec
+  \(\alpha = 0,95\) et \(\varepsilon = 0,05\),
+
+  \begin{itemize}
+  \tightlist
+  \item
+    en utilisant l'inégalité de Bienaymé-Chebyshev\,?
+  \item
+    en utilisant l'inégalité de Chernov\,?
+  \end{itemize}
+\end{enumerate}
+
+\solref{IV-answer-idc3}
+
+\section{Lemme de Borel-Cantelli}\label{IV-lemme-de-borel-cantelli}
+
+Soit \(A_n\) une suite d'événements sur l'espace probabilisé
+\((\Omega,\mathcal{A}, \mathbb{P})\).
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{IV-bc1}
+On suppose que \(\sum_{i=1}^n \mathbb{P}(A_n) < \infty\). Montrer que
+\(\mathbb{P}(\lim \sup_{n \to \infty} A_n) = \mathbb{P}\left(\bigcap_{n\geq 1} \bigcup_{k \geq n} A_k \right) =0\).\solref{IV-answer-bc1}
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{IV-bc2}
+On suppose maintenant que les événements \(A_n\) sont mutuellement
+indépendants. Montrer que si \(\sum_{i=1}^n \mathbb{P}(A_n) = \infty\),
+alors on a
+\(\mathbb{P}(\lim \sup_{n \to \infty} A_n) = 1\).\solref{IV-answer-bc2}
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{IV-bc3}
+Donner un exemple où \(\sum_{i=1}^n \mathbb{P}(A_n) = \infty\) et
+\(\mathbb{P}(\lim \sup_{n \to \infty} A_n) < 1\) quand les \(A_n\) ne
+sont pas indépendants.\solref{IV-answer-bc3}
+
+\section{Convergence vers une
+constante}\label{IV-convergence-vers-une-constante}
+
+Soient \(\left(X_n\right)_{n\in\mathbb{N}^\ast}\) une suite de variables
+aléatoires réelles, \(X\) une autre variable aléatoire réelle et
+\(a \in \mathbb{R}\).
+
+\runinhead{Convergence
+\(\mathcal{L}^2\)}\phantomsection\addcontentsline{toc}{subsubsection}{Convergence
+\(\mathcal{L}^2\)}\label{IV-cvtocst-l2}
+On suppose que \(X\) et chaque \(X_n\), \(n\in\mathbb{N}^\ast\), sont de
+carré intégrable.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Montrer l'implication
+\end{enumerate}
+
+\[X_n \xrightarrow[n\to+\infty]{\mathcal{L}^2} X \Rightarrow \left|\begin{array}{ll} \mathbb{E}\left(X_n\right) \xrightarrow[n\to+\infty]{} \mathbb{E}(X),\\ \mathbb{V}\left(X_n\right) \xrightarrow[n\to+\infty]{} \mathbb{V}(X). \end{array}\right.\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Vérifier l'équivalence
+  \[X_n \xrightarrow[n\to+\infty]{\mathcal{L}^2} a \Leftrightarrow \left|\begin{array}{ll} \mathbb{E}\left(X_n\right) \xrightarrow[n\to+\infty]{} a,\\ \mathbb{V}\left(X_n\right) \xrightarrow[n\to+\infty]{} 0. \end{array}\right.\]
+\end{enumerate}
+
+\solref{IV-answer-cvtocst-l2}
+
+\runinhead{Convergences en loi et
+probabilité}\phantomsection\addcontentsline{toc}{subsubsection}{Convergences
+en loi et probabilité}\label{IV-cvtocst-loiprob}
+Montrer que si \(X_n\) converge en loi vers \(a\) quand \(n\to+\infty\),
+alors elle converge aussi en probabilité vers
+\(a\).\solref{IV-answer-cvtocst-loiprob}
+
+\section{Fonction de répartition
+empirique}\label{IV-fonction-de-ruxe9partition-empirique}
+
+Soient \(X\) une variable aléatoire réelle de fonction de répartition
+\(F\) et \(\left(X_n\right)_{n\in\mathbb{N}^\ast}\) une suite de
+variables aléatoires indépendantes, de même loi que \(X\). Pour tout
+\(n\in\mathbb{N}^\ast\) on définit la fonction de répartition empirique
+comme suit~:
+\[F_n : x \in \mathbb{R}\mapsto \dfrac{1}{n}\,\sum_{i = 1}^n 1_{]-\infty,x]}(X_i).\]
+
+Son nom est issu de la modélisation probabiliste en statistique. Lorsque
+l'on souhaite étudier une variable physique dont on n'est pas à même de
+prédire parfaitement les valeurs (e.g.~la hauteur d'eau de la Seine à la
+station d'Austerlitz), le statisticien va la considérer comme une
+variable aléatoire \(X\). Pour en retrouver les propriétés, il va
+observer un certain nombre \(n\in\mathbb{N}^\ast\) de réalisations de
+cette variable (en réalisant des mesures sur le terrain), qu'il va à
+nouveau considérer comme des variables aléatoires \(X_1,\dots,X_n\) de
+même loi que \(X\). Lorsque cette hypothèse est raisonnable, il va
+supposer que ces dernières sont même indépendantes. Nous allons voir
+dans cet exercice que pour tout \(x\in\mathbb{R}\), \(F_n(x)\), calculée
+à partir des données de terrain (d'où le nom attribué à \(F_n\)),
+approche bien la quantité théorique \(F(x) = \mathbb{P}(X\leq x)\).
+
+On considère \(x\in\mathbb{R}\) fixé.
+
+\runinhead{Préliminaire}\phantomsection\addcontentsline{toc}{subsubsection}{Préliminaire}\label{IV-fdremp-loi}
+Quelle est la loi de la variable aléatoire \(1_{]-\infty,x]}(X)\)\,?
+Expliciter son espérance et sa variance.\solref{IV-answer-fdremp-loi}
+
+\runinhead{Biais}\phantomsection\addcontentsline{toc}{subsubsection}{Biais}\label{IV-fdremp-biais}
+Soit \(n\in\mathbb{N}^\ast\). Calculer l'espérance de \(F_n(x)\). On dit
+que \(F_n(x)\) est un \emph{estimateur sans biais} de
+\(F(x)\).\solref{IV-answer-fdremp-biais}
+
+\runinhead{Erreur quadratique
+moyenne}\phantomsection\addcontentsline{toc}{subsubsection}{Erreur
+quadratique moyenne}\label{IV-fdremp-mse}
+Montrer que \(F_n(x) \overset{\mathcal{L}^2}{\longrightarrow} F(x)\)
+quand \(n\to+\infty\).\solref{IV-answer-fdremp-mse}
+
+\runinhead{Consistance}\phantomsection\addcontentsline{toc}{subsubsection}{Consistance}\label{IV-fdremp-ps}
+Montrer que \(F_n(x) \to F(x)\) p.s. quand \(n\to+\infty\). On dit que
+\(F_n(x)\) est un \emph{estimateur fortement consistant} de
+\(F(x)\).\solref{IV-answer-fdremp-ps}
+
+\section{Théorème de Weierstrass sur
+\([0,1]\)}\label{IV-thuxe9oruxe8me-de-weierstrass-sur-01}
+
+Le théorème de Weierstrass est un résultat classique d'analyse dont
+l'énoncé est le suivant~: soient \(I\) un segment de \(\mathbb{R}\) et
+\(f : I \to \mathbb{R}\) une fonction continue. Alors il existe une
+suite \((P_n)_{n\in\mathbb{N}^\ast}\) de polynômes
+\(\mathbb{R}\to\mathbb{R}\) convergeant uniformément vers \(f\) sur
+\(I\).
+
+Dans cet exercice, nous allons voir une démonstration constructive de ce
+théorème dans le cas particulier où \(I = [0,1]\).
+
+\runinhead{Preuve du
+théorème.}\phantomsection\addcontentsline{toc}{subsubsection}{Preuve du
+théorème.}\label{IV-weier-thm}
+Soit \(\left(X_n\right)_{n\in\mathbb{N}^\ast}\) une suite de variable
+aléatoires indépendantes, suivant toutes la même loi de Bernoulli de
+paramètre \(x \in ]0,1[\). Pour tout \(n\in\mathbb{N}^\ast\) on pose
+\(M_n := \frac{1}{n}\,\sum_{i = 1}^n X_i\). On considère une fonction
+\(f : [0,1] \to \mathbb{R}\) continue.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Soit \(n\in\mathbb{N}^\ast\). Vérifier que
+  \(\mathbb{E}\left( f(M_n) \right)\) peut s'écrire sous forme de
+  polynôme.
+\item
+  Montrer que
+  \(\mathbb{E}\left( f(M_n) \right) \xrightarrow[n\to+\infty]{} f(x).\)
+\item
+  En déduire qu'il existe une suite de polynômes
+  \([0,1] \to \mathbb{R}\) qui convergent simplement vers \(f\).
+\item
+  Montrer que la suite de polynômes exhibée à la question précédente
+  converge même uniformément vers \(f\).
+\end{enumerate}
+
+\solref{IV-answer-weier-thm}
+
+\section{Théorème de Slutsky}\label{IV-thuxe9oruxe8me-de-slutsky}
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{IV-slut1}
+Soient \((X_n)_n\) et \(X\) des variables aléatoires. Montrer que
+\(X_n \xrightarrow{\mathcal{L}} X\) si et seulement si
+\(\mathbb{E}(f(X_n)) \xrightarrow[n\to\infty]{} \mathbb{E}(f(X))\) pour
+toute fonction \(f\) lipschitzienne bornée.\solref{IV-answer-slut1}
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{IV-slut2}
+Soient \((X_n)_n\) et \((Y_n)_n\) deux suites de variables aléatoires
+définies sur le même espace de probabilité. On suppose que \((X_n)_n\)
+converge en loi vers \(X\) et que \((X_n - Y_n)_n\) converge vers 0 en
+probabilité. Montrer que \((Y_n)_n\) converge en loi vers
+\(X\).\solref{IV-answer-slut2}
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{IV-slut3}
+Montrer ce résultat à l'aide du
+\protect\hyperref[IV-levytheorem]{théorème de
+Lévy (p.~\pageref*{IV-levytheorem})}.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\solref{IV-answer-slut3}
+
+
+\chapter{Références}\label{IV-ruxe9fuxe9rences}
+
+\hypertarget{refs}{}
+\begin{cslreferences}
+\leavevmode\hypertarget{refIV-Jacod}{}%
+Jacod, J., and P. Protter. 2003. \emph{L'essentiel En Théorie Des
+Probabilités}. Cassini.
+\url{https://hal.archives-ouvertes.fr/hal-00104956}.
+
+\leavevmode\hypertarget{refIV-Simmons}{}%
+Simmons, George F. 2003. \emph{Introduction to Topology and Modern
+Analysis}. Reprint edition. Malabar, Fla: Krieger Publishing Company.
+\end{cslreferences}

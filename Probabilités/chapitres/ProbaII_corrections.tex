@@ -1,0 +1,887 @@
+\chapter{Solutions}
+
+\section{Exercices essentiels}\label{II-exercices-essentiels}
+
+\runinhead{Approximation par une
+constante}\phantomsection\addcontentsline{toc}{subsubsection}{Approximation
+par une constante}\label{II-answer-exo-approx}
+On a
+\[\mathbb{E}((X-a)^2) = \mathbb{E}((X-\mathbb{E}(X) + \mathbb{E}(X) - a)^2 = \mathbb{E}((X - \mathbb{E}(X))^2 ) + (\mathbb{E}(X) - a)^2\]
+le terme de gauche ne dépend pas de \(a\) tandis que celui de droite
+s'annule en \(a = \mathbb{E}(X)\).
+
+\runinhead{Calcul d'une
+covariance}\phantomsection\addcontentsline{toc}{subsubsection}{Calcul
+d'une covariance}\label{II-answer-cov-unif}
+On a \begin{align*}
+\text{Cov}(U,V) &= \mathbb{E}((U-\mathbb{E}(U))(V-\mathbb{E}(V)))\\
+          &= \mathbb{E}(UV - \frac{U}{2} - \frac{U}{2} - \mathbb{E}(U)\mathbb{E}(V))\\
+          &= \mathbb{E}(U(1-U)) - 1/4 - 1/4 +1/4 \text{ par linéarité et d'après la solution ci-dessous}\\
+          &= 1/2 - 1/3 -1/4 = -1/12
+\end{align*} et
+\[\rho(U,V) = \frac{\text{Cov}(U,V)}{\sqrt{\mathbb{V}(U)}\sqrt{\mathbb{V}(V)}} = -1\]
+
+\runinhead{Coefficient de
+corrélation}\phantomsection\addcontentsline{toc}{subsubsection}{Coefficient
+de corrélation}\label{II-answer-CS-corr}
+On déduit de l'inégalité de
+\protect\hyperref[II-CS]{Cauchy-Schwarz (p.~\pageref*{II-CS})} que
+\[|\rho(X,Y)| = \left|\frac{\mathbb{E}((X-\mathbb{E}(X))(X-\mathbb{E}(Y)))}{\sqrt{\mathbb{V}(X)\mathbb{V}(Y)}} \right| \leq \frac{\sqrt{\mathbb{E}((X-\mathbb{E}(X))^2)\mathbb{E}((X-\mathbb{E}(Y))^2)}}{\sqrt{\mathbb{V}(X)\mathbb{V}(Y)}} =1\]
+
+\runinhead{Moments d'une variable aléatoire de loi uniforme sur
+\([a,b]\)}\phantomsection\addcontentsline{toc}{subsubsection}{Moments
+d'une variable aléatoire de loi uniforme sur
+\([a,b]\)}\label{II-answer-moments-unif}
+Soit \(X \sim \mathcal{U}_{[a,b]}\). Son espérance vaut
+\[\mathbb{E}(X) = \int_a^b \frac{x}{b-a} dx = \frac{a+b}{2}\] et puisque
+\[\mathbb{E}(X^2) = \int_a^b \frac{x^2}{b-a} dx = \frac{a^2 + ab +b^2}{3},\]
+alors sa variance vaut
+\[\mathbb{V}(X) = \mathbb{E}(X^2) - \mathbb{E}(X)^2 = \frac{(b-a)^2}{12}.\]
+
+\runinhead{Moments d'une v.a. de loi
+exponentielle}\phantomsection\addcontentsline{toc}{subsubsection}{Moments
+d'une v.a. de loi exponentielle}\label{II-answer-moments-expo}
+Soit \(X \sim \mathcal{E}(\theta)\), alors
+\[\mathbb{E}(X) = \int_0^{+\infty} x \theta \exp(-\theta x) dx = [\frac{x}{\theta}\exp(-\theta x)]_0^{+\infty} + \int_0^{+\infty} \exp(-\theta x) dx = \frac{1}{\theta}\]
+
+\runinhead{Moments d'une v.a. de loi
+gamma}\phantomsection\addcontentsline{toc}{subsubsection}{Moments d'une
+v.a. de loi gamma}\label{II-answer-moments-gamma}
+Soit \(X\sim \Gamma(\alpha,\beta)\). On a \begin{align*}
+\mathbb{E}(X) &= \frac{1}{\Gamma(\alpha)}\int_0^{+\infty} \theta^\alpha x^\alpha e^{-\theta x} dx\\
+        &= \frac{1}{\Gamma(\alpha)}\int_0^{+\infty} \frac{1}{\theta} u^\alpha e^{-u} du \text{ par le changement de variable } u = \theta x\\
+        &= \frac{\Gamma(\alpha+1)}{\Gamma(\alpha)} \frac{1}{\theta} = \frac{\alpha}{\theta}
+\end{align*} puis \begin{align*}
+\mathbb{E}(X^2) &= \frac{1}{\Gamma(\alpha)}\int_0^{+\infty} \theta^\alpha x^{\alpha+1} e^{-\theta x} dx\\
+        &= \frac{1}{\Gamma(\alpha)}\int_0^{+\infty} \frac{1}{\theta^2} u^{\alpha+1} e^{-u} du \text{ par le changement de variable } u = \theta x\\
+        &= \frac{\Gamma(\alpha+2)}{\Gamma(\alpha)} \frac{1}{\theta^2} = \frac{\alpha(\alpha+1)}{\theta^2}
+\end{align*} d'où
+\[\mathbb{V}(X) = \mathbb{E}(X^2) - \mathbb{E}(X)^2 = \frac{\alpha}{\theta^2}\]
+
+\runinhead{Moments d'une v.a.
+gaussienne}\phantomsection\addcontentsline{toc}{subsubsection}{Moments
+d'une v.a. gaussienne}\label{II-answer-moments-gauss}
+Pour s'assurer qu'il s'agit bien d'une densité, on remarque que
+\(I = \int_{-\infty}^{+\infty} f(x) dx\) vérifie
+\[ I^2 = \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} f(x) f(y) dxdy = \int_{0}^{2\pi} d\theta\int_{0}^{+\infty}\frac{1}{2\pi} r e^{-r^2/2}dr \]
+(en passant en coordonnées polaires dans l'intégrale double). Le calcul
+est ensuite aisé et on obtient \(I = 1\).
+
+Pour les moments, on fait d'abord le calcul dans le cas centré réduit
+(\(\mu = 0\) et \(\sigma^2 =1\)) puis on s'y ramène par le changement de
+variable \(x \mapsto \frac{x-\mu}{\sigma}\). Soit donc
+\(X \sim \mathcal{N}(0,1)\), on a \begin{align*}
+\mathbb{E}(X) &= \int_{-\infty}^{+\infty} \frac{x}{\sqrt{2\pi}} e^{-x^2/2} dx\\
+         &= \left[-\frac{1}{\sqrt{2\pi}} e^{-x^2/2} \right]_{-\infty}^{+\infty} = 0.
+\end{align*} et \begin{align*}
+\mathbb{V}(X) = \mathbb{E}(X^2) &= \int_{-\infty}^{+\infty} \frac{x^2}{\sqrt{2\pi}} e^{-x^2/2} dx\\
+         &= \left[-\frac{x}{\sqrt{2\pi}} e^{-x^2/2} \right]_{-\infty}^{+\infty} +\int_{-\infty}^{+\infty} \frac{1}{\sqrt{2\pi}} e^{-x^2/2} dx \\
+         &= 0 + 1.
+\end{align*}
+
+\runinhead{\emph{Loi de
+Cauchy}}\phantomsection\addcontentsline{toc}{subsubsection}{\emph{Loi de
+Cauchy}}\label{II-answer-exo-cauchy}
+L'angle \(\theta\) est une variable aléatoire uniforme sur
+\([-\pi/2,\pi/2]\), de densité
+\(g(\theta) = \frac{1}{\pi}1_{[ -\pi/2,\pi/2 ]}(\theta)\). L'abscisse
+\(X\) est donnée par \(X = \tan \theta\), c'est donc une variable
+aléatoire, de fonction de répartition \begin{align*}        
+F(x) & = \mathbb{P}(X \leq x) \\
+     & = \mathbb{P}(\theta \leq \arctan x) \\
+     & = \int_{-\infty}^{\arctan x} \frac{1}{\pi}1_{[ -\pi/2,\pi/2 ]}(\theta) d\theta \\
+     & = \frac{1}{\pi} \arctan x + \frac{1}{2}.
+\end{align*}
+
+\(F\) est de classe \(C^1\) de dérivée
+\[f(x) = \frac{1}{\pi(1+x^2)}, x \in \mathbb{R}\]
+
+C'est la densité de la loi de Cauchy. Une variable aléatoire \(X\) de
+loi de Cauchy n'admet pas d'espérance. En effet,
+\(\frac{x}{\pi(1+x^2)} \sim_{x\to \infty} \frac{1}{x}\) n'est pas
+intégrable.
+
+\runinhead{Calcul de l'aire d'un
+triangle}\phantomsection\addcontentsline{toc}{subsubsection}{Calcul de
+l'aire d'un triangle}\label{II-answer-triangle}
+Si la fonction \(1_D\) est intégrable, alors
+\protect\hyperref[II-fubiniproba]{le théorème de Fubini est
+applicable (p.~\pageref*{II-fubiniproba})}. On a donc \[
+a(T) = \int_{\mathbb{R}}\left[ \int_{\mathbb{R}} 1_T(x, y) \, dx \right] \, dy.
+\] Or, si \(0 \leq y \leq 1\), \[
+1_T(x, y) = \left| 
+\begin{array}{rl}
+1 & \mbox{si $0 \leq x \leq 1-y$,} \\
+0 & \mbox{sinon.}
+\end{array}
+\right.
+\] et dans le cas contraire, \(1_T(x, y) = 0\). On a donc \[
+a(T) = \int_0^1\left[ \int_0^{1-y} dx \right] \, dy
+=\int_0^1 (1 - y) \, dy= \left[y - \frac{y^2}{2} \right]_0^1 = \frac{1}{2}.
+\]
+
+\runinhead{Contre-exemple}\phantomsection\addcontentsline{toc}{subsubsection}{Contre-exemple}\label{II-answer-fubini-counter-example}
+Pour tout \(y \in \left]0,1\right]\) (et donc presque tout
+\(y \in [0, 1]\)), on a \[
+\int_0^1 \frac{x^2 - y^2}{(x^2+y^2)^2} \, dx 
+= 
+\left[x \mapsto - \frac{x}{x^2+y^2} \right]_0^1
+= 
+- \frac{1}{1+y^2},
+\] par conséquent \[
+\int_0^1 \left[ \int_0^1 \frac{x^2 - y^2}{(x^2+y^2)^2} \, dx \right] \, dy
+= - \int_0^1 \frac{dy}{1+y^2} \\
+= - [y \mapsto \arctan y]_0^1
+= - \frac{\pi}{4}.
+\] En exploitant la relation \[
+\frac{x^2 - y^2}{(x^2+y^2)^2} = \frac{\partial}{\partial y} \left(\frac{y}{x^2+y^2}\right) 
+\] on établit de façon similaire que \[
+\int_0^1 \left[ \int_0^1 \frac{x^2 - y^2}{(x^2+y^2)^2} \, dy \right] \, dx
+= \frac{\pi}{4}.
+\]
+
+Or, si \protect\hyperref[II-fubiniproba]{le théorème de
+Fubini (p.~\pageref*{II-fubiniproba})} était applicable, on pourrait
+intervertir l'ordre d'intégration des variables sans changer le
+résultat. Comme cela n'est pas le cas, on en déduit que l'hypothèse
+exigée par le théorème de Fubini ne tient pas~: la fonction \[
+(x, y) \in [0,1] \times [0,1] \mapsto \frac{x^2 - y^2}{(x^2+y^2)^2}
+\] n'est pas intégrable.
+
+\runinhead{Homothétie}\phantomsection\addcontentsline{toc}{subsubsection}{Homothétie}\label{II-answer-h}
+Si l'on pose \(D_1 = \mathbb{R}^n\), \(D_2 = \mathbb{R}^n\),
+l'application \(h:D_1 \to D_2\) définie par \(h(x) = \alpha x\) est un
+\(C^1\)-difféomorphisme. De plus, on a \[
+|\det J_{h}(x)| = \left|\det \left[
+  \begin{array}{cccc}
+  \alpha & 0  & \cdots & 0 \\
+  0 & \alpha & \dots & 0 \\
+  \vdots & \vdots & \vdots & \vdots \\
+  0 & 0 & \dots & \alpha
+  \end{array} \right] \right|  = |\alpha^n| = \alpha^n.
+\] Par conséquent, le
+\protect\hyperref[II-theorem-changement-de-variables]{théorème de
+changement de
+variables (p.~\pageref*{II-theorem-changement-de-variables})} fournit \[
+\int_{\mathbb{R}^n} f(y) \, dy = \int_{\mathbb{R}^n} f(\alpha x) \alpha^n \, dx,
+\] soit \[
+\int_{\mathbb{R}^n} f(\alpha x) \, dx = \frac{1}{\alpha^n} \int_{\mathbb{R}^n} f(y) \, dy.
+\]
+
+\runinhead{Volume et
+translation}\phantomsection\addcontentsline{toc}{subsubsection}{Volume
+et translation}\label{II-answer-vr}
+L'ensemble \(A\) mesurable et de volume fini a une fonction
+caractéristique \(1_A\) intégrable et \[
+\lambda(A) = \int 1_A(x) \, dx.
+\] Soit \(h(x) = x - u\) ou \(u \in \mathbb{R}^3\). La fonction \(h\)
+est une bijection de \(\mathbb{R}^3\) sur lui-même, continûment
+différentiable ainsi que son inverse, \(h^{-1}(x) = x + u\) et
+\(J_h(x) = I\), donc \(\det J_h(x) = 1\). Par
+\protect\hyperref[II-theorem-changement-de-variables]{le théorème de
+changement de
+variables (p.~\pageref*{II-theorem-changement-de-variables})}, la
+fonction \(1_{h^{-1}(A)} = 1_{A} \circ h\) est donc intégrable sur
+\(\mathbb{R}^3\) et \[
+\int 1_{h^{-1}(A)}\, dx = \int_{\mathbb{R}^3} (1_A \circ h) |\det J_h(x)| \, dx = \int_{\mathbb{R}^3} 1_A(x) \, dx = \lambda(A).
+\] L'ensemble translaté \(A + u = h^{-1}(A)\) est donc mesurable, de
+volume fini égal au volume de \(A\).
+
+\runinhead{Coordonnées
+polaires}\phantomsection\addcontentsline{toc}{subsubsection}{Coordonnées
+polaires}\label{II-answer-cp}
+Les ensembles \(P\) et \(C\) sont ouverts et la fonction \(h\) -- qui
+permet de passer des coordonnées polaires aux coordonnées cartésiennes
+-- est une bijection de \(P\) dans \(C\). Elle est continûment
+différentiable\,; sa matrice jacobienne en \((r, \theta)\) vaut \[
+J_{h}(r, \theta) = 
+\left[ 
+\begin{array}{cr}
+\cos \theta & -r \sin \theta \\
+\sin \theta & r \cos \theta
+\end{array}
+\right],
+\] et son déterminant satisfait \[
+\det J_{h}(r, \theta) = (\cos \theta)(r \cos \theta) - (\sin \theta)(-r\sin \theta)
+= r > 0.
+\] Le jacobien est donc inversible et \(h^{-1}\) est continûment
+différentiable par le théorème d'inversion locale. On peut donc
+appliquer \protect\hyperref[II-theorem-changement-de-variables]{le
+théorème de changement de
+variables (p.~\pageref*{II-theorem-changement-de-variables})} à la
+fonction \(f\), ce qui fournit \begin{align*}
+\int_C f(x, y) \, d(x, y) &= \int_P f(h(r, \theta)) |\det J_h(r,\theta)| d(r,\theta) \\
+&= \int_P g(r, \theta)  r \, d(r,\theta).
+\end{align*}
+
+\runinhead{Absence du déterminant
+jacobien}\phantomsection\addcontentsline{toc}{subsubsection}{Absence du
+déterminant jacobien}\label{II-answer-adj}
+La façon la plus rapide de procéder consiste à considérer que
+\(f \circ h\) joue le rôle de \(f\) dans
+\protect\hyperref[II-theorem-changement-de-variables]{le théorème de
+changement de
+variables (p.~\pageref*{II-theorem-changement-de-variables})}, que \(h\)
+dans notre énoncé désigne \(h^{-1}\) dans ce théorème et que les rôles
+de \(D_1\) et \(D_2\) sont intervertis. Une fois que l'on a permuté ces
+notations, on réalise que l'intégrale que l'on souhaite calculer est le
+membre de gauche de l'équation du théorème de changement de variables,
+dont toutes les hypothèses sont par ailleurs satisfaites. Par conséquent
+on a \[
+\int_{D_1} f (h(x)) \, dx = \int_{D_2} (f \circ h)(h^{-1}(y)) |\det J_{h^{-1}}(y)| \, dy.
+\] On peut simplifier \((f \circ h)(h^{-1}(y))\) en \(f(y)\) et
+éventuellement exprimer le jacobien de \(h^{-1}\) en fonction du
+jacobien de \(h\)~: \(J_{h^{-1}}(y) = [J_{h}(h^{-1}(y))]^{-1}\)\,; on
+obtient donc \[
+\int_{D_1} f (h(x)) \, dx = 
+\int_{D_2} f(y) |\det J_{h^{-1}}(y)| \, dy = 
+\int_{D_2} f(y) \frac{1}{|\det J_{h}(h^{-1}(y))|} \, dy.
+\]
+
+\runinhead{Lancer de
+fléchette}\phantomsection\addcontentsline{toc}{subsubsection}{Lancer de
+fléchette}\label{II-answer-exo-flechette}
+Les coordonnées cartésiennes de
+\(M \in D = \{(x,y) \in \mathbb{R}^2 , x^2+y^2 \leq 1\}\) constituent un
+couple de variables aléatoires de densité
+\[f_{(X,Y)}(x,y) = \frac{1}{\pi}1_{D} (x,y)\] uniforme sur le disque,
+par hypothèse. L'abscisse de \(X\) est distribuée selon la densité
+marginale
+\[f_X(x) = \int f_{(X,Y)}(x,y) dy = \frac{2}{\pi} (1-x^2)^{1/2} 1_{[-1,1]}(x).\]
+La loi de \(Y\) a la même densité.
+
+\runinhead{Lancer de fléchette
+(suite)}\phantomsection\addcontentsline{toc}{subsubsection}{Lancer de
+fléchette (suite)}\label{II-answer-exo-flechettebis}
+La densité des coordonnées cartésiennes ne s'exprime pas comme le
+produit des densités marginales\,; elles ne sont pas indépendantes.
+
+\runinhead{Démonstration}\phantomsection\addcontentsline{toc}{subsubsection}{Démonstration}\label{II-answer-demo-cov-indep}
+Soit \(X\) et \(Y\) deux v.a. aléatoires indépendantes et de carré
+intégrable. On a d'après \protect\hyperref[II-indep_fct]{la
+proposition (p.~\pageref*{II-indep_fct})}
+\[\mathbb{E}((X-\mathbb{E}(X))(Y-\mathbb{E}(Y))) = \mathbb{E}(X-\mathbb{E}(X))\mathbb{E}(Y-\mathbb{E}(Y)) = 0 = \rho(X,Y)\]
+
+\runinhead{Lancer de fléchette
+(fin)}\phantomsection\addcontentsline{toc}{subsubsection}{Lancer de
+fléchette (fin)}\label{II-answer-exo-flechetteter}
+En coordonnées polaires, le domaine \(D\) est décrit par
+\(D = \{(r,\theta) \in [0,1] \times [0,2\pi]\}\). La densité de
+\((R,\theta)\) s'écrit ainsi~:
+\[f_{(R,\theta)}(r,\theta) = \frac{r}{\pi}1_{D} (r\cos(\theta),r\sin(\theta)) = 2r 1_{[0,1]}(r) \frac{1}{2\pi}1_{[0,2\pi]}(r).\]
+Ainsi \(R\) et \(\Theta\) sont indépendantes de densités respectives
+\(2r 1_{[0,1]}(r)\) et \(\frac{1}{2\pi}1_{[0,2\pi]}(\theta)\).
+
+\runinhead{Loi
+bêta}\phantomsection\addcontentsline{toc}{subsubsection}{Loi
+bêta}\label{II-answer-exo-loibeta}
+On note d'abord que la dimension de \(Y\) est plus petite que celle de
+\(X\). On va donc compléter \(Y\) en prenant par exemple \(Y' = (Y,Z)\),
+avec \(Z=U+V\), ce qui correspond à
+\(g(u,v) = \left(\frac{u}{u+v},u+v\right)\). Cette application est
+bijective de \(A = \left]0,+\infty\right[^2\) dans
+\(B = \left]0,1\right[ \times \left]0,+\infty\right[\), d'inverse
+\(g^{-1}(y,z) = (yz,z(1-y))\), qui a pour jacobien \(z\).
+
+Comme
+\(f_X(u,v) = \frac{\theta^{\alpha+\beta}}{\Gamma(\alpha)\Gamma(\beta)}u^{\alpha-1}v^{\beta-1}e^{-\theta(u+v)}1_A(u,v)\),
+on a
+\[f_{Y'}(y,z) = \frac{\theta^{\alpha+\beta}}{\Gamma(\alpha)\Gamma(\beta)}z^{\alpha+\beta -1}y^{\alpha-1}(1-y)^{\beta-1}e^{-\theta z}1_B(y,z).\]
+On obtient alors la densité de Y en intégrant \(f_{Y'}(y,z)\) par
+rapport à \(z\in \left]0,+\infty\right[\)~: \begin{align*}
+f_Y(y) &= \int_0^{+\infty} f_{Y'}(y,z) dz\\
+       &= \frac{\theta^{\alpha+\beta}}{\Gamma(\alpha)\Gamma(\beta)}y^{\alpha-1}(1-y)^{\beta-1}1_{\left]0,1\right[}(y)\int_0^{+\infty}z^{\alpha+\beta -1}e^{-\theta(z)}dz\\
+       &= \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}y^{\alpha-1}(1-y)^{\beta-1}1_{\left]0,1\right[}(y),
+\end{align*} où on a utilisé la définition de la fonction gamma et le
+changement de variable linéaire \(z \mapsto \theta z\). On appelle loi
+bêta de paramètres \(\alpha\) et \(\beta\) la loi admettant cette
+densité. Admettant une grande variété de formes, elle permet de
+modéliser de nombreuses distributions à support fini.
+
+La loi bêta apparaît naturellement dans une expérience d'urnes, donnée
+par George Pólya dans un article de 1930,
+\href{http://www.numdam.org/article/AIHP_1930__1_2_117_0.pdf}{\emph{Sur
+quelques points de la théorie des probabilités}}. Il décrit l'expérience
+suivante~: on se donne une urne contenant initialement \(r\) boules
+rouges et \(b\) boules bleues, on tire une boule dans l'urne, puis on la
+remet dans l'urne avec une deuxième boule de même couleur. Alors la
+proportion de boules rouges tend vers une variable aléatoire de loi
+Beta\((r,b)\), et, inversement, la proportion de boules bleues tend vers
+une variable aléatoire de loi Beta\((b,r)\).
+
+Nous obtenons aussi facilement la densité de \(Z\). En effet, on a
+\(f_{Y'}(y,z) = f_Y(y)f_Z(z)\) (\(Y\) et \(Z\) sont donc indépendantes),
+où
+\[f_Z(z) = \frac{\theta^{\alpha+\beta}}{\Gamma(\alpha+\beta)}z^{\alpha+\beta -1}e^{-\theta z}1_{\left]0,+\infty\right[}\]
+On a ainsi démontré que si \(U\) et \(V\) sont deux variables aléatoires
+indépendantes de lois respectives \(\Gamma(\alpha,\theta)\) et
+\(\Gamma(\beta,\theta)\), alors \(U+V\) suit la loi
+\(\Gamma(\alpha+\beta,\theta)\) et est indépendante de \(\frac{U}{U+V}\)
+qui suit une loi bêta de paramètres \((\alpha,\beta)\).
+
+\runinhead{Divergence de Kullback-Leibler entre deux
+gaussiennes}\phantomsection\addcontentsline{toc}{subsubsection}{Divergence
+de Kullback-Leibler entre deux gaussiennes}\label{II-answer-exoklgauss}
+On a
+\[f(x) = \frac{1}{\sqrt{2\pi}\sigma_1} e^{-\frac{(x-\mu_1)^2}{2\sigma_1^2}}\]
+et
+\[g(x) = \frac{1}{\sqrt{2\pi}\sigma_2} e^{-\frac{(x-\mu_2)^2}{2\sigma_2^2}}\]
+
+On en déduit que \begin{align*}
+D_{KL} (f || g) &= \int_{-\infty}^{+\infty} f(x) \log \left(\frac{f(x)}{g(x)}\right) dx \\
+                &= \int_{-\infty}^{+\infty} f(x) \left[ \log \left(\frac{\sigma_2}{\sigma_1}\right) + \frac{(x-\mu_2)^2}{2\sigma_2^2} - \frac{(x-\mu_1)^2}{2\sigma_1^2} \right] dx \\
+                &= \log \left(\frac{\sigma_2}{\sigma_1}\right) + \frac{1}{2\sigma_2^2} \int_{-\infty}^{+\infty} f(x) (x-\mu_2)^2 dx - \frac{1}{2\sigma_1^2} \int_{-\infty}^{+\infty} f(x) (x-\mu_1)^2 dx
+\end{align*} On a~: \begin{align*}
+\int_{-\infty}^{+\infty} f(x) (x-\mu_2)^2 dx &= \int_{-\infty}^{+\infty} f(x) ((x-\mu_1)+\mu_1-\mu_2)^2 dx \\
+&= \int_{-\infty}^{+\infty} f(x) (x-\mu_1)^2 dx + (\mu_1 - \mu_2)^2 \\
+&= \sigma_1^2 + (\mu_1 - \mu_2)^2 
+\end{align*} On en déduit la formule annoncée~:
+\[D_{KL} (f || g) = \log \left(\frac{\sigma_2}{\sigma_1}\right) + \frac{\sigma_1^2 + (\mu_1 - \mu_2)^2}{2\sigma_2^2} - \frac{1}{2}\]
+
+\section{Durée de vie}\label{II-duruxe9e-de-vie-1}
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{II-answer-dureevie1}
+En dérivant, on obtient que la densité de \(T\) est
+\(f(t) = t e^{-t^2/2}1_{t>0}\).
+
+L'espérance vaut~:
+
+\begin{align*}
+\mathbb{E}(T) &= \int_0^{+\infty} t^2 e^{-t^2/2} dt\\
+        &= \left[-t e^{-t^2/2} \right]_0^{+\infty} + \int_0^{+\infty} e^{-t^2/2} dt \text{ par intégration par parties}\\
+        &= \frac{1}{2} \int_{-\infty}^{+\infty} e^{-t^2/2} dt \\
+        &= \frac{\sqrt{2\pi}}{2}
+\end{align*}
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{II-answer-dureevie2}
+La probabilité s'écrit~:
+
+\[\mathbb{P}(T\geq 3 |T \geq 1) = \frac{\mathbb{P}(T \geq 3,T \geq 1)}{\mathbb{P}(T \geq 1)} = \frac{\mathbb{P}(T \geq 3)}{\mathbb{P}(T \geq 1)} = \frac{e^{-9/2}}{e^{-1/2}} = e^{-4}\]
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{II-answer-dureevie3}
+Les variables aléatoires \(X_1 , \ldots , X_{10}\) sont indépendantes et
+suivent une loi de Bernoulli de paramètre~:
+\[ \mathbb{P}(T \leq 1) = F (1) = 1 - e^{- 1/2}\]
+
+On en déduit que la loi de N est la loi binomiale de paramètre
+\((10, 1 - e^{- 1/2})\).
+
+\runinhead{Question
+4}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+4}\label{II-answer-dureevie4}
+La probabilité que l'équipement en série soit défaillant avant 1 an
+vaut~:
+\[ P(N \geq 1) = 1 - \mathbb{P}(N = 0) = 1 - e^{-10/2} \approx 9.9 ~10^{-1} = 99\%\]
+
+\runinhead{Question
+5}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+5}\label{II-answer-dureevie5}
+La probabilité que l'équipement en parallèle soit défaillant avant 1 an
+vaut~:
+\[ \mathbb{P}(N = 10) = (1 - e^{-1/2})^10 \approx 8.9 ~10 ^{-5} \]
+
+\section{Crues centennales de la
+Seine}\label{II-crues-centennales-de-la-seine-1}
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{II-answer-crue1}
+Soit \(x\in \mathbb{R}\) \begin{align*}
+F_Y(x) = F(Y\leq x) &= F(X_1\leq x,\ldots,X_n\leq x)\\
+           &= \prod_{i=1}^n F(X_i\leq x) \\
+           &= F(x)^n
+\end{align*} puisque les \(X_i\) sont indépendantes et de même loi
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{II-answer-crue2}
+Soit \(x\in \mathbb{R}\) \begin{align*}
+f_Y(x) &= \frac{d}{d x} F_Y(x)\\
+       &= \frac{d}{d x} F(x)^n\\
+       &= nf(x)F(x)^{n-1}
+\end{align*}
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{II-answer-crue3}
+On a alors \(f(x) = 1_{[0,1]}(x)\) et
+\(F(x) = x 1_{[0,1]}(x) + 1_{[1,+\infty]}\). On en déduit
+\[ f_Y(x) = n x^{n-1}1_{[0,1]} \]
+
+\runinhead{Question
+4}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+4}\label{II-answer-crue4}
+On cherche à déterminer \(x\) tel que
+\(\mathbb{P}(Y > x) \leq \frac{1}{1000}\). Or,
+\[ \mathbb{P}(Y > x) = 1-\mathbb{P}(Y \leq x) = 1 - F_Y(x) = 1 - F(x)^n = 1-x^n \]
+Ainsi
+\[ 1-x^n \leq \frac{1}{1000} \Leftrightarrow (1-\frac{1}{1000})^{1/n} \leq x \]
+
+\runinhead{Question
+5}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+5}\label{II-answer-crue5}
+On rappelle que la médiane est le réel \(m\) tel que
+\(\frac{1}{2} = \mathbb{P}(Y \leq m) = F_Y(m)\).
+
+On cherche donc \(m\) tel que \(m^n = \frac{1}{2}\), soit
+\(m = \frac{1}{2^{1/n}}\).
+
+On voit que cette valeur est plus élevée que la médiane des \(X_i\) qui
+vaut \(\frac{1}{2}\). Elle tend même vers 1 lorsque \(n\) tend vers
+l'infini.
+
+\section{Indépendance et vecteurs
+gaussiens}\label{II-induxe9pendance-et-vecteurs-gaussiens-1}
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{II-answer-covindepgauss-joint}
+D'après le cours, en interprétant les éléments de \(\mathbb{R}^2\) comme
+des vecteurs colonnes, pour tout \(z =(x,y)\in\mathbb{R}^2\) on a \[
+f_Z(z) = \dfrac{1}{2\pi\,\sqrt{\det(C)}}\,\exp\left\{ -\dfrac{1}{2}\,\left(z - m\right)^t\,C^{-1}\,\left(z - m\right) \right\}.
+\] Or par construction \(C\) peut s'écrire
+\[C = \left( \begin{array}{cc} \sigma_X^2 & c\\ c & \sigma_Y^2 \end{array}\right), \]
+où \(\sigma_X^2 := \mathbb{V}\left(X\right)\),
+\(\sigma_Y^2 := \mathbb{V}\left(Y\right)\) et
+\(c = \text{Cov}\left(X,Y\right)\). Comme \(C\) est définie positive
+elle est inversible, avec \(\det(C) = \sigma_X^2\,\sigma_Y^2 - c^2 > 0\)
+et
+\[C^{-1} = \dfrac{1}{\sigma_X^2\,\sigma_Y^2 - c^2}\,\left( \begin{array}{cc} \sigma_Y^2 & -c\\ -c & \sigma_X^2 \end{array}\right).\]
+En outre, \(m = \left(m_X, m_Y \right)\) avec \(m_X := \mathbb{E}(X)\)
+et \(m_Y := \mathbb{E}(Y)\). On en déduit que \begin{align*}
+f_Z(x,y) &= \dfrac{1}{2\pi\,\sqrt{\sigma_X^2\,\sigma_Y^2 - c^2}}\,\exp\biggl\{ \dfrac{-1}{2\,\left(\sigma_X^2\,\sigma_Y^2 - c^2 \right)}\times\\
+&\ \ \ \left( \sigma_Y^2\,(x-m_X)^2 - 2c\,(x-m_X)\,(y-m_Y) + \sigma_X^2\,(y-m_Y)^2 \right) \biggr\}\\
+&= \dfrac{1}{2\pi\,\sigma_X\,\sigma_Y\,\sqrt{1-\rho^2}}\,\,\exp\biggl\{ \dfrac{-1}{2\,\left( 1 - \rho^2 \right)}\times\\
+&\ \ \ \left( \dfrac{(x-m_X)^2}{\sigma_X^2} - 2\rho\,\dfrac{(x-m_X)}{\sigma_X}\,\dfrac{(y-m_Y)}{\sigma_Y} + \dfrac{(y-m_Y)^2}{\sigma_Y^2} \right) \biggr\}.
+\end{align*}
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{II-answer-covindepgauss-marg}
+Ici, pour \(x,y \in \mathbb{R}^2\), on remarque que~: \begin{align*}
+f_Z(x,y) &= \dfrac{1}{2\pi\,\sigma_X\,\sigma_Y\,\sqrt{1-\rho^2}}\,\,\exp\biggl\{ \dfrac{-1}{2\,\left( 1 - \rho^2 \right)}\times\\
+&\ \ \ \left( \left(\dfrac{y-m_Y}{\sigma_Y} - \rho\,\dfrac{x-m_X}{\sigma_X}\right)^2 + (1 - \rho^2)\,\dfrac{(x-m_X)^2}{\sigma_X^2} \right) \biggr\}\\
+& = \dfrac{1}{\sqrt{2\pi}\,\sigma_X}\,\exp\left\{-\dfrac{(x-m_X)^2}{2\,\sigma_X^2} \right\}\times\\
+&\ \ \ \dfrac{1}{\sqrt{2\pi}\,\sigma_Y\,\sqrt{1-\rho^2}}\,\exp\left\{-\dfrac{1}{2\,(1-\rho^2)}\,\left(\dfrac{y-m_Y}{\sigma_Y} - \rho\,\dfrac{x-m_X}{\sigma_X}\right)^2 \right\}.
+\end{align*} Ainsi, avec le changement de variable
+\(u = \dfrac{y-m_Y}{\sigma_Y}\) on obtient \begin{align*}
+f_X(x) &= \int_{-\infty}^{+\infty} f_Z(x,y)\,dy\\
+&= \dfrac{1}{\sqrt{2\pi}\,\sigma_X}\,\exp\left\{-\dfrac{(x-m_X)^2}{2\,\sigma_X^2} \right\}\times\\
+&\ \ \ \int_{-\infty}^{+\infty} \dfrac{1}{\sqrt{2\pi}\,\sqrt{1-\rho^2}}\,\exp\left\{-\dfrac{1}{2\,(1-\rho^2)}\,\left(u - \rho\,\dfrac{x-m_X}{\sigma_X}\right)^2 \right\}\,du,
+\end{align*} et on reconnaît dans cette dernière intégrale la densité
+d'une loi Normale d'espérance \(\rho\,\dfrac{x-m_X}{\sigma_X}\) et de
+variance \(1-\rho^2\). Cette intégrale vaut donc \(1\) et on conclut que
+\[f_X(x) = \dfrac{1}{\sqrt{2\pi}\,\sigma_X}\,\exp\left\{-\dfrac{(x-m_X)^2}{2\,\sigma_X^2} \right\}, \]
+qui correspond à la densité d'une loi Normale d'espérance \(m_X\) et de
+variance \(\sigma_X^2\).
+
+En procédant de manière symétrique, on obtient de même que \(Y\) suit
+une loi Normale d'espérance \(m_Y\) et de variance \(\sigma_Y^2\).
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{II-answer-covindepgauss-indep}
+Le premier sens est évident~: si \(X\) et \(Y\) sont indépendantes,
+alors nous avons vu dans le cours que
+\(\text{Cov}\left(X,Y\right) = 0\), et ce que l'on soit gaussien ou non.
+
+Supposons maintenant que \(\text{Cov}\left(X,Y\right) = 0\), et montrons
+l'indépendance entre \(X\) et \(Y\). En reprenant la formule de la
+question 1 et en remplaçant \(\rho\) par \(0\), pour tout
+\((x,y) \in \mathbb{R}^2\) on a: \begin{align*}
+f_Z(x,y) &= \dfrac{1}{2\,\pi\,\sigma_X\,\sigma_Y}\,\exp\left\{ -\dfrac{1}{2}\,\left( \dfrac{(x-\mu_X)^2}{\sigma_X^2} + \dfrac{(y-\mu_Y)^2}{\sigma_Y^2} \right) \right\}\\
+&= \dfrac{1}{\sqrt{2\pi}\,\sigma_X}\,\exp\left\{ -\dfrac{(x-m_X)^2}{2\,\sigma_X^2} \right\} \times \dfrac{1}{\sqrt{2\pi}\,\sigma_Y}\,\exp\left\{ -\dfrac{(y-m_Y)^2}{2\,\sigma_Y^2} \right\}\\
+&= f_X(x)\times f_Y(y)
+\end{align*} d'après la question 2. On en conclut que \(X\) et \(Y\)
+sont bien indépendantes.
+
+\section{Symétrie de la
+gaussienne}\label{II-symuxe9trie-de-la-gaussienne-1}
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{II-answer-gausssym-loi}
+Nous avons admis dans le cours que la fonction de répartition \(F_c\) de
+\(X_c\) caractérisait sa loi. Nous allons donc l'expliciter. Soit
+\(x \in \mathbb{R}\). Par définition de la fonction de répartition d'une
+variable aléatoire et d'après la formule des probabilités totales, on a
+\begin{align*}
+F_c(x) &= \mathbb{P}\left(X_c \leq x\right) = \mathbb{P}\left( X_c \leq x, |X| > c \right) + \mathbb{P}\left( X_c \leq x, |X| \leq c\right)\\
+&= \mathbb{P}\left( X\leq x, |X| > c \right) + \mathbb{P}\left(-X \leq x, |X| \leq c\right)\\
+&= \mathbb{P}\left( X\leq x, X > c \right) + \mathbb{P}\left(X \leq x, X < -c \right) + \mathbb{P}\left( X \geq -x, -c \leq X \leq c\right).
+\end{align*} Or
+\[\mathbb{P}\left( X\leq x, X > c \right) = \left|\begin{array}{ll} \mathbb{P}\left(c < X \leq x \right) = F(x) - F(c) & \text{si } x > c,\\ 0 & \text{si } x\leq c,\end{array}\right.\]
+\[ \mathbb{P}\left(X \leq x, X < -c \right) = \mathbb{P}\left( X \leq \min\{-c,x\} \right) = F\left(\min\{-c,x\}\right), \]
+\[ \mathbb{P}\left( X \geq -x, -c \leq X \leq c\right) = \left|\begin{array}{ll} \mathbb{P}\left(-c \leq X \leq c \right) = F(c) - F(-c) & \text{si } x > c, \\ \mathbb{P}\left(-x \leq X \leq c \right) = F(c) - F(-x) & \text{si } -c \leq x \leq c,\\ 0 & \text{si } x<-c. \end{array}\right.\]
+Ainsi,
+
+\begin{itemize}
+\item
+  si \(x > c\) alors \(\min\{-c,x\} = -c\) et
+  \[F_c(x) = F(x) - F(c) + F\left(\min\{-c,x\}\right) + F(c) - F(-c) = F(x),\]
+\item
+  si \(-c \leq x \leq c\) alors \(\min\{-c,x\} = -c\) et
+  \[F_c(x) = F\left(\min\{-c,x\}\right) + F(c) - F(-x) = 1 - F(c) + F(c) - 1 + F(x) = F(x)\]
+  car la densité de la loi Normale centrée réduite est paire, ce qui
+  implique que \(F(-x) = 1 - F(x)\) pour tout \(x\in\mathbb{R}\),
+\item
+  si \(x < -c\) alors \(\min\{-c,x\} = x\) et
+  \[F_c(x) =  F\left(\min\{-c,x\}\right) = F(x).\]
+\end{itemize}
+
+On en conclut que \(F_c = F\)~: \(X_c\) a la même loi que \(X\). Ce
+résultat est dû à la symétrie de la densité de la loi Normale centrée
+réduite. On remarque d'ailleurs que le résultat resterait inchangé si
+l'on prenait n'importe quelle autre loi de densité paire\,!
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{II-answer-gausssym-cov}
+Tout d'abord, par définition,
+\[\text{Cov}\left(X,X_c\right) = \mathbb{E}\left( \left(X - \mathbb{E}\left(X\right)\right)\,\left(X_c - \mathbb{E}\left(X_c\right) \right) \right) = \mathbb{E}\left(X\,X_c \right) \]
+puisque \(X\) et \(X_c\) sont gaussiennes centrées (d'espérance nulle)
+réduites. Or on remarque que l'on peut écrire
+\(X_c = X\,1_{\mathbb{R}\backslash[-c,c]}(X) - X\,\,1_{[-c,c]}(X)\). On
+déduit par linéarité de l'espérance que \begin{align*}
+\mathbb{E}\left(X\,X_c\right) &= \mathbb{E}\left(X^2\,1_{\mathbb{R}\backslash[-c,c]}(X) - X^2\,1_{[-c,c]}(X)\right)\\
+&= \mathbb{E}\left(X^2\,\left(1_{\mathbb{R}\backslash[-c,c]}(X) + 1_{[-c,c]}(X) - 1_{[-c,c]}(X)\right) - X^2\,1_{[-c,c]}(X)\right)\\
+&= \mathbb{E}\left(X^2\right) - 2\,\mathbb{E}\left(X^2\,1_{[-c,c]}(X)\right).
+\end{align*} Etant donné que \(X\) est de loi Normale centrée réduite,
+on a directement que \(\mathbb{E}\left(X^2\right)=1\); il suffit donc de
+calculer la dernière espérance pour obtenir le résultat. Comme
+\(x\mapsto x^2\,1_{[-c,c]}(x)\) est bornée et continue sur
+\(\mathbb{R}\backslash\{-c,c\}\) (donc continue presque partout), elle
+est intégrable et
+\[\mathbb{E}\left(X^2\,1_{[-c,c]}(X)\right) = \int_{-\infty}^{+\infty} x^2\,1_{[-c,c]}\,f(x)\,dx = \int_{-c}^c x^2\,f(x)\,dx. \]
+Or on pourra remarquer que \(f^\prime(x) = -x\,f(x)\) puis que
+\(f^{\prime\prime}(x) = (x^2-1)\,f(x)\). Puisque \(f\), \(f^\prime\) et
+\(f^{\prime\prime}\) sont continues et bornées (voir l'exercice
+\emph{Densité et fonction de répartition d'une loi Normale} du chapitre
+Probabilités I) elles sont intégrables sur des segments. On en déduit
+que \begin{align*}
+\mathbb{E}\left(X^2\,1_{[-c,c]}(X)\right) &= \int_{-c}^c (x^2-1)\,f(x)\,dx + \int_{-c}^c f(x)\,dx\\
+&= \left[-x\,f(x) \right]_{-c}^c + F(c) - F(-c)\\
+&= -c\,\left(f(c) + f(-c)\right) + F(c) - F(-c)\\
+&= 2\,\left(F(c) - c\,f(c)\right) - 1
+\end{align*} par parité de \(f\). On en conclut que
+\(\text{Cov}\left(X,X_c\right) = 3 + 4\,\left(c\,f(c) - F(c)\right)\).
+
+La fonction
+\(g : c\in\mathbb{R}_+^\ast \mapsto 3+4\,\left(c\,f(c) - F(c)\right)\)
+est continue, infiniment dérivable et pour tout \(c > 0\) on a
+\(g^\prime(c) = -4\,c^2\,f(c) < 0\). Par conséquent, \(g\) est
+strictement décroissante, avec \(\lim\limits_{c\to0^+} g(c) = 1\) et
+\(\lim\limits_{c\to+\infty} g(c) = -1\). Le théorème des valeurs
+intermédiaires nous permet de conclure qu'il existe bien un unique
+\(c_0 > 0\) tel que \(g(c_0) = 0\).
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{II-answer-gausssym-indep}
+Les variables aléatoires \(X\) et \(X_{c_0}\) sont indépendantes ssi
+pour tous ensembles \(A,B \in \mathcal{E}_\mathbb{R}\) on a
+\[\mathbb{P}\left(X \in A, X_{c_0} \in B \right) = \mathbb{P}\left(X \in A\right)\,\mathbb{P}\left(X_{c_0} \in B \right).\]
+
+Or si l'on prend \(A = B = ]-\infty, x]\) où \(x < -c_0\), alors
+\begin{align*}
+\mathbb{P}\left( X \leq x, X_{c_0} \leq x \right) &= \mathbb{P}\left( X \leq x, X < -c_0 \right) + \mathbb{P}\left( X \leq x, X > c_0 \right)\\
+&\ \ \ + \mathbb{P}\left( X\leq x, X \geq -x, -c_0 \leq X \leq c_0 \right)\\
+&= \mathbb{P}\left( X \leq x \right) +0 + 0 = F(x)\\
+& \neq F(x)\,F(x) = \mathbb{P}\left( X \leq x \right)\,\mathbb{P}\left(X_{c_0} \leq x \right).
+\end{align*}
+
+On en conclut que bien que \(\text{Cov}\left(X,X_{c_0}\right) = 0\),
+\(X\) et \(X_{c_0}\) ne sont pas indépendantes.
+
+\runinhead{Question
+4}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+4}\label{II-answer-gausssym-vecgauss}
+Supposons que \((X,X_{c_0})\) soit un vecteur gaussien. Alors, puisque
+\(\text{Cov}\left(X,X_{c_0}\right) = 0\), \(X\) et \(X_{c_0}\) sont
+nécessairement indépendantes. Or nous venons de voir que ce n'était pas
+le cas; nous avons donc contradiction. On en conclut que \((X,X_{c_0})\)
+n'est pas gaussien.
+
+\section{Loi du \(\chi^2\)}\label{II-loi-du-chi2-1}
+
+\runinhead{A 1 degré de
+liberté}\phantomsection\addcontentsline{toc}{subsubsection}{A 1 degré de
+liberté}\label{II-answer-khi2-1dl}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Soit \(h : \mathbb{R}\to \mathbb{R}\) une fonction mesurable telle que
+  \(h\times f\) est intégrable. Alors en opérant le changement de
+  variable \(u = x^2\) on a \begin{align*}
+  \mathbb{E}\left( h(Y) \right) &= \mathbb{E}\left(h(X^2)\right) = \int_{\mathbb{R}} h(x^2)\,f(x)\,dx\\
+  & = \int_{-\infty}^{0} h(x^2)\,f(x)\,dx + \int_{0}^{+\infty} h(x^2)\,f(x)\,dx\\
+  &= \int_{0}^{+\infty} h(u)\,f\left(-\sqrt{u}\right)\,\dfrac{1}{2\,\sqrt{u}} \,du + \int_{0}^{+\infty} h(u)\,f\left(\sqrt{u}\right)\,\dfrac{1}{2\,\sqrt{u}} \,du.
+  \end{align*} Or \(f\) est paire, donc pour tout \(u \in \mathbb{R}^+\)
+  on a \(f\left(-\sqrt{u}\right) = f\left(\sqrt{u}\right)\) et
+  \begin{align*}
+  \mathbb{E}\left( h(Y) \right) &= \int_{\mathbb{R}_+} h(u)\,f\left(\sqrt{u}\right)\,\dfrac{1}{\sqrt{u}} \,du.
+  \end{align*} Par propriété \(Y\) possède donc une densité \(f_Y\)
+  valant pour tout \(x\in\mathbb{R}\)
+  \[f_Y(x) = \left|\begin{array}{ll} f\left(\sqrt{x}\right)\,\dfrac{1}{\sqrt{x}} = \dfrac{x^{-\frac{1}{2}}}{2^{\frac{1}{2}}\,\Gamma\left(\frac{1}{2}\right)}\,\exp\left\{-\dfrac{x}{2}\right\} & \text{si } x > 0,\\ 0 & \text{si } x \leq 0. \end{array}\right. \]
+\end{enumerate}
+
+\textbf{Remarque.} La fonction \(f_Y\) est bien une densité~: elle est
+continue par morceaux donc mesurable, puis positive, et son intégrale
+sur \(\mathbb{R}\) vaut bien \(1\)~: \begin{align*}
+\int_{\mathbb{R}} f_Y(x)\,dx &= \dfrac{1}{2\,\Gamma\left(\frac{1}{2}\right)}\,\int_{0}^{+\infty} \left(\dfrac{x}{2}\right)^{\frac{1}{2}-1}\,\exp\left\{-\dfrac{x}{2}\right\}\,dx \\
+&= \dfrac{1}{\Gamma\left(\frac{1}{2}\right)}\,\int_{0}^{+\infty} u^{\frac{1}{2}-1}\,e^{-u}\,du = \dfrac{\Gamma\left(\frac{1}{2}\right)}{\Gamma\left(\frac{1}{2}\right)} = 1.
+\end{align*}
+
+\runinhead{A n degrés de
+liberté}\phantomsection\addcontentsline{toc}{subsubsection}{A n degrés
+de liberté}\label{II-answer-khi2-ndl}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  On note \((\mathcal{P}_n)\) la propriété à démonter au rang \(n\).
+\end{enumerate}
+
+\textbf{Initialisation.} Nous avons vu à la question précédente que
+\((\mathcal{P}_1)\) est vraie.
+
+\textbf{Hérédité.} Soit maintenant \(n \geq 2\) et supposons
+\((\mathcal{P}_{n-1})\) vraie. Alors \(Y = \sum_{i = 1}^{n-1}Y_i + Y_n\)
+est la somme de deux variables aléatoires indépendantes, dont la
+première suit un \(\chi_{n-1}^2\) de densité notée \(f_{n-1}\) et la
+seconde un \(\chi_1^2\) de densité notée \(f_1\). Elle possède donc une
+densité, égale au produit de convolution de \(f_{n-1}\) et \(f_1\)~:
+pour tout \(x\in\mathbb{R}\)
+\[f_Y(x) = \int_{\mathbb{R}} f_1(x-u)\,f_{n-1}(u)\,du.\] Or pour tout
+\(x,u\in\mathbb{R}\) on a \(f_1(x-u) = 0\) ssi \(x \leq u\) et
+\(f_{n-1}(u) = 0\) ssi \(u \leq 0\). Donc leur produit est strictement
+positif ssi \(x > u > 0\), nul sinon. La densité \(f_Y\) est par
+conséquent nulle sur \(\mathbb{R}^-\) et nous allons maintenant exhiber
+son expression sur \(\mathbb{R}_+^\ast\). Soit \(x > 0\), alors
+\begin{align*}
+f_Y(x) &= \int_{0}^{x} \dfrac{(x-u)^{-\frac{1}{2}}}{\sqrt{2}\,\Gamma\left(\frac{1}{2}\right)}\,\exp\left\{-\dfrac{x-u}{2}\right\}\,\dfrac{u^{\frac{n-1}{2}-1}}{2^{\frac{n-1}{2}}\,\Gamma\left(\frac{n-1}{2}\right)}\,\exp\left\{-\dfrac{u}{2}\right\} \,du\\
+&= \dfrac{\exp\left\{-\dfrac{x}{2} \right\}}{2^{\frac{n}{2}}\,\Gamma\left(\frac{1}{2}\right)\Gamma\left(\frac{n-1}{2}\right)} \,\int_0^x \left(x-u\right)^{-\frac{1}{2}}\,u^{\frac{n-3}{2}}\,du.
+\end{align*} Avec le changement de variable \(v=\dfrac{u}{x}\) on
+obtient \begin{align*}
+f_Y(x) &= \dfrac{x^{\frac{n}{2}-1}\,\exp\left\{-\dfrac{x}{2} \right\}}{2^{\frac{n}{2}}\,\Gamma\left(\frac{1}{2}\right)\Gamma\left(\frac{n-1}{2}\right)} \,\int_0^{1} v^{\frac{n-3}{2}}\,\left(1 - v\right)^{-\frac{1}{2}} \,dv.
+\end{align*} Or \(f_Y\) est une densité, son intégrale vaut donc \(1\)~:
+\begin{align*}
+\int_{\mathbb{R}} f_Y(x)\,dx &= \int_0^{+\infty} \dfrac{x^{\frac{n}{2}-1}\,\exp\left\{-\dfrac{x}{2} \right\}}{2^{\frac{n}{2}}\,\Gamma\left(\frac{1}{2}\right)\Gamma\left(\frac{n-1}{2}\right)}\,\left(\int_0^{1} v^{\frac{n-3}{2}}\,\left(1 - v\right)^{-\frac{1}{2}} \,dv\right)\,dx\\
+&= \left(\int_0^{1} v^{\frac{n-3}{2}}\,\left(1 - v\right)^{-\frac{1}{2}} \,dv\right)\,\left(\int_0^{+\infty} \dfrac{x^{\frac{n}{2}-1}\,\exp\left\{-\dfrac{x}{2} \right\}}{2^{\frac{n}{2}}\,\Gamma\left(\frac{1}{2}\right)\Gamma\left(\frac{n-1}{2}\right)}\,dx\right)\\
+& \left(\int_0^{1} v^{\frac{n-3}{2}}\,\left(1 - v\right)^{-\frac{1}{2}} \,dv\right)\,\left(\int_0^{+\infty} \dfrac{x^{\frac{n}{2}-1}\,\exp\left\{-x \right\}}{\Gamma\left(\frac{1}{2}\right)\Gamma\left(\frac{n-1}{2}\right)}\,dx\right)\\
+&= \left(\int_0^{1} v^{\frac{n-3}{2}}\,\left(1 - v\right)^{-\frac{1}{2}} \,dv\right)\,\left( \dfrac{\Gamma\left(\frac{n}{2}\right)}{\Gamma\left(\frac{1}{2}\right)\Gamma\left(\frac{n-1}{2}\right)}\right) = 1.
+\end{align*}
+
+On en déduit que
+\[ \int_0^{1} v^{\frac{n-3}{2}}\,\left(1 - v\right)^{-\frac{1}{2}} \,dv = \dfrac{\Gamma\left(\frac{1}{2}\right)\Gamma\left(\frac{n-1}{2}\right)}{\Gamma\left(\frac{n}{2}\right)}, \]
+et finalement que pour tout \(x\in\mathbb{R}\)
+\[f_Y(x) = \left|\begin{array}{ll} \dfrac{x^{\frac{n}{2}-1}}{2^{\frac{n}{2}}\,\Gamma\left(\frac{n}{2}\right)}\,\exp\left\{-\dfrac{x}{2}\right\} & \text{si } x> 0,\\ 0 & \text{sinon;}\end{array}\right.\]
+\((\mathcal{P}_n)\) est donc vraie.
+
+\textbf{Conclusion.} La propriété est vraie pour tout
+\(n\in\mathbb{N}^\ast\).
+
+\section{Combinaisons linéaires de variables Gaussiennes
+indépendantes}\label{II-combinaisons-linuxe9aires-de-variables-gaussiennes-induxe9pendantes-1}
+
+\runinhead{Préliminaires}\phantomsection\addcontentsline{toc}{subsubsection}{Préliminaires}\label{II-answer-CLIGauss-pre}
+Cette question a été traitée de manière générale dans le cours. Nous en
+proposons une preuve alternative, basée sur le calcul de la fonction de
+répartition de la variable aléatoire \(s\,X + m\), qui caractérise sa
+loi. Elle dépend clairement des valeurs de \(s\).
+
+\begin{itemize}
+\item
+  Si \(s = 0\), alors \(s\,X + m\) est toujours égale à \(m\)~: sa loi
+  est une masse de Dirac en \(\{m\}\) et pour tout \(x\in\mathbb{R}\) on
+  a \(\mathbb{P}\left(s\,X +m \leq x\right) = 1_{[m,+\infty[}(x)\).
+\item
+  Si \(s\neq 0\), alors pour tout \(x\in\mathbb{R}\) on a
+  \[\mathbb{P}\left( s\,X + m \leq x \right) = \left|\begin{array}{ll}\displaystyle\mathbb{P}\left( X \leq \dfrac{x-m}{s} \right) = \int_{-\infty}^{\frac{x-m}{s}} f(u)\,du & \text{si } s>0,\\[1em] \displaystyle \mathbb{P}\left( X \geq \dfrac{x-m}{s} \right) = \int_{\frac{x-m}{s}}^{+\infty} f(u)\,du & \text{si } s<0,\end{array}\right.\]
+  qui en posant le changement de variable \(v = s\,x+m\) donne
+  \[\mathbb{P}\left( s\,X + m \leq x \right) = \int_{-\infty}^{x} \dfrac{1}{|s|}\,f\left(\dfrac{u-m}{s} \right)\,dx.\]
+  Ainsi, \(s\,X+m\) admet une densité, qui pour tout \(x\in\mathbb{R}\)
+  est égale à
+  \[ \dfrac{1}{|s|}\,f\left(\dfrac{u-m}{s}\right) = \dfrac{1}{\sqrt{2\,\pi}\,|s|}\,\exp\left\{-\dfrac{(x-m)^2}{2\,s^2} \right\}.\]
+  On reconnaît la densité d'une loi Normale d'espérance \(m\) et de
+  variance \(s^2\).
+\end{itemize}
+
+\runinhead{Combinaisons
+linéaires}\phantomsection\addcontentsline{toc}{subsubsection}{Combinaisons
+linéaires}\label{II-answer-CLIGauss-cl}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Commençons par supposer que pour tout \(n\in\mathbb{N}^\ast\),
+  \(a\in\mathbb{R}^n\) est tel qu'aucune de ses composantes n'est nulle.
+  Nous allons montrer par récurrence sur \(n\) que \(S_n^a\) suit une
+  loi Normale d'espérance nulle et de variance \(\sum_{i = 1}^n a_i^2\).
+  On note cette propriété \((\mathcal{P}_n)\).
+\end{enumerate}
+
+\textbf{Initialisation.}
+
+\begin{itemize}
+\item
+  Si \(n = 1\) et \(a_1 \neq 0\), alors \(S_1^a = a_1\,X_1\) suit une
+  loi Normale centrée de variance \(a_1^2\) d'après la question 1;
+  \((\mathcal{P}_1)\) est donc vraie.
+\item
+  Si \(n=2\) et \(a_1,a_2 \neq 0\), alors d'après le cours
+  \(S_2^a = a_1\,X_1 + a_2\,X_2\) admet une densité, notée \(f_n^a\),
+  égale au produit de convolution des densités \(f_1\) de \(a_1\,X_1\)
+  et \(f_2\) de \(a_2\,X_2\). En outre, d'après la question 1, pour tout
+  \(x\in\mathbb{R}\) on a
+  \(f_1(x) = \dfrac{1}{|a_1|}\,f\left(\dfrac{x}{a_1} \right)\) et
+  \(f_2(x) = \dfrac{1}{|a_2|}\,f\left(\dfrac{x}{a_2} \right)\). Par
+  conséquent, pour tout \(x\in\mathbb{R}\), \begin{align*}
+  f_2^a(x) &= \int_{\mathbb{R}} f_1(x-u)\,f_2(u)\,du = \int_\mathbb{R}\dfrac{1}{|a_1|\,|a_2|}\,f\left(\dfrac{x - u}{a_1}\right)\,f\left(\dfrac{u}{a_2}\right)\,du\\
+  &= \dfrac{1}{\sqrt{a_1^2 +a_2^2}}\,f\left(\dfrac{x}{\sqrt{a_1^2+a_2^2}}\right)\, \int_{\mathbb{R}} \dfrac{\sqrt{a_1^2+a_2^2}}{|a_1|\,|a_2|}\,\dfrac{f\left(\dfrac{x - u}{a_1}\right)}{f\left(\dfrac{x}{\sqrt{a_1^2+a_2^2}}\right)}\,f\left(\dfrac{u}{a_2}\right)\,du.
+  \end{align*} Or pour tout \(x,u\in\mathbb{R}\) on a \begin{align*}
+  \dfrac{f\left(\dfrac{x - u}{a_1}\right)}{f\left(\dfrac{x}{\sqrt{a_1^2+a_2^2}}\right)}\,f\left(\dfrac{u}{a_2}\right) & = \dfrac{1}{\sqrt{2\pi}}\,\dfrac{\exp\left\{-\dfrac{(x-u)^2}{2\,a_1^2} \right\}}{\exp\left\{ -\dfrac{x^2}{2\,(a_1^2+a_2^2)} \right\}}\,\exp\left\{ -\dfrac{u^2}{2\,a_2^2} \right\}\\
+  & = \dfrac{1}{\sqrt{2\pi}}\,\exp\left\{-\dfrac{1}{2}\,\left( \dfrac{(x-u)^2}{a_1^2} + \dfrac{u^2}{a_2^2} - \dfrac{x^2}{a_1^2+a_2^2} \right) \right\}\\
+  &= \dfrac{1}{\sqrt{2\pi}}\,\exp\left\{ -\dfrac{\left(a_2^2\,x - (a_1^2 + a_2^2)\,u\right)^2}{2\,a_1^2\,a_2^2\,(a_1^2+a_2^2)} \right\}\\
+  &= \dfrac{1}{\sqrt{2\pi}}\,\exp\left\{-\dfrac{\left(u - \dfrac{a_2^2\,x}{a_1^2 + a_2^2}\right)^2}{2\,\dfrac{a_1^2\,a_2^2}{a_1^2+a_2^2}}\right\},
+  \end{align*} qui multiplié par
+  \(\dfrac{\sqrt{a_1^2+a_2^2}}{|a_1|\,|a_2|}\) correspond à la densité
+  d'une loi Normale d'espérance \(\dfrac{a_2^2\,x}{a_1^2+a_2^2}\) et de
+  variance \(\dfrac{a_1^2\,a_2^2}{a_1^2+a_2^2}\). La précédente
+  intégrale vaut donc \(1\) et \((\mathcal{P}_2)\) est vraie.
+\end{itemize}
+
+\textbf{Héritage.} Soit maintenant \(n\geq 2\), et supposons
+\((\mathcal{P}_{n-1})\) vraie. Alors
+\(S_n^a = S_{n-1}^{a_{-n}} + a_n\,X_n\), où
+\(a_{-n} := (a_1,\dots,a_{n-1})\). Or \(S_{n-1}^{a_{-n}}\) et
+\(a_n\,X_n\) sont des variables gaussiennes centrées, de variances
+respectives \(\sum_{i = 1}^{n-1} a_i^2\) d'après \((\mathcal{P}_{n-1})\)
+et \(a_n^2\) d'après la question 1. Par \((\mathcal{P}_2)\), \(S_n^a\)
+suit donc une loi Normale centrée de variance \(\sum_{i = 1}^n a_i^2\).
+
+\textbf{Conclusion.} On en conclut que \((\mathcal{P}_n)\) est vraie
+pour tout \(n\in\mathbb{N}^\ast\).
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Calculons cette covariance~: \begin{align*}
+  \text{Cov}\left(S_n^a, S_n^b\right) &= \text{Cov}\left(\sum_{i =1}^n a_i\,X_i, \sum_{j = 1}^n b_j\,X_j\right)\\
+  &= \sum_{i = 1}^n a_i\,b_i\,\mathbb{V}\left(X_i\right) + \sum_{1\leq i\neq j \leq n} a_i\,b_j\,\text{Cov}\left(X_i,X_j\right).
+  \end{align*} Or par hypothèse \(\mathbb{V}\left(X_i\right) = 1\) pour
+  tout \(i\in\{1,\dots,n\}\) et par indépendance on a
+  \(\text{Cov}\left(X_i,X_j\right) = 0\) pour tous
+  \(i,j \in \{1,\dots,n\}\) tels que \(i\neq j\). Ainsi,
+  \[ \text{Cov}\left(S_n^a, S_n^b\right) = \sum_{i = 1}^n a_i\,b_i \]
+  qui est nulle ssi \(a\) et \(b\) sont orthogonaux.
+\end{enumerate}
+
+\section{Loi de Maxwell}\label{II-loi-de-maxwell-1}
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{II-answer-Maxwell-1}
+La densité du triplet \((X, Y, Z)\) étant invariante par rotation, elle
+est de la forme \(f_{(X,Y,Z)} (x, y, z) = \phi(x^2 + y^2 + z^2)\). De
+plus, les variables \(X, Y\) et \(Z\) étant indépendantes, on a
+\[f_{(X,Y,Z)} (x, y, z) = f_X (x)f_Y (y)f_Z (z) \; \mbox{ pour tout $(x, y, z) \in \mathbb{R}^3$.} \]
+Soit \((x_0,y_0,z_0) \in \mathbb{R}^3\)\,; comme
+\(\phi(x_0^2 + y_0^2 + z_0^2) > 0\) on a
+\(f_{(X, Y, Z)}(x_0, y_0, z_0) > 0\) et donc \(f_X(x_0) \neq 0\),
+\(f_Y(y_0) \neq 0\) et \(f_Z(z_0) \neq 0\). Pour tout
+\(x \in \mathbb{R}^3\), comme \[
+f_X(x) f_Y(y_0) f_Z(z_0) = \phi(x^2 + y_0^2 + z^2) = \phi(y_0^2 + x^2 + z_0^2)
+= f_X(y_0) f_Y(x) f_Z(z_0),
+\] on a l'égalité \[
+f_X(x) = \frac{f_X(y_0)}{f_Y(y_0)} f_Y(x).
+\] Comme on a par ailleurs \[
+\int_{-\infty}^{+\infty} f_X(x) \, dx = \int_{-\infty}^{+\infty} f_Y(x) \, dx = 1,
+\] il est nécessaire que le ratio \({f_X(y_0)}/{f_Y(y_0)}\) soit égal à
+\(1\). On a donc \(f_X = f_Y\)\,; la preuve que \(f_Y = f_Z\) s'obtient
+de manière similaire.
+
+Pour finir, puisque pour tout \(x \in \mathbb{R}\) on a
+\(f(x)^3 = f_{(X, Y, Z)}(x, x, x) = \phi(3 x^2) > 0\), la fonction \(f\)
+est bien positive en tout point.
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{II-answer-Maxwell-2}
+L'égalité
+\[f(x)f(y)f(z) = \phi(x^2 + y^2 + z^2 )  \; \text{ pour tout } (x, y, z) \in \mathbb{R}^3\]
+implique \(f (x)f'(y)f (z) = 2y\phi' (x^2 + y^2 + z^2 )\) et
+\(f' (x)f (y)f (z) = 2x\phi' (x^2 + y^2 + z^2 ).\) On en déduit que
+\[xf (x)f' (y)f (z) = f' (x)yf (y)f (z)  \; \text{ pour tout } (x, y, z) \in \mathbb{R}^3.\]
+
+Soit \((x, y_0, z_0) \in \mathbb{R}^3\) avec \(y_0 \neq 0\)\,; on a
+\(f(x) > 0\), \(f(y_0) > 0\) et \(f(z_0) > 0\). En posant \[
+c = \frac{f'(y_0) f(z_0)}{y_0 f(y_0) f(z_0)},
+\] on voit que
+\[f' (x) = cxf(x) \; \mbox{pour tout $x \in \mathbb{R}$.}\] On peut
+réécrire cette équation différentielle sous la forme \[
+(\ln f(x))' = cx.
+\] En intégrant les deux membres de l'équation entre \(0\) et \(x\), on
+obtient \[
+\ln f(x) - \ln f(0) = c\frac{x^2}{2}
+\] et donc \[
+f(x) = f(0) e^{c x^2/2},
+\] ce qui est bien la forme cherchée \(f(x) = a e^{cx^2/2}\).
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{II-answer-Maxwell-3}
+Comme \(\int_\mathbb{R}f (x) dx = 1\), on a nécessairement \(c < 0\) et
+on en déduit que
+\[f (x) = \frac{1}{\sqrt{2\pi \sigma^2}}\exp\left(-\frac{x^2}{2\sigma^2}\right).\]
+Les variables aléatoires \(X\), \(Y\) et \(Z\) suivent donc loi
+gaussienne centrée et la covariance du vecteur est \(\sigma^2 I_3\), où
+\(I_3\) est la matrice identité.
+
+\runinhead{Question
+4}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+4}\label{II-answer-Maxwell-4}
+On a
+\[\frac{1}{2} m\mathbb{E}(\|V \|^2 ) = \frac{1}{2} m\mathbb{E}(V_1^2 +V_2^2 + V_3^2).\]
+Comme \(\mathbb{E}(V_i^2) = \sigma^2\), on en déduit que
+\(E_c = \frac{3}{2}m \sigma^2\) et par conséquent que
+\[\sigma^2 = \frac{kT}{m}.\]
+
+\runinhead{Question
+5}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+5}\label{II-answer-Maxwell-5}
+À l'aide de la méthode de la fonction muette, on montre que \(V_1^2\)
+suit une loi gamma de paramètres \((1/2,\frac{1}{2\sigma^2})\). En
+effet, en appliquant le changement de variable \(y=x^2\) sur
+\(\mathbb{R}_-^\ast\) et \(\mathbb{R}_+^\ast\), on obtient~:
+\[f_{V_1^2} (y) = \left(f(-\sqrt{y}) + f(\sqrt{y})\right) \frac{1}{2\sqrt{y}} 1_{]0,+\infty[}(x) = f(\sqrt{y}) \frac{1}{\sqrt{y}} 1_{]0,+\infty[}(x)\]
+par parité de \(f\), soit \begin{align*}
+f_{V_1^2} (y) &= \frac{1}{\sqrt{\pi}}\left(\frac{1}{2\sigma^2}\right)^{1/2} y^{-1/2} \exp\left(-\frac{y}{2\sigma^2}\right)\\
+              &= \frac{1}{\Gamma(1/2)}\left(\frac{1}{2\sigma^2}\right)^{1/2} y^{-1/2} \exp\left(-\frac{y}{2\sigma^2}\right)
+\end{align*} On déduit de l'indication que
+\(\|V\|^2 = V_1^2 +V_2^2 + V_3^2\) suit une loi gamma de paramètres
+\((3/2,\frac{1}{2\sigma^2})\). Sa densité est
+\[f_{\|V\|^2}(x) = \frac{1}{\sqrt{2\pi}\sigma^3}\sqrt{x} e^{- x/2\sigma^2}1_{]0,+\infty[}(x).\]
+
+À l'aide de la méthode de la fonction muette, en appliquant le
+changement de variable \(v = \sqrt{x}\) sur \(\mathbb{R}_+^\ast\) et
+avec \(\sigma^2 = \frac{kT}{m}\), on montre enfin que \(\|V\|\) est une
+variable de densité~:
+
+\[f_{\|V\|}(v) = \frac{\sqrt{2}}{\sqrt{\pi}}\left(\frac{m}{kT}\right)^{3/2}v^2 e^{- mv^2/2kT} 1_{]0,+\infty[}(v).\]
+
+Il s'agit de la densité de la loi de Maxwell.

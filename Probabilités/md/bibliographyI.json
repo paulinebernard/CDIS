@@ -1,0 +1,150 @@
+[
+	{
+		"id": "polyponts",
+		"type": "book",
+		"title": "Probabilités et statistique",
+		"publisher": "Ellipses",
+		"URL": "http://cermics.enpc.fr/~jourdain/probastat/poly.pdf",
+		"ISBN": "978-2-340-01396-4",
+		"author": [
+			{
+				"family": "Jourdain",
+				"given": "Benjamin"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2016"
+				]
+			]
+		}
+	},
+	{
+		"id": "polygarnier",
+		"type": "book",
+		"title": "Aléatoire",
+		"publisher": "",
+		"URL": "http://josselin-garnier.org/wp-content/uploads/2018/03/MAP311_2018.pdf",
+		"ISBN": "",
+		"author": [
+			{
+				"family": "Garnier",
+				"given": "Josselin"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2018"
+				]
+			]
+		}
+	},
+	{
+		"id": "Jacod",
+		"type": "book",
+		"title": "L'essentiel en théorie des probabilités",
+		"publisher": "Cassini",
+		"number-of-pages": "ix-261",
+		"source": "HAL Archives Ouvertes",
+		"URL": "https://hal.archives-ouvertes.fr/hal-00104956",
+		"author": [
+			{
+				"family": "Jacod",
+				"given": "J."
+			},
+			{
+				"family": "Protter",
+				"given": "P."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2003"
+				]
+			]
+		},
+		"accessed": {
+			"date-parts": [
+				[
+					"2019",
+					6,
+					24
+				]
+			]
+		}
+	},
+	{
+		"id": "tebaldi",
+		"type": "article-journal",
+		"title": "The use of the multi-model ensemble in probabilistic climate projections",
+		"container-title": "Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences",
+		"page": "2053-2075",
+		"volume": "365",
+		"issue": "1857",
+		"source": "royalsocietypublishing.org (Atypon)",
+		"abstract": "Recent coordinated efforts, in which numerous climate models have been run for a common set of experiments, have produced large datasets of projections of future climate for various scenarios. Those multi-model ensembles sample initial condition, parameter as well as structural uncertainties in the model design, and they have prompted a variety of approaches to quantify uncertainty in future climate in a probabilistic way. This paper outlines the motivation for using multi-model ensembles, reviews the methodologies published so far and compares their results for regional temperature projections. The challenges in interpreting multi-model results, caused by the lack of verification of climate projections, the problem of model dependence, bias and tuning as well as the difficulty in making sense of an ‘ensemble of opportunity’, are discussed in detail.",
+		"URL": "https://royalsocietypublishing.org/doi/abs/10.1098/rsta.2007.2076",
+		"DOI": "10.1098/rsta.2007.2076",
+		"journalAbbreviation": "Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences",
+		"author": [
+			{
+				"family": "Tebaldi",
+				"given": "Claudia"
+			},
+			{
+				"family": "Knutti",
+				"given": "Reto"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2007",
+					8,
+					15
+				]
+			]
+		},
+		"accessed": {
+			"date-parts": [
+				[
+					"2019",
+					9,
+					17
+				]
+			]
+		}
+	},
+	{
+		"id": "matheron",
+		"type": "book",
+		"title": "Estimer et choisir: essai sur la pratique des probabilités",
+		"publisher": "Ecole nationale supérieure des mines de Paris",
+		"publisher-place": "Fontainebleau, France",
+		"number-of-pages": "175",
+		"source": "Library Catalog - www.sudoc.abes.fr",
+		"event-place": "Fontainebleau, France",
+		"URL": "http://cg.ensmp.fr/bibliotheque/public/MATHERON_Ouvrage_00208.pdf",
+		"title-short": "Estimer et choisir",
+		"language": "français",
+		"author": [
+			{
+				"family": "Matheron",
+				"given": "Georges"
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"1978"
+				]
+			]
+		}
+	}
+
+
+
+]

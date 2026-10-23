@@ -1,0 +1,374 @@
+\chapter{Solutions}
+
+\runinhead{Dans un triangle
+(1)}\phantomsection\addcontentsline{toc}{subsubsection}{Dans un triangle
+(1)}\label{III-answer-etb1}
+La densité marginale de \(X\) est donnée par
+\(f_X(x) = \int f_{X,Y}(x,y) dy = 1_{]0,1[}(x)\) et pour
+\(x \in ]0,1[\), \[f_{Y|X=x} (y) = \frac{1}{x} 1_{]0,x[}(y)\] Ainsi
+\(X\) est uniformément distribué sur \(]0,1[\), et la loi de \(Y\)
+sachant \(X =x\) est uniforme sur \(]0,x[\) pour \((0 < x < 1)\).
+
+\runinhead{Dans un triangle
+(2)}\phantomsection\addcontentsline{toc}{subsubsection}{Dans un triangle
+(2)}\label{III-answer-etb2}
+Pour un tel \(x\), l'espérance conditionnelle \(\mathbb{E}(Y|X=x)\) vaut
+ainsi \(x/2\) et nous obtenons \(\mathbb{E}(Y|X) = \frac{X}{2}\).
+
+\runinhead{Auto-conditionnement}\phantomsection\addcontentsline{toc}{subsubsection}{Auto-conditionnement}\label{III-answer-autocond}
+On a \(\psi(y) = \mathbb{E}(Y|Y=y) = y\) et donc
+\(\mathbb{E}(Y|Y) = \psi(Y) = Y\) p.s.
+
+\runinhead{Espérance conditionnelle d'un produit de
+variables}\phantomsection\addcontentsline{toc}{subsubsection}{Espérance
+conditionnelle d'un produit de variables}\label{III-answer-prod}
+On a \(\mathbb{E}(XY|X = x) = x\mathbb{E}(Y|X=x)\), d'où
+\(\mathbb{E}(XY|X) = X\mathbb{E}(Y|X)\) p.s.
+
+\runinhead{Une deuxième
+approche}\phantomsection\addcontentsline{toc}{subsubsection}{Une
+deuxième approche}\label{III-answer-detail}
+On remarque qu'on peut réécrire l'erreur comme
+\[\ell(a,b)= \mathbb{E}(Y^2) -2a\mathbb{E}(XY) -2b \mathbb{E}(Y) +a^2\mathbb{E}(X^2) +2ab\mathbb{E}(X) +b^2.\]
+Cette fonction est convexe et par conséquent admet un minimum global
+atteint au point \((a^*, b^*)\in\mathbb{R}^2\) qui annule les dérivées
+dérivées partielles de \(\ell\) en \(a\) et \(b\). Ainsi, on a
+\[\frac{\partial \ell(a^*,b^*)}{\partial b} = -2\mathbb{E}(Y^2) + 2a^* \mathbb{E}(X) + 2b^*=0\]
+d'où \(b^* = \mathbb{E}(Y) - a^* \mathbb{E}(X)\) Et, \[\begin{aligned}
+\frac{\partial \ell(a^*,b^*)}{\partial a} & = -2\mathbb{E}(XY) + 2a \mathbb{E}(X^2) + 2b \mathbb{E}(X)\\
+                                   & = -2\mathbb{E}(XY) + 2a \mathbb{E}(X^2) + 2\mathbb{E}(X)\mathbb{E}(Y) - 2 a^* \mathbb{E}(X^2)\\
+                                   & = -2\text{Cov}(X,Y) + a^*\mathbb{V}(X)=0
+\end{aligned}\]
+
+d'où
+\(a^* = \frac{\text{Cov}(X,Y)}{\mathbb{V}(X)} = \rho(X,Y)\frac{\sigma_Y}{\sigma_X}.\)
+
+\runinhead{Variance
+totale}\phantomsection\addcontentsline{toc}{subsubsection}{Variance
+totale}\label{III-answer-vartot}
+
+\begin{align*}
+\mathbb{V}(Y) =& \mathbb{E}((Y-\mathbb{E}(Y))^2) = \mathbb{E}(\mathbb{E}((Y-\mathbb{E}(Y))^2|X)) \text{   par la formule de l'espérance totale}\\
+=& \mathbb{E}(\mathbb{E}((Y-\mathbb{E}(Y|X)+\mathbb{E}(Y|X)-\mathbb{E}(Y))^2|X)) \\
+=& \mathbb{E}(\mathbb{E}((Y-\mathbb{E}(Y|X))^2|X)) + \mathbb{E}(\mathbb{E}((\mathbb{E}(Y|X)-\mathbb{E}(Y))^2|X)) \\
+ &+ 2\mathbb{E}(\mathbb{E}((Y-\mathbb{E}(Y|X))(\mathbb{E}(Y|X)-\mathbb{E}(Y))|X))\\
+=& \mathbb{E}(\mathbb{V}(Y|X)) + \mathbb{E}((\mathbb{E}(Y|X)-\mathbb{E}(Y))^2) + 2\mathbb{E}((\mathbb{E}(Y|X)-\mathbb{E}(Y))\mathbb{E}((Y-\mathbb{E}(Y|X))|X))\\
+=& \mathbb{E}(\mathbb{V}(Y|X)) + \mathbb{V}(\mathbb{E}(Y|X)) \text{   car    } \mathbb{E}((Y-\mathbb{E}(Y|X))|X) = 0 
+\end{align*}
+
+\section{Couple de variables}\label{III-couple-de-variables-1}
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{III-answer-ex1-1}
+On voit d'abord que la densité du couple \((X,Y)\) vaut~:
+\[f_{X,Y}(x,y) = f_{X|Y=y}(x)f_Y(y) = xe^{-xy}1_{\mathbb{R}_+}(x) 1_{[1,+\infty[} (y)\]
+Soit \(h\) une fonction continue bornée sur \(\mathbb{R}^2_+\). Le
+changement de variable \((x, y) \mapsto (t = xy , y)\) de jacobien
+\(y\), donne alors que
+\[\mathbb{E}(h(T, Y )) = \mathbb{E}(h(XY, Y )) = \int_1^{+\infty}\int_0^{+\infty} h(t,y) e^{-t} \frac{t}{y^2} dt dy\]
+et donc la densité du couple \((T, Y)\) vaut
+\[f_{T,Y} = e^{-t} \frac{t}{y^2}1_{[1,+\infty[} (y)1_{\mathbb{R}_+}(t)\]
+Elle s'écrit comme produit d'une fonction de \(t\) et d'une fonction de
+\(y\). On en déduit que \(T\) et \(Y\) sont indépendantes et que \(T\) a
+pour densité \(te^{-t} 1_{\mathbb{R}_+}(t)\).
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{III-answer-ex1-2}
+La loi marginale de \(X\) a pour densité
+\(f_X (x) = \int_1^{+\infty} x e^{-xy} dy = e^{-x}\). Ainsi \(X\) suit
+une loi exponentielle de paramètre 1 et la loi conditionnelle de \(Y\)
+sachant \(X = x\) admet la densité~:
+\[f_{Y|X=x}(y) = \frac{f_{X,Y}(x,y)}{f_X(x)} = x e^{-x(y-1)} 1_{[1,+\infty[} (y)\]
+pour x \textgreater{} 0.
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{III-answer-ex1-3}
+On en déduit que
+\[\mathbb{E}(Y|X=x ) = \int_1^{+\infty} y x e^{-x(y-1)} dy = \frac{x+1}{x}1_{\mathbb{R}_+}(x)\]
+par intégration par parties. Ainsi \(\mathbb{E}(Y|X) = \frac{X+1}{X}\).
+
+\section{Mélanges de lois}\label{III-muxe9langes-de-lois-1}
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{III-answer-melloi1}
+Soit \(B\) un borélien. Par indépendance de \(K\) avec \(X_i\), on a
+\[\mathbb{P}(X \in B \mid K = i) = \mathbb{P}(X_i \in B \mid K = i) = \mathbb{P}(X_i \in B).\]
+La loi de \(X\) sachant \(\{K = i\}\) est donc la même que celle de
+\(X_i\), d'où
+\[f_{X\mid K = i} : x\in\mathbb{R}\mapsto f_i(x) = \dfrac{1}{\sqrt{2\pi}\sigma_i}\,\exp\left\{- \dfrac{(x-m_i)^2}{2\sigma_i^2} \right\}.\]
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{III-answer-melloi2}
+Soit \(B\) un borélien. D'après la formule des probabilités totales et
+la question précédente, on a
+\[\mathbb{P}(X\in B) = \sum_{i = 1}^n p_i\,\mathbb{P}(X \in B \mid K = i) = \sum_{i = 1}^n p_i\,\mathbb{P}(X_i \in B).\]
+La variable aléatoire \(X\) admet donc une densité, qui vaut
+\[f_X : x\in\mathbb{R}\mapsto \sum_{i = 1}^n p_i\,f_i(x).\]
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{III-answer-melloi3}
+D'après la question précédente, \(X\) a pour espérance \begin{align*}
+\mathbb{E}(X) &= \int_\mathbb{R}x\,f_X(x)\,dx = \int_\mathbb{R}x \sum_{i = 1}^n p_i\, f_i(x)\,dx =  \sum_{i = 1}^n p_i \int_\mathbb{R}x\,f_i(x)\,dx\\
+& = \sum_{i = 1}^n p_i\,m_i.
+\end{align*} Quant à la variance de \(X\), en utilisant l'égalité
+\(\sum_{i= 1}^n p_i = 1\), elle vaut \begin{align*}
+\mathbb{V}(X) &= \mathbb{E}\left(X^2\right) - \mathbb{E}(X)^2 = \int_\mathbb{R}x^2\,f_X(x)\,dx - \left(\sum_{i = 1}^n p_i\,m_i\right)^2\\
+&= \sum_{i = 1}^n p_i (\sigma_i^2 + m_i^2) - \sum_{i = 1}^n p_i\left(\sum_{j = 1}^n p_j\,m_j\right)^2\\
+&= \sum_{i = 1}^n p_i\,\sigma_i^2 + \sum_{i = 1}^n p_i \left(m_i - \sum_{j=1}^n p_j\,m_j \right)^2.
+\end{align*} On retrouve bien la forme désirée, avec la dispersion des
+espérances
+\[\bar{\sigma}^2 := \sum_{i = 1}^n p_i \left(m_i - \sum_{j=1}^n p_j\,m_j \right)^2.\]
+
+\runinhead{Question
+4}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+4}\label{III-answer-melloi4}
+Si l'on souhaite approcher la loi de \(X\) avec une unique Gaussienne,
+et non un mélange, les questions précédentes suggèrent de prendre celle
+d'espérance \(\sum_{i =1}^n p_i\,m_i\) et de variance
+\(\sum_{i = 1}^n p_i\,\sigma^2_i + \bar{\sigma}^2\). Voir figure
+ci-dessous.
+
+\begin{figure}
+\centering
+\includegraphics{PdfMelGauss.tex.pdf}
+\caption{Illustration}
+\end{figure}
+
+\section{Lois conjuguées}\label{III-answer-loiconj}
+
+On considère dans tout cet exercice \(B_1\) et \(B_2\) des Boréliens.
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{III-answer-loiconj-expexp}
+D'après les hypothèses on a \begin{align*}
+\mathbb{P}_{X,Y}(B_1\times B_2) &= \int_{B_2} \left(\int_{B_1} d\mathbb{P}_{X\mid Y = y}(x) \right) d\mathbb{P}_Y(y) \hspace{1em}\text{par Fubini conditionnel,}\\
+&= \int_{B_2} \left(\int_{B_1} y\,e^{-y x}\,1_{\mathbb{R}_+^\ast}(x)\,dx \right) \lambda\,e^{-\lambda y}\,1_{\mathbb{R}_+^\ast}(y)\,dy\\
+&= \int_{B_1} \int_{B_2} \lambda\, y\,e^{-(x+\lambda)\,y}1_{\mathbb{R}_+^\ast}(x)\,1_{\mathbb{R}_+^\ast}(y) \,dy\, dx \hspace{1em}\text{par Fubini.}
+\end{align*} Le vecteur aléatoire \((X,Y)\) possède donc une densité
+jointe
+\[f_{X,Y} : (x,y) \in\mathbb{R}^2 \mapsto \lambda\, y\,e^{-(x+\lambda)\,y}1_{\mathbb{R}_+^\ast}(x)\,1_{\mathbb{R}_+^\ast}(y).\]
+La variable aléatoire \(X\) a donc aussi une densité~: pour tout
+\(x\in\mathbb{R}\) \begin{align*}
+f_X(x) &= \int_{\mathbb{R}} f_{X,Y}(x,y)\,dy = \int_\mathbb{R}\lambda\, y\,e^{-(x+\lambda)\,y}1_{\mathbb{R}_+^\ast}(x)\,1_{\mathbb{R}_+^\ast}(y)\,dy\\
+&= \left|\begin{array}{ll}\displaystyle \dfrac{\lambda}{x+\lambda} \int_{0}^{+\infty} y\,(x+\lambda)\,e^{-(x+\lambda)\,y}\,dy & \text{si } x>0,\\[1em] 0 & \text{sinon.} \end{array}\right.
+\end{align*} On reconnaît dans cette dernière intégrale la formule de
+l'espérance d'une loi Exponentielle de paramètre \(x+\lambda\), et on en
+déduit que pour tout \(x\in\mathbb{R}\)
+\[f_X(x) = \dfrac{\lambda}{(x+\lambda)^2}\,1_{\mathbb{R}_+^\ast}(x).\]
+Pour tout \(x\in\mathbb{R}_+^\ast\) la variable \(Y\) sachant
+\(\{X=x\}\) admet donc aussi une densité, que l'on explicite avec la
+formule de Bayes~: pour tout \(y\in\mathbb{R}\) \begin{align*}
+f_{Y\mid X=x}(y) &= \dfrac{f_{X,Y}(x,y)}{f_X(x)} = \dfrac{\lambda\, y\,e^{-(x+\lambda)\,y}\,1_{\mathbb{R}_+^\ast}(y)}{\dfrac{\lambda}{(x+\lambda)^2}}\\
+&= (x+\lambda)^2\,y\,e^{-(x+\lambda)\,y}\,1_{\mathbb{R}_+\ast}(y).
+\end{align*} Comme \(\Gamma(2) = 1\), on reconnaît ici la densité d'une
+loi Gamma d'indice \(2\) et de paramètre d'échelle \(x+\lambda\).
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{III-answer-loiconj-gampoi}
+D'après les hypothèses, en procédant comme précédemment, on a
+\begin{align*}
+\mathbb{P}_{X,Y}(B_1\times B_2) &= \int_{B_2} \left(\int_{B_1} d\mathbb{P}_{X\mid Y = y}(x) \right) d\mathbb{P}_Y(y)\\
+&= \int_{B_2} \left(\sum_{x\in B_1} \dfrac{y^{x}}{x!}\,e^{-y}\,1_{\mathbb{N}}(x) \right) \dfrac{\theta^{\alpha}}{\Gamma(\alpha)}\,y^{\alpha-1}e^{-\theta y}\,1_{\mathbb{R}_+}(y)\,dy\\
+&= \sum_{x\in B_1\cap\mathbb{N}} \left(\dfrac{1}{x!} \int_{B_2\cap\mathbb{R}_+} \dfrac{\theta^{\alpha}}{\Gamma(\alpha)}\,y^{x+\alpha-1}e^{-(\theta+1) y}\,dy\right)\\
+&= \sum_{x\in B_1\cap\mathbb{N}} \biggl(\dfrac{\Gamma(x+\alpha)\,\theta^\alpha}{x!\,\Gamma(\alpha)\,(\theta+1)^{x+\alpha}}\\
+&\hspace{5em} \times \int_{B_2\cap\mathbb{R}_+} \dfrac{(\theta+1)^{x+\alpha}}{\Gamma(x+\alpha)}\,y^{x+\alpha-1}e^{-(\theta+1) y}\,dy\biggr).
+\end{align*} On reconnaît dans cette dernière intégrale la densité d'une
+loi Gamma d'indice \(x+\alpha\) et de paramètre d'échelle \(\theta+1\),
+qui correspond exactement à la loi conditionnelle de \(Y\) sachant
+\(\{X=x\}\) pour \(x\in\mathbb{N}\). En effet, on a d'une part
+\begin{align*}
+\mathbb{P}_X(B_1) &= \mathbb{P}_{X,Y}(B_1 \times \mathbb{R}) = \sum_{x\in B_1\cap\mathbb{N}} \dfrac{\theta^\alpha}{\Gamma(\alpha)}\, \dfrac{\Gamma(x+\alpha)}{x!\,(\theta+1)^{x+\alpha}},
+\end{align*} ce qui donne bien pour tout \(x\in\mathbb{N}\)~:
+\begin{align*}
+\mathbb{P}_{Y\mid X=x} (B_2) &= \mathbb{P}\left(Y \in B_2 \mid X = x\right) = \dfrac{\mathbb{P}_{X,Y}\left(\{x\}\times B_2\right)}{\mathbb{P}_X(\{x\})}\\
+&= \int_{B_2\cap\mathbb{R}_+} \dfrac{(\theta+1)^{x+\alpha}}{\Gamma(x+\alpha)}\,y^{x+\alpha-1}\,e^{-(\theta+1)y}\,dy.
+\end{align*}
+
+\section{Randomisation}\label{III-answer-randomize}
+
+En termes probabilistes et selon les notations de l'exercice, il s'agit
+de calculer \(\mathbb{E}(T_N - T_0)\), où la variable aléatoire \(T_N\)
+peut s'écrire en fonction d'une somme aléatoire de variables aléatoires
+indépendantes~: \[T_N = \sum_{i = 1}^N X_i + T_0.\] Comme la boutique
+ferme au bout d'un certain temps, toutes les variables aléatoires
+figurant dans l'équation précédente sont bornées, donc intégrables. On
+peut ainsi calculer \(\mathbb{E}(T_N-T_0)\) à l'aide de la formule de
+l'espérance totale~:
+\[\mathbb{E}\left(T_N - T_0\right) = \mathbb{E}\left(\mathbb{E}\left(T_N \mid N\right)\right) - T_0.\]
+Pour tout \(n\in\mathbb{N}^\ast\) l'énoncé suggère que \(N\) est
+indépendante de \(X_1,\dots,X_n\), elles-mêmes indépendantes et de même
+loi que \(X\), d'où~:
+\[\mathbb{E}\left(T_n \mid N = n\right) = \sum_{i = 1}^n \mathbb{E}(X_i\mid N = n) = \sum_{i = 1}^n \mathbb{E}(X_i) = n\mathbb{E}(X).\]
+Ainsi, en posant
+\(\psi : n \in\mathbb{N}^\ast \mapsto n \mathbb{E}(X)\), on obtient
+\[\mathbb{E}\left(T_N - T_0\right) = \mathbb{E}\left(\psi(N)\right) - T_0 = \mathbb{E}(N)\mathbb{E}(X) - T_0.\]
+C'était prévisible~: en posant arbitrairement \(T_0 = 0\), le temps
+d'attente moyen est le temps d'attente moyen entre deux arrivées,
+multiplié par le rang moyen du gagnant. Si la loterie dépendait des
+temps d'arrivées, par exemple en faisant gagner le premier client qui
+arrive au moins 10 minutes après le client précédent, \(\psi\), et donc
+le résultat, seraient différents.
+
+\section{Etats cachés --- indépendance
+conditionnelle}\label{III-etats-cachuxe9s-induxe9pendance-conditionnelle-1}
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{III-answer-ec1}
+Soit \(n\in\mathbb{N}^\ast\). Quels que soient \(x\in\mathbb{R}\) et
+\(B\) borélien on a \begin{align*}
+\mathbb{P}_{Y_n \mid X_n = x}(B) &= \mathbb{E}\left(1_B(X_n+\epsilon_n) \mid X_n = x \right)\\
+&= \int_\mathbb{R}1_B(x+y)\,d\mathbb{P}_{\epsilon_n\mid X_n = x}(y)\\
+& = \int_\mathbb{R}1_B(x+y)\,f_\epsilon(y)\,dy \hspace{1em}\text{par indépendance de $X_n$ et $\epsilon_n$}\\
+&= \int_B f_\epsilon(y-x)\,dy.
+\end{align*} Ainsi, \(\mathbb{P}_{Y_n\mid X_n =x}\) admet bien une
+densité~:
+\[f_{Y_n\mid X_n=x} : y \in\mathbb{R}\mapsto f_\epsilon(y - x).\]
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{III-answer-ec2}
+Soient \(n\in\mathbb{N}^\ast\), \((x_1,\dots,x_n)\in\mathbb{R}^n\) et
+\(B_1,\dots,B_n\) des boréliens. Pour simplifier les écritures, on note
+\(x_{1:n}\) tout vecteur \((x_1,\dots,x_n)\) de \(\mathbb{R}^n\). Alors
+\begin{align*}
+&\mathbb{P}_{Y_{1:n}\mid X_{1:n}=x_{1:n}}(B_1\times\dots\times B_n)
+=\mathbb{E}\left(\prod_{i = 1}^n 1_{B_i}(X_i + \epsilon_i) \Bigm\vert X_{1:n} = x_{1:n} \right)\\
+&= \int_{\mathbb{R}^n} \prod_{i = 1}^n 1_{B_i}(x_i + y_i)\,d\mathbb{P}_{\epsilon_{1:n}\mid X_{1:n} = x_{1:n}}(y_{1:n})\\
+&= \int_{\mathbb{R}^n} \prod_{i = 1}^n 1_{B_i}(x_i + y_i)\,d\mathbb{P}_{\epsilon_{1:n}}(y_{1:n}) \ \text{par indépendance des $\epsilon_i$ et $X_j$,}\\
+&= \prod_{i = 1}^n \int_{\mathbb{R}} 1_{B_i}(x_i + y_i)\,f_\epsilon(x_i)\,dy_{i} \ \text{par Fubini et indépendance et même loi des $\epsilon_i$,}\\
+&= \prod_{i = 1}^n \int_{\mathbb{R}} 1_{B_i}(y_i)\,f_\epsilon(y_i - x_i)\,dy_i\\
+& = \prod_{i = 1}^n \int_{\mathbb{R}} 1_{B_i}(y_i)\,f_{Y_i\mid X_i = x_i}(y_i)\,dy_i\ \text{par la question 1,}\\
+&= \prod_{i = 1}^n \mathbb{P}_{Y_i\mid X_i = x_i}(B_i).
+\end{align*} Les \(n\) relevés de température sont donc bien
+indépendants conditionnellement aux états cachés.
+
+\section{Covariance totale}\label{III-answer-covtot}
+
+Tout d'abord, par linéarité de l'espérance conditionnelle on a~:
+\begin{align*}
+\text{Cov}(X,Y \mid Z) &= \mathbb{E}\Bigl( \bigl( X - \mathbb{E}(X\mid Z) \bigr)\bigl( Y - \mathbb{E}(Y\mid Z) \bigr) \Bigm| Z  \Bigr)\\
+&= \mathbb{E}\Bigl( XY - X\mathbb{E}(Y\mid Z) - Y\mathbb{E}(X\mid Z) + \mathbb{E}(X\mid Z)\mathbb{E}(Y\mid Z) \Bigm| Z  \Bigr)\\
+&= \mathbb{E}(XY \mid Z) - \mathbb{E}(X\mid Z)\mathbb{E}(Y\mid Z).
+\end{align*}
+
+En utilisant la formule de l'espérance totale et la linéarité de
+l'espérance, on obtient alors \begin{align*}
+\text{Cov}(X,Y) &= \mathbb{E}(XY) - \mathbb{E}(X)\mathbb{E}(Y)\\
+&= \mathbb{E}\bigl( \mathbb{E}(XY \mid Z) \bigr) - \mathbb{E}\bigl( \mathbb{E}(X \mid Z) \bigr)\mathbb{E}\bigl( \mathbb{E}(Y \mid Z) \bigr)\\
+&= \mathbb{E}\bigl( \mathbb{E}(XY \mid Z) - \mathbb{E}(X\mid Z)\mathbb{E}(Y\mid Z) \bigr)\\
+&\ \ \  + \mathbb{E}\bigl( \mathbb{E}(X\mid Z)\mathbb{E}(Y\mid Z) \bigr) - \mathbb{E}\bigl( \mathbb{E}(X \mid Z) \bigr)\mathbb{E}\bigl( \mathbb{E}(Y \mid Z) \bigr)\\
+&= \mathbb{E}\bigl(\text{Cov}(X,Y\mid Z)\bigr) + \text{Cov}\bigl( \mathbb{E}(X\mid Z), \mathbb{E}(Y\mid Z) \bigr).
+\end{align*}
+
+\section{Débruitage (formule de
+Tweedie)}\label{III-duxe9bruitage-formule-de-tweedie-1}
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{III-answer-tweedie1}
+\(f_Y(y) = \int_{\mathbb{R}^d} f_{X,Y}(x,y) dx = \int_{\mathbb{R}^d} f_{Y|X=x}(y) f_X(x) dx = \int_{\mathbb{R}^d} f_Z(y-x) f_X(x) dx\)
+où
+\(f_Z(y-x) = f_{Y|X=x}(y) = (2 \pi)^{-d/2} (\det \Sigma)^{1/2}\exp\left(-\frac12 (y-x)^t\Sigma^{-1}(y-x)\right)\).
+On notera que l'on retrouve le produit de convolution de \(f_X\) et
+\(f_Z\) comme densité de \(X+Z\).
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{III-answer-tweedie2}
+On remarque d'abord que \(\nabla \log f_Y = \frac{\nabla f_Y}{f_Y}\).
+Ensuite, par application du résultat de l'exercice B.8.5 du poly de
+maths 1 (intégrales à paramètres) dont on vérifie aisément les
+hypothèses, on a
+\[\nabla f_Y(y) = \int_{\mathbb{R}^d} \nabla f_{Y|X=x}(y) f_X(x) dx\] et
+\begin{align*}
+\nabla f_{Y|X=x}(y) &= (2 \pi)^{-d/2} (\det \Sigma)^{1/2}\exp\left(-\frac12 (y-x)^t\Sigma^{-1}(y-x)\right) \Sigma^{-1}(x-y)\\
+&= f_{Y|X=x}(y) \Sigma^{-1}(x-y)
+\end{align*} Finalement,
+\[\nabla \log f_Y(y) = \frac{\int_{\mathbb{R}^d} f_{Y|X=x}(y) \Sigma^{-1}(x-y) f_X(x) dx}{f_Y(y)}\]
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{III-answer-tweedie3}
+En utilisant l'égalité
+\(f_{X,Y}(x,y) = f_{Y|X=x}f_X(x) = f_{X|Y=y}(x)f_Y(y)\), on obtient
+\begin{align*}
+\nabla \log f_Y(y) &= \frac{\int_{\mathbb{R}^d} f_{Y|X=x}(y) \Sigma^{-1}(x-y) f_X(x) dx}{f_Y(y)}\\
+&= \int_{\mathbb{R}^d} f_{X|Y=y}(x) \Sigma^{-1}(x-y) dx \\
+& = \Sigma^{-1}\left(\int_{\mathbb{R}^d} x f_{X|Y=y}(x) dx -y \right)
+\end{align*} d'où \(\mathbb{E}(X|Y=y) = y + \Sigma\nabla\log f_Y(y)\).
+
+\section{Non-réponse}\label{III-non-ruxe9ponse-1}
+
+\runinhead{Question
+1}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+1}\label{III-answer-nonrep1}
+L'espérance conditionnelle de \(Y\) sachant \(X\) peut s'écrire comme la
+solution au problème de minimisation
+\[\min_{\phi(X)\in L^2_X} \mathbb{E}\left(\left(Y-\phi(X)\right)^2\right).\]
+Or pour \(\phi(X)\in L^2_X\) on a ici
+\[\mathbb{E}\left(\left(Y-\phi(X)\right)^2\right) = \mathbb{E}\left( \left(Y - \phi(1)\right)^2 1_{\{1\}}(X) \right) + \mathbb{E}\left( \left(Y - \phi(0)\right)^2 1_{\{0\}}(X) \right),\]
+il suffit donc de résoudre pour tout \(x\in\{0,1\}\)
+\[\min_{\lambda \in \mathbb{R}} \mathbb{E}\left(\left(Y-\lambda\right)^2 1_{\{x\}}(X)\right).\]
+Soit \(x\in\{0,1\}\) et posons
+\(J_x : \lambda\in\mathbb{R}\mapsto \mathbb{E}\left(\left(Y-\lambda\right)^2 1_{\{x\}}(X)\right)\).
+Alors pour tout \(\lambda\in\mathbb{R}\)
+\[J_x(\lambda) = \mathbb{E}\left(Y^21_{\{x\}}(X)\right) + \lambda^2\,\mathbb{P}(X=x) -2\lambda\,\mathbb{E}\left(Y1_{\{x\}}(X)\right)\]
+et sa dérivée
+\[J_x^\prime(\lambda) = 2\lambda\,\mathbb{P}(X=x) -2\,\mathbb{E}\left(Y1_{\{x\}}(X)\right)\]
+s'annule en
+\[\lambda_x := \dfrac{\mathbb{E}\left(Y1_{\{x\}}(X)\right)}{\mathbb{P}(X=x)} = \mathbb{E}(Y\mid X = x).\]
+On en conclut que
+\[\mathbb{E}(Y\mid X) = \mathbb{E}(Y\mid X = 1)1_{\{1\}}(X) + \mathbb{E}(Y\mid X = 0)1_{\{0\}}(X).\]
+Or on remarque que \(1_{\{1\}}(X) = X\) et \(1_{\{0\}}(X) = 1 - X\), ce
+qui fait de \(\mathbb{E}(Y\mid X)\) une fonction affine de \(X\). Elle
+est par définition la meilleure approximation de \(Y\) par une fonction
+de \(X\), elle coïncide donc avec l'approximation affine de \(Y\) par
+\(X\):
+\[\mathbb{E}(Y\mid X) = m + \dfrac{\rho\,\sigma}{\sqrt{p(1-p)}}\,(X - p).\]
+
+\runinhead{Question
+2}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+2}\label{III-answer-nonrep2}
+D'après la question précédente, on a
+\(\mathbb{E}(Y\mid X) = m_0 + (m_1 - m_0) X\), la meilleure
+approximation affine de \(Y\) par \(X\). Ainsi, \(m_0\) et \(m_1\)
+satisfont
+\[\left|\begin{array}{l} m_1 - m_0 = \dfrac{\rho\sigma}{\sqrt{p(1-p)}},\\[1em] m_0 = m - (m_1-m_0)p,  \end{array}\right. \Leftrightarrow \left|\begin{array}{l} m_1 = m + \rho\sigma\sqrt{\dfrac{1-p}{p}},\\[1em] m_0 = m - \rho\sigma\sqrt{\dfrac{p}{1-p}}.  \end{array}\right.\]
+
+\runinhead{Question
+3}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+3}\label{III-answer-nonrep3}
+Par la formule de la variance totale et d'après la question 1, on a
+\begin{align*}
+\sigma^2 &= \mathbb{V}\left(Y\right) = \mathbb{E}\bigl(\mathbb{V}\left(Y\mid X\right)\bigr) + \mathbb{V}\bigl(\mathbb{E}(Y\mid X)\bigr)\\
+&= p\,\sigma^2_1 + (1-p)\,\sigma^2_0 + \dfrac{\rho^2\sigma^2}{p\,(1-p)}\mathbb{V}(X)\\
+&= p\,\sigma^2_1 + (1-p)\,\sigma^2_0 + \rho^2\sigma^2.
+\end{align*} Cette égalité se simplifie et donne bien
+\[\sigma^2 = \dfrac{(1-p)\,\sigma_0^2 + p\,\sigma_1^2}{1-\rho^2}.\]
+
+\runinhead{Question
+4}\phantomsection\addcontentsline{toc}{subsubsection}{Question
+4}\label{III-answer-nonrep4}
+Lorsque \(X\) et \(Y\) sont non corrélées, i.e.~\(\rho = 0\), on obtient
+\(m_0 = m_1 = m\) puis \(\sigma^2 = (1-p)\,\sigma_0^2 + p\,\sigma_1^2\).
+En d'autres termes, \(\mathbb{E}(Y\mid X) = m\) est une variable
+aléatoire constante, et
+\(\mathbb{E}\bigl(\mathbb{V}(Y\mid X)\bigr) = \sigma^2\). Dans ce cas,
+la non-réponse n'affecte pas l'espérance, mais potentiellement la
+variance (la dispersion du temps de travail peut être différente chez
+les répondants et les non-répondants). Ces deux propriétés sont encore
+vraies en cas d'indépendance entre \(X\) et \(Y\), puisque
+l'indépendance implique la non corrélation, mais nous avons de plus
+\(\mathbb{V}(Y\mid X) = \sigma^2 = \sigma^2_1 = \sigma^2_0\); la
+variable aléatoire \(\mathbb{V}(Y\mid X)\) est elle aussi constante.
+Cette fois-ci, la dispersion est la même chez les répondants et les
+non-répondants~: la non-réponse n'affecte pas la variance.

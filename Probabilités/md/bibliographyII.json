@@ -1,0 +1,37 @@
+[
+	{
+		"id": "Jacod",
+		"type": "book",
+		"title": "L'essentiel en théorie des probabilités",
+		"publisher": "Cassini",
+		"number-of-pages": "ix-261",
+		"source": "HAL Archives Ouvertes",
+		"URL": "https://hal.archives-ouvertes.fr/hal-00104956",
+		"author": [
+			{
+				"family": "Jacod",
+				"given": "J."
+			},
+			{
+				"family": "Protter",
+				"given": "P."
+			}
+		],
+		"issued": {
+			"date-parts": [
+				[
+					"2003"
+				]
+			]
+		},
+		"accessed": {
+			"date-parts": [
+				[
+					"2019",
+					6,
+					24
+				]
+			]
+		}
+	}
+]

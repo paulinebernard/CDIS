@@ -1,0 +1,92 @@
+% Poly "Probabilités" -- Mines Paris, UE11
+% Compilation : pdflatex poly.tex (x2)   ou   latexmk -pdf poly.tex
+% Contenu : conversion des sources markdown (md/ProbaI.md ... md/ProbaV.md) en chapitres LaTeX (chapitres/ProbaI.tex ... ProbaV.tex),
+% corrigés regroupés en fin de poly (chapitres/ProbaX_corrections.tex). Même mise en forme que le poly d'Equations différentielles.
+\documentclass[french,a4paper,11pt,open=any,headings=small]{scrbook}
+\usepackage{../cdis} % mise en forme commune aux polys (packages, environnements, macros communes, corrections)
+\hypersetup{
+  pdftitle={Probabilités},
+  pdfauthor={UE11, Mines Paris - PSL}}
+
+% ---- Macros de Probabilités ----
+\providecommand{\P}{}\renewcommand{\P}{\mathbb{P}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\B}{\mathcal{B}}
+\providecommand{\L}{}\renewcommand{\L}{\mathcal{L}}
+\providecommand{\No}{}\renewcommand{\No}{\mathcal{N}}
+\newcommand{\Esp}{\mathbb{E}}
+\newcommand{\V}{\mathbb{V}}
+\newcommand{\cov}{\text{Cov}}
+% niveaux de difficulté des exercices
+\newcommand{\zero}{$\mathord{\boldsymbol{\circ}}$}
+\newcommand{\one}{$\mathord{\bullet}$}
+\newcommand{\two}{$\mathord{\bullet}\mathord{\bullet}$}
+\newcommand{\three}{$\mathord{\bullet}\mathord{\bullet}\mathord{\bullet}$}
+\newcommand{\four}{$\mathord{\bullet}\mathord{\bullet}\mathord{\bullet}\mathord{\bullet}$}
+
+% Les solutions de ce poly sont repérées par un \label (et non un \hypertarget)
+\renewcommand{\cdissollink}[2]{\hyperref[#1]{#2}}
+
+\title{Probabilités}
+\author{UE11, Maths 2 \\
+	Mines Paris - PSL\\~\\
+	Thomas Romary et Mike Perreira\footnote{Ce document est un des produits
+		du projet \href{https://github.com/}{\(\mbox{\faGithub}\)
+			\texttt{paulinebernard/CDIS}} issu de la collaboration de
+		\href{mailto:pauline.bernard@minesparis.psl.eu}{Pauline Bernard}
+		(CAS), \href{mailto:thomas.romary@minesparis.psl.eu}{Thomas
+			Romary} et \href{mailto:mike.perreira@minesparis.psl.eu}{Mike Perreira} (STIM). 
+		%Il dérive du projet
+		%  \href{https://github.com/}{\(\mbox{\faGithub}\)
+			%  \texttt{boisgera/CDIS}}, initié par la collaboration de
+		%  \href{mailto:sebastien.boisgerault@mines-paristech.fr}{(S)ébastien
+			%  Boisgérault} (CAOR),
+		%  \href{mailto:thomas.romary@mines-paristech.fr}{(T)homas Romary} et
+		%  \href{mailto:emilie.chautru@mines-paristech.fr}{(E)milie Chautru}
+		%  (GEOSCIENCES),
+		%  \href{mailto:pauline.bernard@mines-paristech.fr}{(P)auline Bernard}
+		%  (CAS), avec la contribution de
+		%  \href{mailto:gabriel-stolz@mines-paristech.fr}{Gabriel Stoltz} (Ecole
+		%  des Ponts ParisTech, CERMICS). 
+		Il est mis à disposition selon les
+		termes de \href{http://creativecommons.org/licenses/by-nc-sa/}{la
+			licence Creative Commons ``attribution -- pas d'utilisation
+			commerciale -- partage dans les mêmes conditions'' 4.0
+			internationale}.}}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+\part{Probabilités I : Probabilités et variables aléatoires}
+\input{chapitres/ProbaI}
+
+\part{Probabilités II : Moments, vecteurs aléatoires, modélisation statistique}
+\input{chapitres/ProbaII}
+
+\part{Probabilités III : Conditionnement}
+\input{chapitres/ProbaIII}
+
+\part{Probabilités IV : Convergences}
+\input{chapitres/ProbaIV}
+
+\part{Probabilités V : Simulation}
+\input{chapitres/ProbaV}
+
+%% Corrections regroupées en fin de poly. Pour imprimer sans les corrections : \correctionsfalse
+%% dans le préambule ; les renvois "(Solution p. x.)" des énoncés disparaissent alors aussi.
+\ifcorrections
+\part{Corrections des exercices}
+\input{chapitres/ProbaI_corrections}
+\input{chapitres/ProbaII_corrections}
+\input{chapitres/ProbaIII_corrections}
+\input{chapitres/ProbaIV_corrections}
+\input{chapitres/ProbaV_corrections}
+\fi
+
+\end{document}
