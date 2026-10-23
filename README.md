@@ -50,14 +50,6 @@ Mines Paris - PSL, cycle ingénieur civil, unité d'enseignement Mathématiques 
   - :classical_building: [emploi du temps des trois prochaines semaines (salles)](https://oasis.mines-paristech.fr/prod/oasis/ensmp/Page/TimeTableView.php?year_in_cursus=1&type=week&nb_iterations=5&course_type=TC_ou_ES_ou_ESF_ou_OPTION_ou_AF_ou_DescOPTION_ou_Extern)
 
 
-:speech_balloon: Forum
---------------------------------------------------------------------------------
-
-  - [Discourse](https://discourse.mines-paristech.fr) (accès : MINES ParisTech)
-
-
-
-
 :pencil: Développeurs & Contributeurs
 --------------------------------------------------------------------------------
 
