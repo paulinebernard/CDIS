@@ -40,7 +40,7 @@ Mines Paris - PSL, cycle ingénieur civil, unité d'enseignement Mathématiques 
   
 
 
-:calendar: Calendrier 2023-2024
+:calendar: Calendrier 
 --------------------------------------------------------------------------------
 
   - :calendar: [interface graphique](https://calendar.google.com/calendar/embed?src=coobt3rgshmvkjsfgpeehgucoc%40group.calendar.google.com&ctz=Europe%2FParis)
