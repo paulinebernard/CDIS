@@ -1,0 +1,2574 @@
+\hypertarget{un-peu-dhistoire}{%
+\chapter{Un peu d'histoire}\label{un-peu-dhistoire}}
+
+L'étude des équations différentielles remonte au XVII\(^e\) siècle lors
+de la découverte du calcul infinitésimal et de la modélisation du
+mouvement par Kepler et Newton. Avec Leibniz, leur premier réflexe est
+alors de chercher à résoudre ces équations de manière exacte, par
+exemple par des primitives de fonctions connues ou bien sous forme de
+série, mais ces méthodes atteignent vite leurs limites, sauf dans des
+cas très particuliers.
+
+Alors que l'idée d'approximer les solutions apparaît au milieu du
+XVIII\(^e\) siècle avec Euler, on cherche ensuite plutôt à caractériser
+leurs propriétés sans les connaître explicitement. Cauchy, et
+parallèlement Lipschitz, démontrent les premiers, au milieu du XIX\(^e\)
+siècle, l'existence et l'unicité des solutions sous des hypothèses de
+régularités de l'équation différentielle. Laplace, qui s'intéresse alors
+à la mécanique céleste, s'émerveille devant la capacité de l'Homme à
+prédire l'évolution du monde physique. C'est l'avènement du
+\emph{déterminisme} c'est-à-dire la certitude que l'état du monde futur
+(ou passé) peut être prédit de manière unique par la connaissance de
+l'état initial.
+
+Cependant, à la fin du XIX\(^e\) siècle, les travaux de Poincaré et de
+ses contemporains mettent en évidence les limites de ce déterminisme. Le
+constat que le modèle physique n'est jamais exactement connu, ni sa
+condition initiale, amène les scientifiques à étudier la sensibilité des
+solutions à ces erreurs. Une sensibilité extrême chez certains systèmes
+rend leur simulation impossible sur des temps longs et mène à la théorie
+du \emph{chaos} qui occupera les scientifiques durant une grande partie
+du XX\(^e\) siècle.
+
+En parallèle, l'étude de la stabilité et du comportement asymptotique
+des solutions intéresse dès le XIX\(^e\) siècle, d'abord dans le cas des
+systèmes linéaires avec des mathématiciens comme Routh, Hurwitz, etc.
+Mais c'est finalement la thèse de Lyapunov à la fin du XIX\(^e\) siècle
+qui lance la théorie générale de la stabilité des systèmes non linéaires
+qui sera ensuite étayée tout au long des XX\(^e\) et XXI\(^e\) siècles.
+
+\hypertarget{objectifs-du-cours}{%
+\chapter{Objectifs du cours}\label{objectifs-du-cours}}
+
+Ce cours est une introduction à l'étude non linéaire des équations
+différentielles. Pour une étude plus complète voir par exemple (Hale
+\protect\hyperlink{ref-Hale}{2009}). En première lecture, les objectifs
+``opérationnels'' sont les suivants~:
+
+\begin{itemize}
+\item
+  savoir réduire une équation différentielle à l'ordre 1.
+\item
+  savoir justifier l'existence de solutions par le théorème de Peano
+  lorsque ``\(f\) est continue''.
+\item
+  comprendre la notion de solution maximale et savoir qu'elles sont
+  définies tant qu'elles ``n'explosent'' pas et tant qu'elles
+  n'atteignent pas la frontière du domaine où l'équation différentielle
+  est définie. Savoir justifier qu'une solution est définie sur tout
+  l'intervalle de temps \(\mathbb{R}\) si ces éventualités ne peuvent se
+  réaliser en temps fini et/ou en faisant appel au critère
+  ``linéairement borné''.
+\item
+  savoir justifier l'unicité des solutions maximales par le théorème de
+  Cauchy-Lipschitz lorsque ``\(f\) est continûment différentiable par
+  rapport à \(x\)''.
+\item
+  comprendre (qualitativement) dans quelle mesure une erreur sur la
+  condition initiale se répercute sur les solutions en temps fini.
+\item
+  savoir trouver les points d'équilibre.
+\item
+  savoir déterminer si un système linéaire est globalement
+  asymptotiquement stable en regardant le signe de la partie réelle de
+  ses valeurs propres.
+\item
+  savoir déterminer si un point d'équilibre est localement
+  asymptotiquement stable/instable par les valeurs propres de la matrice
+  Jacobienne associée.
+\item
+  savoir montrer la stabilité d'un point d'équilibre par la décroissance
+  d'une fonction définie positive.
+\item
+  savoir montrer la bornitude des solutions en temps positif lorsque
+  cette fonction décroissante est propre.
+\item
+  savoir étudier la convergence des solutions vers un point d'équilibre
+  par l'application répétée du lemme de Barbalat.
+\end{itemize}
+
+En deuxième lecture~:
+
+\begin{itemize}
+\item
+  comprendre la preuve du théorème de Cauchy-Lipschitz en voyant la
+  solution comme un point fixe de la représentation intégrale des
+  solutions.
+\item
+  savoir que l'on peut relâcher l'hypothèse du théorème de
+  Cauchy-Lipschitz à ``\(f\) lipschitzienne par rapport à \(x\)''.
+\item
+  comprendre ce qu'est un système chaotique et ce que représente son
+  exposant de Lyapunov.
+\item
+  comprendre ce que la notion de stabilité apporte en plus de
+  l'attractivité dans la notion de stabilité asymptotique.
+\item
+  connaître, comprendre et savoir appliquer les critères de stabilité de
+  Lyapunov.
+\end{itemize}
+
+\textbf{Notations}
+
+\begin{itemize}
+\item
+  \(B(x,r)\)~: boule ouverte centrée en \(x\) et de rayon \(r\).
+\item
+  \(B_f(x,r)\)~: boule fermée centrée en \(x\) et de rayon \(r\).
+\item
+  Pour \(x:I\subset\mathbb{R}\to \mathbb{R}^n\),
+  \(\dot{x}(t)=\frac{dx}{dt}(t)\) et
+  \(\ddot{x}(t)=\frac{d^2x}{dt^2}(t)\).
+\end{itemize}
+
+\hypertarget{cadre-de-luxe9tude}{%
+\chapter{Cadre de l'étude}\label{cadre-de-luxe9tude}}
+
+Les équations différentielles apparaissent couramment en physique pour
+décrire l'évolution des grandeurs décrivant le système. Quelques exemples:
+\begin{itemize}
+\tightlist
+\item
+  La tension \(u_c\) aux bornes d'un condensateur dans un circuit RLC en
+  série évolue selon \[
+  \ddot{u}_c = -\frac{R}{L} \dot{u}_c - \frac{1}{LC} u_c + u(t)
+  \] où \(R\), \(L\), \(C\) notent la résistance, inductance et capacité
+  respectivement, et \(u\) la tension appliquée par le générateur. Cette
+  équation différentielle implique les dérivées de \(u_c\) jusqu'à
+  l'ordre 2, donc on parle d'équation différentielle d'ordre 2.
+\item
+  En cinétique chimique, les concentrations des espèces chimiques
+  intervenant dans une réaction \[
+  A+ B \overset{k}{\underset{k'}{\leftrightarrows}}  C 
+  \] sont régies par une équation différentielle d'ordre 1 donnée par
+  \begin{align*}
+  \dot{c}_A &= -k \, c_Ac_B + k'c_C \\
+  \dot{c}_B &= -k \, c_Ac_B + k'c_C\\
+  \dot{c}_C &= k \, c_Ac_B - k'c_C
+  \end{align*} avec \(k,k'\) les constantes de réaction. Cette équation
+  différentielle n'a pas de terme extérieur variant avec le temps. On
+  dit qu'elle est \emph{autonome}.
+\item
+  La mécanique Newtonienne ou Lagrangienne amène typiquement à des
+  équations du type \[
+  M \ddot{q} = \sum_k F_k(t,q,\dot{q})
+  \] où \(q\in \mathbb{R}^n\) modélise la position du système (spatiale,
+  angulaire, etc), \(\dot{q}\) sa vitesse et \(\ddot{q}\) son
+  accélération, avec \(M\) la matrice d'inertie, et \(F_k\) les
+  forces/couples agissant sur le système. Ici il s'agit d'une équation
+  différentielle d'ordre 2.
+\end{itemize}
+
+Dans tous ces cas, on s'intéresse aux signaux du temps \(t\mapsto y(t)\)
+de classe \(C^p\) qui vérifient une équation du type \[
+y^{(p)}(t) = \psi\left(t,y(t),\dot{y}(t),\ldots, y^{(p-1)}(t)\right)
+\] sur son ensemble de définition, où \(p\in \mathbb{N}^*\) désigne
+l'ordre de l'équation différentielle. En fait, on se rend compte que
+\(y\) de classe \(C^p\) vérifie l'équation différentielle ci-dessus si
+et seulement si \(x=(y,\dot{y},\ldots,y^{(p-1)})\) de classe \(C^1\)
+vérifie \[
+\dot{x} = f(t,x) \ , 
+\] où \(f\) est définie par \[
+f(t,y_0,y_1,\ldots,y_{p-1}) = (y_1,y_2,\ldots,y_{p-1},\psi(t,y_0,\ldots,y_{p-1})) \ .
+\]
+
+Nous déduisons que résoudre une équation différentielle d'ordre \(p\)
+est en fait équivalent à résoudre une équation différentielle d'ordre 1,
+quitte à considérer comme inconnue la suite des dérivées
+\(x=(y,\dot{y},\ldots,y^{(p-1)})\) de classe \(C^1\), au lieu de \(y\)
+de classe \(C^p\). \(x\) est appelé l'\emph{état} du système.
+
+\hypertarget{ex_reducOrdre1}{}
+\addcontentsline{toc}{subsubsection}{Réduction à l'ordre 1}
+\begin{exemple}[Réduction à l'ordre 1]\label{ex_reducOrdre1}
+Reprenons les exemples plus haut~:
+
+\begin{itemize}
+\tightlist
+\item
+  pour un circuit RLC, on prend \(x=(u_c,\dot{u}_c)\in \mathbb{R}^2\),
+  et \[
+  f(t,x_1,x_2) = 
+  \left[
+    \begin{matrix}
+        x_2\\
+        -\frac{R}{L} x_2 - \frac{1}{LC} x_1 + u(t)
+    \end{matrix}
+  \right] \ .
+  \]
+\item
+  en cinétique chimique, \(x=(c_A,c_B,c_C)\in \mathbb{R}^3\) et \[
+  f(t,x_1,x_2,x_3) = \left[
+    \begin{matrix}
+         -k \, x_1x_2 + k'x_3 \\
+         -k \, x_1x_2 + k'x_3\\
+         k \, x_1x_2 - k'x_3
+    \end{matrix}
+  \right]
+  \]
+\item
+  en mécanique, \(x=(q,\dot{q})\) et \[
+  f(t,x_1,x_2) = 
+  \left[
+    \begin{matrix}
+        x_2\\
+        M^{-1} \sum_k F_k(t,x_1,x_2)
+    \end{matrix}
+  \right] \ .
+  \]
+\end{itemize}
+
+Ainsi, même si la physique nous donne initialement une équation
+différentielle d'ordre supérieur, on pourra toujours se ramener à
+l'ordre 1. Cette réduction est cruciale pour l'étudier mathématiquement
+ainsi que numériquement, et devra donc être systématique.
+\end{exemple}
+
+Commençons par définir le cadre de cette étude.
+
+\hypertarget{solution-dune-uxe9quation-diffuxe9rentielle}{}
+\addcontentsline{toc}{subsection}{Solution d'une équation différentielle}
+\begin{definition}[Solution d'une équation différentielle]\label{solution-dune-uxe9quation-diffuxe9rentielle}
+Soient \(n\in \mathbb{N}^*\), \(J\) ouvert de \(\mathbb{R}\), \(X\)
+ouvert de \(\mathbb{R}^{n}\) et \(f:J\times X \to \mathbb{R}^n\) une
+application continue. Une fonction \(x:I\to \mathbb{R}^n\) définie sur
+un intervalle de temps \(I\subset J\) non réduit\footnote{Certaines
+  références autorisent les solutions définies sur un intervalle
+  d'intérieur vide, c'est-à-dire réduit à un point, qui sont dites
+  ``triviales''. Mais cela n'a pas grand intérêt ici et nous supposons
+  donc que les solutions sont définies au moins ``pendant un certain
+  temps''.} à un point, est dite solution\footnote{On omet de préciser
+  l'intervalle \(I\) sur lequel \(x\) est solution lorsque \(I\) est
+  l'ensemble de définition naturel (ou clairement défini) de \(x\).
+  Lorsque celui-ci est ambigu ou bien lorsque l'on veut insister sur
+  l'intervalle de définition, on dira \emph{solution sur \(I\)}.} de
+l'équation différentielle \[
+\dot{x} = f(t,x)
+\] si \(x\) est continue sur \(I\) avec \(x(t)\in X\) pour tout
+\(t\in I\), et de classe \(C^1\) sur \(\mathring{I}\) avec
+\(\dot{x}(t) = f(t,x(t))\) pour tout \(t\in \mathring{I}\).
+
+L'équation différentielle est dite \emph{autonome} si l'application
+\(f\) ne dépend pas de \(t\). Dans ce cas, on peut aussi définir
+directement \(f: X \to \mathbb{R}^n\).
+
+Lorsque l'intervalle de temps \(I\) de définition de la solution est
+\(J\) entier, on dira que la solution est \emph{globale}. Mais on verra
+qu'il peut parfois arriver qu'une solution ne puisse être définie sur
+\(J\) entier, par exemple si elle explose avant, ou si elle s'apprête à
+quitter \(X\).
+\end{definition}
+
+Notons que \(f\) sera souvent définie sur
+\(J\times X=\mathbb{R}\times \mathbb{R}^{n}\). Cependant, il peut
+arriver que cela ne soit pas le cas, comme par exemple pour deux corps
+de position \(y_a,y_b\) dont la force d'interaction gravitationnelle
+\(\frac{Gm_a m_b}{\|y_a-y_b\|^2}\) n'est définie que pour
+\(y_a\neq y_b\), où lorsque l'on veut restreindre l'étude des solutions
+à un domaine particulier.
+
+La physique s'intéresse souvent aux solutions partant d'une
+\emph{condition initiale} donnée. La recherche et l'étude de ces
+solutions particulières est due à Cauchy et porte le nom de
+\emph{Problème de Cauchy}~:
+
+\begin{quote}
+Dans mes leçons données à l'École Polytechnique, comme dans la plupart
+des ouvrages ou mémoires que j'ai publiés sur le calcul intégral, j'ai
+cru devoir placer en premier lieu la recherche, non pas des intégrales
+générales, mais des particulières\,; en sorte que la détermination des
+constantes ou des fonctions arbitraires ne fût plus séparée de la
+recherche des intégrales.
+\end{quote}
+
+
+\hypertarget{def_cauchy}{}
+\addcontentsline{toc}{subsection}{Problème de Cauchy (\emph{Initial Value Problem})}
+\begin{definition}[Problème de Cauchy (\emph{Initial Value Problem})]\label{def_cauchy}
+Soient \(J\) ouvert de \(\mathbb{R}\), \(X\) ouvert de
+\(\mathbb{R}^{n}\), \((t_0,x_0)\in J\times X\) et
+\(f: J\times X \to \mathbb{R}^n\) continue. Le \emph{problème de Cauchy}
+associé fait référence au système \[
+\dot{x}=f(t,x) \quad , \quad x(t_0)=x_0 \ .
+\] On dira donc que \(x:I\to \mathbb{R}^n\) est solution du problème de
+Cauchy défini par \(f\) et \((t_0,x_0)\) si
+
+\begin{itemize}
+\item
+  \(t_0\in I\) et \(x(t_0)=x_0\)
+\item
+  \(x\) est solution de l'équation différentielle \(\dot{x}=f(t,x)\) sur
+  \(I\).
+\end{itemize}
+
+On notera alors \(x\in S_f(t_0,x_0)\).
+\end{definition}
+
+Avant d'étudier les solutions d'un problème de Cauchy, il est crucial de
+remarquer la caractérisation qui suit.
+
+\hypertarget{theo_eq_integrale}{}
+\addcontentsline{toc}{subsection}{Représentation intégrale des solutions}
+\begin{theoreme}[Représentation intégrale des solutions]\label{theo_eq_integrale}
+Soient \(J\) ouvert de \(\mathbb{R}\), \(X\) ouvert de
+\(\mathbb{R}^{n}\), \(f: J\times X \to \mathbb{R}^n\) continue,
+\(I\subset J\) un intervalle de \(\mathbb{R}\) non réduit à un point,
+\(t_0\in I\), \(x_0\in X\), et \(x: I\to \mathbb{R}^n\) continue telle
+que \(x(t)\in X\) pour tout \(t\in I\). Alors, \(x\) est solution du
+problème de Cauchy défini par \(f\) et \((t_0,x_0)\) si et seulement si
+\(x\) est solution de l'équation intégrale \[
+x(t) = x_0 + \int_{t_0}^t f(s,x(s))ds \qquad \forall t\in I \ .
+\]
+\end{theoreme}
+Notons que cette caractérisation n'aurait pas été possible si l'on avait
+gardé une équation différentielle d'ordre \(p>1\).
+
+
+\hypertarget{duxe9monstration}{}
+\begin{preuve}\label{duxe9monstration}
+Supposons \(x\in S_f(t_0,x_0)\). Alors \(x: I\to \mathbb{R}^n\) est de
+classe \(C^1\) sur \(\mathring{I}\), et pour tout \(t\in I\), \[
+x_0 + \int_{t_0}^t f(s,x(s))ds = x(t_0)  + \int_{t_0}^t \dot{x}(s) ds = x(t) \ .
+\] Réciproquement, si \(x\) vérifie l'équation intégrale sur
+\(I\subset J\), \(x(t_0)=x_0\), et puisque \(f\) est continue sur
+\(I\times X\) et \(x\) continue sur \(I\), \(x\) est de classe \(C^1\)
+sur \(I\) et par dérivation, \(\dot{x}(t)=f(t,x(t))\) pour tout
+\(t\in I\).\hfill$\blacksquare$
+\end{preuve}
+
+\hypertarget{classe-plus-guxe9nuxe9rale-de-solutions}{}
+\addcontentsline{toc}{subsection}{Classe plus générale de solutions}
+\begin{remarque}[Classe plus générale de solutions]\label{classe-plus-guxe9nuxe9rale-de-solutions}
+La définition sous forme intégrale des solutions montre que la recherche
+de solutions \(C^1\) et l'hypothèse de continuité de \(f\) pourraient
+être relâchées~: il suffirait de chercher \(x\) absolument continue et
+pouvoir définir l'objet \(\int_{t_0}^t f(s,x(s))ds\). Mais il est tout
+de même souhaitable d'assurer un minimum de propriétés telles que
+l'existence de solutions, comme nous allons le voir dans la section
+suivante.
+\end{remarque}
+
+\hypertarget{portrait-de-phase}{%
+\begin{remarque}[Portrait de phase]\label{portrait-de-phase}}
+
+En dimension 2 (ou 3), il est possible de visualiser géométriquement le
+comportement des solutions en traçant les courbes paramétriques
+\(t\mapsto(x_1(t),x_2(t))\) dans le plan (ou
+\(t\mapsto(x_1(t),x_2(t),x_3(t))\) dans l'espace) pour différentes
+conditions initiales. C'est ce que l'on appelle un \emph{portrait de
+phase}. Voir \protect\hyperlink{fig_pendule}{Figure~\ref*{fig_pendule} (p.
+\pageref*{fig_pendule})} dans le cas d'un pendule.
+\end{remarque}
+
+\begin{figure}
+\hypertarget{fig_pendule}{%
+\centering
+\includegraphics{images/pendule.py.pdf}
+\caption{Portraits de phase d'un pendule non amorti en haut et amorti en
+bas. \(x_1\) représente l'angle du pendule en abscisse et \(x_2\) sa
+vitesse de rotation en ordonnée. Le pendule sera décrit et étudié plus
+en détail dans la suite du cours.}\label{fig_pendule}
+}
+\end{figure}
+
+\hypertarget{etude-du-probluxe8me-de-cauchy}{%
+\chapter{Etude du problème de
+Cauchy}\label{etude-du-probluxe8me-de-cauchy}}
+
+\hypertarget{existence-de-solutions-locales}{%
+\section{Existence de solutions
+locales}\label{existence-de-solutions-locales}}
+
+Notre point de départ est le théorème suivant établi à la fin du
+XIX\(^e\) siècle, qui assure l'existence locale de solutions au
+\protect\hyperlink{def_cauchy}{problème de Cauchy (p.
+\pageref*{def_cauchy})} sous une simple hypothèse de continuité de
+\(f\). En d'autres termes, dans le cadre de ce cours où \(f\) est
+supposée continue, il existe toujours des solutions pour toute condition
+initiale, définies au moins pour un certain temps.
+
+\hypertarget{theo_peano}{}
+\addcontentsline{toc}{subsection}{Théorème de Peano-Arzelà}
+\begin{theoreme}[Théorème de Peano-Arzelà]\label{theo_peano}
+Soient \(J\) ouvert de \(\mathbb{R}\), \(X\) ouvert de
+\(\mathbb{R}^{n}\), \(f: J\times X \to \mathbb{R}^n\) continue. Pour
+tout \((t_0,x_0)\in J\times X\), il existe \(\tau_m >0\) et
+\(x :[t_0-\tau_m,t_0+\tau_m]\to\mathbb{R}^n\) tels que \(x\) est
+solution du problème de Cauchy défini par \(f\) et \((t_0,x_0)\).
+\end{theoreme}
+
+\hypertarget{duxe9monstration-1}{}
+\begin{preuve}\label{duxe9monstration-1}
+La démonstration de ce résultat est hors-programme et fait appel au
+théorème d'Ascoli(-Arzelà). Seule la connaissance et la compréhension du
+résultat est exigible. Pour les curieux, la preuve est donnée en
+\protect\hyperlink{app_peano}{annexe (p.
+\pageref*{app_peano})}.\hfill$\blacksquare$
+\end{preuve}
+
+\hypertarget{classe-plus-guxe9nuxe9rale-de-solutions-pour-la-culture}{}
+\addcontentsline{toc}{subsection}{Classe plus générale de solutions (pour la culture)}
+\begin{remarque}[Classe plus générale de solutions (pour la culture)]\label{classe-plus-guxe9nuxe9rale-de-solutions-pour-la-culture}
+L'existence de solutions \(C^1\) est garantie lorsque \(f\) est
+continue. Il s'avère que l'existence de solutions \emph{absolument
+continues}, est garantie sous les hypothèses plus faibles suivantes dans
+un voisinage de \((t_0,x_0)\)~:
+
+\begin{itemize}
+\item
+  pour tout \(t\), \(x\mapsto f(t,x)\) est continue\,;
+\item
+  pour tout \(x\), \(t\mapsto f(t,x)\) est mesurable\,;
+\item
+  il existe une fonction intégrable \(t\mapsto b(t)\) telle que
+  \(|f(t,x)|\leq b(t)\) pour tout \((t,x)\).
+\end{itemize}
+
+Ce sont les conditions de \emph{Carathéodory}. Voir (Hale
+\protect\hyperlink{ref-Hale}{2009}). Un cadre encore plus général
+consiste à autoriser des discontinuités de \(f\) par rapport à \(x\)
+mais l'étude des solutions passe alors par celle des \emph{inclusions
+différentielles} du type \(\dot{x} \in F(t,x)\), ce qui nous amènerait
+bien trop loin de ce cours. Voir (Filippov
+\protect\hyperlink{ref-Fil}{1988}).
+\end{remarque}
+
+\hypertarget{domaine-dexistence-des-solutions}{%
+\section{Domaine d'existence des
+solutions}\label{domaine-dexistence-des-solutions}}
+
+Nous venons de voir que des solutions locales au problème de Cauchy
+existent si \(f\) est continue. Nous savons qu'elles sont définies
+\emph{au moins un certain temps}, mais il est intéressant de se demander
+quel est l'intervalle de temps \emph{maximal} sur lequel elles peuvent
+être définies. En d'autres termes, on s'intéresse aux \emph{solutions
+maximales}.
+
+\hypertarget{def_sol_max}{}
+\addcontentsline{toc}{subsection}{Solution maximale}
+\begin{definition}[Solution maximale]\label{def_sol_max}
+Soient \(J\) ouvert de \(\mathbb{R}\), \(X\) ouvert de
+\(\mathbb{R}^{n}\), \(f: J\times X \to \mathbb{R}^n\) continue. On dit
+que \(x : I \to\mathbb{R}^n\) est une solution \emph{maximale} de
+l'équation différentielle \[
+\dot{x}=f(t,x)
+\] si elle n'est pas \emph{prolongeable} en une solution définie plus
+longtemps dans \(J\times X\). En d'autres termes, il n'existe pas de
+solution \(x' : I'\to\mathbb{R}^n\) avec \(I\) strictement inclus dans
+\(I'\) et telle que \(x=x'\) sur \(I\). On dit alors que \(I\) est
+l'\emph{intervalle maximal d'existence} de la solution.
+\end{definition}
+
+Il s'avère que l'intervalle maximal de définition \(I\) d'une solution
+maximale n'est pas nécessairement \(\mathbb{R}\) entier même si \(f\)
+est définie globalement sur \(\mathbb{R}\times \mathbb{R}^n\) et \(f\)
+est de classe \(C^\infty\).
+
+\hypertarget{ex_explTempsFini}{}
+\addcontentsline{toc}{subsubsection}{Explosion en temps fini}
+\begin{exemple}[Explosion en temps fini]\label{ex_explTempsFini}
+Considérons le problème de Cauchy \[
+\dot{x} = x^2 \quad , \qquad (t_0,x_0)\in \mathbb{R}^2 \ .
+\] L'application \(f:(t,x)\mapsto x^2\) est continue sur
+\(\mathbb{R}^2\), donc il existe au moins une solution. On peut par
+exemple vérifier que, pour \(x_0>0\), \(x:I\to \mathbb{R}\) définie par \[
+x(t)=\frac{x_0}{1-x_0(t-t_0)} \quad , \quad I=\left]-\infty,t_0+\frac{1}{x_0}\right[
+\] est bien solution. Vu qu'elle diverge au temps \(t_0+\frac{1}{x_0}\),
+elle ne peut être prolongée au delà. Elle est donc maximale et on dit
+qu'elle \emph{explose en temps fini}. Pour \(x_0<0\), la même formule
+définit une solution maximale sur \(I=\left]t_0+\frac{1}{x_0},+\infty\right[\),
+qui explose dans le passé, et pour \(x_0=0\) la solution nulle est
+définie sur \(\mathbb{R}\) (voir
+\protect\hyperlink{fig_explo_temps_fini}{Figure~\ref*{fig_explo_temps_fini}
+(p. \pageref*{fig_explo_temps_fini})}).
+
+En fait, le théorème suivant montre que les solutions maximales sont
+définies sur un intervalle ouvert, et cet intervalle n'est borné que si
+\(t\mapsto x(t)\) diverge en temps fini ou \(t\mapsto(t,x(t))\) tend
+vers la frontière de l'ensemble de définition \(J\times X\) de \(f\) en
+temps fini.
+\end{exemple}
+
+\begin{figure}
+\hypertarget{fig_explo_temps_fini}{%
+\centering
+\includegraphics{images/explosion_temps_fini.py.pdf}
+\caption{Solutions à \(\dot{x} = x^2\) pour \(t_0=0\) et différentes
+valeurs de \(x_0\)}\label{fig_explo_temps_fini}
+}
+\end{figure}
+
+\hypertarget{theo_bouts}{}
+\addcontentsline{toc}{subsection}{Domaine maximal d'existence}
+\begin{theoreme}[Domaine maximal d'existence]\label{theo_bouts}
+Soient \(J\) ouvert de \(\mathbb{R}\), \(X\) ouvert de
+\(\mathbb{R}^{n}\), \(f: J\times X \to \mathbb{R}^n\) continue et
+\((t_0,x_0)\in J\times X\). Toute solution du problème de Cauchy défini
+par \(f\) et \((t_0,x_0)\) est prolongeable en une solution maximale et
+toute solution maximale \(x:I\to \mathbb{R}^n\) est définie sur un
+intervalle ouvert \(\left]\tmin,\tmax\right[\) avec
+\(\tmin,\tmax\in \mathbb{R}\cup\{+\infty,-\infty\}\). De plus, si
+\(\tmax\) (resp. \(\tmin\)) est fini alors \[
+\lim_{t\to \tmax} \ \|x(t)\| + \frac{1}{d\Big((t,x(t)),\partial (J\times X) \Big)} = +\infty
+\qquad \Big(\text{resp. } \lim_{t\to \tmin}\Big) \ ,
+\] avec la convention \(1/d = 0\) si \(\partial (J\times X)=\emptyset\).
+Autrement dit, la solution finit par être, à chaque instant, soit très
+loin de l'origine, soit très proche de la frontière de \(J\times X\)~:
+elle ne peut pas rester dans une région bornée et à distance positive du
+bord. En particulier~:
+
+\begin{itemize}
+\item
+  si \(X=\mathbb{R}^n\) et \(\tmax\) est intérieur à \(J\), seule la
+  première possibilité subsiste~: \(\lim_{t\to \tmax}\|x(t)\| = +\infty\),
+  la solution \emph{explose en temps fini}~;
+\item
+  si \(X\) est borné, seule la seconde subsiste~:
+  \(\lim_{t\to \tmax} d\big(x(t),\partial X\big) = 0\), la solution
+  \emph{atteint le bord en temps fini}.
+\end{itemize}
+\end{theoreme}
+
+\begin{remarque}[Diverger ou tendre vers le bord\,?]
+Attention, la somme tend vers \(+\infty\) sans qu'aucun des deux termes
+n'ait forcément de limite~: rien n'empêche en général une solution
+d'alterner indéfiniment, en temps fini, entre des passages près de la
+frontière et des excursions de plus en plus lointaines. C'est pourquoi on
+ne peut pas écrire ``ou bien \(\|x(t)\|\to+\infty\), ou bien \(d\to 0\)''
+en dehors des deux cas particuliers ci-dessus.
+\end{remarque}
+
+\hypertarget{duxe9monstration-2}{}
+\begin{preuve}\label{duxe9monstration-2}
+La preuve complète est donnée en
+\protect\hyperlink{pr_theo_bouts}{annexe (p. \pageref*{pr_theo_bouts})}.
+On commence par observer que si l'intervalle d'existence n'était pas
+ouvert, la solution pourrait être prolongée au bord grâce au théorème de
+Peano, ce qui contredirait sa maximalité. Ensuite, la preuve consiste à
+montrer que si \(\tmax\) (resp. \(\tmin\)) est fini, alors \((t,x(t))\)
+finit forcément par sortir définitivement de toute région bornée et à
+distance positive du bord de \(J\times X\) (c'est-à-dire de tout
+compact de \(J\times X\)) lorsque \(t\) tend vers \(\tmax\) (resp.
+\(\tmin\)), ce qui est exactement le contenu de la limite
+ci-dessus.\hfill$\blacksquare$
+
+En pratique, pour montrer que les solutions maximales sont définies pour
+tout temps, i.e., sur \(\mathbb{R}\), il suffit donc de montrer qu'elles
+ne peuvent pas aller arbitrairement loin en temps fini (par exemple si elles sont bornées
+sur tout intervalle de temps fini), et qu'elles ne peuvent pas s'approcher arbitrairement proche du bord de \(J\times X\) en temps fini (par exemple si
+\(J\times X= \mathbb{R}\times \mathbb{R}^n\)). Un cas particulier où les
+solutions maximales sont forcément définies sur \(J\) entier est donné
+ci-dessous.
+\end{preuve}
+
+\hypertarget{theo_exist_glob}{}
+\addcontentsline{toc}{subsection}{Critère d'existence globale}
+\begin{theoreme}[Critère d'existence globale]\label{theo_exist_glob}
+Soient \(J\) un intervalle ouvert de \(\mathbb{R}\) et
+\(f:J\times\mathbb{R}^n\to\mathbb{R}^n\) continue. Si \(f\) a une
+\emph{croissance au plus affine}, c'est-à-dire, s'il existe
+\(a,b: J\to\mathbb{R}\) continues telles que
+\[
+\|f(t,x)\|\leq a(t) \|x\| + b(t) \quad \forall (t,x)\in J\times \mathbb{R}^n \ ,
+\] alors toute solution maximale est définie sur \(J\) entier.
+\end{theoreme}
+
+\hypertarget{duxe9monstration-3}{}
+\begin{preuve}\label{duxe9monstration-3}
+Prouvé dans l'exercice \protect\hyperlink{exo_gronwall}{\emph{Autour du
+Lemme de Grönwall} (p. \pageref*{exo_gronwall})}.\hfill$\blacksquare$
+\end{preuve}
+
+\hypertarget{ex_solGlob}{}
+\addcontentsline{toc}{subsubsection}{Solutions globales}
+\begin{exemple}[Solutions globales]\label{ex_solGlob}
+\begin{itemize}
+\item
+  Considérons une équation différentielle \emph{linéaire}, c'est-à-dire
+  pour laquelle il existe \(A:\mathbb{R}\to\mathbb{R}^{n\times n}\) et
+  \(b:\mathbb{R}\to\mathbb{R}^n\) continues telles que \[
+  f(t,x) = A(t) x + b(t) \ .
+  \] D'après le théorème précédent, quelle que soit la condition
+  initiale \((t_0,x_0)\in \mathbb{R}\times\mathbb{R}^n\), ses solutions maximales
+  sont définies sur \(\mathbb{R}\) entier (on verra dans la suite qu'il en existe
+  une unique pour chaque condition initiale). Dans le cas où \(A\) est
+  constant, on en a même une formule explicite (obtenue par la méthode
+  de \emph{variation de la constante}) \[
+  x(t) = e^{A(t-t_0)}x_0 + \int_{t_0}^t e^{A(t-s)} b(s)ds \ ,
+  \] où \(e^{A(t-s)}\) est l'exponentielle de matrice définie par \[
+  e^{A(t-s)}=\sum^{+\infty}_{p=0} \frac{A^p(t-s)^p}{p!} \ .
+  \] Attention, cette formule ne fonctionne que si \(A\) est constant.
+  Notons que si \(A\) est diagonalisable, i.e., il existe
+  \(P\in \mathbb{R}^{n\times n}\) telle que \(A = P^{-1} D P\) avec
+  \(D\in \mathbb{R}^{n\times n}\) une matrice diagonale contenant les
+  valeurs propres de \(A\), alors \[
+  e^{A(t-s)} = P^{-1} e^{D(t-s)}  P
+  \] donc les solutions avec \(b=0\) sont des combinaisons linéaires de
+  \(e^{\lambda_i t}\) où \(\lambda_i\) sont les valeurs propres de
+  \(A\). Ceci n'est plus vrai lorsque \(A\) n'est pas diagonalisable.
+  Voir l'\protect\hyperlink{Hurwitz}{étude de stabilité d'un système
+  linéaire (p. \pageref*{Hurwitz})}.
+\item
+  Un autre cas important d'une croissance au plus affine est lorsque
+  \(f\) est globalement bornée en \(x\). Par exemple, \[
+  f(t,x)=c(t)\arctan(x) \qquad \text{ ou } \qquad 
+  f(t,x)=\frac{c(t)}{1+x^2}
+  \] engendrent des problèmes de Cauchy aux solutions globales.
+\end{itemize}
+\end{exemple}
+
+\hypertarget{glob_sol}{%
+\subsubsection*{\texorpdfstring{Exercice -- Solutions globales I
+}{Exercice -- Solutions globales I}}\label{glob_sol}}
+
+\addcontentsline{toc}{subsubsection}{Solutions globales I}
+
+Justifier que pour toute condition initiale,
+\[
+\begin{array}{rcl}
+\dot{x}_1 &=& \sin x_1 - \sqrt{|t|} x_2 \\
+\dot{x}_2 &=& \sqrt{1+x_1^2}
+\end{array}
+\] admet des solutions et les solutions maximales sont définies sur
+\(\mathbb{R}\).\solref{answer-glob_sol}
+
+\hypertarget{glob_sol2}{%
+\subsubsection*{\texorpdfstring{Exercice -- Solutions globales II
+(\(\mathord{\bullet}\))}{Exercice -- Solutions globales II (•)}}\label{glob_sol2}}
+
+\addcontentsline{toc}{subsubsection}{Solutions globales II}
+
+Soient \(f:\mathbb{R}\times \mathbb{R}^n \to \mathbb{R}^n\) continue et
+\(V:\mathbb{R}^n \to \mathbb{R}\) définie par \(V(x) = x^\top x\) telles
+que \[
+\langle\nabla V (x), f(t,x)\rangle \leq a(t) V(x) + b(t)  \qquad \forall (t,x)\in \mathbb{R}\times \mathbb{R}^n
+\] avec \(a,b:\mathbb{R}\to \mathbb{R}\) continues. Montrer que quelle
+que soit la condition initiale
+\((t_0,x_0)\in \mathbb{R}\times \mathbb{R}^n\), les solutions maximales
+de \(\dot{x} = f(t,x)\) sont définies sur \([t_0,+\infty[\). On pourra
+pour cela étudier l'évolution de \(t\mapsto V(x(t))\).\solref{answer-glob_sol2}
+
+\hypertarget{glob_sol3}{%
+\subsubsection*{\texorpdfstring{Exercice -- Solutions globales III
+(\(\mathord{\bullet}\))}{Exercice -- Solutions globales III (•)}}\label{glob_sol3}}
+
+\addcontentsline{toc}{subsubsection}{Solutions globales III}
+
+Soient \(f:\mathbb{R}\times \mathbb{R}^n \to \mathbb{R}^n\) continue et
+\(V:\mathbb{R}^n \to \mathbb{R}\) telle que \[
+\lim_{\|x\| \to +\infty} V(x) = +\infty \quad \text{et} \quad \langle\nabla V(x), f(t,x)\rangle \leq 0  \qquad \forall (t,x)\in \mathbb{R}\times \mathbb{R}^n \ .
+\] Montrer que quelle que soit la condition initiale
+\((t_0,x_0)\in \mathbb{R}\times \mathbb{R}^n\), les solutions maximales
+de \(\dot{x} = f(t,x)\) sont définies et bornées sur \([t_0,+\infty[\).
+On pourra pour cela étudier l'évolution de \(t\mapsto V(x(t))\).\solref{answer-glob_sol3}
+
+\hypertarget{unicituxe9-des-solutions-maximales}{%
+\section{Unicité des solutions
+maximales}\label{unicituxe9-des-solutions-maximales}}
+
+Si des solutions maximales existent toujours, elles ne sont pas toujours
+uniques.
+
+\hypertarget{ex_nonUnique}{}
+\addcontentsline{toc}{subsubsection}{Non-unicité des solutions}
+\begin{exemple}[Non-unicité des solutions]\label{ex_nonUnique}
+Considérons le problème de Cauchy \[
+\dot{x}=-\sqrt{|x|} \qquad , \qquad (t_0,x_0)=(0,0) \ .
+\] Ce système permet en particulier de modéliser l'écoulement d'un
+fluide dans un réservoir, selon la loi de \emph{Torricelli} (voir
+\protect\hyperlink{exo_Torricelli}{exercice (p.
+\pageref*{exo_Torricelli})}). La fonction \(f:(t,x)\mapsto -\sqrt{|x|}\)
+est continue sur \(\mathbb{R}\times \mathbb{R}\), donc ce problème de
+Cauchy admet au moins une solution. Mais on montrera en
+\protect\hyperlink{exo_Torricelli}{exercice (p.
+\pageref*{exo_Torricelli})} qu'il existe une infinité de solutions
+maximales. Plus de détails sont donnés dans le notebook Equations
+Différentielles I.ipynb.
+
+Le théorème suivant, dit de \emph{Cauchy-Lipschitz}, montre que
+l'unicité des solutions maximales est garantie si \(f\) est de plus
+continûment différentiable par rapport à la variable \(x\). On voit que
+ce n'est pas le cas de \(x\mapsto -\sqrt{|x|}\) en 0. Le théorème et la
+preuve de l'époque sont disponibles en ligne dans des notes de cours
+(Moigno \protect\hyperlink{ref-cauchy}{1844}).
+\end{exemple}
+
+\hypertarget{theo_lips}{}
+\addcontentsline{toc}{subsection}{Théorème de Cauchy-Lipschitz (ou de Picard-Lindelöf)}
+\begin{theoreme}[Théorème de Cauchy-Lipschitz (ou de Picard-Lindelöf)]\label{theo_lips}
+Soient \(J\) ouvert de \(\mathbb{R}\), \(X\) ouvert de
+\(\mathbb{R}^{n}\), \(f: J\times X \to \mathbb{R}^n\) continue et
+continûment différentiable par rapport à \(x\),
+i.e.~\((t,x)\mapsto \partial_x f(t,x)\) existe et est continue sur
+\(J\times X\). Alors pour tout \((t_0,x_0)\in J\times X\), il existe une
+unique solution maximale \(x:I\subset J\to\mathbb{R}^n\) au problème de
+Cauchy défini par \(f\) et \((t_0,x_0)\).
+\end{theoreme}
+
+\hypertarget{duxe9monstration-4}{}
+\begin{preuve}\label{duxe9monstration-4}
+Nous donnons ici le principe de la preuve qui peut être passée en
+première lecture, mais qu'il est intéressant de comprendre d'un point de
+vue scientifique. L'essentiel est en fait de montrer que sous
+l'hypothèse de régularité de \(f\) par rapport à \(x\), il existe une
+unique solution locale au problème de Cauchy. De là on peut ensuite
+déduire qu'elle se prolonge en une unique solution maximale dans
+\(J\times X\)~: si \(x\) et \(x'\) sont deux solutions définies sur un
+même intervalle \(I\ni t_0\), l'ensemble \(\{t\in I : x(t)=x'(t)\}\) est
+non vide, fermé dans \(I\) (par continuité), et ouvert (l'unicité locale
+appliquée en chaque point de coïncidence \((t_1,x(t_1))\) montre que
+\(x\) et \(x'\) coïncident sur un voisinage de \(t_1\))\,; il est donc
+égal à \(I\). Deux solutions coïncident ainsi sur leur intervalle commun,
+et la réunion de toutes les solutions est l'unique solution maximale. La
+partie cruciale est donc le résultat local suivant qui
+constitue en fait le théorème initial de Cauchy-Lipschitz (sa
+généralisation aux solutions globales étant plutôt due à
+\protect\hyperlink{rem_approx_succ}{Picard et Lindelöf (p.
+\pageref*{rem_approx_succ})}).
+
+\textbf{Théorème de Cauchy-Lipschitz local} Soient \(J\) ouvert de
+\(\mathbb{R}\), \(X\) ouvert de \(\mathbb{R}^{n}\),
+\(f: J\times X \to \mathbb{R}^n\) continue et continûment différentiable
+par rapport à \(x\), et \((t_0,x_0)\in J\times X\). Soient \(\tau>0\) et
+\(r>0\) tels que \[
+\mathcal{C}:=\left[t_0-\tau,t_0+\tau \right]\times B_f(x_0,r)\subset J\times X \ .
+\] Pour tout \(\tau_m\in \left[0,\tau \right]\) tel que
+\(\tau_m \max_{\mathcal{C}} \|f\| \leq r\), toute solution \(x\) au
+problème de Cauchy défini par \(f\) et \((t_0,x_0)\) est définie de
+manière unique sur \([t_0-\tau_m,t_0+\tau_m]\).
+
+\textbf{Démonstration}
+
+La preuve consiste à voir les solutions comme des points fixes d'un
+certain opérateur intégral, obtenu par la représentation intégrale des
+solutions. Le théorème du point fixe de Banach permet ensuite de montrer
+l'existence et l'unicité de ce point fixe.
+
+Tout d'abord, \(\mathcal{C}\) étant compact, par continuité de \(f\),
+\(\max_\mathcal{C}\|f\|\) existe bien. Par ailleurs, l'ensemble des
+fonctions continues de \([t_0-\tau_m,t_0+\tau_m]\) dans
+\(\mathbb{R}^n\), que nous notons \(E\), est complet\footnote{E est un
+  sous-ensemble fermé de l'ensemble des fonctions
+  \(f:I\to \mathbb{R}^n\) bornées muni de la norme uniforme car toute
+  fonction continue sur un compact est bornée et toute limite uniforme
+  de fonctions continues est continue. Or l'ensemble des fonctions
+  \(f:I\to \mathbb{R}^n\) bornées est complet pour la norme uniforme. En
+  effet, soit \((f_p)\) une suite de Cauchy. Alors par définition de la
+  norme uniforme, pour tout \(t\in I\), la suite \((f_p(t))\) est de
+  Cauchy dans \(\mathbb{R}^n\) qui est complet donc converge. Notons
+  \(f_\infty(t)\) sa limite. On montre alors aisément que \(f_\infty\)
+  est bornée sur \(I\) en la comparant à un \(f_p\) fixé et en passant à
+  la limite dans la propriété des suites de Cauchy pour un
+  \(\varepsilon\) fixé.} pour la norme uniforme \(\|\cdot\|_\infty\), et
+définissons
+\[
+F = \{x\in E \: : \: x(\left[t_0-\tau_m,t_0+\tau_m \right])\subset B_f(x_0,r) \} \ .
+\] On peut montrer que\footnote{Pour toute suite \((x_n)\) d'éléments de
+  \(F\) convergeant vers \(x^*\), pour tout
+  \(t\in [t_0-\tau_m,t_0+\tau_m]\), \[
+  \|x_n(t)-x^*(t)\|\leq \|x_n-x^*\|_{\infty} \quad \underset{n\to \infty}{\longrightarrow} 0
+  \] donc la suite \((x_n(t))\) d'éléments du fermé \(B_f(x_0,r)\)
+  converge dans \(\mathbb{R}^n\) vers \(x^*(t)\) qui est donc dans
+  \(B_f(x_0,r)\). Ceci implique \(x^*\in F\).} \(F\) est un
+sous-ensemble fermé de \(E\). \(F\) est donc complet (toujours pour la
+norme uniforme \(\|\cdot\|_\infty\)). Pour tout \(x\in F\), par
+définition, \((s,x(s))\in \mathcal{C}\subset J\times X\) pour tout
+\(s\in \left[t_0-\tau_m,t_0+\tau_m \right]\)\,; on peut donc définir
+l'opérateur \(\Gamma : F\to E\) par \[
+\Gamma(x)(t) = x_0+\int_{t_0}^t f(s,x(s))ds \qquad \forall t\in \left[ t_0-\tau_m,t_0+\tau_m \right] \ .
+\] Or d'après la \protect\hyperlink{theo_eq_integrale}{représentation
+intégrale des solutions (p. \pageref*{theo_eq_integrale})}, on sait
+qu'une fonction \(x\in F\) est solution du problème de Cauchy sur
+\(\left[ t_0-\tau_m,t_0+\tau_m \right]\) si et seulement si elle vérifie
+\[
+\Gamma(x)=x
+\] c'est-à-dire \(x\) est un point fixe de \(\Gamma\). Par ailleurs, on
+peut prouver\footnote{Il suffit de montrer que
+  \(x([t_0-\tau_m,t_0+\tau_m])\subset B_f(x_0,r)\). Supposons le
+  contraire et sans perdre en généralité supposons que
+  \(S := \{ t\in [t_0,t_0+\tau_m] \: : \: \|x(t)-x_0\|>r \}\) est non
+  vide. Soit \(t^*=\inf S\). Nécessairement \(t_0 < t^* < t_0+\tau_m\).
+  Donc par la \protect\hyperlink{theo_eq_integrale}{représentation
+  intégrale (p. \pageref*{theo_eq_integrale})}, \[
+  \|x(t^*)-x_0\|\leq (t^*-t_0) \max_{s\in [t_0,t^*]} \|f(s,x(s)) \| < \tau_m \max_\mathcal{C}\|f\|< r \ .
+  \] Par continuité de \(x\), \(\|x(t)-x_0\|\leq r\) pour un temps après
+  \(t^*\), ce qui contredit sa définition.} que pour tout
+\(x\in S_f(t_0,x_0)\) définie sur
+\(\left[t_0-\tau_m,t_0+\tau_m \right]\), \(x\) est dans \(F\)~: c'est
+donc un point fixe \(x^*\) de \(\Gamma\) sur \(F\). L'idée de la preuve
+est donc de montrer que \(\Gamma\) (ou une de ses itérées) est
+contractante pour utiliser le théorème de point fixe de Banach et en
+déduire l'existence et l'unicité de ce point fixe.
+
+D'abord, pour tout \(x\in F\), pour tout
+\(t\in \left[t_0-\tau_m,t_0+\tau_m \right]\), \[
+\|\Gamma(x)(t)-x_0\| \leq \left|\int_{t_0}^t \|f(s,x(s))\| ds \right| \leq \tau_m \max_{\mathcal{C}} \|f\| \leq r
+\] de sorte que \(\Gamma(x)\in F\), i.e.~\(\Gamma:F\to F\). Ensuite,
+pour tout \((x_a,x_b)\in F\times F\), pour tout
+\(t\in \left[t_0-\tau_m,t_0+\tau_m \right]\), \[
+\|\Gamma(x_a)(t)-\Gamma(x_b)(t)\|\leq \left|\int_{t_0}^t \|f(s,x_a(s))-f(s,x_b(s))\| ds \right| \ .
+\] Soit \(k=\max_\mathcal{C}\left\|\partial_x f \right\|\) (bien défini
+car \(\mathcal{C}\) est compact et \(\partial_x f\) est continue par
+hypothèse). Alors l'application du théorème des accroissements finis nous
+donne \[
+\|\Gamma(x_a)(t)-\Gamma(x_b)(t)\|\leq  \left|\int_{t_0}^t k\|x_a(s)-x_b(s)\| ds \right| \leq |t-t_0| k \|x_a-x_b\|_{\infty} 
+\] et donc
+\(\|\Gamma(x_a)-\Gamma(x_b)\|_\infty \leq \tau_m k \|x_a-x_b\|_{\infty}\).
+A ce stade, sauf si \(\tau_m k<1\), \(\Gamma\) n'est pas contractante.
+Cependant, on peut montrer par récurrence que pour tout
+\(p\in \mathbb{N}\), et pour tout
+\(t\in \left[t_0-\tau_m,t_0+\tau_m \right]\), \[
+\|\Gamma^p(x_a)(t)-\Gamma^p(x_b)(t)\| \leq \frac{(|t-t_0| k)^p}{p!} \|x_a-x_b\|_{\infty}
+\] en notant
+\(\Gamma^p = \underbrace{\Gamma \circ \Gamma \circ \ldots \circ \Gamma}_{p \text{ fois }}\).
+Donc pour tout \(p\in \mathbb{N}\),
+\(\|\Gamma^p(x_a)-\Gamma^p(x_b)\|_\infty \leq \frac{(\tau_m k)^p}{p!} \|x_a-x_b\|_{\infty}\).
+Il existe donc \(p\) suffisamment grand tel que \(\Gamma^{p}\) est
+contractante. D'après le théorème de point fixe de Banach, \(\Gamma^p\)
+admet un unique point fixe \(x^*\) dans \(F\). Alors \(\Gamma(x^*)\) est
+aussi un point fixe de \(\Gamma^p\) (car
+\(\Gamma^p(\Gamma(x^*)) = \Gamma(\Gamma^p(x^*)) = \Gamma(x^*)\)), donc
+\(\Gamma(x^*)=x^*\) par unicité\,; et tout point fixe de \(\Gamma\) est
+point fixe de \(\Gamma^p\), donc égal à \(x^*\). Ainsi \(\Gamma\) admet un
+unique point fixe \(x^*\) dans \(F\).\hfill$\blacksquare$
+\end{preuve}
+
+\hypertarget{rem_f_lips}{}
+\addcontentsline{toc}{subsection}{Relâchement à \(f\) localement lipschitzienne}
+\begin{remarque}[Relâchement à \(f\) localement lipschitzienne]\label{rem_f_lips}
+La première preuve d'existence et unicité locale de solutions sous
+l'hypothèse que \(f\) est continûment différentiable par rapport à \(x\)
+est due à Augustin Louis Cauchy (1820) et repose sur l'utilisation du
+théorème des accroissements finis\footnote{En l'absence d'outils d'analyse
+  fonctionnelle à cette époque, la preuve de Cauchy consistait plutôt à
+  discrétiser en temps l'intégrale de plus en plus finement et montrer
+  la convergence vers une solution.}. Mais on remarque dans notre preuve
+qu'il suffirait qu'il existe \(k>0\) tel que \begin{multline*}
+\|f(t,x_a)-f(t,x_b)\|\leq k \|x_a-x_b\| \\
+ \forall t\in \left[t_0-\tau_m,t_0+\tau_m \right], \forall (x_a,x_b)\in B_f(x_0,r)\times B_f(x_0,r) \ ,
+\end{multline*} c'est-à-dire que la fonction \(f\) soit
+\emph{lipschitzienne} par rapport à \(x\) au voisinage de \((t_0,x_0)\).
+Cette propriété fut introduite par le mathématicien allemand Rudolf
+Lipschitz quelques années plus tard (1868) pour prouver le même résultat
+de façon indépendante~: d'où le nom de \emph{théorème de
+Cauchy-Lipschitz}. Notons que cette dernière hypothèse est plus faible
+que celle de Cauchy car elle impose seulement que \(x\mapsto f(t,x)\)
+soit lipschitzienne au voisinage de \((t_0,x_0)\), au lieu de
+différentiable. Par exemple, \(x\mapsto |x|\) est lipschitzienne (mais
+pas différentiable) et \(\dot{x}=|x|\) admet donc une unique solution
+maximale quelle que soit la condition initiale.
+\end{remarque}
+
+\hypertarget{rem_approx_succ}{}
+\addcontentsline{toc}{subsection}{Approximations successives}
+\begin{remarque}[Approximations successives]\label{rem_approx_succ}
+Mise à part quelques formes particulières de \(f\), il est très rare de
+savoir résoudre explicitement une équation différentielle. Cependant, la
+preuve (dans sa forme moderne donnée plus haut) caractérise la solution
+comme le point fixe de l'opérateur \(\Gamma\). Or, on sait par la preuve
+du théorème du point fixe de Banach que ce point fixe est la limite
+uniforme de la suite des itérées de \(\Gamma\). En pratique, on peut
+donc s'approcher arbitrairement proche de la solution sur l'intervalle
+\(\left[t_0-\tau_m,t_0+\tau_m \right]\) (au sens de la norme uniforme),
+en calculant la suite \(x_{p+1} = \Gamma(x_p)\) définie par \[
+x_{p+1}(t) =  x_0+\int_{t_0}^t f(s,x_p(s))ds  ,
+\] en notant ici de manière abusive \(x_0\) la fonction constante égale
+à \(x_0\). Cette méthode de recherche de point fixe porte le nom
+d'\emph{approximations successives} et est introduite pour la première
+fois par le mathématicien français Emile Picard à la fin du XIXème
+siècle grâce aux progrès de l'analyse fonctionnelle. C'est finalement le
+mathématicien finlandais Ernst Lindelöf qui donne à la preuve sa forme
+moderne en utilisant en 1894 la théorie des espaces de Banach. Pour les
+anglophones, ce théorème s'appelle d'ailleurs le \emph{théorème de
+Picard-Lindelöf}.
+\end{remarque}
+
+\hypertarget{ex_lips}{}
+\addcontentsline{toc}{subsubsection}{Unicité des solutions maximales}
+\begin{exemple}[Unicité des solutions maximales]\label{ex_lips}
+\begin{itemize}
+\item
+  Une équation différentielle \emph{linéaire}, c'est-à-dire pour
+  laquelle il existe \(A:\mathbb{R}\to\mathbb{R}^{n\times n}\) et
+  \(b:\mathbb{R}\to\mathbb{R}^n\) continues telles que \[
+  f(t,x) = A(t) x + b(t) \ ,
+  \] admet une unique solution maximale quelle que soit sa condition
+  initiale \((t_0,x_0)\in \mathbb{R}\times \mathbb{R}^n\), car
+  \(\partial_x f(t,x) = A(t)\) est continue.
+\item
+  Les équations décrivant l'évolution de la tension dans un circuit RLC
+  ou la cinétique chimique données au début de ce cours admettent une
+  unique solution maximale au voisinage de toute condition initiale
+  \((t_0,x_0)\). C'est aussi le cas des équations de la mécanique
+  newtonienne ou lagrangienne si les forces/couples
+  \(F_k(t,q,\dot{q})\) sont continûment différentiables par rapport à la
+  position et la vitesse \((q,\dot{q})\).
+\end{itemize}
+\end{exemple}
+
+\hypertarget{ini_sol}{%
+\subsubsection*{\texorpdfstring{Exercice -- Unicité de la solution maximale
+}{Exercice -- Unicité de la solution maximale}}\label{ini_sol}}
+
+\addcontentsline{toc}{subsubsection}{Unicité de la solution maximale}
+
+Justifier que pour toute condition initiale,
+\[
+\begin{array}{rcl}
+\dot{x}_1 &=& \sin x_1 - \sqrt{|t|} x_2 \\
+\dot{x}_2 &=& \sqrt{1+x_1^2}
+\end{array}
+\] admet une unique solution maximale définie sur \(\mathbb{R}\).\solref{answer-ini_sol}
+
+\hypertarget{ruxe9gularituxe9-et-stabilituxe9-des-solutions}{%
+\chapter{Régularité et stabilité des
+solutions}\label{ruxe9gularituxe9-et-stabilituxe9-des-solutions}}
+
+Depuis l'apparition de la mécanique Newtonienne au XVIIème siècle,
+l'étude des équations différentielles a toujours
+été motivée par l'espoir de compréhension et de prédiction du
+comportement futur ou passé de systèmes physiques. En particulier, une
+question ayant taraudé et divisé les scientifiques au cours des siècles
+est celle de la stabilité du système à trois corps (Terre-Lune-Soleil),
+ou plus généralement du système solaire. Enchanté devant les avancées de
+la mécanique céleste, Pierre-Simon Laplace écrit en 1814~:
+
+\begin{quote}
+Nous devons donc envisager l'état présent de l'univers comme l'effet de
+son état antérieur, et comme la cause de celui qui va suivre. Une
+intelligence qui pour un instant donné connaîtrait toutes les forces
+dont la nature est animée et la situation respective des êtres qui la
+composent, si d'ailleurs elle était assez vaste pour soumettre ses
+données à l'analyse, embrasserait dans la même formule les mouvements
+des plus grands corps de l'univers et ceux du plus léger atome~: rien ne
+serait incertain pour elle, et l'avenir comme le passé serait présent à
+ses yeux.
+\end{quote}
+
+Cette conviction \emph{déterministe}, c'est-à-dire que les phénomènes
+physiques passés ou futurs sont entièrement déterminés par leur
+condition initiale, fut confirmée par le théorème de Cauchy-Lipschitz
+quelques années plus tard. Ce dernier suggère en effet que l'on peut
+prévoir l'évolution des systèmes physiques par la seule connaissance de
+leur condition initiale et de leur modèle physique.
+
+Cependant, à la fin du XIXème siècle, on se rend vite compte que la
+réalité est en fait toute autre~:
+
+\begin{itemize}
+\item
+  d'une part, la condition initiale et le modèle ne sont jamais
+  parfaitement connus~: quelle est alors la qualité de notre
+  prédiction\,?
+\item
+  d'autre part, ne pouvant généralement pas calculer explicitement la
+  solution, comment anticiper son comportement sur des temps longs,
+  voire son comportement asymptotique\,?
+\end{itemize}
+
+\hypertarget{sensibilituxe9-aux-conditions-initiales-et-erreurs-de-moduxe8le}{%
+\section{Sensibilité aux conditions initiales et erreurs de
+modèle}\label{sensibilituxe9-aux-conditions-initiales-et-erreurs-de-moduxe8le}}
+
+La première question fut soulevée par Henri Poincaré à la fin du XIXème
+siècle alors qu'il s'attelle à la question de la stabilité du système
+solaire.
+
+Le théorème suivant nous montre que pour un horizon de temps fini donné,
+on peut obtenir une solution arbitrairement précise si le système est
+initialisé suffisamment précisément et si les perturbations (ou erreurs
+de modèle) sont suffisamment faibles. En d'autres termes, la solution
+est \emph{continue} par rapport aux perturbations en temps fini. Ceci
+est crucial en physique puisque l'on ne peut jamais modéliser tous les
+phénomènes parfaitement.
+
+\hypertarget{theo_reg_CI}{}
+\addcontentsline{toc}{subsection}{Régularité en temps fini}
+\begin{theoreme}[Régularité en temps fini]\label{theo_reg_CI}
+Soient \(J\) ouvert de \(\mathbb{R}\), \(X\) ouvert de
+\(\mathbb{R}^{n}\), \(f: J\times X \to \mathbb{R}^n\) continue et
+continûment différentiable par rapport à \(x\),
+\((t_0,x_0)\in J\times X\), et \(x:I\to\mathbb{R}^n\) l'unique solution
+maximale au problème de Cauchy défini par \(f\) et \((t_0,x_0)\). Pour
+tout \(\underline{t},\overline{t}\) tel que
+\(t_0\in\left[\underline{t},\overline{t} \right]\subset I\), il existe
+\(\delta_m>0\) et \(\lambda\in \mathbb{R}\) tels que pour tout
+\(\delta\in \mathbb{R}^n\) vérifiant \(\|\delta\|\leq \delta_m\), l'unique
+solution maximale \(x_\delta\) au problème de Cauchy défini par \(f\) et
+\((t_0,x_0+\delta)\) est définie au moins sur
+\(\left[\underline{t},\overline{t} \right]\) et vérifie \[
+\|x(t)-x_{\delta}(t)\| \leq e^{\lambda |t-t_0|} \|\delta\| \qquad \forall t\in \left[\underline{t},\overline{t} \right] \ .
+\]
+\end{theoreme}
+
+
+\hypertarget{duxe9monstration-5}{}
+\begin{preuve}\label{duxe9monstration-5}
+Prouvé dans l'exercice \protect\hyperlink{exo_gronwall}{\emph{Autour du
+Lemme de Grönwall} (p. \pageref*{exo_gronwall})}.\hfill$\blacksquare$
+\end{preuve}
+
+La présence du facteur exponentiel n'est pas cruciale ici, et servira
+dans la suite. Ce qui est important, c'est que plus l'erreur de
+condition initiale \(\delta\) est faible, plus l'erreur sur la
+trajectoire à horizon de temps fini \(\overline{t}\) est faible. On dit
+alors que la solution du problème de Cauchy est continue par rapport à
+la condition initiale à horizon de temps fini. Attention, l'hypothèse
+``continûment différentiable par rapport à \(x\)'' est importante encore
+ici, comme illustré dans l'exercice
+\emph{\protect\hyperlink{exo_Torricelli}{Ecoulement dans un réservoir
+		(p. \pageref*{exo_Torricelli})}}, mais seulement pour garantir l'unicité
+des solutions. Elle peut être relâchée à ``\(f\) localement
+lipschitzienne par rapport à \(x\)'' comme dans le cas du Théorème de
+Cauchy-Lipschitz.
+
+\hypertarget{ex_contCI}{}
+\addcontentsline{toc}{subsubsection}{Continuité des solutions par rapport aux perturbations}
+\begin{exemple}[Continuité des solutions par rapport aux perturbations]\label{ex_contCI}
+\begin{itemize}
+\item
+  Si \(\lambda<0\), l'erreur commise sur la condition initiale disparaît
+  au cours du temps dans les solutions~: on dit qu'elles ``oublient''
+  leurs conditions initiales et que le système est \emph{contractant}.
+\item
+  On peut aussi déduire de ce résultat la continuité des solutions par
+  rapport à des paramètres \(p\) intervenant dans la fonction \(f\). En
+  effet, il suffit de considérer le système étendu \begin{align*}
+  \dot{y} &= f(t,y,p)\\
+  \dot{p} &= 0
+  \end{align*} pour lequel l'incertitude de paramètre se ramène à une
+  incertitude de condition initiale.
+\item
+  Considérons un système linéaire à paramètre et/ou condition initiale
+  incertains \[
+  \dot{x} = (a+\delta_a) x \qquad , \qquad x_0 = c +\delta_{c}
+  \] Pour \(\delta_a=0=\delta_c\), la solution est \(x(t)=ce^{at}\), et
+  sinon \[
+  x_\delta(t)= (c+\delta_c)e^{(a+\delta_a)t} \ .
+  \] On a donc pour tout \(t\), \[
+  \|x(t)-x_\delta(t)\| = \|c- (c+\delta_c)e^{\delta_a t}\| e^{at} \leq \left(|\delta_c|e^{\delta_a t} + |1-e^{\delta_a t}| |c| \right) e^{at} 
+  \] et pour tout \(\overline{t}>0\) et
+  \(|\delta_a| \leq \frac{1}{\overline{t}}\), en utilisant
+  \(|e^{u}-1|\leq e\,|u|\) pour \(|u|\leq 1\), \[
+  \sup_{t\in [0,\overline{t}] } \|x(t)-x_\delta(t)\| \leq e\left( |\delta_c| + |\delta_a|  |c| \overline{t}\right) e^{|a|\overline{t}}
+  \] qui peut être rendu aussi faible que voulu si \(\delta_a\) et
+  \(\delta_c\) sont suffisamment petits. On voit bien ici que cette
+  différence est bornée en temps fini, mais pas forcément
+  asymptotiquement en particulier si \(a>0\).
+\item
+  L'outil \href{https://portsmouth.github.io/fibre/}{Fibre}\footnote{https://portsmouth.github.io/fibre/}
+  permet d'observer en dimension 3 cette continuité des solutions par
+  rapport aux conditions initiales, en affichant les trajectoires pour
+  un ensemble de conditions initiales dont la taille est contrôlée à la
+  souris: à ``Integration Time'' fixé, plus on réduit la \emph{boîte} de
+  condition initiales, plus les solutions se rapprochent les unes des
+  autres. Par contre, lorsque l'on augmente le ``Integration Time'' les
+  solutions s'écartent.
+\end{itemize}
+\end{exemple}
+
+\hypertarget{rem_chao}{}
+\addcontentsline{toc}{subsection}{Chaos déterministe et horizon de Lyapunov}
+\begin{remarque}[Chaos déterministe et horizon de Lyapunov]\label{rem_chao}
+Même si la continuité des solutions par rapport aux
+paramètres/conditions initiales donne à espérer de pouvoir simuler et
+prédire l'évolution de systèmes physiques, elle est malheureusement
+parfois insuffisante. Henri Poincaré écrit~:
+
+\begin{quote}
+Si nous connaissions exactement les lois de la nature et la situation de
+l'univers à l'instant initial, nous pourrions prédire exactement la
+situation de ce même univers à un instant ultérieur. Mais, lors même que
+les lois naturelles n'auraient plus de secret pour nous, nous ne
+pourrions connaître la situation qu'approximativement. Si cela nous
+permet de prévoir la situation ultérieure avec la même approximation,
+c'est tout ce qu'il nous faut, nous disons que le phénomène a été prévu,
+qu'il est régi par des lois\,; mais il n'en est pas toujours ainsi, il
+peut arriver que de petites différences dans les conditions initiales en
+engendrent de très grandes dans les phénomènes finaux\,; une petite
+erreur sur les premières produirait une erreur énorme sur les derniers.
+La prédiction devient impossible.
+\end{quote}
+
+En effet, le précédent théorème nous prouve seulement que des
+perturbations suffisamment petites donnent des solutions arbitrairement
+proches en temps fini. Mais, en pratique, il est rarement possible de
+choisir l'amplitude des perturbations (erreurs de capteurs, erreurs
+numériques etc.) et il se pourrait que l'ordre de grandeur des
+perturbations produisant des erreurs \emph{acceptables} sur les
+solutions ne soit pas réalisable. Plus précisément, le théorème suggère
+qu'à perturbation \(|\delta|\) donnée, l'écart entre les solutions
+pourrait croître exponentiellement vite. C'est le cas bien sûr des
+systèmes qui divergent exponentiellement (tels que \(\dot{x}=x\)), mais
+aussi de certains systèmes à trajectoires bornées, pour lesquels il
+existe \(\overline{t}>0\) tel que \[
+\frac{\|x(t)-x_\delta(t)\|}{\|\delta\|} \approx e^{\lambda t}  \qquad \forall 0\leq t\leq \overline{t} \ .
+\] Dans ce cas, \(\frac{1}{\lambda}\) représente l'ordre de grandeur du
+temps maximal jusqu'auquel l'erreur sur les solutions reste du même
+ordre de grandeur que l'erreur initiale~: on parle d'\emph{horizon de
+Lyapunov}. Toute prédiction au delà de cet horizon est illusoire et le
+système est alors dit \emph{chaotique}.
+
+Il est important d'insister sur le caractère \emph{déterministe} de ce
+chaos~: chaque cause entraîne un effet bien déterminé mais deux causes
+``très proches'' peuvent avoir des effets très différents.
+\end{remarque}
+
+\hypertarget{ex_chaos}{}
+\addcontentsline{toc}{subsubsection}{Systèmes chaotiques}
+\begin{exemple}[Systèmes chaotiques]\label{ex_chaos}
+\begin{itemize}
+\item
+  Henri Poincaré met en évidence le premier un comportement chaotique
+  des solutions du problème à 3 corps. Ses livres sont disponibles en
+  ligne (Poincaré \protect\hyperlink{ref-poincare}{1892}).
+\item
+  En 1963, Edward Lorenz met en évidence pour la première fois le
+  comportement possiblement chaotique de la météorologie à travers un
+  modèle simplifié à trois dimensions de convection donné par
+  \begin{align*}
+  \dot{x}_1 &= \sigma (x_2-x_1) \\
+  \dot{x}_2 &= \rho \, x_1 - x_2 -x_1x_3 \\
+  \dot{x}_3 &= x_1x_2-\beta x_3 
+  \end{align*} où \(\sigma\), \(\rho\) et \(\beta\) sont des paramètres
+  strictement positifs. Pour \(\sigma=10\), \(\beta=8/3\) et
+  \(\rho=28\), ce système présente un attracteur en forme de papillon,
+  où les trajectoires passent de manière \emph{chaotique} d'une aile à
+  l'autre, comme représenté sur la
+  \protect\hyperlink{fig_attracteur_lorenz}{Figure~\ref*{fig_attracteur_lorenz} (p.
+  \pageref*{fig_attracteur_lorenz})}. La croissance
+  exponentielle de l'erreur se visualise en simulation~: voir pour cela
+  le notebook Equations Différentielles I.ipynb.
+\item
+  En 1989, l'astronome français Jacques Laskar met en évidence
+  numériquement le caractère chaotique des orbites des planètes de notre
+  système solaire, en particulier celle de Mercure, dont les variations
+  d'excentricité pourraient entraîner des collisions ou éjections de
+  planètes dans certains scénarios long-termes. Ces travaux sont
+  confirmés en 1992 par Gerald Jay Sussman et Jack Wisdom, qui
+  démontrent que le système solaire est chaotique avec un horizon de
+  Lyapunov de l'ordre de 4 millions d'années (Sussman and Wisdom
+  \protect\hyperlink{ref-SussWis}{1992}).
+\item
+  Plus généralement, les systèmes chaotiques apparaissent dans des
+  domaines très divers, comprenant l'économie, l'électricité, la
+  mécanique, la médecine. Parfois, le comportement chaotique apparaît
+  seulement lorsque le système est soumis à certaines excitations, par
+  exemple une excitation sinusoïdale du pendule ou de l'oscillateur de
+  Van der Pol (Holmes and Rand \protect\hyperlink{ref-HolRand}{1978}).
+\end{itemize}
+\end{exemple}
+
+\begin{figure}
+\hypertarget{fig_attracteur_lorenz}{%
+\centering
+\includegraphics{images/attracteur_lorenz.py.pdf}
+\caption{Trajectoire de l'oscillateur de
+Lorenz}\label{fig_attracteur_lorenz}
+}
+\end{figure}
+
+\hypertarget{propriuxe9tuxe9s-asymptotiques}{%
+\section{Propriétés
+asymptotiques}\label{propriuxe9tuxe9s-asymptotiques}}
+
+Dans la section précédente nous avons répondu à la première question qui
+était la sensibilité des solutions aux erreurs de condition initiale et
+de modèle. Mais cette étude était en temps fini et nous nous intéressons
+maintenant à la seconde question qui est le comportement asymptotique
+des solutions. L'étude théorique asymptotique des solutions prend ses
+origines dans la thèse de Lyapunov (Lyapunov
+\protect\hyperlink{ref-lyap}{1892}). Le but est de rechercher des
+critères sur la fonction \(f\) qui nous permettent de prédire ce
+comportement~: est-ce que les solutions divergent\,? est-ce qu'elles
+tendent vers un point en particulier\,? vers un cycle limite\,?
+
+Dans la suite, pour simplifier, nous étudions les équations
+différentielles dites \emph{autonomes}, c'est-à-dire dont la fonction
+\(f\) est indépendante du temps. On se donne donc une fonction continue
+\(f:X\to \mathbb{R}^n\), avec \(X\) un ouvert de \(\mathbb{R}^n\) et on
+prend par défaut \(t_0=0\).
+
+\hypertarget{def_ptEq}{}
+\addcontentsline{toc}{subsection}{Point d'équilibre}
+\begin{definition}[Point d'équilibre]\label{def_ptEq}
+On appelle \emph{point d'équilibre} pour \(f\) (ou pour le système
+\(\dot x = f(x)\)) un point \(a\in X\) tel que \[
+f(a) = 0  \ .
+\] En d'autres termes, la fonction constante égale à \(a\) est alors
+solution de \(\dot{x}=f(x)\).
+\end{definition}
+
+\hypertarget{ex_pendule}{}
+\addcontentsline{toc}{subsubsection}{Pendule}
+\begin{exemple}[Pendule]\label{ex_pendule}
+L'évolution d'un pendule de longueur \(\ell\) et de masse \(m\) dans le
+champ de pesanteur \(g\) peut être décrite par une dynamique du type
+\[
+\ddot{\theta} = - \frac{\rho}{m} \dot{\theta} -\frac{g}{\ell} \sin\theta 
+\] avec \(\rho\geq 0\) un coefficient de frottement. En prenant
+\(x=(\theta,\dot{\theta})\), on obtient le système \[
+\begin{array}{rcl}
+\dot{x}_1 &=& x_2 \\
+\dot{x}_2 &=& - \frac{\rho}{m} x_2 -\frac{g}{\ell} \sin x_1
+\end{array}
+\] Ce système a pour points d'équilibre \((k\pi,0)\),
+\(k\in \mathbb{Z}\), qui correspondent soit à la position \emph{basse}
+du pendule \(\theta=0\) ou la position \emph{haute} \(\theta=\pi\),
+toutes deux à vitesse nulle \(\dot{\theta}=0\). Si le pendule est
+initialisé exactement à sa position haute ou basse à vitesse nulle alors
+il y reste indéfiniment.
+\end{exemple}
+
+\hypertarget{def_attract}{}
+\addcontentsline{toc}{subsection}{Attractivité}
+\begin{definition}[Attractivité]\label{def_attract}
+Un point d'équilibre \(a\) est dit \emph{localement attractif} si
+\emph{toutes les solutions maximales initialisées suffisamment proche de
+\(a\) sont définies en tout temps positif et convergent vers \(a\)},
+c'est-à-dire s'il existe \(\eta>0\) tel que pour tout \(x_0\) vérifiant
+\(\|x_0-a\|\leq \eta\), toute solution maximale \(x \in S_f(x_0)\) est
+définie sur \(\mathbb{R}_{\geq 0}\) et vérifie \[
+\lim_{t\to+\infty} x(t)=a \ .
+\] De plus, \(a\) est dit \emph{globalement attractif} si \emph{toutes
+les solutions maximales sont définies en tout temps positif et
+convergent vers \(a\)}.
+\end{definition}
+
+Cette notion intuitive ne dit rien sur le comportement des solutions
+pendant le transitoire, c'est-à-dire avant de converger vers \(a\). Des
+solutions initialisées proche de \(a\) pourraient s'en éloigner
+arbitrairement loin avant de converger, ou mettre un temps
+arbitrairement long pour revenir dans un voisinage de \(a\). Pour
+garantir une certaine uniformité et robustesse de cette attractivité par
+rapport à la condition initiale, on a recours à une notion plus forte
+qui est la \emph{stabilité asymptotique}.
+
+\hypertarget{def_stab}{}
+\addcontentsline{toc}{subsection}{Stabilité, stabilité asymptotique}
+\begin{definition}[Stabilité, stabilité asymptotique]\label{def_stab}
+Un point d'équilibre \(a\) est dit:
+
+\begin{itemize}
+\item
+  \emph{stable} si \emph{les solutions sont définies en tout temps
+  positif et restent arbitrairement proche de \(a\) quand elles sont
+  initialisées suffisamment proche de \(a\)}, c'est-à-dire pour tout
+  \(\varepsilon >0\), il existe \(\eta>0\) tel que pour tout \(x_0\)
+  vérifiant \(\|x_0-a\|\leq \eta\), toute solution maximale
+  \(x \in S_f(x_0)\) est définie sur \(\mathbb{R}_{\geq 0}\) et vérifie
+  \[
+  \|x(t)-a\|\leq \varepsilon \quad \forall t\in \mathbb{R}_{\geq 0}\ .
+  \]
+\item
+  \emph{instable} s'il n'est pas stable.
+\item
+  \emph{localement (resp. globalement) asymptotiquement stable} s'il est
+  à la fois stable en plus d'être localement (resp. globalement)
+  attractif.
+\end{itemize}
+\end{definition}
+
+\hypertarget{ex_stab}{}
+\addcontentsline{toc}{subsubsection}{Stabilité du pendule}
+\begin{exemple}[Stabilité du pendule]\label{ex_stab}
+\begin{itemize}
+\item
+  Lorsqu'un pendule amorti est initialisé arbitrairement proche de sa
+  position haute ou dans sa position haute mais à vitesse arbitrairement
+  faible, il se met à osciller en passant par sa position basse~:
+  l'équilibre haut est donc instable, puisqu'on ne peut pas garder les
+  trajectoires dans son voisinage. Par contre, lorsqu'il est initialisé
+  proche de sa position basse, il oscille de façon amortie en tendant
+  vers l'équilibre bas, qui est donc localement asymptotiquement stable.
+  Voir le \protect\hyperlink{fig_pendule}{portrait de phase du pendule
+  amorti (Figure~\ref*{fig_pendule}, p. \pageref*{fig_pendule})}.
+\item
+  Dans le cas d'un pendule non amorti par contre, c'est-à-dire avec
+  \(\rho=0\), le pendule oscille indéfiniment à énergie constante~: la
+  position basse est alors toujours stable mais plus attractive, et donc
+  plus asymptotiquement stable. Voir le
+  \protect\hyperlink{fig_pendule}{portrait de phase du pendule non
+  amorti (Figure~\ref*{fig_pendule}, p. \pageref*{fig_pendule})}.
+\end{itemize}
+\end{exemple}
+
+\hypertarget{rem_robustStab}{}
+\addcontentsline{toc}{subsection}{Robustesse vis-à-vis des perturbations (pour la culture)}
+\begin{remarque}[Robustesse vis-à-vis des perturbations (pour la culture)]\label{rem_robustStab}
+L'avantage de la propriété de \emph{stabilité asymptotique} par rapport
+à la simple \emph{attractivité} est qu'elle apporte de la robustesse par
+rapport aux perturbations. En effet, lorsque qu'un point d'équilibre est
+asymptotiquement stable, on peut montrer qu'en présence d'une
+perturbation de la dynamique, les solutions restent asymptotiquement
+arbitrairement proche de ce point d'équilibre si la perturbation est
+suffisamment petite. Il y a donc une sorte de continuité des solutions
+par rapport aux perturbations en temps infini (contrairement au résultat
+général de continuité par rapport aux conditions initiales qui n'est
+qu'en temps fini). Cette propriété n'est pas garantie lorsque le point
+d'équilibre n'est qu'attractif et c'est la raison pour laquelle en
+pratique, on essaye toujours d'assurer la stabilité asymptotique d'un
+système~: on sait alors que même en présence de perturbations
+(inévitables en physique), le comportement du système sera proche du
+comportement voulu.
+\end{remarque}
+
+\hypertarget{Hurwitz}{}
+\addcontentsline{toc}{subsection}{Stabilité asymptotique d'un système linéaire stationnaire}
+\begin{theoreme}[Stabilité asymptotique d'un système linéaire stationnaire]\label{Hurwitz}
+Soit \(A\in \mathbb{R}^{n\times n}\). Le point d'équilibre 0 est
+globalement asymptotiquement stable pour le système \[
+\dot{x} = Ax
+\] si et seulement si les valeurs propres de \(A\) sont toutes à partie
+réelle strictement négative. On dit alors que la matrice est de
+\emph{Hurwitz}, du nom du mathématicien allemand Adolf Hurwitz.
+\end{theoreme}
+
+\hypertarget{duxe9monstration-6}{}
+\begin{preuve}\label{duxe9monstration-6}
+La notion de \emph{globalement asymptotiquement stable} contient deux
+propriétés~: la stabilité et l'attractivité globale. On montrera en
+\protect\hyperlink{attrac_stab}{exercice (p. \pageref*{attrac_stab})}
+que pour un système linéaire, elles sont équivalentes à l'attractivité
+(locale), c'est-à-dire que la stabilité et la globalité viennent
+gratuitement. C'est une propriété propre aux systèmes linéaires. Il
+suffit donc de trouver un critère caractérisant l'attractivité de 0. On
+a vu que les solutions s'écrivent \[
+x(t)= e^{At} x_0 \ .
+\] Si \(A\) est diagonale, on a \(x_i(t)=e^{\lambda_i t}x_{0,i}\), où
+\(\lambda_i\) sont les valeurs propres de \(A\) et l'on voit bien que la
+convergence des solutions vers 0 est équivalente à avoir
+\(\lambda_i<0\). Maintenant, si \(A\) est diagonalisable, i.e., il
+existe \(P\in \mathbb{C}^{n\times n}\) inversible telle que
+\(P^{-1} A P\) est diagonale, on a
+\(P^{-1} x(t) = e^{P^{-1} A P t} P^{-1} x_0\), et reproduisant le
+même argument, \(P^{-1} x\) (et donc \(x\)) converge vers 0 si et
+seulement si les entrées diagonales de \(P^{-1} A P\), qui sont les
+valeurs propres de \(A\), sont à partie réelle strictement négative.
+Ceci dit, toute matrice \(A\) n'est pas diagonalisable. Par contre, il
+existe toujours \(P\in \mathbb{C}^{n\times n}\) inversible telle que \[
+P^{-1} A P = D + N
+\] où \(D\) est diagonale contenant les valeurs propres de \(A\), \(N\)
+est nilpotente, c'est-à-dire qu'il existe \(k\in \mathbb{N}\) tel que
+\(N^k=0\), et \(D\) et \(N\) commutent. C'est la forme dite \emph{de
+Jordan}. Il s'ensuit que \[
+P^{-1} e^{At} P = e^{P^{-1} A Pt} = e^{Dt}e^{Nt} = e^{Dt}\sum_{i=0}^k \frac{1}{i!} N^i t^i
+\] converge vers zéro si et seulement si, encore, les valeurs propres de
+\(A\) sont à partie réelle strictement négative.\hfill$\blacksquare$
+
+Attention ce critère n'est valable que pour \(A\) constant. Le fait que
+\(A(t)\) soit de Hurwitz pour tout \(t\) n'implique pas que les
+solutions du système \[
+\dot{x} = A(t) x 
+\] tendent vers 0 ou même restent bornées. Par exemple, la matrice \[
+A(t) = \left( \begin{matrix} 
+-1+1.5\cos^2t & 1-1.5\sin t \cos t \\
+-1-1.5 \sin t \cos t & -1+1.5\sin^2 t
+\end{matrix}
+\right)
+\] a des valeurs propres constantes égales à \(-0.25\pm 0.25\sqrt{7}j\).
+Pourtant, \(\dot{x} = A(t) x\) admet des solutions non bornées pour
+\(x(0)\) arbitrairement proche de 0.
+\end{preuve}
+
+\hypertarget{rem-crit_stabLin}{}
+\addcontentsline{toc}{subsection}{Critère de stabilité linéaire (pour la culture)}
+\begin{remarque}[Critère de stabilité linéaire (pour la culture)]\label{rem-crit_stabLin}
+Notons aussi qu'il existe un critère de \emph{stabilité} pour les
+systèmes linéaires autonomes (plus faible que stabilité asymptotique)~:
+\(A\) est stable si et seulement si toutes ses valeurs propres sont à
+partie réelle négative ou nulle, et toute valeur propre à partie réelle
+nulle a ses multiplicités algébriques et géométriques égales.
+C'est-à-dire que la dimension du sous-espace propre associé est égale à
+sa multiplicité dans le polynôme caractéristique.
+\end{remarque}
+
+\hypertarget{crit_stab_dim2}{%
+\subsubsection*{\texorpdfstring{Exercice -- Critère de stabilité
+asymptotique d'un système linéaire plan
+(\(\mathord{\bullet}\))}{Exercice -- Critère de stabilité asymptotique d'un système linéaire plan (•)}}\label{crit_stab_dim2}}
+
+\addcontentsline{toc}{subsubsection}{Critère de stabilité asymptotique d'un système linéaire plan}
+
+Montrer que \(A\in \mathbb{R}^{2\times 2}\) est de Hurwitz si et
+seulement si \(\text{tr} A <0\) et \(\text{det} A >0\). Attention, ce
+critère ne marche qu'en dimension 2\,!\solref{answer-crit_stab_dim2}
+
+\hypertarget{ressort-1}{%
+\subsubsection*{\texorpdfstring{Exercice -- Oscillateurs couplés I
+(\(\mathord{\bullet}\))}{Exercice -- Oscillateurs couplés I (•)}}\label{ressort-1}}
+
+\addcontentsline{toc}{subsubsection}{Oscillateurs couplés I}
+
+Considérons deux masses \(m_1,m_2\) évoluant sur un support horizontal,
+accrochées entre elles et chacune à un mur via des ressorts de raideur
+\(k_1\), \(k_2\), \(k_{12}\). L'évolution de leur position par rapport à
+leur position d'équilibre respective est décrite par
+\begin{align*}
+m_1\ddot{y}_1 &= - \lambda_1 \dot{y}_1 - k_1 y_1 + k_{12} (y_2-y_1) \\
+m_2\ddot{y}_2 &= - \lambda_2 \dot{y}_2 - k_2 y_2 - k_{12} (y_2-y_1)
+\end{align*} où \(\lambda_1,\lambda_2\) sont des coefficients de
+frottement positifs ou nuls. Réduire l'équation différentielle à l'ordre
+\(1\), la résoudre et déterminer les points d'équilibre. En supposant
+\(m_1=m_2\), \(\lambda_1=\lambda_2\), \(k_1=k_2=k_{12}\), étudier leur
+stabilité pour \(\lambda>0\) et \(\lambda = 0\). \emph{On pourra
+considérer les nouvelles variables \(y_1+y_2\) et \(y_1-y_2\).}\solref{answer-ressort-1}
+
+\hypertarget{theo_linTangent}{}
+\addcontentsline{toc}{subsection}{Lien entre stabilité et stabilité du linéarisé tangent}
+\begin{theoreme}[Lien entre stabilité et stabilité du linéarisé tangent]\label{theo_linTangent}
+Soit le système défini par \(\dot x = f(x)\) avec
+\(f:X \to \mathbb{R}^n\) continûment différentiable et \(a\in X\) un
+point d'équilibre.
+
+Si les valeurs propres de la matrice jacobienne \(J_f(a)\) sont toutes à
+partie réelle strictement négative (Hurwitz) alors \(a\) est localement
+asymptotiquement stable.
+
+Si \(J_f(a)\) a au moins une valeur propre à partie réelle strictement
+positive, alors \(a\) est instable.
+\end{theoreme}
+
+\hypertarget{duxe9monstration-7}{}
+\begin{preuve}\label{duxe9monstration-7}
+Pour le premier point, voir la
+\protect\hyperlink{lyap-5}{question 5 de l'exercice \emph{Critères de
+stabilité de Lyapunov} (p. \pageref*{lyap-5})}, et pour le second, la
+\protect\hyperlink{instab-4}{question 4 de l'exercice \emph{Critères
+d'instabilité} (p. \pageref*{instab-4})}.\hfill$\blacksquare$
+\end{preuve}
+
+Notons cependant que rien ne peut être conclu quant à la stabilité (ou
+stabilité asymptotique) de \(a\) si les parties réelles de \(J_f(a)\)
+sont négatives ou nulles~: on peut avoir asymptotiquement stable,
+seulement stable ou instable. Par exemple, 0 est globalement
+asymptotiquement stable pour \(\dot{x} = - x^3\) mais instable pour
+\(\dot{x} = x^3\) alors que ces deux dynamiques ont le même linéarisé
+(nul) en zéro. Dans ce cas, des critères non linéaires doivent être utilisés (voir les exercices \emph{Critères de stabilité de Lyapunov} (p. \pageref*{lyap-5}) et \emph{Critères d'instabilité} (p. \pageref*{instab-4})).
+
+\hypertarget{ex_pendule_jacob}{}
+\addcontentsline{toc}{subsubsection}{Retour au pendule}
+\begin{exemple}[Retour au pendule]\label{ex_pendule_jacob}
+Reprenons l'\protect\hyperlink{ex_pendule}{exemple du pendule amorti (p.
+\pageref*{ex_pendule})}. On a \[
+J_f(0,0) = \left( \begin{matrix} 
+0 & 1\\
+-\frac{g}{\ell} & - \frac{\rho}{m}
+\end{matrix}
+\right) 
+\qquad , \qquad 
+J_f(\pi,0)= \left( \begin{matrix} 
+0 & 1\\
+\frac{g}{\ell} & - \frac{\rho}{m}
+\end{matrix}
+\right) 
+\] Dans le premier cas, \(\text{tr}(J_f(0,0))<0\) et
+\(\text{det}(J_f(0,0))>0\). Comme prouvé en
+\protect\hyperlink{crit_stab_dim2}{exercice (p.
+\pageref*{crit_stab_dim2})}, ceci implique en dimension 2 que
+\(J_f(0,0)\) est de Hurwitz. Donc la position basse \((0,0)\) est bien
+un équilibre asymptotiquement stable. Dans le deuxième cas par contre,
+le produit des valeurs propres
+\(\lambda_1\lambda_2 = \text{det}(J_f(\pi,0))<0\). Elles ne peuvent donc
+pas être complexes conjuguées et sont nécessairement réelles de signes
+opposés. Il s'ensuit que l'une est strictement positive et la position
+haute \((\pi,0)\) est donc bien instable.
+
+Notons que si \(\rho=0\), c'est-à-dire que le pendule n'est pas amorti,
+les valeurs propres \(J_f(0,0)\) sont imaginaires pures, et l'on ne peut
+donc rien conclure quant à la stabilité des points d'équilibre. Une
+étude plus approfondie est nécessaire.
+\end{exemple}
+
+\hypertarget{asymp_glob-1}{%
+\subsubsection*{\texorpdfstring{Exercice -- Stabilité asymptotique I
+(\(\mathord{\bullet}\))}{Exercice -- Stabilité asymptotique I (•)}}\label{asymp_glob-1}}
+
+\addcontentsline{toc}{subsubsection}{Stabilité asymptotique I}
+
+Montrer que le point d'équilibre \((0,0)\) est localement
+asymptotiquement stable pour le système \[
+\begin{array}{rcl}
+\dot{x}_1 &=& x_2(1-x_2^2)\\
+\dot{x}_2 &=& -(x_1+x_2)(1-x_1^2)
+\end{array}
+\] L'est-il globalement\,?\solref{answer-asymp_glob-1}
+
+Lorsque le linéarisé ne permet pas de conclure sur la stabilité
+asymptotique locale, ou que l'on veut un résultat global, on a recours à
+des caractérisations non linéaires, notamment celle de \emph{Lyapunov}
+présentée en \protect\hyperlink{exo_lyap}{exercice (p.
+\pageref*{exo_lyap})}. Elle consiste à étudier, le long des solutions de
+l'équation différentielle, l'évolution d'une quantité positive,
+semblable à une énergie, qui s'annule seulement au niveau du point
+d'équilibre. En démontrant que cette quantité est conservée, ou mieux,
+décroît le long des solutions, on peut typiquement déduire des
+propriétés de stabilité ou stabilité asymptotique (potentiellement
+globale) du point d'équilibre.
+
+\hypertarget{stab_decroissance}{}
+\addcontentsline{toc}{subsection}{Stabilité par décroissance d'une fonction définie positive}
+\begin{theoreme}[Stabilité par décroissance d'une fonction définie positive]\label{stab_decroissance}
+Soient \(X\) ouvert de \(\mathbb{R}^n\), \(f: X \to \mathbb{R}^n\)
+continue, \(a\) un point d'équilibre de \(f\) dans \(X\), \(W\) un
+voisinage de \(a\) dans \(X\), et \(V:W\to\mathbb{R}_{\geq 0}\) continue
+telle que \[
+V(x) > 0 \quad  \forall x\in W\setminus\{a\} \qquad , \qquad V(a)= 0 \ .
+\] Si toute solution \(x: I\to \mathbb{R}^n\), \(0\in I\), de
+\(\dot x = f(x)\) initialisée dans \(W\) est telle que
+\(t\mapsto V(x(t))\) est décroissante sur tout intervalle
+\([0,t_1]\subset I\) sur lequel \(x(t)\in W\), alors \(a\) est stable.
+\end{theoreme}
+
+\hypertarget{duxe9monstration-8}{}
+\begin{preuve}\label{duxe9monstration-8}
+Prenons \(\varepsilon>0\) suffisamment petit tel que
+\(B_f(a,2\varepsilon)\subset W\). Montrons qu'il existe \(\eta\) tel que
+toute solution initialisée dans \(B(a,\eta)\) reste dans
+\(B(a,\varepsilon)\subset W\). Tout d'abord, il existe
+\(\varepsilon_V>0\) tel que \[
+\forall x\in B_f(a,2\varepsilon) \ : \ V(x)\leq \varepsilon_V \ \Longrightarrow x\in B(a,\varepsilon) \ .
+\] En effet, sinon, il existerait une suite \((x_k)_{k\in \mathbb{N}}\)
+d'éléments de \(B_f(a,2\varepsilon)\) telle que pour tout \(k>0\),
+\(V(x_k)\leq \frac{1}{k}\) et \(\|x_k-a\|\geq \varepsilon\). L'ensemble
+\(B_f(a,2\varepsilon)\) étant compact, on peut en extraire une
+sous-suite convergeant vers \(x^\star\) qui vérifie nécessairement
+\(V(x^\star)=0\) par continuité de \(V\) et
+\(\|x^\star-a\|\geq \varepsilon\), i.e.~\(x^\star \neq a\). Ceci est
+impossible par hypothèse. On a donc l'existence de \(\varepsilon_V\).
+Maintenant, par continuité de \(V\) en \(a\) et puisque \(V(a)=0\), il
+existe aussi \(\eta>0\) tel que \[
+x\in B(a,\eta)  \ \Longrightarrow V(x)\leq \varepsilon_V \ .
+\] Finalement, soit une solution maximale \(x\) de \(\dot x = f(x)\)
+avec \(x(0)\in B(a,\eta)\). Montrons que \(x(t)\in B(a,\varepsilon)\)
+pour tout \(t\geq 0\) où elle est définie. Supposons par l'absurde que
+\(x\) sorte de \(B_f(a,2\varepsilon)\), et notons \[
+t_1=\inf\{t\geq 0 \ : \ \|x(t)-a\|> 2\varepsilon\} \ ,
+\] qui est strictement positif puisque \(\|x(0)-a\|<\eta<\varepsilon\)
+et \(x\) est continue. Sur \([0,t_1]\), \(x(t)\in B_f(a,2\varepsilon)\subset W\),
+donc par décroissance de \(t\mapsto V(x(t))\) par hypothèse,
+\(V(x(t))\leq V(x(0))\leq \varepsilon_V\) et ainsi
+\(x(t)\in B(a,\varepsilon)\). En particulier \(\|x(t_1)-a\|<\varepsilon\),
+alors que par continuité et définition de \(t_1\),
+\(\|x(t_1)-a\| = 2\varepsilon\)~: contradiction. Donc \(x(t)\) reste dans
+\(B_f(a,2\varepsilon)\), et le même argument montre alors que
+\(x(t)\in B(a,\varepsilon)\subset W\) pour tout \(t\geq 0\) où elle est
+définie. Elle reste donc dans un compact de \(X\), et par le
+\protect\hyperlink{theo_bouts}{théorème du domaine maximal d'existence
+(p. \pageref*{theo_bouts})}, \(x\) est définie sur
+\(\mathbb{R}_{\geq 0}\). On obtient la stabilité de
+\(a\).\hfill$\blacksquare$
+\end{preuve}
+
+\hypertarget{ex_pendule_lyap}{}
+\addcontentsline{toc}{subsubsection}{Stabilité du pendule}
+\begin{exemple}[Stabilité du pendule]\label{ex_pendule_lyap}
+Reprenons le \protect\hyperlink{ex_pendule}{pendule (p.
+\pageref*{ex_pendule})} mais cette fois-ci, non amorti, c'est-à-dire
+avec \(\rho=0\). Nous n'avons pas pu prouver la stabilité du point
+d'équilibre \((0,0)\) par l'étude de la matrice Jacobienne car ses
+valeurs propres sont imaginaires pures. Inspirés par la physique,
+considérons
+\(V:\left] -\pi, \pi\right[\times \mathbb{R}\to \mathbb{R}_{\geq 0}\)
+définie par \[
+V(x_1,x_2) = \frac{1}{2} m\ell^2 x_2^2 + mg\ell(1-\cos(x_1)) \ .
+\] Le premier terme correspond à l'énergie cinétique du pendule, et le
+deuxième son énergie potentielle. \(V\) est continue, à valeurs
+positives et s'annule seulement en \(x=0\). De plus, pour toute solution
+\(t\mapsto x(t)\), \begin{align*}
+\frac{d}{dt} V(x(t)) &=  m\ell^2 x_2(t) \dot x_2(t) + mg \ell \sin(x_1(t)) \dot x_1(t) \\
+&= m\ell^2 x_2(t)\left(-\frac{g}{\ell} \sin(x_1(t))\right) + mg \ell \sin(x_1(t)) x_2(t) \\
+&= 0 
+\end{align*} ce qui traduit la conservation de l'énergie en l'absence de
+frottement. On en déduit donc la stabilité du point d'équilibre
+\((0,0)\).
+\end{exemple}
+
+\hypertarget{rem-crit_lyap}{}
+\addcontentsline{toc}{subsection}{Fonctions et critères de Lyapunov}
+\begin{remarque}[Fonctions et critères de Lyapunov]\label{rem-crit_lyap}
+Une telle fonction \(V\) décroissante le long des solutions est appelée
+\emph{fonction de Lyapunov}. Comme dans l'exemple précédent, on vérifie
+sa décroissance en étudiant le signe, de \[
+\frac{d}{dt} V(x(t)) = \langle\nabla V (x(t)), \dot{x}(t)\rangle = \langle\nabla V (x(t)), f(x(t))\rangle \ .
+\]
+Mais vu que l'on ne sait généralement pas résoudre l'équation
+différentielle, on ne connaît pas l'expression de \(x(t)\) et on se
+ramène donc à étudier le signe de la quantité
+\(\langle\nabla V (x), f(x)\rangle\) pour \(x\in \mathbb{R}^n\) dans un
+voisinage de \(a\), ou globalement, par un calcul algébrique sans
+considérer les solutions de l'équation différentielle. Ceci débouche sur
+les critères de \emph{Lyapunov} présentés en
+\protect\hyperlink{exo_lyap}{exercice (p. \pageref*{exo_lyap})}. On peut
+se demander s'il existe toujours une telle fonction de Lyapunov, autour
+d'un point d'équilibre stable/asymptotiquement stable. La réponse est
+oui, mais c'est une question délicate étudiée en détail dans (Bacciotti
+and Rosier \protect\hyperlink{ref-BacRos}{2005}).
+
+Au delà de la stabilité donnée par le résultat précédent, les conditions
+de Lyapunov permettent aussi de démontrer la stabilité asymptotique
+locale du point d'équilibre lorsque l'on a une décroissance
+\emph{stricte}, c'est-à-dire lorsque
+\(\langle\nabla V (x), f(x)\rangle<0\) pour \(x\neq a\) dans un
+voisinage de \(a\). Cette stabilité asymptotique devient \emph{globale}
+lorsque cette inégalité est valide globalement et lorsque de plus la
+fonction \(V\) est propre, c'est-à-dire si
+\(\lim_{\|x\| \to +\infty} V(x) = +\infty\). Attention cette dernière
+hypothèse est importante car elle garantit que les solutions restent
+bornées et sont bien définies sur \(\mathbb{R}_{\geq 0}\). Sinon on
+pourrait avoir des solutions qui explosent en temps fini alors que \(V\)
+décroît strictement.
+
+Souvent cependant, la fonction de Lyapunov \(V\) ne décroît pas
+\emph{strictement} et ces derniers critères ne s'appliquent pas. On
+étudie alors la convergence asymptotique des solutions vers le point
+d'équilibre de manière ad-hoc en utilisant une variation très pratique
+du fameux \emph{lemme de Barbalat}.
+\end{remarque}
+
+\hypertarget{theo_barbalat}{}
+\addcontentsline{toc}{subsection}{Lemme de Barbalat}
+\begin{theoreme}[Lemme de Barbalat]\label{theo_barbalat}
+Soit \(v:[t_0,+\infty[\to \mathbb{R}\) de classe \(C^2\) telle que
+
+\begin{itemize}
+\item
+  \(\lim_{t\to +\infty} v(t)\) existe et est finie,
+\item
+  \(\ddot{v}\) est bornée sur \([t_0,+\infty[\).
+\end{itemize}
+
+Alors \(\lim_{t\to +\infty} \dot{v}(t) = 0\).
+\end{theoreme}
+
+\hypertarget{duxe9monstration-9}{}
+\begin{preuve}\label{duxe9monstration-9}
+La première hypothèse dit que \(\int_{t_0}^{+\infty} \dot{v}(t)dt\) est
+finie et la deuxième implique que \(\dot{v}\) est uniformément continue
+sur \([t_0,+\infty[\). Le lemme de Barbalat (dans son énoncé classique)
+permet alors de conclure que \(\dot{v}\) converge vers
+zéro.\hfill$\blacksquare$
+
+Toujours dans le contexte d'une fonction définie positive décroissante,
+et en supposant que \(f\) et \(V\) sont aussi régulières que
+nécessaires, on a le fait que \(v(t) = V(x(t))\) décroît, et donc
+\(\dot{v}(t)\leq 0\) pour tout \(t\geq 0\). Comme \(v\) est minorée par
+0, elle converge asymptotiquement. Si on a par ailleurs démontré la
+bornitude des solutions (en temps positif), on a typiquement aussi celle
+de leurs dérivées puisque \(\dot{x} = f(x)\), et donc aussi celle de
+\(\ddot{v}\). Par Barbalat, on déduit que
+\(\dot{v}(t) = \langle\nabla V (x(t)), f(x(t))\rangle\) tend vers 0,
+inférant ainsi des propriétés asymptotiques sur les solutions. Par
+l'application répétée de Barbalat, on peut arriver à montrer
+l'attractivité locale ou globale du point d'équilibre, qui s'ajoute à la
+stabilité pour donner sa stabilité asymptotique.
+\end{preuve}
+
+\hypertarget{muxe9thode-danalyse-non-linuxe9aire-de-stabilituxe9}{%
+\begin{remarque}[M\'ethode non-lin\'eaire d'analyse de stabilit\'e]\label{muxe9thode-danalyse-non-linuxe9aire-de-stabilituxe9}}
+La méthode consiste donc à
+\begin{itemize}
+\item
+  chercher une fonction \(V\) définie positive par rapport au point
+  d'équilibre qui décroît le long des solutions (on considère souvent
+  des sommes de carrés);
+\item
+  en déduire la stabilité du point d'équilibre par
+  \protect\hyperlink{stab_decroissance}{théorème (p.
+  \pageref*{stab_decroissance})};
+\item
+  montrer que les solutions sont bornées en temps positif (par exemple
+  en utilisant que \(\lim_{\|x\| \to +\infty} V(x) = +\infty\), voir
+  \protect\hyperlink{glob_sol3}{exercice (p. \pageref*{glob_sol3})});
+\item
+  en déduire par récurrence que toutes les dérivées successives
+  nécessaires des solutions sont bornées en utilisant que
+  \(\dot{x} = f(x)\) et la régularité de \(f\);
+\item
+  utiliser le lemme de Barbalat (potentiellement un certain nombre de
+  fois sur les dérivées successives) pour montrer que les solutions
+  (toutes ou celles dans un voisinage) convergent vers le point
+  d'équilibre;
+\item
+  combiner avec la stabilité pour déduire la stabilité asymptotique
+  locale ou globale.
+\end{itemize}
+\end{remarque}
+
+\hypertarget{ressort-2}{%
+\subsubsection*{\texorpdfstring{Exercice -- Oscillateurs couplés II
+(\(\mathord{\bullet}\mathord{\bullet}\))}{Exercice -- Oscillateurs couplés II (••)}}\label{ressort-2}}
+
+\addcontentsline{toc}{subsubsection}{Oscillateurs couplés II}
+
+Reprendre l'\protect\hyperlink{ressort-1}{exercice sur les oscillateurs
+couplés (p. \pageref*{ressort-1})} et démontrer la stabilité du point
+d'équilibre dans le cas général. Montrer que les solutions sont bornées
+en temps positif et que le point d'équilibre est globalement
+asymptotiquement stable si \(\lambda_1>0\) ou \(\lambda_2>0\). On pourra
+pour cela considérer l'énergie mécanique du système.\solref{answer-ressort-2}
+
+\hypertarget{asymp_glob-2}{%
+\subsubsection*{\texorpdfstring{Exercice -- Stabilité asymptotique II
+(\(\mathord{\bullet}\mathord{\bullet}\))}{Exercice -- Stabilité asymptotique II (••)}}\label{asymp_glob-2}}
+
+\addcontentsline{toc}{subsubsection}{Stabilité asymptotique II}
+
+Montrer que \((0,0)\) est globalement asymptotiquement stable pour \[
+\begin{array}{rcl}
+\dot{x}_1 &=& x_2\\
+\dot{x}_2 &=& -x_1^3-x_2
+\end{array}
+\] \emph{Indice~: \(x_2^2\) donne de la négativité en \(x_2\), voir
+comment compléter avec des termes positifs en \(x_1\)\ldots{}}.\solref{answer-asymp_glob-2}
+
+\hypertarget{exercices-compluxe9mentaires}{%
+\chapter{Exercices complémentaires}\label{exercices-compluxe9mentaires}}
+
+En plus des exercices essentiels, les exercices à maîtriser sont marqués
+d'une croix (+).
+
+\hypertarget{exo_Torricelli}{%
+\section{\texorpdfstring{Ecoulement dans un réservoir
+(\(+\))}{Ecoulement dans un réservoir (+)}}\label{exo_Torricelli}}
+
+Considérons un réservoir cylindrique de section \(S\) qui se vide par
+une ouverture de section \(s\) située à sa base. On note \(x\) la
+hauteur de liquide dans le réservoir. D'après la \emph{loi de
+Torricelli}\footnote{Sous l'hypothèse d'incompressibilité du fluide, la
+  loi de Bernoulli dit que \[
+  p_s + \rho g h_s + \rho \frac{v_s^2}{2}=p_o + \rho g h_o + \rho \frac{v_o^2}{2}
+  \] où \(s\) fait référence aux quantités à la surface et \(o\) à
+  l'ouverture. On a \(p_s=p_o\) égales à la pression atmosphérique,
+  \(h_s-h_o=x\), \(v_s=\frac{s}{S}v_o\) par conservation du débit, et
+  \(\dot{x} = - v_s\). On obtient donc \[
+  \dot{x} = - \frac{1}{\sqrt{\left(\frac{S}{s}\right)^2-1}} \sqrt{2gx} \approx -\frac{s}{S} \sqrt{2gx}
+  \] en supposant que \(s\ll S\).}, l'équation d'évolution de \(x\) est
+donnée par \[
+\dot{x}=-k\sqrt{|x|} \qquad k = \frac{s}{S}\sqrt{2g}
+\] où \(g\) est la pesanteur.
+
+\hypertarget{tor-1}{%
+\subsubsection*{Question 1}\label{tor-1}}
+
+\addcontentsline{toc}{subsubsection}{Question 1}
+
+Etant donné un temps initial \(t_0\) et une hauteur initiale
+\(x_0\geq 0\), justifier sans calcul que le problème de Cauchy associé
+admet des solutions et que les solutions maximales sont définies sur
+\(\mathbb{R}\). Que pouvons-nous dire a priori sur l'unicité des
+solutions maximales\,?\solref{answer-tor-1}
+
+\hypertarget{tor-2}{%
+\subsubsection*{Question 2}\label{tor-2}}
+
+\addcontentsline{toc}{subsubsection}{Question 2}
+
+Pour \((t_0,x_0)\in \mathbb{R}\times \mathbb{R}_{\geq0}\), résoudre le
+problème de Cauchy associé.\solref{answer-tor-2}
+
+\hypertarget{tor-3}{%
+\subsubsection*{Question 3}\label{tor-3}}
+
+\addcontentsline{toc}{subsubsection}{Question 3}
+
+On qualifie la solution de ``physique'' si elle reste dans
+\(\mathbb{R}_{\geq0}\). Commenter l'unicité de la solution physique en
+fonction de \(x_0\). Comment pourrait s'interpréter physiquement la
+multitude de solutions trouvées\,?\solref{answer-tor-3}
+
+\hypertarget{tor-4}{%
+\subsubsection*{Question 4}\label{tor-4}}
+
+\addcontentsline{toc}{subsubsection}{Question 4}
+
+Les solutions sont-elles continues par rapport aux conditions initiales
+au sens du \protect\hyperlink{theo_reg_CI}{théorème de régularité des
+solutions (p. \pageref*{theo_reg_CI})} donné plus haut\,? Pourquoi\,?\solref{answer-tor-4}
+
+\hypertarget{exo_gronwall}{%
+\section{Autour du Lemme de Grönwall}\label{exo_gronwall}}
+
+\hypertarget{gro-1}{%
+\subsubsection*{Question 1 (Lemme de Grönwall)}\label{gro-1}}
+
+\addcontentsline{toc}{subsubsection}{Question 1 (Lemme de Grönwall)}
+
+Soient \(I\) un intervalle de \(\mathbb{R}\), \(t_0 \in I\),
+\(u,\alpha, \beta : I\to\mathbb{R}_{\geq 0}\) continues, tels que \[
+u(t) \leq \alpha(t) + \int_{t_0}^{t}\beta(s) u(s)ds \qquad \forall t\in I \ .
+\] Montrer qu'alors \[
+u(t) \leq \alpha(t) +  \int_{t_0}^{t} \alpha(s)\beta(s) \exp\left(\int_{s}^t\beta(r)dr \right) ds\qquad \forall t\in I, \ t\geq t_0 \ .
+\] En déduire que si \(\alpha\) est constant, \[
+u(t) \leq \alpha \exp\left(\int_{t_0}^t\beta(r)dr \right) \qquad \forall t\in I, \ t\geq t_0 \ .
+\] \emph{Indice~: poser \(v(t)=\int_{t_0}^t\beta(s)u(s)ds\) et étudier
+la dérivée de \(v(t)\exp\left(-\int_{t_0}^t\beta(r)dr\right)\)}.\solref{answer-gro-1}
+
+\hypertarget{gro-2}{%
+\subsubsection*{Question 2}\label{gro-2}}
+
+\addcontentsline{toc}{subsubsection}{Question 2}
+
+Utiliser le Lemme de Grönwall pour montrer le
+\protect\hyperlink{theo_exist_glob}{théorème d'existence globale de
+solutions (p. \pageref*{theo_exist_glob})}.\solref{answer-gro-2}
+
+\hypertarget{gro-3}{%
+\subsubsection*{Question 3}\label{gro-3}}
+
+\addcontentsline{toc}{subsubsection}{Question 3}
+
+Utiliser le Lemme de Grönwall pour montrer le
+\protect\hyperlink{theo_reg_CI}{théorème de continuité par rapport aux
+conditions initiales (p. \pageref*{theo_reg_CI})}. Expliquer pourquoi le
+théorème est toujours valable si \(f\) est seulement localement
+lipschitzienne par rapport à \(x\) sur \(J\times X\).\solref{answer-gro-3}
+
+\hypertarget{exo_cycle-lim}{%
+\section{\texorpdfstring{Cycle limite I
+(\(+\))}{Cycle limite I (+)}}\label{exo_cycle-lim}}
+
+Considérons le système \[
+\begin{array}{rcl}
+\dot{x}_1 &=& x_1+x_2-x_1(x_1^2 + x_2^2)\\
+\dot{x}_2 &=& -x_1+x_2-x_2(x_1^2 + x_2^2)
+\end{array}
+\]
+
+\hypertarget{cycle-lim-1}{%
+\subsubsection*{Question 1}\label{cycle-lim-1}}
+
+\addcontentsline{toc}{subsubsection}{Question 1}
+
+Montrer que ce système admet un seul point d'équilibre. Etudier sa
+stabilité.\solref{answer-cycle-lim-1}
+
+\hypertarget{cycle-lim-2}{%
+\subsubsection*{Question 2}\label{cycle-lim-2}}
+
+\addcontentsline{toc}{subsubsection}{Question 2}
+
+Montrer que quelle que soit la condition initiale, le système admet une
+unique solution maximale \(x:I\to \mathbb{R}^2\). Soit
+\(V:\mathbb{R}^2\to\mathbb{R}\) définie par
+\(V(x) = \|x\|^2 = x_1^2+x_2^2\). En étudiant le signe de
+\(\frac{d}{dt}V(x(t))\), montrer que \([t_0,+\infty[ \subset I\).\solref{answer-cycle-lim-2}
+
+\hypertarget{cycle-lim-3}{%
+\subsubsection*{Question 3}\label{cycle-lim-3}}
+
+\addcontentsline{toc}{subsubsection}{Question 3}
+
+Montrer que si \(\|x(t_0)\|\neq 1\) alors \(\|x(t)\|\neq 1\) pour tout
+\(t\in I\).\solref{answer-cycle-lim-3}
+
+\hypertarget{cycle-lim-4}{%
+\subsubsection*{Question 4}\label{cycle-lim-4}}
+
+\addcontentsline{toc}{subsubsection}{Question 4}
+
+En déduire le comportement des solutions en fonction de la condition
+initiale.\solref{answer-cycle-lim-4}
+
+\hypertarget{exo_lyap}{%
+\section{Critères de stabilité de Lyapunov}\label{exo_lyap}}
+
+Soient \(X\) ouvert de \(\mathbb{R}^n\), \(f: X \to \mathbb{R}^n\)
+continue, \(a\) un point d'équilibre de \(f\) dans \(X\), \(W\) un
+voisinage de \(a\) dans \(X\), et \(V:W\to\mathbb{R}_{\geq 0}\)
+continûment différentiable telle que \[
+V(x) > 0 \quad  \forall x\in W\setminus\{a\} \qquad , \qquad V(a)= 0 \ .
+\]
+
+\hypertarget{lyap-1}{%
+\subsubsection*{Question 1}\label{lyap-1}}
+
+\addcontentsline{toc}{subsubsection}{Question 1}
+
+Montrer que si \(\langle\nabla V (x), f(x)\rangle \leq 0\) pour tout
+\(x\in W\) alors \(a\) est stable.\solref{answer-lyap-1}
+
+\hypertarget{lyap-2}{%
+\subsubsection*{Question 2}\label{lyap-2}}
+
+\addcontentsline{toc}{subsubsection}{Question 2}
+
+Montrer que si \(\langle \nabla V (x), f(x) \rangle < 0\) pour tout
+\(x\in W\setminus \{a\}\) alors \(a\) est localement asymptotiquement
+stable.\solref{answer-lyap-2}
+
+\hypertarget{lyap-3}{%
+\subsubsection*{Question 3}\label{lyap-3}}
+
+\addcontentsline{toc}{subsubsection}{Question 3}
+
+Montrer que si \(\lim_{\|x\|\to +\infty} V(x) = +\infty\),
+\(W=\mathbb{R}^n\), et \(\langle\nabla V (x), f(x)\rangle < 0\) pour
+tout \(x\neq a\) alors \(a\) est globalement asymptotiquement stable.\solref{answer-lyap-3}
+
+\hypertarget{lyap-4}{%
+\subsubsection*{Question 4 (Application à la stabilité des systèmes
+linéaires)}\label{lyap-4}}
+
+\addcontentsline{toc}{subsubsection}{Question 4 (Application à la stabilité des systèmes linéaires)}
+
+Soit \(A\in \mathbb{R}^{n\times n}\) dont les valeurs propres sont
+toutes à partie réelle strictement négative, et soit
+\(Q\in \mathbb{R}^{n\times n}\) une matrice symétrique définie positive.
+Montrer qu'il existe une matrice symétrique définie positive
+\(P\in \mathbb{R}^{n\times n}\) telle que \[
+A^\top P +P A = - Q \ .
+\] \emph{On pourra considérer
+\(P=\int_0^{+\infty}\left(e^{As}\right)^\top Q e^{As}ds\).} En déduire
+une fonction de Lyapunov pour le système \(\dot{x} = Ax\) et retrouver
+que \(0\) est globalement asymptotiquement stable.\solref{answer-lyap-4}
+
+\hypertarget{lyap-5}{%
+\subsubsection*{Question 5 (Application à la stabilité via linéarisé
+tangent)}\label{lyap-5}}
+
+\addcontentsline{toc}{subsubsection}{Question 5 (Application à la stabilité via linéarisé tangent)}
+
+Soit \(f:X \to \mathbb{R}^n\) continûment différentiable et \(a\in X\)
+un point d'équilibre de \(f\) tel que les valeurs propres de la matrice
+jacobienne \(J_f(a)\) sont toutes à partie réelle strictement négative.
+Montrer que \(a\) est localement asymptotiquement stable pour
+\(\dot x = f(x)\), c'est-à-dire démontrer le premier point du
+\protect\hyperlink{theo_linTangent}{théorème \emph{Lien entre stabilité
+et stabilité du linéarisé tangent} (p. \pageref*{theo_linTangent})}.\solref{answer-lyap-5}
+
+\hypertarget{exo_instab}{%
+\section{Critères d'instabilité}\label{exo_instab}}
+
+Soient \(X\) ouvert de \(\mathbb{R}^n\), \(f: X \to \mathbb{R}^n\)
+continue et \(a\in X\) un point d'équilibre de \(f\).
+
+\hypertarget{instab-1}{%
+\subsubsection*{Question 1 (Théorème de Chetaev)}\label{instab-1}}
+
+\addcontentsline{toc}{subsubsection}{Question 1 (Théorème de Chetaev)}
+
+Soient \(W\) un voisinage de \(a\) dans \(X\) et
+\(V:W\to\mathbb{R}\) continûment différentiable telle que \(V(a)=0\) et
+
+\begin{itemize}
+\tightlist
+\item
+  \(V\) prend des valeurs strictement positives arbitrairement près de
+  \(a\)~: pour tout \(\eta>0\), il existe \(x\in W\) tel que
+  \(\|x-a\|<\eta\) et \(V(x)>0\)~;
+\item
+  \(\langle\nabla V (x), f(x)\rangle > 0\) pour tout \(x\in W\) tel que
+  \(V(x)>0\).
+\end{itemize}
+
+Montrer que \(a\) est instable. On remarquera que, contrairement aux
+critères de stabilité, \(V\) n'est pas supposée positive.\solref{answer-instab-1}
+
+\hypertarget{instab-2}{%
+\subsubsection*{Question 2 (Exemples)}\label{instab-2}}
+
+\addcontentsline{toc}{subsubsection}{Question 2 (Exemples)}
+
+Montrer que \(0\) est instable pour \(\dot{x} = x^3\) sur \(\mathbb{R}\),
+puis pour le système \[
+\dot{x}_1 = x_1 \qquad , \qquad \dot{x}_2 = -x_2
+\] sur \(\mathbb{R}^2\). \emph{On pourra chercher \(V\) sous la forme
+d'une forme quadratique.}\solref{answer-instab-2}
+
+\hypertarget{instab-3}{%
+\subsubsection*{Question 3 (Application à l'instabilité des systèmes
+linéaires (\(\mathord{\bullet}\mathord{\bullet}\)))}\label{instab-3}}
+
+\addcontentsline{toc}{subsubsection}{Question 3 (Application à l'instabilité des systèmes linéaires)}
+
+Soit \(A\in \mathbb{R}^{n\times n}\) ayant au moins une valeur propre à
+partie réelle strictement positive. Montrer qu'il existe \(\sigma>0\),
+une matrice symétrique définie positive \(Q\in \mathbb{R}^{n\times n}\)
+et une matrice symétrique \(P\in \mathbb{R}^{n\times n}\) vérifiant
+\(\bar{x}^\top P \bar{x}>0\) pour au moins un \(\bar{x}\in\mathbb{R}^n\),
+telles que \[
+A^\top P + PA = 2\sigma P + Q \ .
+\] En déduire que \(0\) est instable pour
+\(\dot{x}=Ax\).\solref{answer-instab-3}
+
+\hypertarget{instab-4}{%
+\subsubsection*{Question 4 (Application à l'instabilité via linéarisé
+tangent)}\label{instab-4}}
+
+\addcontentsline{toc}{subsubsection}{Question 4 (Application à l'instabilité via linéarisé tangent)}
+
+Soit \(f:X \to \mathbb{R}^n\) continûment différentiable et \(a\in X\)
+un point d'équilibre de \(f\) tel que la matrice jacobienne \(J_f(a)\) a
+au moins une valeur propre à partie réelle strictement positive. Montrer
+que \(a\) est instable pour \(\dot x = f(x)\), c'est-à-dire démontrer le
+second point du \protect\hyperlink{theo_linTangent}{théorème \emph{Lien
+entre stabilité et stabilité du linéarisé tangent} (p.
+\pageref*{theo_linTangent})}.\solref{answer-instab-4}
+
+\hypertarget{exo_cycle-lim-volterra}{%
+\section{\texorpdfstring{Cycle limite II
+(\(+\))}{Cycle limite II (+)}}\label{exo_cycle-lim-volterra}}
+
+Les équations de Lotka-Volterra, ou ``modèle proie-prédateur'', sont
+couramment utilisées pour décrire la dynamique de systèmes biologiques
+dans lesquels un prédateur et sa proie interagissent dans un milieu
+commun. Elles ont été proposées indépendamment par A. J. Lotka en 1925
+et V. Volterra en 1926 et s'écrivent de la manière suivante~:
+\begin{align*}
+\dot{x}_1 &= x_1(\alpha -\beta x_2) \\
+\dot{x}_2 &= -x_2(\gamma - \delta x_1)
+\end{align*} où \(x_1\) et \(x_2\) désignent le nombre (positif) de
+proies et de prédateurs respectivement et \(\alpha\), \(\beta\),
+\(\gamma\), \(\delta\) sont des paramètres strictement positifs.
+
+\hypertarget{cycle-lim-volterra-1}{%
+\subsubsection*{Question 1}\label{cycle-lim-volterra-1}}
+
+\addcontentsline{toc}{subsubsection}{Question 1}
+
+Donner une interprétation physique à chaque terme de la dynamique.
+Montrer qu'il existe deux points d'équilibre \((0,0)\) et
+\(\bar{x}\in \mathbb{R}_{> 0}\times\mathbb{R}_{> 0}\). Que peut-on dire
+de leur stabilité à ce stade\,?\solref{answer-cycle-lim-volterra-1}
+
+\hypertarget{cycle-lim-volterra-2}{%
+\subsubsection*{Question 2}\label{cycle-lim-volterra-2}}
+
+\addcontentsline{toc}{subsubsection}{Question 2}
+
+Démontrer que toute solution initialisée dans
+\(\mathbb{R}_{> 0}\times\mathbb{R}_{> 0}\) reste dans
+\(\mathbb{R}_{> 0}\times\mathbb{R}_{> 0}\) sur son ensemble de
+définition.\solref{answer-cycle-lim-volterra-2}
+
+\hypertarget{cycle-lim-volterra-3}{%
+\subsubsection*{Question 3}\label{cycle-lim-volterra-3}}
+
+\addcontentsline{toc}{subsubsection}{Question 3}
+
+On considère la fonction \[
+H(x_1,x_2) = \delta x_1 - \gamma \ln x_1 + \beta x_2 - \alpha \ln x_2  
+\] définie sur \(\mathbb{R}_{> 0}\times \mathbb{R}_{> 0}\). Calculer la
+dérivée de \(H\) le long des solutions initialisées dans
+\(\mathbb{R}_{> 0}\times \mathbb{R}_{> 0}\). En déduire que toute
+solution maximale initialisée dans
+\(\mathbb{R}_{> 0}\times \mathbb{R}_{> 0}\) est définie sur
+\(\mathbb{R}\).\solref{answer-cycle-lim-volterra-3}
+
+\hypertarget{cycle-lim-volterra-4}{%
+\subsubsection*{Question 4}\label{cycle-lim-volterra-4}}
+
+\addcontentsline{toc}{subsubsection}{Question 4}
+
+La figure ci-dessous représente les courbes de niveau de \(H\). Où se
+trouve \(\bar{x}\)\,? Qu'en conclut-on sur le comportement des
+solutions\,? En déduire que \(\bar{x}\) est stable, au sens de la
+définition de stabilité.\solref{answer-cycle-lim-volterra-4}
+
+\begin{figure}
+	\hypertarget{fig_cycle_limiteII_courbes}{%
+		\centering
+		\includegraphics{images/cycle_limiteII_courbes.py.pdf}
+		\caption{Courbes de niveau de \(H\) dans l'exercice Cycle Limite
+			II}\label{fig_cycle_limiteII_courbes}
+	}
+\end{figure}
+
+Imaginons maintenant que l'on ait moyen de jouer sur la vitesse de
+reproduction des prédateurs, i.e., le système évolue selon
+\begin{align*}
+\dot{x}_1 &= x_1(\alpha -\beta x_2) \\
+\dot{x}_2 &= -x_2(\gamma - \delta x_1) + u(t)
+\end{align*} où l'on peut choisir \(t\mapsto u(t)\) librement. On
+souhaite stabiliser la population de proie \(x_1\) à une valeur
+\(x_1^*>0\).
+
+\hypertarget{cycle-lim-volterra-5}{%
+\subsubsection*{Question 5}\label{cycle-lim-volterra-5}}
+
+\addcontentsline{toc}{subsubsection}{Question 5}
+
+Quelles doivent être les valeurs de \(x_2\) et \(u\) à l'équilibre\,?\solref{answer-cycle-lim-volterra-5}
+
+\hypertarget{cycle-lim-volterra-6}{%
+\subsubsection*{Question 6}\label{cycle-lim-volterra-6}}
+
+\addcontentsline{toc}{subsubsection}{Question 6}
+
+Justifier que l'on veuille faire suivre à \(x_2\) la référence
+\(v_r(x_1) = \frac{\alpha}{\beta} + \lambda_1 (x_1-x_1^*)\) avec
+\(\lambda_1>0\). En utilisant la fonction de Lyapunov \[
+V(x_1,x_2) = (x_1-x_1^*)^2 + (x_2-v_r(x_1))^2
+\] et en supposant que \(x\) est mesuré en temps réel, proposer une loi
+de contrôle \(t\mapsto u(t)\) qui stabilise asymptotiquement
+\((x_1^*,x_2^*)\), au moins localement.\solref{answer-cycle-lim-volterra-6}
+
+\hypertarget{attrac_stab}{%
+\section{Attractivité locale implique stabilité asymptotique globale
+pour un système linéaire}\label{attrac_stab}}
+
+Soit \(A\in \mathbb{R}^{n\times n}\). Montrer que si 0 est localement
+attractif pour $\dot{x} = Ax$ alors il l'est globalement et 0 est stable.\solref{answer-attrac_stab}
+
+\hypertarget{exo_cont_lin}{%
+\section{Stabilisation d'une chaîne
+d'intégrateurs}\label{exo_cont_lin}}
+
+Considérons un système du type \[
+\begin{array}{rcl}
+\dot{x}_1 &=& x_2 \\
+\dot{x}_2 &=& x_3 \\
+&\vdots&\\
+\dot{x}_{n-1} &=& x_n \\
+\dot{x}_n &=& \phi(x) + u(t)
+\end{array}
+\] avec \(\phi:\mathbb{R}^n \to \mathbb{R}\) continue et
+\(u:\mathbb{R}\to \mathbb{R}\) une entrée. On aimerait choisir \(u\)
+pour rendre un point \(x^*\in \mathbb{R}^n\) globalement
+asymptotiquement stable.
+
+\hypertarget{cont-lin-1}{%
+\subsubsection*{Question 1}\label{cont-lin-1}}
+
+\addcontentsline{toc}{subsubsection}{Question 1}
+
+Que doit vérifier \(x^*\) pour qu'il puisse être un point d'équilibre\,?
+Quelle est la commande \(u^*\) associée\,?\solref{answer-cont-lin-1}
+
+\hypertarget{cont-lin-2}{%
+\subsubsection*{Question 2}\label{cont-lin-2}}
+
+\addcontentsline{toc}{subsubsection}{Question 2}
+
+Si on mesure \(t\mapsto x(t)\), montrer que l'on peut alors toujours
+choisir \(t\mapsto u(t)\) pour rendre \(x^*\) globalement
+asymptotiquement stable.\solref{answer-cont-lin-2}
+
+\hypertarget{cont-lin-3}{%
+\subsubsection*{Question 3}\label{cont-lin-3}}
+
+\addcontentsline{toc}{subsubsection}{Question 3}
+
+Comment faire si l'on veut maintenant faire suivre au système une
+trajectoire de référence \(t\mapsto x_r(t)\)\,?\solref{answer-cont-lin-3}
+
+\hypertarget{exo_kepler}{%
+\section{\texorpdfstring{Problème de Kepler~: collision, libération et
+orbites circulaires
+(\(\mathord{\bullet}\mathord{\bullet}\))}{Problème de Kepler : collision, libération et orbites circulaires (••)}}\label{exo_kepler}}
+
+On s'intéresse au mouvement d'un satellite (ou d'une planète) de masse
+négligeable attiré par un corps ponctuel de masse \(M\) placé à
+l'origine. En notant \(q\in \mathbb{R}^3\) la position du satellite et
+\(\mu = G M>0\), avec \(G\) la constante de gravitation, la loi de la
+gravitation universelle donne \[
+\ddot{q} = -\mu \frac{q}{\|q\|^3} \ .
+\] Résoudre cette équation (le \emph{problème de Kepler}) permet
+d'établir les lois de Kepler. On se propose ici d'obtenir, \emph{sans la
+résoudre}, des propriétés qualitatives fortes de ses solutions à l'aide
+des outils du cours. On écrit l'équation sous la forme d'un système du
+premier ordre en posant \(v=\dot q\) et \(x=(q,v)\), défini sur l'ouvert
+\(X = \left(\mathbb{R}^3\setminus\{0\}\right)\times \mathbb{R}^3\). Pour
+une solution \(t\mapsto (q(t),v(t))\), on note \[
+E = \frac{1}{2}\|v\|^2 - \frac{\mu}{\|q\|} \qquad , \qquad L = q\times v
+\] respectivement l'\emph{énergie} (par unité de masse) et le
+\emph{moment cinétique} (par unité de masse), où \(\times\) désigne le
+produit vectoriel.
+
+\hypertarget{kepler-1}{%
+\subsubsection*{Question 1 (Cadre)}\label{kepler-1}}
+
+\addcontentsline{toc}{subsubsection}{Question 1 (Cadre)}
+
+Montrer que pour toute condition initiale \((q_0,v_0)\in X\), le
+problème de Cauchy admet une unique solution maximale
+\((q,v):\left]\tmin,\tmax\right[\to X\). Montrer que \(E\) et \(L\) sont
+constants le long des solutions. Que dit le
+\protect\hyperlink{theo_bouts}{théorème du domaine maximal d'existence
+(p. \pageref*{theo_bouts})} si \(\tmax<+\infty\)\,? Interpréter
+physiquement les deux alternatives.\solref{answer-kepler-1}
+
+\hypertarget{kepler-2}{%
+\subsubsection*{Question 2 (Confinement et vitesse de
+libération)}\label{kepler-2}}
+
+\addcontentsline{toc}{subsubsection}{Question 2 (Confinement et vitesse de libération)}
+
+Montrer l'\emph{identité de Lagrange-Jacobi} \[
+\frac{d^2}{dt^2}\left(\frac{\|q(t)\|^2}{2}\right) = 2E + \frac{\mu}{\|q(t)\|} \ .
+\] En déduire que
+
+\begin{itemize}
+\tightlist
+\item
+  si \(E<0\), alors \(\|q(t)\|\leq \frac{\mu}{|E|}\) pour tout
+  \(t\in\left]\tmin,\tmax\right[\) (le satellite reste confiné)~;
+\item
+  si \(E>0\) et \(\tmax=+\infty\), alors
+  \(\lim_{t\to+\infty}\|q(t)\|=+\infty\) (le satellite s'échappe).
+\end{itemize}
+
+Quelle condition sur la vitesse initiale \(\|v_0\|\) garantit
+\(E>0\)\,? Cette vitesse est appelée \emph{vitesse de libération}.\solref{answer-kepler-2}
+
+\hypertarget{kepler-3}{%
+\subsubsection*{Question 3 (Pas de collision si \texorpdfstring{\(L\neq
+0\)}{L non nul})}\label{kepler-3}}
+
+\addcontentsline{toc}{subsubsection}{Question 3 (Pas de collision si L non nul)}
+
+Montrer que \(\|L\|\leq \|q\|\,\|v\|\) et en déduire que pour tout
+\(t\in\left]\tmin,\tmax\right[\), \[
+\|L\|^2 \leq 2E\|q(t)\|^2 + 2\mu \|q(t)\| \ .
+\] On suppose \(L\neq 0\). Montrer qu'il existe \(r_{\min}>0\) tel que
+\(\|q(t)\|\geq r_{\min}\) pour tout \(t\). En déduire que \(v\) est
+bornée, puis que la solution est globale, i.e. \(\tmin=-\infty\) et
+\(\tmax=+\infty\).\solref{answer-kepler-3}
+
+\hypertarget{kepler-4}{%
+\subsubsection*{Question 4 (Collision en temps fini si
+\texorpdfstring{\(L=0\)}{L nul})}\label{kepler-4}}
+
+\addcontentsline{toc}{subsubsection}{Question 4 (Collision en temps fini si L nul)}
+
+On suppose maintenant \(L=0\) et on note \(u = q_0/\|q_0\|\).
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Montrer que \(t\mapsto \frac{q(t)}{\|q(t)\|}\) est constante, et donc
+  que \(q(t) = r(t)\, u\) avec \(r(t)=\|q(t)\|>0\). Montrer que \(r\)
+  vérifie \[
+  \ddot{r} = -\frac{\mu}{r^2} \ .
+  \]
+\item
+  On suppose de plus \(E<0\). Montrer que \(\tmax<+\infty\) et que
+  \(\lim_{t\to\tmax}\|q(t)\| = 0\)~: le satellite percute le corps
+  central en temps fini. \emph{Indice~: raisonner par l'absurde en
+  supposant \(\tmax=+\infty\), distinguer selon le signe de \(\dot r\),
+  et utiliser le \protect\hyperlink{theo_barbalat}{Lemme de Barbalat
+  (p. \pageref*{theo_barbalat})}.}
+\end{enumerate}\solref{answer-kepler-4}
+
+\hypertarget{kepler-5}{%
+\subsubsection*{Question 5 (Stabilité des orbites
+circulaires)}\label{kepler-5}}
+
+\addcontentsline{toc}{subsubsection}{Question 5 (Stabilité des orbites circulaires)}
+
+On suppose à nouveau \(L\neq 0\) et on note \(\ell=\|L\|\) et
+\(r(t)=\|q(t)\|\).
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\tightlist
+\item
+  Montrer l'identité \(\|q\times v\|^2 = \|q\|^2\|v\|^2 - (q\cdot v)^2\)
+  et en déduire que \(r\) est solution de l'équation différentielle
+  \emph{autonome} \[
+  \ddot{r} = \frac{\ell^2}{r^3} - \frac{\mu}{r^2}
+  \] sur \(\mathbb{R}_{>0}\).
+\item
+  Montrer que le système d'état \((r,\dot r)\) associé admet un unique
+  point d'équilibre \((r^*,0)\), que l'on exprimera en fonction de
+  \(\ell\) et \(\mu\). A quel mouvement du satellite correspond-il\,?
+\item
+  Montrer que le théorème du linéarisé tangent ne permet pas de conclure
+  quant à la stabilité de cet équilibre.
+\item
+  Exprimer \(E\) en fonction de \(r\) et \(\dot r\) et en déduire une
+  fonction définie positive permettant de montrer que \((r^*,0)\) est
+  stable. Est-il asymptotiquement stable\,? Interpréter.
+\item
+  Pourquoi ne peut-on pas parler de stabilité de l'orbite circulaire
+  pour le système complet d'état \((q,v)\) avec les définitions du
+  cours\,?
+\end{enumerate}\solref{answer-kepler-5}
+
+\hypertarget{annexes}{%
+\chapter{Annexes}\label{annexes}}
+
+\hypertarget{app_peano}{%
+\section{Preuve du théorème de Peano-Arzelà
+(Hors-programme)}\label{app_peano}}
+
+Cette preuve repose sur le théorème d'Ascoli~:
+
+\begin{quote}
+Soient \(K\) un espace métrique compact, \(Y\) un espace métrique
+complet, et \(S\subset C(K,Y)\), où \(C(K,Y)\) est l'ensemble des
+fonctions continues de \(K\) dans \(Y\). Les deux propriétés suivantes
+sont équivalentes~:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(S\) est \emph{relativement compact} dans \(C(K,Y)\)
+\item
+  \(S\) est \emph{équicontinu} et pour tout \(z\in K\),
+  \(\{g(z) \ , \ g\in S \}\) est \emph{relativement compacte} dans
+  \(Y\).
+\end{enumerate}
+\end{quote}
+
+On dit qu'un ensemble est \emph{relativement compact} si son adhérence
+est compacte. En dimension finie, vu que ``compact'' est équivalent à
+``fermé-borné'' et que l'adhérence est fermée par définition,
+``relativement compact'' est équivalent à ``borné''. Mais ce n'est pas
+le cas en dimension infinie (en particulier \(C(K,Y)\)) où
+``relativement compact'' est alors équivalent au fait de pouvoir
+extraire des suites convergentes dans l'adhérence de l'ensemble.
+
+Ici, puisque \(K\) est compact et \(Y\) complet, on peut montrer que
+\(C(K,Y)\) muni de la norme uniforme \(\|\cdot\|_\infty\) est complet,
+donc fermé. Il s'ensuit que ``\(S\) est relativement compact dans
+\(C(K,Y)\)'' implique pouvoir extraire de toute suite de \(S\) une
+sous-suite convergente dans \(C(K,Y)\) (au sens de
+\(\|\cdot\|_\infty\)). C'est ce que nous allons utiliser pour prouver
+l'existence d'une solution au problème de Cauchy.
+
+Maintenant, le deuxième terme nécessitant des explications est
+l'\emph{équicontinuité} de \(S\). Cette notion veut simplement dire que
+les fonctions dans \(S\) sont toutes continues \emph{au même rythme},
+i.e., plus précisément, \[
+\forall \varepsilon >0 \ \exists \delta \ , \quad \ d_K(z_a,z_b)\leq \delta \; \Longrightarrow \;\forall g\in S \ , \  d_Y(g(z_a),g(z_b)) \leq \varepsilon \ ,
+\] où \(d_K\) et \(d_Y\) sont les distances sur \(K\) et \(Y\)
+respectivement.
+
+Revenons maintenant à nos moutons. On suppose donc \(f\) continue sur
+\(J\times X\) et on veut montrer que \(S_f(t_0,x_0)\neq \emptyset\).
+Soient d'abord \(\tau >0\) et \(r>0\), tels que
+\(\mathcal{C}:= [t_0-\tau,t_0+\tau]\times B_f(x_0,r) \subset J\times X\).
+Soit \(\tau_m\in]0, \tau]\) tel que
+\(\tau_m\max_\mathcal{C}\|f\|\leq r\). On va montrer l'existence d'une
+solution définie par sa forme intégrale \[
+x(t) = x_0 + \int_{t_0}^t f(s,x(s)) ds
+\] sur \([t_0,t_0+\tau_m]\) et la preuve sur \([t_0-\tau_m,t_0]\) se
+fait de la même façon.
+
+L'idée est d'approximer de plus en plus finement la forme intégrale et
+montrer que ce procédé converge. On définit donc pour
+\(\epsilon \in ]0,1[\) la fonction \begin{align*}
+x_\epsilon(t) &= x_0 & \forall t\in [t_0-1,t_0] \\
+&= x_0 + \int_{t_0}^t f(s,x_\epsilon(s-\epsilon)) ds & \forall t\in [t_0,t_0+\tau_m]
+\end{align*} Ces fonctions sont définies et continues sur
+\([t_0-1,t_0]\). Puis sur \([t_0,t_0+\epsilon]\cap[t_0,t_0+\tau_m]\), on
+voit que l'intégrale ne dépend que de \(x_\epsilon\) sur
+\([t_0-1,t_0]\), donc elle est toujours bien définie et continue. De
+proche en proche, \(x_\epsilon\) est donc bien définie et continue sur
+\([t_0-1,t_0+\tau_m]\). En fait, \(\epsilon\) représente un petit retard
+introduit dans l'intégrale pour la rendre explicite. Si l'on arrive à
+montrer que ces fonctions convergent vers une fonction continue lorsque
+\(\epsilon\) tend vers 0, cette limite sera solution de l'équation
+intégrale sur \([t_0,t_0+\tau_m]\) et sera donc solution.
+
+La première étape est de montrer de proche en proche, grâce au retard,
+que \(x_\epsilon(t)\in B_f(x_0,r)\) pour tout
+\(t\in [t_0-1,t_0+\tau_m]\) puisque
+\(\tau_m\max_\mathcal{C}\|f\|\leq r\). Donc \[
+\forall \epsilon \in ]0,1[ \ , \ x_\epsilon \in E:=C([t_0-1,t_0+\tau_m],B_f(x_0,r)) \ .
+\] De plus, pour tout \(\epsilon \in ]0,1[\) et pour tout
+\((t,t')\in [t_0-1,t_0+\tau_m]^2\), \[
+\|x_\epsilon(t) - x_\epsilon(t') \| \leq \max_\mathcal{C}\|f\| \, |t-t'|
+\] donc la famille \(S:=\{x_\epsilon , \ \epsilon \in ]0,1[ \}\) est
+équicontinue. De plus, vu que leur image est bornée dans \(B_f(x_0,r)\)
+de dimension finie, elle est bien relativement compacte. Le
+théorème d'Ascoli nous dit alors que \(S\) est relativement compacte
+dans \(E\). Il existe donc une sous suite \(x_{\epsilon_k}\) telle que
+\(\lim_{k\to +\infty} \epsilon_k =0\) et
+\(\lim_{k\to +\infty} x_{\epsilon_k} = x^\star \in E\) au sens de la
+norme uniforme \(\|\cdot \|\). Par uniforme continuité de \(f\) sur le
+compact \(\mathcal{C}\), on en déduit alors que pour tout
+\(s\in [t_0,t_0+\tau_m]\),
+\(\lim_{k\to +\infty} f(s,x_{\epsilon_k}(s-\epsilon_k))= f(s,x^\star(s))\)
+et donc que \(x^\star\) est bien solution de l'équation intégrale, ce
+qui donne le résultat.
+
+\hypertarget{pr_theo_bouts}{%
+\section{Preuve du théorème du domaine maximal
+d'existence}\label{pr_theo_bouts}}
+
+Soit \(x: I \to \mathbb{R}^n\) une solution dans \(S_f(t_0,x_0)\). Si
+\(x\) n'est pas une solution maximale, elle peut être prolongée sur un
+intervalle \(I'\) contenant strictement \(I\) par définition, donc on
+peut supposer sans perte de généralité que \(I\) est fermé d'un côté,
+disons à droite, et nous allons montrer qu'elle peut être prolongée sur
+un intervalle maximal d'existence à droite. Si elle peut être prolongée
+sur \([t_0,+\infty)\), c'est directement un intervalle maximal à droite
+et donc on suppose que \(x\) est définie sur \([t_0,t_1]\) et ne peut
+être prolongée sur \([t_0,+\infty)\). La preuve de ce qu'il se passe à
+gauche de \(t_0\) est similaire.
+
+Soit \(K\) un compact de \(J\times X\) contenant \(x(t)\) pour
+\(t\in [t_0,t_1]\) (qui existe par continuité de \(x\) sur le compact
+\([t_0,t_1]\)). Comme \(J\times X\) est ouvert, il existe \(\tau,r\)
+strictement positifs tels que \[
+\mathcal{C}:= \bigcup_{(t_{\rm init},x_{\rm init})\in K} [t_{\rm init}-\tau,t_{\rm init}+\tau] \times B_f(x_{\rm init},r) \subset J\times X \ .
+\] \(\mathcal{C}\) est compact et \(f\) continue sur \(\mathcal{C}\)
+donc il existe \(0<\tau_m<\tau\) tel que
+\(\tau_m \max_\mathcal{C}\|f\| \leq r\). En reproduisant la preuve du
+théorème de Peano-Arzelà, on voit que pour toute condition initiale
+\((t_{\rm init},x_{\rm init})\) dans \(K\), il existe une solution au
+problème de Cauchy définie au moins sur
+\([t_{\rm init}-\tau_m,t_{\rm init}+\tau_m]\).
+
+Revenons donc à notre solution \(x\) définie sur \([t_0,t_1]\) dans
+\(K\). Dénotant \(x_1:= x(t_1)\), on a \((t_1,x_1)\in K\) donc il existe
+\(x' : [t_1-\tau_m,t_1+\tau_m] \to \mathbb{R}^n\) dans \(S_f(t_1,x_1)\).
+Alors on peut construire
+\(\tilde{x}: [t_0,t_1+\tau_m] \to \mathbb{R}^n\) telle que \[
+\tilde{x}(t) = 
+\left\{
+\begin{array}{ll}
+x(t) & \text{si } t\in [t_0,t_1] \\
+x'(t) & \text{si } t>t_1
+\end{array}
+\right.
+\] \(\tilde{x}\) est bien continue et à valeurs dans \(J\times X\) sur
+\([t_0,t_1+\tau_m]\). De plus, elle est de classe \(C^1\) sur
+\(]t_0,t_1+\tau_m[\setminus \{ t_1\}\) telle que
+\(\dot{\tilde{x}}(t) = f(t,\tilde{x}(t))\) pour tout
+\(t\in ]t_0,t_1+\tau_m[\setminus \{ t_1\}\). Par continuité de
+\(\tilde{x}\) en \(t_1\) et de \(f\) en \((t_1,x_1)\), on en déduit que
+\(\tilde{x}\) est bien \(C^1\) sur \(]t_0,t_1+\tau_m[\). Donc
+\(\tilde{x}\in S_f(t_0,x_0)\). On a donc trouvé une prolongation
+\(\tilde{x}\) de la solution \(x\) sur l'intervalle
+\([t_0,t_1+\tau_m]\). Si \((t_1+\tau_m,\tilde{x}(t_1+\tau_m))\) est
+toujours dans \(K\), on peut itérer le processus. Parce que \(\tau_m\)
+est uniforme sur \(K\) et \(K\) est compact, on construit ainsi en un
+nombre fini d'itérations une extension \(\tilde{x}\) de \(x\) qui va
+finir par sortir de \(K\), c'est-à-dire, définie sur \([t_0,t_K]\) avec
+\(t_K>t_1\) tel que \((t_K,\tilde{x}(t_K))\notin K\).
+
+Considérons maintenant une suite strictement croissante de compacts
+\((K_n)\) de \(J\times X\), avec \(K_0=K\), telle que pour tout \(n\),
+\(K_n \subset \mathring{K}_{n+1}\) et
+\(\cup_n \mathring{K}_{n} = J\times X\). Pour chaque \(n\),
+on construit récursivement une extension \(\tilde{x}\) de \(x\) sur des
+intervalles de plus en plus grand \([t_0,t_{K_n}]\) tels que
+\((t_{K_n},\tilde{x}(t_{K_n})) \notin K_n\). Puisqu'on a supposé que
+\(x\) n'était pas prolongeable sur \([t_0,+\infty[\), la suite des
+\((t_{K_n})\) est strictement croissante, bornée, et on peut donc en
+extraire une sous-suite qui converge. On note \(\tmax\) cette limite. On
+a donc construit une prolongation \(\tilde{x}\) de \(x\) définie sur
+\([t_0,\tmax)\). De plus, par croissance des \(K_n\), la suite des
+\((t_{K_n},\tilde{x}(t_{K_n})) \notin K_n\) sort définitivement de
+chacun des \(K_n\) et donc devient ``de plus en plus grand'\,'. Ou bien
+\((\tilde{x}(t_{K_n}))\) est non-bornée, ou bien
+\((\tilde{x}(t_{K_n}))\) est bornée, et on peut en extraire une
+sous-suite qui converge disons vers \(x^*\), qui est dans la frontière
+de \(J\times X\). Donc dans les deux cas, \(x\) ne peut pas être
+prolongée à droite au delà de \(\tmax\). On a donc bien prolongé \(x\)
+en une solution maximale à droite. On fait de même à gauche.
+
+Maintenant, considérons une solution maximale \(x: I \to \mathbb{R}^n\)
+dans \(S_f(t_0,x_0)\). Alors \(I\) est ouvert, de la forme
+\(]\tmin,\tmax[\) avec \(\tmin,\tmax\) dans
+\(\mathbb{R}\cup \{+\infty,-\infty\}\), car sinon, on pourrait prolonger
+\(x\) de la même manière que plus haut sur un intervalle strictement
+plus grand.
+
+Supposons \(\tmax\) fini. Montrons qu'alors
+\(\|x(t)\| + 1/d\big((t,x(t)),\partial (J\times X)\big)\) tend vers
+\(+\infty\) lorsque \(t\) tend vers \(\tmax\). La propriété se montre de
+manière similaire en \(\tmin\). Pour cela, nous allons montrer que
+lorsque \(t\) se rapproche de \(\tmax\), \((t,x(t))\) finit par sortir
+définitivement de tout sous-ensemble \(K\) compact de \(J\times X\).
+Cela suffit~: pour \(M>0\), l'ensemble \[
+K_M = \Big\{(t,x)\in J\times X \ : \ t\leq \tmax \ , \ \|x\|\leq M \ , \ d\big((t,x),\partial (J\times X)\big)\geq \frac{1}{M}\Big\}
+\] est borné, et fermé dans \(\mathbb{R}\times\mathbb{R}^n\) (un point
+limite de \(J\times X\) à distance au moins \(1/M\) de la frontière est
+dans \(J\times X\)), donc compact~; si \((t,x(t))\) en sort
+définitivement, alors \(\|x(t)\| + 1/d > M\) pour \(t\) proche de
+\(\tmax\), et ce pour tout \(M\). Soit donc \(K\) compact de
+\(J\times X\).
+
+Supposons d'abord qu'il existe \(\tau\) tel que \((t,x(t))\in K\) pour
+tout \(t\in [\tau,\tmax[\). Puisque \(f\) est continue, \(\|f(t,x)\|\)
+est borné disons par \(M\) sur \(K\). Donc pour toute suite \((t_k)\)
+d'éléments de \([\tau,\tmax[\) tendant vers \(\tmax\), par la
+représentation intégrale des solutions, \[
+\|x(t_{k+p}) - x(t_{k}) \| \leq \int_{t_k}^{t_{k+p}} \|f(s,x(s))\| ds \leq M (t_{k+p}-t_k) \ .
+\] Donc la suite \((x(t_k))\) est de Cauchy et donc aussi la suite
+\((t_k,x(t_k))\) dans \(K\). Puisque \(K\) est un sous-ensemble fermé de
+\(\mathbb{R}\times \mathbb{R}^n\) complet, il est complet. Donc
+\((t_k,x(t_k))\) converge vers
+\((\tmax,\bar{x})\in K \subset J\times X\). Donc \(x\) peut-être
+prolongée par continuité en une solution sur \(]\tmin,\tmax]\), ce qui
+est impossible par maximalité. Donc \((t,x(t))\) sort de manière
+persistante de \(K\).
+
+Supposons maintenant que \((t,x(t))\) entre aussi de manière persistante
+dans \(K\), i.e., \[
+ \forall t_K \in \left[t_0,\tmax\right[ \, , \, \exists t\in \left[t_K,\tmax\right[ \: : \: (t,x(t))\in K
+\] Alors il existe une suite \((t_p)_{p\in \mathbb{N}}\) telle que \[
+\tmax-\frac{1}{p}\leq  t_p < \tmax\quad \text{et} \quad (t_p,x(t_p))\in K \quad \forall p\in \mathbb{N}
+\] On a donc \(\lim_{p\to+\infty} t_p = \tmax\), et par compacité de
+\(K\), on peut extraire de \((t_p,x(t_p))_{p\in \mathbb{N}}\) une
+sous-suite qui converge vers \((\tmax,\overline{x})\in K\). Pour
+simplifier les notations, on suppose donc directement
+\(\lim_{p\to+\infty} x(t_p) =\overline{x}\).
+
+Notons \(\xi =(\tmax,\overline{x})\). Soit \(\varepsilon >0\) tel que
+\(B_f(\xi,2\varepsilon)\subset J\times X\). Il existe \(p^*\) tel que
+pour tout \(p\geq p^*\), \((t_{p},x(t_{p}))\in B_f(\xi,\varepsilon)\).
+Mais puisque \(B_f(\xi,2\varepsilon)\) est un sous-ensemble compact de
+\(J\times X\), on sait que \((t,x(t))\) en sort de manière persistante.
+Donc sans perte de généralité, on peut supposer que pour tout \(p\), il
+existe \(t_p < t_p' < t_{p+1}\) tel que \[
+\| (t_p',x(t_p')) - \xi \| = 2\varepsilon  \qquad , \qquad (t,x(t))\in B_f(\xi,2\varepsilon) \quad \forall t\in [ t_p,t_p' ] \ .
+\] Soit alors \(M\) le maximum de \(\| f\|\) sur le compact
+\(B_f(\xi,2\varepsilon)\). Par la représentation intégrale, et pour
+\(p\) suffisamment grand, on a donc \[
+\frac{\varepsilon}{2} \leq \|x(t_p')-x(t_p) \| \leq \int_{t_p}^{t_p'} \|f(s,x(s))\| ds \leq M (t_p'-t_p) \leq M (t_{p+1}-t_p)  \ .
+\] Il s'ensuit que pour \(p\) suffisamment grand,
+\(t_{p+1}-t_p \geq \frac{\varepsilon}{2M}\), ce qui est impossible
+puisque \((t_p)\) tend vers \(\tmax\). On peut donc conclure que
+\((t,x(t))\) sort de manière définitive de tout compact \(K\) lorsque
+\(t\) s'approche de \(\tmax\).
+
+\hypertarget{ruxe9fuxe9rences}{%
+\chapter{Références}\label{ruxe9fuxe9rences}}
+
+\hypertarget{refs}{}
+\begin{cslreferences}
+\leavevmode\hypertarget{ref-BacRos}{}%
+Bacciotti, A., and L. Rosier. 2005. \emph{Lyapunov Functions and
+Stability in Control Theory}. 2nd ed. Communications and Control
+Engineering Series. Springer-Verlag, Berlin.
+
+\leavevmode\hypertarget{ref-Fil}{}%
+Filippov, A. F. 1988. \emph{Differential Equations with Discontinuous
+Right-Hand Sides}. Mathematics and its Applications Kluwer Academic
+Publishers Group.
+
+\leavevmode\hypertarget{ref-Hale}{}%
+Hale, J. K. 2009. \emph{Ordinary Differential Equations}. Dover
+Publication Inc.
+
+\leavevmode\hypertarget{ref-HolRand}{}%
+Holmes, P., and D. Rand. 1978. ``Bifurcations of the Forced van Der Pol
+Oscillator.'' \emph{Quarterly of Applied Mathematics} 35: 495--509.
+
+\leavevmode\hypertarget{ref-lyap}{}%
+Lyapunov, A. 1892. ``The general problem of the stability of motion.''
+Kharkov Mathematical Society.
+
+\leavevmode\hypertarget{ref-cauchy}{}%
+Moigno. 1844. ``26ème Leçon.'' In \emph{Leçons de Calcul Différentiel et
+Intégral, Rédigées Principalement d'après Les Méthodes de M. A.-L.
+Cauchy, et étendues Aux Travaux Les Plus Récents Des Géomètres}, pages
+385--96. Bachelier, Imprimeur-Libraire de l'Ecole Polytechnique.
+\url{https://books.google.fr/books?id=booAAAAAMAAJ\&pg=PA385\#v=onepage\&q\&f=false}.
+
+\leavevmode\hypertarget{ref-poincare}{}%
+Poincaré, H. 1892. \emph{Les Méthodes Nouvelles de La Mécanique
+Céleste}. Gauthier-Villars, Imprimeur-Libraire de l'Ecole Polytechnique.
+\url{https://iris.univ-lille.fr/handle/1908/3851}.
+
+\leavevmode\hypertarget{ref-SussWis}{}%
+Sussman, G. J., and J. Wisdom. 1992. ``Chaotic Evolution of the Solar
+System.'' \emph{Science}, 1992.
+\end{cslreferences}

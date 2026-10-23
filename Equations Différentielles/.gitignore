@@ -1,0 +1,16 @@
+*.aux
+*.log
+*.toc
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+
+# Notes de travail et examen : non publies
+relecture_*.md
+examen/
+
+# Figures generees : conservees ici pour que les sources compilent
+!images/*.pdf
