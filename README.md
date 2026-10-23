@@ -28,7 +28,7 @@ Mines Paris - PSL, cycle ingénieur civil, unité d'enseignement Mathématiques 
 | IV Analyse fonctionnelle (hors programme exam) | 8 |   | --|  |  |
 |  |  |   |  |  |  |
 |  |  |   |  |  |  |
-| Equations Différentielles (poly avec exos corrigés, parties I et II) | 1 |  | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Diff%C3%A9rentielles/poly.pdf)  |  [:notebook: IPYNB](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Diff%C3%A9rentielles/Equations%20Diff%C3%A9rentielles%20I.ipynb) | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Equations%20Diff%C3%A9rentielles%20I/output/Equations%20Diff%C3%A9rentielles%20I.pdf)
+| Equations Différentielles| 1 |  | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Diff%C3%A9rentielles/poly.pdf)  |  [:notebook: IPYNB](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Diff%C3%A9rentielles/Equations%20Diff%C3%A9rentielles%20I.ipynb) | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Equations%20Diff%C3%A9rentielles%20I/output/Equations%20Diff%C3%A9rentielles%20I.pdf)
 |  | 2 |  |  |  [:notebook: IPYNB](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Diff%C3%A9rentielles/Equations%20Differentielles%20II.ipynb) |  |
 ||  |   |  |  |   |
 | Probabilités | 1 | [:computer: PDF](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20I/output/Probabilit%C3%A9%20I.pdf) | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20I/output/Probabilit%C3%A9%20I%20(a4%2C%20recto-verso).pdf)  |   | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Probabilit%C3%A9s%20I/output/Probabilit%C3%A9s%20I.pdf) |
