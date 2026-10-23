@@ -26,7 +26,7 @@
 \usepackage{graphicx}
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\setkeys{Gin}{width=\maxwidth,height=0.36\textheight,keepaspectratio}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 \graphicspath{{images/}}
 \def\fps@figure{htbp}
 \renewcommand{\topfraction}{0.85}\renewcommand{\bottomfraction}{0.7}\renewcommand{\textfraction}{0.1}\renewcommand{\floatpagefraction}{0.75}
@@ -94,12 +94,6 @@
 \newtcolorbox{lemme}[1][]{envbase,borderline west={1.2pt}{0pt}{black},
   before upper={\let\footnote\tcbfootnote \textbf{Lemme\ifblank{#1}{}{\ -- #1}.}\par\setlength{\parindent}{0pt}\setlength{\parskip}{0.5\baselineskip}\itshape}}
 \AfterEndEnvironment{proposition}{\tcbflushfn}\AfterEndEnvironment{corollaire}{\tcbflushfn}\AfterEndEnvironment{lemme}{\tcbflushfn}
-% Figures dans un environnement (listes dans un exemple, ...) : tcolorbox n'accepte pas de flottants,
-% on les remplace localement par des figures centrées non flottantes, avec leur légende.
-\newcommand{\figureinbox}{\renewenvironment{figure}[1][]{\par\begin{center}\def\@captype{figure}}{\end{center}\par}}
-\AtBeginEnvironment{definition}{\figureinbox}\AtBeginEnvironment{theoreme}{\figureinbox}\AtBeginEnvironment{proposition}{\figureinbox}
-\AtBeginEnvironment{corollaire}{\figureinbox}\AtBeginEnvironment{lemme}{\figureinbox}\AtBeginEnvironment{remarque}{\figureinbox}
-\AtBeginEnvironment{exemple}{\figureinbox}\AtBeginEnvironment{preuve}{\figureinbox}
 \usepackage{longtable,booktabs} % tableaux
 
 % ---- Macros communes à tous les cours ----

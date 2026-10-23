@@ -71,7 +71,49 @@ local function append_all(dst, src) for _, x in ipairs(src) do dst[#dst+1] = x e
 local answer_ids = {}
 local known_ids = {}
 
+local fig_ids = {}   -- identifiants (markdown) des figures, pour les renvois "figure n"
+
+local function fig_id(im)
+  if im.identifier ~= "" then return im.identifier end
+  local base = im.src:gsub("^images/", "")
+  return "fig-" .. base
+end
+
+-- figure flottante numérotée : \begin{figure} ... \caption{} \label{}
+local function make_figure(im)
+  local src = im.src
+  local ext = src:match("%.(%w+)$")
+  if ext == "tex" or ext == "py" or ext == "svg" then src = src .. ".pdf" end
+  src = src:gsub("^images/", "")
+  local opts = ""
+  local w = im.attributes["width"]
+  if w and w:match("%%$") then
+    opts = string.format("[width=%.2f\\linewidth]", tonumber(w:sub(1, -2)) / 100)
+  end
+  local incl
+  local f = io.open("../images/" .. src, "r")
+  if f then
+    f:close()
+    incl = "\\includegraphics" .. opts .. "{" .. src .. "}"
+  else
+    io.stderr:write("IMAGE MANQUANTE images/" .. src .. "\n")
+    incl = "\\fbox{[figure manquante : " .. src:gsub("[_#%%&]", " ") .. "]}"
+  end
+  local res = { raw("\\begin{figure}\n\\centering\n" .. incl .. "\n") }
+  if #im.caption > 0 then
+    res[#res+1] = raw("\\caption{")
+    append_all(res, im.caption)
+    res[#res+1] = raw("}")
+  end
+  res[#res+1] = raw("\\label{" .. lab(fig_id(im)) .. "}\n\\end{figure}")
+  return pandoc.Plain(res)
+end
+
 local function collect_ids(doc)
+  pandoc.walk_block(pandoc.Div(doc.blocks), { Image = function(im)
+    fig_ids[fig_id(im)] = true
+    known_ids[fig_id(im)] = true
+  end })
   for _, b in ipairs(doc.blocks) do
     if b.t == "Header" then
       if b.identifier ~= "" then known_ids[b.identifier] = true end
@@ -127,6 +169,12 @@ local function build(doc)
     end
   end
 
+  local pending_figs = {}
+  local function flush_figs()
+    for _, im in ipairs(pending_figs) do emit(make_figure(im), true) end
+    pending_figs = {}
+  end
+
   local function close_env()
     if not env then return end
     if env == "preuve" then
@@ -134,6 +182,7 @@ local function build(doc)
     end
     emit_raw("\\end{" .. env .. "}")
     env = nil
+    flush_figs()
   end
 
   -- titre "en ligne" (exercices, questions, corrigés) : \runinhead (défini dans poly.tex) plutôt que
@@ -262,33 +311,20 @@ local function build(doc)
         return true
       end)() then
       for _, x in ipairs(b.content) do if x.t == "Math" then io.stderr:write("MACRO " .. x.text .. "\n") end end
-    elseif env and (b.t == "Para" or b.t == "Plain") and (function()
-        local n = 0
-        for _, x in ipairs(b.content) do
-          if x.t == "Image" then n = n + 1
-          elseif x.t ~= "Space" and x.t ~= "SoftBreak" then return false end
-        end
-        return n > 0
-      end)() then
-      -- figure dans un environnement : pas de flottant (tcolorbox n'en accepte pas), légende avec \captionof
-      local res = {}
-      for _, x in ipairs(b.content) do
-        if x.t == "Image" then
-          local cap = x.caption
-          x.title = ""
-          res[#res+1] = raw("\\begin{center}")
-          res[#res+1] = x
-          if #cap > 0 then
-            res[#res+1] = raw("\\captionof{figure}{")
-            append_all(res, cap)
-            res[#res+1] = raw("}")
-          end
-          res[#res+1] = raw("\\end{center}")
-        end
-      end
-      emit(pandoc.Plain(res))
     else
-      emit(b)
+      -- les images sortent du texte (et des environnements, où tcolorbox n'accepte pas de flottants)
+      -- pour devenir de vrais flottants numérotés, placés après le bloc ou l'environnement
+      local imgs = {}
+      local nb = pandoc.walk_block(b, { Image = function(im) imgs[#imgs+1] = im; return {} end })
+      for _, im in ipairs(imgs) do pending_figs[#pending_figs+1] = im end
+      local empty = (nb.t == "Para" or nb.t == "Plain") and (function()
+        for _, x in ipairs(nb.content) do
+          if x.t ~= "Space" and x.t ~= "SoftBreak" then return false end
+        end
+        return true
+      end)()
+      if #imgs == 0 or not empty then emit(nb) end
+      if not env then flush_figs() end
     end
   end
   close_env()
@@ -308,7 +344,9 @@ local function Link(l)
     append_all(res, l.content)
     local nop = false
     for _, c in ipairs(l.classes) do if c == "no-parenthesis" then nop = true end end
-    if nop then
+    if fig_ids[id] then
+      res[#res+1] = raw(" (figure~\\ref*{" .. lab(id) .. "})}")
+    elseif nop then
       res[#res+1] = raw(" p.~\\pageref*{" .. lab(id) .. "}}")
     else
       res[#res+1] = raw(" (p.~\\pageref*{" .. lab(id) .. "})}")

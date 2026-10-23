@@ -1338,8 +1338,6 @@ discrètes}]\phantomsection\label{I-ex.discret}
   \end{equation*} où \(\lfloor \cdot \rfloor\) désigne la partie
   entière. A titre d'exemple, on représente ci-dessous les fonctions de
   répartitions de la loi binomiale et de la loi de Poisson.
-  \includegraphics{CdfBinom.tex.pdf}
-  \includegraphics{CdfPoisson.tex.pdf}
 \item
   Les probabilités discrètes.
 
@@ -1360,6 +1358,20 @@ Il existe bien d'autres probabilités, non discrètes, sur \(\mathbb{R}\).
 Le paragraphe suivant est consacré à un exemple très important, celui
 des variables aléatoires dont la loi admet une densité.
 \end{exemple}
+
+\begin{figure}
+\centering
+\includegraphics{CdfBinom.tex.pdf}
+\caption{fonction de répartition de la loi
+binomiale}\label{I-fig-CdfBinom.tex}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{CdfPoisson.tex.pdf}
+\caption{fonction de répartition de la loi de
+Poisson}\label{I-fig-CdfPoisson.tex}
+\end{figure}
 
 \section{Variables aléatoires réelles à
 densité}\label{I-variables-aluxe9atoires-ruxe9elles-uxe0-densituxe9}
@@ -1505,13 +1517,12 @@ densités}]\phantomsection\label{I-exampledens}
   \(\mathbb{P}\) qui admet la densité \[f(x) = \left\{\begin{array}{ll}
           \frac{1}{b-a} & \text{si } a \leq x \leq b,\\
           0 & \text{sinon}.
-          \end{array}\right.\] \includegraphics{PdfUnif.tex.pdf} En
-  vertu de la remarque 1. ci-dessus, on aurait pu choisir
-  \(f(a) = f(b) = 0\). Au vu de l'interprétation 2. ci-dessus, le fait
-  que \(f\) soit constante sur \([a, b]\) exprime que si on choisit un
-  point selon la probabilité uniforme, on a ``autant de chances'' de
-  tomber au voisinage de chaque point de l'intervalle \([a, b]\). Cela
-  explique le nom ``uniforme''. On remarque aussi que
+          \end{array}\right.\] En vertu de la remarque 1. ci-dessus, on
+  aurait pu choisir \(f(a) = f(b) = 0\). Au vu de l'interprétation 2.
+  ci-dessus, le fait que \(f\) soit constante sur \([a, b]\) exprime que
+  si on choisit un point selon la probabilité uniforme, on a ``autant de
+  chances'' de tomber au voisinage de chaque point de l'intervalle
+  \([a, b]\). Cela explique le nom ``uniforme''. On remarque aussi que
   \(\mathbb{P}(\{x\}) = 0\) pour tout \(x\) (comme pour toutes les
   probabilités à densité). On a donc une probabilité nulle de tomber
   exactement en un point \(x\) fixé à l'avance. On vérifie aisément que
@@ -1519,33 +1530,33 @@ densités}]\phantomsection\label{I-exampledens}
           0 & \text{si } x < a,\\
           \frac{x-a}{b-a} & \text{si } a \leq x \leq b,\\
           1 & \text{si } x > b.
-          \end{array}\right.\] \includegraphics{CdfUnif.tex.pdf}
+          \end{array}\right.\]
 \item
   La \emph{loi exponentielle} de paramètre \(\theta\), notée
   \(\mathcal{E}_\theta\), est la loi de densité
   \[f(x) = \left\{\begin{array}{ll}
           0 & \text{si } x < 0,\\
           \theta e^{-\theta x} & \text{sinon}.
-          \end{array}\right.\] \includegraphics{PdfExp.tex.pdf} et de
-  fonction de répartition \[F(x) = \left\{\begin{array}{ll}
+          \end{array}\right.\] et de fonction de répartition
+  \[F(x) = \left\{\begin{array}{ll}
           0 & \text{si } x < 0,\\
           1 - e^{-\theta x} & \text{sinon}.
-          \end{array}\right.\] \includegraphics{CdfExp.tex.pdf} Dans la
-  pratique, on utilise fréquemment la loi exponentielle pour modéliser
-  une durée de vie ou le temps d'attente avant l'arrivée d'un événement
-  spécifique. Par exemple la durée de vie d'une bactérie, d'un composant
-  électronique, la durée d'une conversation téléphonique ou le temps qui
-  nous sépare du prochain tremblement de terre peuvent être considérées
-  comme des variables aléatoires de loi exponentielle.
+          \end{array}\right.\] Dans la pratique, on utilise fréquemment
+  la loi exponentielle pour modéliser une durée de vie ou le temps
+  d'attente avant l'arrivée d'un événement spécifique. Par exemple la
+  durée de vie d'une bactérie, d'un composant électronique, la durée
+  d'une conversation téléphonique ou le temps qui nous sépare du
+  prochain tremblement de terre peuvent être considérées comme des
+  variables aléatoires de loi exponentielle.
 \item
   La \emph{loi normale} (ou de \emph{Gauss} ou encore \emph{gaussienne})
   de paramètres \(\mu\) et \(\sigma^2\), notée
   \(\mathcal{N}(\mu,\sigma^2)\), est la loi de densité
 
   \[f(x) = \frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)\]
-  \includegraphics{PdfGauss.tex.pdf} Lorsque \(\mu = 0\) et
-  \(\sigma^2 = 1\), on l'appelle la loi normale \emph{centrée réduite}
-  pour des raisons que nous expliciterons au prochain chapitre.
+  Lorsque \(\mu = 0\) et \(\sigma^2 = 1\), on l'appelle la loi normale
+  \emph{centrée réduite} pour des raisons que nous expliciterons au
+  prochain chapitre.
 
   La distribution normale fut introduite par De Moivre en 1733. Celui-ci
   l'utilisa pour approximer une variable aléatoire binomiale quand le
@@ -1565,17 +1576,53 @@ densités}]\phantomsection\label{I-exampledens}
   d'obtenir très rapidement des valeurs numériques. Elles sont
   disponibles dans la plupart des logiciels et permettent entre autre de
   représenter sa fonction de répartition.
-
-  \begin{figure}
-  \centering
-  \includegraphics{CdfGauss.tex.pdf}
-  \caption{fonction de répartition de la loi normale}
-  \end{figure}
 \end{enumerate}
 
 Nous aurons l'occasion de voir par la suite un grand nombre d'autres
 exemples de probabilités à densité.
 \end{exemple}
+
+\begin{figure}
+\centering
+\includegraphics{PdfUnif.tex.pdf}
+\caption{Densité de probabilité de la loi
+uniforme}\label{I-fig-PdfUnif.tex}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{CdfUnif.tex.pdf}
+\caption{fonction de répartition de la loi
+uniforme}\label{I-fig-CdfUnif.tex}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{PdfExp.tex.pdf}
+\caption{Densité de probabilité de la loi
+exponentielle}\label{I-fig-PdfExp.tex}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{CdfExp.tex.pdf}
+\caption{fonction de répartition de la loi
+exponentielle}\label{I-fig-CdfExp.tex}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{PdfGauss.tex.pdf}
+\caption{Densité de probabilité de la loi
+normale}\label{I-fig-PdfGauss.tex}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics{CdfGauss.tex.pdf}
+\caption{fonction de répartition de la loi
+normale}\label{I-fig-CdfGauss.tex}
+\end{figure}
 
 \chapter{Exercices
 complémentaires}\label{I-exercices-compluxe9mentaires}
