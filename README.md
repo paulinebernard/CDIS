@@ -11,7 +11,8 @@ Mines Paris - PSL, cycle ingénieur civil, unité d'enseignement Mathématiques 
 
 | Chapitre      | # | E-book | Papier | Notebook | Quizz | 
 | ------------- | ------: | -----------:  |  :----: |  :----:  | :-----: |
-| Poly 01/09/26 |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/Mines010926.pdf) |  |  |
+| Programme de l'axamen |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/Prog26.pdf) |  |  |
+| Poly 16/10/26 avec exos corrigés  |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/Mines261016.pdf) |  |  |
 | Topo mise à niveau |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TD0.pdf) |  |  |
 | Topologie générale (MP) |  |   | --|  |  |
 | Fondamentaux & Compléments |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/Fonda.pdf) |  |  |
