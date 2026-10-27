@@ -140,6 +140,26 @@ ci-dessous.
 \caption{Illustration}
 \end{figure}
 
+On peut d'ailleurs montrer que cette loi gaussienne est la meilleure approximation de la loi de \(X\) au sens de la distance de Kullback-Leibler. En effet, si \(g_{\mu,\sigma^2}\) est la densité  gaussienne d'espérance \(\mu\) et de variance \(\sigma^2\), on a
+\begin{align*}
+\mathrm{KL}(f_X\,\|\,g_{\mu,\sigma^2}) &= \int_\mathbb{R} f_X(x)\,\ln\frac{f_X(x)}{g_{\mu,\sigma^2}(x)}\,dx\\
+&= \int_\mathbb{R} f_X(x)\ln f_X(x)\,dx + \frac{1}{2}\ln(2\pi\sigma^2) + \frac{1}{2\sigma^2}\int_\mathbb{R}(x-\mu)^2 f_X(x)\,dx\\
+&= \int_\mathbb{R} f_X(x)\ln f_X(x)\,dx + \frac{1}{2}\ln(2\pi\sigma^2) + \frac{\mathbb{V}(X) + (\mathbb{E}(X)-\mu)^2}{2\sigma^2},
+\end{align*} car \(\mathbb{E}\left((X-\mu)^2\right) = \mathbb{V}(X) + (\mathbb{E}(X)-\mu)^2\).
+Le premier terme ne dépend pas de \((\mu,\sigma^2)\). Pour \(\sigma^2\)
+fixé, le dernier terme est minimal si et seulement si
+\(\mu = \mathbb{E}(X)\). Il reste alors à minimiser
+\(h : \sigma^2 \in \mathbb{R}_+^\ast \mapsto \frac{1}{2}\ln(\sigma^2) + \frac{\mathbb{V}(X)}{2\sigma^2}\).
+Sa dérivée vaut
+\(h'(\sigma^2) = \frac{\sigma^2 - \mathbb{V}(X)}{2\sigma^4}\), qui est
+négative avant \(\mathbb{V}(X)\) et positive après~: \(h\) admet donc un
+unique minimum, atteint en \(\sigma^2 = \mathbb{V}(X)\).
+
+La divergence de Kullback-Leibler est donc minimale pour la loi
+gaussienne de même espérance et de même variance que \(X\), c'est-à-dire
+d'espérance \(\sum_{i =1}^n p_i\,m_i\) et de variance
+\(\sum_{i = 1}^n p_i\,\sigma^2_i + \bar{\sigma}^2\).
+
 \section{Lois conjuguées}\label{III-answer-loiconj}
 
 On considère dans tout cet exercice \(B_1\) et \(B_2\) des Boréliens.

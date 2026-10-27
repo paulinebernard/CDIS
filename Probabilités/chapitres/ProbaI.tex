@@ -376,7 +376,7 @@ Les événements étant des ensembles, les opérations ensemblistes
 classiques admettent une interprétation probabiliste.
 \end{exemple}
 
-\subsection{Correspondance entre opérations logiques et
+\subsection*{Correspondance entre opérations logiques et
 ensemblistes}\label{I-correspondance-entre-opuxe9rations-logiques-et-ensemblistes}
 
 \begin{longtable}[]{@{}ccc@{}}
@@ -827,7 +827,7 @@ Attention, l'indépendance des évènements deux à deux n'implique pas
 l'indépendance mutuelle des évènements.
 \end{remarque}
 
-\section{Remarque~: réflexion sur le concept de
+\section{Réflexion sur le concept de
 probabilité}\label{I-remarque-ruxe9flexion-sur-le-concept-de-probabilituxe9}
 
 La théorie mathématiques des probabilités ne dit pas quelle loi de
@@ -1094,8 +1094,7 @@ Si \(X_1, \ldots, X_n\) sont des variables aléatoires réelles et si
 une variable aléatoire réelle.
 \end{proposition}
 
-\subsection{Démonstration}\label{I-proof}
-
+\begin{preuve}
 On note \(X = (X_1, \ldots, X_n)\). \(X\) est mesurable de
 \((\Omega,\mathcal{A})\) dans
 \((\mathbb{R}^n,\mathcal{B}(\mathbb{R}^n))\) puisque ce vecteur est
@@ -1105,7 +1104,8 @@ constitué de composantes mesurables de \((\Omega,\mathcal{A})\) dans
 Soit \(B \in \mathcal{B}(\mathbb{R})\), alors
 \(Y^{-1}(B) = (g \circ X)^{-1}(B) = X^{-1}(g^{-1}(B))\). Puisque \(g\)
 et \(X\) sont mesurables, \(g^{-1}(B) \in \mathcal{B}(\mathbb{R}^n)\) et
-\(X^{-1}(g^{-1}(B))\in \mathcal{A}\).
+\(X^{-1}(g^{-1}(B))\in \mathcal{A}\).\hfill$\blacksquare$
+\end{preuve}
 
 Comme application de ce résultat, on a les propriétés suivantes~:
 
@@ -1298,7 +1298,7 @@ de probabilités sur \(\mathbb{R}\), à savoir les probabilités discrètes
 que l'on décrit rapidement ci-dessous.
 \end{remarque}
 
-\addcontentsline{toc}{subsection}{Probabilités discrètes}
+%\addcontentsline{toc}{subsection}{Probabilités discrètes}
 \begin{exemple}[{Probabilités
 discrètes}]\phantomsection\label{I-ex.discret}
 
@@ -1338,8 +1338,13 @@ discrètes}]\phantomsection\label{I-ex.discret}
   \end{equation*} où \(\lfloor \cdot \rfloor\) désigne la partie
   entière. A titre d'exemple, on représente ci-dessous les fonctions de
   répartitions de la loi binomiale et de la loi de Poisson.
-  \includegraphics{CdfBinom.tex.pdf}
-  \includegraphics{CdfPoisson.tex.pdf}
+  \begin{center}
+    \includegraphics{CdfBinom.tex.pdf}
+  \end{center}
+  \begin{center}
+    \includegraphics{CdfPoisson.tex.pdf}
+  \end{center}  
+    
 \item
   Les probabilités discrètes.
 
@@ -1410,10 +1415,11 @@ Soit \(X\) de loi de densité \(f\).
   dérivable, ou seulement continue partout et dérivable par morceaux,
   alors \(X\) admet la densité \[F'(x) = f(x).\]
 \end{enumerate}
+\end{proposition}
 
 Il existe bien sûr des variables aléatoires qui n'ont pas de densité~:
 c'est le cas des variables discrètes données en exemple
-\protect\hypertarget{I-ex.discret}{}{ci-dessus}. Il existe des cas
+\protect\hypertarget{I-ex.discret}{}{ci-dessus}. Il existe aussi des cas
 ``mixtes''~: soient d'une part \(f\) une fonction positive, intégrable
 et d'intégrale strictement positive et d'autre part une partie finie ou
 dénombrable \(E\) de \(\mathbb{R}\) et des poids \(p_i>0\) indexés par
@@ -1425,8 +1431,7 @@ est une fonction de répartition, et la probabilité associée
 
 La mesure de probabilité associée s'écrit
 \(\mathbb{P}_X = f\lambda + \sum_{i\in E} p_i \delta_i\) où \(\lambda\)
-est la mesure de Lebesgue
-\end{proposition}
+est la mesure de Lebesgue.
 
 \begin{remarque}\phantomsection\label{I-remarques-1}
 \begin{enumerate}
@@ -1505,8 +1510,12 @@ densités}]\phantomsection\label{I-exampledens}
   \(\mathbb{P}\) qui admet la densité \[f(x) = \left\{\begin{array}{ll}
           \frac{1}{b-a} & \text{si } a \leq x \leq b,\\
           0 & \text{sinon}.
-          \end{array}\right.\] \includegraphics{PdfUnif.tex.pdf} En
-  vertu de la remarque 1. ci-dessus, on aurait pu choisir
+          \end{array}\right.\] 
+  \begin{center}
+    \includegraphics{PdfUnif.tex.pdf}
+  \end{center}        
+  
+  En vertu de la remarque 1. ci-dessus, on aurait pu choisir
   \(f(a) = f(b) = 0\). Au vu de l'interprétation 2. ci-dessus, le fait
   que \(f\) soit constante sur \([a, b]\) exprime que si on choisit un
   point selon la probabilité uniforme, on a ``autant de chances'' de
@@ -1519,18 +1528,31 @@ densités}]\phantomsection\label{I-exampledens}
           0 & \text{si } x < a,\\
           \frac{x-a}{b-a} & \text{si } a \leq x \leq b,\\
           1 & \text{si } x > b.
-          \end{array}\right.\] \includegraphics{CdfUnif.tex.pdf}
+          \end{array}\right.\] 
+  \begin{center}
+    \includegraphics{CdfUnif.tex.pdf}
+  \end{center}
 \item
   La \emph{loi exponentielle} de paramètre \(\theta\), notée
   \(\mathcal{E}_\theta\), est la loi de densité
   \[f(x) = \left\{\begin{array}{ll}
           0 & \text{si } x < 0,\\
           \theta e^{-\theta x} & \text{sinon}.
-          \end{array}\right.\] \includegraphics{PdfExp.tex.pdf} et de
+          \end{array}\right.\] 
+  \begin{center}
+    \includegraphics{PdfExp.tex.pdf}
+  \end{center} 
+  \begin{center}
+    \includegraphics{CdfExp.tex.pdf}
+  \end{center} 
+  et de
   fonction de répartition \[F(x) = \left\{\begin{array}{ll}
           0 & \text{si } x < 0,\\
           1 - e^{-\theta x} & \text{sinon}.
-          \end{array}\right.\] \includegraphics{CdfExp.tex.pdf} Dans la
+          \end{array}\right.\] 
+  \begin{center}
+    \includegraphics{CdfExp.tex.pdf}
+  \end{center} Dans la
   pratique, on utilise fréquemment la loi exponentielle pour modéliser
   une durée de vie ou le temps d'attente avant l'arrivée d'un événement
   spécifique. Par exemple la durée de vie d'une bactérie, d'un composant
@@ -1543,7 +1565,12 @@ densités}]\phantomsection\label{I-exampledens}
   \(\mathcal{N}(\mu,\sigma^2)\), est la loi de densité
 
   \[f(x) = \frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)\]
-  \includegraphics{PdfGauss.tex.pdf} Lorsque \(\mu = 0\) et
+  
+  \begin{center}
+    \includegraphics{PdfGauss.tex.pdf}
+  \end{center}
+  
+  Lorsque \(\mu = 0\) et
   \(\sigma^2 = 1\), on l'appelle la loi normale \emph{centrée réduite}
   pour des raisons que nous expliciterons au prochain chapitre.
 
@@ -1569,7 +1596,7 @@ densités}]\phantomsection\label{I-exampledens}
   \begin{figure}
   \centering
   \includegraphics{CdfGauss.tex.pdf}
-  \caption{fonction de répartition de la loi normale}
+  \caption{Fonction de répartition de la loi normale}
   \end{figure}
 \end{enumerate}
 
@@ -1832,15 +1859,6 @@ de \(1-F(x)\) quand \(x\to+\infty\).}\label{I-fdrgaussequi}
 
 \solref{I-answer-fdrgaussequi}
 
-\addcontentsline{toc}{subsection}{Ratio de Mills}
-\begin{remarque}[{Ratio de
-Mills}]\phantomsection\label{I-ratio-de-mills}
-
-Pour \(x\in\mathbb{R}\), le rapport \(\dfrac{1-F(x)}{f(x)}\) est appelé
-\emph{ratio de Mills}. Il est beaucoup utilisé en statistique, en
-particulier pour l'analyse des modèles de régression en présence de
-biais de sélection.
-
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{5}
@@ -1850,7 +1868,6 @@ biais de sélection.
   limités pour les fonctions de répartition. En particulier,
   \(h:x\in[-\infty,+\infty] \mapsto x\,f(x)\) est-elle intégrable\,?
 \end{enumerate}
-\end{remarque}
 
 \runinhead{Loi Normale
 générale.}\phantomsection\addcontentsline{toc}{subsubsection}{Loi
@@ -1917,10 +1934,10 @@ l'instant \(t\) par
 et exprimer \(G\) en fonction de \(D\).
 
 Quelles lois correspondent-elles à \(D\) constant\,?
+\solref{I-answer-viemort3}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\solref{I-answer-viemort3}
 
 
 \chapter{Références}\label{I-ruxe9fuxe9rences}

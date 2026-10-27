@@ -450,7 +450,8 @@ reprenons en particulier les
 \href{Probabilité\%20I.pdf\%20\#exampledens}{trois exemples de densités
 donnés au premier cours}~:
 
-\subsection{\emph{Loi uniforme}}\label{II-loi-uniforme}
+\addcontentsline{toc}{subsection}{Loi uniforme}
+\subsection*{\emph{Loi uniforme}}\label{II-loi-uniforme}
 
 sur \([a,b]\), où \(a < b\) et on note \(X \sim \mathcal{U}_{[a,b]}\) si
 \(X\) est de densité \[ f(x) = \frac{1}{b-a} 1_{[a,b]} (x).\]
@@ -467,7 +468,8 @@ variance vaut
 
 \solref{II-answer-moments-unif}
 
-\subsection{\emph{Loi exponentielle}}\label{II-loi-exponentielle}
+\addcontentsline{toc}{subsection}{Loi exponentielle}
+\subsection*{\emph{Loi exponentielle}}\label{II-loi-exponentielle}
 
 de paramètre \(\theta > 0\) et on note \(X \sim \mathcal{E}(\theta)\) si
 \(X\) est de densité \[ f(x) = \theta e^{-\theta x} 1_{\{x>0\}} (x).\]
@@ -479,8 +481,8 @@ Montrer que son espérance et sa variance valent
 \[ \mathbb{E}(X) = \frac{1}{\theta} \text{ et } \mathbb{V}(X) = \frac{1}{\theta^2}\]
 
 \solref{II-answer-moments-expo}
-
-\subsection{\emph{Loi gamma}}\label{II-loi-gamma}
+\addcontentsline{toc}{subsection}{Loi gamma}
+\subsection*{\emph{Loi gamma}}\label{II-loi-gamma}
 
 On rappelle tout d'abord que la fonction gamma est définie pour
 \(\alpha \in \left] 0, + \infty \right[\) par
@@ -509,7 +511,8 @@ Lorsque \(\alpha\) est entier, la loi gamma permet de modéliser le temps
 d'attente avant la \(n\)-ième occurence d'événements indépendants de loi
 exponentielle de paramètre \(\theta\).\solref{II-answer-moments-gamma}
 
-\subsection{\emph{Loi normale}}\label{II-loi-normale}
+\addcontentsline{toc}{subsection}{Loi normale}
+\subsection*{\emph{Loi normale}}\label{II-loi-normale}
 
 de paramètres \(\mu\) et \(\sigma^2\) et on note
 \(X \sim \mathcal{N}(\mu,\sigma^2)\) si \(X\) est de densité
@@ -635,7 +638,7 @@ ce cas, \[
 \int_{D_2} f(y) \, dy = \int_{D_1} f(h(x)) |\det J_h(x)| \, dx.
 \]
 
-\begin{center}\fbox{[figure manquante : changement-de-variables.svg.pdf]}\captionof{figure}{Changement
+\begin{center}\includegraphics{changement-de-variables.svg.pdf}\captionof{figure}{Changement
 de variables}\end{center}
 \end{theoreme}
 
@@ -979,20 +982,21 @@ de carré intégrable, alors \(\text{Cov}(X,Y) = 0\) et \(\rho(X,Y) = 0\).
 \runinhead{Exercice -- Démonstration (\(\mathord{\bullet}\))}\phantomsection\addcontentsline{toc}{subsubsection}{Démonstration}\label{II-demo-cov-indep}
 Démontrer ce résultat.\solref{II-answer-demo-cov-indep}
 
-\subsection{Remarque}\label{II-remarque}
+\begin{remarque}\phantomsection\label{II-cas-reciproque}
 
 Attention, la réciproque est fausse. Par exemple, si
 \(X \sim \mathcal{U}_{[-1,1]}\) et \(Y = X^2\). \(X\) et \(Y\) ne sont
 clairement pas indépendantes mais on a
 
 \[\text{Cov}(X,Y) = \text{Cov}(X,X^2) = \mathbb{E}(X^3) - \mathbb{E}(X)\mathbb{E}(X^2) = 0\]
+\end{remarque}
 
 \chapter{Identification de
 densité}\label{II-identification-de-densituxe9-1}
 
-Un problème important est le suivant. Soit \(X\) une variable aléatoire
-réelle, admettant la densité \(f_X\). Soit \(g\) une fonction mesurable,
-de sorte que \(Y = g(X)\) est aussi une variable aléatoire. Est-ce que
+Un problème important est le suivant : soit \(X\) une variable aléatoire
+réelle, admettant la densité \(f_X\), soit \(g\) une fonction mesurable,
+de sorte que \(Y = g(X)\) est aussi une variable aléatoire, est-ce que
 \(Y\) admet une densité, et si oui, comment la calculer\,?
 
 On peut déjà remarquer que cette densité n'existe pas toujours. Si par
@@ -1067,7 +1071,7 @@ Dans le cas des vecteurs aléatoires, l'idée est la même. Soit
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \(m > n\), le vecteur \(Y\) n'admet pas de densité.
+  \(m > n\), le vecteur \(Y\) n'admet pas de densité. En effet, l'image de \(g\), qui est de dimension au plus \(n\), est de mesure de Lebesgue nulle dans \(\mathbb{R}^m\). 
 \item
   \(m=n\), on utilise comme dans le cas unidimensionel le changement de
   variable \(y = g(x)\) dans
@@ -1102,7 +1106,7 @@ Dans le cas des vecteurs aléatoires, l'idée est la même. Soit
   \[f_Y(y_1,\ldots,y_m) = \int_{\mathbb{R}^{n-m}} f_{Y'}(y_1,\ldots,y_m,y_{m+1},\ldots y_n) dy_{m+1}\ldots dy_n.\]
 \end{enumerate}
 
-\addcontentsline{toc}{subsection}{\textbf{Coordonnées polaires}}
+\addcontentsline{toc}{subsection}{Coordonnées polaires}
 \begin{exemple}[{\textbf{Coordonnées
 polaires}}]\phantomsection\label{II-polar}
 
@@ -1130,8 +1134,8 @@ de fléchette (fin)}\label{II-exo-flechetteter}
 Donner la densité du couple \((R,\Theta)\) des coordonnées polaires de
 \(M\). Sont-elles indépendantes\,?\solref{II-answer-exo-flechetteter}
 
-\addcontentsline{toc}{subsection}{\textbf{Somme de deux variables
-aléatoires indépendantes}}
+\addcontentsline{toc}{subsection}{Somme de deux variables
+aléatoires indépendantes}
 \begin{exemple}[{\textbf{Somme de deux variables aléatoires
 indépendantes}}]\phantomsection\label{II-sum}
 
@@ -1240,8 +1244,7 @@ D_{KL}(f||f_\theta) & = \int f(x) \log\left(\frac{f(x)}{f_\theta(x)}\right) dx \
 & = \int f(x) \log(f(x)) dx - \int f(x) \log(f_\theta(x)) dx \\
 & = -H(f) - \mathbb{E}_f(\log f_\theta(X)),
 \end{align*} où \(H(f) = -\int f(x) \log f(x) dx\) est
-l'\textbf{entropie} de la densité \(f\). Celle-ci s'interprète comme Ce
-terme ne dépend pas de \(\theta\), donc minimiser
+l'\textbf{entropie différentielle} de la densité \(f\). Celle-ci s'interprète comme la quantité d'information contenue dans la variable aléatoire \(X\) de densité \(f\).  Ce terme ne dépend pas de \(\theta\), donc minimiser
 \(D_{KL}(f||f_\theta)\) revient à maximiser
 \(\mathbb{E}_f(\log f_\theta(X))\). En statistique, \(f_\theta(X)\) est
 appelée la \emph{vraisemblance} de l'observation \(X\) pour le paramètre
@@ -1501,7 +1504,7 @@ naturel de supposer que la loi de \(V\) est invariante par rotation
 (autour de l'origine) et que les composantes de \(V\) sont
 indépendantes.
 
-\subsection{Partie 1}\label{II-partie-1}
+\subsection*{Partie 1}\label{II-partie-1}
 
 Soit \((X, Y, Z)\) un vecteur aléatoire à valeurs dans \(\mathbb{R}^3\)
 de densité \(f_{(X, Y, Z)}\). Ce vecteur aléatoire est supposé invariant
@@ -1539,7 +1542,7 @@ d'espérance l'origine dont on précisera la matrice de covariance en
 fonction de la constante
 \(\sigma = 1/\sqrt{|c|}\).\solref{II-answer-Maxwell-3}
 
-\subsection{Partie 2}\label{II-partie-2}
+\subsection*{Partie 2}\label{II-partie-2}
 
 On suppose que le vecteur aléatoire \((X, Y, Z) = V\) vérifie les
 hypothèses des questions précédentes.
@@ -1573,8 +1576,7 @@ On remarquera que \(\Gamma(1/2) = \sqrt{\pi}\) et que
 
 Calculer la loi de \(V_1^2\). En déduire la loi de \(\|V \|^2\) puis la
 densité de \(\|V \| = \sqrt{V_1^2 + V_2^2 + V_3^2}\). La probabilité
-associée est appelée loi de Maxwell.
+associée est appelée loi de Maxwell. \solref{II-answer-Maxwell-5}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\solref{II-answer-Maxwell-5}

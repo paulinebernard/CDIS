@@ -643,7 +643,8 @@ conditionnelle d'un produit de variables}\label{III-prod}
 Calculer \(\mathbb{E}(XY|X=x)\) puis
 \(\mathbb{E}(XY|X)\).\solref{III-answer-prod}
 
-\section{Exemple~: vecteurs Gaussiens à
+\addcontentsline{toc}{subsection}{Vecteurs gaussiens à densité}
+\subsection*{Exemple~: vecteurs gaussiens à
 densité}\label{III-exemple-vecteurs-gaussiens-uxe0-densituxe9}
 
 Dans ce qui précède, on a décrit les lois et les espérances
@@ -813,6 +814,7 @@ propriété
 Si de plus \(K\) est un sous-espace vectoriel, cette caractérisation
 prend une forme plus simple, à savoir:
 \[ \langle Y - P_K(Y) \vert U \rangle = 0 \quad  \forall ~U\in K.\]
+\end{proposition}
 
 Pour revenir à notre problème initial de prédiction optimale de \(Y\)
 par une fonction de \(X\), il s'agit donc de choisir le sous-espace
@@ -821,7 +823,6 @@ s'exprimant comme des fonctions de \(X\), et d'identifier parmi les
 éléments de \(K\) celui qui satisfait la
 \protect\hyperref[III-identEC]{propriété
 ci-dessus (p.~\pageref*{III-identEC})}.
-\end{proposition}
 
 \section{Cas particulier: la régression
 linéaire}\label{III-cas-particulier-la-ruxe9gression-linuxe9aire}
@@ -850,17 +851,17 @@ permet de conclure que le prédicteur affine optimal de \(Y\) par \(X\)
 est la projection orthogonale \(P_K(Y)\) de \(Y\) sur \(K\). En
 particulier, puisque tout élément de \(K\) est une combinaison linéaire
 de \(X\) et \(1\), on peut écrire que \(P_K(Y) = a^*X + b^* 1\), où les
-coefficients \(a^*,b^*\) vérifient:
+coefficients \(a^*,b^*\) vérifient :
 \[ \langle Y - (a^*  X + b^*  1) \vert a  X + b  1 \rangle = 0 \quad  \forall a,b\in\mathbb{R},\]
 Cette égalité devant être vérifiée pour tous \(a,b\in\mathbb{R}\), elle
 implique, par bilinéarité du produit scalaire, que les coefficients
-\(a^*\) et \(b^*\) soient solutions du système: \[
+\(a^*\) et \(b^*\) soient solutions du système : \[
 \left\lbrace\begin{aligned}
    &\langle Y \vert X \rangle - a^*\langle X \vert X \rangle-b^*\langle 1 \vert X \rangle  = 0 \\
    &\langle Y \vert 1 \rangle - a^*\langle X \vert 1 \rangle-b^*\langle 1 \vert 1 \rangle = 0
 \end{aligned}\right.
 \] Par définition du produit scalaire \(\langle\cdot\vert\cdot\rangle\),
-ce système se réécrit sous la forme: \[
+ce système se réécrit sous la forme : \[
 \left\lbrace\begin{aligned}
    &\mathbb{E}(XY) = a^*\mathbb{E}(X^2)+b^*\mathbb{E}(X)   \\
    &\mathbb{E}(Y) = a^*\mathbb{E}(X)+b^* 
@@ -873,7 +874,7 @@ b^* & = \mathbb{E}(Y)  - a^*~\mathbb{E}(X)
 En conclusion, le meilleur prédicteur affine, au sens des moindres
 carrés, de \(Y\) par \(X\) est la fonction \(f^*(X)\) définie par
 \[ f^*(X)=P_K(Y)=a^* X + b^*=\mathbb{E}(Y) + \rho(X,Y)\frac{\sigma_Y}{\sigma_X} (X -\mathbb{E}(X)),\]
-et l'erreur quadratique moyenne associée à ce prédicteur vaut:
+et l'erreur quadratique moyenne associée à ce prédicteur vaut :
 \[\begin{aligned}
 \mathbb{E}\left(\left(Y - f^*(X)\right)^2\right) & = \sigma_Y^2 + \rho^2(X,Y)\sigma^2_Y - 2\rho^2(X,Y)\sigma^2_Y\\
                         & = \sigma^2_Y(1-\rho^2(X,Y)).
@@ -1273,10 +1274,7 @@ Que dire des résultats obtenus aux questions 2 et 3 lorsque~:
 \item
   \(X\) et \(Y\) sont indépendantes\,?
 \end{itemize}
+\solref{III-answer-nonrep4}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\solref{III-answer-nonrep4}
-
-
-\chapter{Références}\label{III-ruxe9fuxe9rences}

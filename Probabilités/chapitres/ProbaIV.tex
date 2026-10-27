@@ -117,11 +117,11 @@ quelconque.
 Soit \(X\) une variable aléatoire. On note \(X \in \mathcal{L}^p\), ou
 \(\mathcal{L}^p(\Omega,\mathcal{A},\mathbb{P})\), si et seulement si
 \(\mathbb{E}(|X|^p) = \int_\mathbb{R}|x|^p \mathbb{P}_X(dx) = \int_{\Omega} |X|^p(\omega)\mathbb{P}(d\omega) < +\infty\).
+\end{definition}
 
 Si \(X \in \mathcal{L}^p\), on dit qu'elle admet un moment d'ordre
 \(p\). Du fait que \(\mathbb{P}\) est une mesure finie, on a la
 stabilité par inclusion suivante~:
-\end{definition}
 
 \addcontentsline{toc}{subsection}{Inclusion}
 \begin{proposition}[{Inclusion}]\phantomsection\label{IV-inclusion}
@@ -222,11 +222,11 @@ Avec les notations ci-dessus, il existe une unique probabilité
 \[\mathbb{P}(A_1 \times \ldots\times A_k \times \Omega_{k+1} \times \ldots) =\prod_{i=1}^k \mathbb{P}_i(A_i)\]
 pour tous \(k \in \mathbb{N}^{\ast}\) et \(A_i \in \mathcal{A}_i\),
 \(i \in \{1,\ldots,k\}\).
+\end{theoreme}
 
 Nous sommes maintenant en mesure de définir une suite de variables
 aléatoires toutes définies sur le même espace de probabilité
 \((\Omega, \mathcal{A}, \mathbb{P})\).
-\end{theoreme}
 
 \addcontentsline{toc}{subsection}{Suites de variables aléatoires
 indépendantes}
@@ -236,10 +236,10 @@ indépendantes}]\phantomsection\label{IV-suites-de-variables-aluxe9atoires-indux
 La suite \((X_n)_{n\in \mathbb{N}^\ast}\) de variables aléatoires est
 dite \emph{indépendante} si pour tout \(n \in \mathbb{N}^\ast\), la
 famille finie \(X_1,\ldots,X_n\) est indépendante.
+\end{definition}
 
 Il est facile de vérifier que l'indépendance est préservée par certaines
 transformations.
-\end{definition}
 
 \addcontentsline{toc}{subsection}{Conséquences}
 \begin{proposition}[{Conséquences}]\phantomsection\label{IV-consuxe9quences}
@@ -688,8 +688,8 @@ d'erreurs. Le résultat prouvant la convergence presque-sûre est appelé
 utilise le \protect\hyperref[IV-BC]{lemme de
 Borel-Cantelli (p.~\pageref*{IV-BC})}.
 
-\subsection{Démonstration}\label{IV-duxe9monstration-7}
 
+\begin{preuve}  
 Notons \(\sigma^2\) la variance des variables \(X_n\), bien définie
 puisqu'on les a supposées de carré intégrable. En vertu de la linéarité
 de l'espérance, on a
@@ -762,7 +762,11 @@ Comme la série \(\sum_n \frac{2\sqrt{n}+1}{n^2}\) converge, le même
 raisonnement que pour \(M_{n^2}\) décrit ci-dessus, montre que
 \[ M_n - \frac{p(n)^2}{n}M_{p(n)^2} \to 0 \text{ p.s.}\] Par ailleurs,
 on a déjà montré que \(M_{p(n)^2} \to 0\) p.s. et
-\(\frac{p(n)^2}{n} \to 1\). On en déduit que \(M_n \to 0\) p.s.
+\(\frac{p(n)^2}{n} \to 1\). On en déduit que \(M_n \to 0\) p.s. 
+
+\hfill$\blacksquare$
+
+\end{preuve}
 
 Plus généralement, le théorème suivant donne les hypothèses minimales
 assurant la validité de la loi des grands nombres, à savoir que les
@@ -839,14 +843,15 @@ résultat analogue (en faisant tendre \(N\) vers l'infini) si les
 variables aléatoires ont un nombre dénombrable de valeurs. En
 particulier, le cas de la convergence de la loi binomiale vers la loi de
 Poisson a été traité en CPGE.
+
 \end{exemple}
 
+
 \addcontentsline{toc}{subsection}{Univers de définition}
+
 \begin{remarque}[{Univers de
 définition}]\phantomsection\label{IV-univers-de-duxe9finition}
-
-Dans la
-\protect\hyperref[IV-defconvloi]{définition (p.~\pageref*{IV-defconvloi})},
+Dans la \protect\hyperref[IV-defconvloi]{définition (p.~\pageref*{IV-defconvloi})},
 les v.a. \(X_n\) et \(X\) peuvent être définies sur des univers
 distincts puisque seules leurs lois sont en cause. Il arrive même qu'une
 suite \(X_n\) converge vers une limite \(X\) qui ne peut pas exister sur
@@ -900,12 +905,13 @@ réelle \(Y\), on en déduit
 \end{preuve}
 
 On peut finalement résumer les liens d'implications entre les différents
-modes de convergence à l'aide de la figure ci-desous.
+modes de convergence à l'aide de la figure \ref{IV-figcvgces}.
 
-\begin{figure}
+\begin{figure}[htbp]
 \centering
 \includegraphics{cvgces.tex.pdf}
 \caption{Relations entre modes de convergence}
+\label{IV-figcvgces}
 \end{figure}
 
 Un moyen efficace de caractériser la convergence en loi des variables
@@ -922,6 +928,7 @@ réelles de fonctions de répartition respectives \(F_n\) et \(F\). Pour
 que \(X_n \xrightarrow{\mathcal{L}} X\), il faut et il suffit que
 \(F_n(x) \xrightarrow[n\to \infty]{} F(x)\) pour tout \(x\) en lequel
 \(F\) est continue.
+\end{proposition}
 
 Notons que puisque la fonction \(F\) est continue à droite et
 croissante, l'ensemble des points où \(F\) est continue est l'ensemble
@@ -933,7 +940,6 @@ dénombrable. Ainsi, \(D\) est dense\footnote{Soient \(\Omega\) un espace
   de \(A\)\,; l'adhérence de \(A\) est égale à \(\Omega\)\,; tout point
   de \(\Omega\) est adhérent à \(A\)\,; le complémentaire de \(A\) est
   d'intérieur vide.} dans \(\mathbb{R}\).
-\end{proposition}
 
 \begin{preuve}
 \begin{enumerate}
@@ -1099,7 +1105,7 @@ converge vers 0 (resp. \(+\infty\)) en probabilité lorsque
 \(\alpha < 1/2\) (resp. \(\alpha > 1/2\)).
 \end{remarque}
 
-\subsection{Exemple~: convergence des lois
+\subsection*{Exemple~: convergence des lois
 binomiales}\label{IV-exemple-convergence-des-lois-binomiales}
 
 Supposons que \(S_n\) suive une loi binomiale \(\mathcal{B}(p,n)\). Cela
@@ -1170,13 +1176,11 @@ Il est important de noter ici que la vitesse de convergence ne dépend
 pas de la dimension des vecteurs \(X_n\).
 \end{remarque}
 
-\chapter{Annexe}\label{IV-annexe}
-
-\section{Fonctions
+\chapter{Fonctions
 caractéristiques}\label{IV-fonctions-caractuxe9ristiques}
 
-Dans ce paragraphe, nous introduisons un outil important en calcul des
-probabilités~: il s'agit de ce que l'on appelle \emph{la fonction
+Dans cette partie (hors programme), nous introduisons un outil important en calcul des
+probabilités~: il s'agit de \emph{la fonction
 caractéristique} d'une variable aléatoire, et qui dans d'autres branches
 des mathématiques s'appelle aussi \emph{la transformée de Fourier}. Elle
 nous sera notamment nécessaire, via le théorème de Lévy, pour démontrer
@@ -1261,7 +1265,7 @@ effet, \(< u, A X> = < A^t u, X>\). On prend ensuite les espérances pour
 obtenir le résultat.\hfill$\blacksquare$
 \end{preuve}
 
-\begin{exemple}\phantomsection\label{IV-ex}
+\subsection*{Exemples}\phantomsection\label{IV-ex}
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
@@ -1286,9 +1290,8 @@ obtenir le résultat.\hfill$\blacksquare$
   \protect\hyperref[IV-fct_carac_vec]{la proposition
   ci-dessus (p.~\pageref*{IV-fct_carac_vec})})
 \end{enumerate}
-\end{exemple}
 
-\subsection{Fonction caractéristique d'une variable
+\subsection*{Fonction caractéristique d'une variable
 gaussienne}\label{IV-fctcaracgauss}
 
 Soit \(X \sim \mathcal{N}(0,1)\). On a \begin{align*}
@@ -1410,7 +1413,7 @@ la \href{Probabilité\%20II.pdf\%20\#indep_fct}{proposition} déjà
 utilisée dans la preuve du corollaire ci-dessus.\hfill$\blacksquare$
 \end{preuve}
 
-\subsection{Exemples~:}\label{IV-exemples}
+\subsection*{Exemples~:}\label{IV-exemples}
 
 Soient \(X\) et \(Y\) deux variables aléatoires réelles indépendantes et
 \(Z = X+Y\)~:

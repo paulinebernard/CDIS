@@ -484,7 +484,7 @@ note
 \(A_f := \left\{ (x,y) \in \mathbb{R}\times \mathbb{R}_+ : f(x) \geq y \right\}\)
 le domaine limité par le graphe de \(f\) et l'axe des abscisses (souvent
 appelé sous-graphe de \(f\)). Si \(X\) est de densité \(f\), alors le
-couple \((X,Uf(X))\) suit une loi uniforme sur \(A_f\).
+couple \((X,Uf(X))\) suit une loi uniforme sur \(A_f\). Réciproquement, si \((X,Y)\) suit une loi uniforme sur \(A_f\), alors \(X\) est de densité \(f\) et \(Y\) conditionnellement à \(X\) est uniforme sur \(]0,f(X)[\).
 \end{proposition}
 
 \begin{preuve}
@@ -497,7 +497,20 @@ Fubini on a \begin{align*}
 & = \int_{-\infty}^z \int_{-\infty}^v 1_{A_f}(x,u)\,du\,dx.
 \end{align*} Ainsi, \((X,Uf(X))\) admet pour densité \(1_{A_f}\), qui
 correspond bien à celle d'une loi uniforme sur
-\(A_f\).\hfill$\blacksquare$
+\(A_f\).
+
+Réciproquement, supposons que \((X,Y)\) suit une loi uniforme sur
+\(A_f\). Alors pour tout \(x\in\mathbb{R}\)
+\[\mathbb{P}\left(X \leq x\right) = \int_{-\infty}^x \int_\mathbb{R} 1_{A_f}(u,v)\,du\,dv = \int_{-\infty}^x f(u)\,du,\] ce qui montre que \(X\) est de densité \(f\). De plus, pour tout \(x\in\mathbb{R}\) et \(y\in\mathbb{R}_+\),
+\begin{align*}
+\mathbb{P}\left(Y \leq y, X \leq x\right) 
+&= \int_{-\infty}^x \int_\mathbb{R} 1_{A_f}(u,v)\,1_{]-\infty,y]}(v)\,dv\,du\\
+&= \int_{-\infty}^x \int_0^{\min(f(u),y)} dv\,du\\
+&= \int_{-\infty}^x \min(f(u),y)\,du.
+\end{align*}
+ce qui montre que \(Y\) conditionnellement à \(X\) est uniforme sur \(]0,f(X)[\).
+
+\hfill$\blacksquare$
 \end{preuve}
 
 Pour simuler un vecteur uniforme \((X,Y)\) sur un ensemble \(A_f\) tel
@@ -538,9 +551,7 @@ suivant~:
 \subsection{Limitations}\label{V-limitations-1}
 
 La méthode de rejet a l'avantage de permettre de simuler des variables
-aléatoires à densité dont la fonction de répartition n'a pas de forme
-analytique, rendant la méthode d'inversion inapplicable. Néanmoins, pour
-pouvoir l'appliquer il faut connaître une densité auxiliaire qui,
+aléatoires à densité lorsque la méthode d'inversion est inapplicable. Néanmoins, pour pouvoir l'appliquer il faut indiquer une densité instrumentale qui,
 multipliée par un réel positif, majore la densité cible, et que l'on
 sait simuler. Le taux de rejet, c'est-à-dire la probabilité de
 l'événement \(\{aUf_Y(Y) > f_X(Y)\}\), peut parfois être élevé,
@@ -558,14 +569,8 @@ Box-Muller}\label{V-simulation-de-variables-aluxe9atoires-gaussiennes-box-muller
 
 On a vu que la méthode d'inversion est inappropriée pour simuler une
 variable gaussienne, puisqu'elle requiert l'expression analytique de la
-fonction de répartition cible. Il existe des méthodes basées sur une
-intégration numérique de la densité gaussienne puis une inversion de
-cette approximation de la f.d.r. mais elle ne sont pas optimales en
-temps de calcul. La méthode de rejet est quant à elle sous-optimale,
-dans le sens où toutes les variables uniformes générées ne sont pas
-directement utilisées (une partie, potentiellement grande, est rejetée).
-La loi normale étant fondamentale en probabilité, il est plus que
-souhaitable de pouvoir en trouver une méthode de simulation exacte et
+fonction de répartition cible. La méthode de rejet est quant à elle sous-optimale,dans le sens où toutes les variables uniformes générées ne sont pas directement utilisées.
+La loi normale étant fondamentale en probabilité, il est nécessaire de disposer d'une méthode de simulation exacte et
 efficace.
 
 George E. P. Box et Mervin E. Muller ont proposé en 1958 une telle
@@ -633,7 +638,10 @@ indépendantes. Pour simuler une variable gaussienne d'espérance
 \(m \in \mathbb{R}\) et de variance \(\sigma^2 \in \mathbb{R}_+^\ast\)
 quelconques, on se rappelera que si \(X\) suit une loi normale centrée
 réduite, alors \(\sigma X + m\) suit une loi normale d'espérance \(m\)
-et de variance \(\sigma^2\).
+et de variance \(\sigma^2\). Dans les logiciels de calcul scientifique (python, R, Julia, etc.), la fonction de simulation d'une variable gaussienne repose cependant sur d'autres algorithmes, plus rapides, comme l'algorithme de la \emph{ziggurat} (G. Marsaglia and W. W. Tsang
+(\protect\hyperlink{refV-Ziggurat}{2000})) : on recouvre la densité par
+des rectangles empilés de même aire, on tire un point uniformément dans
+un rectangle, et on ne recourt à un calcul coûteux (exponentielle, rejet) que dans de rares cas.
 
 \chapter{Simulation d'un vecteur gaussien à
 densité}\label{V-simulation-dun-vecteur-gaussien-uxe0-densituxe9}
@@ -754,6 +762,7 @@ où la notation \(\mathbb{E}_f\) signifie que l'espérance est calculée
 avec \(X\sim f\). On appelle souvent les ratios
 \(\frac{f(X_i)}{g(X_i)}\) les \emph{poids d'importance} que l'on note
 \(w_i\).
+\end{definition}
 
 Cette méthode est basée sur la représentation suivante de
 \(\mathcal{I}\)~:
@@ -762,7 +771,7 @@ Cette méthode est basée sur la représentation suivante de
 
 que l'on appelle l'\emph{identité fondamentale de l'échantillonnage
 d'importance} et l'estimateur converge du fait de la
-\href{Probabilité\%20III.pdf\%20\#lfgn}{loi forte des grands nombres}.
+\protect\hyperref[II-lfgn]{loi forte des grands nombres}.
 
 Cette identité indique qu'une intégrale du type \(\mathcal{I}\) n'est
 pas intrinsèquement associée à une loi donnée. L'intérêt de
@@ -793,7 +802,6 @@ Parmi les densités \(g\) qui fournissent des estimateurs de variance
 finie, il est possible d'exhiber la densité optimale (au sens de la
 variance de l'estimateur associé) pour une fonction \(h\) et une densité
 \(f\) données.
-\end{definition}
 
 \addcontentsline{toc}{subsection}{Densité optimale}
 \begin{theoreme}[{Densité
@@ -808,7 +816,8 @@ Le choix de \(g\) qui minimise la variance de l'estimateur donné dans la
 Notons d'abord que
 \[\mathbb{V}_g\left(\frac{h(X)f(X)}{g(X)}\right) = \mathbb{E}_g\left(h^2(X)\frac{f^2(X)}{g^2(X)}\right) - \mathbb{E}_g\left(h(X)\frac{f(X)}{g(X)}\right)^2\]
 et le second terme ne dépend pas de \(g\). On minimise donc le premier
-terme. D'après l'inégalité de Jensen, on a
+terme. D'après \protect\hyperref[II-jensen]{l'inégalité de
+Jensen (p.~\pageref*{II-jensen})}, on a
 \[\mathbb{E}_g\left(h^2(X)\frac{f^2(X)}{g^2(X)}\right) \geq \mathbb{E}_g\left(|h(X)|\frac{f(X)}{g(X)}\right)^2 = \left(\int|h(x)|f(x)dx\right)^2,\]
 qui nous donne une borne inférieure indépendante du choix de \(g\). Elle
 est atteinte en prenant \(g=g^\ast\).\hfill$\blacksquare$
@@ -831,11 +840,20 @@ domaine}\label{V-loi-uniforme-dans-un-domaine}
 Ecrire un algorithme pour simuler un point uniforme dans les trois
 domaines représentés ci-dessous.
 
-\fbox{[figure manquante : ex1-eps-converted-to.pdf]}
-
-\fbox{[figure manquante : ex2-eps-converted-to.pdf]}
-
-\fbox{[figure manquante : ex3-eps-converted-to.pdf]}
+\begin{center}
+\begin{minipage}[b]{0.15\textwidth}
+\includegraphics[width=\textwidth]{ex1-eps-converted-to.pdf}
+\centering\makebox[\textwidth][c]{Domaine 1}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.2\textwidth}
+\includegraphics[width=\textwidth]{ex2-eps-converted-to.pdf}
+\centering\makebox[\textwidth][c]{Domaine 2}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.5\textwidth}
+\includegraphics[width=\textwidth]{ex3-eps-converted-to.pdf}
+\centering\makebox[\textwidth][c]{Domaine 3}
+\end{minipage}
+\end{center}
 
 \section{Simulation selon la loi
 géométrique}\label{V-simulation-selon-la-loi-guxe9omuxe9trique}
@@ -1146,6 +1164,11 @@ Normal Deviates.'' \emph{Ann. Math. Stat.} 29: 610--11.
 \leavevmode\hypertarget{refV-Lehmer}{}%
 Lehmer, Derrick H. 1951. ``Mathematical Methods in Large-Scale Computing
 Units.'' \emph{Annu. Comput. Lab. Harvard Univ.} 26: 141--46.
+
+\leavevmode\hypertarget{refV-Ziggurat}{}%
+G. Marsaglia, and W. W. Tsang. 2000. ``The Ziggurat Method for
+Generating Random Variables.'' \emph{Journal of Statistical Software}
+5 (8): 1--7. \url{https://doi.org/10.18637/jss.v005.i08}.
 
 \leavevmode\hypertarget{refV-ripley}{}%
 Ripley, Brian D. 1987. \emph{Stochastic Simulation}. New York: Wiley.
