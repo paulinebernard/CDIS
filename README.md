@@ -9,33 +9,33 @@ Mines Paris - PSL, cycle ingénieur civil, unité d'enseignement Mathématiques 
 --------------------------------------------------------------------------------
 
 
-| Chapitre      | # | E-book | Papier | Notebook | Quizz | 
-| ------------- | ------: | -----------:  |  :----: |  :----:  | :-----: |
-| Programme de l'axamen |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/Prog26.pdf) |  |  |
-| Poly 16/10/26 avec exos corrigés  |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/Mines261016.pdf) |  |  |
-| Topo mise à niveau |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TD0.pdf) |  |  |
-| Topologie générale (MP) |  |   | --|  |  |
-| Fondamentaux & Compléments |  |   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/Fonda.pdf) |  |  |
-| Développements |  |   | |  |  |
-|  I Topologie | 1 |   | -- |  | --  |
-| --  | 2 |  | --  | | -- |
-| II Mesure-integration-espaces fonctionnels | 3 |   | -- |  | --|
-| --  | 4 |   | -- |  | -- |
-|  |  |   |  |  |  |
-| III Espaces de Hilbert | 5 |   | -- |  | Q5 |
-| V Calcul Différentiel | 6 |   | -- |  | Q6|
-| -- | 7 |   | -- |  |  Q7|
-| IV Analyse fonctionnelle (hors programme exam) | 8 |   | --|  |  |
-|  |  |   |  |  |  |
-|  |  |   |  |  |  |
-| Equations Différentielles| 1 |  | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Diff%C3%A9rentielles/poly.pdf)  |  [:notebook: IPYNB](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Diff%C3%A9rentielles/Equations%20Diff%C3%A9rentielles%20I.ipynb) | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Equations%20Diff%C3%A9rentielles%20I/output/Equations%20Diff%C3%A9rentielles%20I.pdf)
-|  | 2 |  |  |  [:notebook: IPYNB](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Diff%C3%A9rentielles/Equations%20Differentielles%20II.ipynb) |  |
-||  |   |  |  |   |
-| Probabilités | 1 | [:computer: PDF](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20I/output/Probabilit%C3%A9%20I.pdf) | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20I/output/Probabilit%C3%A9%20I%20(a4%2C%20recto-verso).pdf)  |   | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Probabilit%C3%A9s%20I/output/Probabilit%C3%A9s%20I.pdf) |
-|  | 2 | [:computer: PDF](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20II/output/Probabilit%C3%A9%20II.pdf)  | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20II/output/Probabilit%C3%A9%20II%20(a4%2C%20recto-verso).pdf)  |   | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Probabilit%C3%A9s%20II/output/Probabilit%C3%A9s%20II.pdf) |
-|  | 3 | [:computer: PDF](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20III/output/Probabilit%C3%A9%20III.pdf)   | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20III/output/Probabilit%C3%A9%20III%20(a4%2C%20recto-verso).pdf) |   |[:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Probabilit%C3%A9s%20III/output/Probabilit%C3%A9s%20III.pdf)  |
-|  | 4 | [:computer: PDF](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20IV/output/Probabilit%C3%A9%20IV.pdf)  | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20IV/output/Probabilit%C3%A9%20IV%20(a4%2C%20recto-verso).pdf) |   | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Probabilit%C3%A9s%20IV/output/Probabilit%C3%A9s%20IV.pdf) |
-|  | 5 | [:computer: PDF](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20V/output/Probabilit%C3%A9%20V.pdf) | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20V/output/Probabilit%C3%A9%20V%20(a4%2C%20recto-verso).pdf)  |  [:notebook: IPYNB](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20V/Probabilit%C3%A9%20V-non-corr.ipynb)  |  |
+| Chapitre      | # | Papier | Notebook | Quizz | 
+| ------------- | ------: |  :----: |  :----:  | :-----: |
+| Programme de l'axamen |  | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/Prog26.pdf) |  |  |
+| Poly 16/10/26 avec exos corrigés  |  | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/Mines261016.pdf) |  |  |
+| Topo mise à niveau |  | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/TD0.pdf) |  |  |
+| Topologie générale (MP) |  | --|  |  |
+| Fondamentaux & Compléments |  | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Bertrand/Fonda.pdf) |  |  |
+| Développements |  | |  |  |
+|  I Topologie | 1 | -- |  | --  |
+| --  | 2 | --  | | -- |
+| II Mesure-integration-espaces fonctionnels | 3 | -- |  | --|
+| --  | 4 | -- |  | -- |
+|  |  |  |  |  |
+| III Espaces de Hilbert | 5 | -- |  | Q5 |
+| V Calcul Différentiel | 6 | -- |  | Q6|
+| -- | 7 | -- |  |  Q7|
+| IV Analyse fonctionnelle (hors programme exam) | 8 | --|  |  |
+|  |  |  |  |  |
+|  |  |  |  |  |
+| Equations Différentielles| 1 | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Diff%C3%A9rentielles/poly.pdf)  |  [:notebook: IPYNB](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Diff%C3%A9rentielles/Equations%20Diff%C3%A9rentielles%20I.ipynb) | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Equations%20Diff%C3%A9rentielles%20I/output/Equations%20Diff%C3%A9rentielles%20I.pdf)
+|  | 2 |  |  [:notebook: IPYNB](https://github.com/paulinebernard/CDIS/raw/main/Equations%20Diff%C3%A9rentielles/Equations%20Differentielles%20II.ipynb) |  |
+||  |  |  |   |
+| Probabilités | 1 | [:book: PDF](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s/poly.pdf)  |   | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Probabilit%C3%A9s%20I/output/Probabilit%C3%A9s%20I.pdf) |
+|  | 2 |  |   | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Probabilit%C3%A9s%20II/output/Probabilit%C3%A9s%20II.pdf) |
+|  | 3 |  |   |[:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Probabilit%C3%A9s%20III/output/Probabilit%C3%A9s%20III.pdf)  |
+|  | 4 |  |   | [:grey_question: PDF](https://github.com/paulinebernard/CDIS/raw/main/quizz/Probabilit%C3%A9s%20IV/output/Probabilit%C3%A9s%20IV.pdf) |
+|  | 5 |  |  [:notebook: IPYNB](https://github.com/paulinebernard/CDIS/raw/main/Probabilit%C3%A9s%20V/Probabilit%C3%A9%20V-non-corr.ipynb)  |  |
 <!--| ... | ... | ... |-->
   
 
@@ -63,36 +63,9 @@ Installez sur votre ordinateur:
 
   - une distribution [LaTeX](https://www.latex-project.org/),
 
-  - le gestionnaire de paquetages et d'environnements [conda](https://conda.io/en/latest/).
-
   - optionnellement, pour modifier les sources du document, 
     [Visual Studio Code](https://code.visualstudio.com/).
 
-### Environnement de travail
-
-Conda est particulièrement important puisqu'il est utilisé pour installer
-de nombreux autres outils logiciels dont nous avons besoin, comme Python,
-Pandoc, etc. Nos besoins supplémentaires sont décrits dans le fichier 
-`environment.yml`.
-Pour créer un environnement conda qui soit conforme à ces besoins,
-exécuter dans le terminal la commande
-
-    $ conda env create -f environment.yml
-
-Quand vous voudrez travaillez sur le projet, activez l'environnement par la
-commande
-
-    $ conda activate CDIS
-
-Référence: [Gestion des environnements Conda](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
-
-### Génération des documents
-
-Exécutez la commande
-
-    $ ./build
-
-Les documents sont générés dans le répertoire `output`.
 
 
 --------------------------------------------------------------------------------
