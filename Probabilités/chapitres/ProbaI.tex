@@ -422,11 +422,11 @@ collection de sous-ensembles de \(\Omega\) tels que~:
 \item
   \(\forall\, n \in \mathbb{N}, A_n \in \mathcal{A}\Rightarrow \bigcup_n A_n \in \mathcal{A}\).
 \end{enumerate}
+\end{definition}
 
 Le couple \((\Omega, \mathcal{A})\) est appelé \emph{espace
 probabilisable}. On notera qu'il s'agit d'un espace mesurable dans la
-terminologie du cours d'intégration;
-\end{definition}
+terminologie du cours d'intégration.
 
 \begin{exemple}\phantomsection\label{I-exemples-3}
 \begin{enumerate}
@@ -470,6 +470,7 @@ application \(\mathbb{P}: \mathcal{A}\rightarrow [0,1]\), telle que~:
    \mathbb{P}\left(\bigcup_{n\in\mathbb{N}^\star} A_n\right) = \sum_{n\in\mathbb{N}^\star} \mathbb{P}(A_n).
    \end{equation*}
 \end{enumerate}
+\end{definition}
 
 Le triplet \((\Omega, \mathcal{A}, \mathbb{P})\) est appelé \emph{espace
 probabilisé}. La modélisation probabiliste consiste ainsi à décrire une
@@ -484,7 +485,6 @@ de \emph{mesure de probabilité}.
 La définition suivante est fondamentale en théorie des probabilités.
 Elle introduit une notion de ``vrai ou faux'' qui dépend de la
 probabilité choisie sur l'espace fondamental.
-\end{definition}
 
 \addcontentsline{toc}{subsection}{Propriété presque-sûre}
 \begin{definition}[{Propriété
@@ -626,9 +626,9 @@ Soient \((\Omega, \mathcal{A}, \mathbb{P})\) un espace probabilisé,
 \begin{equation*}
 \mathbb{P}(A|B) = \frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}.
 \end{equation*}
+\end{definition}
 
 Cela définit une probabilité comme le montre la proposition suivante.
-\end{definition}
 
 \addcontentsline{toc}{subsection}{Conséquences}
 \begin{proposition}[{Conséquences}]\phantomsection\label{I-consuxe9quences}
@@ -823,8 +823,8 @@ toute partie \(I \subset \lbrace 1,\dots, n\rbrace\) \begin{equation*}
 \end{definition}
 
 \begin{remarque}\phantomsection\label{I-remarque-1}
-Attention, l'indépendance des évènements deux à deux n'implique pas
-l'indépendance mutuelle des évènements.
+Attention, l'indépendance des événements deux à deux n'implique pas
+l'indépendance mutuelle des événements.
 \end{remarque}
 
 \section{Réflexion sur le concept de
@@ -913,12 +913,12 @@ probabilisables (mesurables). Une \emph{variable aléatoire} \(X\) à
 valeurs dans \(E\) est une application mesurable de
 \((\Omega,\mathcal{A})\) dans \((E,\mathcal{E})\), c'est-à-dire telle
 que \(\forall B \in \mathcal{E}\), \(X^{-1}(B) \in \mathcal{A}\).
+\end{definition}
 
 En pratique, l'ensemble \(E\) pourra être un ensemble fini ou
 dénombrable ou \(\mathbb{R}\) ou \(\mathbb{R}^d\) ou encore un espace
 plus sophistiqué tel que l'ensemble \(C(\mathbb{R}_+ , \mathbb{R}^d)\)
 des fonctions continues de \(\mathbb{R}_+\) dans \(\mathbb{R}^d\).
-\end{definition}
 
 \addcontentsline{toc}{subsection}{Vocabulaire}
 \begin{remarque}[{Vocabulaire}]\phantomsection\label{I-vocabulaire}
@@ -1016,10 +1016,10 @@ engendrées}]\phantomsection\label{I-tribus-engendruxe9es}
 Si \(\Omega = \mathbb{R}\), on appelle tribu borélienne, que l'on note
 \(\mathcal{B}(\mathbb{R})\), la tribu engendrée par la classe des
 ouverts de \(\mathbb{R}\).
+\end{definition}
 
 À titre d'exercice de maniement des tribus, on donne en détail la
 démonstration du résultat suivant~:
-\end{definition}
 
 \addcontentsline{toc}{subsection}{Définition alternative}
 \begin{proposition}[{Définition
@@ -1064,7 +1064,7 @@ On peut maintenant définir une variable aléatoire réelle~:
 réelle}]\phantomsection\label{I-defvar}
 
 Soit l'espace d'état \(\Omega\) muni de la tribu \(\mathcal{A}\) des
-évènements. Une application \(X\) de \(\Omega\) dans \(\mathbb{R}\) est
+événements. Une application \(X\) de \(\Omega\) dans \(\mathbb{R}\) est
 une \emph{variable aléatoire réelle} si \(X^{-1}(B) \in \mathcal{A}\)
 pour tout \(B \in \mathcal{B}(\mathbb{R})\), autrement dit si \(X\) est
 une application mesurable de \((\Omega, \mathcal{A})\) dans
@@ -1080,10 +1080,10 @@ La probabilité \(\mathbb{P}_X\), définie sur
 \(\mathbb{P}_X (B) = \mathbb{P}(X^{-1}(B))\) pour
 \(B \in \mathcal{B}(\mathbb{R})\) est appelée \emph{loi de la variable
 \(X\)}, ou \emph{distribution} de \(X\).
+\end{definition}
 
 On peut voir \(\mathbb{P}_X\) comme une transposition de \(\mathbb{P}\)
 sur \(\mathbb{R}\). On a alors le résultat très utile suivant~:
-\end{definition}
 
 \addcontentsline{toc}{subsection}{Composition}
 \begin{proposition}[{Composition}]\phantomsection\label{I-composition}
